@@ -1,0 +1,198 @@
+/* Nodear Specific Styles - The Archive Aesthetic */
+
+.nodear-scope {
+  /* Brutalist variable system from DNA spec */
+  --void: #050505;
+  --ash: #0d0d0d;
+  --coal: #1a1818;
+  --iron: #272525;
+  --iron2: #333030;
+  --silver: #888580;
+  --bone: #c8c3bc;
+  --parchment: #e8e2d8;
+  --ivory: #f5f0e8;
+  --ecru: #f3f3ec;
+  --blood: #8b1a1a;
+  --blood-b: #cc2222;
+  --blood-d: #5a0f0f;
+  --teal: #0f5e6a;
+  --teal-b: #0fa8b8;
+  --gold: #8a7040;
+  --gold-b: #c4a855;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'IM Fell English', serif;
+  --font-mono: 'Space Mono', monospace;
+  --radius: 2px;
+  --track-display: 0.25em;
+  --track-heading: 0.1em;
+  --track-mono: 0.15em;
+  
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── NAVIGATION (Invisible Nav Pattern) ── */
+.nodear-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2.5rem 2rem;
+  background: var(--void);
+  z-index: 100;
+}
+.nodear-nav-item {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-mono);
+  color: var(--silver);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nodear-nav-item:hover, .nodear-nav-item.active {
+  color: var(--parchment);
+}
+
+/* ── LAYOUT / STREAM ── */
+.nodear-main {
+  max-width: 700px; /* Blonded-style constrained stream */
+  margin: 0 auto;
+  padding: 120px 1.5rem 8rem; /* Padding top clears nav */
+}
+
+/* ── NEWSLETTER (Above Fold) ── */
+.nodear-newsletter {
+  margin-bottom: 6rem;
+  border-bottom: 1px solid var(--iron);
+  padding-bottom: 3rem;
+  text-align: center;
+}
+.nodear-koan {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--silver);
+  font-size: 16px;
+  margin-bottom: 2rem;
+}
+.nodear-form {
+  display: flex;
+  margin: 0 auto;
+  max-width: 400px;
+  gap: 1rem;
+}
+.nodear-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--iron);
+  padding: 0.5rem;
+  color: var(--parchment);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--track-mono);
+}
+.nodear-input:focus {
+  outline: none;
+  border-bottom-color: var(--silver);
+}
+.nodear-input::placeholder {
+  color: var(--iron2);
+}
+.nodear-submit {
+  background: transparent;
+  border: 1px solid var(--iron);
+  color: var(--silver);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nodear-submit:hover {
+  background: var(--parchment);
+  color: var(--void);
+}
+
+/* ── ARCHIVE ENTRY (Stream Item) ── */
+.archive-entry {
+  margin-bottom: 5rem; /* Generous white/black space per Virgil DNA */
+}
+.archive-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+}
+.chapter-code {
+  color: var(--teal-b);
+}
+.archive-timestamp {
+  color: var(--silver);
+}
+.archive-content {
+  border: 1px solid var(--iron);
+  padding: 2.5rem;
+  background: var(--ash);
+}
+/* Object drops are distinct */
+.archive-object {
+  background: #0e0e0e; /* Slightly lifted from void */
+  border: 1px solid var(--iron2);
+  display: flex;
+  flex-direction: column;
+}
+.object-image-container {
+  background: var(--void);
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.archive-text-body {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--bone);
+  white-space: pre-wrap;
+}
+.archive-text-body em {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 14px;
+}
+.archive-text-body strong {
+  color: var(--blood-b);
+}
+
+/* ── Typography Scale ── */
+.nodear-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--track-display);
+  font-size: 24px;
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+@media(max-width: 600px) {
+  .nodear-nav {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+}

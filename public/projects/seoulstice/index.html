@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seoulstice — Branded Identity & System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&family=Noto+Serif+KR:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --beige: #D9C4B4;
+            --taupe: #A69383;
+            --brown: #6B5D54;
+            --grey: #8C7E70;
+            --espresso: #4A3B32;
+            --burgundy: #8A1C1C;
+            --cream: #F5F0EB;
+            --paper: #EFE3D4;
+            --blue: #A3C1D9;
+            --shadow: rgba(45, 35, 28, 0.25);
+            --serif: 'DM Serif Display', 'Noto Serif KR', Georgia, serif;
+            --body: 'Fraunces', Georgia, serif;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #cfc6b9, #e9d9ca 48%, #b7a999);
+            color: var(--espresso);
+            font-family: var(--body);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            background: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 100% 4px;
+            mix-blend-mode: soft-light;
+        }
+
+        .desktop {
+            min-height: 100vh;
+            padding: 20px 18px 70px;
+            background-image: 
+                linear-gradient(rgba(74, 59, 50, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 59, 50, 0.07) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .side-nav {
+            position: fixed;
+            top: 22px;
+            left: 18px;
+            display: grid;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-icon {
+            width: 80px;
+            border: 0;
+            background: transparent;
+            color: var(--espresso);
+            font-family: var(--mono);
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-ico {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 5px;
+            border: 2px solid var(--espresso);
+            background: var(--cream);
+            box-shadow: 4px 4px 0 var(--shadow);
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+            transition: all 0.1s;
+        }
+
+        .nav-icon:hover .nav-ico {
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 var(--shadow);
+            background: #fff;
+        }
+
+        .taskbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 48px;
+            z-index: 200;
+            background: #c9b9a8;
+            border-top: 2px solid #fff;
+            box-shadow: 0 -2px 0 var(--espresso);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            font-family: var(--mono);
+            font-size: 11px;
+        }
+
+        .start-btn {
+            height: 32px;
+            background: var(--cream);
+            border: 2px outset #fff;
+            padding: 0 12px;
+            color: var(--espresso);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .task-tab {
+            height: 32px;
+            background: var(--paper);
+            border: 2px outset #fff;
+            padding: 0 12px;
+            color: var(--espresso);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .task-tab:hover { background: #fff; }
+
+        .clock-win {
+            margin-left: auto;
+            border: 2px inset #fff;
+            padding: 7px 15px;
+            background: #b8aa9d;
+            font-weight: 600;
+        }
+
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding-left: 110px;
+        }
+
+        .window-shell {
+            background: var(--cream);
+            border: 2px solid var(--espresso);
+            box-shadow: 12px 12px 0 var(--shadow);
+            margin: 0 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .win-title {
+            height: 36px;
+            background: linear-gradient(90deg, var(--espresso), var(--brown));
+            color: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px 0 15px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: move;
+        }
+
+        .win-ctrls { display: flex; gap: 6px; }
+        .win-btn {
+            width: 22px;
+            height: 22px;
+            border: 1px solid #fff;
+            background: var(--paper);
+            color: var(--espresso);
+            font-family: var(--sans);
+            font-size: 10px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+        }
+
+        .win-content { padding: 30px; }
+
+        /* Catalogue Section */
+        .catalogue-header {
+            border-bottom: 2px solid var(--espresso);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .cat-card {
+            border: 1px solid var(--espresso);
+            background: #fff;
+            padding: 10px;
+            transition: all 0.2s;
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            z-index: 10;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .cat-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            border: 1px solid var(--taupe);
+            margin-bottom: 8px;
+        }
+
+        .cat-info {
+            font-family: var(--mono);
+            font-size: 9px;
+            color: var(--brown);
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--paper);
+            padding-top: 6px;
+        }
+
+        /* Branding System */
+        .system-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .color-well {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .color-swatch {
+            aspect-ratio: 1;
+            border: 1px solid var(--espresso);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 10px;
+            font-family: var(--mono);
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        .typo-block {
+            border: 1px solid var(--espresso);
+            background: #fff;
+            padding: 30px;
+        }
+
+        .marquee-bar {
+            background: var(--burgundy);
+            color: #fff;
+            padding: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 60px;
+        }
+
+        .marquee-inner {
+            display: inline-block;
+            animation: slide 30s linear infinite;
+        }
+
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        .ritual-item {
+            border: 1px solid var(--espresso);
+            padding: 20px;
+            background: var(--paper);
+            margin-bottom: 15px;
+        }
+
+        .ritual-item h4 { font-family: var(--serif); margin: 0 0 10px; font-size: 24px; }
+        .ritual-item p { font-size: 14px; line-height: 1.5; color: var(--brown); margin: 0; }
+
+        /* Glassmorphic Viewer */
+        .glass-viewer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            max-width: 1000px;
+            height: 80vh;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.2);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            resize: both;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .glass-titlebar {
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            cursor: move;
+            color: var(--espresso);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .glass-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+        .glass-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 30px rgba(74, 59, 50, 0.2));
+        }
+        .glass-close {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: var(--espresso);
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            font-family: var(--sans);
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+        .glass-close:hover { background: rgba(255, 255, 255, 0.6); }
+
+        @media (max-width: 900px) {
+            .main-container { padding-left: 0; }
+            .side-nav { position: relative; display: flex; flex-wrap: wrap; top: auto; left: auto; margin: 20px auto; justify-content: center; }
+            .system-layout { grid-template-columns: 1fr; }
+            .glass-viewer { width: 95vw; height: 70vh; }
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop" id="top">
+        <nav class="side-nav">
+            <button class="nav-icon" onclick="scrollToSection('hero')"><div class="nav-ico">☼</div>home</button>
+            <button class="nav-icon" onclick="scrollToSection('archive')"><div class="nav-ico">▤</div>archive</button>
+            <button class="nav-icon" onclick="scrollToSection('system')"><div class="nav-ico">※</div>system</button>
+            <button class="nav-icon" onclick="scrollToSection('feed')"><div class="nav-ico">◫</div>feed</button>
+            <button class="nav-icon" onclick="scrollToSection('shop')"><div class="nav-ico">▣</div>shop</button>
+            <button class="nav-icon" onclick="scrollToSection('guide')"><div class="nav-ico">✎</div>guide</button>
+        </nav>
+
+        <div class="main-container">
+            <!-- HERO -->
+            <section class="window-shell" id="hero">
+                <div class="win-title">
+                    <span>seoulstice_branded_identity_system.exe</span>
+                    <div class="win-ctrls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">×</button></div>
+                </div>
+                <div class="win-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div style="padding: 20px;">
+                        <h1 style="font-family: var(--serif); font-size: clamp(60px, 8vw, 120px); margin: 0; line-height: 0.9;">Seoul<br><span style="color:var(--burgundy); font-style:italic">stice</span></h1>
+                        <div style="font-family: 'Noto Serif KR', serif; font-size: 32px; color: var(--taupe); margin-top: 10px;">설스티스</div>
+                        <p style="font-size: 22px; color: var(--brown); line-height: 1.4; margin: 30px 0;">A ritual alignment system for city skin. Built around dawn light, old-web residue, and tactile renewal.</p>
+                        <div style="display: flex; gap: 15px;">
+                            <div style="border: 1px solid var(--espresso); padding: 12px 20px; font-family: var(--mono); font-size: 10px;">VER. 1.0.4</div>
+                            <div style="border: 1px solid var(--espresso); padding: 12px 20px; font-family: var(--mono); font-size: 10px; background: var(--espresso); color: #fff;">ACTIVATE RITUAL</div>
+                        </div>
+                    </div>
+                    <div style="border: 1px solid var(--espresso); background: url('attachments/01A9E50D-F555-4177-9D2D-902408A4A6D3.png'); background-size: cover; background-position: center;"></div>
+                </div>
+            </section>
+
+            <div class="marquee-bar">
+                <div class="marquee-inner">
+                    SEOULSTICE / 설스티스 / RITUAL ALIGNMENT / BRANDED IDENTITY SYSTEM / DAWN LIGHT ARCHIVE / CITY SKIN RENEWAL / SEOULSTICE / 설스티스 / RITUAL ALIGNMENT / BRANDED IDENTITY SYSTEM / DAWN LIGHT ARCHIVE / CITY SKIN RENEWAL /&nbsp;
+                </div>
+            </div>
+
+            <!-- ARCHIVE / CATALOGUE -->
+            <section class="window-shell" id="archive">
+                <div class="win-title">
+                    <span>brand_identity_archive.sys</span>
+                    <div class="win-ctrls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">×</button></div>
+                </div>
+                <div class="win-content">
+                    <div class="catalogue-header">
+                        <div>
+                            <h2 style="font-family: var(--serif); font-size: 52px; margin: 0;">Portfolio Catalogue</h2>
+                            <div style="font-family: var(--mono); font-size: 10px; color: var(--brown);">TOTAL ASSETS: 102 | CLASSIFIED: BRANDED IDENTITY</div>
+                        </div>
+                        <div style="font-family: var(--mono); font-size: 11px; color: var(--burgundy);">FILTER: ALL_Renders</div>
+                    </div>
+                    <div class="catalogue-grid" id="fullCatalogue">
+                        <!-- JS injects images here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SYSTEM -->
+            <section class="window-shell" id="system">
+                <div class="win-title">
+                    <span>system_tokens_and_ritual.config</span>
+                    <div class="win-ctrls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">×</button></div>
+                </div>
+                <div class="win-content system-layout">
+                    <div>
+                        <h3 style="font-family: var(--serif); font-size: 36px; margin: 0 0 20px;">Identity Palette</h3>
+                        <div class="color-well">
+                            <div class="color-swatch" style="background:#D9C4B4">#D9C4B4<br>BEIGE</div>
+                            <div class="color-swatch" style="background:#A69383; color:#fff">#A69383<br>TAUPE</div>
+                            <div class="color-swatch" style="background:#6B5D54; color:#fff">#6B5D54<br>BROWN</div>
+                            <div class="color-swatch" style="background:#8C7E70; color:#fff">#8C7E70<br>GREY</div>
+                            <div class="color-swatch" style="background:#4A3B32; color:#fff">#4A3B32<br>ESPRESSO</div>
+                            <div class="color-swatch" style="background:#8A1C1C; color:#fff">#8A1C1C<br>BURGUNDY</div>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <h3 style="font-family: var(--serif); font-size: 36px; margin: 0 0 20px;">Core Rituals</h3>
+                            <div class="ritual-item">
+                                <h4>새벽 의식 / Dawn</h4>
+                                <p>The activation of barrier support at the first shift of light.</p>
+                            </div>
+                            <div class="ritual-item">
+                                <h4>피부 호흡 / Breath</h4>
+                                <p>Tactile renewal for city skin exposed to urban residue.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--serif); font-size: 36px; margin: 0 0 20px;">Typography System</h3>
+                        <div class="typo-block">
+                            <div style="font-family: var(--serif); font-size: 52px; line-height: 1; margin-bottom: 10px;">DM Serif</div>
+                            <div style="font-family: var(--serif); font-size: 28px; font-style: italic; color: var(--burgundy); margin-bottom: 25px;">The identity of renewal.</div>
+                            <div style="font-family: var(--body); font-size: 20px; line-height: 1.4; margin-bottom: 25px;">Fraunces Soft. An editorial typeface for manifestos and skin-weather reports.</div>
+                            <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; border-top: 1px solid var(--paper); padding-top: 15px;">JetBrains Mono / System Metadata</div>
+                        </div>
+                        <div style="margin-top: 30px; border: 1px solid var(--espresso); padding: 25px; background: var(--paper);">
+                            <div style="font-family: var(--mono); font-size: 9px; margin-bottom: 15px;">MANIFESTO_RECOVERY.LOG</div>
+                            <p style="font-size: 13px; line-height: 1.6; color: var(--espresso); margin: 0;">"Seoulstice is the point where the city meets the sun. We design for the skin that lives in between."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FEED -->
+            <section class="window-shell" id="feed">
+                <div class="win-title">
+                    <span>tumblr_mood_archive.sys</span>
+                    <div class="win-ctrls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">×</button></div>
+                </div>
+                <div class="win-content" style="display: grid; grid-template-columns: 340px 1fr; gap: 40px;">
+                    <aside style="background: var(--paper); border: 1px solid var(--espresso); padding: 30px; align-self: start;">
+                        <div style="aspect-ratio: 1; border: 1px solid var(--espresso); background: url('attachments/0f712cc6-1b8e-4f4e-9a5c-e9b1c7a0ad2e.png'); background-size: cover; margin-bottom: 20px;"></div>
+                        <h3 style="font-family: var(--serif); font-size: 32px; margin: 0;">Seoulstice Feed</h3>
+                        <p style="font-size: 14px; color: var(--brown); margin-top: 15px;">Daily captures of light, skin, and city residue.</p>
+                    </aside>
+                    <div>
+                        <div style="border: 1px solid var(--espresso); background: #fff; padding: 25px; margin-bottom: 30px;">
+                            <img src="attachments/11B3834C-7C58-46BD-9F99-965606AF6FA3.png" style="width: 100%; border: 1px solid var(--paper);">
+                            <div style="margin-top: 15px; font-family: var(--mono); font-size: 9px;">POSTED: 07:30 AM / TAGS: #DAWNRITUAL #SKINCARE</div>
+                        </div>
+                        <div style="border: 1px solid var(--espresso); background: #fff; padding: 25px;">
+                            <img src="attachments/211869AB-4B08-4BD7-B177-CC6EF417EBF8.png" style="width: 100%; border: 1px solid var(--paper);">
+                            <div style="margin-top: 15px; font-family: var(--mono); font-size: 9px;">POSTED: 08:15 PM / TAGS: #CITYSKIN #RENEWAL</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SHOP -->
+            <section class="window-shell" id="shop">
+                <div class="win-title">
+                    <span>retail_drop_v1.sys</span>
+                    <div class="win-ctrls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">×</button></div>
+                </div>
+                <div class="win-content">
+                    <iframe src="mock_retail_store.url" style="width: 100%; height: 600px; border: 0;"></iframe>
+                </div>
+            </section>
+
+            <!-- GUIDE -->
+            <section class="window-shell" id="guide">
+                <div class="win-title">
+                    <span>brand_guidelines_v2.0.pdf</span>
+                    <div class="win-ctrls"><button class="win-btn">_</button><button class="win-btn">□</button><button class="win-btn">×</button></div>
+                </div>
+                <div class="win-content" style="padding: 0; height: 800px;">
+                    <iframe src="seoulstice_brand_guidelines_v2.html" style="width: 100%; height: 100%; border: 0;"></iframe>
+                </div>
+            </section>
+        </div>
+
+        <div class="taskbar">
+            <button class="start-btn" onclick="scrollToSection('top')">☼ START</button>
+            <button class="task-tab" onclick="scrollToSection('archive')">archive.sys</button>
+            <button class="task-tab" onclick="scrollToSection('system')">identity_system</button>
+            <button class="task-tab" onclick="scrollToSection('feed')">feed_tumblr</button>
+            <button class="task-tab" onclick="scrollToSection('shop')">shop_retail</button>
+            <button class="task-tab" onclick="scrollToSection('guide')">brand_guide</button>
+            <div class="clock-win" id="clock">08:30 PM</div>
+        </div>
+    </div>
+
+    <!-- Glassmorphic Viewer -->
+    <div id="glassViewer" class="glass-viewer">
+        <div class="glass-titlebar" id="glassDrag">
+            <span id="glassTitle">glass_viewer.exe</span>
+            <button class="glass-close" onclick="closeGlassViewer()">×</button>
+        </div>
+        <div class="glass-content">
+            <img id="glassImg" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        const ALL_IMAGES = ["01A9E50D-F555-4177-9D2D-902408A4A6D3.png","05839fe4-2c09-4c9c-bbcc-a74528cd60dc.png","0f70be4c-ada3-4238-b1db-a792375453dd.png","0f712cc6-1b8e-4f4e-9a5c-e9b1c7a0ad2e.png","10db4c01-0ed4-4f72-85e2-b1a59154f166.png","11B3834C-7C58-46BD-9F99-965606AF6FA3.png","14ac6247-6637-48f0-80a0-baaecd4009fa.png","15112771-68fc-44f4-94a1-150b75a3591c.png","15cb22ea-77e4-484f-b3a8-6760b583f15e.png","1776942151500-019dba01-0aeb-7771-bfb8-f87041d1b066.png","17d6b8db-5366-45fb-821a-7cd8195f52e0.png","19257f00-8836-4d99-adb2-854c6bac54d0.png","211869AB-4B08-4BD7-B177-CC6EF417EBF8.png","241208CF-3066-4C27-83F9-0A61F1C7997F.png","252dc928-aa94-4d37-8b7c-a6f116814f0e.png","267de1d9-daa0-47b4-9606-b82adb77c6bb.png","2dc2c869-3e39-450d-b16b-a6890dacad93.png","311FDB57-B303-4515-9D50-FDDDE7F2E751.png","353AC02A-2CCD-4E72-85F0-7C787174ABA8.png","3c48203d-31f8-4ba7-bf07-9c67257a2051.png","3df1c4a2-25af-4a49-8e24-6ed018ea7558.png","4412D7DF-218F-4DC5-8753-22AD98367E64.png","479121bf-96c8-4f7b-9e77-5750443d6507 (1).png","52ba07ae-c035-4d2e-ba00-46532c254f23.png","55f1c7db-9dff-4740-be41-68a90e9bfa1f.png","5F67525D-2112-4CDD-8125-8E1BE2F5C457.png","64ef006d-89cf-4954-8376-d38db3b79700.png","67A29D54-F2EF-4F90-992D-4641119F847E.png","6D5D7210-7FB9-43E7-9C20-C47A88B19AB6.png","6a2b0c6b-bd64-4111-96f2-f43977d287cd.png","6e4d26d6-ef6d-44e4-8a2a-078040cde0ea.png","743A3E35-9C07-4901-9881-139A0DB17352.png","76300f7d-efe7-4b5a-8779-a4996aad1cd1.png","77621694-a2c4-4e4d-9f7f-062c038deaf2.png","78F598AF-63A4-43ED-A467-D89FAE16BC61.png","79fc2e67-95ee-4872-8dff-2923f2759e72.png","7BFB1B4E-DF1C-4664-B12F-C7BEC5528769.png","82ca1095-46c3-4a83-92fe-778d85a1d631.png","851fe2cf-6748-45ad-8607-785fd14c8ebc.png","85ea45d1-3243-4768-a0eb-044eb55a8337.png","892aab50-849f-47da-8374-27977b5f71ef.png","8dc20e88-2a66-4cb0-ada4-4c19962f9618.png","9126e030-df55-4fbf-9501-cda99e7eb6ae.png","9374d06c-a302-4631-bfc2-edc0b640b5d4.png","97e0d013-d4c5-44ba-97ee-7d7e7743a70e.png","9C24841E-C10B-4C96-A15E-D1D6B44E6E32.png","9bbc48ad-5d46-4363-9c99-7b171c2310f2.png","A1356C42-1D3C-4FAC-8204-3B5B71954A9E.png","B14F1AAB-B80E-4A03-9D02-1CAAB05386BE.png","B84A8AC5-E36A-47AA-91E7-31CB770B841F.png","CB457230-4264-462D-A96F-95F974520123.png","EDAC1187-2569-419E-A9F1-B4E0DE44613E.png","Gemini_Generated_Image_xkef4vxkef4vxkef.png","a460d743-b23c-44b7-9815-a42a8381490d.png","a8798374-aa06-4f92-ba1b-397830fdf9d3.png","ab80c261-d3cb-4742-831e-ac59840f95cd.png","acdc8bdf-05da-4001-afbd-09499ff32038.png","ae8209d5-2db2-4c0a-ae56-d52f3c34579f.png","af02c3a4-e52b-4f0b-9632-b830401f48dc.png","b12f02fe-165f-4ea0-a100-8b547104f83c.png","b48ac305-2d23-4b16-ab44-177169f2211c.png","ca37a29c-bf7f-40b7-a4a3-75fa45bdc188.png","d58479d5-3761-48f3-bf89-fe3b00a6ec40.png","e091711e-5e97-41db-8eca-7ac64d61cfa2.png","e4ac327e-338f-4078-affb-2f8a9d1032b0.png","e68cafde-6e91-477f-88e4-aa982c409289.png","f2577690-80b6-458f-a673-9b31bb17b0ac.png","f654e54c-5249-4126-bd13-41d96350f299.png","f7675b3d-7c22-4e38-aa2f-c24c3cd3d232.png","f8cb27cf-ffb7-4cb0-bb01-a6f3374e1fe7.png","muapi-5d7da5e1-4cdf-4ffe-84fe-dd2b00140288.jpg","muapi-db46d9b2-d860-4d62-901c-e65eb11c9303.jpg","unknown-2026-04-23T12-22-37-661Z (1).jpg","unknown-2026-04-23T12-22-37-661Z.jpg","unknown-2026-04-23T12-22-37-716Z (1).jpg","unknown-2026-04-23T12-22-37-716Z (2).jpg","unknown-2026-04-23T12-22-37-716Z (3).jpg","unknown-2026-04-23T12-22-37-716Z.jpg","unknown-2026-04-23T12-22-37-739Z.jpg","unknown-2026-04-23T12-22-37-761Z.jpg","unknown-2026-04-23T12-22-37-814Z.jpg","unknown-2026-04-23T12-22-37-838Z.jpg","unknown-2026-04-23T12-22-37-898Z.jpg","unknown-2026-04-23T12-22-37-918Z.jpg","unknown-2026-04-23T12-22-37-933Z.jpg","unknown-2026-04-23T12-22-37-945Z (1).jpg","unknown-2026-04-23T12-22-37-945Z.jpg","unknown-2026-04-23T12-22-37-959Z.jpg","unknown-2026-04-23T12-22-37-969Z.jpg","unknown-2026-04-23T12-22-37-972Z.jpg","unknown-2026-04-23T12-22-37-983Z.jpg","unknown-2026-04-23T12-22-38-025Z.jpg","unknown-2026-04-23T12-22-38-031Z (1).jpg","unknown-2026-04-23T12-22-38-031Z (2).jpg","unknown-2026-04-23T12-22-38-177Z.jpg","unknown-2026-04-23T12-22-38-200Z (1).jpg","unknown-2026-04-23T12-22-38-200Z (2).jpg","unknown-2026-04-23T12-22-38-221Z (1).jpg","unknown-2026-04-23T12-22-38-221Z.jpg","unknown-2026-04-23T12-22-38-256Z.jpg"];
+
+        const grid = document.getElementById('fullCatalogue');
+        ALL_IMAGES.forEach((img, i) => {
+            const card = document.createElement('div');
+            card.className = 'cat-card';
+            const name = img.split('.')[0].slice(-8);
+            card.innerHTML = `
+                <img src="attachments/${img}" loading="lazy">
+                <div class="cat-info">
+                    <span>#${String(i+1).padStart(3, '0')}</span>
+                    <span>ASSET_${name}</span>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        function scrollToSection(id) {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+        setInterval(updateClock, 10000);
+        updateClock();
+
+        // Image Click Logic for Glass Viewer
+        const glassViewer = document.getElementById('glassViewer');
+        const glassImg = document.getElementById('glassImg');
+        const glassTitle = document.getElementById('glassTitle');
+        
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG' && !e.target.closest('#glassViewer') && !e.target.closest('.win-ctrls')) {
+                const src = e.target.src;
+                const filename = src.split('/').pop();
+                glassImg.src = src;
+                glassTitle.textContent = `viewer // ${filename}`;
+                glassViewer.style.display = 'flex';
+                // Reset position to center
+                glassViewer.style.top = '50%';
+                glassViewer.style.left = '50%';
+                glassViewer.style.transform = 'translate(-50%, -50%)';
+                glassViewer.style.width = '80vw';
+                glassViewer.style.height = '80vh';
+            }
+        });
+
+        function closeGlassViewer() {
+            glassViewer.style.display = 'none';
+            glassImg.src = '';
+        }
+
+        // Glass Viewer Drag Logic
+        const glassDrag = document.getElementById('glassDrag');
+        let isDraggingGlass = false;
+        let glassOffset = { x: 0, y: 0 };
+
+        glassDrag.addEventListener('mousedown', (e) => {
+            isDraggingGlass = true;
+            const rect = glassViewer.getBoundingClientRect();
+            // Remove transform centering to use absolute left/top correctly
+            glassViewer.style.transform = 'none';
+            glassViewer.style.left = rect.left + 'px';
+            glassViewer.style.top = rect.top + 'px';
+            glassOffset.x = e.clientX - rect.left;
+            glassOffset.y = e.clientY - rect.top;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDraggingGlass) return;
+            glassViewer.style.left = (e.clientX - glassOffset.x) + 'px';
+            glassViewer.style.top = (e.clientY - glassOffset.y) + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDraggingGlass = false;
+        });
+    </script>
+</body>
+</html>

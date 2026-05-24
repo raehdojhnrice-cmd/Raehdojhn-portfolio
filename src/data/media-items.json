@@ -1,0 +1,57 @@
+[
+  {
+    "id": "m01",
+    "type": "youtube",
+    "title": "Reference Film Frame",
+    "creator": "Archive Source",
+    "embed_id": "dQw4w9WgXcQ",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date_consumed": "2026-04-08",
+    "note": "Lighting cadence and framing discipline.",
+    "tags": ["video", "direction"]
+  },
+  {
+    "id": "m02",
+    "type": "spotify",
+    "title": "System Listening",
+    "creator": "Nodear",
+    "embed_id": "track/11dFghVXANMlKmJXsNCbNl",
+    "url": "https://open.spotify.com/track/11dFghVXANMlKmJXsNCbNl",
+    "date_consumed": "2026-04-07",
+    "note": "",
+    "tags": ["music", "track"]
+  },
+  {
+    "id": "m03",
+    "type": "soundcloud",
+    "title": "Process Pass",
+    "creator": "Nodear",
+    "embed_id": "",
+    "url": "https://soundcloud.com/raehdojhn/default",
+    "date_consumed": "2026-04-06",
+    "note": "Raw texture study.",
+    "tags": ["audio", "reference"]
+  },
+  {
+    "id": "m04",
+    "type": "self_hosted_audio",
+    "title": "Local Draft",
+    "creator": "Rae",
+    "embed_id": "",
+    "url": "/uploads/local-draft.mp3",
+    "date_consumed": "2026-04-05",
+    "note": "",
+    "tags": ["local", "audio"]
+  },
+  {
+    "id": "m05",
+    "type": "self_hosted_video",
+    "title": "Material Motion",
+    "creator": "Rae",
+    "embed_id": "",
+    "url": "/uploads/material-motion.mp4",
+    "date_consumed": "2026-04-04",
+    "note": "Surface behavior and pacing.",
+    "tags": ["local", "video"]
+  }
+]

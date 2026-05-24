@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AUREA — Quiet Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C5AD70;--black:#0B0B0C;--ivory:#F5F1E8;--slate:#6E737A;--amber:#A35A2B;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--ivory);font-family:var(--sans);overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+.rule{height:1px;background:var(--gold);opacity:.4;width:100%;display:block}
+.rule--full{opacity:.6}
+.label{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── HERO ── */
+#hero{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;cursor:crosshair;background:var(--black)}
+#hero canvas{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hero-inner{position:relative;z-index:3;text-align:center;padding:2rem}
+.hero-title{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(5rem,16vw,14rem);line-height:.88;letter-spacing:-.01em;color:var(--ivory);display:flex;gap:.04em;overflow:hidden}
+.hero-title span{display:inline-block;opacity:0;transform:translateY(60px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+.hero-title span.in{opacity:1;transform:none}
+.hero-rule{margin:2rem auto;width:120px;height:1px;background:var(--gold);opacity:.7}
+.hero-kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--slate);margin-top:.5rem}
+
+/* ── IDENTITY ── */
+#identity{background:var(--ivory);color:var(--black);padding:5rem 6vw}
+.identity-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
+.swatches{display:flex;flex-direction:column;gap:.75rem}
+.swatch{display:flex;align-items:center;gap:1rem}
+.swatch-dot{width:32px;height:32px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.08)}
+.swatch-info{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.type-specimen{display:flex;flex-direction:column;gap:1.5rem}
+.specimen-serif{font-family:var(--serif);font-style:italic;font-size:2.4rem;font-weight:300;line-height:1.1;color:var(--black)}
+.specimen-sans{font-family:var(--sans);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--slate)}
+.wordmark{font-family:var(--serif);font-style:italic;font-weight:300;font-size:4rem;letter-spacing:.1em;color:var(--black);line-height:1}
+
+/* ── EDITORIAL SPREAD ── */
+#editorial{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
+.ed-image-col{position:relative;overflow:hidden}
+.ed-image-col img{height:100%;object-fit:cover;transform:scale(1.1);will-change:transform}
+.ed-text-col{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:6rem 5vw;gap:3rem}
+.ed-headline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(2rem,4vw,3.8rem);line-height:1.1;color:var(--ivory)}
+.ed-body{font-size:.85rem;line-height:1.9;color:var(--slate);max-width:38ch}
+.ed-images{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.ed-images>div{height:220px;overflow:hidden}
+
+/* ── SCENT COLLECTION ── */
+#collection{background:var(--black);padding:6rem 6vw}
+.collection-head{display:flex;align-items:center;gap:2rem;margin-bottom:4rem}
+.collection-title{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.8rem,3vw,3rem);color:var(--ivory)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.product-card{background:#111;padding:0;overflow:hidden;cursor:pointer;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease;will-change:transform}
+.product-card:hover{box-shadow:0 28px 60px rgba(0,0,0,.6)}
+.product-img{height:380px;overflow:hidden;position:relative}
+.product-img img{transition:transform .6s ease}
+.product-card:hover .product-img img{transform:scale(1.04)}
+.product-info{padding:1.5rem 1.8rem 2rem;border-top:1px solid rgba(197,173,112,.15)}
+.product-name{font-family:var(--serif);font-style:italic;font-size:1.4rem;font-weight:300;color:var(--ivory);margin-bottom:.4rem}
+.product-price{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.product-link{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.product-card:hover .product-link{color:var(--gold)}
+
+/* ── LOOKBOOK ── */
+#lookbook{background:var(--ivory);padding:5rem 4vw}
+.lookbook-head{color:var(--black);margin-bottom:3rem}
+.lb-grid{columns:4;column-gap:12px;row-gap:0}
+.lb-item{break-inside:avoid;margin-bottom:12px;overflow:hidden;position:relative;cursor:zoom-in}
+.lb-item img{transition:transform .5s ease,filter .5s ease}
+.lb-overlay{position:absolute;inset:0;background:rgba(197,173,112,.18);backdrop-filter:blur(2px);opacity:0;transition:opacity .35s ease;display:flex;align-items:flex-end;padding:.8rem}
+.lb-caption{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--black);font-family:var(--sans)}
+.lb-item:hover .lb-overlay{opacity:1}
+.lb-item:hover img{transform:scale(1.03)}
+
+/* ── LIGHTBOX ── */
+#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(11,11,12,.9);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;cursor:zoom-out}
+#lightbox.open{display:flex}
+#lb-img{max-width:88vw;max-height:88vh;object-fit:contain;border:1px solid rgba(197,173,112,.2)}
+#lb-close{position:absolute;top:2rem;right:2.5rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);cursor:pointer;transition:color .2s}
+#lb-close:hover{color:var(--gold)}
+
+/* ── BRAND STORY ── */
+#story{background:var(--black);padding:10rem 6vw;text-align:center}
+.story-quote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.8rem,4vw,3.6rem);line-height:1.25;color:var(--ivory);max-width:22ch;margin:0 auto 2.5rem}
+.story-body{font-size:.82rem;line-height:2;color:var(--slate);max-width:52ch;margin:0 auto}
+
+/* ── CAMPAIGN STRIP ── */
+#campaign{padding:5rem 0;overflow:hidden;background:var(--black)}
+.campaign-head{padding:0 6vw;margin-bottom:2.5rem}
+.strip-wrap{overflow:hidden;position:relative}
+.strip{display:flex;gap:16px;padding:0 6vw;cursor:grab;user-select:none;width:max-content}
+.strip.dragging{cursor:grabbing}
+.strip-item{flex-shrink:0;width:340px;height:460px;overflow:hidden}
+.strip-item img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:filter .4s ease}
+.strip-item:hover img{filter:brightness(.85)}
+
+/* ── ARCHIVE ── */
+#archive{background:var(--black);padding:5rem 6vw}
+.archive-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.archive-row-rule{grid-column:1/-1;height:1px;background:rgba(197,173,112,.15);margin:2px 0}
+.archive-item{height:220px;overflow:hidden;position:relative}
+.archive-item img{transition:transform .5s ease}
+.archive-item:hover img{transform:scale(1.06)}
+
+/* ── FOOTER ── */
+footer{background:var(--black);border-top:1px solid rgba(197,173,112,.15);padding:3rem 6vw;display:flex;align-items:center;justify-content:space-between}
+.footer-wordmark{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.6rem;color:var(--gold)}
+.footer-copy{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--slate)}
+
+@media(max-width:900px){
+  #editorial{grid-template-columns:1fr}
+  .ed-image-col{height:60vw}
+  .identity-grid{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:1fr 1fr}
+  .lb-grid{columns:2}
+  .archive-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .product-grid{grid-template-columns:1fr}
+  .lb-grid{columns:2}
+  .strip-item{width:260px;height:340px}
+  footer{flex-direction:column;gap:1.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <canvas id="sprayCanvas"></canvas>
+  <div class="hero-inner">
+    <h1 class="hero-title" aria-label="AUREA">
+      <span>A</span><span>U</span><span>R</span><span>E</span><span>A</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-kicker">Quiet luxury — Fragrance Maison — Est. 2026</p>
+  </div>
+</section>
+
+<!-- ── IDENTITY ── -->
+<section id="identity" class="reveal">
+  <span class="label">Brand Identity</span>
+  <span class="rule" style="margin-top:1.2rem"></span>
+  <div class="identity-grid">
+    <div class="swatches">
+      <span class="label" style="margin-bottom:.5rem">Colour System</span>
+      <div class="swatch"><div class="swatch-dot" style="background:#C5AD70"></div><span class="swatch-info">Gold · #C5AD70</span></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#0B0B0C;border-color:rgba(0,0,0,.3)"></div><span class="swatch-info">Black · #0B0B0C</span></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#F5F1E8"></div><span class="swatch-info">Ivory · #F5F1E8</span></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#6E737A"></div><span class="swatch-info">Slate · #6E737A</span></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#A35A2B"></div><span class="swatch-info">Amber · #A35A2B</span></div>
+    </div>
+    <div class="type-specimen">
+      <span class="label">Typography</span>
+      <div>
+        <div class="specimen-serif">Cormorant Garamond</div>
+        <div class="specimen-sans" style="margin-top:.5rem">Display / Editorial</div>
+      </div>
+      <div>
+        <div class="specimen-sans" style="font-size:.9rem;letter-spacing:.08em;text-transform:none;color:var(--black)">DM Sans — Body & Labels</div>
+        <div class="specimen-sans" style="margin-top:.3rem">0–9 · A–Z · a–z</div>
+      </div>
+    </div>
+    <div>
+      <span class="label">Wordmark</span>
+      <div class="wordmark" style="margin-top:1.5rem">Aurea</div>
+      <div class="rule" style="margin-top:1.5rem;background:var(--black);opacity:.15"></div>
+      <p style="font-size:.7rem;color:var(--slate);margin-top:1rem;line-height:1.7">The name derives from the Latin <em>aurea</em> — golden, radiant. A maison defined by restraint and the precision of absence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDITORIAL SPREAD ── -->
+<section id="editorial">
+  <div class="ed-image-col" data-parallax>
+    <img src="./img01.png" alt="AUREA editorial" loading="eager" fetchpriority="high">
+  </div>
+  <div class="ed-text-col reveal">
+    <div>
+      <span class="label">Campaign — Spring 2026</span>
+      <span class="rule" style="margin-top:1rem;width:60px;opacity:.5"></span>
+    </div>
+    <h2 class="ed-headline">The art of<br><em>deliberate</em><br>absence.</h2>
+    <p class="ed-body">Aurea does not announce itself. It settles — in memory, in the space between rooms, in the warmth left on skin long after the moment has passed. Our fragrances are not worn. They are inhabited.</p>
+    <div class="ed-images">
+      <div><img src="./img02.png" alt="" loading="lazy"></div>
+      <div><img src="./img03.png" alt="" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCENT COLLECTION ── -->
+<section id="collection" class="reveal">
+  <div class="collection-head">
+    <span class="rule" style="flex:1;opacity:.3"></span>
+    <h2 class="collection-title" style="margin:0 2rem">The Collection</h2>
+    <span class="rule" style="flex:1;opacity:.3"></span>
+  </div>
+  <div class="product-grid">
+    <div class="product-card" data-magnetic>
+      <div class="product-img"><img src="./img04.png" alt="Silène Noir" loading="lazy"></div>
+      <div class="product-info">
+        <div class="product-name">Silène Noir</div>
+        <div class="product-price">Eau de Parfum · 50 ml · $310</div>
+        <a href="#" class="product-link">Discover <span>→</span></a>
+      </div>
+    </div>
+    <div class="product-card" data-magnetic>
+      <div class="product-img"><img src="./img05.png" alt="Ivoire Brûlé" loading="lazy"></div>
+      <div class="product-info">
+        <div class="product-name">Ivoire Brûlé</div>
+        <div class="product-price">Eau de Parfum · 50 ml · $295</div>
+        <a href="#" class="product-link">Discover <span>→</span></a>
+      </div>
+    </div>
+    <div class="product-card" data-magnetic>
+      <div class="product-img"><img src="./img06.png" alt="Cendre d'Or" loading="lazy"></div>
+      <div class="product-info">
+        <div class="product-name">Cendre d'Or</div>
+        <div class="product-price">Eau de Parfum · 50 ml · $340</div>
+        <a href="#" class="product-link">Discover <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOOKBOOK ── -->
+<section id="lookbook" class="reveal">
+  <div class="lookbook-head">
+    <span class="label" style="color:var(--slate)">Lookbook — 2026</span>
+    <span class="rule" style="margin-top:1rem;background:var(--black);opacity:.15"></span>
+  </div>
+  <div class="lb-grid" id="lbGrid">
+    <!-- populated by JS -->
+  </div>
+</section>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+  <span id="lb-close" role="button" tabindex="0">Close ✕</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<!-- ── BRAND STORY ── -->
+<section id="story" class="reveal">
+  <span class="label" style="display:block;margin-bottom:3rem">Maison AUREA</span>
+  <blockquote class="story-quote">"Scent is the only sense that bypasses reason entirely."</blockquote>
+  <span class="rule" style="width:60px;margin:0 auto 2.5rem;display:block;opacity:.4"></span>
+  <p class="story-body">Founded in the quiet corridors of an unnamed city, Aurea was built on a single conviction: that true luxury is not announced. It is encountered. Each formulation begins with a question — not "what should this smell like?" but "what should this feel like to remember?" The answer is always the same: inevitable.</p>
+</section>
+
+<!-- ── CAMPAIGN STRIP ── -->
+<section id="campaign">
+  <div class="campaign-head reveal">
+    <span class="label">Campaign Gallery</span>
+    <span class="rule" style="margin-top:1rem;opacity:.3"></span>
+  </div>
+  <div class="strip-wrap">
+    <div class="strip" id="strip">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHIVE ── -->
+<section id="archive" class="reveal">
+  <span class="label" style="display:block;margin-bottom:2.5rem">Archive</span>
+  <div class="archive-grid" id="archiveGrid">
+    <!-- populated by JS -->
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-wordmark">Aurea</span>
+  <span class="footer-copy">AUREA © 2026 &nbsp;/&nbsp; Quiet luxury for those who know</span>
+</footer>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────
+const TOTAL = 64;
+const LB_IMGS  = Array.from({length:14},(_,i)=>`./img${String(i+7).padStart(2,'0')}.png`);  // img07–img20
+const STRIP_IMGS = Array.from({length:10},(_,i)=>`./img${String(i+21).padStart(2,'0')}.png`); // img21–img30
+const ARCHIVE_IMGS = Array.from({length:TOTAL-30},(_,i)=>`./img${String(i+31).padStart(2,'0')}.png`); // img31–img64
+
+// ── HERO TITLE STAGGER ──────────────────────────────────────────
+document.querySelectorAll('.hero-title span').forEach((el,i)=>{
+  setTimeout(()=>el.classList.add('in'), 200 + i*80);
+});
+
+// ── COLOGNE SPRAY PARTICLE SYSTEM ───────────────────────────────
+const canvas = document.getElementById('sprayCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], autoInterval;
+
+function resize(){
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function Particle(x, y){
+  const angle = (Math.random()*Math.PI*.7) + Math.PI*.15; // upward arc ~170°
+  const speed = 1.8 + Math.random()*3.5;
+  return {
+    x, y,
+    vx: Math.cos(Math.PI - angle) * speed * (Math.random()>.5?1:-1),
+    vy: -Math.sin(angle) * speed,
+    r: .8 + Math.random()*3,
+    life: 1,
+    decay: .008 + Math.random()*.014,
+    gravity: .04 + Math.random()*.03,
+  };
+}
+
+function spray(cx, cy, count){
+  for(let i=0;i<count;i++) particles.push(Particle(cx,cy));
+}
+
+function render(){
+  ctx.clearRect(0,0,W,H);
+  particles = particles.filter(p=>p.life>0);
+  for(const p of particles){
+    p.vy += p.gravity;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vx *= .992;
+    p.life -= p.decay;
+    const a = Math.max(0, p.life);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    const gold = `rgba(197,173,112,${a*.9})`;
+    ctx.fillStyle = gold;
+    ctx.shadowBlur = 4;
+    ctx.shadowColor = `rgba(197,173,112,${a*.4})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(render);
+}
+render();
+
+document.getElementById('hero').addEventListener('click', e=>{
+  const rect = canvas.getBoundingClientRect();
+  spray(e.clientX - rect.left, e.clientY - rect.top, 72);
+});
+
+// Auto mist every 4s from center
+autoInterval = setInterval(()=>{
+  spray(W/2 + (Math.random()-.5)*80, H*.6, 28);
+}, 4000);
+setTimeout(()=>spray(W/2, H*.6, 36), 1200);
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ── PARALLAX ────────────────────────────────────────────────────
+const parImg = document.querySelector('[data-parallax] img');
+function onScroll(){
+  if(!parImg) return;
+  const rect = parImg.closest('[data-parallax]').getBoundingClientRect();
+  const progress = -rect.top / (window.innerHeight + rect.height);
+  parImg.style.transform = `scale(1.1) translateY(${progress * 60}px)`;
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+
+// ── MAGNETIC CARDS ───────────────────────────────────────────────
+document.querySelectorAll('[data-magnetic]').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width/2) / (r.width/2);
+    const y = (e.clientY - r.top - r.height/2) / (r.height/2);
+    card.style.transform = `perspective(900px) rotateY(${x*4}deg) rotateX(${-y*4}deg)`;
+    card.style.boxShadow = `${-x*14}px ${y*14}px 40px rgba(0,0,0,.5)`;
+  });
+  card.addEventListener('mouseleave', ()=>{
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
+
+// ── LOOKBOOK GRID ────────────────────────────────────────────────
+const lbGrid = document.getElementById('lbGrid');
+LB_IMGS.forEach((src,i)=>{
+  const item = document.createElement('div');
+  item.className = 'lb-item';
+  item.innerHTML = `<img src="${src}" alt="Lookbook ${i+1}" loading="lazy"><div class="lb-overlay"><span class="lb-caption">AUREA — ${String(i+7).padStart(2,'0')}</span></div>`;
+  item.addEventListener('click', ()=>openLightbox(src));
+  lbGrid.appendChild(item);
+});
+
+// ── LIGHTBOX ────────────────────────────────────────────────────
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+function openLightbox(src){
+  lbImg.src = src;
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lb.classList.remove('open');
+  document.body.style.overflow='';
+  lbImg.src='';
+}
+lb.addEventListener('click', closeLightbox);
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-close').addEventListener('keydown', e=>{ if(e.key==='Enter') closeLightbox(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
+
+// ── CAMPAIGN STRIP ───────────────────────────────────────────────
+const strip = document.getElementById('strip');
+STRIP_IMGS.forEach((src,i)=>{
+  const item = document.createElement('div');
+  item.className = 'strip-item';
+  item.innerHTML = `<img src="${src}" alt="Campaign ${i+21}" loading="lazy">`;
+  strip.appendChild(item);
+});
+
+let isDragging=false, startX=0, scrollLeft=0;
+strip.addEventListener('mousedown', e=>{ isDragging=true; startX=e.pageX-strip.offsetLeft; scrollLeft=strip.parentElement.scrollLeft; strip.classList.add('dragging'); });
+window.addEventListener('mouseup', ()=>{ isDragging=false; strip.classList.remove('dragging'); });
+strip.addEventListener('mousemove', e=>{
+  if(!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - strip.offsetLeft;
+  strip.parentElement.scrollLeft = scrollLeft - (x - startX);
+});
+// Make strip-wrap scrollable
+document.querySelector('.strip-wrap').style.overflowX = 'auto';
+document.querySelector('.strip-wrap').style.scrollbarWidth = 'none';
+
+// ── ARCHIVE GRID ─────────────────────────────────────────────────
+const archiveGrid = document.getElementById('archiveGrid');
+ARCHIVE_IMGS.forEach((src,i)=>{
+  if(i>0 && i%4===0){
+    const rule = document.createElement('div');
+    rule.className = 'archive-row-rule';
+    archiveGrid.appendChild(rule);
+  }
+  const item = document.createElement('div');
+  item.className = 'archive-item';
+  item.innerHTML = `<img src="${src}" alt="Archive ${i+31}" loading="lazy">`;
+  archiveGrid.appendChild(item);
+});
+</script>
+</body>
+</html>

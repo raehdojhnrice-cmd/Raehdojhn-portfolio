@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en" data-archive-theme="sound-room">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raehdojhn V4 - Chaos Lux Desktop</title>
+<meta name="description" content="Raehdojhn V4 archive desktop: Mac OS shell, iPod classic player, prompt engine, project ledger, and media log.">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DotGothic16&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,800;1,500&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root {
+  --v4-bg:#0a0a0a;
+  --v4-surface:rgba(20,20,20,.78);
+  --v4-line:rgba(255,255,255,.16);
+  --v4-text:#f2f2f2;
+  --v4-muted:#9d9d9d;
+  --v4-accent:#18d4ff;
+  --v4-alert:#ff4040;
+  --v4-classic-blue:#0069d9;
+  --v4-classic-steel:#d2d2d2;
+  --v4-classic-silver:#f9f9f9;
+  --v4-classic-graphite:#323232;
+  --glass-bg:rgba(255,255,255,.055);
+  --glass-border:rgba(255,255,255,.12);
+  --glass-blur:blur(40px);
+  --glass-shadow:0 8px 32px rgba(0,0,0,.37);
+  --wall-a:rgba(255,255,255,.08);
+  --wall-b:rgba(90,90,90,.16);
+  --wall-c:rgba(255,255,255,.06);
+  --wall-d:rgba(60,60,60,.18);
+  --font-mono:'JetBrains Mono', Menlo, Monaco, monospace;
+  --font-blackletter:'UnifrakturMaguntia', serif;
+  --font-pixel:'DotGothic16', monospace;
+  --font-brutal:'Anton', 'Helvetica Neue', sans-serif;
+  --font-display:'Playfair Display', Georgia, serif;
+}
+[data-archive-theme="cobalt"] {
+  --v4-bg:#06122d; --v4-surface:rgba(13,27,60,.8); --v4-line:rgba(185,231,254,.36);
+  --v4-text:#ecf7ff; --v4-muted:#9cb7cb; --v4-accent:#b9e7fe; --v4-alert:#ff3b30;
+  --wall-a:rgba(10,60,180,.5); --wall-b:rgba(0,100,220,.35); --wall-c:rgba(180,230,255,.15); --wall-d:rgba(0,40,120,.2);
+}
+[data-archive-theme="sound-room"] {
+  --v4-bg:#0a0a0a; --v4-surface:rgba(23,23,23,.8); --v4-line:rgba(242,242,242,.15);
+  --v4-text:#f2f2f2; --v4-muted:#bfbfbf; --v4-accent:#f2f2f2; --v4-alert:#fff;
+  --wall-a:rgba(255,255,255,.08); --wall-b:rgba(90,90,90,.16); --wall-c:rgba(255,255,255,.06); --wall-d:rgba(60,60,60,.18);
+}
+[data-archive-theme="charcoal"] {
+  --v4-bg:#050505; --v4-surface:rgba(18,18,20,.86); --v4-line:rgba(155,217,245,.2);
+  --v4-text:#f4f7fa; --v4-muted:#8f98a3; --v4-accent:#9bd9f5; --v4-alert:#d84545;
+  --wall-a:rgba(155,217,245,.14); --wall-b:rgba(216,69,69,.13); --wall-c:rgba(255,255,255,.05); --wall-d:rgba(60,60,68,.18);
+}
+[data-archive-theme="showdown"] {
+  --v4-bg:#19265a; --v4-surface:rgba(16,22,38,.84); --v4-line:rgba(244,241,236,.28);
+  --v4-text:#f4f1ec; --v4-muted:#9b9a95; --v4-accent:#e74a26; --v4-alert:#fff;
+  --wall-a:rgba(231,74,38,.32); --wall-b:rgba(25,38,90,.58); --wall-c:rgba(244,241,236,.12); --wall-d:rgba(10,14,32,.36);
+}
+[data-archive-theme="elite"] {
+  --v4-bg:#ede8e3; --v4-surface:rgba(255,255,255,.86); --v4-line:rgba(5,5,5,.18);
+  --v4-text:#050505; --v4-muted:#857a72; --v4-accent:#c94135; --v4-alert:#050505;
+  --wall-a:rgba(201,65,53,.18); --wall-b:rgba(255,255,255,.24); --wall-c:rgba(0,0,0,.06); --wall-d:rgba(170,140,110,.14);
+  --glass-bg:rgba(255,255,255,.52); --glass-border:rgba(0,0,0,.1);
+}
+[data-archive-theme="mint"] {
+  --v4-bg:#091310; --v4-surface:rgba(15,28,24,.82); --v4-line:rgba(144,238,196,.22);
+  --v4-text:#cdffe8; --v4-muted:#7fa190; --v4-accent:#78ffbf; --v4-alert:#ff4b55;
+  --wall-a:rgba(20,180,100,.3); --wall-b:rgba(60,200,140,.2); --wall-c:rgba(100,240,180,.12); --wall-d:rgba(0,120,60,.18);
+}
+[data-archive-theme="neon"] {
+  --v4-bg:#050505; --v4-surface:rgba(17,17,17,.84); --v4-line:rgba(244,240,0,.2);
+  --v4-text:#fff; --v4-muted:#96846b; --v4-accent:#f4f000; --v4-alert:#d71916;
+  --wall-a:rgba(244,240,0,.24); --wall-b:rgba(215,25,22,.2); --wall-c:rgba(0,188,235,.16); --wall-d:rgba(255,255,255,.05);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { width:100%; height:100%; }
+body {
+  overflow:hidden;
+  background-color:var(--v4-bg);
+  background-image:
+    radial-gradient(ellipse 90% 65% at 12% 18%, var(--wall-a), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 82% 22%, var(--wall-b), transparent 52%),
+    radial-gradient(ellipse 80% 45% at 55% 88%, var(--wall-c), transparent 52%),
+    radial-gradient(ellipse 60% 40% at 88% 78%, var(--wall-d), transparent 48%),
+    linear-gradient(160deg, color-mix(in srgb, var(--v4-bg) 70%, #00080f), var(--v4-bg) 50%, color-mix(in srgb, var(--v4-bg) 90%, #050005));
+  color:var(--v4-text);
+  font-family:var(--font-mono);
+}
+a { color:inherit; text-decoration:none; }
+button, input, select, textarea { color:inherit; font:inherit; }
+button { background:none; border:0; cursor:pointer; }
+img { display:block; max-width:100%; }
+::selection { background:var(--v4-accent); color:var(--v4-bg); }
+* { scrollbar-width:thin; scrollbar-color:color-mix(in srgb, var(--v4-accent) 42%, var(--v4-line)) transparent; }
+*::-webkit-scrollbar { width:4px; height:4px; }
+*::-webkit-scrollbar-track { background:transparent; }
+*::-webkit-scrollbar-thumb { border-radius:999px; background:color-mix(in srgb, var(--v4-accent) 42%, var(--v4-line)); }
+
+.v4-noise {
+  position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.065; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='.82' numOctaves='3' seed='7'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation:v4-noise-flicker .24s steps(2) infinite;
+}
+@keyframes v4-noise-flicker {
+  0%,100% { transform:translate(0,0); }
+  25% { transform:translate(1px,-1px); }
+  50% { transform:translate(-1px,1px); }
+  75% { transform:translate(1px,1px); }
+}
+.v4-os-menubar {
+  position:fixed; top:0; left:0; right:0; height:28px; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; padding:0 16px;
+  background:rgba(0,0,0,.42); border-bottom:1px solid rgba(255,255,255,.1); backdrop-filter:blur(20px);
+  color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:13px; font-weight:500;
+}
+.v4-os-menubar-left, .v4-os-menubar-right { display:flex; align-items:center; gap:14px; min-width:0; }
+.v4-os-menubar-item {
+  height:28px; display:flex; align-items:center; gap:6px; padding:0 8px; border-radius:4px; white-space:nowrap;
+}
+.v4-os-menubar-item:hover { background:rgba(255,255,255,.1); }
+.theme-dot { width:12px; height:12px; border-radius:50%; background:var(--v4-accent); border:2px solid rgba(255,255,255,.42); box-shadow:0 0 8px color-mix(in srgb, var(--v4-accent) 62%, transparent); }
+.theme-picker {
+  position:fixed; top:32px; right:64px; z-index:1002; display:none; width:272px; padding:12px 10px;
+  border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(16,16,20,.96); backdrop-filter:blur(24px); box-shadow:0 16px 48px rgba(0,0,0,.6);
+}
+.theme-picker.is-open { display:block; }
+.theme-picker__label { padding:0 4px 10px; color:rgba(255,255,255,.45); font-size:9px; letter-spacing:.16em; text-transform:uppercase; }
+.theme-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.theme-option {
+  display:grid; justify-items:center; gap:4px; padding:8px 4px; border:1px solid rgba(255,255,255,.08); border-radius:8px; background:rgba(255,255,255,.04);
+}
+.theme-option.is-active { border-color:var(--v4-accent); background:color-mix(in srgb, var(--v4-accent) 18%, transparent); }
+.theme-preview { width:44px; height:28px; border-radius:4px; border:1px solid rgba(255,255,255,.12); }
+.theme-option span:last-child { color:rgba(255,255,255,.72); font-size:9px; letter-spacing:.08em; text-transform:uppercase; }
+
+.v4-rail {
+  position:fixed; left:0; top:42px; bottom:98px; width:248px; z-index:14;
+  display:grid; grid-template-rows:auto 1fr auto; gap:18px; padding:22px 16px;
+  border-right:1px dashed var(--v4-line); background:color-mix(in srgb, var(--v4-bg) 86%, transparent);
+  overflow:auto;
+}
+.v4-rail__masthead { border-bottom:2px solid var(--v4-text); padding-bottom:16px; }
+.v4-rail h1 {
+  margin:0 0 8px; text-align:center; color:var(--v4-text); font-family:var(--font-blackletter); font-size:48px; line-height:.9; font-weight:400;
+}
+.v4-rail__meta {
+  display:flex; justify-content:space-between; gap:8px; padding:4px 0; border-top:1px solid var(--v4-text); border-bottom:1px solid var(--v4-text);
+  color:var(--v4-muted); font-size:8px; letter-spacing:.12em; text-transform:uppercase;
+}
+.v4-theme-stack { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:12px; }
+.v4-theme-stack button { height:22px; border:1px solid var(--v4-line); border-radius:4px; }
+.v4-rail__nav { display:grid; align-content:start; gap:8px; }
+.v4-rail__nav h2 {
+  margin-bottom:4px; border-bottom:1px solid var(--v4-line); color:var(--v4-text); font-family:var(--font-brutal); font-size:18px; letter-spacing:.02em; text-transform:uppercase;
+}
+.v4-rail__link {
+  display:grid; grid-template-columns:auto 1fr; gap:8px; align-items:baseline; padding:5px 8px;
+  border:1px dashed transparent; color:var(--v4-text); text-transform:uppercase;
+}
+.v4-rail__link:hover, .v4-rail__link.is-active {
+  border-color:color-mix(in srgb, var(--v4-accent) 56%, var(--v4-line)); color:var(--v4-accent); background:color-mix(in srgb, var(--v4-surface) 80%, transparent);
+}
+.v4-rail__link span:first-child { color:var(--v4-muted); font-size:9px; letter-spacing:.12em; }
+.v4-rail__link span:last-child { font-family:var(--font-brutal); font-size:14px; letter-spacing:.04em; }
+.v4-rail__manifesto {
+  color:color-mix(in srgb, var(--v4-text) 70%, var(--v4-muted)); font-family:var(--font-pixel); font-size:10px; line-height:1.42; text-align:justify;
+}
+.v4-rail__progress { display:flex; justify-content:space-between; color:var(--v4-muted); font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+.v4-rail__progress-bar { height:4px; margin-top:8px; background:rgba(128,128,128,.2); overflow:hidden; }
+.v4-rail__progress-bar span { display:block; height:100%; width:100%; transform-origin:left center; transform:scaleX(.16); background:linear-gradient(90deg, var(--v4-alert), var(--v4-accent)); transition:transform .25s ease; }
+.v4-rail__foot { margin-top:12px; color:var(--v4-muted); font-family:var(--font-pixel); font-size:9px; text-align:center; opacity:.58; }
+
+.v4-os-desktop-icons {
+  position:fixed; top:60px; right:24px; z-index:10; display:flex; flex-direction:column; gap:22px; align-items:center;
+}
+.v4-os-desktop-icon { width:86px; display:grid; justify-items:center; gap:5px; padding:8px; border-radius:8px; }
+.v4-os-desktop-icon:hover { background:rgba(255,255,255,.1); }
+.v4-os-desktop-icon .icon-bg {
+  width:56px; height:56px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.15); border-radius:12px;
+  background:rgba(255,255,255,.1); color:#fff; font-size:26px; box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+.v4-os-desktop-icon .icon-label { color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:11px; text-align:center; text-shadow:0 1px 2px rgba(0,0,0,.8); }
+
+.v4-clock-stack {
+  position:fixed; top:62px; right:126px; z-index:12; width:222px;
+  display:grid; gap:10px; pointer-events:none;
+}
+.v4-timepiece {
+  position:relative; overflow:hidden; padding:10px;
+  border:1px solid var(--glass-border); border-radius:14px;
+  background:color-mix(in srgb, var(--v4-bg) 76%, transparent);
+  backdrop-filter:blur(22px); box-shadow:0 14px 42px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.v4-timepiece:before {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(135deg, rgba(255,255,255,.08), transparent 42%, color-mix(in srgb, var(--v4-accent) 10%, transparent));
+}
+.v4-timepiece__head {
+  position:relative; z-index:1; display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid var(--v4-line);
+  font-family:var(--font-mono); font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--v4-muted);
+}
+.v4-timepiece__head strong { color:var(--v4-text); font-size:9px; }
+.v4-oriental-clock__face,
+.v4-analog-clock__face {
+  position:relative; z-index:1; width:138px; aspect-ratio:1; margin:0 auto;
+  border:1px solid color-mix(in srgb, var(--v4-text) 18%, transparent); border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--v4-surface) 72%, transparent), transparent 64%), rgba(0,0,0,.18);
+}
+.v4-oriental-clock__face:after,
+.v4-analog-clock__face:after {
+  content:""; position:absolute; inset:16px; border:1px dashed color-mix(in srgb, var(--v4-accent) 34%, transparent); border-radius:50%;
+}
+.v4-oriental-clock__branch,
+.v4-analog-clock__tick {
+  position:absolute; left:50%; top:50%; z-index:2; display:grid; place-items:center;
+  transform:translate(-50%,-50%) rotate(calc(var(--i) * 30deg)) translateY(-55px) rotate(calc(var(--i) * -30deg));
+}
+.v4-oriental-clock__branch {
+  width:20px; height:20px; border-radius:50%; color:var(--v4-muted);
+  font-family:var(--font-pixel); font-size:12px; transition:all .25s ease;
+}
+.v4-oriental-clock__branch.is-active {
+  color:var(--v4-bg); background:var(--v4-accent);
+  box-shadow:0 0 18px color-mix(in srgb, var(--v4-accent) 42%, transparent);
+}
+.v4-oriental-clock__center {
+  position:absolute; inset:31px; z-index:3; display:grid; place-items:center; align-content:center; gap:2px;
+  border-radius:50%; background:rgba(0,0,0,.42); text-align:center;
+}
+.v4-oriental-clock__center strong {
+  color:var(--v4-accent); font-family:var(--font-pixel); font-size:24px; line-height:1;
+}
+.v4-oriental-clock__center span {
+  max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  color:var(--v4-text); font-family:var(--font-mono); font-size:8px; letter-spacing:.1em;
+}
+.v4-timepiece__readout {
+  position:relative; z-index:1; display:flex; justify-content:space-between; gap:8px; margin-top:8px;
+  color:var(--v4-muted); font-family:var(--font-mono); font-size:8px; letter-spacing:.1em; text-transform:uppercase;
+}
+.v4-analog-clock__tick {
+  color:var(--v4-muted); font-family:var(--font-mono); font-size:8px; line-height:1;
+}
+.v4-analog-clock__tick:nth-child(3n) { color:var(--v4-text); font-weight:800; }
+.v4-analog-clock__hand {
+  position:absolute; left:50%; top:50%; z-index:4; width:2px; border-radius:999px;
+  transform:translate(-50%,-100%) rotate(var(--angle,0deg)); transform-origin:50% 100%;
+  background:var(--v4-text); box-shadow:0 0 10px rgba(255,255,255,.12);
+}
+.v4-analog-clock__hand--hour { height:33px; width:3px; }
+.v4-analog-clock__hand--minute { height:46px; background:var(--v4-accent); }
+.v4-analog-clock__hand--second { height:52px; width:1px; background:var(--v4-alert); }
+.v4-analog-clock__pin {
+  position:absolute; left:50%; top:50%; z-index:5; width:9px; height:9px; border-radius:50%;
+  transform:translate(-50%,-50%); background:var(--v4-text); border:2px solid var(--v4-bg);
+}
+
+.v4-bg-terminal {
+  position:fixed; left:270px; bottom:120px; width:380px; max-height:260px; z-index:2; overflow:hidden;
+  border:1px solid rgba(74,250,114,.12); background:rgba(10,10,10,.92); backdrop-filter:blur(12px); font-family:var(--font-mono);
+}
+.v4-bg-terminal__header { display:flex; align-items:center; gap:6px; padding:8px 12px; border-bottom:1px solid rgba(74,250,114,.08); background:rgba(255,255,255,.04); }
+.v4-bg-terminal__dot { width:10px; height:10px; border-radius:50%; }
+.v4-bg-terminal__dot--red { background:#ff5f57; }
+.v4-bg-terminal__dot--yellow { background:#febc2e; }
+.v4-bg-terminal__dot--green { background:#28c840; }
+.v4-bg-terminal__title { flex:1; text-align:center; color:rgba(255,255,255,.35); font-size:9px; letter-spacing:.12em; text-transform:uppercase; }
+.v4-bg-terminal__body { padding:10px 12px; max-height:200px; overflow:hidden; }
+.v4-bg-terminal__line { margin:0; color:rgba(74,250,114,.55); font-size:10px; line-height:1.8; }
+.v4-bg-terminal__line--active { color:#4afa72; }
+.v4-bg-terminal__cursor { animation:v4-blink .8s step-end infinite; }
+@keyframes v4-blink { 50% { opacity:0; } }
+
+.v4-desktop-canvas { position:fixed; inset:28px 0 0; z-index:10; pointer-events:none; }
+.v4-window {
+  position:absolute; width:720px; height:560px; min-width:360px; min-height:280px; z-index:20;
+  display:flex; flex-direction:column; overflow:hidden; pointer-events:auto;
+  border:1px solid rgba(255,255,255,.15); border-top-color:rgba(255,255,255,.22); border-radius:14px;
+  background:var(--v4-surface); backdrop-filter:blur(40px) saturate(1.2);
+  box-shadow:0 32px 80px rgba(0,0,0,.55), 0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
+  animation:os-window-open .32s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes os-window-open { from { opacity:0; transform:scale(.94); } to { opacity:1; transform:scale(1); } }
+.v4-window.is-focused {
+  border-color:color-mix(in srgb, var(--v4-accent) 48%, rgba(255,255,255,.15));
+  box-shadow:0 42px 110px rgba(0,0,0,.68), 0 0 0 1px color-mix(in srgb, var(--v4-accent) 22%, transparent), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.v4-window.is-dragging { cursor:grabbing; }
+.v4-window__chrome {
+  position:relative; height:48px; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 16px;
+  border-bottom:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.05); cursor:grab; user-select:none; touch-action:none;
+}
+.v4-window.is-dragging .v4-window__chrome { cursor:grabbing; }
+.traffic { position:absolute; left:16px; display:flex; gap:8px; }
+.traffic span { width:12px; height:12px; border-radius:50%; }
+.traffic span:nth-child(1) { background:#ff5f56; border:1px solid #e0443e; }
+.traffic span:nth-child(2) { background:#ffbd2e; border:1px solid #dea123; }
+.traffic span:nth-child(3) { background:#27c93f; border:1px solid #1aab29; }
+.v4-window__title { position:absolute; left:50%; transform:translateX(-50%); color:#ccc; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:13px; font-weight:600; white-space:nowrap; }
+.v4-window__chrome-meta { margin-left:auto; max-width:44%; display:flex; align-items:center; gap:6px; }
+.v4-window__serial { overflow:hidden; color:var(--v4-muted); font-size:9px; letter-spacing:.12em; text-overflow:ellipsis; text-transform:uppercase; white-space:nowrap; }
+.v4-window__status { border:1px solid var(--v4-accent); border-radius:3px; padding:2px 6px; color:var(--v4-accent); font-size:8px; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
+.v4-window__body { flex:1; overflow:auto; display:grid; align-content:start; gap:22px; padding:24px; }
+.v4-window__plate {
+  display:grid; gap:12px; padding:14px 16px; border:1px dashed color-mix(in srgb, var(--v4-line) 78%, transparent);
+  background:linear-gradient(140deg, color-mix(in srgb, var(--v4-surface) 72%, transparent), color-mix(in srgb, var(--v4-bg) 38%, transparent));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 10px 24px rgba(0,0,0,.12);
+}
+.v4-window__plate-meta { display:flex; justify-content:space-between; gap:16px; color:var(--v4-muted); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
+.v4-window__plate-row, .chips, .v4-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.chip, .v4-window__plate-row span, .v4-badge {
+  padding:6px 9px; border:1px dashed color-mix(in srgb, var(--v4-line) 84%, transparent); background:color-mix(in srgb, var(--v4-bg) 58%, transparent);
+  color:color-mix(in srgb, var(--v4-accent) 70%, var(--v4-text)); font-size:8px; letter-spacing:.16em; text-transform:uppercase;
+}
+.v4-window__resize { position:absolute; right:0; bottom:0; width:24px; height:24px; cursor:nwse-resize; }
+.v4-window__resize:before { content:""; position:absolute; right:6px; bottom:6px; width:10px; height:10px; border-right:1px solid var(--v4-line); border-bottom:1px solid var(--v4-line); }
+
+.v4-kicker { margin:0; color:var(--v4-accent); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+.v4-copy { max-width:720px; color:var(--v4-muted); font-size:12px; line-height:1.75; }
+.v4-h2 { margin:0; color:var(--v4-text); font-family:var(--font-brutal); font-size:clamp(2rem,4vw,4.4rem); line-height:.88; letter-spacing:.02em; text-transform:uppercase; }
+.v4-meta-row { display:flex; align-items:center; gap:12px; color:var(--v4-muted); font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+.v4-meta-line { flex:1; min-width:40px; border-top:1px dashed var(--v4-line); }
+.v4-hero { display:grid; grid-template-columns:minmax(0,1fr) minmax(210px,280px); gap:24px; align-items:center; min-height:100%; }
+.v4-title { margin:24px 0; font-family:var(--font-brutal); font-size:clamp(4rem,8vw,8rem); line-height:.84; letter-spacing:.02em; text-transform:uppercase; }
+.v4-title span { display:inline-block; }
+.v4-title__stroke { color:transparent; -webkit-text-stroke:1px var(--v4-text); text-stroke:1px var(--v4-text); }
+.v4-chromatic-blur { text-shadow:2px 0 color-mix(in srgb, var(--v4-alert) 70%, transparent), -2px 0 color-mix(in srgb, var(--v4-accent) 58%, transparent); }
+.v4-hero__routes { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+.v4-hero__route, .v4-small-btn {
+  border:1px solid var(--v4-line); border-radius:999px; padding:8px 12px; background:color-mix(in srgb, var(--v4-bg) 34%, transparent);
+  color:var(--v4-text); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+}
+.v4-hero__route:hover, .v4-small-btn:hover { border-color:var(--v4-accent); color:var(--v4-accent); }
+.v4-artifact {
+  position:relative; min-height:320px; overflow:hidden; border:1px solid var(--v4-line); transform:rotateX(7deg) rotateY(-8deg); transform-style:preserve-3d;
+  background:radial-gradient(circle at 25% 10%, color-mix(in srgb, var(--v4-accent) 36%, transparent), transparent 28%), linear-gradient(145deg, rgba(255,255,255,.12), transparent 52%), color-mix(in srgb, var(--v4-surface) 84%, #000);
+  box-shadow:0 26px 60px rgba(0,0,0,.34);
+}
+.v4-artifact:before { content:""; position:absolute; inset:-40%; background:conic-gradient(from 20deg, transparent, rgba(255,255,255,.18), transparent, color-mix(in srgb, var(--v4-accent) 24%, transparent), transparent); animation:v4-foil 9s linear infinite; }
+@keyframes v4-foil { to { transform:rotate(360deg); } }
+.v4-artifact__content { position:absolute; inset:18px; z-index:1; display:grid; align-content:end; gap:10px; }
+.v4-artifact__id, .v4-artifact__line { margin:0; color:var(--v4-text); font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
+.v4-artifact__id { align-self:start; color:var(--v4-accent); }
+.v4-reference-strip {
+  display:grid; grid-template-columns:1.12fr .72fr; gap:10px; margin-top:18px;
+}
+.v4-reference-card {
+  position:relative; min-height:144px; overflow:hidden; border:1px solid color-mix(in srgb, var(--v4-line) 76%, transparent);
+  background:#080808; box-shadow:0 18px 36px rgba(0,0,0,.28);
+}
+.v4-reference-card img {
+  width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.14) brightness(.78);
+  transform:scale(1.03); opacity:.92;
+}
+.v4-reference-card--poster img { object-position:center 22%; filter:grayscale(.92) sepia(.18) contrast(1.18) brightness(.82); }
+.v4-reference-card__label {
+  position:absolute; left:10px; bottom:10px; display:grid; gap:2px; max-width:calc(100% - 20px);
+  padding:7px 9px; border:1px solid rgba(0,0,0,.48); background:rgba(244,224,55,.9); color:#080808;
+  font-size:8px; letter-spacing:.1em; text-transform:uppercase; box-shadow:0 10px 18px rgba(0,0,0,.34);
+}
+.v4-reference-card__label strong { font-family:var(--font-brutal); font-size:17px; line-height:.9; letter-spacing:.02em; }
+.v4-reference-card__label span { font-family:var(--font-mono); }
+
+.v4-quicktime, .v4-ledger, .v4-capabilities, .v4-prompt-flux, .v4-lab, .v4-form, .v4-contact-term, .v4-media-section { display:grid; gap:18px; }
+input, select, textarea {
+  width:100%; border:1px solid var(--v4-line); background:color-mix(in srgb, var(--v4-bg) 84%, transparent); color:var(--v4-text);
+  padding:10px 12px; font-size:10px; letter-spacing:.06em; outline:none;
+}
+input:focus, select:focus, textarea:focus { border-color:var(--v4-accent); }
+.v4-button, .v4-quicktime__btn, .v4-tab, .v4-prompt-flux__btn, .v4-form__button, .v4-media-filter-tab {
+  border:1px solid color-mix(in srgb, var(--v4-classic-steel) 18%, var(--v4-line)); border-radius:999px;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--v4-classic-silver) 10%, transparent), transparent), color-mix(in srgb, var(--v4-bg) 28%, transparent);
+  color:var(--v4-text); padding:8px 12px; font-size:10px; letter-spacing:.09em; text-transform:uppercase;
+}
+.v4-button--primary, .v4-prompt-flux__btn--primary, .v4-form__button--primary, .v4-tab.is-active, .v4-media-filter-tab.is-active {
+  border-color:var(--v4-accent); background:color-mix(in srgb, var(--v4-accent) 16%, transparent); color:var(--v4-accent);
+}
+.v4-quicktime__window {
+  display:grid; gap:16px; border:1px solid color-mix(in srgb, var(--v4-classic-steel) 18%, var(--v4-line)); border-radius:20px;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--v4-classic-silver) 8%, transparent), transparent 16%), color-mix(in srgb, var(--v4-surface) 92%, var(--v4-classic-graphite));
+  padding:18px; box-shadow:0 28px 52px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.v4-quicktime__quickadd { display:flex; gap:8px; }
+.v4-quicktime__titlebar { display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center; padding:10px 12px; border:1px solid var(--v4-line); border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(0,0,0,.12)); }
+.v4-quicktime__traffic { display:flex; gap:8px; }
+.v4-quicktime__traffic span { width:12px; height:12px; border-radius:50%; display:block; }
+.v4-quicktime__traffic span:nth-child(1) { background:#ff5f57; }
+.v4-quicktime__traffic span:nth-child(2) { background:#febc2e; }
+.v4-quicktime__traffic span:nth-child(3) { background:#28c840; }
+.v4-quicktime__titlecopy, .v4-quicktime__meta { display:grid; gap:3px; font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+.v4-quicktime__titlecopy span, .v4-quicktime__meta span:first-child { color:var(--v4-muted); }
+.v4-quicktime__meta { justify-items:end; }
+.v4-quicktime__screen { position:relative; aspect-ratio:16/9; overflow:hidden; border:1px solid rgba(255,255,255,.1); border-radius:18px; background:#020409; box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 24px 50px rgba(0,0,0,.48); }
+.v4-quicktime__screen video, .v4-quicktime__screen iframe { width:100%; height:100%; border:0; display:block; object-fit:cover; }
+.v4-quicktime__empty { position:absolute; inset:0; display:grid; place-items:center; color:var(--v4-muted); font-size:11px; letter-spacing:.08em; text-transform:uppercase; background:radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--v4-accent) 24%, transparent), transparent 38%); }
+.v4-quicktime__transport { display:grid; grid-template-columns:auto auto minmax(120px,180px) 1fr; gap:10px; align-items:end; }
+.v4-quicktime__transport label { display:grid; gap:6px; color:var(--v4-muted); font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+.v4-quicktime__transport input { padding:0; accent-color:var(--v4-accent); }
+.v4-quicktime__tabs, .v4-media-filters, .v4-lab__tabs, .v4-form__steps { display:flex; flex-wrap:wrap; gap:8px; }
+.v4-quicktime__form { display:grid; grid-template-columns:minmax(140px,1fr) minmax(220px,2fr) auto; gap:8px; }
+.v4-quicktime__library { display:grid; gap:10px; }
+.v4-quicktime__library-head { display:flex; justify-content:space-between; color:var(--v4-muted); font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+.v4-quicktime__library-list { display:grid; gap:8px; max-height:150px; overflow:auto; }
+.v4-quicktime__library-item { display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center; }
+.v4-quicktime__library-item.is-active .v4-quicktime__select { border-color:var(--v4-accent); color:var(--v4-accent); }
+.v4-quicktime__select { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; justify-items:start; width:100%; border-radius:16px; text-align:left; }
+.v4-quicktime__select em { color:var(--v4-muted); font-style:normal; }
+
+.v4-ledger-bento { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.v4-ledger-bento__card {
+  position:relative; min-height:210px; overflow:hidden; border:1px solid color-mix(in srgb, var(--v4-line) 78%, transparent); border-radius:18px;
+  background:linear-gradient(135deg, color-mix(in srgb, var(--v4-accent) 12%, transparent), transparent 46%), color-mix(in srgb, var(--v4-surface) 76%, transparent);
+  box-shadow:0 18px 42px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.1); isolation:isolate;
+}
+.v4-ledger-bento__card:hover { border-color:var(--v4-accent); transform:translateY(-2px); }
+.v4-ledger-bento__media { position:absolute; inset:10px; bottom:58px; overflow:hidden; border:1px solid var(--v4-line); border-radius:14px; background:color-mix(in srgb, var(--v4-bg) 82%, transparent); }
+.v4-ledger-bento__media:after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, transparent 38%, rgba(0,0,0,.72)), repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 7px); }
+.v4-ledger-bento__media iframe, .v4-ledger-bento__media img { width:100%; height:100%; border:0; display:block; object-fit:cover; pointer-events:none; }
+.v4-ledger-bento__media iframe { width:360%; height:360%; transform:scale(.28); transform-origin:0 0; }
+.v4-ledger-bento__content { position:absolute; inset:auto 14px 14px; z-index:1; display:grid; gap:6px; text-transform:uppercase; }
+.v4-ledger-bento__content > span { color:color-mix(in srgb, var(--v4-accent) 72%, var(--v4-text)); font-size:8px; letter-spacing:.16em; }
+.v4-ledger-bento__content strong { font-size:clamp(16px,3vw,24px); line-height:.95; letter-spacing:-.03em; }
+.v4-ledger-bento__content p { max-width:34ch; margin:0; color:color-mix(in srgb, var(--v4-text) 74%, var(--v4-muted)); font-size:9px; line-height:1.45; letter-spacing:.06em; }
+.v4-tags, .v4-ledger__tech { display:flex; flex-wrap:wrap; gap:6px; }
+.v4-tag, .v4-ledger__chip, .v4-media-card__tag {
+  border:1px solid color-mix(in srgb, var(--v4-accent) 42%, var(--v4-line)); border-radius:999px; padding:4px 8px; color:var(--v4-accent); font-size:8px; letter-spacing:.12em; text-transform:uppercase;
+}
+.v4-ledger__list { display:grid; gap:8px; }
+.v4-ledger__table-head, .v4-ledger__row { display:grid; grid-template-columns:32px 1fr auto auto auto 24px; align-items:center; gap:12px; padding:14px 16px; }
+.v4-ledger__table-head { color:var(--v4-muted); border-bottom:1px dashed var(--v4-line); padding-top:4px; font-size:9px; letter-spacing:.1em; text-transform:uppercase; }
+.v4-ledger__item { border:1px solid var(--v4-line); background:color-mix(in srgb, var(--v4-surface) 60%, transparent); }
+.v4-ledger__item:hover, .v4-ledger__item.is-open { border-color:var(--v4-accent); background:color-mix(in srgb, var(--v4-surface) 90%, transparent); }
+.v4-ledger__index { color:var(--v4-accent); font-size:10px; letter-spacing:.15em; }
+.v4-ledger__title, .v4-cap-card__title { color:var(--v4-text); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.v4-ledger__cat, .v4-ledger__year, .v4-ledger__status, .v4-ledger__chevron { color:var(--v4-muted); font-size:9px; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
+.v4-ledger__detail { display:none; padding:0 16px 16px; border-top:1px dashed var(--v4-line); }
+.v4-ledger__item.is-open .v4-ledger__detail { display:block; }
+.v4-ledger__brief { margin:14px 0 12px; color:var(--v4-muted); font-size:11px; line-height:1.7; }
+.v4-capabilities__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; }
+.v4-cap-card { display:grid; gap:10px; border:1px solid var(--v4-line); padding:18px; background:color-mix(in srgb, var(--v4-surface) 40%, transparent); }
+.v4-cap-card__header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.v4-cap-card__index { color:var(--v4-accent); font-size:10px; letter-spacing:.15em; }
+.v4-cap-card__metric { border:1px solid var(--v4-line); padding:3px 8px; color:var(--v4-muted); font-size:8px; letter-spacing:.12em; text-transform:uppercase; }
+.v4-cap-card__desc { margin:0; color:var(--v4-muted); font-size:10px; line-height:1.7; }
+
+.v4-prompt-flux__palette-row { display:flex; flex-wrap:wrap; gap:8px; }
+.v4-prompt-flux__palette { display:grid; gap:6px; padding:10px; border:1px solid var(--v4-line); background:color-mix(in srgb, var(--v4-surface) 40%, transparent); }
+.v4-prompt-flux__palette.is-active, .v4-prompt-flux__palette:hover { border-color:var(--v4-accent); }
+.v4-prompt-flux__swatches { display:flex; gap:3px; }
+.v4-prompt-flux__swatches span { width:18px; height:18px; border:1px solid rgba(255,255,255,.1); }
+.v4-prompt-flux__palette-label { color:var(--v4-muted); font-size:8px; letter-spacing:.12em; text-transform:uppercase; }
+.v4-prompt-flux__selectors { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; }
+.v4-prompt-flux__selector { display:grid; gap:6px; }
+label, .v4-prompt-flux__selector label { color:var(--v4-muted); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
+.v4-prompt-flux__output, .v4-lab__display, .v4-form__panel { min-height:88px; border:1px dashed var(--v4-line); padding:18px; background:color-mix(in srgb, var(--v4-bg) 44%, transparent); }
+.v4-prompt-flux__output p, .v4-lab__display p { margin:0; color:var(--v4-text); font-size:11px; line-height:1.7; white-space:pre-wrap; }
+.v4-prompt-flux__placeholder { color:var(--v4-muted) !important; font-style:italic; }
+.v4-prompt-flux__actions, .v4-lab__actions, .v4-form__actions { display:flex; flex-wrap:wrap; gap:8px; }
+.v4-lab__panel { border:1px solid var(--v4-line); background:color-mix(in srgb, var(--v4-surface) 54%, transparent); }
+.v4-lab__panel-head { display:flex; justify-content:space-between; padding:10px 12px; border-bottom:1px solid var(--v4-line); color:var(--v4-muted); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
+.v4-lab__panel-body { display:grid; gap:16px; padding:16px; }
+.v4-lab__canvas-wrap { position:relative; aspect-ratio:16/9; min-height:180px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--v4-alert) 28%, transparent), transparent 22%), radial-gradient(circle at 72% 42%, color-mix(in srgb, var(--v4-accent) 24%, transparent), transparent 24%), #050505; }
+.v4-lab__canvas { width:100%; height:100%; display:block; }
+.v4-lab__canvas-label { position:absolute; top:14px; left:14px; color:rgba(255,255,255,.48); font-size:8px; letter-spacing:.4em; text-transform:uppercase; pointer-events:none; }
+.v4-form__steps { margin-bottom:6px; }
+.v4-form__step { flex:1; min-width:120px; border:1px solid var(--v4-line); padding:8px; color:var(--v4-muted); font-size:8px; letter-spacing:.12em; text-transform:uppercase; }
+.v4-form__step.is-active { border-color:var(--v4-accent); color:var(--v4-accent); }
+.v4-form__fields { display:grid; gap:12px; }
+.v4-form__status { color:var(--v4-muted); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+
+.v4-contact-term__shell { overflow:hidden; border:1px solid rgba(128,128,128,.3); border-radius:10px; background:rgba(20,20,20,.95); color:#e0e0e0; box-shadow:0 20px 40px rgba(0,0,0,.5); }
+.v4-contact-term__titlebar { position:relative; display:flex; align-items:center; justify-content:center; padding:10px 16px; border-bottom:1px solid rgba(128,128,128,.2); background:rgba(255,255,255,.05); color:#999; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:13px; }
+.v4-contact-term__traffic { position:absolute; left:16px; display:flex; gap:8px; }
+.v4-contact-term__traffic span { width:12px; height:12px; border-radius:50%; }
+.v4-contact-term__traffic span:nth-child(1) { background:#ff5f56; }
+.v4-contact-term__traffic span:nth-child(2) { background:#ffbd2e; }
+.v4-contact-term__traffic span:nth-child(3) { background:#27c93f; }
+.v4-contact-term__output { min-height:180px; max-height:260px; overflow:auto; padding:16px; font-size:12px; line-height:1.6; }
+.v4-contact-term__output p { margin:0; }
+.v4-contact-term__form { display:grid; gap:10px; padding:16px; border-top:1px solid rgba(74,250,114,.15); }
+.v4-contact-term__field { display:grid; gap:5px; }
+.v4-contact-term__field label { color:#4afa72; }
+.v4-contact-term__field input, .v4-contact-term__field textarea { border-color:rgba(74,250,114,.18); background:rgba(74,250,114,.06); color:#4afa72; }
+.v4-contact-term__form button { border:1px solid rgba(74,250,114,.3); background:rgba(74,250,114,.1); color:#4afa72; padding:12px; font-size:10px; letter-spacing:.15em; text-transform:uppercase; }
+
+.v4-media-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+.v4-media-card { display:flex; flex-direction:column; overflow:hidden; border:1px solid var(--glass-border); border-radius:12px; background:var(--glass-bg); backdrop-filter:blur(14px); }
+.v4-media-card[hidden] { display:none; }
+.v4-media-card__type { display:flex; align-items:center; gap:5px; padding:8px 12px 0; color:var(--type-color,var(--v4-accent)); font-size:8px; letter-spacing:.14em; text-transform:uppercase; }
+.v4-media-card__thumb { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#000; }
+.v4-media-card__thumb img { width:100%; height:100%; object-fit:cover; }
+.v4-media-card__play-overlay { position:absolute; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.36); color:#fff; font-size:16px; }
+.v4-media-card__body { display:flex; flex:1; flex-direction:column; gap:6px; padding:10px 12px 14px; }
+.v4-media-card__meta { display:flex; justify-content:space-between; gap:8px; color:var(--v4-muted); font-size:8px; letter-spacing:.1em; text-transform:uppercase; }
+.v4-media-card__title { color:var(--v4-text); font-size:14px; font-weight:700; line-height:1.35; }
+.v4-media-card__note { margin:4px 0 0; color:var(--v4-muted); font-size:12px; font-style:italic; line-height:1.5; }
+.v4-media-card__tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:6px; }
+
+.v4-ipod-app {
+  --ipod-width:336px; position:fixed; right:30px; bottom:124px; z-index:900; width:var(--ipod-width);
+  min-width:280px; max-width:min(460px, calc(100vw - 28px)); overflow:visible;
+}
+.v4-ipod-app__toolbar { display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:10px; }
+.v4-ipod-app__grabber, .v4-ipod-app__mode-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:7px 12px; border:1px solid rgba(255,255,255,.15); border-radius:999px;
+  background:linear-gradient(180deg, rgba(255,255,255,.14), transparent 70%), rgba(10,10,10,.82); color:rgba(240,244,248,.82);
+  box-shadow:0 10px 18px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.v4-ipod-app__grabber { cursor:grab; }
+.v4-ipod-app__grabber span { width:7px; height:7px; border-radius:50%; background:var(--v4-alert); box-shadow:0 0 10px color-mix(in srgb, var(--v4-alert) 36%, transparent); }
+.v4-ipod-app__grabber p, .v4-ipod-app__mode-toggle span, .ipod-screen span, .ipod-list button, .ipod-form input, .ipod-form button, .v4-ipod-wheel button { margin:0; text-transform:uppercase; letter-spacing:.08em; }
+.v4-ipod-app__grabber p, .v4-ipod-app__mode-toggle span { font-size:9px; }
+.v4-ipod-body {
+  --screen-width:clamp(214px, calc(var(--ipod-width) - 88px), 322px);
+  --wheel-size:clamp(176px, calc(var(--ipod-width) - 110px), 248px);
+  position:relative; display:grid; justify-items:center; gap:18px; padding:clamp(18px,2vw,26px);
+  border:1px solid rgba(255,255,255,.82); border-radius:34px;
+  background:radial-gradient(circle at 22% 16%, rgba(255,255,255,.96), rgba(255,255,255,.28) 28%, transparent 42%), linear-gradient(180deg, #fdfdfb 0%, #ece8df 48%, #d7d1c6 100%);
+  box-shadow:0 30px 60px rgba(0,0,0,.32), inset 0 2px 2px rgba(255,255,255,.94), inset 0 -14px 24px rgba(0,0,0,.08);
+}
+.v4-ipod-app.is-dark .v4-ipod-body { border-color:rgba(255,255,255,.1); background:radial-gradient(circle at 22% 16%, rgba(255,255,255,.22), rgba(255,255,255,.08) 28%, transparent 42%), linear-gradient(180deg, #4e5259 0%, #2d3138 48%, #181b20 100%); }
+.v4-ipod-body:before { content:""; position:absolute; inset:10px; border:1px solid rgba(255,255,255,.28); border-radius:26px; pointer-events:none; }
+.ipod-screen {
+  width:var(--screen-width); min-height:clamp(166px, calc(var(--screen-width) * .74), 238px); display:grid; gap:10px; overflow:hidden;
+  border:3px solid #121712; border-radius:12px; padding:clamp(10px, calc(var(--screen-width) * .05), 14px);
+  background:linear-gradient(180deg, rgba(239,247,207,.96), rgba(183,201,132,.98)), repeating-linear-gradient(180deg, rgba(0,0,0,.032) 0 2px, transparent 2px 4px);
+  color:#141814;
+}
+.ipod-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.ipod-row span { color:rgba(20,24,20,.78); font-size:8px; }
+.ipod-title { display:grid; gap:4px; }
+.ipod-title strong { color:#141814; font-size:clamp(11px, calc(var(--screen-width) * .054), 14px); line-height:1.15; text-transform:uppercase; }
+.ipod-title span { color:rgba(20,24,20,.78); font-size:clamp(8px, calc(var(--screen-width) * .036), 10px); }
+.ipod-visualizer { height:52px; padding:6px 0; border-top:1px dashed rgba(20,24,20,.22); border-bottom:1px dashed rgba(20,24,20,.22); }
+.ipod-bars, .ipod-wave { height:100%; display:flex; align-items:end; gap:3px; }
+.ipod-bars span { flex:1; min-width:2px; height:calc(8px + var(--h) * 36px); background:#141814; opacity:.72; }
+.ipod-wave { height:24px; align-items:center; }
+.ipod-wave span { flex:1; height:calc(6px + var(--h) * 16px); background:color-mix(in srgb, #141814 calc(var(--fill,0) * 100%), rgba(20,24,20,.18)); }
+.ipod-panel { display:none; gap:8px; }
+.ipod-panel.is-active { display:grid; }
+.ipod-list { display:grid; gap:4px; max-height:144px; overflow:auto; }
+.ipod-list button { display:grid; grid-template-columns:28px minmax(0,1fr); gap:8px; padding:6px 8px; color:#141814; font-size:9px; text-align:left; }
+.ipod-list button.is-current { background:rgba(20,24,20,.12); font-weight:800; }
+.ipod-sources { display:flex; flex-wrap:wrap; gap:6px; }
+.ipod-sources button, .ipod-form button { border:1px solid rgba(20,24,20,.18); background:rgba(255,255,255,.18); color:#141814; padding:7px 8px; font-size:8px; }
+.ipod-form { display:grid; gap:7px; }
+.ipod-form input { border:1px solid rgba(20,24,20,.16); background:rgba(255,255,255,.26); color:#141814; padding:7px 8px; font-size:9px; }
+.v4-ipod-wheel {
+  position:relative; width:var(--wheel-size); max-width:var(--wheel-size); aspect-ratio:1; border-radius:50%;
+  background:radial-gradient(circle at 35% 28%, rgba(255,255,255,.96), rgba(255,255,255,.46) 30%, transparent 50%), linear-gradient(180deg, #fff 0%, #dbd8d1 100%);
+  box-shadow:inset 0 2px 6px rgba(255,255,255,.96), inset 0 -16px 20px rgba(0,0,0,.08), 0 12px 24px rgba(0,0,0,.14);
+}
+.v4-ipod-app.is-dark .v4-ipod-wheel { background:radial-gradient(circle at 35% 28%, rgba(255,255,255,.28), rgba(255,255,255,.12) 30%, transparent 50%), linear-gradient(180deg, #42464c 0%, #171a1f 100%); }
+.v4-ipod-wheel button { position:absolute; color:rgba(20,24,20,.82); font-size:clamp(9px,.82vw,12px); }
+.v4-ipod-app.is-dark .v4-ipod-wheel button { color:rgba(242,244,248,.86); }
+.wheel-top { top:12%; left:50%; transform:translateX(-50%); }
+.wheel-left { left:10%; top:50%; transform:translateY(-50%); }
+.wheel-right { right:10%; top:50%; transform:translateY(-50%); }
+.wheel-bottom { bottom:12%; left:50%; transform:translateX(-50%); }
+.wheel-center {
+  left:50%; top:50%; width:38%; height:38%; transform:translate(-50%,-50%); border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.72), rgba(255,255,255,.18) 44%, transparent 76%), linear-gradient(180deg, #f3f3f0, #dbd8d1);
+  box-shadow:inset 0 2px 4px rgba(255,255,255,.82), inset 0 -10px 14px rgba(0,0,0,.06);
+}
+.v4-ipod-body__meta { width:var(--screen-width); display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+.v4-ipod-body__meta span { color:rgba(20,24,20,.62); font-size:8px; letter-spacing:.08em; text-transform:uppercase; }
+
+.v4-os-dock-container { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:1000; }
+.v4-os-dock {
+  display:flex; gap:10px; align-items:flex-end; max-width:calc(100vw - 20px); overflow-x:auto; overflow-y:visible;
+  padding:10px 12px 9px; border:1px solid var(--glass-border); border-radius:22px; background:var(--glass-bg); backdrop-filter:var(--glass-blur); box-shadow:var(--glass-shadow);
+}
+.dock-icon {
+  position:relative; min-width:62px; display:grid; justify-items:center; gap:4px; padding:4px 6px; border:1px solid transparent; border-radius:14px;
+  color:var(--v4-text); transform-origin:center bottom; transition:transform .18s ease, margin .18s ease, background .18s ease;
+}
+.dock-icon:hover, .dock-icon.is-active { transform:scale(1.18) translateY(-8px); margin:0 6px; border-color:color-mix(in srgb, var(--v4-classic-blue) 54%, var(--v4-line)); background:color-mix(in srgb, var(--v4-surface) 84%, transparent); }
+.dock-glyph {
+  width:52px; height:52px; display:grid; place-items:center; overflow:hidden; border-radius:15px; color:#fff; font-weight:800; font-size:15px;
+  background:linear-gradient(135deg, #70cbfa, #0b65ce); filter:drop-shadow(0 10px 16px rgba(0,0,0,.22));
+}
+.dock-icon:nth-child(2) .dock-glyph { background:linear-gradient(135deg,#484848,#1c1c1c); color:#4afa72; }
+.dock-icon:nth-child(3) .dock-glyph { background:linear-gradient(135deg,#62c8f5,#2888dc); }
+.dock-icon:nth-child(4) .dock-glyph { background:linear-gradient(135deg,#1c1c2e,#0d0d1a); }
+.dock-icon:nth-child(5) .dock-glyph { background:linear-gradient(135deg,#111,#ff4040); }
+.dock-icon:nth-child(6) .dock-glyph { background:linear-gradient(135deg,#4edf6a,#1db942); }
+/* macOS-style app icons override per-child gradients */
+.dock-glyph--img,
+.dock-icon:nth-child(2) .dock-glyph.dock-glyph--img,
+.dock-icon:nth-child(3) .dock-glyph.dock-glyph--img,
+.dock-icon:nth-child(4) .dock-glyph.dock-glyph--img,
+.dock-icon:nth-child(5) .dock-glyph.dock-glyph--img,
+.dock-icon:nth-child(6) .dock-glyph.dock-glyph--img {
+  background: transparent;
+  padding: 0;
+}
+.dock-glyph--img svg { width:100%; height:100%; display:block; border-radius:15px; }
+.dock-label { color:color-mix(in srgb, var(--v4-classic-silver) 54%, var(--v4-muted)); font-size:8px; letter-spacing:.08em; text-transform:uppercase; }
+
+.v4-sticker {
+  position:fixed; left:80px; top:160px; z-index:500; display:grid; place-items:center; width:72px; height:72px;
+  border:1px solid var(--v4-accent); border-radius:50%; background:color-mix(in srgb, var(--v4-accent) 16%, transparent); color:var(--v4-accent);
+  text-align:center; text-transform:uppercase; touch-action:none; user-select:none; cursor:grab;
+}
+.v4-sticker__badge { color:var(--v4-text); font-size:14px; font-weight:800; letter-spacing:.15em; }
+.v4-sticker__sub { color:var(--v4-muted); font-size:7px; letter-spacing:.2em; }
+.v4-sticker.is-dragging { cursor:grabbing; transform:scale(1.08); }
+
+@media (max-width:980px) and (min-width:701px) {
+  .v4-os-menubar { gap:8px; padding:0 10px; font-size:12px; }
+  .v4-os-menubar-left, .v4-os-menubar-right { gap:6px; }
+  .v4-os-menubar-left .v4-os-menubar-item:nth-child(n+4):not(:first-child),
+  .v4-os-menubar-right .v4-os-menubar-item:nth-child(2),
+  .v4-os-menubar-right .v4-os-menubar-item:nth-child(3) { display:none; }
+  .theme-picker { right:10px; }
+  .v4-rail {
+    top:34px; bottom:86px; width:192px; padding:16px 10px; gap:12px;
+    background:color-mix(in srgb, var(--v4-bg) 90%, transparent);
+  }
+  .v4-rail h1 { font-size:36px; }
+  .v4-rail__meta { font-size:7px; }
+  .v4-theme-stack { grid-template-columns:repeat(2,1fr); }
+  .v4-rail__nav { gap:6px; }
+  .v4-rail__nav h2 { font-size:15px; }
+  .v4-rail__link { padding:5px 6px; }
+  .v4-rail__link span:first-child { font-size:8px; }
+  .v4-rail__link span:last-child { font-size:12px; }
+  .v4-rail__manifesto { max-height:84px; overflow:hidden; font-size:9px; }
+  .v4-bg-terminal { left:204px; bottom:106px; width:300px; opacity:.62; }
+  .v4-os-desktop-icons { display:none; }
+  .v4-clock-stack { right:14px; top:60px; width:186px; opacity:.9; }
+  .v4-oriental-clock__face, .v4-analog-clock__face { width:116px; }
+  .v4-oriental-clock__branch, .v4-analog-clock__tick { transform:translate(-50%,-50%) rotate(calc(var(--i) * 30deg)) translateY(-46px) rotate(calc(var(--i) * -30deg)); }
+  .v4-oriental-clock__center { inset:26px; }
+  .v4-sticker { left:58px; top:150px; width:58px; height:58px; }
+  .v4-desktop-canvas { inset:28px 0 0; }
+  .v4-window {
+    width:clamp(510px, calc(100vw - 226px), 600px) !important;
+    height:min(500px, calc(100vh - 132px)) !important;
+    min-width:0; min-height:360px; border-radius:12px;
+  }
+  #app-artifact { left:204px !important; top:44px !important; }
+  #app-playback { left:218px !important; top:66px !important; }
+  #app-ledger { left:232px !important; top:88px !important; }
+  #app-prompt { left:246px !important; top:110px !important; }
+  #app-lab { left:260px !important; top:132px !important; }
+  #app-contact { left:274px !important; top:154px !important; }
+  #app-media-log { left:288px !important; top:176px !important; }
+  .v4-window__chrome { height:44px; }
+  .v4-window__chrome-meta { display:none; }
+  .v4-window__body { gap:16px; padding:18px; }
+  .v4-window__plate { padding:12px; }
+  .v4-window__plate-meta { font-size:8px; }
+  .v4-hero { grid-template-columns:1fr; }
+  .v4-title { margin:18px 0; font-size:clamp(3.25rem, 10vw, 5.6rem); }
+  .v4-artifact { min-height:190px; transform:none; }
+  .v4-reference-strip { grid-template-columns:1fr 1fr; }
+  .v4-reference-card { min-height:118px; }
+  .v4-reference-card__label strong { font-size:14px; }
+  .v4-copy { font-size:11px; }
+  .v4-ipod-app { --ipod-width:248px; right:14px; bottom:96px; }
+  .v4-ipod-app__toolbar { gap:6px; margin-bottom:7px; }
+  .v4-ipod-app__grabber, .v4-ipod-app__mode-toggle { padding:6px 9px; }
+  .v4-ipod-app__grabber p { display:none; }
+  .v4-ipod-body { gap:12px; padding:16px; border-radius:28px; }
+  .ipod-screen { gap:7px; border-width:2px; }
+  .ipod-visualizer { height:36px; }
+  .ipod-wave { display:none; }
+  .v4-os-dock-container { bottom:12px; }
+  .v4-os-dock { gap:5px; padding:8px 10px 7px; border-radius:18px; }
+  .dock-icon { min-width:52px; padding:3px 4px; }
+  .dock-icon:hover, .dock-icon.is-active { margin:0 2px; transform:scale(1.1) translateY(-5px); }
+  .dock-glyph { width:44px; height:44px; border-radius:13px; font-size:12px; }
+  .dock-label { font-size:7px; }
+}
+@media (max-width:700px) {
+  body { overflow:auto; }
+  .v4-os-menubar { position:sticky; }
+  .v4-rail, .v4-os-desktop-icons, .v4-bg-terminal, .v4-sticker { display:none; }
+  .v4-clock-stack { position:relative; top:auto; right:auto; width:auto; margin:14px; grid-template-columns:1fr 1fr; pointer-events:none; }
+  .v4-timepiece { padding:9px; }
+  .v4-oriental-clock__face, .v4-analog-clock__face { width:116px; }
+  .v4-oriental-clock__branch, .v4-analog-clock__tick { transform:translate(-50%,-50%) rotate(calc(var(--i) * 30deg)) translateY(-46px) rotate(calc(var(--i) * -30deg)); }
+  .v4-oriental-clock__center { inset:26px; }
+  .v4-timepiece__readout { flex-direction:column; gap:2px; }
+  .v4-desktop-canvas { position:relative; inset:auto; padding:20px 14px 160px; display:grid; gap:16px; }
+  .v4-window { position:relative !important; left:auto !important; top:auto !important; width:100% !important; height:auto !important; min-height:0; }
+  .v4-window__chrome-meta { display:none; }
+  .v4-hero { grid-template-columns:1fr; }
+  .v4-artifact { min-height:240px; transform:none; }
+  .v4-reference-strip { grid-template-columns:1fr; }
+  .v4-quicktime__transport, .v4-quicktime__form, .v4-quicktime__library-item, .v4-ledger-bento, .v4-ledger__table-head, .v4-ledger__row { grid-template-columns:1fr; }
+  .v4-ledger__cat, .v4-ledger__year, .v4-ledger__status, .v4-ledger__chevron { display:none; }
+  .v4-ipod-app { position:relative; right:auto; bottom:auto; margin:20px auto 130px; }
+  .v4-os-dock-container { bottom:14px; }
+  .theme-picker { right:10px; }
+}
+</style>
+</head>
+<body>
+<div class="v4-noise" aria-hidden="true"></div>
+
+<header class="v4-os-menubar" aria-label="V4 desktop menubar">
+  <div class="v4-os-menubar-left">
+    <a class="v4-os-menubar-item" href="portfolio.html" style="font-weight:800">RAEHDOJHN OS</a>
+    <span class="v4-os-menubar-item">File</span>
+    <span class="v4-os-menubar-item">Edit</span>
+    <span class="v4-os-menubar-item">View</span>
+    <span class="v4-os-menubar-item">Go</span>
+    <span class="v4-os-menubar-item">Window</span>
+    <span class="v4-os-menubar-item">Help</span>
+  </div>
+  <div class="v4-os-menubar-right">
+    <button class="v4-os-menubar-item" id="themeMenuButton" type="button"><span class="theme-dot"></span><span id="themeLabel">Sound</span></button>
+    <span class="v4-os-menubar-item">Search</span>
+    <span class="v4-os-menubar-item">Control</span>
+    <span class="v4-os-menubar-item" id="menuTime">12:00</span>
+  </div>
+</header>
+<div class="theme-picker" id="themePicker">
+  <div class="theme-picker__label">Select wallpaper</div>
+  <div class="theme-grid">
+    <button class="theme-option" type="button" data-theme="sound-room"><span class="theme-preview" style="background:linear-gradient(135deg,#0a0a0a,#666)"></span><span>Sound</span></button>
+    <button class="theme-option" type="button" data-theme="cobalt"><span class="theme-preview" style="background:linear-gradient(135deg,#06122d,#b9e7fe66)"></span><span>Cobalt</span></button>
+    <button class="theme-option" type="button" data-theme="charcoal"><span class="theme-preview" style="background:linear-gradient(135deg,#050505,#9bd9f566)"></span><span>Charcoal</span></button>
+    <button class="theme-option" type="button" data-theme="showdown"><span class="theme-preview" style="background:linear-gradient(135deg,#19265a,#e74a26)"></span><span>Showdown</span></button>
+    <button class="theme-option" type="button" data-theme="elite"><span class="theme-preview" style="background:linear-gradient(135deg,#ede8e3,#c94135)"></span><span>Elite</span></button>
+    <button class="theme-option" type="button" data-theme="mint"><span class="theme-preview" style="background:linear-gradient(135deg,#091310,#78ffbf)"></span><span>Mint</span></button>
+    <button class="theme-option" type="button" data-theme="neon"><span class="theme-preview" style="background:linear-gradient(135deg,#050505,#f4f000 58%,#d71916)"></span><span>Neon</span></button>
+  </div>
+</div>
+
+<aside class="v4-rail" aria-label="Window navigator">
+  <div class="v4-rail__masthead">
+    <h1>Chaos Lux</h1>
+    <div class="v4-rail__meta"><span>EDITION 04</span><span id="railClock">00:00:00</span><span>LA / SP</span></div>
+    <div class="v4-theme-stack" aria-label="Theme shortcuts">
+      <button type="button" data-theme-jump="sound-room" style="background:#0a0a0a" aria-label="Sound room theme"></button>
+      <button type="button" data-theme-jump="cobalt" style="background:#19265a" aria-label="Cobalt theme"></button>
+      <button type="button" data-theme-jump="showdown" style="background:#e74a26" aria-label="Showdown theme"></button>
+      <button type="button" data-theme-jump="elite" style="background:#ede8e3" aria-label="Elite theme"></button>
+      <button type="button" data-theme-jump="mint" style="background:#78ffbf" aria-label="Mint theme"></button>
+      <button type="button" data-theme-jump="neon" style="background:#f4f000" aria-label="Neon theme"></button>
+    </div>
+  </div>
+  <nav class="v4-rail__nav">
+    <h2>INDEX_07 / ARCHIVE</h2>
+    <a class="v4-rail__link is-active" href="#app-artifact" data-focus-window="app-artifact"><span>APP-00</span><span>Artifact Overview</span></a>
+    <a class="v4-rail__link" href="#app-playback" data-focus-window="app-playback"><span>APP-01</span><span>Playback Deck</span></a>
+    <a class="v4-rail__link" href="#app-ledger" data-focus-window="app-ledger"><span>APP-03</span><span>Project Ledger</span></a>
+    <a class="v4-rail__link" href="#app-prompt" data-focus-window="app-prompt"><span>APP-04</span><span>Prompt Flux</span></a>
+    <a class="v4-rail__link" href="#app-lab" data-focus-window="app-lab"><span>APP-05</span><span>Chaos Lab</span></a>
+    <a class="v4-rail__link" href="#app-contact" data-focus-window="app-contact"><span>APP-06</span><span>Contact Terminal</span></a>
+    <a class="v4-rail__link" href="#app-media-log" data-focus-window="app-media-log"><span>APP-07</span><span>Media Log</span></a>
+    <div class="v4-rail__manifesto">
+      <p><strong>SYSTEM MANIFESTO</strong> - The interface is no longer a transparent window, but a textured artifact. Every interaction leaves a trace.</p>
+      <p style="margin-top:8px">Archive logic, machine friction, glass hardware, and creative system memory. [IP.AXIS.INDUSTRIAL]</p>
+    </div>
+  </nav>
+  <div>
+    <div class="v4-rail__progress"><span>READING STATUS</span><span id="railProgressValue">0%</span></div>
+    <div class="v4-rail__progress-bar"><span id="railProgressBar"></span></div>
+    <p class="v4-rail__foot">RAEHDOJHN POST</p>
+  </div>
+</aside>
+
+<div class="v4-os-desktop-icons" aria-label="Desktop files">
+  <button class="v4-os-desktop-icon" type="button" data-focus-window="app-ledger"><span class="icon-bg">P</span><span class="icon-label">LOOKBOOK_001.psd</span></button>
+  <button class="v4-os-desktop-icon" type="button" data-focus-window="app-prompt"><span class="icon-bg">T</span><span class="icon-label">notes-on-chaos.txt</span></button>
+  <button class="v4-os-desktop-icon" type="button" data-focus-window="app-playback"><span class="icon-bg">Q</span><span class="icon-label">wire_v4.mov</span></button>
+  <a class="v4-os-desktop-icon" href="public/projects/ranaan-ccc/index.html"><span class="icon-bg">R</span><span class="icon-label">RANAAN CCC</span></a>
+</div>
+
+<aside class="v4-clock-stack" aria-label="V4 oriental and analog clocks">
+  <section class="v4-timepiece v4-oriental-clock" aria-label="Oriental clock">
+    <div class="v4-timepiece__head"><strong>ORIENTAL_CLOCK</strong><span id="v4OrientalPeriodLabel">子</span></div>
+    <div class="v4-oriental-clock__face" id="v4OrientalFace">
+      <span class="v4-oriental-clock__branch" data-branch-index="0" style="--i:0">子</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="1" style="--i:1">丑</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="2" style="--i:2">寅</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="3" style="--i:3">卯</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="4" style="--i:4">辰</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="5" style="--i:5">巳</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="6" style="--i:6">午</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="7" style="--i:7">未</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="8" style="--i:8">申</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="9" style="--i:9">酉</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="10" style="--i:10">戌</span>
+      <span class="v4-oriental-clock__branch" data-branch-index="11" style="--i:11">亥</span>
+      <div class="v4-oriental-clock__center"><strong id="v4OrientalBranch">子</strong><span id="v4OrientalTime">00:00</span><span id="v4OrientalDate">0000.00.00</span></div>
+    </div>
+    <div class="v4-timepiece__readout"><span>EARTHLY_BRANCH</span><span id="v4OrientalRange">23-01</span></div>
+  </section>
+  <section class="v4-timepiece v4-analog-clock" aria-label="Analog clock">
+    <div class="v4-timepiece__head"><strong>ANALOG_CLOCK</strong><span id="v4AnalogZone">LA</span></div>
+    <div class="v4-analog-clock__face">
+      <span class="v4-analog-clock__tick" style="--i:0">12</span>
+      <span class="v4-analog-clock__tick" style="--i:1">1</span>
+      <span class="v4-analog-clock__tick" style="--i:2">2</span>
+      <span class="v4-analog-clock__tick" style="--i:3">3</span>
+      <span class="v4-analog-clock__tick" style="--i:4">4</span>
+      <span class="v4-analog-clock__tick" style="--i:5">5</span>
+      <span class="v4-analog-clock__tick" style="--i:6">6</span>
+      <span class="v4-analog-clock__tick" style="--i:7">7</span>
+      <span class="v4-analog-clock__tick" style="--i:8">8</span>
+      <span class="v4-analog-clock__tick" style="--i:9">9</span>
+      <span class="v4-analog-clock__tick" style="--i:10">10</span>
+      <span class="v4-analog-clock__tick" style="--i:11">11</span>
+      <span class="v4-analog-clock__hand v4-analog-clock__hand--hour" id="v4AnalogHour"></span>
+      <span class="v4-analog-clock__hand v4-analog-clock__hand--minute" id="v4AnalogMinute"></span>
+      <span class="v4-analog-clock__hand v4-analog-clock__hand--second" id="v4AnalogSecond"></span>
+      <span class="v4-analog-clock__pin"></span>
+    </div>
+    <div class="v4-timepiece__readout"><span id="v4AnalogReadout">00:00:00</span><span>STUDIO_TIME</span></div>
+  </section>
+</aside>
+
+<div class="v4-bg-terminal" aria-hidden="true">
+  <div class="v4-bg-terminal__header">
+    <span class="v4-bg-terminal__dot v4-bg-terminal__dot--red"></span>
+    <span class="v4-bg-terminal__dot v4-bg-terminal__dot--yellow"></span>
+    <span class="v4-bg-terminal__dot v4-bg-terminal__dot--green"></span>
+    <span class="v4-bg-terminal__title">terminal - v4</span>
+  </div>
+  <div class="v4-bg-terminal__body" id="bgTerminal">
+    <p class="v4-bg-terminal__line">&gt; RAEHDOJHN OS v4.0</p>
+    <p class="v4-bg-terminal__line">&gt; BOOT SEQUENCE COMPLETE</p>
+    <p class="v4-bg-terminal__line">&nbsp;</p>
+  </div>
+</div>
+
+<main class="v4-desktop-canvas">
+  <section class="v4-window" id="app-artifact" data-window style="left:268px;top:50px;--window-index:0">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Artifact Overview</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-00 / FRONT DESK</span><span class="v4-window__status">Live shell</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>ENTRY STATE</span><span>DESKTOP / INTRO / ALTER-EGO SURFACE</span></div><div class="v4-window__plate-row"><span>Artifact overview</span><span>Reference synthesis</span><span>Primary portal</span></div></div>
+      <section class="v4-hero">
+        <div>
+          <div class="v4-meta-row"><span class="v4-badge">[ EDITION 004 ]</span><span class="v4-meta-line"></span><span>LAT: 34.0522 N // LONG: 118.2437 W</span></div>
+          <p class="v4-kicker" style="margin-top:24px">DOCUMENTED_ARTIFACT / SYSTEM_V4 / DATA</p>
+          <h1 class="v4-title"><span class="v4-chromatic-blur" id="kineticWord">CHAOTIC</span><br><span>LUXURY</span><br><span class="v4-title__stroke">DISCIPLINE</span></h1>
+          <p class="v4-copy">Archive logic // Utility system // Functional brutality. Deconstructed for the contemporary digital era. <span style="display:block;color:var(--v4-accent);margin-top:8px">[ IP.AXIS.INDUSTRIAL ]</span></p>
+          <div class="v4-hero__routes">
+            <a class="v4-hero__route" href="portfolio.html">EXIT_PORTFOLIO</a>
+            <button class="v4-hero__route" type="button" data-focus-window="app-ledger">WORK_INDEX</button>
+            <button class="v4-hero__route" type="button" data-focus-window="app-prompt">UPLOAD_WALL</button>
+            <button class="v4-hero__route" type="button" data-focus-window="app-contact">TERM_06</button>
+          </div>
+          <div class="v4-reference-strip" aria-label="May 7 and May 8 archive references">
+            <figure class="v4-reference-card">
+              <img src="public/v4-assets/may-07-everybody-in-frame.png" alt="Everybody in Frame archive spread from May 7 reference build">
+              <figcaption class="v4-reference-card__label"><span>MAY_07 / ISSUE 007</span><strong>In Frame</strong></figcaption>
+            </figure>
+            <figure class="v4-reference-card v4-reference-card--poster">
+              <img src="public/v4-assets/may-08-night-shift-opera.png" alt="Night Shift Opera poster from May 8 reference build">
+              <figcaption class="v4-reference-card__label"><span>MAY_08 / XEROX COPY</span><strong>Opera</strong></figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="v4-artifact" aria-label="V4 artifact card"><div class="v4-artifact__content"><p class="v4-artifact__id"># <span id="artifactHash">V4CORE000</span></p><p class="v4-artifact__line">AUTHENTICATION: ARCHIVE_V4_CORE</p><p class="v4-artifact__line">SYSTEM HASH: 0x42A7C...F91E</p><p class="v4-artifact__line">SOURCE: MAY_07_CHAOS_LUX_BUILD</p><span class="v4-meta-line"></span><p class="v4-artifact__line" style="opacity:.58">RAEHDOJHN - ALL RIGHTS RESERVED</p></div></div>
+      </section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+
+  <section class="v4-window" id="app-playback" data-window style="left:308px;top:80px;--window-index:1">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Playback Deck</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-01 / MEDIA</span><span class="v4-window__status">QuickTime relay</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>MEDIA RELAY</span><span>WATCHBOARD / VIDEO / CATALOG INPUT</span></div><div class="v4-window__plate-row"><span>QuickTime logic</span><span>Upload ready</span><span>YouTube URL</span></div></div>
+      <section class="v4-quicktime">
+        <div><p class="v4-kicker">REEL / QUICKTIME DECK</p><h2 class="v4-h2">WATCHBOARD</h2></div>
+        <form class="v4-quicktime__quickadd" id="qtQuickForm"><input id="qtQuickUrl" placeholder="Paste a YouTube URL or direct .mp4 URL and press Enter"><button class="v4-button v4-button--primary" type="submit">PLAY</button></form>
+        <article class="v4-quicktime__window">
+          <div class="v4-quicktime__titlebar"><div class="v4-quicktime__traffic"><span></span><span></span><span></span></div><div class="v4-quicktime__titlecopy"><span>MacBook QuickTime</span><strong id="qtTitle">AUREA Brand Film</strong></div><div class="v4-quicktime__meta"><span id="qtSource">LOCAL</span><span><span id="qtCurrent">0:00</span> / <span id="qtDuration">0:00</span></span></div></div>
+          <div class="v4-quicktime__screen"><video id="qtVideo" src="public/projects/aurea/brand-video.mp4" playsinline controls></video><iframe id="qtFrame" title="QuickTime embed" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen hidden></iframe><div class="v4-quicktime__empty" id="qtEmpty" hidden>No media selected yet.</div></div>
+          <div class="v4-quicktime__transport"><button type="button" class="v4-quicktime__btn" id="qtPlay">Play</button><button type="button" class="v4-quicktime__btn" id="qtMute">Mute</button><label><span>Volume</span><input id="qtVolume" type="range" min="0" max="1" step="0.01" value="0.8"></label><label><span>Scrub</span><input id="qtSeek" type="range" min="0" max="100" value="0"></label></div>
+          <div class="v4-quicktime__tabs" id="qtTabs"><button class="v4-tab is-active" type="button" data-qt-mode="upload">UPLOAD</button><button class="v4-tab" type="button" data-qt-mode="youtube">YOUTUBE</button><button class="v4-tab" type="button" data-qt-mode="url">URL</button></div>
+          <label class="v4-button" id="qtUploadLabel"><span>Add local video files</span><input id="qtFile" type="file" accept="video/*" multiple hidden></label>
+          <form class="v4-quicktime__form" id="qtAddForm" hidden><input id="qtAddTitle" placeholder="Title"><input id="qtAddUrl" placeholder="Direct video URL"><button class="v4-button" type="submit">Add to watchboard</button></form>
+          <div class="v4-quicktime__library"><div class="v4-quicktime__library-head"><span>Library</span><span id="qtLibraryCount">1 items</span></div><div class="v4-quicktime__library-list" id="qtLibrary"></div></div>
+        </article>
+      </section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+
+  <section class="v4-window" id="app-ledger" data-window style="left:348px;top:110px;--window-index:2">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Project Ledger</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-03 / LEDGER</span><span class="v4-window__status">Editable</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>WORK SYSTEM</span><span>LEDGER / CAPABILITIES / CLIENT-FACING DOSSIER</span></div><div class="v4-window__plate-row"><span>Project index</span><span>Capability deck</span><span>Live portals</span></div></div>
+      <section class="v4-ledger">
+        <div><p class="v4-kicker">LEDGER / WORK INDEX</p><h2 class="v4-h2">PROJECT RECORD</h2></div>
+        <div class="v4-ledger-bento">
+          <a class="v4-ledger-bento__card" href="public/projects/seoulstice/index.html" target="_blank" rel="noreferrer"><div class="v4-ledger-bento__media"><iframe src="public/projects/seoulstice/index.html" title="Seoulstice preview" loading="lazy"></iframe></div><div class="v4-ledger-bento__content"><span>LIVE PROJECT // SEOULSTICE</span><strong>Seoulstice</strong><p>Soft retail identity, ritual skincare world, and old-web campaign residue.</p><div class="v4-tags"><span class="v4-tag">Design</span><span class="v4-tag">Code</span><span class="v4-tag">AI</span></div></div></a>
+          <a class="v4-ledger-bento__card" href="public/projects/ranaan-ccc/index.html" target="_blank" rel="noreferrer"><div class="v4-ledger-bento__media"><img src="public/projects/ranaan-ccc/cover_hero_1776994472537.png" alt=""></div><div class="v4-ledger-bento__content"><span>LIVE PROJECT // RANAAN CCC</span><strong>Ranaan CCC</strong><p>Future Archives flip issue with campaign image systems and interactive spreads.</p><div class="v4-tags"><span class="v4-tag">Design</span><span class="v4-tag">Code</span><span class="v4-tag">AI</span></div></div></a>
+          <a class="v4-ledger-bento__card" href="public/projects/jiayou/jiayou-coffee-shop-website-v3.html" target="_blank" rel="noreferrer"><div class="v4-ledger-bento__media"><iframe src="public/projects/jiayou/jiayou-coffee-shop-website-v3.html" title="Jiayou preview" loading="lazy"></iframe></div><div class="v4-ledger-bento__content"><span>LIVE PROJECT // JIAYOU</span><strong>Jiayou Coffee</strong><p>Editorial coffee-shop site with shop, menu, and club rituals.</p><div class="v4-tags"><span class="v4-tag">Brand</span><span class="v4-tag">Code</span><span class="v4-tag">Retail</span></div></div></a>
+          <a class="v4-ledger-bento__card" href="nodear.html" target="_blank" rel="noreferrer"><div class="v4-ledger-bento__media"><iframe src="nodear.html" title="Nodear preview" loading="lazy"></iframe></div><div class="v4-ledger-bento__content"><span>ALTER EGO // NODEAR</span><strong>Nodear</strong><p>Music, identity, and archive portal orbiting the portfolio system.</p><div class="v4-tags"><span class="v4-tag">Audio</span><span class="v4-tag">Identity</span><span class="v4-tag">OS</span></div></div></a>
+        </div>
+        <div class="v4-ledger__list">
+          <div class="v4-ledger__table-head"><span>#</span><span>ASSET NAME</span><span>CATEGORY_SYS</span><span>CYCLE</span><span>STATE</span><span></span></div>
+          <article class="v4-ledger__item is-open" data-ledger-item><button class="v4-ledger__row" type="button"><span class="v4-ledger__index">01</span><span class="v4-ledger__title">SOVEREIGN BRAND SYSTEM</span><span class="v4-ledger__cat">Brand Identity</span><span class="v4-ledger__year">2025</span><span class="v4-ledger__status">SHIPPED</span><span class="v4-ledger__chevron">+</span></button><div class="v4-ledger__detail"><p class="v4-ledger__brief">End-to-end identity for a luxury streetwear label: type system, color architecture, motion language, and digital touchpoints.</p><div class="v4-ledger__tech"><span class="v4-ledger__chip">Figma</span><span class="v4-ledger__chip">After Effects</span><span class="v4-ledger__chip">React</span></div></div></article>
+          <article class="v4-ledger__item" data-ledger-item><button class="v4-ledger__row" type="button"><span class="v4-ledger__index">02</span><span class="v4-ledger__title">NEURAL ARCHIVE INTERFACE</span><span class="v4-ledger__cat">Technical Design</span><span class="v4-ledger__year">2025</span><span class="v4-ledger__status">LIVE</span><span class="v4-ledger__chevron">+</span></button><div class="v4-ledger__detail"><p class="v4-ledger__brief">Experimental editorial interface for an AI research archive with scroll-driven transitions, generative typography, and ambient particle fields.</p><div class="v4-ledger__tech"><span class="v4-ledger__chip">Next.js</span><span class="v4-ledger__chip">GSAP</span><span class="v4-ledger__chip">Three.js</span></div></div></article>
+          <article class="v4-ledger__item" data-ledger-item><button class="v4-ledger__row" type="button"><span class="v4-ledger__index">03</span><span class="v4-ledger__title">SIGNAL PROCESSING TOOLKIT</span><span class="v4-ledger__cat">Audio Production</span><span class="v4-ledger__year">2024</span><span class="v4-ledger__status">ACTIVE</span><span class="v4-ledger__chevron">+</span></button><div class="v4-ledger__detail"><p class="v4-ledger__brief">Custom audio processing chain for generative music production: spectral analysis, granular synthesis, and real-time visualization hooks.</p><div class="v4-ledger__tech"><span class="v4-ledger__chip">Ableton</span><span class="v4-ledger__chip">Max/MSP</span><span class="v4-ledger__chip">Python</span></div></div></article>
+        </div>
+      </section>
+      <section class="v4-capabilities"><p class="v4-kicker">CAPABILITY / SERVICE MODEL</p><div class="v4-capabilities__grid">
+        <article class="v4-cap-card"><div class="v4-cap-card__header"><span class="v4-cap-card__index">01</span><span class="v4-cap-card__metric">12+ PROJECTS</span></div><h3 class="v4-cap-card__title">CREATIVE DIRECTION</h3><p class="v4-cap-card__desc">Concept-to-execution visual leadership across brand, editorial, and digital.</p></article>
+        <article class="v4-cap-card"><div class="v4-cap-card__header"><span class="v4-cap-card__index">02</span><span class="v4-cap-card__metric">8 SYSTEMS</span></div><h3 class="v4-cap-card__title">BRAND IDENTITY</h3><p class="v4-cap-card__desc">Type, color, logos, motion language, and asset kits.</p></article>
+        <article class="v4-cap-card"><div class="v4-cap-card__header"><span class="v4-cap-card__index">03</span><span class="v4-cap-card__metric">REACT + VITE</span></div><h3 class="v4-cap-card__title">WEB DEVELOPMENT</h3><p class="v4-cap-card__desc">Production portfolio systems, component architecture, and deployment.</p></article>
+      </div></section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+
+  <section class="v4-window" id="app-prompt" data-window style="left:388px;top:140px;--window-index:3">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Prompt Flux</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-04 / IMAGE CONTEXT</span><span class="v4-window__status">Indexed</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>IMAGE ENGINE</span><span>CONTEXT / COLOR CHAOS / JSON PROFILE BANK</span></div><div class="v4-window__plate-row"><span>JSON profile bank</span><span>Color DNA</span><span>Prompt composer</span></div></div>
+      <section class="v4-prompt-flux">
+        <div><p class="v4-kicker">IMAGE CONTEXT / PROFILE-CONTROLLED PROMPTING</p><h2 class="v4-h2">PROMPT FLUX</h2></div>
+        <div><p class="v4-kicker" style="margin-bottom:8px">JSON PROFILE PALETTES</p><div class="v4-prompt-flux__palette-row" id="profilePalettes"></div></div>
+        <div class="v4-prompt-flux__selectors"><div class="v4-prompt-flux__selector"><label for="fluxStyle">STYLE</label><select id="fluxStyle"></select></div><div class="v4-prompt-flux__selector"><label for="fluxSubject">SUBJECT DNA</label><select id="fluxSubject"></select></div><div class="v4-prompt-flux__selector"><label for="fluxGrid">GRID LOGIC</label><select id="fluxGrid"></select></div><div class="v4-prompt-flux__selector"><label for="fluxMotion">MOTION CUE</label><select id="fluxMotion"></select></div></div>
+        <div class="v4-prompt-flux__output"><p id="fluxOutput" class="v4-prompt-flux__placeholder">Select a profile and compose a JSON-ready prompt bundle_</p></div>
+        <div class="v4-prompt-flux__actions"><button class="v4-prompt-flux__btn v4-prompt-flux__btn--primary" id="fluxCompose" type="button">Compose</button><button class="v4-prompt-flux__btn" id="fluxRandom" type="button">Randomize</button><button class="v4-prompt-flux__btn" id="fluxCopy" type="button" disabled>Copy</button></div>
+      </section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+
+  <section class="v4-window" id="app-lab" data-window style="left:428px;top:170px;--window-index:4">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Chaos Lab</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-05 / LAB</span><span class="v4-window__status">Signal active</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>EXPERIMENTAL MODULE</span><span>BRUSH / MEMBERSHIP / VISUAL TESTBED</span></div><div class="v4-window__plate-row"><span>Prompt generator</span><span>Splat canvas</span><span>Intake protocol</span></div></div>
+      <section class="v4-lab">
+        <div class="v4-lab__tabs"><button class="v4-tab is-active" type="button" data-lab-tab="prompt">PROMPT_GEN</button><button class="v4-tab" type="button" data-lab-tab="splat">SPLAT_TOOL</button></div>
+        <div class="v4-lab__panel"><div class="v4-lab__panel-head"><span>SYSTEM_STATUS: AUTHORIZED</span><span>CANVAS_PROTO_v8.2</span></div><div class="v4-lab__panel-body">
+          <div data-lab-panel="prompt"><div class="v4-lab__display" id="labPromptDisplay"><p>Ready for generation signal...</p></div><div class="v4-lab__actions" style="margin-top:12px"><button class="v4-prompt-flux__btn v4-prompt-flux__btn--primary" id="labGenerate" type="button">Generate</button><button class="v4-prompt-flux__btn" id="labCopy" type="button" disabled>Extract Prompt</button></div><div class="v4-lab__history" id="labHistory" style="display:grid;gap:8px;margin-top:12px"></div></div>
+          <div data-lab-panel="splat" hidden><div class="v4-lab__canvas-wrap"><canvas class="v4-lab__canvas" id="splatCanvas"></canvas><span class="v4-lab__canvas-label">CANVAS_PROTO_v8.2</span></div><div class="v4-lab__actions" style="margin-top:12px"><button class="v4-prompt-flux__btn" id="splatClear" type="button">Clear</button><button class="v4-prompt-flux__btn" id="splatSeed" type="button">Seed Noise</button></div></div>
+        </div></div>
+      </section>
+      <section class="v4-form"><div><p class="v4-kicker">MEMBERSHIP / INTAKE</p><h2 class="v4-h2">JOIN THE ARCHIVE</h2></div><div class="v4-form__steps"><span class="v4-form__step is-active">01 Identity Discovery</span><span class="v4-form__step">02 Archive Context</span><span class="v4-form__step">03 Intent & Brief</span><span class="v4-form__step">04 Transmission</span></div><form class="v4-form__panel" id="membershipForm" novalidate><div class="v4-form__fields"><label>Name<input id="memberName" required></label><label>Email<input id="memberEmail" type="email" required></label><label>Role<select id="memberRole" required><option value="">Select one</option><option value="studio">Studio / Brand Team</option><option value="collector">Collector / Client</option><option value="press">Press / Editorial</option></select></label><label>Project Brief<textarea id="memberSummary" rows="4" placeholder="Min 20 characters..."></textarea></label></div><div class="v4-form__actions" style="margin-top:12px"><button class="v4-form__button v4-form__button--primary" type="submit">REQUEST ACCESS_</button><span class="v4-form__status" id="membershipStatus">INTAKE_PROTOCOL_0x82 READY</span></div></form></section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+
+  <section class="v4-window" id="app-contact" data-window style="left:468px;top:200px;--window-index:5">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Contact Terminal</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-06 / OUTBOUND</span><span class="v4-window__status">Open channel</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>OUTBOUND LINK</span><span>EMAIL / MEMBERSHIP / WRITING PORTALS</span></div><div class="v4-window__plate-row"><span>Secure relay</span><span>Mailto fallback</span><span>Terminal input</span></div></div>
+      <section class="v4-contact-term"><div class="v4-contact-term__shell"><div class="v4-contact-term__titlebar"><div class="v4-contact-term__traffic"><span></span><span></span><span></span></div><span>nodear - zsh - 80x24</span></div><div class="v4-contact-term__output" id="contactOutput"></div><form class="v4-contact-term__form" id="contactForm"><div class="v4-contact-term__field"><label>nodear@MacBook-Pro ~ % name=</label><input id="contactName" autocomplete="off"></div><div class="v4-contact-term__field"><label>nodear@MacBook-Pro ~ % email=</label><input id="contactEmail" type="email" autocomplete="off"></div><div class="v4-contact-term__field"><label>nodear@MacBook-Pro ~ % msg=</label><textarea id="contactMessage" rows="3"></textarea></div><button type="submit" id="contactSubmit">./transmit.sh</button></form></div></section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+
+  <section class="v4-window" id="app-media-log" data-window style="left:508px;top:230px;--window-index:6">
+    <div class="v4-window__chrome" data-drag-handle><span class="traffic"><span></span><span></span><span></span></span><span class="v4-window__title">Media Log</span><div class="v4-window__chrome-meta"><span class="v4-window__serial">APP-07 / CONSUMPTION</span><span class="v4-window__status">Updated regularly</span></div></div>
+    <div class="v4-window__body">
+      <div class="v4-window__plate"><div class="v4-window__plate-meta"><span>CULTURAL INPUT</span><span>YOUTUBE / SPOTIFY / SOUNDCLOUD / ARTICLES</span></div><div class="v4-window__plate-row"><span>Listening log</span><span>Reference shelf</span><span>Consumption index</span></div></div>
+      <section class="v4-media-section"><div><div class="v4-kicker">LOG / ONGOING</div><h2 class="v4-h2" style="font-size:clamp(24px,3vw,38px)">Media I've consumed lately</h2><p class="v4-copy">A running list of videos, music, and articles I've been sitting with.</p></div><div class="v4-media-filters" id="mediaFilters"><button class="v4-media-filter-tab is-active" type="button" data-media-filter="all">ALL</button><button class="v4-media-filter-tab" type="button" data-media-filter="youtube">YOUTUBE</button><button class="v4-media-filter-tab" type="button" data-media-filter="spotify">SPOTIFY</button><button class="v4-media-filter-tab" type="button" data-media-filter="soundcloud">SOUNDCLOUD</button><button class="v4-media-filter-tab" type="button" data-media-filter="article">ARTICLE</button></div><div class="v4-media-grid">
+        <article class="v4-media-card" data-media-type="youtube" style="--type-color:#ff0000"><div class="v4-media-card__type"><span>PLAY</span><span>YouTube</span></div><div class="v4-media-card__thumb"><img src="https://img.youtube.com/vi/0oe2z6JhKgY/mqdefault.jpg" alt=""><div class="v4-media-card__play-overlay">PLAY</div></div><div class="v4-media-card__body"><div class="v4-media-card__meta"><span>Netflix</span><span>2025-04</span></div><a class="v4-media-card__title" href="https://www.youtube.com/watch?v=0oe2z6JhKgY" target="_blank" rel="noreferrer">Kanye West Documentary - Jeen-yuhs</a><p class="v4-media-card__note">Re-watching this. The hunger in the early footage is unreal.</p><div class="v4-media-card__tags"><span class="v4-media-card__tag">film</span><span class="v4-media-card__tag">music</span></div></div></article>
+        <article class="v4-media-card" data-media-type="spotify" style="--type-color:#1db954"><div class="v4-media-card__type"><span>SONG</span><span>Spotify</span></div><div class="v4-media-card__body"><div class="v4-media-card__meta"><span>Travis Scott</span><span>2025-04</span></div><a class="v4-media-card__title" href="https://open.spotify.com/album/18NOKLkZETa4sWwLMIm0UL" target="_blank" rel="noreferrer">Utopia</a><p class="v4-media-card__note">Still on heavy rotation. The production on MY EYES is disorienting in the best way.</p><div class="v4-media-card__tags"><span class="v4-media-card__tag">music</span><span class="v4-media-card__tag">rap</span></div></div></article>
+        <article class="v4-media-card" data-media-type="soundcloud" style="--type-color:#ff5500"><div class="v4-media-card__type"><span>WAVE</span><span>SoundCloud</span></div><div class="v4-media-card__body"><div class="v4-media-card__meta"><span>Sango</span><span>2025-03</span></div><a class="v4-media-card__title" href="https://soundcloud.com/sangosoundcloud/norte" target="_blank" rel="noreferrer">Sango - Norte</a><p class="v4-media-card__note">Found this again while going through old playlists. Pure texture.</p><div class="v4-media-card__tags"><span class="v4-media-card__tag">music</span><span class="v4-media-card__tag">electronic</span></div></div></article>
+        <article class="v4-media-card" data-media-type="article" style="--type-color:#8b9ec7"><div class="v4-media-card__type"><span>TEXT</span><span>Article</span></div><div class="v4-media-card__body"><div class="v4-media-card__meta"><span>Eye on Design</span><span>2025-04</span></div><a class="v4-media-card__title" href="https://eyeondesign.aiga.org/" target="_blank" rel="noreferrer">The Shifting Meaning of Authenticity in Design</a><p class="v4-media-card__note">Made me rethink how I talk about my own work.</p><div class="v4-media-card__tags"><span class="v4-media-card__tag">design</span><span class="v4-media-card__tag">culture</span></div></div></article>
+      </div></section>
+    </div>
+    <span class="v4-window__resize" data-resize-handle></span>
+  </section>
+</main>
+
+<aside class="v4-ipod-app" id="ipodApp" aria-label="V4 iPod Classic music player">
+  <audio id="ipodAudio" preload="metadata"></audio>
+  <div class="v4-ipod-app__toolbar"><button class="v4-ipod-app__grabber" id="ipodDrag" type="button" aria-label="Drag iPod player"><span></span><p>drag iPod</p></button><button class="v4-ipod-app__mode-toggle" id="ipodMode" type="button"><span id="ipodModeValue">LGT</span><span>Theme</span></button></div>
+  <div class="v4-ipod-body">
+    <div class="ipod-screen">
+      <div class="ipod-row"><span id="ipodScreenTitle">Now playing</span><span id="ipodSource">file</span></div>
+      <div class="ipod-panel is-active" id="ipodNow"><div class="ipod-title"><strong id="ipodTitle">AUREA Brand Film</strong><span id="ipodArtist">Portfolio Source</span></div><div class="ipod-row"><span id="ipodStatus">Paused</span><span><span id="ipodCurrent">0:00</span> / <span id="ipodDuration">0:00</span></span></div><div class="ipod-visualizer"><div class="ipod-bars" id="ipodBars"></div></div><div class="ipod-wave" id="ipodWave"></div><div class="ipod-row"><span id="ipodVolume">Vol 70%</span><span id="ipodCount">1 items</span></div></div>
+      <div class="ipod-panel" id="ipodLibrary"><div class="ipod-row"><span>Library</span><span id="ipodLibraryCount">1/1</span></div><div class="ipod-list" id="ipodList"></div></div>
+      <div class="ipod-panel" id="ipodAdd"><div class="ipod-row"><span>Add source</span><span>upload/url</span></div><div class="ipod-sources"><button type="button" id="ipodBrowse">Browse audio</button><button type="button" id="ipodUrlMode">Direct URL</button></div><form class="ipod-form" id="ipodUrlForm"><input id="ipodUrl" type="url" placeholder="Direct audio URL"><input id="ipodUrlTitle" placeholder="Title"><input id="ipodUrlArtist" placeholder="Artist"><button type="submit">Add to library</button></form></div>
+    </div>
+    <div class="v4-ipod-wheel" id="ipodWheel"><button type="button" class="wheel-top" id="ipodMenu">MENU</button><button type="button" class="wheel-left" id="ipodPrev">&lt;&lt;</button><button type="button" class="wheel-right" id="ipodNext">&gt;&gt;</button><button type="button" class="wheel-bottom" id="ipodAddButton">ADD</button><button type="button" class="wheel-center" id="ipodCenter">PLAY</button></div>
+    <div class="v4-ipod-body__meta"><span>Drag handle</span><span id="ipodSkin">Silver</span><span>Resize via theme</span><span id="ipodWidth">336 px</span></div>
+  </div>
+  <input id="ipodFile" type="file" accept="audio/*,video/mp4" multiple hidden>
+</aside>
+
+<nav class="v4-os-dock-container" aria-label="V4 dock"><div class="v4-os-dock">
+  <a class="dock-icon" href="portfolio.html" aria-label="Main"><span class="dock-glyph">RAE</span><span class="dock-label">Main</span></a>
+  <button class="dock-icon is-active" type="button" data-focus-window="app-artifact" aria-label="V4">
+    <span class="dock-glyph dock-glyph--img">
+      <!-- Terminal -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="termBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a3a3a"/>
+            <stop offset="1" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <linearGradient id="termSheen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,0.18)"/>
+            <stop offset="0.55" stop-color="rgba(255,255,255,0)"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#termBg)"/>
+        <rect x="2" y="2" width="60" height="30" rx="14" fill="url(#termSheen)"/>
+        <path d="M16 22 L26 32 L16 42" fill="none" stroke="#f4f4f4" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="28" y="40" width="14" height="3.5" rx="1.5" fill="#cfcfcf"/>
+      </svg>
+    </span>
+    <span class="dock-label">V4</span>
+  </button>
+  <button class="dock-icon" type="button" data-focus-window="app-media-log" aria-label="Media log">
+    <span class="dock-glyph dock-glyph--img">
+      <!-- Notes -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="notesPaper" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#ece8de"/>
+          </linearGradient>
+          <linearGradient id="notesHeader" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffd95a"/>
+            <stop offset="1" stop-color="#f5b626"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#notesPaper)"/>
+        <path d="M2 16 Q2 2 16 2 L48 2 Q62 2 62 16 L62 19 L2 19 Z" fill="url(#notesHeader)"/>
+        <g fill="#b9b3a5">
+          <circle cx="10" cy="23.5" r="1.1"/><circle cx="15" cy="23.5" r="1.1"/><circle cx="20" cy="23.5" r="1.1"/>
+          <circle cx="25" cy="23.5" r="1.1"/><circle cx="30" cy="23.5" r="1.1"/><circle cx="35" cy="23.5" r="1.1"/>
+          <circle cx="40" cy="23.5" r="1.1"/><circle cx="45" cy="23.5" r="1.1"/><circle cx="50" cy="23.5" r="1.1"/><circle cx="55" cy="23.5" r="1.1"/>
+        </g>
+        <g stroke="#d8d2c3" stroke-width="1.2">
+          <line x1="8" y1="34" x2="56" y2="34"/>
+          <line x1="8" y1="44" x2="56" y2="44"/>
+          <line x1="8" y1="54" x2="56" y2="54"/>
+        </g>
+      </svg>
+    </span>
+    <span class="dock-label">Media</span>
+  </button>
+  <button class="dock-icon" type="button" data-focus-window="app-ledger" aria-label="Work">
+    <span class="dock-glyph dock-glyph--img">
+      <!-- Contacts -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e2dfd6"/>
+            <stop offset="1" stop-color="#c9c6bd"/>
+          </linearGradient>
+        </defs>
+        <!-- color tabs peeking from right -->
+        <rect x="48" y="14" width="14" height="6" rx="1.2" fill="#5db1f3"/>
+        <rect x="48" y="24" width="14" height="6" rx="1.2" fill="#ffb547"/>
+        <rect x="48" y="34" width="14" height="6" rx="1.2" fill="#5fd07a"/>
+        <rect x="48" y="44" width="14" height="6" rx="1.2" fill="#ef6a6a"/>
+        <!-- main card -->
+        <rect x="2" y="2" width="54" height="60" rx="13" fill="url(#cardBg)"/>
+        <!-- avatar circle -->
+        <circle cx="29" cy="33" r="17" fill="none" stroke="#a8a59c" stroke-width="2"/>
+        <circle cx="29" cy="27" r="6" fill="#a8a59c"/>
+        <path d="M14 47 Q29 36 44 47 L44 49 L14 49 Z" fill="#a8a59c"/>
+      </svg>
+    </span>
+    <span class="dock-label">Work</span>
+  </button>
+  <a class="dock-icon" href="nodear.html" aria-label="Nodear"><span class="dock-glyph">N*</span><span class="dock-label">Nodear</span></a>
+  <button class="dock-icon" type="button" data-focus-window="app-contact" aria-label="Contact">
+    <span class="dock-glyph dock-glyph--img">
+      <!-- Messages -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="msgBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5ee06a"/>
+            <stop offset="1" stop-color="#1eb14b"/>
+          </linearGradient>
+          <linearGradient id="bubble" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#e6efe7"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#msgBg)"/>
+        <!-- speech bubble -->
+        <path d="M14 22 Q14 14 24 14 L42 14 Q52 14 52 24 L52 34 Q52 42 42 42 L28 42 L20 50 L22 42 Q14 41 14 34 Z"
+              fill="url(#bubble)" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+      </svg>
+    </span>
+    <span class="dock-label">Contact</span>
+  </button>
+</div></nav>
+
+<div class="v4-sticker" id="v4Sticker" role="img" aria-label="Draggable V4 sticker"><span class="v4-sticker__badge">V4</span><span class="v4-sticker__sub">CHAOS</span></div>
+
+<script>
+(() => {
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const fmt = (seconds) => !Number.isFinite(seconds) || seconds <= 0 ? '0:00' : `${Math.floor(seconds / 60)}:${Math.floor(seconds % 60).toString().padStart(2, '0')}`;
+  const pick = (items) => items[Math.floor(Math.random() * items.length)];
+
+  const themes = { 'sound-room':'Sound', cobalt:'Cobalt', charcoal:'Charcoal', showdown:'Showdown', elite:'Elite', mint:'Mint', neon:'Neon' };
+  const themeButton = $('#themeMenuButton');
+  const themePicker = $('#themePicker');
+  const themeLabel = $('#themeLabel');
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-archive-theme', theme);
+    localStorage.setItem('v4-static-theme', theme);
+    if (themeLabel) themeLabel.textContent = themes[theme] || theme;
+    $$('.theme-option').forEach(button => button.classList.toggle('is-active', button.dataset.theme === theme));
+  }
+  setTheme(localStorage.getItem('v4-static-theme') || 'sound-room');
+  themeButton?.addEventListener('click', () => themePicker?.classList.toggle('is-open'));
+  $$('.theme-option').forEach(button => button.addEventListener('click', () => { setTheme(button.dataset.theme); themePicker?.classList.remove('is-open'); }));
+  $$('[data-theme-jump]').forEach(button => button.addEventListener('click', () => setTheme(button.dataset.themeJump)));
+  function tickClock() {
+    const now = new Date();
+    $('#menuTime').textContent = now.toLocaleString([], { weekday:'short', hour:'numeric', minute:'2-digit' });
+    $('#railClock').textContent = now.toLocaleTimeString('en-US', { hour12:false });
+    const hour = now.getHours(), minute = now.getMinutes(), second = now.getSeconds();
+    const hourAngle = ((hour % 12) + minute / 60) * 30;
+    const minuteAngle = (minute + second / 60) * 6;
+    const secondAngle = second * 6;
+    $('#v4AnalogHour')?.style.setProperty('--angle', `${hourAngle}deg`);
+    $('#v4AnalogMinute')?.style.setProperty('--angle', `${minuteAngle}deg`);
+    $('#v4AnalogSecond')?.style.setProperty('--angle', `${secondAngle}deg`);
+    const analogReadout = $('#v4AnalogReadout');
+    if (analogReadout) analogReadout.textContent = now.toLocaleTimeString('en-US', { hour12:false });
+    const branches = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+    const branchRanges = ['23-01','01-03','03-05','05-07','07-09','09-11','11-13','13-15','15-17','17-19','19-21','21-23'];
+    const branchIndex = Math.floor(((hour + 1) % 24) / 2);
+    $$('.v4-oriental-clock__branch').forEach((item, index) => item.classList.toggle('is-active', index === branchIndex));
+    const branch = branches[branchIndex];
+    const orientalBranch = $('#v4OrientalBranch');
+    const orientalPeriodLabel = $('#v4OrientalPeriodLabel');
+    const orientalTime = $('#v4OrientalTime');
+    const orientalDate = $('#v4OrientalDate');
+    const orientalRange = $('#v4OrientalRange');
+    if (orientalBranch) orientalBranch.textContent = branch;
+    if (orientalPeriodLabel) orientalPeriodLabel.textContent = `${branch} / ${branchRanges[branchIndex]}`;
+    if (orientalTime) orientalTime.textContent = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', hour12:false });
+    if (orientalDate) orientalDate.textContent = now.toLocaleDateString('en-CA').replaceAll('-', '.');
+    if (orientalRange) orientalRange.textContent = `${branchRanges[branchIndex]} FIELD`;
+  }
+  tickClock(); setInterval(tickClock, 1000);
+
+  const kineticWords = ['CHAOTIC','BRUTALIST','AUTONOMOUS','UTILITARIAN','EDITORIAL','ARCHIVAL'];
+  setInterval(() => { const el = $('#kineticWord'); if (el) el.textContent = pick(kineticWords); }, 2800);
+  $('#artifactHash').textContent = Math.random().toString(36).slice(2, 11).toUpperCase();
+
+  const bgTerminal = $('#bgTerminal');
+  if (bgTerminal) {
+    const lines = ['Archive mode initialized...','Creative systems loaded.','Brutalist discipline engaged.','Visual DNA: Abloh x Ross x Owens x Apple.','Portfolio v4 - chaos with structure.','All systems nominal.','Rendering alter ego surface...'];
+    let idx = 0;
+    function typeLine() {
+      const text = lines[idx % lines.length], row = document.createElement('p');
+      row.className = 'v4-bg-terminal__line v4-bg-terminal__line--active';
+      bgTerminal.appendChild(row);
+      let i = 0;
+      const id = setInterval(() => {
+        row.innerHTML = `&gt; ${text.slice(0, i)}<span class="v4-bg-terminal__cursor">█</span>`;
+        i++;
+        if (i > text.length) {
+          clearInterval(id);
+          row.textContent = `> ${text}`;
+          while (bgTerminal.children.length > 12) bgTerminal.removeChild(bgTerminal.firstElementChild);
+          idx++; setTimeout(typeLine, 1800);
+        }
+      }, 42);
+    }
+    setTimeout(typeLine, 600);
+  }
+
+  let topZ = 100;
+  const windows = $$('.v4-window');
+  function focusWindow(win) {
+    if (!win) return;
+    win.style.zIndex = ++topZ;
+    windows.forEach(item => item.classList.toggle('is-focused', item === win));
+    const index = Math.max(0, windows.indexOf(win));
+    $('#railProgressValue').textContent = `${Math.round((index / Math.max(1, windows.length - 1)) * 100)}%`;
+    $('#railProgressBar').style.transform = `scaleX(${index / Math.max(1, windows.length - 1)})`;
+    $$('[data-focus-window]').forEach(item => item.classList.toggle('is-active', item.dataset.focusWindow === win.id));
+  }
+  windows.forEach((win, index) => {
+    win.style.zIndex = String(20 + index);
+    const handle = $('[data-drag-handle]', win), resizeHandle = $('[data-resize-handle]', win);
+    let drag = null, resize = null;
+    win.addEventListener('pointerdown', () => focusWindow(win));
+    handle?.addEventListener('pointerdown', event => {
+      if (matchMedia('(max-width:700px)').matches || event.target.closest('button,a,input,textarea,select,label')) return;
+      const rect = win.getBoundingClientRect();
+      drag = { x:event.clientX - rect.left, y:event.clientY - rect.top };
+      win.classList.add('is-dragging');
+      focusWindow(win);
+      handle.setPointerCapture(event.pointerId);
+    });
+    handle?.addEventListener('pointermove', event => {
+      if (!drag) return;
+      win.style.left = `${Math.max(248, Math.min(innerWidth - 80, event.clientX - drag.x))}px`;
+      win.style.top = `${Math.max(0, Math.min(innerHeight - 80, event.clientY - drag.y - 28))}px`;
+    });
+    const endDrag = () => { drag = null; win.classList.remove('is-dragging'); };
+    handle?.addEventListener('pointerup', endDrag); handle?.addEventListener('pointercancel', endDrag);
+    resizeHandle?.addEventListener('pointerdown', event => {
+      if (matchMedia('(max-width:700px)').matches) return;
+      event.preventDefault(); event.stopPropagation();
+      resize = { x:event.clientX, y:event.clientY, w:win.offsetWidth, h:win.offsetHeight };
+      focusWindow(win); resizeHandle.setPointerCapture(event.pointerId);
+    });
+    resizeHandle?.addEventListener('pointermove', event => {
+      if (!resize) return;
+      win.style.width = `${Math.max(360, resize.w + event.clientX - resize.x)}px`;
+      win.style.height = `${Math.max(280, resize.h + event.clientY - resize.y)}px`;
+    });
+    resizeHandle?.addEventListener('pointerup', () => { resize = null; });
+  });
+  focusWindow($('#app-artifact'));
+  $$('[data-focus-window]').forEach(control => control.addEventListener('click', event => {
+    const target = document.getElementById(control.dataset.focusWindow);
+    if (!target) return;
+    event.preventDefault();
+    focusWindow(target);
+    if (matchMedia('(max-width:700px)').matches) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  }));
+  $$('[data-ledger-item] .v4-ledger__row').forEach(row => row.addEventListener('click', () => row.closest('[data-ledger-item]')?.classList.toggle('is-open')));
+
+  const qtLibraryItems = [
+    { title:'AUREA Brand Film', url:'public/projects/aurea/brand-video.mp4', source:'local', kind:'file' },
+    { title:'Background Reel', url:'background-video.mp4', source:'url', kind:'file' }
+  ];
+  let qtMode = 'upload', qtIndex = 0;
+  function youtubeEmbed(url) { const m = String(url).match(/(?:v=|youtu\.be\/|embed\/)([\w-]+)/); return m ? `https://www.youtube.com/embed/${m[1]}?autoplay=1&rel=0` : ''; }
+  function renderQtLibrary() {
+    const box = $('#qtLibrary'); if (!box) return;
+    box.innerHTML = ''; $('#qtLibraryCount').textContent = `${qtLibraryItems.length} items`;
+    qtLibraryItems.forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = `v4-quicktime__library-item${index === qtIndex ? ' is-active' : ''}`;
+      row.innerHTML = `<button class="v4-button v4-quicktime__select" type="button"><span>${String(index + 1).padStart(2,'0')}</span><strong>${item.title}</strong><em>${item.source}</em></button><button class="v4-button" type="button">Remove</button>`;
+      $('.v4-quicktime__select', row).addEventListener('click', () => selectQt(index, true));
+      $('button:last-child', row).addEventListener('click', () => { qtLibraryItems.splice(index, 1); qtIndex = Math.max(0, Math.min(qtIndex, qtLibraryItems.length - 1)); if (qtLibraryItems.length) selectQt(qtIndex, false); renderQtLibrary(); });
+      box.appendChild(row);
+    });
+  }
+  function selectQt(index, play) {
+    const video = $('#qtVideo'), frame = $('#qtFrame'), empty = $('#qtEmpty');
+    if (!qtLibraryItems.length || !video || !frame) return;
+    qtIndex = (index + qtLibraryItems.length) % qtLibraryItems.length;
+    const item = qtLibraryItems[qtIndex];
+    $('#qtTitle').textContent = item.title; $('#qtSource').textContent = item.source.toUpperCase();
+    if (item.kind === 'youtube') {
+      video.pause(); video.hidden = true; frame.hidden = false; frame.src = youtubeEmbed(item.url); if (empty) empty.hidden = true; $('#qtPlay').textContent = 'Embed';
+    } else {
+      frame.hidden = true; frame.removeAttribute('src'); video.hidden = false; video.src = item.url; video.load(); if (empty) empty.hidden = Boolean(item.url); if (play) video.play().catch(() => {});
+    }
+    renderQtLibrary();
+  }
+  $('#qtQuickForm')?.addEventListener('submit', event => {
+    event.preventDefault(); const input = $('#qtQuickUrl'), url = input?.value.trim(); if (!url) return;
+    const kind = /youtube\.com|youtu\.be/.test(url) ? 'youtube' : 'file';
+    qtLibraryItems.push({ title:decodeURIComponent(url.split('/').pop().split('?')[0] || 'Video'), url, source:kind === 'youtube' ? 'youtube' : 'url', kind });
+    input.value = ''; selectQt(qtLibraryItems.length - 1, true);
+  });
+  $('#qtTabs')?.addEventListener('click', event => {
+    const button = event.target.closest('[data-qt-mode]'); if (!button) return;
+    qtMode = button.dataset.qtMode; $$('#qtTabs .v4-tab').forEach(tab => tab.classList.toggle('is-active', tab === button));
+    $('#qtUploadLabel').hidden = qtMode !== 'upload'; $('#qtAddForm').hidden = qtMode === 'upload';
+    $('#qtAddUrl').placeholder = qtMode === 'youtube' ? 'https://www.youtube.com/watch?v=...' : 'Direct video URL';
+  });
+  $('#qtUploadLabel')?.addEventListener('click', () => $('#qtFile')?.click());
+  $('#qtFile')?.addEventListener('change', event => { Array.from(event.target.files || []).forEach((file, i) => { qtLibraryItems.push({ title:file.name.replace(/\.[^/.]+$/, ''), url:URL.createObjectURL(file), source:'upload', kind:'file' }); if (i === 0) selectQt(qtLibraryItems.length - 1, true); }); });
+  $('#qtAddForm')?.addEventListener('submit', event => { event.preventDefault(); const url = $('#qtAddUrl')?.value.trim(); if (!url) return; qtLibraryItems.push({ title:$('#qtAddTitle')?.value.trim() || 'Untitled video', url, source:qtMode, kind:qtMode === 'youtube' ? 'youtube' : 'file' }); event.target.reset(); selectQt(qtLibraryItems.length - 1, true); });
+  $('#qtPlay')?.addEventListener('click', () => { const v = $('#qtVideo'); if (!v || v.hidden) return; if (v.paused) v.play().catch(() => {}); else v.pause(); });
+  $('#qtMute')?.addEventListener('click', () => { const v = $('#qtVideo'); if (!v) return; v.muted = !v.muted; $('#qtMute').textContent = v.muted ? 'Unmute' : 'Mute'; });
+  $('#qtVolume')?.addEventListener('input', () => { $('#qtVideo').volume = Number($('#qtVolume').value); });
+  $('#qtSeek')?.addEventListener('input', () => { const v = $('#qtVideo'); if (v?.duration) v.currentTime = (Number($('#qtSeek').value) / 100) * v.duration; });
+  $('#qtVideo')?.addEventListener('play', () => { $('#qtPlay').textContent = 'Pause'; });
+  $('#qtVideo')?.addEventListener('pause', () => { $('#qtPlay').textContent = 'Play'; });
+  $('#qtVideo')?.addEventListener('timeupdate', () => { const v = $('#qtVideo'); $('#qtCurrent').textContent = fmt(v.currentTime); $('#qtDuration').textContent = fmt(v.duration); if (v.duration) $('#qtSeek').value = Math.round((v.currentTime / v.duration) * 100); });
+  renderQtLibrary();
+
+  const profiles = [
+    { id:'showdown', sourceId:'image_01_showdown_tracklist_poster', label:'Showdown', scene:'A gridded album tracklist poster with collage panels, halftone photography, torn-paper textures, and blue-red-white blocking.', style:'K-pop editorial tracklist poster mixed with zine layout and 1990s print graphics', layoutPrinciples:['hard modular grid','duotone photo blocking','large numbered hierarchy','print-production details'], editorialNote:'Preserve the hard grid, imperfect print grain, and spot-color restraint.', palette:['#19265A','#E74A26','#F4F1EC','#9B9A95','#111111'] },
+    { id:'elite', sourceId:'image_02_elite_designs_long_website', label:'Elite', scene:'A full-page creative agency website mockup with editorial spacing, cream background, red-black typography, and floating portfolio cards.', style:'luxury editorial creative-studio website', layoutPrinciples:['large whitespace','asymmetric image placement','bold red typographic anchor','black contrast sections'], editorialNote:'Keep the layout sparse, tense, and editorial.', palette:['#EDE8E3','#050505','#C94135','#FFFFFF','#A79D96'] },
+    { id:'streetwear', sourceId:'image_03_streetwear_ecommerce_archive', label:'Streetwear', scene:'A monochrome streetwear e-commerce presentation with product grid, floating product cards, and mobile checkout overlays.', style:'monochrome brutalist streetwear e-commerce presentation', layoutPrinciples:['strict modular grid','floating tilted product cards','desktop-to-mobile system showcase'], editorialNote:'Preserve raw monochrome contrast and layered ecosystem.', palette:['#050505','#F4F4F4','#3D3D3D','#A9A9A9','#1A1A1A'] },
+    { id:'sound', sourceId:'image_04_sound_room_mobile_ui', label:'Sound Room', scene:'Two black smartphone mockups showing monochrome editorial music/archive UI screens with flyer grid and zine text.', style:'monochrome mobile zine UI', layoutPrinciples:['two-device comparison','high-contrast screen design','large bottom brand label'], editorialNote:'Hold strict monochrome hierarchy and oversized labels.', palette:['#0A0A0A','#F2F2F2','#666666','#BFBFBF','#1A1A1A'] },
+    { id:'neon', sourceId:'image_05_ty_kawabe_poster_collage', label:'Ty Kawabe', scene:'A collage of nine experimental posters with neon yellow, red, cyan, black, and archival image fragments.', style:'experimental daily poster collage / cyber-zine graphic design', layoutPrinciples:['panel grid','fragmented text','high-contrast color blocking','archival image disruption'], editorialNote:'Maintain chaotic poster energy and fragmented text.', palette:['#F4F000','#050505','#D71916','#00BCEB','#FFFFFF'] }
+  ];
+  const continuity = { colorGradingRules:['Keep contrast high for typography, but preserve grayscale detail in embedded photos.','Use selective saturation only for brand-accent zones.','Allow paper grain and halftone dots to remain visible.'], motionGrammar:['parallax pan over static layout','micro zoom into typography details','slow reveal of photo fragments','layered collage crossfade','hard cuts between sections'], gridLegend:{ posterGrid:'hard rectangular modules, borders, track panels, archive cards', websiteGrid:'large whitespace, horizontal sections, editorial asymmetry', ecommerceGrid:'product tiles, filter panels, checkout forms, mobile overlays', collageGrid:'multi-panel clusters with intentional edge collisions' }, coloristNotes:['Keep cream editorial whites slightly warm.','Keep monochrome interfaces neutral to cool.','Retain gray paper and fabric textures in shadows.'] };
+  const styleOptions = [...new Set(profiles.map(p => p.style))], subjectOptions = [...new Set(profiles.flatMap(p => p.layoutPrinciples))], gridOptions = Object.entries(continuity.gridLegend).map(([value, label]) => ({ value, label }));
+  let activeProfile = profiles[0], fluxPayload = '';
+  function fillSelect(select, items, mapper = item => ({ value:item, label:item })) { if (!select) return; select.innerHTML = ''; items.forEach(item => { const data = mapper(item), option = document.createElement('option'); option.value = data.value; option.textContent = data.label; select.appendChild(option); }); }
+  function renderProfiles() { const row = $('#profilePalettes'); if (!row) return; row.innerHTML = ''; profiles.forEach(profile => { const button = document.createElement('button'); button.type = 'button'; button.className = `v4-prompt-flux__palette${profile.id === activeProfile.id ? ' is-active' : ''}`; button.innerHTML = `<div class="v4-prompt-flux__swatches">${profile.palette.slice(0,5).map(color => `<span style="background:${color}"></span>`).join('')}</div><span class="v4-prompt-flux__palette-label">${profile.label}</span>`; button.addEventListener('click', () => setActiveProfile(profile.id)); row.appendChild(button); }); }
+  function setActiveProfile(id) { activeProfile = profiles.find(p => p.id === id) || profiles[0]; $('#fluxStyle').value = activeProfile.style; $('#fluxSubject').value = activeProfile.layoutPrinciples[0] || subjectOptions[0]; renderProfiles(); }
+  fillSelect($('#fluxStyle'), styleOptions); fillSelect($('#fluxSubject'), subjectOptions); fillSelect($('#fluxGrid'), gridOptions, item => item); fillSelect($('#fluxMotion'), continuity.motionGrammar); renderProfiles(); setActiveProfile(activeProfile.id);
+  $('#fluxCompose')?.addEventListener('click', () => { const payload = { reference_profile:activeProfile.sourceId, scene:activeProfile.scene, style:$('#fluxStyle')?.value || activeProfile.style, subject:$('#fluxSubject')?.value || activeProfile.layoutPrinciples[0], layout_grid:$('#fluxGrid')?.value || gridOptions[0].value, motion:$('#fluxMotion')?.value || continuity.motionGrammar[0], palette_hex:activeProfile.palette, color_grading_rule:pick(continuity.colorGradingRules), colorist_note:pick(continuity.coloristNotes), editorial_note:activeProfile.editorialNote, render_spec:'4K editorial quality, preserve grain, keep typography crisp, no smoothing', negative_prompt:'no playful gradients, no rounded-casual app chrome, no typographic blur' }; fluxPayload = JSON.stringify(payload, null, 2); $('#fluxOutput').textContent = fluxPayload; $('#fluxOutput').classList.remove('v4-prompt-flux__placeholder'); $('#fluxCopy').removeAttribute('disabled'); });
+  $('#fluxRandom')?.addEventListener('click', () => { setActiveProfile(pick(profiles).id); $('#fluxStyle').value = pick(styleOptions); $('#fluxSubject').value = pick(subjectOptions); $('#fluxGrid').value = pick(gridOptions).value; $('#fluxMotion').value = pick(continuity.motionGrammar); $('#fluxOutput').textContent = 'Select a profile and compose a JSON-ready prompt bundle_'; $('#fluxOutput').classList.add('v4-prompt-flux__placeholder'); fluxPayload = ''; $('#fluxCopy').setAttribute('disabled',''); });
+  $('#fluxCopy')?.addEventListener('click', () => { if (!fluxPayload) return; navigator.clipboard?.writeText(fluxPayload).then(() => { $('#fluxCopy').textContent = 'Copied'; setTimeout(() => { $('#fluxCopy').textContent = 'Copy'; }, 1400); }).catch(() => {}); });
+
+  const labSubjects = ['a fragmented identity archive','noise degrading into signal','brutalist editorial spread','glitched luxury typography','aerial surveillance grid','corrupted color field','negative space manifesto','deconstructed brand system'];
+  const labMoods = ['rendered in deep obsidian with red accents','brutalist - high contrast, no softness','editorial - asymmetric, intentional white space','archival - worn, typewritten, damaged','glitch - signal interrupted, artifacts present'];
+  const labTech = ['using only CSS clip-path animations','as a Framer Motion stagger sequence','generated from a noise function seed','as WebGL shader with custom GLSL','via CSS mask and backdrop-filter layers'];
+  const labFormats = ['for a magazine double-page spread','as a loading state concept','as a hero section above the fold','as ambient background motion','as an OS-level UI pattern'];
+  let labPrompt = ''; const labHistory = [];
+  function generateLabPrompt() { labPrompt = `Design ${pick(labSubjects)}, ${pick(labMoods)}, ${pick(labTech)} - ${pick(labFormats)}.`; $('#labPromptDisplay').innerHTML = `<p>${labPrompt}</p>`; labHistory.unshift(labPrompt); labHistory.splice(6); $('#labHistory').innerHTML = labHistory.map(item => `<button class="v4-prompt-flux__btn" type="button">${item}</button>`).join(''); $$('#labHistory button').forEach((button, index) => button.addEventListener('click', () => { labPrompt = labHistory[index]; $('#labPromptDisplay').innerHTML = `<p>${labPrompt}</p>`; })); $('#labCopy').removeAttribute('disabled'); }
+  $$('[data-lab-tab]').forEach(button => button.addEventListener('click', () => { const tab = button.dataset.labTab; $$('[data-lab-tab]').forEach(item => item.classList.toggle('is-active', item === button)); $$('[data-lab-panel]').forEach(panel => { panel.hidden = panel.dataset.labPanel !== tab; }); if (tab === 'splat') requestAnimationFrame(resizeSplatCanvas); }));
+  $('#labGenerate')?.addEventListener('click', generateLabPrompt);
+  $('#labCopy')?.addEventListener('click', () => { if (!labPrompt) return; navigator.clipboard?.writeText(labPrompt).then(() => { $('#labCopy').textContent = 'COPIED_SIGNAL'; setTimeout(() => { $('#labCopy').textContent = 'EXTRACT_PROMPT'; }, 1400); }).catch(() => {}); });
+  const splatCanvas = $('#splatCanvas'), splatCtx = splatCanvas?.getContext('2d'); let drawing = false;
+  function resizeSplatCanvas() { if (!splatCanvas || !splatCtx) return; const rect = splatCanvas.getBoundingClientRect(), ratio = devicePixelRatio || 1; splatCanvas.width = Math.max(1, Math.floor(rect.width * ratio)); splatCanvas.height = Math.max(1, Math.floor(rect.height * ratio)); splatCtx.setTransform(ratio,0,0,ratio,0,0); }
+  function seedSplat() { if (!splatCanvas || !splatCtx) return; resizeSplatCanvas(); const rect = splatCanvas.getBoundingClientRect(); for (let i = 0; i < 44; i++) { splatCtx.fillStyle = i % 3 === 0 ? 'rgba(255,64,64,.34)' : i % 3 === 1 ? 'rgba(185,231,254,.28)' : 'rgba(255,255,255,.14)'; splatCtx.beginPath(); splatCtx.arc(Math.random() * rect.width, Math.random() * rect.height, 4 + Math.random() * 38, 0, Math.PI * 2); splatCtx.fill(); } }
+  splatCanvas?.addEventListener('pointerdown', event => { drawing = true; splatCanvas.setPointerCapture(event.pointerId); });
+  splatCanvas?.addEventListener('pointermove', event => { if (!drawing || !splatCtx) return; const rect = splatCanvas.getBoundingClientRect(); splatCtx.fillStyle = 'rgba(255,64,64,.32)'; splatCtx.beginPath(); splatCtx.arc(event.clientX - rect.left, event.clientY - rect.top, 6 + Math.random() * 24, 0, Math.PI * 2); splatCtx.fill(); });
+  splatCanvas?.addEventListener('pointerup', () => { drawing = false; });
+  $('#splatClear')?.addEventListener('click', () => { if (splatCanvas && splatCtx) splatCtx.clearRect(0,0,splatCanvas.width,splatCanvas.height); });
+  $('#splatSeed')?.addEventListener('click', seedSplat); addEventListener('resize', resizeSplatCanvas); resizeSplatCanvas(); seedSplat();
+  $('#membershipForm')?.addEventListener('submit', event => { event.preventDefault(); const name = $('#memberName')?.value.trim(), email = $('#memberEmail')?.value.trim(), summary = $('#memberSummary')?.value.trim(), status = $('#membershipStatus'); if (!name || !/\S+@\S+\.\S+/.test(email || '')) { status.textContent = 'ERROR: IDENTITY FIELDS REQUIRED'; return; } if (summary && summary.length < 20) { status.textContent = 'ERROR: BRIEF MIN 20 CHARS'; return; } status.textContent = 'TRANSMITTING TO THE VAULT...'; $$('.v4-form__step').forEach((step, i) => step.classList.toggle('is-active', i <= 3)); setTimeout(() => { status.textContent = `ACCESS PENDING REVIEW / SIGNAL SENT TO ${email}`; event.target.reset(); }, 1000); });
+
+  const contactOutput = $('#contactOutput'), bootLines = [`Last login: ${new Date().toDateString()} on ttys001`,'nodear@MacBook-Pro ~ % ./init_contact.sh','> INITIALIZING SECURE RELAY...','> ESTABLISHING CONNECTION TO NODE_06...','> CONNECTION ESTABLISHED. AES-256-GCM ENCRYPTION ACTIVE.','','Enter your details below to route a message to Raehdojhn.',''];
+  function appendContactLine(line) { if (!contactOutput) return; const row = document.createElement('p'); row.textContent = line || '\\u00A0'; row.style.color = line.startsWith('nodear') ? '#4af626' : line.startsWith('Last login') ? '#999' : '#e0e0e0'; contactOutput.appendChild(row); contactOutput.scrollTop = contactOutput.scrollHeight; }
+  bootLines.forEach((line, i) => setTimeout(() => appendContactLine(line), i * 120));
+  $('#contactForm')?.addEventListener('submit', event => { event.preventDefault(); const name = $('#contactName')?.value.trim(), email = $('#contactEmail')?.value.trim(), message = $('#contactMessage')?.value.trim(); appendContactLine('nodear@MacBook-Pro ~ % ./transmit.sh'); if (!name || !email || !message) { appendContactLine('> ERROR: Missing required parameters.'); return; } appendContactLine(`> PACKET: FROM ${name} <${email}>`); appendContactLine(`> PAYLOAD: ${message.slice(0,42)}${message.length > 42 ? '...' : ''}`); appendContactLine('> ENCRYPTING AND DISPATCHING...'); setTimeout(() => { appendContactLine('> PACKET DELIVERED'); appendContactLine('> FALLBACK: mailto raehdojhn@gmail.com'); event.target.reset(); }, 900); });
+  $('#mediaFilters')?.addEventListener('click', event => { const button = event.target.closest('[data-media-filter]'); if (!button) return; const filter = button.dataset.mediaFilter; $$('#mediaFilters .v4-media-filter-tab').forEach(tab => tab.classList.toggle('is-active', tab === button)); $$('.v4-media-card').forEach(card => { card.hidden = filter !== 'all' && card.dataset.mediaType !== filter; }); });
+
+  const sticker = $('#v4Sticker'); if (sticker) { let drag = null; sticker.addEventListener('pointerdown', event => { event.preventDefault(); const rect = sticker.getBoundingClientRect(); drag = { x:event.clientX - rect.left, y:event.clientY - rect.top }; sticker.classList.add('is-dragging'); sticker.setPointerCapture(event.pointerId); }); sticker.addEventListener('pointermove', event => { if (!drag) return; sticker.style.left = `${event.clientX - drag.x}px`; sticker.style.top = `${event.clientY - drag.y}px`; }); const end = () => { drag = null; sticker.classList.remove('is-dragging'); }; sticker.addEventListener('pointerup', end); sticker.addEventListener('pointercancel', end); }
+
+  const ipod = $('#ipodApp'), ipodAudio = $('#ipodAudio'), ipodBars = $('#ipodBars'), ipodWave = $('#ipodWave'), ipodList = $('#ipodList'), ipodCenter = $('#ipodCenter'), ipodFile = $('#ipodFile');
+  let ipodTracks = [{ title:'AUREA Brand Film', artist:'Portfolio Source', url:'public/projects/aurea/brand-video.mp4', source:'local' }], ipodIndex = 0, ipodView = 'now', ipodPlaying = false;
+  function showIpodView(view) { ipodView = view; $('#ipodNow').classList.toggle('is-active', view === 'now'); $('#ipodLibrary').classList.toggle('is-active', view === 'library'); $('#ipodAdd').classList.toggle('is-active', view === 'add'); $('#ipodScreenTitle').textContent = view === 'library' ? 'Library' : view === 'add' ? 'Add source' : 'Now playing'; ipodCenter.textContent = view === 'library' ? 'OPEN' : view === 'add' ? 'LOAD' : ipodPlaying ? 'PAUSE' : 'PLAY'; }
+  function renderIpodList() { ipodList.innerHTML = ''; $('#ipodLibraryCount').textContent = `${ipodIndex + 1}/${Math.max(ipodTracks.length,1)}`; ipodTracks.forEach((track, index) => { const button = document.createElement('button'); button.type = 'button'; button.className = index === ipodIndex ? 'is-current' : ''; button.innerHTML = `<span>${String(index + 1).padStart(2,'0')}</span><span>${track.title}</span>`; button.addEventListener('click', () => { loadIpodTrack(index, true); showIpodView('now'); }); ipodList.appendChild(button); }); }
+  function loadIpodTrack(index, play = false) { if (!ipodTracks.length) return; ipodIndex = (index + ipodTracks.length) % ipodTracks.length; const track = ipodTracks[ipodIndex]; ipodAudio.src = track.url; ipodAudio.load(); $('#ipodTitle').textContent = track.title; $('#ipodArtist').textContent = track.artist || track.source || 'Audio'; $('#ipodSource').textContent = track.source || 'file'; $('#ipodCount').textContent = `${ipodTracks.length} items`; renderIpodList(); if (play) ipodAudio.play().catch(() => {}); }
+  function updateIpodProgress() { const duration = ipodAudio.duration || 0, progress = duration ? ipodAudio.currentTime / duration : 0; $('#ipodCurrent').textContent = fmt(ipodAudio.currentTime); $('#ipodDuration').textContent = fmt(duration); Array.from(ipodWave.children).forEach((bar, i, arr) => bar.style.setProperty('--fill', i / Math.max(1, arr.length - 1) <= progress ? 1 : 0)); }
+  for (let i = 0; i < 24; i++) { const bar = document.createElement('span'); bar.style.setProperty('--h', (0.18 + Math.abs(Math.sin(i * .68)) * .72).toFixed(3)); ipodBars.appendChild(bar); }
+  for (let i = 0; i < 42; i++) { const bar = document.createElement('span'); bar.style.setProperty('--h', (0.14 + Math.abs(Math.sin(i * .51)) * .82).toFixed(3)); ipodWave.appendChild(bar); }
+  (function animateBars() { Array.from(ipodBars.children).forEach((bar, i) => { const idle = .16 + Math.abs(Math.sin(Date.now() * .001 + i)) * .22, active = .18 + Math.random() * (i < 6 ? .8 : .58); bar.style.setProperty('--h', (ipodPlaying ? active : idle).toFixed(3)); }); requestAnimationFrame(animateBars); })();
+  $('#ipodMenu')?.addEventListener('click', () => showIpodView(ipodView === 'library' ? 'now' : 'library')); $('#ipodAddButton')?.addEventListener('click', () => showIpodView(ipodView === 'add' ? 'now' : 'add'));
+  ipodCenter?.addEventListener('click', () => { if (ipodView === 'library') showIpodView('now'); else if (ipodView === 'add') $('#ipodBrowse').click(); else if (ipodAudio.paused) ipodAudio.play().catch(() => {}); else ipodAudio.pause(); });
+  $('#ipodPrev')?.addEventListener('click', () => loadIpodTrack(ipodIndex - 1, true)); $('#ipodNext')?.addEventListener('click', () => loadIpodTrack(ipodIndex + 1, true)); $('#ipodBrowse')?.addEventListener('click', () => ipodFile.click());
+  ipodFile?.addEventListener('change', event => { Array.from(event.target.files || []).forEach((file, i) => { ipodTracks.push({ title:file.name.replace(/\.[a-z0-9]+$/i,''), artist:'Local upload', url:URL.createObjectURL(file), source:'upload' }); if (i === 0) loadIpodTrack(ipodTracks.length - 1, true); }); showIpodView('now'); });
+  $('#ipodUrlForm')?.addEventListener('submit', event => { event.preventDefault(); const url = $('#ipodUrl').value.trim(); if (!url) return; ipodTracks.push({ title:$('#ipodUrlTitle').value.trim() || decodeURIComponent(url.split('/').pop().split('?')[0] || 'Audio URL'), artist:$('#ipodUrlArtist').value.trim() || 'External URL', url, source:'url' }); loadIpodTrack(ipodTracks.length - 1, true); event.target.reset(); showIpodView('now'); });
+  ipodWave?.addEventListener('click', event => { if (!ipodAudio.duration) return; const rect = ipodWave.getBoundingClientRect(); ipodAudio.currentTime = ((event.clientX - rect.left) / rect.width) * ipodAudio.duration; });
+  ipodAudio?.addEventListener('play', () => { ipodPlaying = true; $('#ipodStatus').textContent = 'Playing'; ipodCenter.textContent = 'PAUSE'; }); ipodAudio?.addEventListener('pause', () => { ipodPlaying = false; $('#ipodStatus').textContent = 'Paused'; ipodCenter.textContent = 'PLAY'; }); ipodAudio?.addEventListener('timeupdate', updateIpodProgress); ipodAudio?.addEventListener('loadedmetadata', updateIpodProgress); ipodAudio?.addEventListener('ended', () => loadIpodTrack(ipodIndex + 1, true));
+  $('#ipodMode')?.addEventListener('click', () => { ipod.classList.toggle('is-dark'); const dark = ipod.classList.contains('is-dark'); $('#ipodModeValue').textContent = dark ? 'DRK' : 'LGT'; $('#ipodSkin').textContent = dark ? 'Black' : 'Silver'; });
+  let ipodDrag = null; $('#ipodDrag')?.addEventListener('pointerdown', event => { const rect = ipod.getBoundingClientRect(); ipodDrag = { x:event.clientX - rect.left, y:event.clientY - rect.top }; event.currentTarget.setPointerCapture(event.pointerId); }); $('#ipodDrag')?.addEventListener('pointermove', event => { if (!ipodDrag || matchMedia('(max-width:700px)').matches) return; ipod.style.left = `${event.clientX - ipodDrag.x}px`; ipod.style.top = `${event.clientY - ipodDrag.y}px`; ipod.style.right = 'auto'; ipod.style.bottom = 'auto'; }); $('#ipodDrag')?.addEventListener('pointerup', () => { ipodDrag = null; });
+  loadIpodTrack(0); renderIpodList();
+})();
+</script>
+</body>
+</html>

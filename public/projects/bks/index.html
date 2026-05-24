@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>BKS — Official Store</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --red:#E8191A;
+      --black:#111;
+      --white:#fff;
+      --offwhite:#f5f5f5;
+      --grey:#888;
+      --border:#ddd;
+    }
+    html,body{height:100%;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--white);color:var(--black)}
+
+    /* ── TICKER ── */
+    .ticker{background:var(--red);color:var(--white);font-size:11px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:7px 0}
+    .ticker-track{display:inline-flex;animation:ticker 22s linear infinite}
+    .ticker-item{padding:0 48px}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── NAV ── */
+    nav{background:var(--black);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:52px;position:sticky;top:0;z-index:100}
+    .nav-logo{color:var(--red);font-size:26px;font-weight:900;letter-spacing:-.02em;font-style:italic;text-decoration:none}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:var(--white);text-decoration:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:color .15s}
+    .nav-links a:hover{color:var(--red)}
+    .nav-right{display:flex;align-items:center;gap:20px}
+    .cart-btn{background:var(--red);color:var(--white);border:none;padding:8px 18px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:opacity .15s}
+    .cart-btn:hover{opacity:.85}
+    .cart-count{background:var(--white);color:var(--black);border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;margin-left:6px}
+
+    /* ── HERO ── */
+    .hero{background:var(--black);color:var(--white);display:grid;grid-template-columns:1fr 1fr;min-height:420px;overflow:hidden}
+    .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:64px 56px}
+    .hero-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:16px}
+    .hero-title{font-size:clamp(48px,6vw,80px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:20px;font-style:italic}
+    .hero-title span{color:var(--red)}
+    .hero-sub{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#bbb;margin-bottom:32px;line-height:1.6;max-width:320px}
+    .hero-cta{background:var(--red);color:var(--white);border:none;padding:14px 32px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;cursor:pointer;align-self:flex-start;transition:opacity .15s}
+    .hero-cta:hover{opacity:.85}
+    .hero-img{position:relative;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+    .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:lighten;opacity:.9}
+    .hero-badge{position:absolute;top:24px;right:24px;background:var(--red);color:var(--white);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px}
+
+    /* ── DROP BANNER ── */
+    .drop-banner{background:var(--red);color:var(--white);text-align:center;padding:14px 32px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+
+    /* ── SECTION ── */
+    .section{padding:64px 32px}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;border-bottom:2px solid var(--black);padding-bottom:12px}
+    .section-title{font-size:22px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
+    .section-meta{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);font-weight:600}
+
+    /* ── PRODUCT GRID ── */
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .product-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+
+    /* ── PRODUCT CARD ── */
+    .product-card{background:var(--white);cursor:pointer;position:relative;overflow:hidden}
+    .product-card:hover .card-img img{transform:scale(1.04)}
+    .product-card:hover .card-overlay{opacity:1}
+    .card-img{background:var(--offwhite);aspect-ratio:3/4;overflow:hidden;position:relative}
+    .card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .card-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;gap:10px}
+    .overlay-btn{background:var(--red);color:var(--white);border:none;padding:10px 24px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;cursor:pointer;width:80%}
+    .overlay-size{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.5);padding:7px 24px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;width:80%}
+    .sold-badge{position:absolute;top:12px;left:12px;background:var(--black);color:var(--white);font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px}
+    .new-badge{position:absolute;top:12px;left:12px;background:var(--red);color:var(--white);font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px}
+    .card-info{padding:12px 0 16px;border-top:1px solid var(--border)}
+    .card-name{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+    .card-price{font-size:12px;font-weight:700;color:var(--grey)}
+    .card-price .sale{color:var(--red)}
+    .color-dots{display:flex;gap:4px;margin-top:8px}
+    .dot{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.15);cursor:pointer;transition:transform .15s}
+    .dot:hover{transform:scale(1.3)}
+    .dot.active{outline:2px solid var(--black);outline-offset:2px}
+
+    /* ── FEATURED PAIR ── */
+    .featured-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px}
+    .featured-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;background:var(--offwhite)}
+    .featured-card img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .featured-card:hover img{transform:scale(1.04)}
+    .featured-label{position:absolute;bottom:20px;left:20px;right:20px}
+    .featured-label h3{font-size:18px;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;color:var(--white);text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:4px}
+    .featured-label span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:600}
+
+    /* ── LOOKBOOK STRIP ── */
+    .lookbook{background:var(--black);padding:48px 32px;overflow:hidden}
+    .lookbook-inner{display:flex;gap:2px;animation:scroll 30s linear infinite}
+    .lookbook-inner:hover{animation-play-state:paused}
+    .lookbook-thumb{flex-shrink:0;width:220px;height:280px;overflow:hidden;background:#222}
+    .lookbook-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(20%)}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── SIZE MODAL ── */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:none;align-items:center;justify-content:center}
+    .modal-bg.open{display:flex}
+    .modal{background:var(--white);width:480px;max-width:95vw;padding:40px}
+    .modal-close{float:right;border:none;background:none;font-size:20px;cursor:pointer;line-height:1}
+    .modal h2{font-size:16px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;margin-right:32px}
+    .modal-price{font-size:13px;color:var(--grey);font-weight:600;margin-bottom:24px}
+    .modal-img{width:100%;height:200px;object-fit:cover;object-position:center top;background:var(--offwhite);margin-bottom:24px}
+    .size-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:24px}
+    .size-opt{border:1px solid var(--border);padding:10px 4px;text-align:center;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;transition:all .15s}
+    .size-opt:hover,.size-opt.selected{background:var(--black);color:var(--white);border-color:var(--black)}
+    .size-opt.sold{background:var(--offwhite);color:#ccc;cursor:not-allowed;text-decoration:line-through}
+    .add-btn{width:100%;background:var(--red);color:var(--white);border:none;padding:16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:900;cursor:pointer;transition:opacity .15s}
+    .add-btn:hover{opacity:.85}
+    .add-confirm{display:none;background:var(--black);color:var(--white);padding:12px;text-align:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-top:10px}
+
+    /* ── CART DRAWER ── */
+    .cart-drawer{position:fixed;right:-420px;top:0;bottom:0;width:400px;background:var(--white);z-index:200;transition:right .35s cubic-bezier(.16,1,.3,1);border-left:1px solid var(--border);display:flex;flex-direction:column}
+    .cart-drawer.open{right:0}
+    .cart-header{display:flex;align-items:center;justify-content:space-between;padding:24px;border-bottom:1px solid var(--border)}
+    .cart-header h2{font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .cart-close{border:none;background:none;font-size:20px;cursor:pointer}
+    .cart-body{flex:1;overflow-y:auto;padding:24px}
+    .cart-empty{text-align:center;color:var(--grey);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:48px 0}
+    .cart-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .cart-item-img{width:70px;height:88px;object-fit:cover;object-position:center top;background:var(--offwhite);flex-shrink:0}
+    .cart-item-info{flex:1;min-width:0}
+    .cart-item-name{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+    .cart-item-meta{font-size:11px;color:var(--grey);font-weight:600;margin-bottom:8px}
+    .cart-item-remove{font-size:10px;color:var(--grey);cursor:pointer;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;font-weight:700;padding:0;text-decoration:underline}
+    .cart-footer{padding:24px;border-top:1px solid var(--border)}
+    .cart-total{display:flex;justify-content:space-between;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+    .checkout-btn{width:100%;background:var(--black);color:var(--white);border:none;padding:16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:900;cursor:pointer;transition:background .15s}
+    .checkout-btn:hover{background:var(--red)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--black);color:var(--white);padding:48px 32px 32px}
+    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:48px}
+    .footer-col h4{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-bottom:16px;color:var(--red)}
+    .footer-col ul{list-style:none}
+    .footer-col li{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:8px;cursor:pointer;transition:color .15s}
+    .footer-col li:hover{color:var(--white)}
+    .footer-bottom{border-top:1px solid #333;padding-top:24px;display:flex;align-items:center;justify-content:space-between}
+    .footer-logo{color:var(--red);font-size:22px;font-weight:900;font-style:italic;letter-spacing:-.02em}
+    .footer-copy{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#555}
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Spring 2026 Drop — Limited Quantities</span>
+    <span class="ticker-item">Free Shipping On Orders Over $150</span>
+    <span class="ticker-item">BKS Japanese Hoodie Series — Now Available</span>
+    <span class="ticker-item">Mechanic Shirts Restocked — All Colorways</span>
+    <span class="ticker-item">Trucker Collection — Thursday 11AM EDT</span>
+    <span class="ticker-item">Spring 2026 Drop — Limited Quantities</span>
+    <span class="ticker-item">Free Shipping On Orders Over $150</span>
+    <span class="ticker-item">BKS Japanese Hoodie Series — Now Available</span>
+    <span class="ticker-item">Mechanic Shirts Restocked — All Colorways</span>
+    <span class="ticker-item">Trucker Collection — Thursday 11AM EDT</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BKS</a>
+  <ul class="nav-links">
+    <li><a href="#new">New</a></li>
+    <li><a href="#tops">Tops</a></li>
+    <li><a href="#outerwear">Outerwear</a></li>
+    <li><a href="#bottoms">Bottoms</a></li>
+    <li><a href="#accessories">Accessories</a></li>
+    <li><a href="#lookbook">Lookbook</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">BAG <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-copy">
+    <div class="hero-eyebrow">Spring / Summer 2026 — Drop 001</div>
+    <h1 class="hero-title">Built<br>from<br><span>Nothing.</span></h1>
+    <p class="hero-sub">BKS — Authentic streetwear engineered for the city. Japanese craftsmanship meets American grit.</p>
+    <button class="hero-cta" onclick="document.getElementById('new').scrollIntoView({behavior:'smooth'})">Shop the Drop</button>
+  </div>
+  <div class="hero-img">
+    <img src="img/hoodie1-front.png" alt="BKS Japanese Hoodie"/>
+    <div class="hero-badge">LIMITED DROP</div>
+  </div>
+</div>
+
+<!-- DROP BANNER -->
+<div class="drop-banner">⚡ Next Drop: Thursday May 8 — 11:00 AM EDT — Trucker Collection Vol. 3</div>
+
+<!-- NEW ARRIVALS -->
+<section class="section" id="new">
+  <div class="section-header">
+    <span class="section-title">New This Week</span>
+    <span class="section-meta">6 Items</span>
+  </div>
+  <div class="product-grid" id="newGrid"></div>
+</section>
+
+<!-- FEATURED CATEGORIES -->
+<section class="section" style="padding-top:0" id="outerwear">
+  <div class="section-header">
+    <span class="section-title">Outerwear</span>
+    <span class="section-meta">Japanese Series</span>
+  </div>
+  <div class="featured-pair">
+    <div class="featured-card" onclick="openModal('BKS Japanese Hoodie #2','img/hoodie2-front.png',148)">
+      <img src="img/hoodie2-front.png" alt="Hoodie 2"/>
+      <div class="featured-label">
+        <h3>Japanese Hoodie #2</h3>
+        <span>$148 — Heavyweight fleece</span>
+      </div>
+    </div>
+    <div class="featured-card" onclick="openModal('BKS Japanese Hoodie #3','img/hoodie3-front.png',148)">
+      <img src="img/hoodie3-front.png" alt="Hoodie 3"/>
+      <div class="featured-label">
+        <h3>Japanese Hoodie #3</h3>
+        <span>$148 — Heavyweight fleece</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPS -->
+<section class="section" id="tops">
+  <div class="section-header">
+    <span class="section-title">Tops</span>
+    <span class="section-meta">Mechanic Series + Tees</span>
+  </div>
+  <div class="product-grid cols-4" id="topsGrid"></div>
+</section>
+
+<!-- LOOKBOOK STRIP -->
+<div class="lookbook" id="lookbook">
+  <div class="lookbook-inner" id="lookbookInner"></div>
+</div>
+
+<!-- BOTTOMS + ACCESSORIES -->
+<section class="section" id="bottoms">
+  <div class="section-header">
+    <span class="section-title">Bottoms &amp; Accessories</span>
+    <span class="section-meta">Essentials</span>
+  </div>
+  <div class="product-grid" id="bottomsGrid"></div>
+</section>
+
+<!-- SIZE MODAL -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2 id="modalName"></h2>
+    <div class="modal-price" id="modalPrice"></div>
+    <img class="modal-img" id="modalImg" src="" alt=""/>
+    <div id="sizeGrid" class="size-grid"></div>
+    <button class="add-btn" onclick="addToCart()">Add to Bag</button>
+    <div class="add-confirm" id="addConfirm">✓ Added to bag</div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>Your Bag</h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">Your bag is empty.</div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li>New Arrivals</li><li>Tops</li><li>Outerwear</li><li>Bottoms</li><li>Accessories</li><li>Sale</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li>About BKS</li><li>Store Locations</li><li>Stockists</li><li>Collaborations</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li>Sizing Guide</li><li>Shipping & Returns</li><li>FAQ</li><li>Contact</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <ul>
+        <li>Instagram</li><li>Twitter / X</li><li>TikTok</li><li>Newsletter</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo">BKS</div>
+    <div class="footer-copy">© 2026 BKS All Rights Reserved</div>
+  </div>
+</footer>
+
+<script>
+const SIZES = ['XS','S','M','L','XL','XXL']
+const SOLD_SIZES = ['XS','XXL']
+
+const NEW_PRODUCTS = [
+  {name:'BKS Japanese Hoodie #1',price:148,img:'img/hoodie1-front.png',badge:'new'},
+  {name:'BKS Mechanic Shirt #1',price:98,img:'img/mechanic1-front.png',badge:'new'},
+  {name:'BKS Crewneck Vol.1',price:88,img:'img/crewneck1.png',badge:'new'},
+  {name:'BKS Mechanic Shirt #3',price:98,img:'img/mechanic3-front.png',badge:null},
+  {name:'BKS Oversized Tee',price:58,img:'img/tee1.png',badge:null},
+  {name:'BKS Trucker Hat #1',price:48,img:'img/trucker1.png',badge:null},
+]
+
+const TOPS_PRODUCTS = [
+  {name:'BKS Mechanic Shirt #1',price:98,img:'img/mechanic1-front.png',badge:'new'},
+  {name:'BKS Mechanic Shirt #2',price:98,img:'img/mechanic2-front.png',badge:null},
+  {name:'BKS Mechanic Shirt #3',price:98,img:'img/mechanic3-front.png',badge:null},
+  {name:'BKS Crewneck Vol.1',price:88,img:'img/crewneck1.png',badge:'new'},
+  {name:'BKS Crewneck Vol.2',price:88,img:'img/crewneck2.png',badge:null},
+  {name:'BKS Oversized Tee',price:58,img:'img/tee1.png',badge:null},
+  {name:'BKS Tee Vol.2',price:58,img:'img/tee2.png',badge:null},
+  {name:'BKS Trucker #3',price:48,img:'img/trucker3.png',badge:null},
+]
+
+const BOTTOMS_PRODUCTS = [
+  {name:'BKS Shorts',price:68,img:'img/shorts1.png',badge:null},
+  {name:'BKS Sweatpants',price:88,img:'img/sweats1.png',badge:null},
+  {name:'BKS Trucker Hat #2',price:48,img:'img/trucker2.png',badge:'new'},
+]
+
+const LOOKBOOK_IMGS = [
+  'img/hoodie1-front.png','img/hoodie1-back.png',
+  'img/hoodie2-front.png','img/hoodie2-back.png',
+  'img/hoodie3-front.png','img/hoodie3-back.png',
+  'img/mechanic1-front.png','img/mechanic1-back.png',
+  'img/mechanic2-front.png','img/mechanic2-back.png',
+  'img/crewneck1.png','img/crewneck2.png',
+  'img/tee1.png','img/tee2.png',
+  'img/trucker1.png','img/trucker2.png','img/trucker3.png',
+]
+
+let cart = []
+let modalItem = null
+let selectedSize = null
+
+function makeCard(p){
+  return `
+    <div class="product-card" onclick="openModal('${p.name}','${p.img}',${p.price})">
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        ${p.badge==='new'?'<div class="new-badge">New</div>':''}
+        ${p.badge==='sold'?'<div class="sold-badge">Sold Out</div>':''}
+        <div class="card-overlay">
+          <button class="overlay-btn" onclick="event.stopPropagation();openModal('${p.name}','${p.img}',${p.price})">Quick Add</button>
+          <button class="overlay-size" onclick="event.stopPropagation()">View Details</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">$${p.price}</div>
+      </div>
+    </div>`
+}
+
+document.getElementById('newGrid').innerHTML = NEW_PRODUCTS.map(makeCard).join('')
+document.getElementById('topsGrid').innerHTML = TOPS_PRODUCTS.map(makeCard).join('')
+document.getElementById('bottomsGrid').innerHTML = BOTTOMS_PRODUCTS.map(makeCard).join('')
+
+// Lookbook
+const lb = document.getElementById('lookbookInner')
+const lbImgs = [...LOOKBOOK_IMGS,...LOOKBOOK_IMGS].map(src=>`<div class="lookbook-thumb"><img src="${src}" loading="lazy"/></div>`).join('')
+lb.innerHTML = lbImgs
+
+// Modal
+function openModal(name,img,price){
+  modalItem = {name,img,price}
+  selectedSize = null
+  document.getElementById('modalName').textContent = name
+  document.getElementById('modalPrice').textContent = '$'+price
+  document.getElementById('modalImg').src = img
+  const sg = document.getElementById('sizeGrid')
+  sg.innerHTML = SIZES.map(s=>`<div class="size-opt${SOLD_SIZES.includes(s)?' sold':''}" onclick="selectSize(this,'${s}')">${s}</div>`).join('')
+  document.getElementById('addConfirm').style.display='none'
+  document.getElementById('modalBg').classList.add('open')
+}
+function closeModal(){document.getElementById('modalBg').classList.remove('open')}
+function selectSize(el,size){
+  if(el.classList.contains('sold')) return
+  document.querySelectorAll('.size-opt').forEach(e=>e.classList.remove('selected'))
+  el.classList.add('selected')
+  selectedSize = size
+}
+function addToCart(){
+  if(!selectedSize){alert('Please select a size');return}
+  cart.push({...modalItem,size:selectedSize})
+  renderCart()
+  const conf = document.getElementById('addConfirm')
+  conf.style.display='block'
+  setTimeout(()=>{conf.style.display='none';closeModal()},1200)
+}
+
+// Cart
+function toggleCart(){document.getElementById('cartDrawer').classList.toggle('open')}
+function renderCart(){
+  const count = cart.length
+  document.getElementById('cartCount').textContent = count
+  const body = document.getElementById('cartBody')
+  if(!count){body.innerHTML='<div class="cart-empty">Your bag is empty.</div>';document.getElementById('cartTotal').textContent='$0';return}
+  const total = cart.reduce((s,i)=>s+i.price,0)
+  document.getElementById('cartTotal').textContent='$'+total
+  body.innerHTML = cart.map((item,i)=>`
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}"/>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">Size: ${item.size} — $${item.price}</div>
+        <button class="cart-item-remove" onclick="removeItem(${i})">Remove</button>
+      </div>
+    </div>`).join('')
+}
+function removeItem(i){cart.splice(i,1);renderCart()}
+</script>
+</body>
+</html>

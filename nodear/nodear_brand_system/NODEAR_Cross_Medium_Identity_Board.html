@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NODEAR Cross-Medium Identity</title>
+  <style>
+    :root {
+      --void:#050505; --ink:#0B0B0B; --charcoal:#252526; --paper:#F4F1EC;
+      --muted:#918c84; --line:rgba(244,241,236,.18); --red:#E1121B;
+      --cobalt:#103B75; --cyan:#8EDFFF; --amber:#D7792D;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      background:radial-gradient(circle at 70% 10%, rgba(255,255,255,.09), transparent 28rem), linear-gradient(180deg,#2b2b2b,var(--void) 34%,#070707);
+      color:var(--paper);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+    body:before {
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:10; opacity:.16;
+      background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 4px);
+      mix-blend-mode:hard-light;
+    }
+    header {
+      min-height:92vh; padding:48px clamp(22px,6vw,90px); display:grid; align-items:end; position:relative; overflow:hidden; border-bottom:1px solid var(--line);
+    }
+    header img { position:absolute; right:7vw; top:8vh; width:min(58vw,680px); opacity:.55; filter:drop-shadow(0 50px 80px rgba(0,0,0,.8)); }
+    h1 { margin:0; max-width:980px; font-family:Georgia,serif; font-size:clamp(54px,10vw,142px); line-height:.82; text-transform:uppercase; position:relative; z-index:1; }
+    .thesis { max-width:760px; color:#c9c2b6; font-size:clamp(17px,2vw,23px); line-height:1.55; position:relative; z-index:1; }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; position:relative; z-index:1; }
+    .chips span, .meta { border:1px solid var(--line); padding:7px 9px; color:var(--muted); font:11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; text-transform:uppercase; letter-spacing:.12em; }
+    section { padding:clamp(44px,7vw,92px) clamp(22px,6vw,90px); border-bottom:1px solid var(--line); }
+    .section-head { max-width:1220px; margin:0 auto 28px; display:grid; grid-template-columns:190px 1fr; gap:32px; }
+    .kicker { color:var(--red); font:11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; text-transform:uppercase; letter-spacing:.14em; }
+    h2 { margin:0; font-size:clamp(34px,5vw,76px); line-height:.95; text-transform:uppercase; }
+    .routes, .mediums { max-width:1220px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+    .mediums { grid-template-columns:repeat(2,1fr); }
+    .route, .medium-card { background:#080808; padding:20px; min-height:220px; }
+    .route h3, .medium-card h3 { margin:16px 0 12px; font-size:24px; line-height:1.05; text-transform:uppercase; }
+    p, li { color:#c9c2b6; line-height:1.58; }
+    .medium-card p { font-size:14px; }
+    .medium-card ul { padding-left:18px; }
+    .swatches { max-width:1220px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .swatch { border:1px solid var(--line); background:#090909; padding:12px; }
+    .swatch span { display:block; height:92px; border:1px solid rgba(255,255,255,.16); margin-bottom:12px; }
+    .swatch strong { display:block; text-transform:uppercase; font-size:13px; }
+    .swatch code { color:var(--muted); }
+    .prompt-list { max-width:1220px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    details { border:1px solid var(--line); background:rgba(255,255,255,.035); padding:14px; }
+    summary { cursor:pointer; color:var(--paper); font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; text-transform:uppercase; letter-spacing:.1em; }
+    details p { font-size:13px; }
+    footer { padding:22px clamp(22px,6vw,90px); display:flex; justify-content:space-between; gap:18px; color:var(--muted); font:11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; text-transform:uppercase; }
+    @media (max-width:900px) { .section-head, .routes, .mediums, .prompt-list { grid-template-columns:1fr; } .swatches { grid-template-columns:1fr 1fr; } header img { width:90vw; right:-22vw; } }
+    @media (max-width:540px) { .swatches { grid-template-columns:1fr; } footer { flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="NODEAR_EPK_chatgpt_upload_pack/central_logo/nodear_central_logo.png" alt="NODEAR central logo">
+    <div>
+      <h1>NODEAR Cross-Medium Identity</h1>
+      <p class="thesis">NODEAR is audio evidence made monumental: a faceless audiovisual archive where sound becomes object, signal, page, room, garment, and interface.</p>
+      <div class="chips"><span>Archive Infrastructure</span><span>Ritual Object</span><span>Signal Rupture</span><span>Case Status: Open</span></div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head"><div class="kicker">Operating Routes</div><h2>Three routes keep every medium coherent.</h2></div>
+    <div class="routes">
+      <div class="route"><div class="meta">archive infrastructure</div><h3>Archive Infrastructure</h3><p>Usable, clear, press/sync/website/deck materials. Risk: sterile. Add controlled texture and one signal rupture.</p></div><div class="route"><div class="meta">ritual object</div><h3>Ritual Object</h3><p>Logo, music packaging, merch, still-life, and artifact systems. Risk: generic occult. Keep symbols functional and restrained.</p></div><div class="route"><div class="meta">signal rupture</div><h3>Signal Rupture</h3><p>Motion, social, installation, and audio-reactive systems. Risk: random glitch. Make every motion respond to sound or archive interaction.</p></div>
+    </div>
+  </section>
+  <section>
+    <div class="section-head"><div class="kicker">Palette</div><h2>Black as infrastructure. Red as alarm. Blue as signal. Amber as heat.</h2></div>
+    <div class="swatches">
+        <div class="swatch">
+          <span style="background:#050505"></span>
+          <strong>void-black</strong>
+          <code>#050505</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#0B0B0B"></span>
+          <strong>ink-black</strong>
+          <code>#0B0B0B</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#252526"></span>
+          <strong>charcoal-mid</strong>
+          <code>#252526</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#434344"></span>
+          <strong>charcoal-light</strong>
+          <code>#434344</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#F4F1EC"></span>
+          <strong>archive-white</strong>
+          <code>#F4F1EC</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#EDE8DF"></span>
+          <strong>paper-warm</strong>
+          <code>#EDE8DF</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#E1121B"></span>
+          <strong>signal-red</strong>
+          <code>#E1121B</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#103B75"></span>
+          <strong>deep-cobalt</strong>
+          <code>#103B75</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#8EDFFF"></span>
+          <strong>icy-cyan</strong>
+          <code>#8EDFFF</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#D7792D"></span>
+          <strong>candle-amber</strong>
+          <code>#D7792D</code>
+        </div>
+
+
+        <div class="swatch">
+          <span style="background:#FFD028"></span>
+          <strong>safety-yellow</strong>
+          <code>#FFD028</code>
+        </div>
+        </div>
+  </section>
+  <section>
+    <div class="section-head"><div class="kicker">Medium Matrix</div><h2>Identity rules for every surface.</h2></div>
+    <div class="mediums">
+        <article class="medium-card">
+          <div class="meta">Core Identity / Logo System</div>
+          <h3>The central anchor that proves every asset belongs to NODEAR.</h3>
+          <p>Use the central logo as the primary mark before all older variants. It may be embossed, debossed, stamped, etched, projected, stitched, or printed, but its geometry cannot mutate.</p>
+          <ul>
+            <li>preserve circular silhouette</li><li>preserve blackletter n</li><li>preserve dot positions</li><li>show clean lockup once per sequence</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Editorial EPK / PDF</div>
+          <h3>Commercial clarity inside mystery: a usable press and licensing kit that still feels like a recovered file.</h3>
+          <p>Logo dominates cover and closes the deck. Interior pages use it as folio mark, stamp, footer, and proof seal.</p>
+          <ul>
+            <li>each page has one job</li><li>contact info must be clear</li><li>no fake press</li><li>objects must look manufactured</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Website / Interactive Archive</div>
+          <h3>The public interface: long-scroll identity rail, EPK, sound archive, visual system, and contact intake.</h3>
+          <p>Logo lives in a fixed rail/top bar, hero background, cursor-safe stamp, section footer, and final CTA lockup.</p>
+          <ul>
+            <li>semantic HTML</li><li>responsive first</li><li>visible focus states</li><li>no broken links</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Music Packaging / Release Artifacts</div>
+          <h3>Music becomes object: vinyl, CD, cassette, download card, sample pack, and zine as proof of sound.</h3>
+          <p>Logo is the disc center, cassette label stamp, sleeve seal, spine mark, and download-card authentication mark.</p>
+          <ul>
+            <li>correct object anatomy</li><li>real shadows</li><li>readable tracklist</li><li>logo never distorted</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Editorial Graphic Images / Posters</div>
+          <h3>The fast visual language: flyers, announcement graphics, case-file posters, and campaign slates.</h3>
+          <p>Logo appears as footer seal, evidence stamp, corner bug, or centered final mark. It should not fight the headline.</p>
+          <ul>
+            <li>one dominant phrase</li><li>one dominant image/symbol</li><li>functional logo placement</li><li>print texture</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Photography / Portraiture</div>
+          <h3>Human presence without face-led branding: identity is withheld so the system speaks.</h3>
+          <p>Logo is embroidered, stamped nearby, on a tag, on the wall, or in a final contact-sheet footer. Avoid placing it like a fashion watermark on skin.</p>
+          <ul>
+            <li>face obscured unless intentionally cropped</li><li>skin texture natural</li><li>hands believable</li><li>logo secondary but clear</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Video / Motion / Teasers</div>
+          <h3>Sound under pressure: the moving system for reels, launch films, and EPK teasers.</h3>
+          <p>Logo appears faint at open, clean at final. It can be revealed by scanline, light sweep, smoke, or pressure pulse. It cannot morph.</p>
+          <ul>
+            <li>logo final lockup clean</li><li>motion maps to sound</li><li>one strong idea per 2-4 seconds</li><li>no fake UI</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Social / Short-Form Rollout</div>
+          <h3>Commercial access points: story, carousel, reel, phone UI, and release announcement without breaking mystery.</h3>
+          <p>Logo is profile bug, final card, top rail, sticker, or product mark. Never fake virality around it.</p>
+          <ul>
+            <li>no fake likes/comments</li><li>clear CTA</li><li>logo final frame</li><li>legible crop on mobile</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Merch / Apparel / Wearable Objects</div>
+          <h3>The body carries the archive as equipment, not fan merch.</h3>
+          <p>Logo is embroidered, screenprinted, rubberized, metal-etched, woven, or debossed. It should feel attached to a system of use.</p>
+          <ul>
+            <li>garment must look wearable</li><li>print scale believable</li><li>logo placement intentional</li><li>fabric texture visible</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Live / Stage / Installation</div>
+          <h3>The physical room version of NODEAR: sound as infrastructure, signal, smoke, and crowd choreography.</h3>
+          <p>Logo is projected, etched into floor/plinth, on entry card, as stage floor seal, or final screen lockup.</p>
+          <ul>
+            <li>safe circulation</li><li>clear sightlines</li><li>one monumental gesture</li><li>photographable hero frame</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">UI / Audio Tools / Digital Product</div>
+          <h3>A functional interface layer for prompts, sample packs, visualizers, archive browsing, and licensing intake.</h3>
+          <p>Logo anchors app rail, loading state, favicon, watermarked export, and final share card.</p>
+          <ul>
+            <li>functional controls</li><li>accessible contrast</li><li>clear states</li><li>download/licensing path obvious</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Pitch Deck / Business Outreach</div>
+          <h3>The strategic, legible version for jobs, agencies, labels, sync buyers, and collaborators.</h3>
+          <p>Logo opens and closes the deck. Interior use is small, consistent, and trust-building.</p>
+          <ul>
+            <li>clear offer</li><li>clear contact</li><li>no fake metrics</li><li>show skill stack</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Copy / Verbal Identity</div>
+          <h3>Language that supports the system: sparse, coded, useful, and emotionally restrained.</h3>
+          <p>Logo does not need explanation. Copy should describe the system, not decorate the mark.</p>
+          <ul>
+            <li>write for clarity</li><li>hide face but not offer</li><li>use codes consistently</li><li>keep CTA practical</li>
+          </ul>
+        </article>
+
+
+        <article class="medium-card">
+          <div class="meta">Sound / Sync Licensing Translation</div>
+          <h3>The bridge from artistic world to commercial usability.</h3>
+          <p>Logo authenticates the cue sheet and cover art, not every line item.</p>
+          <ul>
+            <li>music use cases clear</li><li>metadata complete</li><li>contact obvious</li><li>no fake placements</li>
+          </ul>
+        </article>
+        </div>
+  </section>
+  <section>
+    <div class="section-head"><div class="kicker">Prompt Library</div><h2>Starter prompts for cross-medium execution.</h2></div>
+    <div class="prompt-list">
+        <details>
+          <summary>nodear_cross_medium_001 / Core Identity / Logo System</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a logo standards page showing clearspace, minimum sizes, emboss/deboss examples, and prohibited uses.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_002 / Core Identity / Logo System</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a macro photograph of the logo as a blind-black wax seal on warm archive paper.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_003 / Editorial EPK / PDF</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Design page 1 of the EPK as an Archive Terminal cover with one dominant logo, sparse subtitle, and catalog footer.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_004 / Editorial EPK / PDF</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Design a sync one-sheet that translates NODEAR into mood, use-case, contact, and licensing language without losing mystery.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_005 / Website / Interactive Archive</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Build a single-file HTML website with fixed identity rail, Erehwon A/B toggle, artifact gallery, prompt index, and contact intake.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_006 / Website / Interactive Archive</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create an interactive release archive page where each music object opens as an evidence file.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_007 / Music Packaging / Release Artifacts</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a vinyl/CD/cassette packaging family photographed on a matte black archive table.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_008 / Music Packaging / Release Artifacts</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a sample-pack cover that uses waveform evidence, catalog codes, and the logo as authentication seal.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_009 / Editorial Graphic Images / Posters</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a red-black case-file poster reading PAIN IS EVIDENCE with strict archive footers and one cropped image.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_010 / Editorial Graphic Images / Posters</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a zine cover using a cropped eye, barcode rail, signal red hit, and logo seal.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_011 / Photography / Portraiture</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Art direct a faceless artist press portrait in black tailoring with a tiny embroidered logo and red backlight.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_012 / Photography / Portraiture</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a process contact sheet of hands, DAW, mixer, cables, paper notes, and logo-stamped archive cards.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_013 / Video / Motion / Teasers</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a 15-second EPK teaser: black sigil relief, artifact macro cuts, red faceless room, A/B waveform split, final clean logo.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_014 / Video / Motion / Teasers</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a vertical reel prompt where a beat triggers metadata flicker, disc rotation, and red signal pulses.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_015 / Social / Short-Form Rollout</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a 5-slide Instagram carousel translating the EPK into artifact, lore, sound, visual system, and contact CTA.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_016 / Social / Short-Form Rollout</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a TikTok process reel prompt with faceless DAW capture and audio-reactive metadata overlays.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_017 / Merch / Apparel / Wearable Objects</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a black heavyweight hoodie product mockup with logo chest embroidery, back archive stamp, hangtag, and red warning stitch.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_018 / Merch / Apparel / Wearable Objects</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a wearable object set: dogtag, patch, tote, beanie, and care label using the logo system.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_019 / Live / Stage / Installation</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Design a black-box listening room with projected central logo, red signal wall, artifact vitrines, and clear guest route.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_020 / Live / Stage / Installation</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a stage installation prompt where the logo becomes a floor seal under a cone of cold light.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_021 / UI / Audio Tools / Digital Product</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Design a sample-pack archive UI with filters for mood, BPM, key, stems, and licensing use.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_022 / UI / Audio Tools / Digital Product</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Design a prompt library interface where each editorial prompt opens as an evidence card.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_023 / Pitch Deck / Business Outreach</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a 10-slide capability deck for NODEAR that sells music, sync, visual direction, and EPK design.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_024 / Pitch Deck / Business Outreach</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a one-page service menu that feels like an archive document but reads clearly to buyers.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_025 / Copy / Verbal Identity</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Write a 100-word EPK bio using evidence, archive, signal, object, and A/B side language without fake claims.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_026 / Copy / Verbal Identity</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create 30 caption options for beat drops, sample packs, sync pitches, and artifact releases.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_027 / Sound / Sync Licensing Translation</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Build a sync mood matrix translating NODEAR sounds into scenes, emotions, instrumentation, and licensing notes.</p>
+        </details>
+
+
+        <details>
+          <summary>nodear_cross_medium_028 / Sound / Sync Licensing Translation</summary>
+          <p>Use the canonical NODEAR logo exactly: circular black quatrefoil mark, gothic lowercase n, four dot anchors, black-on-charcoal restraint. The asset must feel like audio evidence from an archive, not generic gothic decoration. Create a music supervisor one-sheet with cue cards, waveform strips, contact CTA, and logo authentication.</p>
+        </details>
+        </div>
+  </section>
+  <footer><span>NODEAR / EREHWON FILE / ND-000</span><span>Central logo: nodear_central_logo.png</span></footer>
+</body>
+</html>

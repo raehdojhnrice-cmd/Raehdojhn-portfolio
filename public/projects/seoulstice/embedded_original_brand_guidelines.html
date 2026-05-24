@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seoulstice — Brand Director Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=JetBrains+Mono:wght@300;400&family=Noto+Serif+KR:wght@300;500&display=swap" rel="stylesheet">
+<style>
+/* ====== LIGHT THEME ====== */
+[data-theme="light"] {
+  --bg: #F5F0EB;
+  --bg-alt: #EFE3D4;
+  --bg-card: #F5F0EB;
+  --bg-hover: #EFE3D4;
+  --text: #4A3B32;
+  --text-mid: #6B5D54;
+  --text-soft: #8C7E70;
+  --accent: #8A1C1C;
+  --border: #4A3B32;
+  --border-soft: #C9B19E;
+  --glyph: #4A3B32;
+  --logo-bg: #EFE3D4;
+  --pkg-light: #E8DACB;
+  --pkg-mid: #D9C4B4;
+  --pkg-dark: #C9B19E;
+  --pkg-cap: #4A3B32;
+  --pkg-shadow: rgba(74,59,50,0.18);
+  --pkg-hi: rgba(255,255,255,0.5);
+  --box-face: #E8DACB;
+  --box-side: #C9B19E;
+  --box-top: #F5F0EB;
+}
+
+/* ====== DARK THEME ====== */
+[data-theme="dark"] {
+  --bg: #1A1410;
+  --bg-alt: #231C16;
+  --bg-card: #211A14;
+  --bg-hover: #2A221A;
+  --text: #E8DACB;
+  --text-mid: #A69383;
+  --text-soft: #8C7E70;
+  --accent: #B73030;
+  --border: #6B5D54;
+  --border-soft: #3A3028;
+  --glyph: #A69383;
+  --logo-bg: #231C16;
+  --pkg-light: #6B5D54;
+  --pkg-mid: #4A3B32;
+  --pkg-dark: #3A3028;
+  --pkg-cap: #A69383;
+  --pkg-shadow: rgba(0,0,0,0.4);
+  --pkg-hi: rgba(255,255,255,0.12);
+  --box-face: #3A3028;
+  --box-side: #2A221A;
+  --box-top: #4A3B32;
+}
+
+/* ====== RESET ====== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 300;
+  background-color: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ====== THEME TOGGLE ====== */
+.theme-toggle {
+  position: fixed; top: 24px; right: 80px; z-index: 9000;
+  width: 56px; height: 28px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  cursor: pointer; display: flex; align-items: center; padding: 0 4px;
+  transition: background 0.4s, border-color 0.4s;
+}
+.theme-toggle::after {
+  content: ''; display: block; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="dark"] .theme-toggle::after { transform: translateX(28px); }
+.theme-toggle .ic {
+  position: absolute; font-size: 12px; top: 50%; transform: translateY(-50%);
+  pointer-events: none; line-height: 1; transition: opacity 0.3s;
+}
+.theme-toggle .su { left: 7px; opacity: 1; }
+.theme-toggle .mo { right: 7px; opacity: 0.4; }
+[data-theme="dark"] .theme-toggle .su { opacity: 0.4; }
+[data-theme="dark"] .theme-toggle .mo { opacity: 1; }
+
+/* ====== MARGINALIA ====== */
+.mg-l, .mg-r {
+  position: fixed; top: 50%;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-soft); z-index: 100; white-space: nowrap; opacity: 0.6;
+}
+.mg-l { left: 18px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; }
+.mg-r { right: 18px; transform: translateY(-50%) rotate(90deg); transform-origin: right center; }
+
+/* ====== HERO ====== */
+.hero {
+  min-height: 100vh; padding: 60px 80px 40px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto; gap: 40px;
+}
+.top-bar {
+  grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: flex-start;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-mid);
+  border-bottom: 1px solid var(--border); padding-bottom: 18px;
+}
+.top-bar .left, .top-bar .right { display: flex; gap: 32px; align-items: center; }
+.top-bar .dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); margin-right: 8px; vertical-align: middle;
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.hero-title {
+  grid-column: 1 / -1; align-self: center; text-align: center;
+  margin-top: 40px; position: relative;
+}
+.hero-title .pre {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-mid);
+  margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 20px;
+}
+.hero-title .pre::before, .hero-title .pre::after {
+  content: ''; width: 60px; height: 1px; background: var(--border);
+}
+.hero-title h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(80px, 16vw, 240px); font-weight: 400;
+  line-height: 0.85; color: var(--text); letter-spacing: -0.04em;
+}
+.it { font-style: italic; color: var(--accent); }
+.hero-title .kr {
+  font-family: 'Noto Serif KR', serif; font-size: clamp(20px, 3vw, 36px);
+  font-weight: 300; color: var(--text-mid); margin-top: 20px; letter-spacing: 0.05em;
+}
+.splash {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 120%; height: 120%; z-index: -1; pointer-events: none; opacity: 0.5;
+}
+[data-theme="dark"] .splash { opacity: 0.2; }
+
+.hero-meta {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  border-top: 1px solid var(--border); padding-top: 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid);
+}
+.hero-meta div span { display: block; color: var(--text); margin-top: 6px; font-size: 10px; }
+
+/* ====== SHARED SECTION ====== */
+section {
+  padding: 120px 80px; position: relative;
+  border-top: 1px solid var(--border);
+}
+.sl {
+  display: flex; align-items: baseline; gap: 24px; margin-bottom: 60px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mid);
+}
+.sl .nm {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 48px; color: var(--text); font-style: italic; line-height: 1;
+}
+.sl .ln { flex: 1; height: 1px; background: var(--border); opacity: 0.3; }
+.dh {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(48px, 8vw, 110px); font-weight: 400;
+  line-height: 0.95; color: var(--text); letter-spacing: -0.03em; margin-bottom: 40px;
+}
+
+/* ====== ESSENCE ====== */
+.essence { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.essence .qt {
+  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 300;
+  font-size: clamp(24px, 3vw, 40px); line-height: 1.3; color: var(--text);
+}
+.essence .qt::before {
+  content: '\201C'; font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 120px; color: var(--accent); line-height: 0.5; display: block; margin-bottom: -30px;
+}
+.essence .bd p { margin-bottom: 20px; font-size: 15px; line-height: 1.75; color: var(--text-mid); }
+.dc::first-letter {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 80px; float: left; line-height: 0.85; padding: 8px 12px 0 0;
+  color: var(--accent); font-style: italic;
+}
+
+/* ====== PALETTE ====== */
+.pal { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--border); }
+.sw {
+  aspect-ratio: 3/4; padding: 20px; display: flex; flex-direction: column;
+  justify-content: space-between; border-right: 1px solid var(--border);
+  transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1); cursor: pointer;
+}
+.sw:last-child { border-right: none; }
+.sw:hover { transform: translateY(-8px); }
+.sw .n { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; }
+.sw .i { font-family: 'DM Serif Display', Georgia, serif; font-size: 14px; line-height: 1.2; }
+.sw .i .h {
+  display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  margin-top: 6px; letter-spacing: 0.1em; font-style: normal; opacity: 0.7;
+}
+.s1{background:#D9C4B4;color:#4A3B32} .s2{background:#A69383;color:#F5F0EB}
+.s3{background:#6B5D54;color:#F5F0EB} .s4{background:#8C7E70;color:#F5F0EB}
+.s5{background:#4A3B32;color:#F5F0EB} .s6{background:#8A1C1C;color:#F5F0EB}
+
+.pm {
+  margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid);
+}
+.pm strong {
+  display: block; color: var(--text); font-family: 'Fraunces', Georgia, serif;
+  font-size: 14px; text-transform: none; letter-spacing: 0; font-style: italic;
+  margin-bottom: 8px; font-weight: 400;
+}
+
+/* ====== TYPOGRAPHY ====== */
+.td {
+  border: 1px solid var(--border); padding: 60px 50px; margin-bottom: 30px;
+  background: var(--bg-card); position: relative; transition: background 0.5s;
+}
+.td .c {
+  position: absolute; font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em; color: var(--text-mid);
+}
+.td .c.tl{top:12px;left:14px} .td .c.tr{top:12px;right:14px}
+.td .c.bl{bottom:12px;left:14px} .td .c.br{bottom:12px;right:14px}
+.td .sp {
+  font-family: 'DM Serif Display', Georgia, serif; font-size: 140px;
+  line-height: 0.9; color: var(--text); text-align: center; margin: 30px 0; font-weight: 400;
+}
+.td .sp.it { font-style: italic; color: var(--accent); }
+.td .na {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid);
+  text-align: center; margin-top: 30px;
+}
+.td .na strong {
+  display: block; color: var(--text); font-family: 'Fraunces', Georgia, serif;
+  font-style: italic; font-size: 18px; text-transform: none;
+  letter-spacing: 0; margin-top: 6px; font-weight: 400;
+}
+.tp { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.t2 .sp { font-family: 'Fraunces', Georgia, serif; font-size: 90px; font-weight: 300; }
+.t3 .sp { font-family: 'JetBrains Mono', monospace; font-size: 60px; letter-spacing: -0.02em; font-weight: 300; }
+.t4 .sp { font-family: 'Noto Serif KR', serif; font-size: 90px; font-weight: 300; }
+
+.tt { margin-top: 40px; width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+.tt th, .tt td {
+  text-align: left; padding: 14px 0; border-bottom: 1px solid var(--border-soft);
+  color: var(--text-mid); letter-spacing: 0.05em;
+}
+.tt th {
+  color: var(--text); font-weight: 400; font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase; padding-bottom: 18px;
+}
+.tt td:first-child {
+  font-style: italic; color: var(--text);
+  font-family: 'Fraunces', Georgia, serif; font-size: 14px;
+}
+
+/* ====== LOGO ====== */
+.ls { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; }
+.ld {
+  aspect-ratio: 4/5; border: 1px solid var(--border); background: var(--logo-bg);
+  position: relative; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; transition: background 0.5s;
+}
+.ld .c {
+  position: absolute; font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em; color: var(--text-mid);
+}
+.ld .c.tl{top:18px;left:20px} .ld .c.tr{top:18px;right:20px}
+.ld .c.bl{bottom:18px;left:20px} .ld .c.br{bottom:18px;right:20px}
+.lm { text-align: center; position: relative; z-index: 2; }
+.lm .w {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(48px, 7vw, 96px); line-height: 0.85; color: var(--text);
+  font-weight: 400; letter-spacing: -0.02em;
+}
+.lm .kr {
+  font-family: 'Noto Serif KR', serif; font-size: 24px;
+  color: var(--text-mid); margin-top: 14px; letter-spacing: 0.1em;
+}
+.lm .mt {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mid);
+  margin-top: 30px; display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.lm .mt::before, .lm .mt::after { content: ''; width: 30px; height: 1px; background: var(--text-mid); }
+.sb { position: absolute; inset: 0; z-index: 1; opacity: 0.4; transition: opacity 0.5s; }
+[data-theme="dark"] .sb { opacity: 0.15; }
+
+.lr h3 {
+  font-family: 'DM Serif Display', Georgia, serif; font-style: italic;
+  font-size: 32px; color: var(--accent); margin-bottom: 24px; line-height: 1.1;
+}
+.lr p { font-size: 14px; line-height: 1.7; color: var(--text-mid); margin-bottom: 18px; }
+.lr ul { list-style: none; margin-top: 24px; border-top: 1px solid var(--border-soft); padding-top: 24px; }
+.lr li {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text);
+  padding: 10px 0; border-bottom: 1px dotted var(--border-soft);
+  display: flex; justify-content: space-between;
+}
+.lr li span {
+  color: var(--text-mid); font-style: italic; font-family: 'Fraunces', Georgia, serif;
+  text-transform: none; letter-spacing: 0; font-size: 12px;
+}
+
+/* ====== VOICE ====== */
+.vg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.vc {
+  background: var(--bg-card); padding: 50px 36px; min-height: 280px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background 0.4s;
+}
+.vc:hover { background: var(--bg-hover); }
+.vc .n { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 48px; color: var(--accent); line-height: 0.8; }
+.vc .w { font-family: 'DM Serif Display', Georgia, serif; font-size: 36px; color: var(--text); line-height: 1; margin: 30px 0 16px; }
+.vc .d { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+/* ====== MICROGRAPHICS ====== */
+.mg2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.mc {
+  aspect-ratio: 1; border: 1px solid var(--border); padding: 30px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  background: var(--bg-card); transition: background 0.5s;
+}
+.mc .ic { flex: 1; display: flex; align-items: center; justify-content: center; }
+.mc svg { width: 80px; height: 80px; }
+.mc .lb {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid);
+}
+.mc .lb strong {
+  display: block; color: var(--text); font-family: 'Fraunces', Georgia, serif;
+  font-style: italic; font-size: 13px; text-transform: none;
+  letter-spacing: 0; font-weight: 400; margin-top: 4px;
+}
+
+/* ====== RITUAL ====== */
+.rt { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.rs { padding: 50px 30px; border-right: 1px solid var(--border); text-align: left; }
+.rs:last-child { border-right: none; }
+.rs .n { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: var(--text-mid); }
+.rs .na { font-family: 'DM Serif Display', Georgia, serif; font-size: 42px; color: var(--text); line-height: 1; margin: 20px 0 8px; }
+.rs .kr { font-family: 'Noto Serif KR', serif; font-size: 14px; color: var(--text-mid); margin-bottom: 30px; }
+.rs .d { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+/* ====== PACKAGING ====== */
+.pi { max-width: 600px; margin-bottom: 80px; }
+.pi p { font-size: 15px; line-height: 1.75; color: var(--text-mid); margin-bottom: 16px; }
+.pg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 60px; }
+.pk {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 60px 20px 40px; border: 1px solid var(--border);
+  background: var(--bg-card); position: relative;
+  transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.5s, background 0.5s;
+}
+.pk:hover { transform: translateY(-12px); box-shadow: 0 30px 60px var(--pkg-shadow); }
+.pk .c { position: absolute; font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.2em; color: var(--text-soft); }
+.pk .c.tl{top:12px;left:14px} .pk .c.tr{top:12px;right:14px}
+.pm2 { width: 100%; flex: 1; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 30px; min-height: 260px; }
+.pl { text-align: center; width: 100%; border-top: 1px solid var(--border-soft); padding-top: 20px; }
+.pl .na { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 20px; color: var(--text); }
+.pl .ty { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-top: 6px; }
+
+/* Product Mockups */
+.m-t { width: 60px; height: 180px; position: relative; }
+.m-t .bd { width: 60px; height: 140px; background: linear-gradient(90deg, var(--pkg-dark), var(--pkg-light) 35%, var(--pkg-mid) 70%, var(--pkg-dark)); border-radius: 0 0 30px 30px; position: absolute; bottom: 0; box-shadow: 8px 12px 30px var(--pkg-shadow); }
+.m-t .bd::after { content: ''; position: absolute; top: 20%; left: 18%; width: 20%; height: 50%; background: linear-gradient(180deg, var(--pkg-hi), transparent); border-radius: 20px; }
+.m-t .cp { width: 36px; height: 44px; background: linear-gradient(90deg, #3A3028, var(--pkg-cap) 40%, #3A3028); border-radius: 4px 4px 0 0; position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+.m-t .lt { position: absolute; top: 55%; left: 50%; transform: translate(-50%,-50%) rotate(-90deg); font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 9px; color: var(--text); letter-spacing: 0.15em; white-space: nowrap; opacity: 0.7; }
+
+.m-p { width: 80px; height: 200px; position: relative; }
+.m-p .bd { width: 80px; height: 140px; background: linear-gradient(90deg, var(--pkg-dark), var(--pkg-light) 30%, var(--pkg-mid) 65%, var(--pkg-dark)); border-radius: 12px 12px 20px 20px; position: absolute; bottom: 0; box-shadow: 8px 12px 30px var(--pkg-shadow); }
+.m-p .bd::after { content: ''; position: absolute; top: 15%; left: 15%; width: 18%; height: 55%; background: linear-gradient(180deg, var(--pkg-hi), transparent); border-radius: 20px; }
+.m-p .nk { width: 16px; height: 24px; background: linear-gradient(90deg, #3A3028, var(--pkg-cap) 50%, #3A3028); position: absolute; bottom: 140px; left: 50%; transform: translateX(-50%); }
+.m-p .hd { width: 40px; height: 10px; background: linear-gradient(90deg, #3A3028, var(--pkg-cap) 40%, #3A3028); border-radius: 3px; position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+.m-p .sp2 { width: 24px; height: 6px; background: var(--pkg-cap); border-radius: 0 3px 3px 0; position: absolute; top: 2px; left: calc(50% + 18px); }
+.m-p .lt { position: absolute; top: 62%; left: 50%; transform: translate(-50%,-50%); font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 8px; color: var(--text); letter-spacing: 0.12em; white-space: nowrap; opacity: 0.7; text-align: center; }
+
+.m-j { width: 100px; height: 120px; position: relative; }
+.m-j .bd { width: 100px; height: 70px; background: linear-gradient(90deg, var(--pkg-dark), var(--pkg-light) 30%, var(--pkg-mid) 65%, var(--pkg-dark)); border-radius: 14px; position: absolute; bottom: 0; box-shadow: 8px 12px 30px var(--pkg-shadow); }
+.m-j .bd::after { content: ''; position: absolute; top: 12%; left: 12%; width: 20%; height: 55%; background: linear-gradient(180deg, var(--pkg-hi), transparent); border-radius: 20px; }
+.m-j .li { width: 104px; height: 28px; background: linear-gradient(90deg, #3A3028, var(--pkg-cap) 40%, #3A3028); border-radius: 10px 10px 2px 2px; position: absolute; bottom: 66px; left: -2px; }
+.m-j .lt { position: absolute; top: 72%; left: 50%; transform: translate(-50%,-50%); font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 8px; color: var(--text); letter-spacing: 0.1em; white-space: nowrap; opacity: 0.7; }
+
+.m-b { width: 110px; height: 160px; position: relative; }
+.m-b .fa { width: 90px; height: 140px; background: var(--box-face); border: 1px solid var(--border-soft); position: absolute; bottom: 0; left: 0; box-shadow: 8px 12px 30px var(--pkg-shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; transition: background 0.5s; }
+.m-b .si { width: 20px; height: 140px; background: var(--box-side); border-right: 1px solid var(--border-soft); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); position: absolute; bottom: 0; left: 90px; transform: skewY(-10deg); transform-origin: bottom left; transition: background 0.5s; }
+.m-b .to { width: 90px; height: 14px; background: var(--box-top); border: 1px solid var(--border-soft); border-bottom: none; position: absolute; bottom: 140px; left: 0; transform: skewX(-54deg); transform-origin: bottom left; transition: background 0.5s; }
+.m-b .fa .lt { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 12px; color: var(--text); letter-spacing: 0.08em; text-align: center; line-height: 1.2; }
+.m-b .fa .su { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-top: 10px; }
+.m-b .fa .kr { font-family: 'Noto Serif KR', serif; font-size: 9px; color: var(--text-mid); margin-top: 6px; }
+.m-b .fa::before { content: ''; position: absolute; bottom: 16px; left: 15px; right: 15px; height: 1px; background: var(--accent); opacity: 0.4; }
+
+.ps { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); padding-top: 50px; }
+.ps h3 { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 28px; color: var(--accent); margin-bottom: 20px; }
+.ps p { font-size: 14px; line-height: 1.7; color: var(--text-mid); margin-bottom: 14px; }
+.ps .spl { list-style: none; margin-top: 20px; }
+.ps .spl li {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+  color: var(--text); padding: 10px 0; border-bottom: 1px dotted var(--border-soft);
+  display: flex; justify-content: space-between;
+}
+.ps .spl li span { color: var(--text-mid); font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 12px; letter-spacing: 0; }
+
+/* ====== MANIFESTO ====== */
+.mf {
+  text-align: center; padding: 160px 80px;
+  background: linear-gradient(180deg, var(--bg), var(--bg-alt));
+  border-top: 1px solid var(--border); transition: background 0.5s;
+}
+.mf h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(48px, 9vw, 140px); font-weight: 400;
+  line-height: 0.9; color: var(--text); letter-spacing: -0.03em; margin-bottom: 40px;
+}
+.mf .kr { font-family: 'Noto Serif KR', serif; font-size: 24px; color: var(--text-mid); margin-bottom: 60px; letter-spacing: 0.1em; }
+.mf p {
+  max-width: 600px; margin: 0 auto 24px;
+  font-family: 'Fraunces', Georgia, serif; font-style: italic;
+  font-size: 18px; line-height: 1.7; color: var(--text); font-weight: 300;
+}
+.sig {
+  margin-top: 80px; font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mid);
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+}
+.sig::before, .sig::after { content: ''; width: 80px; height: 1px; background: var(--border); }
+
+/* ====== FOOTER ====== */
+footer {
+  padding: 40px 80px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-mid);
+}
+footer .ct {
+  font-family: 'DM Serif Display', Georgia, serif; font-style: italic;
+  font-size: 14px; text-transform: none; letter-spacing: 0; color: var(--text);
+}
+
+/* ====== ANIMATIONS ====== */
+.fade-up { opacity: 0; transform: translateY(30px); animation: fu 1.2s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+.d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.3s; } .d3 { animation-delay: 0.5s; }
+@keyframes fu { to { opacity: 1; transform: translateY(0); } }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .hero, section, .mf { padding-left: 30px; padding-right: 30px; }
+  .hero { grid-template-columns: 1fr; }
+  .essence, .ls, .ps { grid-template-columns: 1fr; gap: 40px; }
+  .pal { grid-template-columns: repeat(3, 1fr); }
+  .pal .sw:nth-child(3) { border-right: none; }
+  .pal .sw:nth-child(n+4) { border-top: 1px solid var(--border); }
+  .vg, .rt { grid-template-columns: 1fr; }
+  .vc, .rs { border-right: none; border-bottom: 1px solid var(--border); }
+  .mg2, .pg { grid-template-columns: repeat(2, 1fr); }
+  .tp { grid-template-columns: 1fr; }
+  .mg-l, .mg-r { display: none; }
+  .hero-meta { grid-template-columns: repeat(2, 1fr); }
+  footer { flex-direction: column; gap: 14px; text-align: center; }
+  .theme-toggle { right: 30px; }
+}
+</style>
+</head>
+<body>
+
+<div class="theme-toggle" onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='light'?'dark':'light'" title="Toggle theme">
+  <span class="ic su">&#9788;</span><span class="ic mo">&#9790;</span>
+</div>
+<div class="mg-l">&#49444;&#49828;&#54000;&#49828; · brand director log · v2.0</div>
+<div class="mg-r">ritual · renewal · dawn</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="top-bar">
+    <div class="left"><span><span class="dot"></span>Vol. 01 / 2026</span><span>Brand Director Log</span></div>
+    <div class="right"><span>Seoul · Los Angeles</span><span>9:16 / Editorial</span></div>
+  </div>
+  <div class="hero-title">
+    <svg class="splash" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"><g opacity="0.6"><path d="M150 280Q300 200 450 320T720 300" stroke="#A69383" stroke-width="1.5" fill="none"/><path d="M100 350Q250 280 400 360T700 380" stroke="#6B5D54" stroke-width="1" fill="none" opacity="0.6"/><circle cx="180" cy="240" r="3" fill="#8A1C1C" opacity="0.5"/><circle cx="620" cy="380" r="2" fill="#4A3B32" opacity="0.6"/><circle cx="380" cy="180" r="1.5" fill="#8A1C1C" opacity="0.4"/><circle cx="500" cy="420" r="2.5" fill="#6B5D54" opacity="0.5"/><path d="M200 400Q220 380 240 410" stroke="#8A1C1C" stroke-width="1" fill="none" opacity="0.4"/><path d="M550 200Q580 220 570 250" stroke="#A69383" stroke-width="1.2" fill="none" opacity="0.5"/></g></svg>
+    <div class="pre fade-up d1">A Beauty House from Seoul</div>
+    <h1 class="fade-up d2">Seoul<span class="it">stice</span></h1>
+    <div class="kr fade-up d3">설스티스 — 새벽의 의식</div>
+  </div>
+  <div class="hero-meta"><div>Founded<span>MMXXVI</span></div><div>Discipline<span>Skincare · Editorial</span></div><div>Origin<span>Seoul · 서울</span></div><div>Doctrine<span>Ritual / Renewal / Dawn</span></div></div>
+</div>
+
+<!-- i. ESSENCE -->
+<section>
+  <div class="sl"><span class="nm">i.</span><span>Essence</span><span class="ln"></span><span>Chapter One</span></div>
+  <h2 class="dh">A moment between<br><span class="it">waking</span> and becoming.</h2>
+  <div class="essence">
+    <div class="qt">Seoulstice is the hush before the city wakes — the soft breath where Seoul's modernity meets a solstice calm.</div>
+    <div class="bd">
+      <p class="dc">A portmanteau of Seoul and Solstice. The brand exists at the intersection of hypermodern Korean ritual and the cosmic alignment of renewal — a daily ceremony pressed into the body of a single morning.</p>
+      <p>Where K-beauty futurism meets old-money calm. Where 90s Seoul street poetry meets the Tumblr-era intimacy of soft, dewy beauty. Where ritual is not a marketing word but a discipline practiced before sunrise, in pastel-tiled bathrooms across continents.</p>
+      <p>This is the brand director log — a bible for the visual, verbal, and textural language of Seoulstice. Use it as scripture, not suggestion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ii. PALETTE -->
+<section>
+  <div class="sl"><span class="nm">ii.</span><span>Palette</span><span class="ln"></span><span>Chapter Two</span></div>
+  <h2 class="dh">Earth tones. <span class="it">Dawn light.</span></h2>
+  <div class="pal">
+    <div class="sw s1"><div class="n">01</div><div class="i">Dusty Beige<span class="h">#D9C4B4</span></div></div>
+    <div class="sw s2"><div class="n">02</div><div class="i">Taupe<span class="h">#A69383</span></div></div>
+    <div class="sw s3"><div class="n">03</div><div class="i">Muted Brown<span class="h">#6B5D54</span></div></div>
+    <div class="sw s4"><div class="n">04</div><div class="i">Warm Grey<span class="h">#8C7E70</span></div></div>
+    <div class="sw s5"><div class="n">05</div><div class="i">Deep Espresso<span class="h">#4A3B32</span></div></div>
+    <div class="sw s6"><div class="n">06</div><div class="i">Burgundy<span class="h">#8A1C1C</span></div></div>
+  </div>
+  <div class="pm">
+    <div><strong>Behavior</strong>Colors must always feel textured, never flat. Beige and taupe carry the brand. Espresso anchors typography and shadow.</div>
+    <div><strong>Burgundy</strong>An accent only. Used sparingly, as emotional punctuation — a single dripped pour of feeling against neutral discipline.</div>
+    <div><strong>Discipline</strong>No color outside the system. No tints, no fades to black. Lifted blacks at 8% are honored as the Seoulstice signature.</div>
+  </div>
+</section>
+
+<!-- iii. TYPOGRAPHY -->
+<section>
+  <div class="sl"><span class="nm">iii.</span><span>Typography</span><span class="ln"></span><span>Chapter Three</span></div>
+  <h2 class="dh">Old money serif.<br><span class="it">Swiss restraint.</span></h2>
+  <div class="td"><span class="c tl">DISPLAY · 01</span><span class="c tr">PRIMARY</span><div class="sp it">Seoulstice</div><span class="c bl">설스티스</span><span class="c br">A · a · Æ · 설</span><div class="na">DM SERIF DISPLAY · 400 / Italic<strong>The voice of the masthead</strong></div></div>
+  <div class="tp">
+    <div class="td t2"><span class="c tl">SECONDARY · 02</span><span class="c tr">EDITORIAL</span><div class="sp">Renewal</div><div class="na">FRAUNCES · 300 / 400<strong>Body and editorial prose</strong></div></div>
+    <div class="td t3"><span class="c tl">MONO · 03</span><span class="c tr">MICROTYPE</span><div class="sp">SST-001</div><div class="na">JETBRAINS MONO · 300 / 400<strong>Codes, labels, marginalia</strong></div></div>
+  </div>
+  <div class="td t4"><span class="c tl">HANGUL · 04</span><span class="c tr">KOREAN</span><div class="sp">새벽 의식</div><div class="na">NOTO SERIF KR · 300 / 500<strong>The mother tongue</strong></div></div>
+  <table class="tt"><thead><tr><th>Use Case</th><th>Family</th><th>Weight</th><th>Treatment</th></tr></thead><tbody>
+    <tr><td>Masthead / Logo</td><td>DM Serif Display</td><td>400 Italic</td><td>Tight kerning · -2%</td></tr>
+    <tr><td>Editorial Headlines</td><td>DM Serif Display</td><td>400 Roman</td><td>Drop caps in burgundy</td></tr>
+    <tr><td>Body Copy</td><td>Fraunces</td><td>300</td><td>1.7 line-height</td></tr>
+    <tr><td>Marginalia / Codes</td><td>JetBrains Mono</td><td>300</td><td>0.25em tracking, uppercase</td></tr>
+    <tr><td>Korean Display</td><td>Noto Serif KR</td><td>300 / 500</td><td>0.1em tracking</td></tr>
+  </tbody></table>
+</section>
+
+<!-- iv. LOGO -->
+<section>
+  <div class="sl"><span class="nm">iv.</span><span>The Mark</span><span class="ln"></span><span>Chapter Four</span></div>
+  <h2 class="dh">A wordmark, <span class="it">a ritual.</span></h2>
+  <div class="ls">
+    <div class="ld">
+      <svg class="sb" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg"><g opacity="0.5"><path d="M80 200Q200 120 320 250" stroke="#A69383" stroke-width="1.5" fill="none"/><path d="M60 280Q180 200 340 320" stroke="#6B5D54" stroke-width="1" fill="none" opacity="0.6"/><path d="M100 360Q220 300 320 380" stroke="#8A1C1C" stroke-width="0.8" fill="none" opacity="0.5"/><circle cx="120" cy="180" r="3" fill="#8A1C1C" opacity="0.6"/><circle cx="280" cy="320" r="2.5" fill="#4A3B32" opacity="0.5"/><circle cx="200" cy="240" r="1.8" fill="#6B5D54" opacity="0.4"/></g></svg>
+      <span class="c tl">SST · LOGO</span><span class="c tr">v2.0</span>
+      <div class="lm"><div class="w">Seoul<span class="it">stice</span></div><div class="kr">설스티스</div><div class="mt">Ritual · Renewal · Dawn</div></div>
+      <span class="c bl">PRIMARY MARK</span><span class="c br">EST · MMXXVI</span>
+    </div>
+    <div class="lr">
+      <h3>The mark must always breathe.</h3>
+      <p>The Seoulstice wordmark is a calligraphic gesture — never compressed, never warped, never coloured outside the palette. Set in DM Serif Display Italic, with <em>stice</em> rendered in burgundy as the only chromatic break.</p>
+      <p>The Korean reading "설스티스" appears beneath the wordmark. Always together. Never apart.</p>
+      <ul>
+        <li>Min. Size <span>32px digital</span></li>
+        <li>Clear Space <span>1x cap height</span></li>
+        <li>On Image <span>15-30% opacity</span></li>
+        <li>Light Mode <span>Espresso on beige</span></li>
+        <li>Dark Mode <span>Ivory on espresso-deep</span></li>
+        <li>Accent <span>Burgundy italic only</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- v. VOICE -->
+<section>
+  <div class="sl"><span class="nm">v.</span><span>Voice</span><span class="ln"></span><span>Chapter Five</span></div>
+  <h2 class="dh">Poetic minimalism.<br><span class="it">Grounded calm.</span></h2>
+  <div class="vg">
+    <div class="vc"><div class="n">01</div><div><div class="w">Quiet</div><div class="d">Never shouts. Never sells. Speaks the way dawn light falls — softly, with intention, in the space between breaths.</div></div></div>
+    <div class="vc"><div class="n">02</div><div><div class="w">Precise</div><div class="d">Every word earns its place. Scientific where it needs to be. Poetic where it needs to be. Never both at once.</div></div></div>
+    <div class="vc"><div class="n">03</div><div><div class="w">Reverent</div><div class="d">Treats the body, the morning, and the mirror as sacred. Skincare as ceremony. Self-care as scripture.</div></div></div>
+  </div>
+</section>
+
+<!-- vi. MICROGRAPHICS -->
+<section>
+  <div class="sl"><span class="nm">vi.</span><span>Micrographics</span><span class="ln"></span><span>Chapter Six</span></div>
+  <h2 class="dh">Quiet glyphs <span class="it">at the edges.</span></h2>
+  <div class="mg2">
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><circle cx="40" cy="40" r="20"/><line x1="40" y1="8" x2="40" y2="18"/><line x1="40" y1="62" x2="40" y2="72"/><line x1="8" y1="40" x2="18" y2="40"/><line x1="62" y1="40" x2="72" y2="40"/><line x1="17" y1="17" x2="24" y2="24"/><line x1="56" y1="56" x2="63" y2="63"/><line x1="63" y1="17" x2="56" y2="24"/><line x1="24" y1="56" x2="17" y2="63"/></svg></div><div class="lb">SST-Sun-A<strong>Solstice halo</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><path d="M10 50Q25 30 40 50T70 50"/><path d="M10 60Q25 40 40 60T70 60" opacity="0.6"/><path d="M10 40Q25 20 40 40T70 40" opacity="0.4"/></svg></div><div class="lb">SST-Wave<strong>Breath of qi</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><rect x="20" y="20" width="40" height="40"/><line x1="20" y1="33" x2="60" y2="33"/><line x1="20" y1="46" x2="60" y2="46"/><line x1="33" y1="20" x2="33" y2="60"/><line x1="46" y1="20" x2="46" y2="60"/></svg></div><div class="lb">SST-Grid<strong>Skin barrier</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><path d="M40 15Q28 35 28 48A12 12 0 0052 48Q52 35 40 15Z"/></svg></div><div class="lb">SST-Drop<strong>Hydration index</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><path d="M40 15A25 25 0 1 1 18 50"/><circle cx="40" cy="40" r="2" fill="var(--accent)" stroke="none"/></svg></div><div class="lb">SST-Cycle<strong>Renewal arc</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><line x1="20" y1="20" x2="20" y2="60"/><line x1="28" y1="20" x2="28" y2="60"/><line x1="36" y1="20" x2="36" y2="60"/><line x1="44" y1="20" x2="44" y2="60"/><line x1="52" y1="20" x2="52" y2="60"/><line x1="60" y1="20" x2="60" y2="60"/></svg></div><div class="lb">SST-Steps<strong>Layering code</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><ellipse cx="40" cy="35" rx="14" ry="3"/><ellipse cx="40" cy="42" rx="14" ry="3" opacity="0.7"/><ellipse cx="40" cy="49" rx="14" ry="3" opacity="0.5"/></svg></div><div class="lb">SST-Breath<strong>Calm marker</strong></div></div>
+    <div class="mc"><div class="ic"><svg viewBox="0 0 80 80" fill="none" stroke="var(--glyph)" stroke-width="1"><line x1="40" y1="10" x2="40" y2="70"/><line x1="10" y1="40" x2="70" y2="40"/><circle cx="40" cy="40" r="8" fill="none"/></svg></div><div class="lb">SST-Mark<strong>Editorial cross</strong></div></div>
+  </div>
+</section>
+
+<!-- vii. RITUAL -->
+<section>
+  <div class="sl"><span class="nm">vii.</span><span>The Ritual</span><span class="ln"></span><span>Chapter Seven</span></div>
+  <h2 class="dh">Four steps. <span class="it">One dawn.</span></h2>
+  <div class="rt">
+    <div class="rs"><div class="n">STEP 01</div><div class="na"><span class="it">Cleanse</span></div><div class="kr">정화</div><div class="d">The ceremonial release. Strip the night, prepare the canvas. Water as prayer.</div></div>
+    <div class="rs"><div class="n">STEP 02</div><div class="na"><span class="it">Tone</span></div><div class="kr">밸런스</div><div class="d">Re-align the body's pH and the soul's tempo. The first balance of the day.</div></div>
+    <div class="rs"><div class="n">STEP 03</div><div class="na"><span class="it">Renew</span></div><div class="kr">리뉴얼</div><div class="d">The serum, the act of becoming. Where ritual touches science and stays.</div></div>
+    <div class="rs"><div class="n">STEP 04</div><div class="na"><span class="it">Seal</span></div><div class="kr">마감</div><div class="d">Lock the moment. Carry the dawn into the day. Close the ceremony.</div></div>
+  </div>
+</section>
+
+<!-- viii. PACKAGING -->
+<section>
+  <div class="sl"><span class="nm">viii.</span><span>Packaging</span><span class="ln"></span><span>Chapter Eight</span></div>
+  <h2 class="dh">Objects of <span class="it">quiet ritual.</span></h2>
+  <div class="pi">
+    <p>Every vessel carries the ceremony. Matte ceramic finishes, soft-touch plastics, uncoated cardstock — each material chosen because it wants to be touched. The logo sits in espresso ink, always in Old Money serif, always accompanied by its Korean counterpart.</p>
+    <p>Pollock splashes appear as whispered accents — printed thin-filament gestures, never louder than the product itself.</p>
+  </div>
+  <div class="pg">
+    <div class="pk"><span class="c tl">SST-PKG-01</span><span class="c tr">50ML</span><div class="pm2"><div class="m-t"><div class="cp"></div><div class="bd"></div><div class="lt">Seoulstice</div></div></div><div class="pl"><div class="na">Renewal Serum</div><div class="ty">Soft-touch tube · 50ml</div></div></div>
+    <div class="pk"><span class="c tl">SST-PKG-02</span><span class="c tr">100ML</span><div class="pm2"><div class="m-p"><div class="hd"></div><div class="sp2"></div><div class="nk"></div><div class="bd"></div><div class="lt">Seoulstice<br>설스티스</div></div></div><div class="pl"><div class="na">Dawn Cleanser</div><div class="ty">Frosted pump · 100ml</div></div></div>
+    <div class="pk"><span class="c tl">SST-PKG-03</span><span class="c tr">50ML</span><div class="pm2"><div class="m-j"><div class="li"></div><div class="bd"></div><div class="lt">설스티스</div></div></div><div class="pl"><div class="na">Barrier Cream</div><div class="ty">Ceramic jar · 50ml</div></div></div>
+    <div class="pk"><span class="c tl">SST-PKG-04</span><span class="c tr">CARTON</span><div class="pm2"><div class="m-b"><div class="to"></div><div class="si"></div><div class="fa"><div class="lt">Seoul<em>stice</em></div><div class="su">SST-01 · Renewal Cycle</div><div class="kr">설스티스</div></div></div></div><div class="pl"><div class="na">Product Carton</div><div class="ty">Uncoated 300gsm · espresso ink</div></div></div>
+  </div>
+  <div class="ps">
+    <div>
+      <h3>Material standards</h3>
+      <p>Every surface must want to be held. Ceramic finish for jars, soft-touch for tubes, frosted glass for pump bottles, uncoated fibrous cardstock for boxes. No gloss. No foil. No lamination.</p>
+      <ul class="spl">
+        <li>Tube surface <span>Soft-touch matte</span></li>
+        <li>Pump body <span>Frosted glass / ceramic</span></li>
+        <li>Jar finish <span>Matte ceramic glaze</span></li>
+        <li>Box stock <span>Uncoated 300gsm</span></li>
+        <li>Ink system <span>Espresso + burgundy only</span></li>
+        <li>Cap finish <span>Brushed aluminium</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Branding on packaging</h3>
+      <p>The wordmark runs vertically on tubes and centered on pump bottles and jars. Korean characters always present. Pollock-style thin-filament gestures may appear as a single printed stroke behind the logotype — never more than one per surface.</p>
+      <ul class="spl">
+        <li>Logo placement <span>Centered or vertical</span></li>
+        <li>Korean mark <span>Always present</span></li>
+        <li>Pollock accents <span>1 per surface max</span></li>
+        <li>Microtext <span>SST codes on back panel</span></li>
+        <li>Color on product <span>Palette tones only</span></li>
+        <li>Dieline system <span>Swiss-grid aligned</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div class="mf">
+  <h2>Ritual. Renewal. <span class="it">Dawn.</span></h2>
+  <div class="kr">의식 · 재생 · 새벽</div>
+  <p>At the point where light shifts, the skin begins to breathe again.</p>
+  <p>A three-phase cycle of renewal energy. Daily realignment through ritual.</p>
+  <p>Where Seoul's clarity meets solstice calm.</p>
+  <p><em>This is the moment between waking and becoming.</em></p>
+  <div class="sig">설스티스 · MMXXVI</div>
+</div>
+
+<footer>
+  <div>&copy; Seoulstice 2026 · All Rights Reserved</div>
+  <div class="ct">A Brand Director Log by AKO Studios</div>
+  <div>v2.0 · Dark Mode + Packaging</div>
+</footer>
+
+</body>
+</html>

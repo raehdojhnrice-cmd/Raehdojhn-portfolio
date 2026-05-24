@@ -1,0 +1,1363 @@
+{
+  "meta": {
+    "title": "Raehdojhn Editorial Prompt Master System",
+    "generated_at": "2026-04-17T00:32:58",
+    "source_file": "/Users/nodear./Desktop/REPOSITORIES /raehdojhn-portfolio/ChatGPT-Visual Prompt System.json",
+    "source_messages": 20,
+    "extracted_json_objects": 10,
+    "unique_json_objects": 8
+  },
+  "canonical_refs": {
+    "editorial_engine": "akosua-editorial-engine-v1",
+    "mockup_generator": "visual-editorial-mockup-generator"
+  },
+  "deduped_schemas": [
+    {
+      "id": "akosua-studios-editorial-blog",
+      "source_message_index": 3,
+      "source_role": "Prompt",
+      "duplicate_count": 3,
+      "root_keys": [
+        "project",
+        "global_styles",
+        "modules",
+        "interactions"
+      ],
+      "schema": {
+        "project": {
+          "name": "akosua studios editorial blog",
+          "description": "An immersive, magazine-style layout for copywriting and portfolio storytelling, blending brutalist headers with elegant long-form text.",
+          "aesthetic_goals": [
+            "Typographic Tension",
+            "Immersive Full-Bleed Imagery",
+            "Asymmetrical/Broken Grids",
+            "Scroll-Triggered Micro-Interactions"
+          ]
+        },
+        "global_styles": {
+          "typography": {
+            "display_header": {
+              "description": "For main article titles and major chapter breaks. Inspired by Complex/Dazed.",
+              "font_family_recommendations": [
+                "Druk Wide",
+                "Helvetica Now",
+                "Monument Extended"
+              ],
+              "default_properties": {
+                "font_size": {
+                  "desktop": "8vw",
+                  "mobile": "12vw"
+                },
+                "font_weight": "bold",
+                "letter_spacing": "-0.04em",
+                "text_transform": "uppercase",
+                "color": "#000000"
+              }
+            },
+            "body_copy": {
+              "description": "For all interview text, narrative copy, and long-form reading. Inspired by GQ/i-D/NYT.",
+              "font_family_recommendations": [
+                "Garamond Premier",
+                "Tiempos Text",
+                "Playfair Display"
+              ],
+              "default_properties": {
+                "font_size": {
+                  "desktop": "20px",
+                  "mobile": "18px"
+                },
+                "line_height": "1.7",
+                "letter_spacing": "0.01em",
+                "color": "#1A1A1A"
+              }
+            },
+            "pull_quote": {
+              "description": "Oversized, dynamic quotes that disrupt the flow. A core Complex strategy.",
+              "font_family_recommendations": [
+                "Druk Wide"
+              ],
+              "inherit_from": "display_header",
+              "default_properties": {
+                "font_size": {
+                  "desktop": "5vw",
+                  "mobile": "8vw"
+                },
+                "line_height": "1.1",
+                "color": "#FFFFFF",
+                "background_color": "#000000",
+                "padding": "3rem"
+              }
+            },
+            "caption_metadata": {
+              "description": "For image credits, dates, and small sidebar notes.",
+              "font_family_recommendations": [
+                "Inter",
+                "Roboto Mono"
+              ],
+              "default_properties": {
+                "font_size": "14px",
+                "text_transform": "uppercase",
+                "letter_spacing": "0.1em",
+                "color": "#666666"
+              }
+            }
+          },
+          "layout": {
+            "default_padding": {
+              "desktop": {
+                "top_bottom": "8rem",
+                "left_right": "4rem"
+              },
+              "mobile": {
+                "top_bottom": "4rem",
+                "left_right": "1rem"
+              }
+            },
+            "grid_columns": 12,
+            "max_content_width": "1600px"
+          },
+          "colors": {
+            "primary_palette": [
+              "#000000",
+              "#FFFFFF",
+              "#666666"
+            ],
+            "accent_palette": []
+          }
+        },
+        "modules": {
+          "module_1": {
+            "name": "The Immersive Hero",
+            "description": "Full-screen media container (video loop or image) with dynamic title overlay.",
+            "properties": {
+              "min_height": "100vh",
+              "bleed": "true",
+              "background_type": [
+                "static_image",
+                "looping_silent_video"
+              ],
+              "overlay_settings": {
+                "content": " typography.display_header",
+                "position": "absolute_center",
+                "opacity": 0.8
+              }
+            }
+          },
+          "module_2": {
+            "name": "Staggered Narrative Block",
+            "description": "A split-column layout where text or image sticks, creating dynamic scrolling.",
+            "properties": {
+              "layout_type": "two_column",
+              "column_ratio": [
+                "50/50",
+                "60/40"
+              ],
+              "sticky_element": [
+                "column_1",
+                "column_2"
+              ],
+              "content_type": {
+                "column_1": "typography.body_copy",
+                "column_2": "static_image"
+              }
+            }
+          },
+          "module_3": {
+            "name": "The Big Quote Break",
+            "description": "A high-impact, full-width section dedicated to a single oversized thought.",
+            "properties": {
+              "width": "100%",
+              "bleed": "false",
+              "background_type": "static_color",
+              "background_color_default": "#F0F0F0",
+              "content_type": "typography.pull_quote"
+            }
+          },
+          "module_4": {
+            "name": "Editorial Image Cluster",
+            "description": "Asymmetrical, overlapping gallery breaking the 12-column grid.",
+            "properties": {
+              "item_count": 3,
+              "bleed": "true",
+              "layout_style": "scatter",
+              "transform_options": {
+                "rotate": [
+                  "-5deg",
+                  "5deg"
+                ],
+                "scale": [
+                  1,
+                  1.2
+                ]
+              },
+              "caption_style": "typography.caption_metadata"
+            }
+          },
+          "module_5": {
+            "name": "Isolated Negative Space Block",
+            "description": "A single image or paragraph commandingly isolated, often full-bleed. Core i-D style.",
+            "properties": {
+              "content_type": [
+                "static_image",
+                "typography.body_copy"
+              ],
+              "padding": {
+                "top_bottom": "15rem",
+                "left_right": "10vw"
+              },
+              "bleed": "true"
+            }
+          }
+        },
+        "interactions": {
+          "fade_in_sections": {
+            "trigger": "scroll_into_view",
+            "duration": "0.5s",
+            "ease": "ease-in-out"
+          },
+          "parallax_imagery": {
+            "apply_to": [
+              "module_1.background",
+              "module_4.item"
+            ],
+            "scroll_intensity": "0.2"
+          },
+          "reveal_text": {
+            "trigger": "scroll_into_view",
+            "type": "fade_and_slide_up",
+            "offset": "20px"
+          }
+        }
+      }
+    },
+    {
+      "id": "ako-editorial-prompt-engine-v1",
+      "source_message_index": 4,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "generator_name",
+        "inputs",
+        "global_direction",
+        "composition_builder",
+        "typography_system",
+        "overlay_engine",
+        "lighting_presets",
+        "camera_presets",
+        "output_template"
+      ],
+      "schema": {
+        "generator_name": "AKO_editorial_prompt_engine_v1",
+        "inputs": {
+          "subject": "string (person, object, concept)",
+          "mood": "string (emotional tone, e.g. eerie, romantic, clinical, aggressive)",
+          "format": "string (poster, still, collage, product, environment, diagram)"
+        },
+        "global_direction": {
+          "visual_philosophy": "controlled chaos balanced with strict hierarchy",
+          "render_style": "print realism + scan artifacts + analog imperfection",
+          "composition_rule": "clear focal hierarchy (primary / secondary / tertiary elements)",
+          "lighting_rule": "motivated lighting only, never decorative",
+          "camera_rule": "intentional, physical camera logic (lens, angle, distortion)",
+          "texture_rule": "every surface must feel tangible (paper, dust, grain, ink bleed)"
+        },
+        "composition_builder": {
+          "base_layer": {
+            "description": "foundational surface",
+            "options": [
+              "aged paper with fold creases",
+              "matte studio surface",
+              "raw concrete",
+              "void black space",
+              "fogged glass"
+            ]
+          },
+          "primary_subject": {
+            "placement": "center or rule-of-thirds anchor",
+            "treatment": [
+              "partially obscured",
+              "fragmented",
+              "isolated",
+              "overexposed",
+              "silhouetted"
+            ]
+          },
+          "secondary_elements": {
+            "purpose": "support narrative without overpowering subject",
+            "examples": [
+              "scientific diagrams",
+              "floral anchors",
+              "architectural forms",
+              "symbol clusters",
+              "text fragments"
+            ]
+          },
+          "negative_space": {
+            "usage": "intentional breathing room to control focus",
+            "intensity": "low / medium / extreme isolation"
+          }
+        },
+        "typography_system": {
+          "headline": {
+            "style": "oversized brutalist sans-serif",
+            "behavior": "interacts with subject (overlap, crop, collide)"
+          },
+          "body": {
+            "style": "elegant serif or mono",
+            "behavior": "structured blocks or scattered microtext"
+          },
+          "experimental": {
+            "elements": [
+              "handwritten notes",
+              "vertical type",
+              "microtext",
+              "symbolic labeling"
+            ]
+          }
+        },
+        "overlay_engine": {
+          "print_effects": [
+            "halftone texture (10–15%)",
+            "ink bleed",
+            "paper grain",
+            "xerox scanlines"
+          ],
+          "physical_artifacts": [
+            "tape strips",
+            "fold creases",
+            "dust + scratches",
+            "edge wear"
+          ],
+          "digital_artifacts": [
+            "glitch fragments",
+            "chromatic aberration",
+            "opacity flicker"
+          ],
+          "technical_marks": [
+            "registration marks",
+            "grid overlays (low opacity)",
+            "coordinates",
+            "timestamps",
+            "serial numbers"
+          ],
+          "annotation_layer": [
+            "arrows",
+            "circles",
+            "diagram lines",
+            "pseudo-academic labels"
+          ]
+        },
+        "lighting_presets": {
+          "flat_scan": "no shadows, texture-driven depth",
+          "harsh_overhead": "strong contrast, sharp shadows",
+          "rim_light": "edge definition only",
+          "diffused_backlight": "glow through material",
+          "directional_low": "dramatic upward shadows"
+        },
+        "camera_presets": {
+          "flat_lay": "top-down, 50mm",
+          "editorial_portrait": "eye-level, 50–85mm",
+          "wide_perspective": "low angle, 24–35mm",
+          "orthographic": "no perspective distortion",
+          "surveillance": "slight tilt, imperfect framing"
+        },
+        "output_template": {
+          "prompt_structure": [
+            "format + subject + mood",
+            "base layer description",
+            "primary subject placement + treatment",
+            "secondary elements integration",
+            "typography behavior",
+            "lighting choice",
+            "camera choice",
+            "overlay stack (print + physical + digital + technical)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ako-editorial-blog-engine-v2",
+      "source_message_index": 6,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "system_name",
+        "intent",
+        "editorial_dna",
+        "copywriting_engine",
+        "layout_modules",
+        "visual_overlays",
+        "interaction_rules",
+        "generation_logic"
+      ],
+      "schema": {
+        "system_name": "AKO_editorial_blog_engine_v2",
+        "intent": {
+          "description": "Create immersive, magazine-style editorial pages that combine high-fashion layout, scrollytelling, and structured copywriting.",
+          "core_principle": "Every article is treated as an art-directed spread, not a standard blog post."
+        },
+        "editorial_dna": {
+          "typography_contrast": {
+            "rule": "extreme contrast between display and body text",
+            "display": {
+              "style": "oversized brutalist sans-serif",
+              "behavior": [
+                "overlap imagery",
+                "crop off-screen",
+                "act as graphic element"
+              ]
+            },
+            "body": {
+              "style": "editorial serif",
+              "behavior": [
+                "high readability",
+                "narrow column",
+                "long-form comfort"
+              ]
+            }
+          },
+          "image_philosophy": {
+            "full_bleed": true,
+            "rules": [
+              "images must touch screen edges or exist in extreme isolation",
+              "no thumbnail grids",
+              "each image acts as a narrative beat"
+            ]
+          },
+          "grid_system": {
+            "type": "broken_12_column",
+            "rules": [
+              "alternate left/right text blocks",
+              "allow overflow beyond grid",
+              "stagger vertical rhythm"
+            ]
+          },
+          "scroll_behavior": {
+            "parallax": "subtle depth between text and background",
+            "reveals": "fade + translate on scroll",
+            "pacing": "content appears in controlled sequence, not all at once"
+          }
+        },
+        "copywriting_engine": {
+          "structure": {
+            "intro": "short, gripping, high-impact paragraph",
+            "body": "broken into rhythmic sections (2–5 sentences each)",
+            "quote_blocks": "inserted between sections as visual resets",
+            "outro": "open-ended or reflective, not conclusive"
+          },
+          "rules": [
+            "avoid long unbroken paragraphs",
+            "each paragraph should feel like a standalone beat",
+            "write to match visual pacing, not just narrative flow"
+          ]
+        },
+        "layout_modules": {
+          "hero": {
+            "type": "full_screen",
+            "height": "100vh",
+            "media": [
+              "image",
+              "video"
+            ],
+            "text_overlay": {
+              "position": "absolute",
+              "style": "display typography",
+              "interaction": "slight parallax offset"
+            }
+          },
+          "staggered_text_image": {
+            "type": "two_column",
+            "behavior": {
+              "one_side": "sticky",
+              "other_side": "scrolling"
+            },
+            "alternation": true
+          },
+          "full_bleed_break": {
+            "type": "image_break",
+            "width": "100%",
+            "purpose": "visual reset between text sections"
+          },
+          "pull_quote": {
+            "type": "full_width_text",
+            "style": "oversized",
+            "behavior": [
+              "break grid",
+              "overlap adjacent sections"
+            ]
+          },
+          "editorial_cluster": {
+            "type": "asymmetrical_gallery",
+            "rules": [
+              "3–5 images",
+              "slight overlap",
+              "varying scale",
+              "no strict alignment"
+            ]
+          },
+          "negative_space_block": {
+            "type": "isolation",
+            "usage": [
+              "single paragraph",
+              "single image"
+            ],
+            "padding": "extreme"
+          }
+        },
+        "visual_overlays": {
+          "optional_layers": [
+            "grain",
+            "halftone",
+            "scanlines",
+            "light paper texture"
+          ],
+          "usage_rule": "apply subtly — never overpower editorial clarity"
+        },
+        "interaction_rules": {
+          "scroll_reveal": {
+            "type": "fade_up",
+            "duration": "0.4–0.6s"
+          },
+          "parallax": {
+            "intensity": "low",
+            "targets": [
+              "hero background",
+              "large imagery"
+            ]
+          }
+        },
+        "generation_logic": {
+          "input": {
+            "subject": "string",
+            "tone": "string",
+            "density": "minimal | balanced | heavy"
+          },
+          "output_behavior": [
+            "select modules based on tone",
+            "adjust spacing based on density",
+            "insert quote blocks at emotional peaks",
+            "alternate layouts to avoid repetition"
+          ]
+        }
+      }
+    },
+    {
+      "id": "akosua-editorial-engine-v1",
+      "source_message_index": 8,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "system_name",
+        "intent",
+        "core_principles",
+        "style_system",
+        "layout_engine",
+        "modules",
+        "interaction_rules",
+        "article_logic",
+        "content_guidelines",
+        "output_behavior"
+      ],
+      "schema": {
+        "system_name": "akosua_editorial_engine_v1",
+        "intent": "Generate immersive, high-fashion editorial blog layouts inspired by Complex, GQ, Dazed, i-D, The Fader, and NYT Magazine. Each article behaves like a digital magazine spread, not a standard blog post.",
+        "core_principles": {
+          "layout_philosophy": "scrollytelling, cinematic pacing, modular composition",
+          "visual_tension": "contrast between brutalist display typography and refined serif body text",
+          "image_treatment": "full-bleed, editorial, print-inspired",
+          "grid_behavior": "asymmetrical, broken, rhythm-driven",
+          "interaction_style": "subtle, slow, editorial (never flashy or gimmicky)"
+        },
+        "style_system": {
+          "typography": {
+            "display": {
+              "role": "headlines, section breaks",
+              "font_stack": [
+                "Druk Wide",
+                "Monument Extended",
+                "Helvetica Now"
+              ],
+              "rules": {
+                "size_desktop": "6vw–10vw",
+                "size_mobile": "10vw–14vw",
+                "weight": "800+",
+                "tracking": "-0.03em to -0.06em",
+                "case": "uppercase",
+                "behavior": "can overlap imagery, can break grid"
+              }
+            },
+            "body": {
+              "role": "long-form reading",
+              "font_stack": [
+                "Tiempos Text",
+                "Garamond",
+                "Playfair Display"
+              ],
+              "rules": {
+                "size": "18–21px",
+                "line_height": "1.6–1.8",
+                "max_width": "65ch",
+                "alignment": "left",
+                "behavior": "clean, readable, anchored"
+              }
+            },
+            "meta": {
+              "role": "captions, timestamps, credits",
+              "font_stack": [
+                "Inter",
+                "Roboto Mono"
+              ],
+              "rules": {
+                "size": "12–14px",
+                "tracking": "0.08em",
+                "case": "uppercase",
+                "color": "#777"
+              }
+            },
+            "pull_quote": {
+              "role": "visual interruption",
+              "rules": {
+                "size": "4vw–7vw",
+                "weight": "bold",
+                "style": "italic or serif",
+                "placement": "full-width or breaking grid",
+                "background": "optional inverted (black/white swap)"
+              }
+            }
+          },
+          "color_system": {
+            "base": [
+              "#000000",
+              "#FFFFFF"
+            ],
+            "neutrals": [
+              "#111111",
+              "#666666",
+              "#F2F2F2"
+            ],
+            "usage_rule": "mostly monochrome, occasional controlled accent per article"
+          }
+        },
+        "layout_engine": {
+          "grid": "12-column base",
+          "behavior": "grid can be broken intentionally",
+          "spacing": {
+            "desktop": "6rem–10rem vertical rhythm",
+            "mobile": "3rem–5rem"
+          }
+        },
+        "modules": [
+          {
+            "id": "hero",
+            "description": "Full-screen opening statement",
+            "rules": {
+              "height": "100vh",
+              "media": [
+                "image",
+                "video"
+              ],
+              "text_overlay": "display typography",
+              "alignment_options": [
+                "center",
+                "bottom-left",
+                "off-center"
+              ],
+              "effect": "slight parallax or fade"
+            }
+          },
+          {
+            "id": "split_stagger",
+            "description": "Text + image interplay",
+            "rules": {
+              "columns": "2",
+              "ratio": [
+                "50/50",
+                "60/40"
+              ],
+              "sticky": "one side sticks while other scrolls",
+              "alternation": "flip sides every section"
+            }
+          },
+          {
+            "id": "full_bleed_image",
+            "description": "Immersive visual break",
+            "rules": {
+              "width": "100vw",
+              "height": "60vh–100vh",
+              "caption": "optional minimal metadata"
+            }
+          },
+          {
+            "id": "pull_quote_break",
+            "description": "Narrative interruption",
+            "rules": {
+              "width": "100%",
+              "alignment": "center or offset",
+              "spacing": "extra vertical breathing room"
+            }
+          },
+          {
+            "id": "image_cluster",
+            "description": "Editorial collage",
+            "rules": {
+              "count": "2–5 images",
+              "layout": "overlapping / scattered",
+              "rotation": "-5deg to +5deg",
+              "scale_variation": "0.9–1.2",
+              "grid": "intentionally broken"
+            }
+          },
+          {
+            "id": "negative_space_block",
+            "description": "Isolation moment",
+            "rules": {
+              "content": [
+                "single paragraph",
+                "single image"
+              ],
+              "padding": "extreme (10vw+)",
+              "background": "solid or empty"
+            }
+          }
+        ],
+        "interaction_rules": {
+          "parallax": {
+            "intensity": "low (0.1–0.25)",
+            "targets": [
+              "hero",
+              "background images"
+            ]
+          },
+          "fade_in": {
+            "duration": "0.4–0.7s",
+            "movement": "slight upward (10–20px)"
+          },
+          "scroll_pacing": {
+            "goal": "create rhythm, not speed",
+            "rule": "alternate dense text with visual breaks"
+          }
+        },
+        "article_logic": {
+          "structure": [
+            "hero",
+            "intro_text_block",
+            "split_stagger",
+            "full_bleed_image",
+            "body_text",
+            "pull_quote_break",
+            "image_cluster",
+            "deep_text_section",
+            "negative_space_block",
+            "closing_statement"
+          ],
+          "rules": {
+            "no_two_sections_same": true,
+            "alternate_density": "text → image → text → visual",
+            "tone_shift_support": "allow background color changes between sections"
+          }
+        },
+        "content_guidelines": {
+          "writing_style": {
+            "structure": "short paragraphs, rhythmic pacing",
+            "tone": "editorial, observational, slightly poetic",
+            "avoid": "large text walls"
+          },
+          "visual_sync": {
+            "rule": "every major idea gets a visual counterpart",
+            "quote_usage": "highlight emotional or defining lines"
+          }
+        },
+        "output_behavior": {
+          "goal": "each blog post feels like a designed editorial piece",
+          "variation": "high — layouts should not repeat exactly",
+          "consistency": "maintain typography + spacing system across all posts"
+        }
+      }
+    },
+    {
+      "id": "akosua-editorial-generator-v1",
+      "source_message_index": 10,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "system",
+        "input",
+        "mood_map",
+        "generator_logic",
+        "output_template",
+        "copy_engine",
+        "example_generation"
+      ],
+      "schema": {
+        "system": "akosua_editorial_generator_v1",
+        "input": {
+          "subject": "string (artist, project, or concept)",
+          "mood": "string (e.g. chaotic, minimal, introspective, futuristic)",
+          "tone": "string (observational, poetic, journalistic)",
+          "intensity": "low | medium | high",
+          "image_density": "low | medium | high"
+        },
+        "mood_map": {
+          "chaotic": {
+            "layout_bias": [
+              "image_cluster",
+              "broken_grid",
+              "overlap"
+            ],
+            "typography": "aggressive display, large scale shifts",
+            "spacing": "tight and inconsistent",
+            "background": "mixed tones, abrupt switches"
+          },
+          "minimal": {
+            "layout_bias": [
+              "negative_space_block",
+              "full_bleed_image"
+            ],
+            "typography": "controlled, restrained",
+            "spacing": "wide, consistent",
+            "background": "mostly white or black"
+          },
+          "introspective": {
+            "layout_bias": [
+              "split_stagger",
+              "pull_quote_break"
+            ],
+            "typography": "serif-heavy, softer contrast",
+            "spacing": "steady rhythm",
+            "background": "muted neutrals"
+          },
+          "futuristic": {
+            "layout_bias": [
+              "full_bleed_image",
+              "data_overlay"
+            ],
+            "typography": "clean, extended sans",
+            "spacing": "structured but spacious",
+            "background": "dark mode dominant"
+          }
+        },
+        "generator_logic": {
+          "step_1_select_modules": "Pick 6–10 modules based on mood_map.layout_bias",
+          "step_2_sequence": "Alternate text-heavy and visual-heavy sections",
+          "step_3_scale_typography": "Adjust display size based on intensity",
+          "step_4_insert_quotes": "Every 2–3 sections, inject pull_quote",
+          "step_5_apply_variation": "Flip layouts, offset alignment, avoid repetition"
+        },
+        "output_template": {
+          "hero": {
+            "type": "full_bleed",
+            "content": {
+              "headline": "GENERATED based on subject + mood",
+              "subhead": "short, tonal sentence",
+              "media_direction": "photo or video aligned to mood"
+            }
+          },
+          "sections": [
+            {
+              "type": "intro_text",
+              "style": "body_copy",
+              "content_rule": "3–5 short paragraphs, scene-setting"
+            },
+            {
+              "type": "split_stagger",
+              "content_rule": "narrative on one side, image on the other"
+            },
+            {
+              "type": "pull_quote",
+              "content_rule": "extract strongest emotional line"
+            },
+            {
+              "type": "full_bleed_image",
+              "content_rule": "pause reading, reset pacing"
+            },
+            {
+              "type": "deep_text",
+              "content_rule": "longer reflection or interview segment"
+            },
+            {
+              "type": "image_cluster",
+              "content_rule": "editorial collage tied to theme"
+            },
+            {
+              "type": "negative_space",
+              "content_rule": "single line or idea isolated"
+            }
+          ],
+          "closing": {
+            "type": "statement",
+            "content_rule": "short, unresolved or reflective ending"
+          }
+        },
+        "copy_engine": {
+          "headline_rules": {
+            "chaotic": "fragmented, abstract, slightly cryptic",
+            "minimal": "direct, lowercase, understated",
+            "introspective": "emotional but controlled",
+            "futuristic": "clean, conceptual"
+          },
+          "paragraph_rules": {
+            "length": "2–4 sentences max",
+            "flow": "each paragraph = one idea",
+            "rhythm": "alternate short + medium"
+          },
+          "pull_quote_rules": {
+            "length": "6–14 words",
+            "style": "impactful, standalone, emotional or declarative"
+          }
+        },
+        "example_generation": {
+          "input": {
+            "subject": "emerging artist",
+            "mood": "introspective",
+            "tone": "observational",
+            "intensity": "medium",
+            "image_density": "medium"
+          },
+          "output_preview": {
+            "headline": "nothing about this feels accidental",
+            "hero_direction": "soft portrait, muted tones",
+            "flow": [
+              "intro (quiet scene-setting)",
+              "split text/image (process + environment)",
+              "pull quote (identity tension)",
+              "full image (pause)",
+              "deep text (career + emotion)",
+              "negative space line",
+              "closing (open-ended)"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "editorial-layout-copy-generator",
+      "source_message_index": 14,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "generator"
+      ],
+      "schema": {
+        "generator": {
+          "name": "Editorial Layout + Copy Generator",
+          "description": "Generates a full article layout and copy structure based on subject, mood, tone, intensity, and image density.",
+          "inputs": {
+            "subject": "string (artist, project, or concept)",
+            "mood": "string (chaotic, minimal, introspective, futuristic)",
+            "tone": "string (observational, poetic, journalistic)",
+            "intensity": "string (low, medium, high)",
+            "image_density": "string (low, medium, high)"
+          },
+          "layout_mapping": {
+            "chaotic": {
+              "sections": [
+                "hero",
+                "image_cluster",
+                "split_stagger",
+                "pull_quote",
+                "deep_text",
+                "negative_space",
+                "full_bleed_image"
+              ],
+              "typography": "bold display, high contrast",
+              "spacing": "tight, irregular",
+              "background": "mixed tones, abrupt shifts"
+            },
+            "minimal": {
+              "sections": [
+                "hero",
+                "full_bleed_image",
+                "intro_text",
+                "pull_quote",
+                "deep_text",
+                "negative_space",
+                "closing"
+              ],
+              "typography": "clean sans-serif, restrained",
+              "spacing": "wide, consistent",
+              "background": "white or black, lots of negative space"
+            },
+            "introspective": {
+              "sections": [
+                "hero",
+                "split_stagger",
+                "deep_text",
+                "pull_quote",
+                "full_bleed_image",
+                "negative_space",
+                "closing"
+              ],
+              "typography": "serif-heavy, soft",
+              "spacing": "steady rhythm",
+              "background": "muted neutrals"
+            },
+            "futuristic": {
+              "sections": [
+                "hero",
+                "full_bleed_image",
+                "data_overlay_block",
+                "split_stagger",
+                "pull_quote",
+                "image_cluster",
+                "closing"
+              ],
+              "typography": "extended sans-serif, clean",
+              "spacing": "structured, modular",
+              "background": "dark mode dominant, subtle neon accents"
+            }
+          },
+          "modules": {
+            "hero": {
+              "type": "full_bleed",
+              "headline": "auto-generated from subject + mood",
+              "subhead": "short tonal sentence reflecting mood",
+              "media": "image or video based on mood",
+              "typography": "layout_mapping.typography",
+              "spacing": "layout_mapping.spacing"
+            },
+            "intro_text": {
+              "type": "text_block",
+              "paragraphs": "3-5 short paragraphs",
+              "tone": "user input",
+              "typography": "serif or sans depending on mood",
+              "spacing": "steady rhythm or irregular depending on mood"
+            },
+            "split_stagger": {
+              "type": "two_column_scroll",
+              "left": "sticky image or video",
+              "right": "scrolling text",
+              "alignment": "alternating",
+              "typography": "body copy style"
+            },
+            "pull_quote": {
+              "type": "full_width_quote",
+              "content": "strongest line from text or auto-generated",
+              "typography": "oversized, impactful",
+              "background": "contrast block (dark/light) depending on mood"
+            },
+            "full_bleed_image": {
+              "type": "full_width_image",
+              "media": "editorial photo/video",
+              "spacing": "visual reset, ample negative space"
+            },
+            "image_cluster": {
+              "type": "asymmetrical_grid",
+              "items": "3-5 images",
+              "overlap": "slight",
+              "rotation": "random small angles",
+              "typography": "optional captions"
+            },
+            "negative_space": {
+              "type": "single_element_focus",
+              "content": "image or paragraph",
+              "spacing": "maximum negative space"
+            },
+            "deep_text": {
+              "type": "text_block",
+              "paragraphs": "3-7 paragraphs",
+              "tone": "reflective/long-form",
+              "typography": "serif or body copy style"
+            },
+            "closing": {
+              "type": "short_text",
+              "content": "reflective, unresolved ending",
+              "typography": "matching mood"
+            },
+            "data_overlay_block": {
+              "type": "visual_data_overlay",
+              "content": "charts, diagrams, abstract elements",
+              "background": "dark",
+              "typography": "clean, sans-serif"
+            }
+          },
+          "copy_rules": {
+            "headline": "match mood and tone, 4-8 words",
+            "paragraphs": "2-4 sentences each, one idea per paragraph, alternate short/medium rhythm",
+            "pull_quotes": "6-14 words, impactful, standalone",
+            "captions": "optional, short, descriptive"
+          },
+          "output": {
+            "layout_order": "auto-selected from layout_mapping based on mood",
+            "module_settings": "from modules",
+            "typography": "from layout_mapping",
+            "copy_structure": "structured for scroll pacing and visual hierarchy"
+          }
+        }
+      }
+    },
+    {
+      "id": "visual-editorial-mockup-generator",
+      "source_message_index": 16,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "generator"
+      ],
+      "schema": {
+        "generator": {
+          "name": "Visual Editorial Mockup Generator",
+          "description": "Generates a ready-to-render article layout based on subject, mood, tone, and intensity with placeholders for text and media.",
+          "inputs": {
+            "subject": "string (artist, project, or concept)",
+            "mood": "string (chaotic, minimal, introspective, futuristic)",
+            "tone": "string (observational, poetic, journalistic)",
+            "intensity": "string (low, medium, high)",
+            "image_density": "string (low, medium, high)"
+          },
+          "layout_mapping": {
+            "chaotic": [
+              "hero",
+              "image_cluster",
+              "split_stagger",
+              "pull_quote",
+              "deep_text",
+              "negative_space",
+              "full_bleed_image"
+            ],
+            "minimal": [
+              "hero",
+              "full_bleed_image",
+              "intro_text",
+              "pull_quote",
+              "deep_text",
+              "negative_space",
+              "closing"
+            ],
+            "introspective": [
+              "hero",
+              "split_stagger",
+              "deep_text",
+              "pull_quote",
+              "full_bleed_image",
+              "negative_space",
+              "closing"
+            ],
+            "futuristic": [
+              "hero",
+              "full_bleed_image",
+              "data_overlay_block",
+              "split_stagger",
+              "pull_quote",
+              "image_cluster",
+              "closing"
+            ]
+          },
+          "module_templates": {
+            "hero": {
+              "type": "full_bleed",
+              "headline": "{{subject}} — {{mood}}",
+              "subhead": "Tone: {{tone}} | Intensity: {{intensity}}",
+              "media": "placeholder: hero_image.jpg",
+              "typography": "bold, display",
+              "spacing": "top margin: 120px; bottom: 80px"
+            },
+            "intro_text": {
+              "type": "text_block",
+              "paragraphs": [
+                "Intro paragraph 1...",
+                "Intro paragraph 2...",
+                "Intro paragraph 3..."
+              ],
+              "typography": "serif body copy",
+              "spacing": "padding: 40px"
+            },
+            "split_stagger": {
+              "type": "two_column_scroll",
+              "left": "placeholder: image/video",
+              "right": [
+                "Paragraph 1...",
+                "Paragraph 2..."
+              ],
+              "alignment": "alternate left/right",
+              "spacing": "40px gutter"
+            },
+            "pull_quote": {
+              "type": "full_width_quote",
+              "content": "Insert strongest line from text here...",
+              "typography": "oversized, impactful",
+              "background": "contrast block"
+            },
+            "full_bleed_image": {
+              "type": "full_width_image",
+              "media": "placeholder: full_bleed.jpg",
+              "spacing": "top/bottom margin 80px"
+            },
+            "image_cluster": {
+              "type": "asymmetrical_grid",
+              "items": [
+                "image1.jpg",
+                "image2.jpg",
+                "image3.jpg"
+              ],
+              "overlap": "slight",
+              "rotation": "random small angles"
+            },
+            "negative_space": {
+              "type": "focus_block",
+              "content": "image or text placeholder",
+              "spacing": "max negative space"
+            },
+            "deep_text": {
+              "type": "text_block",
+              "paragraphs": [
+                "Paragraph 1...",
+                "Paragraph 2...",
+                "Paragraph 3..."
+              ],
+              "typography": "serif or body copy",
+              "spacing": "padding 40px"
+            },
+            "closing": {
+              "type": "short_text",
+              "content": "Reflective or unresolved ending here...",
+              "typography": "matching mood"
+            },
+            "data_overlay_block": {
+              "type": "visual_data_overlay",
+              "content": [
+                "chart1.svg",
+                "diagram1.svg"
+              ],
+              "background": "dark mode",
+              "typography": "clean sans-serif"
+            }
+          },
+          "output": {
+            "layout_order": "auto-selected from layout_mapping based on mood",
+            "module_settings": "from module_templates",
+            "visual_blueprint": "placeholder rectangles and text blocks for Figma/Framer/Webflow import",
+            "notes": "Each module includes spacing, typography, and media placeholders."
+          }
+        }
+      }
+    },
+    {
+      "id": "akosua-auto-editorial-writer-v1",
+      "source_message_index": 20,
+      "source_role": "Response",
+      "duplicate_count": 1,
+      "root_keys": [
+        "system",
+        "input",
+        "rules",
+        "mood_logic",
+        "output_format"
+      ],
+      "schema": {
+        "system": "akosua_auto_editorial_writer_v1",
+        "input": {
+          "subject": "string",
+          "mood": "chaotic | minimal | introspective | futuristic",
+          "tone": "observational | poetic | journalistic",
+          "intensity": "low | medium | high"
+        },
+        "rules": {
+          "writing": {
+            "paragraph_length": "2-4 sentences",
+            "style": "tight, rhythmic, no fluff",
+            "voice": "match tone input"
+          },
+          "structure": {
+            "sections": 7,
+            "flow": "text → visual → text → quote → visual → text → close"
+          },
+          "quotes": {
+            "length": "6-14 words",
+            "frequency": "1-2 per article"
+          }
+        },
+        "mood_logic": {
+          "chaotic": {
+            "headline_style": "fragmented, abstract",
+            "writing_style": "disjointed, punchy",
+            "themes": [
+              "disruption",
+              "identity",
+              "movement"
+            ]
+          },
+          "minimal": {
+            "headline_style": "direct, lowercase",
+            "writing_style": "clean, restrained",
+            "themes": [
+              "focus",
+              "clarity",
+              "absence"
+            ]
+          },
+          "introspective": {
+            "headline_style": "emotional, reflective",
+            "writing_style": "calm, internal",
+            "themes": [
+              "identity",
+              "growth",
+              "distance"
+            ]
+          },
+          "futuristic": {
+            "headline_style": "conceptual, precise",
+            "writing_style": "detached, analytical",
+            "themes": [
+              "systems",
+              "evolution",
+              "control"
+            ]
+          }
+        },
+        "output_format": {
+          "headline": "generated",
+          "subhead": "1 sentence tone setter",
+          "layout": [
+            {
+              "type": "hero",
+              "content": {
+                "headline": "generated headline",
+                "subhead": "generated subhead",
+                "image_direction": "describe image/video mood"
+              }
+            },
+            {
+              "type": "intro",
+              "content": "3 paragraphs introducing subject + mood"
+            },
+            {
+              "type": "split_section",
+              "content": {
+                "left": "image description",
+                "right": "2 paragraphs about process or environment"
+              }
+            },
+            {
+              "type": "pull_quote",
+              "content": "generated quote"
+            },
+            {
+              "type": "visual_break",
+              "content": "full bleed image description"
+            },
+            {
+              "type": "deep_section",
+              "content": "3-5 paragraphs (core narrative or interview feel)"
+            },
+            {
+              "type": "negative_space",
+              "content": "single impactful sentence"
+            },
+            {
+              "type": "closing",
+              "content": "short unresolved or reflective ending"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "integration_intent": {
+    "objective": "Use one coherent editorial system for blog layout, copy structure, and Antigravity prompts.",
+    "constraints": [
+      "Keep existing portfolio IA and routes unchanged.",
+      "Apply additive UI behavior in blog admin flow.",
+      "Prefer reusable module-based composition over one-off templates."
+    ]
+  }
+}

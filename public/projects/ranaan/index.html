@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>RANAAN — Official Store</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#0a0a0a;
+      --white:#fafafa;
+      --sand:#e8e0d4;
+      --accent:#2d4a3e;
+      --accent2:#8a6b3f;
+      --grey:#777;
+      --border:#d0c8bf;
+      --red:#c0392b;
+    }
+    html,body{height:100%;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--white);color:var(--ink)}
+
+    /* ── TICKER ── */
+    .ticker{background:var(--ink);color:var(--white);font-size:10px;letter-spacing:.18em;font-weight:600;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:8px 0}
+    .ticker-track{display:inline-flex;animation:ticker 28s linear infinite}
+    .ticker-item{padding:0 56px}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── NAV ── */
+    nav{background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;position:sticky;top:0;z-index:100}
+    .nav-logo{font-size:20px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{color:var(--ink);text-decoration:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;transition:opacity .15s}
+    .nav-links a:hover{opacity:.45}
+    .nav-right{display:flex;align-items:center;gap:20px}
+    .cart-btn{background:none;color:var(--ink);border:1px solid var(--ink);padding:8px 20px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px}
+    .cart-btn:hover{background:var(--ink);color:var(--white)}
+    .cart-count{font-weight:900}
+
+    /* ── HERO ── */
+    .hero{display:grid;grid-template-columns:5fr 4fr;min-height:500px;background:var(--sand)}
+    .hero-img{overflow:hidden;background:#ddd5c8;display:flex;align-items:flex-end;justify-content:center;position:relative}
+    .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .hero-copy{display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px;background:var(--ink);color:var(--white)}
+    .hero-season{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#888;margin-bottom:20px;font-weight:600}
+    .hero-title{font-size:clamp(36px,4.5vw,62px);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:24px}
+    .hero-body{font-size:12px;letter-spacing:.06em;line-height:1.8;color:#aaa;margin-bottom:36px;max-width:280px}
+    .hero-cta{background:var(--white);color:var(--ink);border:none;padding:14px 28px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;cursor:pointer;align-self:flex-start;transition:opacity .15s}
+    .hero-cta:hover{opacity:.8}
+
+    /* ── CATEGORY BAR ── */
+    .cat-bar{display:flex;gap:0;border-bottom:1px solid var(--border);overflow-x:auto}
+    .cat-tab{padding:16px 28px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;background:none;border-left:none;border-right:none;border-top:none;color:var(--grey)}
+    .cat-tab.active,.cat-tab:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+    /* ── SECTION ── */
+    .section{padding:56px 40px}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px}
+    .section-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+    .section-meta{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);font-weight:600}
+
+    /* ── PRODUCT GRID ── */
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .product-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+
+    /* ── PRODUCT CARD ── */
+    .product-card{cursor:pointer}
+    .card-img{background:var(--sand);aspect-ratio:3/4;overflow:hidden;position:relative;margin-bottom:14px}
+    .card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+    .product-card:hover .card-img img{transform:scale(1.05)}
+    .card-overlay{position:absolute;inset:0;background:rgba(10,10,10,.5);display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity .25s}
+    .product-card:hover .card-overlay{opacity:1}
+    .quick-add{background:var(--white);color:var(--ink);border:none;padding:10px 20px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;cursor:pointer;width:100%;transition:background .15s}
+    .quick-add:hover{background:var(--sand)}
+    .new-badge{position:absolute;top:14px;left:14px;background:var(--ink);color:var(--white);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px}
+    .sale-badge{position:absolute;top:14px;left:14px;background:var(--red);color:var(--white);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px}
+    .card-name{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+    .card-colors{font-size:11px;color:var(--grey);margin-bottom:6px;letter-spacing:.04em}
+    .card-price{font-size:12px;font-weight:700;color:var(--ink)}
+    .swatch-row{display:flex;gap:5px;margin-top:8px}
+    .swatch{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.12);cursor:pointer;transition:transform .15s;flex-shrink:0}
+    .swatch:hover{transform:scale(1.3)}
+    .swatch.active{outline:2px solid var(--ink);outline-offset:2px}
+
+    /* ── EDITORIAL STRIP ── */
+    .editorial{display:grid;grid-template-columns:1fr 1fr;min-height:360px;margin:0 40px 56px}
+    .ed-img{background:var(--sand);overflow:hidden}
+    .ed-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+    .editorial:hover .ed-img img{transform:scale(1.04)}
+    .ed-copy{background:var(--accent);color:var(--white);display:flex;flex-direction:column;justify-content:center;padding:48px 44px}
+    .ed-label{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px;font-weight:700}
+    .ed-title{font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-bottom:20px}
+    .ed-body{font-size:12px;line-height:1.8;color:rgba(255,255,255,.7);margin-bottom:28px;max-width:280px;letter-spacing:.03em}
+    .ed-btn{background:var(--white);color:var(--accent);border:none;padding:12px 24px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;cursor:pointer;align-self:flex-start;transition:opacity .15s}
+    .ed-btn:hover{opacity:.85}
+
+    /* ── COLOR GRID (colors drop) ── */
+    .color-drop{padding:56px 40px;background:var(--sand)}
+    .color-row{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+    .color-block{aspect-ratio:3/4;overflow:hidden;position:relative;cursor:pointer}
+    .color-block img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .color-block:hover img{transform:scale(1.06)}
+    .color-block-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:20px 12px 12px;color:var(--white);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+
+    /* ── SIZE MODAL ── */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none;align-items:center;justify-content:center}
+    .modal-bg.open{display:flex}
+    .modal{background:var(--white);width:500px;max-width:95vw;display:grid;grid-template-columns:200px 1fr}
+    .modal-left{background:var(--sand);display:flex;align-items:center;justify-content:center;padding:24px}
+    .modal-left img{width:100%;height:240px;object-fit:cover;object-position:center top}
+    .modal-right{padding:32px 28px}
+    .modal-close{float:right;border:none;background:none;font-size:18px;cursor:pointer;line-height:1;color:var(--grey)}
+    .modal h2{font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;margin-right:28px}
+    .modal-price{font-size:12px;color:var(--grey);margin-bottom:20px;font-weight:600;letter-spacing:.04em}
+    .modal-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--grey);margin-bottom:10px}
+    .size-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:20px}
+    .size-opt{border:1px solid var(--border);padding:10px 4px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;transition:all .15s}
+    .size-opt:hover,.size-opt.selected{background:var(--ink);color:var(--white);border-color:var(--ink)}
+    .size-opt.sold{background:var(--sand);color:#bbb;cursor:not-allowed;text-decoration:line-through}
+    .add-btn{width:100%;background:var(--ink);color:var(--white);border:none;padding:15px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;cursor:pointer;transition:background .15s}
+    .add-btn:hover{background:var(--accent)}
+    .add-confirm{display:none;background:var(--accent);color:var(--white);padding:10px;text-align:center;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-top:8px}
+
+    /* ── CART DRAWER ── */
+    .cart-drawer{position:fixed;right:-440px;top:0;bottom:0;width:420px;background:var(--white);z-index:200;transition:right .35s cubic-bezier(.16,1,.3,1);border-left:1px solid var(--border);display:flex;flex-direction:column}
+    .cart-drawer.open{right:0}
+    .cart-header{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--border)}
+    .cart-header h2{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+    .cart-close{border:none;background:none;font-size:18px;cursor:pointer;color:var(--grey)}
+    .cart-body{flex:1;overflow-y:auto;padding:24px 28px}
+    .cart-empty{text-align:center;color:var(--grey);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:56px 0}
+    .cart-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .cart-item-img{width:72px;height:90px;object-fit:cover;object-position:center top;background:var(--sand);flex-shrink:0}
+    .cart-item-name{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+    .cart-item-meta{font-size:10px;color:var(--grey);font-weight:600;margin-bottom:8px;letter-spacing:.04em}
+    .cart-item-remove{font-size:9px;color:var(--grey);cursor:pointer;letter-spacing:.12em;text-transform:uppercase;background:none;border:none;font-weight:700;padding:0;text-decoration:underline}
+    .cart-footer{padding:24px 28px;border-top:1px solid var(--border)}
+    .cart-total{display:flex;justify-content:space-between;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+    .checkout-btn{width:100%;background:var(--ink);color:var(--white);border:none;padding:15px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:900;cursor:pointer;transition:background .15s}
+    .checkout-btn:hover{background:var(--accent)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--ink);color:var(--white);padding:56px 40px 36px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px}
+    .footer-brand{font-size:28px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px}
+    .footer-tagline{font-size:11px;color:#666;letter-spacing:.08em;line-height:1.7;max-width:240px}
+    .footer-col h4{font-size:9px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;margin-bottom:16px;color:#888}
+    .footer-col ul{list-style:none}
+    .footer-col li{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#555;margin-bottom:10px;cursor:pointer;transition:color .15s}
+    .footer-col li:hover{color:var(--white)}
+    .footer-bottom{border-top:1px solid #222;padding-top:24px;display:flex;align-items:center;justify-content:space-between}
+    .footer-copy{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#444}
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">SS26 — Now Available</span>
+    <span class="ticker-item">New: Rugby Shirt Series — 6 Colorways</span>
+    <span class="ticker-item">Zip Hoodie Concept Restock — Limited Run</span>
+    <span class="ticker-item">Free Domestic Shipping Over $200</span>
+    <span class="ticker-item">Sweater Drop This Friday — 12PM EST</span>
+    <span class="ticker-item">SS26 — Now Available</span>
+    <span class="ticker-item">New: Rugby Shirt Series — 6 Colorways</span>
+    <span class="ticker-item">Zip Hoodie Concept Restock — Limited Run</span>
+    <span class="ticker-item">Free Domestic Shipping Over $200</span>
+    <span class="ticker-item">Sweater Drop This Friday — 12PM EST</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">RANAAN</a>
+  <ul class="nav-links">
+    <li><a href="#new">New</a></li>
+    <li><a href="#rugby">Rugby</a></li>
+    <li><a href="#hoodies">Hoodies</a></li>
+    <li><a href="#sweaters">Sweaters</a></li>
+    <li><a href="#bottoms">Bottoms</a></li>
+    <li><a href="#accessories">Acc.</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">Bag (<span class="cart-count" id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img">
+    <img src="img/rugby1-black.png" alt="RANAAN Rugby"/>
+  </div>
+  <div class="hero-copy">
+    <div class="hero-season">Spring / Summer 2026</div>
+    <h1 class="hero-title">RANAAN<br>GARMENTS</h1>
+    <p class="hero-body">Structured cuts, intentional colorways. Every piece is built to last beyond the season.</p>
+    <button class="hero-cta" onclick="document.getElementById('new').scrollIntoView({behavior:'smooth'})">Shop SS26</button>
+  </div>
+</div>
+
+<!-- CATEGORY BAR -->
+<div class="cat-bar">
+  <button class="cat-tab active" onclick="filterCat(this,'all')">All</button>
+  <button class="cat-tab" onclick="filterCat(this,'rugby')">Rugby Shirts</button>
+  <button class="cat-tab" onclick="filterCat(this,'hoodies')">Hoodies</button>
+  <button class="cat-tab" onclick="filterCat(this,'sweaters')">Sweaters</button>
+  <button class="cat-tab" onclick="filterCat(this,'bottoms')">Bottoms</button>
+  <button class="cat-tab" onclick="filterCat(this,'accessories')">Accessories</button>
+</div>
+
+<!-- NEW ARRIVALS -->
+<section class="section" id="new">
+  <div class="section-header">
+    <span class="section-title">New Arrivals</span>
+    <span class="section-meta">SS26 — 8 Items</span>
+  </div>
+  <div class="product-grid" id="newGrid"></div>
+</section>
+
+<!-- EDITORIAL -->
+<div class="editorial" id="rugby">
+  <div class="ed-img">
+    <img src="img/rugby2-green.png" alt="Rugby Series"/>
+  </div>
+  <div class="ed-copy">
+    <div class="ed-label">Featured Series</div>
+    <h2 class="ed-title">Rugby<br>Shirt Vol.2</h2>
+    <p class="ed-body">Six colorways. One silhouette. The Rugby Shirt Vol.2 draws from classic collegiate references and recontextualises them for everyday wear.</p>
+    <button class="ed-btn" onclick="document.getElementById('rugbyGrid').scrollIntoView({behavior:'smooth'})">Shop Rugby</button>
+  </div>
+</div>
+
+<!-- RUGBY SHIRTS -->
+<section class="section" style="padding-top:24px">
+  <div class="section-header">
+    <span class="section-title">Rugby Shirts</span>
+    <span class="section-meta">6 Colorways</span>
+  </div>
+  <div class="product-grid cols-4" id="rugbyGrid" style="grid-template-columns:repeat(3,1fr)"></div>
+</section>
+
+<!-- COLOR DROP -->
+<div class="color-drop" id="sweaters">
+  <div class="section-header" style="margin-bottom:24px">
+    <span class="section-title">Sweater Series — All Colorways</span>
+    <span class="section-meta">5 Colors</span>
+  </div>
+  <div class="color-row" id="colorRow"></div>
+</div>
+
+<!-- HOODIES + REST -->
+<section class="section" id="hoodies">
+  <div class="section-header">
+    <span class="section-title">Hoodies &amp; Outerwear</span>
+    <span class="section-meta">Concept Series</span>
+  </div>
+  <div class="product-grid" id="hoodiesGrid"></div>
+</section>
+
+<section class="section" id="bottoms" style="padding-top:0">
+  <div class="section-header">
+    <span class="section-title">Bottoms &amp; Accessories</span>
+    <span class="section-meta">Core Essentials</span>
+  </div>
+  <div class="product-grid cols-4" id="bottomsGrid" style="grid-template-columns:repeat(4,1fr)"></div>
+</section>
+
+<!-- SIZE MODAL -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-left"><img id="modalImg" src="" alt=""/></div>
+    <div class="modal-right">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 id="modalName"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-label">Select Size</div>
+      <div id="sizeGrid" class="size-grid"></div>
+      <button class="add-btn" onclick="addToCart()">Add to Bag</button>
+      <div class="add-confirm" id="addConfirm">✓ Added to bag</div>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>Shopping Bag</h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">Your bag is empty.</div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">RANAAN</div>
+      <div class="footer-tagline">Garments built with intention. Every colorway, every cut — considered.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li>New Arrivals</li><li>Rugby Shirts</li><li>Hoodies</li><li>Sweaters</li><li>Bottoms</li><li>Accessories</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Brand</h4>
+      <ul>
+        <li>About</li><li>Lookbook</li><li>Stockists</li><li>Press</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li>Sizing</li><li>Returns</li><li>Shipping</li><li>Contact</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div style="font-size:16px;font-weight:900;letter-spacing:.22em;text-transform:uppercase">RANAAN</div>
+    <div class="footer-copy">© 2026 RANAAN Garments — All Rights Reserved</div>
+  </div>
+</footer>
+
+<script>
+const SIZES = ['XS','S','M','L','XL','XXL']
+const SOLD_SIZES = []
+
+const NEW_PRODUCTS = [
+  {name:'Rugby Shirt Vol.1 — Black',price:128,img:'img/rugby1-black.png',badge:'new',colors:['black','red','navy'],cat:'rugby'},
+  {name:'Rugby Shirt Vol.2 — Blue',price:128,img:'img/rugby2-blue.png',badge:'new',colors:['blue','green','beige'],cat:'rugby'},
+  {name:'Zip Hoodie — Maroon',price:168,img:'img/ziphoodie-maroon.png',badge:'new',colors:['black','navy','maroon'],cat:'hoodies'},
+  {name:'Sweater — Black',price:118,img:'img/sweater-black.png',badge:null,colors:['black','burgundy','grey'],cat:'sweaters'},
+  {name:'Ranaan Hoodie #1',price:148,img:'img/ranaan-hoodie1-front.png',badge:'new',colors:['one'],cat:'hoodies'},
+  {name:'Trousers — Black',price:108,img:'img/trousers-black.png',badge:null,colors:['black','navy','grey'],cat:'bottoms'},
+  {name:'Ranaan Hat',price:54,img:'img/ranaan-hat.png',badge:null,colors:['one'],cat:'accessories'},
+  {name:'Socks — Vol.1',price:28,img:'img/socks.png',badge:null,colors:['one'],cat:'accessories'},
+]
+
+const RUGBY_PRODUCTS = [
+  {name:'Rugby Shirt Vol.1 — Black',price:128,img:'img/rugby1-black.png',badge:'new'},
+  {name:'Rugby Shirt Vol.1 — Red',price:128,img:'img/rugby1-red.png',badge:null},
+  {name:'Rugby Shirt Vol.1 — Navy',price:128,img:'img/rugby1-navy.png',badge:null},
+  {name:'Rugby Shirt Vol.2 — Blue',price:128,img:'img/rugby2-blue.png',badge:'new'},
+  {name:'Rugby Shirt Vol.2 — Green',price:128,img:'img/rugby2-green.png',badge:null},
+  {name:'Rugby Shirt Vol.2 — Beige',price:128,img:'img/rugby2-beige.png',badge:null},
+]
+
+const COLOR_SWEATERS = [
+  {color:'Black',img:'img/sweater-black.png',price:118},
+  {color:'Burgundy',img:'img/sweater-burgundy.png',price:118},
+  {color:'Grey',img:'img/sweater-grey.png',price:118},
+  {color:'Sky Blue',img:'img/sweater-skyblue.png',price:118},
+  {color:'Navy',img:'img/sweater-black.png',price:118},
+]
+
+const HOODIES_PRODUCTS = [
+  {name:'Ranaan Hoodie Concept #1',price:148,img:'img/ranaan-hoodie1-front.png',badge:'new'},
+  {name:'Ranaan Hoodie Concept #2',price:148,img:'img/ranaan-hoodie2-front.png',badge:'new'},
+  {name:'Zip Hoodie — Black',price:168,img:'img/ziphoodie-black.png',badge:null},
+  {name:'Zip Hoodie — Navy',price:168,img:'img/ziphoodie-navy.png',badge:null},
+  {name:'Zip Hoodie — Maroon',price:168,img:'img/ziphoodie-maroon.png',badge:'new'},
+]
+
+const BOTTOMS_PRODUCTS = [
+  {name:'Trousers — Black',price:108,img:'img/trousers-black.png',badge:null},
+  {name:'Trousers — Navy',price:108,img:'img/trousers-navy.png',badge:null},
+  {name:'Trousers — Grey',price:108,img:'img/trousers-grey.png',badge:null},
+  {name:'Ranaan Hat',price:54,img:'img/ranaan-hat.png',badge:null},
+]
+
+let cart=[], modalItem=null, selectedSize=null
+
+const SWATCH_COLORS = {black:'#111',red:'#c0392b',navy:'#1a2a4a',blue:'#3a6fa0',green:'#2d6a4f',beige:'#d9c9aa',burgundy:'#6b2737',grey:'#888',maroon:'#6b1a2a',one:'#ccc'}
+
+function makeCard(p){
+  const swatches = p.colors ? p.colors.map((c,i)=>`<div class="swatch${i===0?' active':''}" style="background:${SWATCH_COLORS[c]||'#ccc'}" title="${c}"></div>`).join(''):''
+  return `
+    <div class="product-card" onclick="openModal('${p.name}','${p.img}',${p.price})">
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        ${p.badge==='new'?'<div class="new-badge">New</div>':''}
+        ${p.badge==='sale'?'<div class="sale-badge">Sale</div>':''}
+        <div class="card-overlay">
+          <button class="quick-add" onclick="event.stopPropagation();openModal('${p.name}','${p.img}',${p.price})">Quick Add</button>
+        </div>
+      </div>
+      <div class="card-name">${p.name}</div>
+      <div class="card-colors">${p.colors?p.colors.length+' colorway'+(p.colors.length>1?'s':''):''}</div>
+      <div class="card-price">$${p.price}</div>
+      ${p.colors&&p.colors.length>1?`<div class="swatch-row">${swatches}</div>`:''}
+    </div>`
+}
+
+document.getElementById('newGrid').innerHTML = NEW_PRODUCTS.map(makeCard).join('')
+document.getElementById('rugbyGrid').innerHTML = RUGBY_PRODUCTS.map(makeCard).join('')
+document.getElementById('hoodiesGrid').innerHTML = HOODIES_PRODUCTS.map(makeCard).join('')
+document.getElementById('bottomsGrid').innerHTML = BOTTOMS_PRODUCTS.map(makeCard).join('')
+
+document.getElementById('colorRow').innerHTML = COLOR_SWEATERS.map(s=>`
+  <div class="color-block" onclick="openModal('Sweater — ${s.color}','${s.img}',${s.price})">
+    <img src="${s.img}" alt="${s.color}" loading="lazy"/>
+    <div class="color-block-label">${s.color}</div>
+  </div>`).join('')
+
+function filterCat(btn,cat){
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'))
+  btn.classList.add('active')
+  const sections = {rugby:'#rugby',hoodies:'#hoodies',sweaters:'#sweaters',bottoms:'#bottoms',accessories:'#bottoms'}
+  if(cat==='all'){document.getElementById('new').scrollIntoView({behavior:'smooth'})}
+  else if(sections[cat]){document.querySelector(sections[cat]).scrollIntoView({behavior:'smooth'})}
+}
+
+function openModal(name,img,price){
+  modalItem={name,img,price}; selectedSize=null
+  document.getElementById('modalName').textContent=name
+  document.getElementById('modalPrice').textContent='$'+price
+  document.getElementById('modalImg').src=img
+  document.getElementById('sizeGrid').innerHTML=SIZES.map(s=>`<div class="size-opt${SOLD_SIZES.includes(s)?' sold':''}" onclick="selectSize(this,'${s}')">${s}</div>`).join('')
+  document.getElementById('addConfirm').style.display='none'
+  document.getElementById('modalBg').classList.add('open')
+}
+function closeModal(){document.getElementById('modalBg').classList.remove('open')}
+function selectSize(el,s){
+  if(el.classList.contains('sold'))return
+  document.querySelectorAll('.size-opt').forEach(e=>e.classList.remove('selected'))
+  el.classList.add('selected'); selectedSize=s
+}
+function addToCart(){
+  if(!selectedSize){alert('Please select a size');return}
+  cart.push({...modalItem,size:selectedSize})
+  renderCart()
+  const c=document.getElementById('addConfirm')
+  c.style.display='block'
+  setTimeout(()=>{c.style.display='none';closeModal()},1200)
+}
+function toggleCart(){document.getElementById('cartDrawer').classList.toggle('open')}
+function renderCart(){
+  const n=cart.length
+  document.getElementById('cartCount').textContent=n
+  const body=document.getElementById('cartBody')
+  if(!n){body.innerHTML='<div class="cart-empty">Your bag is empty.</div>';document.getElementById('cartTotal').textContent='$0.00';return}
+  const total=cart.reduce((s,i)=>s+i.price,0)
+  document.getElementById('cartTotal').textContent='$'+total+'.00'
+  body.innerHTML=cart.map((item,i)=>`
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}"/>
+      <div>
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">Size: ${item.size} — $${item.price}</div>
+        <button class="cart-item-remove" onclick="removeItem(${i})">Remove</button>
+      </div>
+    </div>`).join('')
+}
+function removeItem(i){cart.splice(i,1);renderCart()}
+</script>
+</body>
+</html>

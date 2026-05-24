@@ -1,0 +1,3691 @@
+{
+  "project": {
+    "title": "RANAAN × CCC — Future Archives",
+    "subtitle": "Controlled Chaos Collection SS25",
+    "brand": "RANAAN × CCC",
+    "viewer_mode": "editorial_spread",
+    "theme": "brutalist_analog_cinematic"
+  },
+  "spreads": [
+    {
+      "id": "spread-1",
+      "thumbLabel": "1776942586765 019dba07 Bc80...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 1",
+        "title": "1776942586765 019dba07 Bc80...",
+        "body": "New content archive in motion.",
+        "footer": "Page 1"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776942586765-019dba07-bc80-7693-af7b-dbda67ec8f3f.png",
+        "mediaLabel": "1776942586765 019dba07 Bc80...",
+        "footer": "Page 2"
+      }
+    },
+    {
+      "id": "spread-2",
+      "thumbLabel": "1776942696827 019dba09 6b34...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 2",
+        "title": "1776942696827 019dba09 6b34...",
+        "body": "New content archive in motion.",
+        "footer": "Page 3"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776942696827-019dba09-6b34-7b56-9af9-23ad5462e0d3.png",
+        "mediaLabel": "1776942696827 019dba09 6b34...",
+        "footer": "Page 4"
+      }
+    },
+    {
+      "id": "spread-3",
+      "thumbLabel": "1776943013684 019dba0e 477e...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 3",
+        "title": "1776943013684 019dba0e 477e...",
+        "body": "New content archive in motion.",
+        "footer": "Page 5"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776943013684-019dba0e-477e-7a2d-9b35-bebc94a4c7cb.png",
+        "mediaLabel": "1776943013684 019dba0e 477e...",
+        "footer": "Page 6"
+      }
+    },
+    {
+      "id": "spread-4",
+      "thumbLabel": "1776943190353 019dba11 2d29...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 4",
+        "title": "1776943190353 019dba11 2d29...",
+        "body": "New content archive in motion.",
+        "footer": "Page 7"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776943190353-019dba11-2d29-7ea0-9546-1430a58d1bc9.png",
+        "mediaLabel": "1776943190353 019dba11 2d29...",
+        "footer": "Page 8"
+      }
+    },
+    {
+      "id": "spread-5",
+      "thumbLabel": "1776975731942 019dbc01 644c...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 5",
+        "title": "1776975731942 019dbc01 644c...",
+        "body": "New content archive in motion.",
+        "footer": "Page 9"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776975731942-019dbc01-644c-7d7d-9268-ec17a37bbed1.jpeg",
+        "mediaLabel": "1776975731942 019dbc01 644c...",
+        "footer": "Page 10"
+      }
+    },
+    {
+      "id": "spread-6",
+      "thumbLabel": "1776975790625 019dbc02 1d89...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 6",
+        "title": "1776975790625 019dbc02 1d89...",
+        "body": "New content archive in motion.",
+        "footer": "Page 11"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776975790625-019dbc02-1d89-7525-b5cf-35a82664688b.png",
+        "mediaLabel": "1776975790625 019dbc02 1d89...",
+        "footer": "Page 12"
+      }
+    },
+    {
+      "id": "spread-7",
+      "thumbLabel": "1776975902014 019dbc03 Be28...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 7",
+        "title": "1776975902014 019dbc03 Be28...",
+        "body": "New content archive in motion.",
+        "footer": "Page 13"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776975902014-019dbc03-be28-7890-9272-e10fd86f2eaa.png",
+        "mediaLabel": "1776975902014 019dbc03 Be28...",
+        "footer": "Page 14"
+      }
+    },
+    {
+      "id": "spread-8",
+      "thumbLabel": "1776976357233 019dbc0a C2b0...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 8",
+        "title": "1776976357233 019dbc0a C2b0...",
+        "body": "New content archive in motion.",
+        "footer": "Page 15"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/1776976357233-019dbc0a-c2b0-7ca7-8b25-c35451069190.png",
+        "mediaLabel": "1776976357233 019dbc0a C2b0...",
+        "footer": "Page 16"
+      }
+    },
+    {
+      "id": "spread-9",
+      "thumbLabel": "==",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 9",
+        "title": "==",
+        "body": "New content archive in motion.",
+        "footer": "Page 17"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/==.png",
+        "mediaLabel": "==",
+        "footer": "Page 18"
+      }
+    },
+    {
+      "id": "spread-10",
+      "thumbLabel": "ARCHIVE_17gxc417gxc417gx",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 10",
+        "title": "ARCHIVE_17gxc417gxc417gx",
+        "body": "New content archive in motion.",
+        "footer": "Page 19"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_17gxc417gxc417gx.png",
+        "mediaLabel": "ARCHIVE_17gxc417gxc417gx",
+        "footer": "Page 20"
+      }
+    },
+    {
+      "id": "spread-11",
+      "thumbLabel": "ARCHIVE_1lxb3t1lxb3t1lxb",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 11",
+        "title": "ARCHIVE_1lxb3t1lxb3t1lxb",
+        "body": "New content archive in motion.",
+        "footer": "Page 21"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_1lxb3t1lxb3t1lxb.png",
+        "mediaLabel": "ARCHIVE_1lxb3t1lxb3t1lxb",
+        "footer": "Page 22"
+      }
+    },
+    {
+      "id": "spread-12",
+      "thumbLabel": "ARCHIVE_1wvays1wvays1wva",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 12",
+        "title": "ARCHIVE_1wvays1wvays1wva",
+        "body": "New content archive in motion.",
+        "footer": "Page 23"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_1wvays1wvays1wva.png",
+        "mediaLabel": "ARCHIVE_1wvays1wvays1wva",
+        "footer": "Page 24"
+      }
+    },
+    {
+      "id": "spread-13",
+      "thumbLabel": "ARCHIVE_20uhr420uhr420uh",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 13",
+        "title": "ARCHIVE_20uhr420uhr420uh",
+        "body": "New content archive in motion.",
+        "footer": "Page 25"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_20uhr420uhr420uh.png",
+        "mediaLabel": "ARCHIVE_20uhr420uhr420uh",
+        "footer": "Page 26"
+      }
+    },
+    {
+      "id": "spread-14",
+      "thumbLabel": "ARCHIVE_2mf4ue2mf4ue2mf4",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 14",
+        "title": "ARCHIVE_2mf4ue2mf4ue2mf4",
+        "body": "New content archive in motion.",
+        "footer": "Page 27"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_2mf4ue2mf4ue2mf4.png",
+        "mediaLabel": "ARCHIVE_2mf4ue2mf4ue2mf4",
+        "footer": "Page 28"
+      }
+    },
+    {
+      "id": "spread-15",
+      "thumbLabel": "ARCHIVE_2wja9l2wja9l2wja",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 15",
+        "title": "ARCHIVE_2wja9l2wja9l2wja",
+        "body": "New content archive in motion.",
+        "footer": "Page 29"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_2wja9l2wja9l2wja.png",
+        "mediaLabel": "ARCHIVE_2wja9l2wja9l2wja",
+        "footer": "Page 30"
+      }
+    },
+    {
+      "id": "spread-16",
+      "thumbLabel": "ARCHIVE_31pjmy31pjmy31pj",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 16",
+        "title": "ARCHIVE_31pjmy31pjmy31pj",
+        "body": "New content archive in motion.",
+        "footer": "Page 31"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_31pjmy31pjmy31pj.png",
+        "mediaLabel": "ARCHIVE_31pjmy31pjmy31pj",
+        "footer": "Page 32"
+      }
+    },
+    {
+      "id": "spread-17",
+      "thumbLabel": "ARCHIVE_3dmt633dmt633dmt",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 17",
+        "title": "ARCHIVE_3dmt633dmt633dmt",
+        "body": "New content archive in motion.",
+        "footer": "Page 33"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_3dmt633dmt633dmt.png",
+        "mediaLabel": "ARCHIVE_3dmt633dmt633dmt",
+        "footer": "Page 34"
+      }
+    },
+    {
+      "id": "spread-18",
+      "thumbLabel": "ARCHIVE_3llbk53llbk53llb",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 18",
+        "title": "ARCHIVE_3llbk53llbk53llb",
+        "body": "New content archive in motion.",
+        "footer": "Page 35"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_3llbk53llbk53llb.png",
+        "mediaLabel": "ARCHIVE_3llbk53llbk53llb",
+        "footer": "Page 36"
+      }
+    },
+    {
+      "id": "spread-19",
+      "thumbLabel": "ARCHIVE_3ovg5r3ovg5r3ovg",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 19",
+        "title": "ARCHIVE_3ovg5r3ovg5r3ovg",
+        "body": "New content archive in motion.",
+        "footer": "Page 37"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_3ovg5r3ovg5r3ovg.png",
+        "mediaLabel": "ARCHIVE_3ovg5r3ovg5r3ovg",
+        "footer": "Page 38"
+      }
+    },
+    {
+      "id": "spread-20",
+      "thumbLabel": "ARCHIVE_3thklf3thklf3thk",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 20",
+        "title": "ARCHIVE_3thklf3thklf3thk",
+        "body": "New content archive in motion.",
+        "footer": "Page 39"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_3thklf3thklf3thk.png",
+        "mediaLabel": "ARCHIVE_3thklf3thklf3thk",
+        "footer": "Page 40"
+      }
+    },
+    {
+      "id": "spread-21",
+      "thumbLabel": "ARCHIVE_3w4qtp3w4qtp3w4q",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 21",
+        "title": "ARCHIVE_3w4qtp3w4qtp3w4q",
+        "body": "New content archive in motion.",
+        "footer": "Page 41"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_3w4qtp3w4qtp3w4q.png",
+        "mediaLabel": "ARCHIVE_3w4qtp3w4qtp3w4q",
+        "footer": "Page 42"
+      }
+    },
+    {
+      "id": "spread-22",
+      "thumbLabel": "ARCHIVE_3xfe913xfe913xfe",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 22",
+        "title": "ARCHIVE_3xfe913xfe913xfe",
+        "body": "New content archive in motion.",
+        "footer": "Page 43"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_3xfe913xfe913xfe.png",
+        "mediaLabel": "ARCHIVE_3xfe913xfe913xfe",
+        "footer": "Page 44"
+      }
+    },
+    {
+      "id": "spread-23",
+      "thumbLabel": "ARCHIVE_4sbgyz4sbgyz4sbg",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 23",
+        "title": "ARCHIVE_4sbgyz4sbgyz4sbg",
+        "body": "New content archive in motion.",
+        "footer": "Page 45"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_4sbgyz4sbgyz4sbg.png",
+        "mediaLabel": "ARCHIVE_4sbgyz4sbgyz4sbg",
+        "footer": "Page 46"
+      }
+    },
+    {
+      "id": "spread-24",
+      "thumbLabel": "ARCHIVE_4uwjcu4uwjcu4uwj",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 24",
+        "title": "ARCHIVE_4uwjcu4uwjcu4uwj",
+        "body": "New content archive in motion.",
+        "footer": "Page 47"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_4uwjcu4uwjcu4uwj.png",
+        "mediaLabel": "ARCHIVE_4uwjcu4uwjcu4uwj",
+        "footer": "Page 48"
+      }
+    },
+    {
+      "id": "spread-25",
+      "thumbLabel": "ARCHIVE_53qzx353qzx353qz",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 25",
+        "title": "ARCHIVE_53qzx353qzx353qz",
+        "body": "New content archive in motion.",
+        "footer": "Page 49"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_53qzx353qzx353qz.png",
+        "mediaLabel": "ARCHIVE_53qzx353qzx353qz",
+        "footer": "Page 50"
+      }
+    },
+    {
+      "id": "spread-26",
+      "thumbLabel": "ARCHIVE_5f3ulp5f3ulp5f3u",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 26",
+        "title": "ARCHIVE_5f3ulp5f3ulp5f3u",
+        "body": "New content archive in motion.",
+        "footer": "Page 51"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_5f3ulp5f3ulp5f3u.png",
+        "mediaLabel": "ARCHIVE_5f3ulp5f3ulp5f3u",
+        "footer": "Page 52"
+      }
+    },
+    {
+      "id": "spread-27",
+      "thumbLabel": "ARCHIVE_5o6mbx5o6mbx5o6m",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 27",
+        "title": "ARCHIVE_5o6mbx5o6mbx5o6m",
+        "body": "New content archive in motion.",
+        "footer": "Page 53"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_5o6mbx5o6mbx5o6m.png",
+        "mediaLabel": "ARCHIVE_5o6mbx5o6mbx5o6m",
+        "footer": "Page 54"
+      }
+    },
+    {
+      "id": "spread-28",
+      "thumbLabel": "ARCHIVE_6h8z4f6h8z4f6h8z",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 28",
+        "title": "ARCHIVE_6h8z4f6h8z4f6h8z",
+        "body": "New content archive in motion.",
+        "footer": "Page 55"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_6h8z4f6h8z4f6h8z.png",
+        "mediaLabel": "ARCHIVE_6h8z4f6h8z4f6h8z",
+        "footer": "Page 56"
+      }
+    },
+    {
+      "id": "spread-29",
+      "thumbLabel": "ARCHIVE_6uhvwe6uhvwe6uhv",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 29",
+        "title": "ARCHIVE_6uhvwe6uhvwe6uhv",
+        "body": "New content archive in motion.",
+        "footer": "Page 57"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_6uhvwe6uhvwe6uhv.png",
+        "mediaLabel": "ARCHIVE_6uhvwe6uhvwe6uhv",
+        "footer": "Page 58"
+      }
+    },
+    {
+      "id": "spread-30",
+      "thumbLabel": "ARCHIVE_72ah0972ah0972ah",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 30",
+        "title": "ARCHIVE_72ah0972ah0972ah",
+        "body": "New content archive in motion.",
+        "footer": "Page 59"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_72ah0972ah0972ah.png",
+        "mediaLabel": "ARCHIVE_72ah0972ah0972ah",
+        "footer": "Page 60"
+      }
+    },
+    {
+      "id": "spread-31",
+      "thumbLabel": "ARCHIVE_7h6z3h7h6z3h7h6z",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 31",
+        "title": "ARCHIVE_7h6z3h7h6z3h7h6z",
+        "body": "New content archive in motion.",
+        "footer": "Page 61"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_7h6z3h7h6z3h7h6z.png",
+        "mediaLabel": "ARCHIVE_7h6z3h7h6z3h7h6z",
+        "footer": "Page 62"
+      }
+    },
+    {
+      "id": "spread-32",
+      "thumbLabel": "ARCHIVE_7l61qo7l61qo7l61",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 32",
+        "title": "ARCHIVE_7l61qo7l61qo7l61",
+        "body": "New content archive in motion.",
+        "footer": "Page 63"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_7l61qo7l61qo7l61.png",
+        "mediaLabel": "ARCHIVE_7l61qo7l61qo7l61",
+        "footer": "Page 64"
+      }
+    },
+    {
+      "id": "spread-33",
+      "thumbLabel": "ARCHIVE_7ql3uw7ql3uw7ql3",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 33",
+        "title": "ARCHIVE_7ql3uw7ql3uw7ql3",
+        "body": "New content archive in motion.",
+        "footer": "Page 65"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_7ql3uw7ql3uw7ql3.png",
+        "mediaLabel": "ARCHIVE_7ql3uw7ql3uw7ql3",
+        "footer": "Page 66"
+      }
+    },
+    {
+      "id": "spread-34",
+      "thumbLabel": "ARCHIVE_7s47yi7s47yi7s47",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 34",
+        "title": "ARCHIVE_7s47yi7s47yi7s47",
+        "body": "New content archive in motion.",
+        "footer": "Page 67"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_7s47yi7s47yi7s47.png",
+        "mediaLabel": "ARCHIVE_7s47yi7s47yi7s47",
+        "footer": "Page 68"
+      }
+    },
+    {
+      "id": "spread-35",
+      "thumbLabel": "ARCHIVE_7wnwer7wnwer7wnw",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 35",
+        "title": "ARCHIVE_7wnwer7wnwer7wnw",
+        "body": "New content archive in motion.",
+        "footer": "Page 69"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_7wnwer7wnwer7wnw.png",
+        "mediaLabel": "ARCHIVE_7wnwer7wnwer7wnw",
+        "footer": "Page 70"
+      }
+    },
+    {
+      "id": "spread-36",
+      "thumbLabel": "ARCHIVE_80qtpa80qtpa80qt",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 36",
+        "title": "ARCHIVE_80qtpa80qtpa80qt",
+        "body": "New content archive in motion.",
+        "footer": "Page 71"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_80qtpa80qtpa80qt.png",
+        "mediaLabel": "ARCHIVE_80qtpa80qtpa80qt",
+        "footer": "Page 72"
+      }
+    },
+    {
+      "id": "spread-37",
+      "thumbLabel": "ARCHIVE_825xhm825xhm825x",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 37",
+        "title": "ARCHIVE_825xhm825xhm825x",
+        "body": "New content archive in motion.",
+        "footer": "Page 73"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_825xhm825xhm825x.png",
+        "mediaLabel": "ARCHIVE_825xhm825xhm825x",
+        "footer": "Page 74"
+      }
+    },
+    {
+      "id": "spread-38",
+      "thumbLabel": "ARCHIVE_855kvc855kvc855k",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 38",
+        "title": "ARCHIVE_855kvc855kvc855k",
+        "body": "New content archive in motion.",
+        "footer": "Page 75"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_855kvc855kvc855k.png",
+        "mediaLabel": "ARCHIVE_855kvc855kvc855k",
+        "footer": "Page 76"
+      }
+    },
+    {
+      "id": "spread-39",
+      "thumbLabel": "ARCHIVE_88mp8m88mp8m88mp",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 39",
+        "title": "ARCHIVE_88mp8m88mp8m88mp",
+        "body": "New content archive in motion.",
+        "footer": "Page 77"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_88mp8m88mp8m88mp.png",
+        "mediaLabel": "ARCHIVE_88mp8m88mp8m88mp",
+        "footer": "Page 78"
+      }
+    },
+    {
+      "id": "spread-40",
+      "thumbLabel": "ARCHIVE_8fbbow8fbbow8fbb",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 40",
+        "title": "ARCHIVE_8fbbow8fbbow8fbb",
+        "body": "New content archive in motion.",
+        "footer": "Page 79"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_8fbbow8fbbow8fbb.png",
+        "mediaLabel": "ARCHIVE_8fbbow8fbbow8fbb",
+        "footer": "Page 80"
+      }
+    },
+    {
+      "id": "spread-41",
+      "thumbLabel": "ARCHIVE_8mjc6c8mjc6c8mjc",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 41",
+        "title": "ARCHIVE_8mjc6c8mjc6c8mjc",
+        "body": "New content archive in motion.",
+        "footer": "Page 81"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_8mjc6c8mjc6c8mjc.png",
+        "mediaLabel": "ARCHIVE_8mjc6c8mjc6c8mjc",
+        "footer": "Page 82"
+      }
+    },
+    {
+      "id": "spread-42",
+      "thumbLabel": "ARCHIVE_8s78hw8s78hw8s78",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 42",
+        "title": "ARCHIVE_8s78hw8s78hw8s78",
+        "body": "New content archive in motion.",
+        "footer": "Page 83"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_8s78hw8s78hw8s78.png",
+        "mediaLabel": "ARCHIVE_8s78hw8s78hw8s78",
+        "footer": "Page 84"
+      }
+    },
+    {
+      "id": "spread-43",
+      "thumbLabel": "ARCHIVE_8yxfz98yxfz98yxf",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 43",
+        "title": "ARCHIVE_8yxfz98yxfz98yxf",
+        "body": "New content archive in motion.",
+        "footer": "Page 85"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_8yxfz98yxfz98yxf.png",
+        "mediaLabel": "ARCHIVE_8yxfz98yxfz98yxf",
+        "footer": "Page 86"
+      }
+    },
+    {
+      "id": "spread-44",
+      "thumbLabel": "ARCHIVE_9g905b9g905b9g90",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 44",
+        "title": "ARCHIVE_9g905b9g905b9g90",
+        "body": "New content archive in motion.",
+        "footer": "Page 87"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_9g905b9g905b9g90.png",
+        "mediaLabel": "ARCHIVE_9g905b9g905b9g90",
+        "footer": "Page 88"
+      }
+    },
+    {
+      "id": "spread-45",
+      "thumbLabel": "ARCHIVE_9hem369hem369hem",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 45",
+        "title": "ARCHIVE_9hem369hem369hem",
+        "body": "New content archive in motion.",
+        "footer": "Page 89"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_9hem369hem369hem.png",
+        "mediaLabel": "ARCHIVE_9hem369hem369hem",
+        "footer": "Page 90"
+      }
+    },
+    {
+      "id": "spread-46",
+      "thumbLabel": "ARCHIVE_9jbkiw9jbkiw9jbk",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 46",
+        "title": "ARCHIVE_9jbkiw9jbkiw9jbk",
+        "body": "New content archive in motion.",
+        "footer": "Page 91"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_9jbkiw9jbkiw9jbk.png",
+        "mediaLabel": "ARCHIVE_9jbkiw9jbkiw9jbk",
+        "footer": "Page 92"
+      }
+    },
+    {
+      "id": "spread-47",
+      "thumbLabel": "ARCHIVE_9r4vax9r4vax9r4v",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 47",
+        "title": "ARCHIVE_9r4vax9r4vax9r4v",
+        "body": "New content archive in motion.",
+        "footer": "Page 93"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_9r4vax9r4vax9r4v.png",
+        "mediaLabel": "ARCHIVE_9r4vax9r4vax9r4v",
+        "footer": "Page 94"
+      }
+    },
+    {
+      "id": "spread-48",
+      "thumbLabel": "ARCHIVE_9t4l499t4l499t4l",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 48",
+        "title": "ARCHIVE_9t4l499t4l499t4l",
+        "body": "New content archive in motion.",
+        "footer": "Page 95"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_9t4l499t4l499t4l.png",
+        "mediaLabel": "ARCHIVE_9t4l499t4l499t4l",
+        "footer": "Page 96"
+      }
+    },
+    {
+      "id": "spread-49",
+      "thumbLabel": "ARCHIVE_9txaye9txaye9txa",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 49",
+        "title": "ARCHIVE_9txaye9txaye9txa",
+        "body": "New content archive in motion.",
+        "footer": "Page 97"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_9txaye9txaye9txa.png",
+        "mediaLabel": "ARCHIVE_9txaye9txaye9txa",
+        "footer": "Page 98"
+      }
+    },
+    {
+      "id": "spread-50",
+      "thumbLabel": "ARCHIVE_a01woha01woha01w",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 50",
+        "title": "ARCHIVE_a01woha01woha01w",
+        "body": "New content archive in motion.",
+        "footer": "Page 99"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_a01woha01woha01w.png",
+        "mediaLabel": "ARCHIVE_a01woha01woha01w",
+        "footer": "Page 100"
+      }
+    },
+    {
+      "id": "spread-51",
+      "thumbLabel": "ARCHIVE_abyb5vabyb5vabyb",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 51",
+        "title": "ARCHIVE_abyb5vabyb5vabyb",
+        "body": "New content archive in motion.",
+        "footer": "Page 101"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_abyb5vabyb5vabyb.png",
+        "mediaLabel": "ARCHIVE_abyb5vabyb5vabyb",
+        "footer": "Page 102"
+      }
+    },
+    {
+      "id": "spread-52",
+      "thumbLabel": "ARCHIVE_alpa0dalpa0dalpa",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 52",
+        "title": "ARCHIVE_alpa0dalpa0dalpa",
+        "body": "New content archive in motion.",
+        "footer": "Page 103"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_alpa0dalpa0dalpa.png",
+        "mediaLabel": "ARCHIVE_alpa0dalpa0dalpa",
+        "footer": "Page 104"
+      }
+    },
+    {
+      "id": "spread-53",
+      "thumbLabel": "ARCHIVE_axv4r9axv4r9axv4",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 53",
+        "title": "ARCHIVE_axv4r9axv4r9axv4",
+        "body": "New content archive in motion.",
+        "footer": "Page 105"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_axv4r9axv4r9axv4.png",
+        "mediaLabel": "ARCHIVE_axv4r9axv4r9axv4",
+        "footer": "Page 106"
+      }
+    },
+    {
+      "id": "spread-54",
+      "thumbLabel": "ARCHIVE_b1h626b1h626b1h6",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 54",
+        "title": "ARCHIVE_b1h626b1h626b1h6",
+        "body": "New content archive in motion.",
+        "footer": "Page 107"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_b1h626b1h626b1h6.png",
+        "mediaLabel": "ARCHIVE_b1h626b1h626b1h6",
+        "footer": "Page 108"
+      }
+    },
+    {
+      "id": "spread-55",
+      "thumbLabel": "ARCHIVE_b313mzb313mzb313",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 55",
+        "title": "ARCHIVE_b313mzb313mzb313",
+        "body": "New content archive in motion.",
+        "footer": "Page 109"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_b313mzb313mzb313.png",
+        "mediaLabel": "ARCHIVE_b313mzb313mzb313",
+        "footer": "Page 110"
+      }
+    },
+    {
+      "id": "spread-56",
+      "thumbLabel": "ARCHIVE_b66hwqb66hwqb66h",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 56",
+        "title": "ARCHIVE_b66hwqb66hwqb66h",
+        "body": "New content archive in motion.",
+        "footer": "Page 111"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_b66hwqb66hwqb66h.png",
+        "mediaLabel": "ARCHIVE_b66hwqb66hwqb66h",
+        "footer": "Page 112"
+      }
+    },
+    {
+      "id": "spread-57",
+      "thumbLabel": "ARCHIVE_bf58tbbf58tbbf58",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 57",
+        "title": "ARCHIVE_bf58tbbf58tbbf58",
+        "body": "New content archive in motion.",
+        "footer": "Page 113"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_bf58tbbf58tbbf58.png",
+        "mediaLabel": "ARCHIVE_bf58tbbf58tbbf58",
+        "footer": "Page 114"
+      }
+    },
+    {
+      "id": "spread-58",
+      "thumbLabel": "ARCHIVE_bo3y4vbo3y4vbo3y",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 58",
+        "title": "ARCHIVE_bo3y4vbo3y4vbo3y",
+        "body": "New content archive in motion.",
+        "footer": "Page 115"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_bo3y4vbo3y4vbo3y.png",
+        "mediaLabel": "ARCHIVE_bo3y4vbo3y4vbo3y",
+        "footer": "Page 116"
+      }
+    },
+    {
+      "id": "spread-59",
+      "thumbLabel": "ARCHIVE_c4hbrjc4hbrjc4hb",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 59",
+        "title": "ARCHIVE_c4hbrjc4hbrjc4hb",
+        "body": "New content archive in motion.",
+        "footer": "Page 117"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_c4hbrjc4hbrjc4hb.png",
+        "mediaLabel": "ARCHIVE_c4hbrjc4hbrjc4hb",
+        "footer": "Page 118"
+      }
+    },
+    {
+      "id": "spread-60",
+      "thumbLabel": "ARCHIVE_d5e6uud5e6uud5e6",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 60",
+        "title": "ARCHIVE_d5e6uud5e6uud5e6",
+        "body": "New content archive in motion.",
+        "footer": "Page 119"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_d5e6uud5e6uud5e6.png",
+        "mediaLabel": "ARCHIVE_d5e6uud5e6uud5e6",
+        "footer": "Page 120"
+      }
+    },
+    {
+      "id": "spread-61",
+      "thumbLabel": "ARCHIVE_d9tard9tard9tard",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 61",
+        "title": "ARCHIVE_d9tard9tard9tard",
+        "body": "New content archive in motion.",
+        "footer": "Page 121"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_d9tard9tard9tard.png",
+        "mediaLabel": "ARCHIVE_d9tard9tard9tard",
+        "footer": "Page 122"
+      }
+    },
+    {
+      "id": "spread-62",
+      "thumbLabel": "ARCHIVE_dwukbodwukbodwuk",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 62",
+        "title": "ARCHIVE_dwukbodwukbodwuk",
+        "body": "New content archive in motion.",
+        "footer": "Page 123"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_dwukbodwukbodwuk.png",
+        "mediaLabel": "ARCHIVE_dwukbodwukbodwuk",
+        "footer": "Page 124"
+      }
+    },
+    {
+      "id": "spread-63",
+      "thumbLabel": "ARCHIVE_dzenlndzenlndzen",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 63",
+        "title": "ARCHIVE_dzenlndzenlndzen",
+        "body": "New content archive in motion.",
+        "footer": "Page 125"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_dzenlndzenlndzen.png",
+        "mediaLabel": "ARCHIVE_dzenlndzenlndzen",
+        "footer": "Page 126"
+      }
+    },
+    {
+      "id": "spread-64",
+      "thumbLabel": "ARCHIVE_e4sj6ke4sj6ke4sj",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 64",
+        "title": "ARCHIVE_e4sj6ke4sj6ke4sj",
+        "body": "New content archive in motion.",
+        "footer": "Page 127"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_e4sj6ke4sj6ke4sj.png",
+        "mediaLabel": "ARCHIVE_e4sj6ke4sj6ke4sj",
+        "footer": "Page 128"
+      }
+    },
+    {
+      "id": "spread-65",
+      "thumbLabel": "ARCHIVE_ehia8iehia8iehia",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 65",
+        "title": "ARCHIVE_ehia8iehia8iehia",
+        "body": "New content archive in motion.",
+        "footer": "Page 129"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ehia8iehia8iehia.png",
+        "mediaLabel": "ARCHIVE_ehia8iehia8iehia",
+        "footer": "Page 130"
+      }
+    },
+    {
+      "id": "spread-66",
+      "thumbLabel": "ARCHIVE_ei5vlqei5vlqei5v",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 66",
+        "title": "ARCHIVE_ei5vlqei5vlqei5v",
+        "body": "New content archive in motion.",
+        "footer": "Page 131"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ei5vlqei5vlqei5v.png",
+        "mediaLabel": "ARCHIVE_ei5vlqei5vlqei5v",
+        "footer": "Page 132"
+      }
+    },
+    {
+      "id": "spread-67",
+      "thumbLabel": "ARCHIVE_eidbgkeidbgkeidb",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 67",
+        "title": "ARCHIVE_eidbgkeidbgkeidb",
+        "body": "New content archive in motion.",
+        "footer": "Page 133"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_eidbgkeidbgkeidb.png",
+        "mediaLabel": "ARCHIVE_eidbgkeidbgkeidb",
+        "footer": "Page 134"
+      }
+    },
+    {
+      "id": "spread-68",
+      "thumbLabel": "ARCHIVE_eug8jkeug8jkeug8",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 68",
+        "title": "ARCHIVE_eug8jkeug8jkeug8",
+        "body": "New content archive in motion.",
+        "footer": "Page 135"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_eug8jkeug8jkeug8.png",
+        "mediaLabel": "ARCHIVE_eug8jkeug8jkeug8",
+        "footer": "Page 136"
+      }
+    },
+    {
+      "id": "spread-69",
+      "thumbLabel": "ARCHIVE_ewwjtpewwjtpewwj",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 69",
+        "title": "ARCHIVE_ewwjtpewwjtpewwj",
+        "body": "New content archive in motion.",
+        "footer": "Page 137"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ewwjtpewwjtpewwj.png",
+        "mediaLabel": "ARCHIVE_ewwjtpewwjtpewwj",
+        "footer": "Page 138"
+      }
+    },
+    {
+      "id": "spread-70",
+      "thumbLabel": "ARCHIVE_ezhjkzezhjkzezhj",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 70",
+        "title": "ARCHIVE_ezhjkzezhjkzezhj",
+        "body": "New content archive in motion.",
+        "footer": "Page 139"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ezhjkzezhjkzezhj.png",
+        "mediaLabel": "ARCHIVE_ezhjkzezhjkzezhj",
+        "footer": "Page 140"
+      }
+    },
+    {
+      "id": "spread-71",
+      "thumbLabel": "ARCHIVE_fd5gpkfd5gpkfd5g",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 71",
+        "title": "ARCHIVE_fd5gpkfd5gpkfd5g",
+        "body": "New content archive in motion.",
+        "footer": "Page 141"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fd5gpkfd5gpkfd5g.png",
+        "mediaLabel": "ARCHIVE_fd5gpkfd5gpkfd5g",
+        "footer": "Page 142"
+      }
+    },
+    {
+      "id": "spread-72",
+      "thumbLabel": "ARCHIVE_fkjj9cfkjj9cfkjj",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 72",
+        "title": "ARCHIVE_fkjj9cfkjj9cfkjj",
+        "body": "New content archive in motion.",
+        "footer": "Page 143"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fkjj9cfkjj9cfkjj.png",
+        "mediaLabel": "ARCHIVE_fkjj9cfkjj9cfkjj",
+        "footer": "Page 144"
+      }
+    },
+    {
+      "id": "spread-73",
+      "thumbLabel": "ARCHIVE_fna1mhfna1mhfna1",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 73",
+        "title": "ARCHIVE_fna1mhfna1mhfna1",
+        "body": "New content archive in motion.",
+        "footer": "Page 145"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fna1mhfna1mhfna1.png",
+        "mediaLabel": "ARCHIVE_fna1mhfna1mhfna1",
+        "footer": "Page 146"
+      }
+    },
+    {
+      "id": "spread-74",
+      "thumbLabel": "ARCHIVE_fo28kgfo28kgfo28",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 74",
+        "title": "ARCHIVE_fo28kgfo28kgfo28",
+        "body": "New content archive in motion.",
+        "footer": "Page 147"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fo28kgfo28kgfo28.png",
+        "mediaLabel": "ARCHIVE_fo28kgfo28kgfo28",
+        "footer": "Page 148"
+      }
+    },
+    {
+      "id": "spread-75",
+      "thumbLabel": "ARCHIVE_fpcml5fpcml5fpcm",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 75",
+        "title": "ARCHIVE_fpcml5fpcml5fpcm",
+        "body": "New content archive in motion.",
+        "footer": "Page 149"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fpcml5fpcml5fpcm.png",
+        "mediaLabel": "ARCHIVE_fpcml5fpcml5fpcm",
+        "footer": "Page 150"
+      }
+    },
+    {
+      "id": "spread-76",
+      "thumbLabel": "ARCHIVE_fukczgfukczgfukc",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 76",
+        "title": "ARCHIVE_fukczgfukczgfukc",
+        "body": "New content archive in motion.",
+        "footer": "Page 151"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fukczgfukczgfukc.png",
+        "mediaLabel": "ARCHIVE_fukczgfukczgfukc",
+        "footer": "Page 152"
+      }
+    },
+    {
+      "id": "spread-77",
+      "thumbLabel": "ARCHIVE_fycmgpfycmgpfycm",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 77",
+        "title": "ARCHIVE_fycmgpfycmgpfycm",
+        "body": "New content archive in motion.",
+        "footer": "Page 153"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fycmgpfycmgpfycm.png",
+        "mediaLabel": "ARCHIVE_fycmgpfycmgpfycm",
+        "footer": "Page 154"
+      }
+    },
+    {
+      "id": "spread-78",
+      "thumbLabel": "ARCHIVE_fyhemgfyhemgfyhe",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 78",
+        "title": "ARCHIVE_fyhemgfyhemgfyhe",
+        "body": "New content archive in motion.",
+        "footer": "Page 155"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_fyhemgfyhemgfyhe.png",
+        "mediaLabel": "ARCHIVE_fyhemgfyhemgfyhe",
+        "footer": "Page 156"
+      }
+    },
+    {
+      "id": "spread-79",
+      "thumbLabel": "ARCHIVE_ghu8s9ghu8s9ghu8",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 79",
+        "title": "ARCHIVE_ghu8s9ghu8s9ghu8",
+        "body": "New content archive in motion.",
+        "footer": "Page 157"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ghu8s9ghu8s9ghu8.png",
+        "mediaLabel": "ARCHIVE_ghu8s9ghu8s9ghu8",
+        "footer": "Page 158"
+      }
+    },
+    {
+      "id": "spread-80",
+      "thumbLabel": "ARCHIVE_ghyfyvghyfyvghyf",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 80",
+        "title": "ARCHIVE_ghyfyvghyfyvghyf",
+        "body": "New content archive in motion.",
+        "footer": "Page 159"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ghyfyvghyfyvghyf.png",
+        "mediaLabel": "ARCHIVE_ghyfyvghyfyvghyf",
+        "footer": "Page 160"
+      }
+    },
+    {
+      "id": "spread-81",
+      "thumbLabel": "ARCHIVE_h7ywcdh7ywcdh7yw",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 81",
+        "title": "ARCHIVE_h7ywcdh7ywcdh7yw",
+        "body": "New content archive in motion.",
+        "footer": "Page 161"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_h7ywcdh7ywcdh7yw.png",
+        "mediaLabel": "ARCHIVE_h7ywcdh7ywcdh7yw",
+        "footer": "Page 162"
+      }
+    },
+    {
+      "id": "spread-82",
+      "thumbLabel": "ARCHIVE_hdzrkyhdzrkyhdzr",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 82",
+        "title": "ARCHIVE_hdzrkyhdzrkyhdzr",
+        "body": "New content archive in motion.",
+        "footer": "Page 163"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_hdzrkyhdzrkyhdzr.png",
+        "mediaLabel": "ARCHIVE_hdzrkyhdzrkyhdzr",
+        "footer": "Page 164"
+      }
+    },
+    {
+      "id": "spread-83",
+      "thumbLabel": "ARCHIVE_henpd7henpd7henp",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 83",
+        "title": "ARCHIVE_henpd7henpd7henp",
+        "body": "New content archive in motion.",
+        "footer": "Page 165"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_henpd7henpd7henp.png",
+        "mediaLabel": "ARCHIVE_henpd7henpd7henp",
+        "footer": "Page 166"
+      }
+    },
+    {
+      "id": "spread-84",
+      "thumbLabel": "ARCHIVE_hm7497hm7497hm74",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 84",
+        "title": "ARCHIVE_hm7497hm7497hm74",
+        "body": "New content archive in motion.",
+        "footer": "Page 167"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_hm7497hm7497hm74.png",
+        "mediaLabel": "ARCHIVE_hm7497hm7497hm74",
+        "footer": "Page 168"
+      }
+    },
+    {
+      "id": "spread-85",
+      "thumbLabel": "ARCHIVE_hn4andhn4andhn4a",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 85",
+        "title": "ARCHIVE_hn4andhn4andhn4a",
+        "body": "New content archive in motion.",
+        "footer": "Page 169"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_hn4andhn4andhn4a.png",
+        "mediaLabel": "ARCHIVE_hn4andhn4andhn4a",
+        "footer": "Page 170"
+      }
+    },
+    {
+      "id": "spread-86",
+      "thumbLabel": "ARCHIVE_ho0eueho0eueho0e",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 86",
+        "title": "ARCHIVE_ho0eueho0eueho0e",
+        "body": "New content archive in motion.",
+        "footer": "Page 171"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ho0eueho0eueho0e.png",
+        "mediaLabel": "ARCHIVE_ho0eueho0eueho0e",
+        "footer": "Page 172"
+      }
+    },
+    {
+      "id": "spread-87",
+      "thumbLabel": "ARCHIVE_i0btnyi0btnyi0bt",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 87",
+        "title": "ARCHIVE_i0btnyi0btnyi0bt",
+        "body": "New content archive in motion.",
+        "footer": "Page 173"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_i0btnyi0btnyi0bt.png",
+        "mediaLabel": "ARCHIVE_i0btnyi0btnyi0bt",
+        "footer": "Page 174"
+      }
+    },
+    {
+      "id": "spread-88",
+      "thumbLabel": "ARCHIVE_i284q7i284q7i284",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 88",
+        "title": "ARCHIVE_i284q7i284q7i284",
+        "body": "New content archive in motion.",
+        "footer": "Page 175"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_i284q7i284q7i284.png",
+        "mediaLabel": "ARCHIVE_i284q7i284q7i284",
+        "footer": "Page 176"
+      }
+    },
+    {
+      "id": "spread-89",
+      "thumbLabel": "ARCHIVE_i85ltni85ltni85l",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 89",
+        "title": "ARCHIVE_i85ltni85ltni85l",
+        "body": "New content archive in motion.",
+        "footer": "Page 177"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_i85ltni85ltni85l.png",
+        "mediaLabel": "ARCHIVE_i85ltni85ltni85l",
+        "footer": "Page 178"
+      }
+    },
+    {
+      "id": "spread-90",
+      "thumbLabel": "ARCHIVE_iu8cehiu8cehiu8c",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 90",
+        "title": "ARCHIVE_iu8cehiu8cehiu8c",
+        "body": "New content archive in motion.",
+        "footer": "Page 179"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_iu8cehiu8cehiu8c.png",
+        "mediaLabel": "ARCHIVE_iu8cehiu8cehiu8c",
+        "footer": "Page 180"
+      }
+    },
+    {
+      "id": "spread-91",
+      "thumbLabel": "ARCHIVE_iyoi55iyoi55iyoi",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 91",
+        "title": "ARCHIVE_iyoi55iyoi55iyoi",
+        "body": "New content archive in motion.",
+        "footer": "Page 181"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_iyoi55iyoi55iyoi.png",
+        "mediaLabel": "ARCHIVE_iyoi55iyoi55iyoi",
+        "footer": "Page 182"
+      }
+    },
+    {
+      "id": "spread-92",
+      "thumbLabel": "ARCHIVE_iz90t4iz90t4iz90",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 92",
+        "title": "ARCHIVE_iz90t4iz90t4iz90",
+        "body": "New content archive in motion.",
+        "footer": "Page 183"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_iz90t4iz90t4iz90.png",
+        "mediaLabel": "ARCHIVE_iz90t4iz90t4iz90",
+        "footer": "Page 184"
+      }
+    },
+    {
+      "id": "spread-93",
+      "thumbLabel": "ARCHIVE_j3u96lj3u96lj3u9",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 93",
+        "title": "ARCHIVE_j3u96lj3u96lj3u9",
+        "body": "New content archive in motion.",
+        "footer": "Page 185"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_j3u96lj3u96lj3u9.png",
+        "mediaLabel": "ARCHIVE_j3u96lj3u96lj3u9",
+        "footer": "Page 186"
+      }
+    },
+    {
+      "id": "spread-94",
+      "thumbLabel": "ARCHIVE_j8c93oj8c93oj8c9",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 94",
+        "title": "ARCHIVE_j8c93oj8c93oj8c9",
+        "body": "New content archive in motion.",
+        "footer": "Page 187"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_j8c93oj8c93oj8c9.png",
+        "mediaLabel": "ARCHIVE_j8c93oj8c93oj8c9",
+        "footer": "Page 188"
+      }
+    },
+    {
+      "id": "spread-95",
+      "thumbLabel": "ARCHIVE_jd3ockjd3ockjd3o copy",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 95",
+        "title": "ARCHIVE_jd3ockjd3ockjd3o copy",
+        "body": "New content archive in motion.",
+        "footer": "Page 189"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_jd3ockjd3ockjd3o copy.png",
+        "mediaLabel": "ARCHIVE_jd3ockjd3ockjd3o copy",
+        "footer": "Page 190"
+      }
+    },
+    {
+      "id": "spread-96",
+      "thumbLabel": "ARCHIVE_jfw5ehjfw5ehjfw5",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 96",
+        "title": "ARCHIVE_jfw5ehjfw5ehjfw5",
+        "body": "New content archive in motion.",
+        "footer": "Page 191"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_jfw5ehjfw5ehjfw5.png",
+        "mediaLabel": "ARCHIVE_jfw5ehjfw5ehjfw5",
+        "footer": "Page 192"
+      }
+    },
+    {
+      "id": "spread-97",
+      "thumbLabel": "ARCHIVE_jlmb2pjlmb2pjlmb",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 97",
+        "title": "ARCHIVE_jlmb2pjlmb2pjlmb",
+        "body": "New content archive in motion.",
+        "footer": "Page 193"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_jlmb2pjlmb2pjlmb.png",
+        "mediaLabel": "ARCHIVE_jlmb2pjlmb2pjlmb",
+        "footer": "Page 194"
+      }
+    },
+    {
+      "id": "spread-98",
+      "thumbLabel": "ARCHIVE_jqky1vjqky1vjqky",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 98",
+        "title": "ARCHIVE_jqky1vjqky1vjqky",
+        "body": "New content archive in motion.",
+        "footer": "Page 195"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_jqky1vjqky1vjqky.png",
+        "mediaLabel": "ARCHIVE_jqky1vjqky1vjqky",
+        "footer": "Page 196"
+      }
+    },
+    {
+      "id": "spread-99",
+      "thumbLabel": "ARCHIVE_jzfqm7jzfqm7jzfq copy",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 99",
+        "title": "ARCHIVE_jzfqm7jzfqm7jzfq copy",
+        "body": "New content archive in motion.",
+        "footer": "Page 197"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_jzfqm7jzfqm7jzfq copy.png",
+        "mediaLabel": "ARCHIVE_jzfqm7jzfqm7jzfq copy",
+        "footer": "Page 198"
+      }
+    },
+    {
+      "id": "spread-100",
+      "thumbLabel": "ARCHIVE_k9fyzuk9fyzuk9fy",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 100",
+        "title": "ARCHIVE_k9fyzuk9fyzuk9fy",
+        "body": "New content archive in motion.",
+        "footer": "Page 199"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_k9fyzuk9fyzuk9fy.png",
+        "mediaLabel": "ARCHIVE_k9fyzuk9fyzuk9fy",
+        "footer": "Page 200"
+      }
+    },
+    {
+      "id": "spread-101",
+      "thumbLabel": "ARCHIVE_ka93k7ka93k7ka93",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 101",
+        "title": "ARCHIVE_ka93k7ka93k7ka93",
+        "body": "New content archive in motion.",
+        "footer": "Page 201"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ka93k7ka93k7ka93.png",
+        "mediaLabel": "ARCHIVE_ka93k7ka93k7ka93",
+        "footer": "Page 202"
+      }
+    },
+    {
+      "id": "spread-102",
+      "thumbLabel": "ARCHIVE_kfi0dgkfi0dgkfi0",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 102",
+        "title": "ARCHIVE_kfi0dgkfi0dgkfi0",
+        "body": "New content archive in motion.",
+        "footer": "Page 203"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_kfi0dgkfi0dgkfi0.png",
+        "mediaLabel": "ARCHIVE_kfi0dgkfi0dgkfi0",
+        "footer": "Page 204"
+      }
+    },
+    {
+      "id": "spread-103",
+      "thumbLabel": "ARCHIVE_kp21m7kp21m7kp21",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 103",
+        "title": "ARCHIVE_kp21m7kp21m7kp21",
+        "body": "New content archive in motion.",
+        "footer": "Page 205"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_kp21m7kp21m7kp21.png",
+        "mediaLabel": "ARCHIVE_kp21m7kp21m7kp21",
+        "footer": "Page 206"
+      }
+    },
+    {
+      "id": "spread-104",
+      "thumbLabel": "ARCHIVE_kwkijdkwkijdkwki",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 104",
+        "title": "ARCHIVE_kwkijdkwkijdkwki",
+        "body": "New content archive in motion.",
+        "footer": "Page 207"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_kwkijdkwkijdkwki.png",
+        "mediaLabel": "ARCHIVE_kwkijdkwkijdkwki",
+        "footer": "Page 208"
+      }
+    },
+    {
+      "id": "spread-105",
+      "thumbLabel": "ARCHIVE_l7fhrbl7fhrbl7fh",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 105",
+        "title": "ARCHIVE_l7fhrbl7fhrbl7fh",
+        "body": "New content archive in motion.",
+        "footer": "Page 209"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_l7fhrbl7fhrbl7fh.png",
+        "mediaLabel": "ARCHIVE_l7fhrbl7fhrbl7fh",
+        "footer": "Page 210"
+      }
+    },
+    {
+      "id": "spread-106",
+      "thumbLabel": "ARCHIVE_lrtog4lrtog4lrto",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 106",
+        "title": "ARCHIVE_lrtog4lrtog4lrto",
+        "body": "New content archive in motion.",
+        "footer": "Page 211"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_lrtog4lrtog4lrto.png",
+        "mediaLabel": "ARCHIVE_lrtog4lrtog4lrto",
+        "footer": "Page 212"
+      }
+    },
+    {
+      "id": "spread-107",
+      "thumbLabel": "ARCHIVE_lsdl9nlsdl9nlsdl",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 107",
+        "title": "ARCHIVE_lsdl9nlsdl9nlsdl",
+        "body": "New content archive in motion.",
+        "footer": "Page 213"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_lsdl9nlsdl9nlsdl.png",
+        "mediaLabel": "ARCHIVE_lsdl9nlsdl9nlsdl",
+        "footer": "Page 214"
+      }
+    },
+    {
+      "id": "spread-108",
+      "thumbLabel": "ARCHIVE_m8vrjmm8vrjmm8vr",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 108",
+        "title": "ARCHIVE_m8vrjmm8vrjmm8vr",
+        "body": "New content archive in motion.",
+        "footer": "Page 215"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_m8vrjmm8vrjmm8vr.png",
+        "mediaLabel": "ARCHIVE_m8vrjmm8vrjmm8vr",
+        "footer": "Page 216"
+      }
+    },
+    {
+      "id": "spread-109",
+      "thumbLabel": "ARCHIVE_mi3z02mi3z02mi3z",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 109",
+        "title": "ARCHIVE_mi3z02mi3z02mi3z",
+        "body": "New content archive in motion.",
+        "footer": "Page 217"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_mi3z02mi3z02mi3z.png",
+        "mediaLabel": "ARCHIVE_mi3z02mi3z02mi3z",
+        "footer": "Page 218"
+      }
+    },
+    {
+      "id": "spread-110",
+      "thumbLabel": "ARCHIVE_mlgk7umlgk7umlgk",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 110",
+        "title": "ARCHIVE_mlgk7umlgk7umlgk",
+        "body": "New content archive in motion.",
+        "footer": "Page 219"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_mlgk7umlgk7umlgk.png",
+        "mediaLabel": "ARCHIVE_mlgk7umlgk7umlgk",
+        "footer": "Page 220"
+      }
+    },
+    {
+      "id": "spread-111",
+      "thumbLabel": "ARCHIVE_msrfaumsrfaumsrf",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 111",
+        "title": "ARCHIVE_msrfaumsrfaumsrf",
+        "body": "New content archive in motion.",
+        "footer": "Page 221"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_msrfaumsrfaumsrf.png",
+        "mediaLabel": "ARCHIVE_msrfaumsrfaumsrf",
+        "footer": "Page 222"
+      }
+    },
+    {
+      "id": "spread-112",
+      "thumbLabel": "ARCHIVE_nn4wycnn4wycnn4w",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 112",
+        "title": "ARCHIVE_nn4wycnn4wycnn4w",
+        "body": "New content archive in motion.",
+        "footer": "Page 223"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_nn4wycnn4wycnn4w.png",
+        "mediaLabel": "ARCHIVE_nn4wycnn4wycnn4w",
+        "footer": "Page 224"
+      }
+    },
+    {
+      "id": "spread-113",
+      "thumbLabel": "ARCHIVE_nnvxobnnvxobnnvx",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 113",
+        "title": "ARCHIVE_nnvxobnnvxobnnvx",
+        "body": "New content archive in motion.",
+        "footer": "Page 225"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_nnvxobnnvxobnnvx.png",
+        "mediaLabel": "ARCHIVE_nnvxobnnvxobnnvx",
+        "footer": "Page 226"
+      }
+    },
+    {
+      "id": "spread-114",
+      "thumbLabel": "ARCHIVE_oazhk3oazhk3oazh",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 114",
+        "title": "ARCHIVE_oazhk3oazhk3oazh",
+        "body": "New content archive in motion.",
+        "footer": "Page 227"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_oazhk3oazhk3oazh.png",
+        "mediaLabel": "ARCHIVE_oazhk3oazhk3oazh",
+        "footer": "Page 228"
+      }
+    },
+    {
+      "id": "spread-115",
+      "thumbLabel": "ARCHIVE_ociup7ociup7ociu",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 115",
+        "title": "ARCHIVE_ociup7ociup7ociu",
+        "body": "New content archive in motion.",
+        "footer": "Page 229"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ociup7ociup7ociu.png",
+        "mediaLabel": "ARCHIVE_ociup7ociup7ociu",
+        "footer": "Page 230"
+      }
+    },
+    {
+      "id": "spread-116",
+      "thumbLabel": "ARCHIVE_otnwqeotnwqeotnw",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 116",
+        "title": "ARCHIVE_otnwqeotnwqeotnw",
+        "body": "New content archive in motion.",
+        "footer": "Page 231"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_otnwqeotnwqeotnw.png",
+        "mediaLabel": "ARCHIVE_otnwqeotnwqeotnw",
+        "footer": "Page 232"
+      }
+    },
+    {
+      "id": "spread-117",
+      "thumbLabel": "ARCHIVE_oz8zzkoz8zzkoz8z",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 117",
+        "title": "ARCHIVE_oz8zzkoz8zzkoz8z",
+        "body": "New content archive in motion.",
+        "footer": "Page 233"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_oz8zzkoz8zzkoz8z.png",
+        "mediaLabel": "ARCHIVE_oz8zzkoz8zzkoz8z",
+        "footer": "Page 234"
+      }
+    },
+    {
+      "id": "spread-118",
+      "thumbLabel": "ARCHIVE_pn0x0ypn0x0ypn0x",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 118",
+        "title": "ARCHIVE_pn0x0ypn0x0ypn0x",
+        "body": "New content archive in motion.",
+        "footer": "Page 235"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_pn0x0ypn0x0ypn0x.png",
+        "mediaLabel": "ARCHIVE_pn0x0ypn0x0ypn0x",
+        "footer": "Page 236"
+      }
+    },
+    {
+      "id": "spread-119",
+      "thumbLabel": "ARCHIVE_po0mq9po0mq9po0m",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 119",
+        "title": "ARCHIVE_po0mq9po0mq9po0m",
+        "body": "New content archive in motion.",
+        "footer": "Page 237"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_po0mq9po0mq9po0m.png",
+        "mediaLabel": "ARCHIVE_po0mq9po0mq9po0m",
+        "footer": "Page 238"
+      }
+    },
+    {
+      "id": "spread-120",
+      "thumbLabel": "ARCHIVE_pqv49lpqv49lpqv4",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 120",
+        "title": "ARCHIVE_pqv49lpqv49lpqv4",
+        "body": "New content archive in motion.",
+        "footer": "Page 239"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_pqv49lpqv49lpqv4.png",
+        "mediaLabel": "ARCHIVE_pqv49lpqv49lpqv4",
+        "footer": "Page 240"
+      }
+    },
+    {
+      "id": "spread-121",
+      "thumbLabel": "ARCHIVE_qro3dsqro3dsqro3",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 121",
+        "title": "ARCHIVE_qro3dsqro3dsqro3",
+        "body": "New content archive in motion.",
+        "footer": "Page 241"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_qro3dsqro3dsqro3.png",
+        "mediaLabel": "ARCHIVE_qro3dsqro3dsqro3",
+        "footer": "Page 242"
+      }
+    },
+    {
+      "id": "spread-122",
+      "thumbLabel": "ARCHIVE_qy665fqy665fqy66",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 122",
+        "title": "ARCHIVE_qy665fqy665fqy66",
+        "body": "New content archive in motion.",
+        "footer": "Page 243"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_qy665fqy665fqy66.png",
+        "mediaLabel": "ARCHIVE_qy665fqy665fqy66",
+        "footer": "Page 244"
+      }
+    },
+    {
+      "id": "spread-123",
+      "thumbLabel": "ARCHIVE_r0jgu8r0jgu8r0jg",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 123",
+        "title": "ARCHIVE_r0jgu8r0jgu8r0jg",
+        "body": "New content archive in motion.",
+        "footer": "Page 245"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_r0jgu8r0jgu8r0jg.png",
+        "mediaLabel": "ARCHIVE_r0jgu8r0jgu8r0jg",
+        "footer": "Page 246"
+      }
+    },
+    {
+      "id": "spread-124",
+      "thumbLabel": "ARCHIVE_r3nngur3nngur3nn",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 124",
+        "title": "ARCHIVE_r3nngur3nngur3nn",
+        "body": "New content archive in motion.",
+        "footer": "Page 247"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_r3nngur3nngur3nn.png",
+        "mediaLabel": "ARCHIVE_r3nngur3nngur3nn",
+        "footer": "Page 248"
+      }
+    },
+    {
+      "id": "spread-125",
+      "thumbLabel": "ARCHIVE_r3xfk8r3xfk8r3xf",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 125",
+        "title": "ARCHIVE_r3xfk8r3xfk8r3xf",
+        "body": "New content archive in motion.",
+        "footer": "Page 249"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_r3xfk8r3xfk8r3xf.png",
+        "mediaLabel": "ARCHIVE_r3xfk8r3xfk8r3xf",
+        "footer": "Page 250"
+      }
+    },
+    {
+      "id": "spread-126",
+      "thumbLabel": "ARCHIVE_r8f0cr8f0cr8f0cr",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 126",
+        "title": "ARCHIVE_r8f0cr8f0cr8f0cr",
+        "body": "New content archive in motion.",
+        "footer": "Page 251"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_r8f0cr8f0cr8f0cr.png",
+        "mediaLabel": "ARCHIVE_r8f0cr8f0cr8f0cr",
+        "footer": "Page 252"
+      }
+    },
+    {
+      "id": "spread-127",
+      "thumbLabel": "ARCHIVE_rbhs2erbhs2erbhs",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 127",
+        "title": "ARCHIVE_rbhs2erbhs2erbhs",
+        "body": "New content archive in motion.",
+        "footer": "Page 253"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rbhs2erbhs2erbhs.png",
+        "mediaLabel": "ARCHIVE_rbhs2erbhs2erbhs",
+        "footer": "Page 254"
+      }
+    },
+    {
+      "id": "spread-128",
+      "thumbLabel": "ARCHIVE_rj8nmerj8nmerj8n",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 128",
+        "title": "ARCHIVE_rj8nmerj8nmerj8n",
+        "body": "New content archive in motion.",
+        "footer": "Page 255"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rj8nmerj8nmerj8n.png",
+        "mediaLabel": "ARCHIVE_rj8nmerj8nmerj8n",
+        "footer": "Page 256"
+      }
+    },
+    {
+      "id": "spread-129",
+      "thumbLabel": "ARCHIVE_rklsyurklsyurkls",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 129",
+        "title": "ARCHIVE_rklsyurklsyurkls",
+        "body": "New content archive in motion.",
+        "footer": "Page 257"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rklsyurklsyurkls.png",
+        "mediaLabel": "ARCHIVE_rklsyurklsyurkls",
+        "footer": "Page 258"
+      }
+    },
+    {
+      "id": "spread-130",
+      "thumbLabel": "ARCHIVE_rkv1q5rkv1q5rkv1",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 130",
+        "title": "ARCHIVE_rkv1q5rkv1q5rkv1",
+        "body": "New content archive in motion.",
+        "footer": "Page 259"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rkv1q5rkv1q5rkv1.png",
+        "mediaLabel": "ARCHIVE_rkv1q5rkv1q5rkv1",
+        "footer": "Page 260"
+      }
+    },
+    {
+      "id": "spread-131",
+      "thumbLabel": "ARCHIVE_rn9hl7rn9hl7rn9h",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 131",
+        "title": "ARCHIVE_rn9hl7rn9hl7rn9h",
+        "body": "New content archive in motion.",
+        "footer": "Page 261"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rn9hl7rn9hl7rn9h.png",
+        "mediaLabel": "ARCHIVE_rn9hl7rn9hl7rn9h",
+        "footer": "Page 262"
+      }
+    },
+    {
+      "id": "spread-132",
+      "thumbLabel": "ARCHIVE_rscrktrscrktrscr",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 132",
+        "title": "ARCHIVE_rscrktrscrktrscr",
+        "body": "New content archive in motion.",
+        "footer": "Page 263"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rscrktrscrktrscr.png",
+        "mediaLabel": "ARCHIVE_rscrktrscrktrscr",
+        "footer": "Page 264"
+      }
+    },
+    {
+      "id": "spread-133",
+      "thumbLabel": "ARCHIVE_rsxpjtrsxpjtrsxp",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 133",
+        "title": "ARCHIVE_rsxpjtrsxpjtrsxp",
+        "body": "New content archive in motion.",
+        "footer": "Page 265"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_rsxpjtrsxpjtrsxp.png",
+        "mediaLabel": "ARCHIVE_rsxpjtrsxpjtrsxp",
+        "footer": "Page 266"
+      }
+    },
+    {
+      "id": "spread-134",
+      "thumbLabel": "ARCHIVE_s038jrs038jrs038",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 134",
+        "title": "ARCHIVE_s038jrs038jrs038",
+        "body": "New content archive in motion.",
+        "footer": "Page 267"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_s038jrs038jrs038.png",
+        "mediaLabel": "ARCHIVE_s038jrs038jrs038",
+        "footer": "Page 268"
+      }
+    },
+    {
+      "id": "spread-135",
+      "thumbLabel": "ARCHIVE_s79au7s79au7s79a",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 135",
+        "title": "ARCHIVE_s79au7s79au7s79a",
+        "body": "New content archive in motion.",
+        "footer": "Page 269"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_s79au7s79au7s79a.png",
+        "mediaLabel": "ARCHIVE_s79au7s79au7s79a",
+        "footer": "Page 270"
+      }
+    },
+    {
+      "id": "spread-136",
+      "thumbLabel": "ARCHIVE_smaxipsmaxipsmax (1...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 136",
+        "title": "ARCHIVE_smaxipsmaxipsmax (1...",
+        "body": "New content archive in motion.",
+        "footer": "Page 271"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_smaxipsmaxipsmax (1)_processed.png",
+        "mediaLabel": "ARCHIVE_smaxipsmaxipsmax (1...",
+        "footer": "Page 272"
+      }
+    },
+    {
+      "id": "spread-137",
+      "thumbLabel": "ARCHIVE_sz81tqsz81tqsz81",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 137",
+        "title": "ARCHIVE_sz81tqsz81tqsz81",
+        "body": "New content archive in motion.",
+        "footer": "Page 273"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_sz81tqsz81tqsz81.png",
+        "mediaLabel": "ARCHIVE_sz81tqsz81tqsz81",
+        "footer": "Page 274"
+      }
+    },
+    {
+      "id": "spread-138",
+      "thumbLabel": "ARCHIVE_tdahzstdahzstdah",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 138",
+        "title": "ARCHIVE_tdahzstdahzstdah",
+        "body": "New content archive in motion.",
+        "footer": "Page 275"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_tdahzstdahzstdah.png",
+        "mediaLabel": "ARCHIVE_tdahzstdahzstdah",
+        "footer": "Page 276"
+      }
+    },
+    {
+      "id": "spread-139",
+      "thumbLabel": "ARCHIVE_tewc2ttewc2ttewc",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 139",
+        "title": "ARCHIVE_tewc2ttewc2ttewc",
+        "body": "New content archive in motion.",
+        "footer": "Page 277"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_tewc2ttewc2ttewc.png",
+        "mediaLabel": "ARCHIVE_tewc2ttewc2ttewc",
+        "footer": "Page 278"
+      }
+    },
+    {
+      "id": "spread-140",
+      "thumbLabel": "ARCHIVE_tgo1bvtgo1bvtgo1",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 140",
+        "title": "ARCHIVE_tgo1bvtgo1bvtgo1",
+        "body": "New content archive in motion.",
+        "footer": "Page 279"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_tgo1bvtgo1bvtgo1.png",
+        "mediaLabel": "ARCHIVE_tgo1bvtgo1bvtgo1",
+        "footer": "Page 280"
+      }
+    },
+    {
+      "id": "spread-141",
+      "thumbLabel": "ARCHIVE_tham7ntham7ntham",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 141",
+        "title": "ARCHIVE_tham7ntham7ntham",
+        "body": "New content archive in motion.",
+        "footer": "Page 281"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_tham7ntham7ntham.png",
+        "mediaLabel": "ARCHIVE_tham7ntham7ntham",
+        "footer": "Page 282"
+      }
+    },
+    {
+      "id": "spread-142",
+      "thumbLabel": "ARCHIVE_tn7x4qtn7x4qtn7x",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 142",
+        "title": "ARCHIVE_tn7x4qtn7x4qtn7x",
+        "body": "New content archive in motion.",
+        "footer": "Page 283"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_tn7x4qtn7x4qtn7x.png",
+        "mediaLabel": "ARCHIVE_tn7x4qtn7x4qtn7x",
+        "footer": "Page 284"
+      }
+    },
+    {
+      "id": "spread-143",
+      "thumbLabel": "ARCHIVE_tuz05ntuz05ntuz0",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 143",
+        "title": "ARCHIVE_tuz05ntuz05ntuz0",
+        "body": "New content archive in motion.",
+        "footer": "Page 285"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_tuz05ntuz05ntuz0.png",
+        "mediaLabel": "ARCHIVE_tuz05ntuz05ntuz0",
+        "footer": "Page 286"
+      }
+    },
+    {
+      "id": "spread-144",
+      "thumbLabel": "ARCHIVE_u99acmu99acmu99a",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 144",
+        "title": "ARCHIVE_u99acmu99acmu99a",
+        "body": "New content archive in motion.",
+        "footer": "Page 287"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_u99acmu99acmu99a.png",
+        "mediaLabel": "ARCHIVE_u99acmu99acmu99a",
+        "footer": "Page 288"
+      }
+    },
+    {
+      "id": "spread-145",
+      "thumbLabel": "ARCHIVE_uh0lo3uh0lo3uh0l",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 145",
+        "title": "ARCHIVE_uh0lo3uh0lo3uh0l",
+        "body": "New content archive in motion.",
+        "footer": "Page 289"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uh0lo3uh0lo3uh0l.png",
+        "mediaLabel": "ARCHIVE_uh0lo3uh0lo3uh0l",
+        "footer": "Page 290"
+      }
+    },
+    {
+      "id": "spread-146",
+      "thumbLabel": "ARCHIVE_uk3rnzuk3rnzuk3r",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 146",
+        "title": "ARCHIVE_uk3rnzuk3rnzuk3r",
+        "body": "New content archive in motion.",
+        "footer": "Page 291"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uk3rnzuk3rnzuk3r.png",
+        "mediaLabel": "ARCHIVE_uk3rnzuk3rnzuk3r",
+        "footer": "Page 292"
+      }
+    },
+    {
+      "id": "spread-147",
+      "thumbLabel": "ARCHIVE_uphqfwuphqfwuphq",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 147",
+        "title": "ARCHIVE_uphqfwuphqfwuphq",
+        "body": "New content archive in motion.",
+        "footer": "Page 293"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uphqfwuphqfwuphq.png",
+        "mediaLabel": "ARCHIVE_uphqfwuphqfwuphq",
+        "footer": "Page 294"
+      }
+    },
+    {
+      "id": "spread-148",
+      "thumbLabel": "ARCHIVE_uxft9huxft9huxft",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 148",
+        "title": "ARCHIVE_uxft9huxft9huxft",
+        "body": "New content archive in motion.",
+        "footer": "Page 295"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uxft9huxft9huxft.png",
+        "mediaLabel": "ARCHIVE_uxft9huxft9huxft",
+        "footer": "Page 296"
+      }
+    },
+    {
+      "id": "spread-149",
+      "thumbLabel": "ARCHIVE_uymzdbuymzdbuymz",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 149",
+        "title": "ARCHIVE_uymzdbuymzdbuymz",
+        "body": "New content archive in motion.",
+        "footer": "Page 297"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uymzdbuymzdbuymz.png",
+        "mediaLabel": "ARCHIVE_uymzdbuymzdbuymz",
+        "footer": "Page 298"
+      }
+    },
+    {
+      "id": "spread-150",
+      "thumbLabel": "ARCHIVE_uywo7muywo7muywo_pr...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 150",
+        "title": "ARCHIVE_uywo7muywo7muywo_pr...",
+        "body": "New content archive in motion.",
+        "footer": "Page 299"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uywo7muywo7muywo_processed.png",
+        "mediaLabel": "ARCHIVE_uywo7muywo7muywo_pr...",
+        "footer": "Page 300"
+      }
+    },
+    {
+      "id": "spread-151",
+      "thumbLabel": "ARCHIVE_uzc6pduzc6pduzc6",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 151",
+        "title": "ARCHIVE_uzc6pduzc6pduzc6",
+        "body": "New content archive in motion.",
+        "footer": "Page 301"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uzc6pduzc6pduzc6.png",
+        "mediaLabel": "ARCHIVE_uzc6pduzc6pduzc6",
+        "footer": "Page 302"
+      }
+    },
+    {
+      "id": "spread-152",
+      "thumbLabel": "ARCHIVE_uzytsluzytsluzyt",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 152",
+        "title": "ARCHIVE_uzytsluzytsluzyt",
+        "body": "New content archive in motion.",
+        "footer": "Page 303"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_uzytsluzytsluzyt.png",
+        "mediaLabel": "ARCHIVE_uzytsluzytsluzyt",
+        "footer": "Page 304"
+      }
+    },
+    {
+      "id": "spread-153",
+      "thumbLabel": "ARCHIVE_v0s5wov0s5wov0s5",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 153",
+        "title": "ARCHIVE_v0s5wov0s5wov0s5",
+        "body": "New content archive in motion.",
+        "footer": "Page 305"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_v0s5wov0s5wov0s5.png",
+        "mediaLabel": "ARCHIVE_v0s5wov0s5wov0s5",
+        "footer": "Page 306"
+      }
+    },
+    {
+      "id": "spread-154",
+      "thumbLabel": "ARCHIVE_voo4ygvoo4ygvoo4",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 154",
+        "title": "ARCHIVE_voo4ygvoo4ygvoo4",
+        "body": "New content archive in motion.",
+        "footer": "Page 307"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_voo4ygvoo4ygvoo4.png",
+        "mediaLabel": "ARCHIVE_voo4ygvoo4ygvoo4",
+        "footer": "Page 308"
+      }
+    },
+    {
+      "id": "spread-155",
+      "thumbLabel": "ARCHIVE_vr9zogvr9zogvr9z",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 155",
+        "title": "ARCHIVE_vr9zogvr9zogvr9z",
+        "body": "New content archive in motion.",
+        "footer": "Page 309"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_vr9zogvr9zogvr9z.png",
+        "mediaLabel": "ARCHIVE_vr9zogvr9zogvr9z",
+        "footer": "Page 310"
+      }
+    },
+    {
+      "id": "spread-156",
+      "thumbLabel": "ARCHIVE_vrmc3qvrmc3qvrmc",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 156",
+        "title": "ARCHIVE_vrmc3qvrmc3qvrmc",
+        "body": "New content archive in motion.",
+        "footer": "Page 311"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_vrmc3qvrmc3qvrmc.png",
+        "mediaLabel": "ARCHIVE_vrmc3qvrmc3qvrmc",
+        "footer": "Page 312"
+      }
+    },
+    {
+      "id": "spread-157",
+      "thumbLabel": "ARCHIVE_vrmc3qvrmc3qvrmc_pr...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 157",
+        "title": "ARCHIVE_vrmc3qvrmc3qvrmc_pr...",
+        "body": "New content archive in motion.",
+        "footer": "Page 313"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_vrmc3qvrmc3qvrmc_processed.png",
+        "mediaLabel": "ARCHIVE_vrmc3qvrmc3qvrmc_pr...",
+        "footer": "Page 314"
+      }
+    },
+    {
+      "id": "spread-158",
+      "thumbLabel": "ARCHIVE_w6paubw6paubw6pa",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 158",
+        "title": "ARCHIVE_w6paubw6paubw6pa",
+        "body": "New content archive in motion.",
+        "footer": "Page 315"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_w6paubw6paubw6pa.png",
+        "mediaLabel": "ARCHIVE_w6paubw6paubw6pa",
+        "footer": "Page 316"
+      }
+    },
+    {
+      "id": "spread-159",
+      "thumbLabel": "ARCHIVE_wlyy88wlyy88wlyy",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 159",
+        "title": "ARCHIVE_wlyy88wlyy88wlyy",
+        "body": "New content archive in motion.",
+        "footer": "Page 317"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_wlyy88wlyy88wlyy.png",
+        "mediaLabel": "ARCHIVE_wlyy88wlyy88wlyy",
+        "footer": "Page 318"
+      }
+    },
+    {
+      "id": "spread-160",
+      "thumbLabel": "ARCHIVE_wpktmjwpktmjwpkt",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 160",
+        "title": "ARCHIVE_wpktmjwpktmjwpkt",
+        "body": "New content archive in motion.",
+        "footer": "Page 319"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_wpktmjwpktmjwpkt.png",
+        "mediaLabel": "ARCHIVE_wpktmjwpktmjwpkt",
+        "footer": "Page 320"
+      }
+    },
+    {
+      "id": "spread-161",
+      "thumbLabel": "ARCHIVE_wrp3a5wrp3a5wrp3_pr...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 161",
+        "title": "ARCHIVE_wrp3a5wrp3a5wrp3_pr...",
+        "body": "New content archive in motion.",
+        "footer": "Page 321"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_wrp3a5wrp3a5wrp3_processed.png",
+        "mediaLabel": "ARCHIVE_wrp3a5wrp3a5wrp3_pr...",
+        "footer": "Page 322"
+      }
+    },
+    {
+      "id": "spread-162",
+      "thumbLabel": "ARCHIVE_wy0vl9wy0vl9wy0v",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 162",
+        "title": "ARCHIVE_wy0vl9wy0vl9wy0v",
+        "body": "New content archive in motion.",
+        "footer": "Page 323"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_wy0vl9wy0vl9wy0v.png",
+        "mediaLabel": "ARCHIVE_wy0vl9wy0vl9wy0v",
+        "footer": "Page 324"
+      }
+    },
+    {
+      "id": "spread-163",
+      "thumbLabel": "ARCHIVE_wylpl5wylpl5wylp",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 163",
+        "title": "ARCHIVE_wylpl5wylpl5wylp",
+        "body": "New content archive in motion.",
+        "footer": "Page 325"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_wylpl5wylpl5wylp.png",
+        "mediaLabel": "ARCHIVE_wylpl5wylpl5wylp",
+        "footer": "Page 326"
+      }
+    },
+    {
+      "id": "spread-164",
+      "thumbLabel": "ARCHIVE_x52s4x52s4x52s4x",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 164",
+        "title": "ARCHIVE_x52s4x52s4x52s4x",
+        "body": "New content archive in motion.",
+        "footer": "Page 327"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_x52s4x52s4x52s4x.png",
+        "mediaLabel": "ARCHIVE_x52s4x52s4x52s4x",
+        "footer": "Page 328"
+      }
+    },
+    {
+      "id": "spread-165",
+      "thumbLabel": "ARCHIVE_xbzkvzxbzkvzxbzk",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 165",
+        "title": "ARCHIVE_xbzkvzxbzkvzxbzk",
+        "body": "New content archive in motion.",
+        "footer": "Page 329"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_xbzkvzxbzkvzxbzk.png",
+        "mediaLabel": "ARCHIVE_xbzkvzxbzkvzxbzk",
+        "footer": "Page 330"
+      }
+    },
+    {
+      "id": "spread-166",
+      "thumbLabel": "ARCHIVE_xezh3xxezh3xxezh",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 166",
+        "title": "ARCHIVE_xezh3xxezh3xxezh",
+        "body": "New content archive in motion.",
+        "footer": "Page 331"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_xezh3xxezh3xxezh.png",
+        "mediaLabel": "ARCHIVE_xezh3xxezh3xxezh",
+        "footer": "Page 332"
+      }
+    },
+    {
+      "id": "spread-167",
+      "thumbLabel": "ARCHIVE_xhdeg4xhdeg4xhde",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 167",
+        "title": "ARCHIVE_xhdeg4xhdeg4xhde",
+        "body": "New content archive in motion.",
+        "footer": "Page 333"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_xhdeg4xhdeg4xhde.png",
+        "mediaLabel": "ARCHIVE_xhdeg4xhdeg4xhde",
+        "footer": "Page 334"
+      }
+    },
+    {
+      "id": "spread-168",
+      "thumbLabel": "ARCHIVE_y25cjjy25cjjy25c",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 168",
+        "title": "ARCHIVE_y25cjjy25cjjy25c",
+        "body": "New content archive in motion.",
+        "footer": "Page 335"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_y25cjjy25cjjy25c.png",
+        "mediaLabel": "ARCHIVE_y25cjjy25cjjy25c",
+        "footer": "Page 336"
+      }
+    },
+    {
+      "id": "spread-169",
+      "thumbLabel": "ARCHIVE_y4t77yy4t77yy4t7",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 169",
+        "title": "ARCHIVE_y4t77yy4t77yy4t7",
+        "body": "New content archive in motion.",
+        "footer": "Page 337"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_y4t77yy4t77yy4t7.png",
+        "mediaLabel": "ARCHIVE_y4t77yy4t77yy4t7",
+        "footer": "Page 338"
+      }
+    },
+    {
+      "id": "spread-170",
+      "thumbLabel": "ARCHIVE_y59faay59faay59f",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 170",
+        "title": "ARCHIVE_y59faay59faay59f",
+        "body": "New content archive in motion.",
+        "footer": "Page 339"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_y59faay59faay59f.png",
+        "mediaLabel": "ARCHIVE_y59faay59faay59f",
+        "footer": "Page 340"
+      }
+    },
+    {
+      "id": "spread-171",
+      "thumbLabel": "ARCHIVE_yamidpyamidpyami",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 171",
+        "title": "ARCHIVE_yamidpyamidpyami",
+        "body": "New content archive in motion.",
+        "footer": "Page 341"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yamidpyamidpyami.png",
+        "mediaLabel": "ARCHIVE_yamidpyamidpyami",
+        "footer": "Page 342"
+      }
+    },
+    {
+      "id": "spread-172",
+      "thumbLabel": "ARCHIVE_ybnhxvybnhxvybnh",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 172",
+        "title": "ARCHIVE_ybnhxvybnhxvybnh",
+        "body": "New content archive in motion.",
+        "footer": "Page 343"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ybnhxvybnhxvybnh.png",
+        "mediaLabel": "ARCHIVE_ybnhxvybnhxvybnh",
+        "footer": "Page 344"
+      }
+    },
+    {
+      "id": "spread-173",
+      "thumbLabel": "ARCHIVE_yco837yco837yco8",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 173",
+        "title": "ARCHIVE_yco837yco837yco8",
+        "body": "New content archive in motion.",
+        "footer": "Page 345"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yco837yco837yco8.png",
+        "mediaLabel": "ARCHIVE_yco837yco837yco8",
+        "footer": "Page 346"
+      }
+    },
+    {
+      "id": "spread-174",
+      "thumbLabel": "ARCHIVE_ye7gs1ye7gs1ye7g",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 174",
+        "title": "ARCHIVE_ye7gs1ye7gs1ye7g",
+        "body": "New content archive in motion.",
+        "footer": "Page 347"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ye7gs1ye7gs1ye7g.png",
+        "mediaLabel": "ARCHIVE_ye7gs1ye7gs1ye7g",
+        "footer": "Page 348"
+      }
+    },
+    {
+      "id": "spread-175",
+      "thumbLabel": "ARCHIVE_yhdp0ryhdp0ryhdp",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 175",
+        "title": "ARCHIVE_yhdp0ryhdp0ryhdp",
+        "body": "New content archive in motion.",
+        "footer": "Page 349"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yhdp0ryhdp0ryhdp.png",
+        "mediaLabel": "ARCHIVE_yhdp0ryhdp0ryhdp",
+        "footer": "Page 350"
+      }
+    },
+    {
+      "id": "spread-176",
+      "thumbLabel": "ARCHIVE_yicz25yicz25yicz",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 176",
+        "title": "ARCHIVE_yicz25yicz25yicz",
+        "body": "New content archive in motion.",
+        "footer": "Page 351"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yicz25yicz25yicz.png",
+        "mediaLabel": "ARCHIVE_yicz25yicz25yicz",
+        "footer": "Page 352"
+      }
+    },
+    {
+      "id": "spread-177",
+      "thumbLabel": "ARCHIVE_yii9uoyii9uoyii9",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 177",
+        "title": "ARCHIVE_yii9uoyii9uoyii9",
+        "body": "New content archive in motion.",
+        "footer": "Page 353"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yii9uoyii9uoyii9.png",
+        "mediaLabel": "ARCHIVE_yii9uoyii9uoyii9",
+        "footer": "Page 354"
+      }
+    },
+    {
+      "id": "spread-178",
+      "thumbLabel": "ARCHIVE_yjf4pbyjf4pbyjf4",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 178",
+        "title": "ARCHIVE_yjf4pbyjf4pbyjf4",
+        "body": "New content archive in motion.",
+        "footer": "Page 355"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yjf4pbyjf4pbyjf4.png",
+        "mediaLabel": "ARCHIVE_yjf4pbyjf4pbyjf4",
+        "footer": "Page 356"
+      }
+    },
+    {
+      "id": "spread-179",
+      "thumbLabel": "ARCHIVE_yoxtomyoxtomyoxt",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 179",
+        "title": "ARCHIVE_yoxtomyoxtomyoxt",
+        "body": "New content archive in motion.",
+        "footer": "Page 357"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yoxtomyoxtomyoxt.png",
+        "mediaLabel": "ARCHIVE_yoxtomyoxtomyoxt",
+        "footer": "Page 358"
+      }
+    },
+    {
+      "id": "spread-180",
+      "thumbLabel": "ARCHIVE_ypvgtxypvgtxypvg",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 180",
+        "title": "ARCHIVE_ypvgtxypvgtxypvg",
+        "body": "New content archive in motion.",
+        "footer": "Page 359"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_ypvgtxypvgtxypvg.png",
+        "mediaLabel": "ARCHIVE_ypvgtxypvgtxypvg",
+        "footer": "Page 360"
+      }
+    },
+    {
+      "id": "spread-181",
+      "thumbLabel": "ARCHIVE_yqbppyyqbppyyqbp",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 181",
+        "title": "ARCHIVE_yqbppyyqbppyyqbp",
+        "body": "New content archive in motion.",
+        "footer": "Page 361"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yqbppyyqbppyyqbp.png",
+        "mediaLabel": "ARCHIVE_yqbppyyqbppyyqbp",
+        "footer": "Page 362"
+      }
+    },
+    {
+      "id": "spread-182",
+      "thumbLabel": "ARCHIVE_yrzillyrzillyrzi",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 182",
+        "title": "ARCHIVE_yrzillyrzillyrzi",
+        "body": "New content archive in motion.",
+        "footer": "Page 363"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_yrzillyrzillyrzi.png",
+        "mediaLabel": "ARCHIVE_yrzillyrzillyrzi",
+        "footer": "Page 364"
+      }
+    },
+    {
+      "id": "spread-183",
+      "thumbLabel": "ARCHIVE_z8i38xz8i38xz8i3 (1)",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 183",
+        "title": "ARCHIVE_z8i38xz8i38xz8i3 (1)",
+        "body": "New content archive in motion.",
+        "footer": "Page 365"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_z8i38xz8i38xz8i3 (1).png",
+        "mediaLabel": "ARCHIVE_z8i38xz8i38xz8i3 (1)",
+        "footer": "Page 366"
+      }
+    },
+    {
+      "id": "spread-184",
+      "thumbLabel": "ARCHIVE_zcun3tzcun3tzcun",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 184",
+        "title": "ARCHIVE_zcun3tzcun3tzcun",
+        "body": "New content archive in motion.",
+        "footer": "Page 367"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_zcun3tzcun3tzcun.png",
+        "mediaLabel": "ARCHIVE_zcun3tzcun3tzcun",
+        "footer": "Page 368"
+      }
+    },
+    {
+      "id": "spread-185",
+      "thumbLabel": "ARCHIVE_zcxo8szcxo8szcxo (1)",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 185",
+        "title": "ARCHIVE_zcxo8szcxo8szcxo (1)",
+        "body": "New content archive in motion.",
+        "footer": "Page 369"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_zcxo8szcxo8szcxo (1).png",
+        "mediaLabel": "ARCHIVE_zcxo8szcxo8szcxo (1)",
+        "footer": "Page 370"
+      }
+    },
+    {
+      "id": "spread-186",
+      "thumbLabel": "ARCHIVE_zgwou3zgwou3zgwo",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 186",
+        "title": "ARCHIVE_zgwou3zgwou3zgwo",
+        "body": "New content archive in motion.",
+        "footer": "Page 371"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/Gemini_Generated_Image_zgwou3zgwou3zgwo.png",
+        "mediaLabel": "ARCHIVE_zgwou3zgwou3zgwo",
+        "footer": "Page 372"
+      }
+    },
+    {
+      "id": "spread-187",
+      "thumbLabel": "\\",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 187",
+        "title": "\\",
+        "body": "New content archive in motion.",
+        "footer": "Page 373"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/\\.png",
+        "mediaLabel": "\\",
+        "footer": "Page 374"
+      }
+    },
+    {
+      "id": "spread-188",
+      "thumbLabel": "A_{__id____RAN_CCC_M",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 188",
+        "title": "A_{__id____RAN_CCC_M",
+        "body": "New content archive in motion.",
+        "footer": "Page 375"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/a_{__id____RAN_CCC_M.png",
+        "mediaLabel": "A_{__id____RAN_CCC_M",
+        "footer": "Page 376"
+      }
+    },
+    {
+      "id": "spread-189",
+      "thumbLabel": "After Rain",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 189",
+        "title": "After Rain",
+        "body": "New content archive in motion.",
+        "footer": "Page 377"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/after-rain.jpg",
+        "mediaLabel": "After Rain",
+        "footer": "Page 378"
+      }
+    },
+    {
+      "id": "spread-190",
+      "thumbLabel": "B_{__id____RAN_CCC_M",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 190",
+        "title": "B_{__id____RAN_CCC_M",
+        "body": "New content archive in motion.",
+        "footer": "Page 379"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/b_{__id____RAN_CCC_M.jpeg",
+        "mediaLabel": "B_{__id____RAN_CCC_M",
+        "footer": "Page 380"
+      }
+    },
+    {
+      "id": "spread-191",
+      "thumbLabel": "B_{__id____RAN_CCC_M",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 191",
+        "title": "B_{__id____RAN_CCC_M",
+        "body": "New content archive in motion.",
+        "footer": "Page 381"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/b_{__id____RAN_CCC_M.png",
+        "mediaLabel": "B_{__id____RAN_CCC_M",
+        "footer": "Page 382"
+      }
+    },
+    {
+      "id": "spread-192",
+      "thumbLabel": "Back Cover",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 192",
+        "title": "Back Cover",
+        "body": "New content archive in motion.",
+        "footer": "Page 383"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/back-cover.jpg",
+        "mediaLabel": "Back Cover",
+        "footer": "Page 384"
+      }
+    },
+    {
+      "id": "spread-193",
+      "thumbLabel": "Conversation Pit",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 193",
+        "title": "Conversation Pit",
+        "body": "New content archive in motion.",
+        "footer": "Page 385"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/conversation-pit.jpg",
+        "mediaLabel": "Conversation Pit",
+        "footer": "Page 386"
+      }
+    },
+    {
+      "id": "spread-194",
+      "thumbLabel": "Conversation_pit_1776994536179",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 194",
+        "title": "Conversation_pit_1776994536179",
+        "body": "New content archive in motion.",
+        "footer": "Page 387"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/conversation_pit_1776994536179.png",
+        "mediaLabel": "Conversation_pit_1776994536179",
+        "footer": "Page 388"
+      }
+    },
+    {
+      "id": "spread-195",
+      "thumbLabel": "Cover",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 195",
+        "title": "Cover",
+        "body": "New content archive in motion.",
+        "footer": "Page 389"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/cover.jpg",
+        "mediaLabel": "Cover",
+        "footer": "Page 390"
+      }
+    },
+    {
+      "id": "spread-196",
+      "thumbLabel": "Cover_hero_1776994472537",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 196",
+        "title": "Cover_hero_1776994472537",
+        "body": "New content archive in motion.",
+        "footer": "Page 391"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/cover_hero_1776994472537.png",
+        "mediaLabel": "Cover_hero_1776994472537",
+        "footer": "Page 392"
+      }
+    },
+    {
+      "id": "spread-197",
+      "thumbLabel": "Entry Altar",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 197",
+        "title": "Entry Altar",
+        "body": "New content archive in motion.",
+        "footer": "Page 393"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/entry-altar.jpg",
+        "mediaLabel": "Entry Altar",
+        "footer": "Page 394"
+      }
+    },
+    {
+      "id": "spread-198",
+      "thumbLabel": "Entry_altar_1776994491698",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 198",
+        "title": "Entry_altar_1776994491698",
+        "body": "New content archive in motion.",
+        "footer": "Page 395"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/entry_altar_1776994491698.png",
+        "mediaLabel": "Entry_altar_1776994491698",
+        "footer": "Page 396"
+      }
+    },
+    {
+      "id": "spread-199",
+      "thumbLabel": "CHAT_1772586277825",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 199",
+        "title": "CHAT_1772586277825",
+        "body": "New content archive in motion.",
+        "footer": "Page 397"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-chat-image-1772586277825.png",
+        "mediaLabel": "CHAT_1772586277825",
+        "footer": "Page 398"
+      }
+    },
+    {
+      "id": "spread-200",
+      "thumbLabel": "CHAT_1772586305009",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 200",
+        "title": "CHAT_1772586305009",
+        "body": "New content archive in motion.",
+        "footer": "Page 399"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-chat-image-1772586305009.png",
+        "mediaLabel": "CHAT_1772586305009",
+        "footer": "Page 400"
+      }
+    },
+    {
+      "id": "spread-201",
+      "thumbLabel": "CHAT_1772586309208",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 201",
+        "title": "CHAT_1772586309208",
+        "body": "New content archive in motion.",
+        "footer": "Page 401"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-chat-image-1772586309208.png",
+        "mediaLabel": "CHAT_1772586309208",
+        "footer": "Page 402"
+      }
+    },
+    {
+      "id": "spread-202",
+      "thumbLabel": "CHAT_1772586316975",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 202",
+        "title": "CHAT_1772586316975",
+        "body": "New content archive in motion.",
+        "footer": "Page 403"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-chat-image-1772586316975.png",
+        "mediaLabel": "CHAT_1772586316975",
+        "footer": "Page 404"
+      }
+    },
+    {
+      "id": "spread-203",
+      "thumbLabel": "CHAT_1772586324430",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 203",
+        "title": "CHAT_1772586324430",
+        "body": "New content archive in motion.",
+        "footer": "Page 405"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-chat-image-1772586324430.png",
+        "mediaLabel": "CHAT_1772586324430",
+        "footer": "Page 406"
+      }
+    },
+    {
+      "id": "spread-204",
+      "thumbLabel": "Gemini Image 1772586512888 2",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 204",
+        "title": "Gemini Image 1772586512888 2",
+        "body": "New content archive in motion.",
+        "footer": "Page 407"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-image-1772586512888-2.png",
+        "mediaLabel": "Gemini Image 1772586512888 2",
+        "footer": "Page 408"
+      }
+    },
+    {
+      "id": "spread-205",
+      "thumbLabel": "Gemini Image 1772586514765 3",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 205",
+        "title": "Gemini Image 1772586514765 3",
+        "body": "New content archive in motion.",
+        "footer": "Page 409"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-image-1772586514765-3.png",
+        "mediaLabel": "Gemini Image 1772586514765 3",
+        "footer": "Page 410"
+      }
+    },
+    {
+      "id": "spread-206",
+      "thumbLabel": "Gemini Image 1772586516600 4",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 206",
+        "title": "Gemini Image 1772586516600 4",
+        "body": "New content archive in motion.",
+        "footer": "Page 411"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/gemini-image-1772586516600-4.png",
+        "mediaLabel": "Gemini Image 1772586516600 4",
+        "footer": "Page 412"
+      }
+    },
+    {
+      "id": "spread-207",
+      "thumbLabel": "Id Ako Ss25 Img 02 Descript...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 207",
+        "title": "Id Ako Ss25 Img 02 Descript...",
+        "body": "New content archive in motion.",
+        "footer": "Page 413"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/id-ako-ss25-img-02-description-silhouette-portra-2026-04-17T07-52-40-985Z.jpg",
+        "mediaLabel": "Id Ako Ss25 Img 02 Descript...",
+        "footer": "Page 414"
+      }
+    },
+    {
+      "id": "spread-208",
+      "thumbLabel": "Id Ako Ss25 Img 03 Descript...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 208",
+        "title": "Id Ako Ss25 Img 03 Descript...",
+        "body": "New content archive in motion.",
+        "footer": "Page 415"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/id-ako-ss25-img-03-description-flat-lay-of-ako-c-2026-04-17T07-53-12-473Z.jpg",
+        "mediaLabel": "Id Ako Ss25 Img 03 Descript...",
+        "footer": "Page 416"
+      }
+    },
+    {
+      "id": "spread-209",
+      "thumbLabel": "Id Ako Ss25 Img 04 Descript...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 209",
+        "title": "Id Ako Ss25 Img 04 Descript...",
+        "body": "New content archive in motion.",
+        "footer": "Page 417"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/id-ako-ss25-img-04-description-street-style-shot-2026-04-17T07-54-22-500Z.jpg",
+        "mediaLabel": "Id Ako Ss25 Img 04 Descript...",
+        "footer": "Page 418"
+      }
+    },
+    {
+      "id": "spread-210",
+      "thumbLabel": "Id Ako Ss25 Img 05 Descript...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 210",
+        "title": "Id Ako Ss25 Img 05 Descript...",
+        "body": "New content archive in motion.",
+        "footer": "Page 419"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/id-ako-ss25-img-05-description-detail-shot-of-ak-2026-04-17T07-54-39-562Z.jpg",
+        "mediaLabel": "Id Ako Ss25 Img 05 Descript...",
+        "footer": "Page 420"
+      }
+    },
+    {
+      "id": "spread-211",
+      "thumbLabel": "MOCK_02 Title Entry Altar M...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 211",
+        "title": "MOCK_02 Title Entry Altar M...",
+        "body": "New content archive in motion.",
+        "footer": "Page 421"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/id-ran-ccc-mk-02-title-entry-altar-mockup-format-2026-04-23T12-10-29-086Z.jpg",
+        "mediaLabel": "MOCK_02 Title Entry Altar M...",
+        "footer": "Page 422"
+      }
+    },
+    {
+      "id": "spread-212",
+      "thumbLabel": "Loading Dock",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 212",
+        "title": "Loading Dock",
+        "body": "New content archive in motion.",
+        "footer": "Page 423"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/loading-dock.jpg",
+        "mediaLabel": "Loading Dock",
+        "footer": "Page 424"
+      }
+    },
+    {
+      "id": "spread-213",
+      "thumbLabel": "Loading_dock_1776994639606",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 213",
+        "title": "Loading_dock_1776994639606",
+        "body": "New content archive in motion.",
+        "footer": "Page 425"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/loading_dock_1776994639606.png",
+        "mediaLabel": "Loading_dock_1776994639606",
+        "footer": "Page 426"
+      }
+    },
+    {
+      "id": "spread-214",
+      "thumbLabel": "Mai Image 2_a_{__id____RAN_...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 214",
+        "title": "Mai Image 2_a_{__id____RAN_...",
+        "body": "New content archive in motion.",
+        "footer": "Page 427"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/mai-image-2_a_{__id____RAN_CCC_M (1).png",
+        "mediaLabel": "Mai Image 2_a_{__id____RAN_...",
+        "footer": "Page 428"
+      }
+    },
+    {
+      "id": "spread-215",
+      "thumbLabel": "Mai Image 2_a_{__id____RAN_...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 215",
+        "title": "Mai Image 2_a_{__id____RAN_...",
+        "body": "New content archive in motion.",
+        "footer": "Page 429"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/mai-image-2_a_{__id____RAN_CCC_M.png",
+        "mediaLabel": "Mai Image 2_a_{__id____RAN_...",
+        "footer": "Page 430"
+      }
+    },
+    {
+      "id": "spread-216",
+      "thumbLabel": "Mirror Salon",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 216",
+        "title": "Mirror Salon",
+        "body": "New content archive in motion.",
+        "footer": "Page 431"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/mirror-salon.jpg",
+        "mediaLabel": "Mirror Salon",
+        "footer": "Page 432"
+      }
+    },
+    {
+      "id": "spread-217",
+      "thumbLabel": "Mirror_salon_1776994596249",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 217",
+        "title": "Mirror_salon_1776994596249",
+        "body": "New content archive in motion.",
+        "footer": "Page 433"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/mirror_salon_1776994596249.png",
+        "mediaLabel": "Mirror_salon_1776994596249",
+        "footer": "Page 434"
+      }
+    },
+    {
+      "id": "spread-218",
+      "thumbLabel": "Rooftop Dawn",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 218",
+        "title": "Rooftop Dawn",
+        "body": "New content archive in motion.",
+        "footer": "Page 435"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/rooftop-dawn.jpg",
+        "mediaLabel": "Rooftop Dawn",
+        "footer": "Page 436"
+      }
+    },
+    {
+      "id": "spread-219",
+      "thumbLabel": "Runway Corridor",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 219",
+        "title": "Runway Corridor",
+        "body": "New content archive in motion.",
+        "footer": "Page 437"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/runway-corridor.jpg",
+        "mediaLabel": "Runway Corridor",
+        "footer": "Page 438"
+      }
+    },
+    {
+      "id": "spread-220",
+      "thumbLabel": "Runway_corridor_1776994615875",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 220",
+        "title": "Runway_corridor_1776994615875",
+        "body": "New content archive in motion.",
+        "footer": "Page 439"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/runway_corridor_1776994615875.png",
+        "mediaLabel": "Runway_corridor_1776994615875",
+        "footer": "Page 440"
+      }
+    },
+    {
+      "id": "spread-221",
+      "thumbLabel": "Scene S01 Title Ranaan Entr...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 221",
+        "title": "Scene S01 Title Ranaan Entr...",
+        "body": "New content archive in motion.",
+        "footer": "Page 441"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/scene-s01-title-ranaan-entry-altar-first-contact-2026-04-17T18-21-15-609Z.jpg",
+        "mediaLabel": "Scene S01 Title Ranaan Entr...",
+        "footer": "Page 442"
+      }
+    },
+    {
+      "id": "spread-222",
+      "thumbLabel": "Stairwell Descent",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 222",
+        "title": "Stairwell Descent",
+        "body": "New content archive in motion.",
+        "footer": "Page 443"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/stairwell-descent.png",
+        "mediaLabel": "Stairwell Descent",
+        "footer": "Page 444"
+      }
+    },
+    {
+      "id": "spread-223",
+      "thumbLabel": "Stairwell_descent_177699457...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 223",
+        "title": "Stairwell_descent_177699457...",
+        "body": "New content archive in motion.",
+        "footer": "Page 445"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/stairwell_descent_1776994574623.png",
+        "mediaLabel": "Stairwell_descent_177699457...",
+        "footer": "Page 446"
+      }
+    },
+    {
+      "id": "spread-224",
+      "thumbLabel": "Unknown 2026 04 23T12 22 37...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 224",
+        "title": "Unknown 2026 04 23T12 22 37...",
+        "body": "New content archive in motion.",
+        "footer": "Page 447"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/unknown-2026-04-23T12-22-37-814Z (1).jpg",
+        "mediaLabel": "Unknown 2026 04 23T12 22 37...",
+        "footer": "Page 448"
+      }
+    },
+    {
+      "id": "spread-225",
+      "thumbLabel": "Unknown 2026 04 23T12 22 37...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 225",
+        "title": "Unknown 2026 04 23T12 22 37...",
+        "body": "New content archive in motion.",
+        "footer": "Page 449"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/unknown-2026-04-23T12-22-37-930Z.jpg",
+        "mediaLabel": "Unknown 2026 04 23T12 22 37...",
+        "footer": "Page 450"
+      }
+    },
+    {
+      "id": "spread-226",
+      "thumbLabel": "Unknown 2026 04 23T12 22 37...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 226",
+        "title": "Unknown 2026 04 23T12 22 37...",
+        "body": "New content archive in motion.",
+        "footer": "Page 451"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/unknown-2026-04-23T12-22-37-933Z (1).jpg",
+        "mediaLabel": "Unknown 2026 04 23T12 22 37...",
+        "footer": "Page 452"
+      }
+    },
+    {
+      "id": "spread-227",
+      "thumbLabel": "Unknown 2026 04 23T12 22 37...",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 227",
+        "title": "Unknown 2026 04 23T12 22 37...",
+        "body": "New content archive in motion.",
+        "footer": "Page 453"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/unknown-2026-04-23T12-22-37-943Z (1).jpg",
+        "mediaLabel": "Unknown 2026 04 23T12 22 37...",
+        "footer": "Page 454"
+      }
+    },
+    {
+      "id": "spread-228",
+      "thumbLabel": "Unknown 2026 04 23T12 22 37...",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 228",
+        "title": "Unknown 2026 04 23T12 22 37...",
+        "body": "New content archive in motion.",
+        "footer": "Page 455"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/unknown-2026-04-23T12-22-37-943Z.jpg",
+        "mediaLabel": "Unknown 2026 04 23T12 22 37...",
+        "footer": "Page 456"
+      }
+    },
+    {
+      "id": "spread-229",
+      "thumbLabel": "Vitrine Ghost",
+      "left": {
+        "theme": "dark",
+        "kicker": "Spread 229",
+        "title": "Vitrine Ghost",
+        "body": "New content archive in motion.",
+        "footer": "Page 457"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/vitrine-ghost.jpg",
+        "mediaLabel": "Vitrine Ghost",
+        "footer": "Page 458"
+      }
+    },
+    {
+      "id": "spread-230",
+      "thumbLabel": "Vitrine_ghost_1776994554157",
+      "left": {
+        "theme": "light",
+        "kicker": "Spread 230",
+        "title": "Vitrine_ghost_1776994554157",
+        "body": "New content archive in motion.",
+        "footer": "Page 459"
+      },
+      "right": {
+        "media": "/projects/ranaan-ccc/vitrine_ghost_1776994554157.png",
+        "mediaLabel": "Vitrine_ghost_1776994554157",
+        "footer": "Page 460"
+      }
+    }
+  ]
+}

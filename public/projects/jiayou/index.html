@@ -1,0 +1,2946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JIAYOU FOR YOU - Calm Energy Coffee</title>
+  <meta name="description" content="A portfolio-ready Jiayou coffee shop website with editorial visuals, ritual menu systems, product interactions, and brand micrographics." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%237EA291'/%3E%3Cpath d='M38 18c-12 0-20 8-20 18 0 8 6 13 14 13 9 0 16-6 16-14 0-7-5-12-12-12-6 0-11 4-11 10 0 5 4 8 8 8 4 0 7-3 7-6' fill='none' stroke='%23F5F2ED' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --cream: #f5f2ed;
+      --rice: #fffdf8;
+      --jade: #7ea291;
+      --jade-deep: #3f6557;
+      --dogwood: #c5afa4;
+      --rose: #cc7e85;
+      --gold: #d9b66f;
+      --espresso: #362c2a;
+      --ink: #1f1b19;
+      --slate: #76818e;
+      --sky: #b0d0d3;
+      --paper: rgba(255, 253, 248, .78);
+      --paper-strong: rgba(255, 253, 248, .92);
+      --glass: rgba(245, 242, 237, .52);
+      --line: rgba(54, 44, 42, .16);
+      --line-light: rgba(255, 253, 248, .24);
+      --shadow: 0 28px 88px rgba(54, 44, 42, .16);
+      --small-shadow: 0 14px 40px rgba(54, 44, 42, .12);
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, monospace;
+      --ease: cubic-bezier(.19, 1, .22, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--espresso);
+      background: var(--cream);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body[data-theme="night"] {
+      --cream: #171413;
+      --rice: #27211f;
+      --paper: rgba(54, 44, 42, .72);
+      --paper-strong: rgba(54, 44, 42, .92);
+      --glass: rgba(54, 44, 42, .46);
+      --line: rgba(245, 242, 237, .18);
+      --slate: #c5c8cc;
+      color: #f5f2ed;
+      background: #171413;
+    }
+    /* Lift subtext contrast in dark mode for legibility */
+    body[data-theme="night"] .nav-links,
+    body[data-theme="night"] .micro,
+    body[data-theme="night"] .receipt-title,
+    body[data-theme="night"] .section-copy,
+    body[data-theme="night"] .menu-line small,
+    body[data-theme="night"] .product-body p,
+    body[data-theme="night"] .faq-answer p {
+      color: color-mix(in srgb, currentColor 92%, transparent);
+    }
+    /* Force light text on dark surfaces in dark mode (these elements use
+       var(--rice) which becomes dark in night mode and disappears) */
+    body[data-theme="night"] .hero,
+    body[data-theme="night"] .hero *,
+    body[data-theme="night"] .receipt-panel,
+    body[data-theme="night"] .receipt-panel *,
+    body[data-theme="night"] .stage-copy,
+    body[data-theme="night"] .stage-copy *,
+    body[data-theme="night"] .experience-label h3,
+    body[data-theme="night"] .club-pill,
+    body[data-theme="night"] .cta-panel,
+    body[data-theme="night"] .cta-panel h2,
+    body[data-theme="night"] .cta-panel h3,
+    body[data-theme="night"] .cta-panel p,
+    body[data-theme="night"] .cta-panel .eyebrow,
+    body[data-theme="night"] .cta-panel .micro,
+    body[data-theme="night"] .waitlist input,
+    body[data-theme="night"] .footer,
+    body[data-theme="night"] .footer *,
+    body[data-theme="night"] .lightbox button,
+    body[data-theme="night"] .button.ghost {
+      color: #f5f2ed;
+    }
+    body[data-theme="night"] .cta-panel .section-copy {
+      color: rgba(245, 242, 237, .82) !important;
+    }
+    body[data-theme="night"] .cta-panel .eyebrow,
+    body[data-theme="night"] .cta-panel .micro,
+    body[data-theme="night"] .footer .micro {
+      color: rgba(245, 242, 237, .68);
+    }
+    body[data-theme="night"] .waitlist input::placeholder {
+      color: rgba(245, 242, 237, .58);
+    }
+
+    body[data-theme="rose"] {
+      --cream: #f7eceb;
+      --rice: #fff7f6;
+      --paper: rgba(255, 250, 247, .8);
+      --paper-strong: rgba(255, 250, 247, .94);
+      --jade: #6d9a89;
+      --gold: #d5a95d;
+      background: #f7eceb;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      pointer-events: none;
+      opacity: .28;
+      mix-blend-mode: multiply;
+      background-image:
+        linear-gradient(rgba(54, 44, 42, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(54, 44, 42, .04) 1px, transparent 1px),
+        radial-gradient(rgba(54, 44, 42, .12) .6px, transparent .8px);
+      background-size: 34px 34px, 34px 34px, 4px 4px;
+    }
+
+    body[data-theme="night"]::before { opacity: .14; mix-blend-mode: screen; }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 90;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--jade), var(--gold), var(--rose));
+      transition: width .1s linear;
+    }
+
+    .ticker {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 70;
+      height: 30px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper-strong) 86%, transparent);
+      backdrop-filter: blur(18px);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 28px;
+      min-width: max-content;
+      animation: ticker 24s linear infinite;
+    }
+
+    .ticker span { opacity: .72; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    .nav {
+      position: fixed;
+      z-index: 75;
+      top: 47px;
+      left: 50%;
+      width: min(1240px, calc(100% - 28px));
+      transform: translateX(-50%);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--paper) 82%, transparent);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 60px rgba(54, 44, 42, .1);
+      transition: transform .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    .nav.scrolled { box-shadow: var(--small-shadow); background: color-mix(in srgb, var(--paper-strong) 90%, transparent); }
+    .nav-inner {
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 12px 0 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 50%, var(--cream) 0 25%, transparent 26%),
+        conic-gradient(from 20deg, var(--jade), var(--dogwood), var(--gold), var(--rose), var(--jade));
+      box-shadow: inset 0 0 0 8px color-mix(in srgb, var(--cream) 82%, white);
+      overflow: hidden;
+    }
+
+    .mark::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--espresso);
+      border-left-color: transparent;
+      border-radius: 50%;
+      transform: rotate(28deg);
+    }
+
+    .wordmark {
+      font-size: 18px;
+      line-height: .9;
+      letter-spacing: -.055em;
+      font-weight: 820;
+    }
+
+    .wordmark small {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      color: var(--slate);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, currentColor 72%, transparent);
+    }
+
+    .nav-links a, .nav-action, .icon-button {
+      border-radius: 999px;
+      transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    }
+
+    .nav-links a { padding: 11px 12px; }
+    .nav-links a:hover { background: rgba(126, 162, 145, .18); color: var(--espresso); }
+    body[data-theme="night"] .nav-links a:hover { color: var(--cream); }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-action {
+      border: 1px solid var(--line);
+      background: var(--espresso);
+      color: var(--cream);
+      padding: 13px 17px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-action:hover { transform: translateY(-2px); background: var(--jade); color: var(--espresso); }
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .2);
+      color: currentColor;
+      display: grid;
+      place-items: center;
+    }
+
+    .icon-button:hover { transform: translateY(-2px); background: rgba(126, 162, 145, .16); }
+    .icon-button svg { width: 17px; height: 17px; stroke-width: 1.8; }
+    .menu-toggle { display: none; }
+    .menu-toggle span {
+      display: block;
+      width: 17px;
+      height: 1px;
+      margin: 4px auto;
+      background: currentColor;
+      transition: transform .25s var(--ease), opacity .25s var(--ease);
+    }
+    .menu-toggle.open span:first-child { transform: translateY(5px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:last-child { transform: translateY(-5px) rotate(-45deg); }
+
+    .mobile-panel {
+      position: fixed;
+      top: 124px;
+      left: 50%;
+      z-index: 74;
+      width: min(520px, calc(100% - 28px));
+      padding: 12px;
+      display: none;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      transform: translateX(-50%);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--paper-strong);
+      backdrop-filter: blur(22px);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-panel.open { display: grid; }
+    .mobile-panel a {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, .16);
+    }
+
+    .wrap { width: min(1240px, calc(100% - 32px)); margin: 0 auto; }
+    .section { position: relative; padding: clamp(78px, 10vw, 132px) 0; }
+    .section.tight { padding-top: 72px; }
+
+    .hero {
+      min-height: 94svh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      padding: 168px 0 54px;
+      isolation: isolate;
+      overflow: hidden;
+      color: var(--rice);
+      background: var(--ink);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.9) contrast(1.02) brightness(.72);
+      transform: scale(1.04);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(20, 16, 14, .92), rgba(20, 16, 14, .58) 40%, rgba(20, 16, 14, .16) 78%),
+        linear-gradient(0deg, rgba(20, 16, 14, .88), transparent 44%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .64fr);
+      align-items: end;
+      gap: clamp(26px, 6vw, 74px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 11px;
+      border: 1px solid rgba(255, 253, 248, .24);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .08);
+      backdrop-filter: blur(16px);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 248, .78);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--jade);
+      box-shadow: 0 0 0 6px rgba(126, 162, 145, .22);
+    }
+
+    h1 {
+      margin: 22px 0 22px;
+      max-width: 980px;
+      font-size: clamp(72px, 12vw, 172px);
+      line-height: .78;
+      letter-spacing: -.105em;
+      font-weight: 850;
+    }
+
+    h1 span { display: block; color: color-mix(in srgb, var(--jade) 80%, white); }
+    .hero-copy {
+      max-width: 680px;
+      font-size: clamp(18px, 2.15vw, 27px);
+      line-height: 1.32;
+      letter-spacing: -.035em;
+      color: rgba(255, 253, 248, .78);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 13px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform .2s var(--ease), background .2s var(--ease), border .2s var(--ease), color .2s var(--ease);
+    }
+
+    .button.primary { background: var(--rice); color: var(--espresso); border-color: rgba(255,255,255,.24); }
+    .button.primary:hover { background: var(--jade); transform: translateY(-2px); }
+    .button.ghost { background: rgba(255, 253, 248, .08); color: var(--rice); border-color: rgba(255,255,255,.22); backdrop-filter: blur(16px); }
+    .button.ghost:hover { background: rgba(255, 253, 248, .15); transform: translateY(-2px); }
+
+    .receipt-panel {
+      align-self: end;
+      border: 1px solid rgba(255, 253, 248, .22);
+      border-radius: 28px;
+      background: rgba(245, 242, 237, .13);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 30px 100px rgba(0, 0, 0, .24);
+      padding: 18px;
+      color: var(--rice);
+      overflow: hidden;
+    }
+
+    .receipt-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: start;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed rgba(255, 253, 248, .22);
+    }
+
+    .micro {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 10px;
+      line-height: 1.55;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, currentColor 58%, transparent);
+    }
+
+    .receipt-title {
+      margin: 8px 0 0;
+      font-size: 35px;
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+
+    .receipt-list { margin-top: 16px; display: grid; gap: 9px; }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px dashed rgba(255, 253, 248, .18);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .fuel {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 9px;
+      margin-top: 18px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    .fuel-line {
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .2);
+      position: relative;
+    }
+
+    .fuel-line span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 67%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--jade));
+      animation: fuelPulse 4s var(--ease) infinite;
+    }
+
+    @keyframes fuelPulse { 50% { width: 82%; } }
+
+    .barcode {
+      height: 42px;
+      margin-top: 18px;
+      border-radius: 3px;
+      opacity: .7;
+      background:
+        linear-gradient(90deg,
+          currentColor 0 2px, transparent 2px 6px,
+          currentColor 6px 7px, transparent 7px 11px,
+          currentColor 11px 15px, transparent 15px 18px,
+          currentColor 18px 19px, transparent 19px 24px,
+          currentColor 24px 29px, transparent 29px 32px,
+          currentColor 32px 34px, transparent 34px 39px);
+      background-size: 39px 100%;
+    }
+
+    .scroll-cue {
+      margin-top: clamp(40px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      color: rgba(255, 253, 248, .62);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::before {
+      content: "";
+      height: 1px;
+      background: rgba(255, 253, 248, .28);
+      transform-origin: left;
+      animation: cueLine 2.8s var(--ease) infinite;
+    }
+
+    @keyframes cueLine { 50% { transform: scaleX(.58); opacity: .6; } }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr);
+      align-items: end;
+      gap: clamp(24px, 5vw, 70px);
+      margin-bottom: clamp(32px, 5vw, 56px);
+    }
+
+    .section-number {
+      margin: 0 0 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .15em;
+      color: var(--slate);
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(44px, 7vw, 100px);
+      line-height: .86;
+      letter-spacing: -.082em;
+      font-weight: 820;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(17px, 2.1vw, 24px);
+      line-height: 1.38;
+      letter-spacing: -.035em;
+      color: color-mix(in srgb, currentColor 72%, transparent);
+    }
+
+    .system-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--rice) 44%, transparent);
+      overflow: hidden;
+    }
+
+    .brand-strip {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      min-height: 136px;
+    }
+
+    .swatch {
+      min-height: 136px;
+      padding: 14px;
+      display: flex;
+      align-items: end;
+      border-right: 1px solid rgba(54, 44, 42, .11);
+      color: rgba(54, 44, 42, .72);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .swatch:nth-child(1) { background: #f5f2ed; }
+    .swatch:nth-child(2) { background: #7ea291; }
+    .swatch:nth-child(3) { background: #c5afa4; }
+    .swatch:nth-child(4) { background: #cc7e85; }
+    .swatch:nth-child(5) { background: #d9b66f; }
+    .swatch:nth-child(6) { background: #362c2a; color: #f5f2ed; }
+    .swatch:nth-child(7) { background: #b0d0d3; }
+
+    .brand-dna {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .dna-panel, .glass-card, .product-card, .menu-panel, .loyalty, .faq-item {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--small-shadow);
+    }
+
+    .dna-panel {
+      min-height: 320px;
+      border-radius: 28px;
+      padding: clamp(22px, 4vw, 42px);
+      display: grid;
+      align-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dna-panel::after {
+      content: "加油";
+      position: absolute;
+      right: -20px;
+      bottom: -38px;
+      font-family: var(--serif);
+      font-size: 170px;
+      line-height: 1;
+      color: rgba(126, 162, 145, .12);
+      letter-spacing: -.12em;
+      pointer-events: none;
+    }
+
+    .dna-panel h3, .product-card h3, .menu-panel h3, .loyalty h3, .faq-button {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, .16);
+    }
+
+    .menu-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(320px, .48fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .menu-stage {
+      min-height: 720px;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: var(--espresso);
+    }
+
+    .menu-stage img {
+      width: 100%;
+      height: 100%;
+      min-height: 720px;
+      object-fit: cover;
+      filter: saturate(.96) contrast(1.03);
+    }
+
+    .menu-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(54, 44, 42, .72), transparent 56%), linear-gradient(0deg, rgba(54, 44, 42, .72), transparent 46%);
+      pointer-events: none;
+    }
+
+    .stage-copy {
+      position: absolute;
+      left: clamp(20px, 4vw, 52px);
+      right: clamp(20px, 4vw, 52px);
+      bottom: clamp(20px, 4vw, 48px);
+      z-index: 2;
+      color: var(--rice);
+    }
+
+    .stage-copy h3 {
+      margin: 10px 0 12px;
+      max-width: 640px;
+      font-size: clamp(40px, 6vw, 88px);
+      line-height: .84;
+      letter-spacing: -.08em;
+    }
+
+    .stage-copy p { max-width: 560px; color: rgba(255, 253, 248, .76); }
+
+    .menu-panel {
+      border-radius: 28px;
+      padding: 18px;
+      position: sticky;
+      top: 132px;
+    }
+
+    .tabs, .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tab, .filter {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: transparent;
+      color: currentColor;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: background .2s var(--ease), transform .2s var(--ease), color .2s var(--ease);
+    }
+
+    .tab.active, .filter.active { background: var(--espresso); color: var(--cream); }
+    body[data-theme="night"] .tab.active, body[data-theme="night"] .filter.active { background: var(--cream); color: var(--espresso); }
+    .tab:hover, .filter:hover { transform: translateY(-2px); }
+
+    .menu-pane { display: none; animation: pane .38s var(--ease) both; }
+    .menu-pane.active { display: block; }
+    @keyframes pane { from { opacity: 0; transform: translateY(10px); } }
+
+    .menu-line {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: baseline;
+      padding: 13px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .menu-line strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 18px;
+      letter-spacing: -.035em;
+    }
+
+    .menu-line small {
+      color: color-mix(in srgb, currentColor 60%, transparent);
+      line-height: 1.35;
+    }
+
+    .add {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(126, 162, 145, .14);
+      color: currentColor;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      line-height: 1;
+      transition: transform .2s var(--ease), background .2s var(--ease);
+    }
+
+    .add:hover { transform: rotate(8deg) scale(1.06); background: var(--jade); }
+
+    .order-receipt {
+      margin-top: 18px;
+      border: 1px dashed var(--line);
+      border-radius: 20px;
+      padding: 14px;
+      background: rgba(255, 255, 255, .15);
+    }
+
+    .order-items {
+      min-height: 72px;
+      display: grid;
+      gap: 7px;
+      margin: 12px 0;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .order-item { display: flex; justify-content: space-between; gap: 10px; }
+    .total { display: flex; justify-content: space-between; font-weight: 800; border-top: 1px dashed var(--line); padding-top: 12px; }
+
+    .products-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      min-height: 520px;
+      border-radius: 24px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: 260px 1fr;
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), opacity .25s var(--ease);
+    }
+
+    .product-card.hidden { display: none; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+    .product-media { overflow: hidden; background: var(--dogwood); }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s var(--ease); }
+    .product-card:hover img { transform: scale(1.06); }
+    .product-body { padding: 18px; display: grid; align-content: space-between; gap: 22px; }
+    .product-body p {
+      margin: 12px 0 0;
+      line-height: 1.5;
+      color: color-mix(in srgb, currentColor 66%, transparent);
+    }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+
+    .experience-main, .experience-side {
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--paper);
+    }
+
+    .experience-main {
+      min-height: 720px;
+      position: relative;
+    }
+
+    .experience-main img { width: 100%; height: 720px; object-fit: cover; }
+    .experience-main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(20, 16, 14, .78), transparent 54%);
+    }
+    .experience-label {
+      position: absolute;
+      z-index: 2;
+      left: 28px;
+      bottom: 26px;
+      right: 28px;
+      color: var(--rice);
+    }
+
+    .experience-label h3 {
+      margin: 8px 0 0;
+      max-width: 680px;
+      font-size: clamp(36px, 5vw, 78px);
+      line-height: .88;
+      letter-spacing: -.08em;
+    }
+
+    .experience-side {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .mini-scene {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      min-height: 240px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mini-scene:last-child { border-bottom: 0; }
+    .mini-scene img { width: 100%; height: 100%; object-fit: cover; }
+    .mini-scene div { padding: 20px; display: grid; align-content: center; gap: 10px; }
+    .mini-scene h3 { margin: 0; font-size: 30px; line-height: .94; letter-spacing: -.06em; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 180px;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--small-shadow);
+      cursor: zoom-in;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    .gallery-item:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.big { grid-column: span 2; grid-row: span 2; }
+    .gallery-caption {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 253, 248, .25);
+      border-radius: 999px;
+      color: var(--rice);
+      background: rgba(54, 44, 42, .54);
+      backdrop-filter: blur(12px);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .club-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .loyalty {
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 40px);
+      min-height: 540px;
+      display: grid;
+      align-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loyalty::after {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      right: -140px;
+      bottom: -160px;
+      border: 1px solid rgba(126, 162, 145, .2);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 0 28%, rgba(126, 162, 145, .16) 29% 31%, transparent 32%),
+        conic-gradient(from 40deg, rgba(126, 162, 145, .18), transparent, rgba(217, 182, 111, .16), transparent);
+      pointer-events: none;
+    }
+
+    .stamp-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin: 28px 0;
+      max-width: 420px;
+    }
+
+    .stamp {
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--jade-deep);
+      background: rgba(255, 255, 255, .2);
+      transition: transform .2s var(--ease), background .2s var(--ease);
+    }
+
+    .stamp.filled { background: var(--jade); color: var(--espresso); }
+    .stamp:hover { transform: rotate(-8deg) scale(1.08); }
+
+    .ritual-builder {
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: grid;
+      min-height: 540px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .builder-media {
+      min-height: 270px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .builder-media img { width: 100%; height: 100%; object-fit: cover; }
+    .builder-controls { padding: 24px; display: grid; gap: 18px; }
+    .range-row {
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    input[type="range"] {
+      accent-color: var(--jade);
+      width: 100%;
+    }
+
+    .ritual-result {
+      border: 1px dashed var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .16);
+    }
+
+    .ritual-result strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 34px;
+      line-height: .9;
+      letter-spacing: -.06em;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .faq-list { display: grid; gap: 12px; }
+    .faq-item {
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .faq-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: currentColor;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .faq-button span {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .34s var(--ease);
+    }
+
+    .faq-answer p {
+      margin: 0;
+      padding: 0 22px 22px;
+      color: color-mix(in srgb, currentColor 68%, transparent);
+      line-height: 1.55;
+    }
+
+    .faq-item.open .faq-answer { max-height: 220px; }
+    .faq-item.open .faq-button span { transform: rotate(45deg); background: var(--jade); color: var(--espresso); }
+
+    .cta {
+      padding-bottom: 24px;
+    }
+
+    .cta-panel {
+      position: relative;
+      min-height: 620px;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--espresso);
+      box-shadow: var(--shadow);
+      color: var(--rice);
+    }
+
+    .cta-panel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.58) saturate(.92);
+    }
+
+    .cta-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(20, 16, 14, .88), rgba(20, 16, 14, .24));
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1fr minmax(310px, 440px);
+      align-items: end;
+      gap: 28px;
+      padding: clamp(24px, 5vw, 56px);
+    }
+
+    .waitlist {
+      padding: 18px;
+      border: 1px solid rgba(255, 253, 248, .22);
+      border-radius: 24px;
+      background: rgba(255, 253, 248, .1);
+      backdrop-filter: blur(20px);
+      display: grid;
+      gap: 12px;
+    }
+
+    .waitlist input {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid rgba(255, 253, 248, .22);
+      border-radius: 999px;
+      padding: 0 15px;
+      color: var(--rice);
+      background: rgba(255, 253, 248, .1);
+      outline: none;
+    }
+
+    .waitlist input::placeholder { color: rgba(255, 253, 248, .58); }
+    .waitlist input:focus { border-color: var(--jade); box-shadow: 0 0 0 4px rgba(126, 162, 145, .18); }
+
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--rice);
+      background: var(--espresso);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: end;
+    }
+
+    .footer h2 { max-width: 780px; }
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 248, .66);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 253, 248, .16);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 248, .58);
+    }
+
+    .lightbox, .toast {
+      position: fixed;
+      z-index: 110;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .25s var(--ease), transform .25s var(--ease);
+    }
+
+    .lightbox {
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(15, 11, 10, .68);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+
+    /* ── Glassmorphic bento panel ── */
+    .lightbox-panel {
+      position: relative;
+      background: linear-gradient(
+        135deg,
+        rgba(245, 242, 237, 0.13) 0%,
+        rgba(245, 242, 237, 0.07) 100%
+      );
+      backdrop-filter: blur(32px) saturate(1.5) brightness(1.08);
+      -webkit-backdrop-filter: blur(32px) saturate(1.5) brightness(1.08);
+      border: 1px solid rgba(245, 242, 237, 0.22);
+      border-radius: 24px;
+      box-shadow:
+        0 56px 140px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255,255,255,0.05) inset,
+        0 1px 0 rgba(255,255,255,0.18) inset;
+      padding: 14px;
+      max-width: min(1060px, 90vw);
+      max-height: 90svh;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    /* thin top-edge gloss line */
+    .lightbox-panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 12px; right: 12px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+      border-radius: 50%;
+    }
+
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(90svh - 88px);
+      border-radius: 14px;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,.28);
+    }
+
+    .lightbox-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 237, 0.48);
+      padding: 2px 4px;
+      min-height: 16px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      color: rgba(245, 242, 237, 0.8);
+      background: rgba(245, 242, 237, 0.1);
+      border-color: rgba(245, 242, 237, 0.2);
+      z-index: 2;
+    }
+    .lightbox-close:hover {
+      background: rgba(245, 242, 237, 0.2);
+    }
+
+    /* hover cursor on all clickable images */
+    img.lb-trigger {
+      cursor: zoom-in;
+      transition: transform 0.22s cubic-bezier(.19,1,.22,1), box-shadow 0.22s;
+    }
+    img.lb-trigger:hover {
+      transform: scale(1.025);
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    }
+
+    .toast {
+      right: 18px;
+      bottom: 18px;
+      transform: translateY(16px);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 13px 15px;
+      background: var(--paper-strong);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
+    }
+
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: grid; }
+      .hero-grid, .menu-layout, .experience-grid, .club-layout, .faq-grid, .cta-content { grid-template-columns: 1fr; }
+      .receipt-panel, .menu-panel { position: static; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .brand-strip { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .ticker { height: 26px; }
+      .nav { top: 38px; width: calc(100% - 18px); }
+      .nav-inner { height: 58px; padding-left: 12px; }
+      .wordmark { font-size: 15px; }
+      .nav-action { display: none; }
+      .hero { min-height: 92svh; padding-top: 128px; }
+      .hero-grid { gap: 28px; }
+      h1 { font-size: clamp(64px, 22vw, 112px); }
+      .section-head, .brand-dna { grid-template-columns: 1fr; }
+      .brand-strip { grid-template-columns: repeat(2, 1fr); }
+      .products-bar { align-items: start; flex-direction: column; }
+      .product-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+      .gallery-item.wide, .gallery-item.big { grid-column: span 2; }
+      .mini-scene { grid-template-columns: 110px 1fr; min-height: 190px; }
+      .section { padding: 72px 0; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Virtual Magazine ─── */
+    /* Lock magazine colors so the printed-paper aesthetic stays consistent
+       across light, night, and rose themes. */
+    #magazine {
+      --mag-paper: #f5f2ed;
+      --mag-ink: #362c2a;
+      --mag-ink-soft: rgba(54,44,42,.70);
+      --mag-ink-mute: rgba(54,44,42,.54);
+      --mag-line: rgba(54,44,42,.10);
+      --mag-jade: #7ea291;
+      --mag-rose: #cc7e85;
+      --mag-gold: #d9b66f;
+      --mag-shell-bg-1: rgba(255,255,255,.38);
+      --mag-shell-bg-2: rgba(255,255,255,.20);
+      --mag-shell-bg-3: rgba(255,255,255,.10);
+    }
+    body[data-theme="night"] #magazine {
+      --mag-shell-bg-1: rgba(245,242,237,.32);
+      --mag-shell-bg-2: rgba(245,242,237,.18);
+      --mag-shell-bg-3: rgba(245,242,237,.10);
+    }
+    .mag-shell {
+      position: relative;
+      border-radius: 34px;
+      background: radial-gradient(circle at 50% 12%, var(--mag-shell-bg-1), transparent 30%),
+                  linear-gradient(180deg, var(--mag-shell-bg-2), var(--mag-shell-bg-3));
+      border: 1px solid rgba(255,255,255,.34);
+      box-shadow: 0 34px 110px rgba(54,44,42,.18);
+      backdrop-filter: blur(24px) saturate(1.2);
+      -webkit-backdrop-filter: blur(24px) saturate(1.2);
+      overflow: hidden;
+      padding-bottom: 80px;
+    }
+    .mag-shell::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(54,44,42,.08);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .mag-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 18px 24px 0;
+      position: relative;
+      z-index: 4;
+    }
+    .mag-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(54,44,42,.12);
+      background: rgba(255,255,255,.78);
+      color: var(--mag-ink);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      cursor: pointer;
+      transition: .22s cubic-bezier(.2,.8,.2,1);
+      backdrop-filter: blur(14px);
+    }
+    .mag-btn:hover { transform: translateY(-1px); background: rgba(126,162,145,.32); color: var(--mag-ink); }
+    .mag-btn.dark { background: var(--mag-ink); color: var(--mag-paper); border-color: rgba(255,255,255,.16); }
+    .mag-btn.dark:hover { background: var(--mag-jade); color: var(--mag-ink); }
+    .mag-upload input { display: none; }
+    .mag-book-wrap {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      padding: 32px 24px 0;
+      perspective: 2600px;
+    }
+    .mag-book {
+      position: relative;
+      width: min(900px, 96%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      transform-style: preserve-3d;
+      transition: transform .55s cubic-bezier(.2,.8,.2,1);
+    }
+    .mag-page {
+      min-height: clamp(480px, 55vw, 640px);
+      overflow: hidden;
+      border: 1px solid rgba(54,44,42,.10);
+      position: relative;
+      background: linear-gradient(180deg, #ffffff, #fffaf2);
+      color: var(--mag-ink);
+    }
+    /* Force the printed-paper colors regardless of theme */
+    #magazine .mag-page,
+    #magazine .mag-page * {
+      color: var(--mag-ink);
+    }
+    #magazine .mag-page .mag-body { color: var(--mag-ink-soft); }
+    #magazine .mag-page .mag-caption,
+    #magazine .mag-page .mag-kicker,
+    #magazine .mag-page .mag-folio { color: var(--mag-ink-mute); }
+    #magazine .mag-page .mag-quote em,
+    #magazine .mag-page .mag-accent { color: var(--mag-jade); }
+    #magazine .mag-page .mag-cover-seal { color: var(--mag-rose); border-color: var(--mag-rose); }
+    .mag-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .10;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.26'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+    .mag-page-left { border-radius: 20px 0 0 20px; box-shadow: inset -8px 0 24px rgba(54,44,42,.06); }
+    .mag-page-right { border-radius: 0 20px 20px 0; box-shadow: inset 8px 0 24px rgba(54,44,42,.04); }
+    .mag-spine {
+      position: absolute;
+      left: 50%;
+      top: 32px;
+      bottom: 0;
+      width: 20px;
+      transform: translateX(-50%);
+      z-index: 10;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(54,44,42,.18), rgba(255,255,255,.22), rgba(54,44,42,.12));
+      box-shadow: inset 6px 0 14px rgba(54,44,42,.08), inset -6px 0 14px rgba(54,44,42,.06);
+    }
+    .mag-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 26px 24px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 16px;
+    }
+    .mag-kicker {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(54,44,42,.54);
+    }
+    .mag-folio {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(54,44,42,.12);
+      background: rgba(255,255,255,.36);
+      display: grid;
+      place-items: center;
+      font-size: 9px;
+    }
+    .mag-hl-xl { font-size: clamp(48px, 7vw, 86px); line-height: .78; letter-spacing: -.09em; font-weight: 900; }
+    .mag-hl-lg { font-size: clamp(28px, 4vw, 52px); line-height: .86; letter-spacing: -.08em; font-weight: 900; }
+    .mag-body { font-size: 13px; line-height: 1.48; letter-spacing: -.02em; color: rgba(54,44,42,.70); }
+    .mag-caption { font-family: var(--mono); font-size: 9px; letter-spacing: .10em; text-transform: uppercase; color: rgba(54,44,42,.52); }
+    .mag-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(54,44,42,.08);
+      background: linear-gradient(135deg, rgba(126,162,145,.28), rgba(245,242,237,.84), rgba(204,126,133,.18));
+    }
+    .mag-media img, .mag-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mag-media-label {
+      position: absolute;
+      left: 10px; right: 10px; bottom: 10px;
+      z-index: 4;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(54,44,42,.44);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+    .mag-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      font-weight: 900;
+      font-size: clamp(22px, 3vw, 40px);
+      line-height: .84;
+      letter-spacing: -.07em;
+      color: rgba(54,44,42,.18);
+    }
+    .mag-video-frame { cursor: ew-resize; }
+    .mag-scrub-bar {
+      position: absolute;
+      left: 10px; right: 10px; bottom: 44px;
+      height: 5px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(245,242,237,.30);
+      z-index: 5;
+      opacity: 0;
+      transition: .2s;
+    }
+    .mag-video-frame:hover .mag-scrub-bar { opacity: 1; }
+    .mag-scrub-bar span { display: block; width: 0%; height: 100%; background: linear-gradient(90deg, var(--rose), var(--gold), var(--jade)); }
+    .mag-swatch-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(54,44,42,.10);
+      min-height: 64px;
+    }
+    .mag-swatch {
+      display: flex;
+      align-items: flex-end;
+      padding: 6px;
+      font-family: var(--mono);
+      font-size: 7px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: rgba(54,44,42,.70);
+    }
+    .mag-receipt-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(54,44,42,.14);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(54,44,42,.68);
+    }
+    .mag-fuel {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 7px;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .07em;
+    }
+    .mag-fuel-line {
+      height: 7px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--rose), var(--dogwood), var(--jade));
+      position: relative;
+    }
+    .mag-fuel-line::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      background: rgba(255,255,255,.44);
+      animation: fuelSweepMag 3s ease-in-out infinite;
+    }
+    @keyframes fuelSweepMag {
+      0% { transform: translateX(-130%); }
+      100% { transform: translateX(290%); }
+    }
+    .mag-quote { font-size: clamp(28px, 4.5vw, 62px); line-height: .86; letter-spacing: -.08em; font-weight: 900; }
+    .mag-quote em { font-style: normal; color: var(--jade); }
+    .mag-barcode {
+      width: 100%;
+      height: 36px;
+      opacity: .66;
+      background: linear-gradient(90deg,
+        var(--espresso) 0 2px, transparent 2px 6px,
+        var(--espresso) 6px 8px, transparent 8px 12px,
+        var(--espresso) 12px 18px, transparent 18px 22px,
+        var(--espresso) 22px 24px, transparent 24px 30px,
+        var(--espresso) 30px 36px, transparent 36px 42px);
+      background-size: 42px 100%;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    .mag-cover-seal {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      transform: rotate(-7deg);
+      border: 2px solid var(--rose);
+      color: var(--rose);
+      font-family: var(--mono);
+      font-size: 9px;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      text-align: center;
+    }
+    .mag-nav {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 20;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(54,44,42,.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 60px rgba(54,44,42,.20);
+    }
+    .mag-nav-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.6);
+      border: 1px solid rgba(54,44,42,.10);
+      color: var(--mag-ink);
+      cursor: pointer;
+      transition: .22s cubic-bezier(.2,.8,.2,1);
+      font-size: 16px;
+    }
+    .mag-nav-btn:hover { background: var(--mag-ink); color: var(--mag-paper); transform: translateY(-1px); }
+    .mag-nav-label {
+      min-width: 80px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--mag-ink-mute);
+    }
+    .mag-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(130%);
+      z-index: 9999;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--cream);
+      background: rgba(54,44,42,.94);
+      border: 1px solid rgba(255,255,255,.14);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      transition: .25s cubic-bezier(.2,.8,.2,1);
+    }
+    .mag-toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* Gallery Wall — full JIAYOU archive contact sheet */
+    .mag-gallery-grid {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      overflow-y: auto;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(54,44,42,.10);
+      background: rgba(255,255,255,.40);
+      max-height: clamp(320px, 48vw, 480px);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(54,44,42,.30) transparent;
+    }
+    .mag-gallery-grid::-webkit-scrollbar { width: 6px; }
+    .mag-gallery-grid::-webkit-scrollbar-thumb { background: rgba(54,44,42,.30); border-radius: 999px; }
+    .mag-gallery-tile {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid rgba(54,44,42,.08);
+      background: rgba(245,242,237,.6);
+      cursor: zoom-in;
+      transition: transform .25s cubic-bezier(.2,.8,.2,1);
+    }
+    .mag-gallery-tile:hover {
+      transform: scale(1.06);
+      z-index: 2;
+      box-shadow: 0 14px 36px rgba(54,44,42,.22);
+    }
+    .mag-gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 680px) {
+      .mag-book { grid-template-columns: 1fr; }
+      .mag-page-left { border-radius: 20px 20px 0 0; box-shadow: none; }
+      .mag-page-right { border-radius: 0 0 20px 20px; box-shadow: none; }
+      .mag-spine { display: none; }
+      .mag-gallery-grid { grid-template-columns: repeat(3, 1fr); max-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>加油 / daily fuel</span><span>calm energy, designed for you</span><span>soft focus coffee</span><span>receipt ritual 07:04</span><span>cat spiral system</span><span>keep going gently</span>
+      <span>加油 / daily fuel</span><span>calm energy, designed for you</span><span>soft focus coffee</span><span>receipt ritual 07:04</span><span>cat spiral system</span><span>keep going gently</span>
+    </div>
+  </div>
+
+  <nav class="nav" id="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Jiayou home">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="wordmark">JIAYOU<br>FOR YOU <small>加油 / Daily Fuel</small></span>
+      </a>
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#system">System</a>
+        <a href="#magazine">Magazine</a>
+        <a href="#menu">Menu</a>
+        <a href="#products">Shop</a>
+        <a href="#cafe">Cafe</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#club">Club</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Change atmosphere">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v2"/><path d="M12 19v2"/><path d="m4.22 4.22 1.42 1.42"/><path d="m18.36 18.36 1.42 1.42"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m4.22 19.78 1.42-1.42"/><path d="m18.36 5.64 1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+        <a class="nav-action" href="#waitlist">Join list</a>
+        <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#system">System</a>
+    <a href="#menu">Menu</a>
+    <a href="#products">Shop</a>
+    <a href="#cafe">Cafe</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#club">Club</a>
+    <a href="#waitlist">Join list</a>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="image21.png" alt="" />
+      </div>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Jiayou coffee shop / issue 03</p>
+            <h1>Calm energy. <span>Still moving.</span></h1>
+            <p class="hero-copy">Functional coffee, matcha, cold brew, and ritual goods for creative days that need encouragement without the caffeine panic.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#menu">Open menu</a>
+              <a class="button ghost" href="#gallery">View campaign</a>
+            </div>
+          </div>
+
+          <aside class="receipt-panel" aria-label="Daily fuel receipt">
+            <div class="receipt-head">
+              <div>
+                <p class="micro">Receipt / JYFY-0704</p>
+                <p class="receipt-title">Daily Fuel</p>
+              </div>
+              <span class="mark" aria-hidden="true"></span>
+            </div>
+            <div class="receipt-list">
+              <div class="receipt-row"><span>Jade cold brew</span><span>$6.50</span></div>
+              <div class="receipt-row"><span>Soft focus latte</span><span>$6.75</span></div>
+              <div class="receipt-row"><span>Cloud matcha</span><span>$7.00</span></div>
+              <div class="receipt-row"><span>Keep going</span><span>free</span></div>
+            </div>
+            <div class="fuel"><span>E</span><span class="fuel-line"><span></span></span><span>F</span></div>
+            <div class="barcode"></div>
+          </aside>
+        </div>
+        <div class="scroll-cue">Next: brand system</div>
+      </div>
+    </section>
+
+    <section class="system-band" id="system">
+      <div class="brand-strip" aria-label="Jiayou color system">
+        <div class="swatch">Cream<br>#F5F2ED</div>
+        <div class="swatch">Jade<br>#7EA291</div>
+        <div class="swatch">Dogwood<br>#C5AFA4</div>
+        <div class="swatch">Old Rose<br>#CC7E85</div>
+        <div class="swatch">Gold<br>#D9B66F</div>
+        <div class="swatch">Espresso<br>#362C2A</div>
+        <div class="swatch">Soft Sky<br>#B0D0D3</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">01 / Visual DNA</p>
+            <h2>Designed like a ritual system.</h2>
+          </div>
+          <p class="section-copy">Jiayou lives in the overlap between quiet cafe culture, soft wellness packaging, receipt-era micrographics, and the simple emotional force of “加油.”</p>
+        </div>
+
+        <div class="brand-dna">
+          <article class="dna-panel" data-reveal>
+            <div>
+              <p class="micro">Motifs / continuity</p>
+              <h3>Cat spiral, JY roundel, fuel gauge, receipt codes, lucky clouds.</h3>
+            </div>
+            <div class="pill-row">
+              <span class="pill">加油</span><span class="pill">JYFY-001</span><span class="pill">E to F</span><span class="pill">barcode</span><span class="pill">soft fuel</span>
+            </div>
+          </article>
+          <article class="dna-panel" data-reveal>
+            <div>
+              <p class="micro">Material behavior</p>
+              <h3>Matte paper, ceramic glaze, cotton weave, condensation, brushed gold.</h3>
+            </div>
+            <div class="pill-row">
+              <span class="pill">5200K daylight</span><span class="pill">paper grain</span><span class="pill">soft halation</span><span class="pill">real shadows</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Virtual Magazine Section ─── -->
+    <section class="section tight" id="magazine">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">03 / Virtual Magazine</p>
+            <h2>Flip through the brand.</h2>
+          </div>
+          <p class="section-copy">An interactive editorial magazine built from the JIAYOU visual system. Import your own images and videos. Hover the motion page to scrub.</p>
+        </div>
+
+        <div class="mag-shell">
+          <div class="mag-toolbar">
+            <label class="mag-btn mag-upload">
+              Import Images
+              <input type="file" id="magImageInput" accept="image/*" multiple />
+            </label>
+            <label class="mag-btn mag-upload">
+              Import Video
+              <input type="file" id="magVideoInput" accept="video/*" />
+            </label>
+            <button class="mag-btn dark" id="magResetBtn">Reset</button>
+          </div>
+
+          <div class="mag-book-wrap">
+            <div class="mag-spine"></div>
+            <div class="mag-book" id="magBook">
+              <div class="mag-page mag-page-left" id="magLeft"></div>
+              <div class="mag-page mag-page-right" id="magRight"></div>
+            </div>
+          </div>
+
+          <div class="mag-nav">
+            <button class="mag-nav-btn" id="magPrev" aria-label="Previous spread">←</button>
+            <div class="mag-nav-label" id="magLabel">Spread 01 / 04</div>
+            <button class="mag-nav-btn" id="magNext" aria-label="Next spread">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mag-toast" id="magToast">Updated.</div>
+
+    <section class="section tight" id="menu">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">02 / Cafe Menu</p>
+            <h2>Build a quiet kind of fuel.</h2>
+          </div>
+          <p class="section-copy">The menu behaves like a printed receipt and a small encouragement engine. Choose a mode, print the ritual, keep going.</p>
+        </div>
+
+        <div class="menu-layout">
+          <div class="menu-stage" data-reveal>
+            <img src="image4.png" alt="Jiayou cafe table with cups, notebook, and handwritten notes" />
+            <div class="stage-copy">
+              <p class="micro">Open 07:04 / LA / Daily Fuel Bar</p>
+              <h3>Focus, but keep your shoulders down.</h3>
+              <p class="section-copy">Coffee that holds the day together without making the day louder.</p>
+            </div>
+          </div>
+
+          <aside class="menu-panel" data-reveal>
+            <div class="tabs" role="tablist" aria-label="Menu categories">
+              <button class="tab active" type="button" data-menu="drinks">Drinks</button>
+              <button class="tab" type="button" data-menu="goods">Goods</button>
+              <button class="tab" type="button" data-menu="rituals">Rituals</button>
+            </div>
+
+            <div class="menu-pane active" id="pane-drinks">
+              <p class="micro">Daily fuel / espresso + tea</p>
+              <div class="menu-line"><span><strong>Jade Cold Brew</strong><small>smooth cold brew, low-acid clarity, jade can</small></span><button class="add" data-name="Jade Cold Brew" data-price="6.5" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Soft Focus Latte</strong><small>oat milk, espresso, quiet vanilla mist</small></span><button class="add" data-name="Soft Focus Latte" data-price="6.75" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Cloud Matcha</strong><small>matcha, oat cloud, round green finish</small></span><button class="add" data-name="Cloud Matcha" data-price="7" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Rose Milk Tea</strong><small>old rose tea, espresso option, soft sweetness</small></span><button class="add" data-name="Rose Milk Tea" data-price="6.25" type="button">+</button></div>
+            </div>
+
+            <div class="menu-pane" id="pane-goods">
+              <p class="micro">Objects / carry the system</p>
+              <div class="menu-line"><span><strong>Canvas Tote</strong><small>cream cotton with jade cat-cloud mark</small></span><button class="add" data-name="Canvas Tote" data-price="18" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Spiral Cup</strong><small>ceramic cup with debossed roundel</small></span><button class="add" data-name="Spiral Cup" data-price="16" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Sticker Sheet</strong><small>fuel gauges, seals, clouds, receipt scraps</small></span><button class="add" data-name="Sticker Sheet" data-price="8" type="button">+</button></div>
+            </div>
+
+            <div class="menu-pane" id="pane-rituals">
+              <p class="micro">Add-ons / soft adjustments</p>
+              <div class="menu-line"><span><strong>Oat Cloud</strong><small>thick foam, gentle texture</small></span><button class="add" data-name="Oat Cloud" data-price=".75" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Calm Foam</strong><small>vanilla, salt, quiet sweetness</small></span><button class="add" data-name="Calm Foam" data-price="1" type="button">+</button></div>
+              <div class="menu-line"><span><strong>Lucky Cat Seal</strong><small>one printed encouragement stamp</small></span><button class="add" data-name="Lucky Cat Seal" data-price="0" type="button">+</button></div>
+            </div>
+
+            <div class="order-receipt" aria-live="polite">
+              <p class="micro">Current receipt</p>
+              <div class="order-items" id="orderItems"><span>No items yet / 加油 is still free</span></div>
+              <div class="total"><span>Total</span><span id="orderTotal">$0.00</span></div>
+              <button class="button primary" id="printReceipt" type="button" style="width:100%;margin-top:14px;">Print ritual</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">03 / Product Line</p>
+            <h2>Things that look calm on your desk.</h2>
+          </div>
+          <p class="section-copy">Coffee, tea, cans, cups, and small ritual objects designed as one visual language.</p>
+        </div>
+
+        <div class="products-bar" data-reveal>
+          <div class="filters" aria-label="Product filters">
+            <button class="filter active" type="button" data-filter="all">All</button>
+            <button class="filter" type="button" data-filter="drink">Drink</button>
+            <button class="filter" type="button" data-filter="mix">Mixes</button>
+            <button class="filter" type="button" data-filter="goods">Goods</button>
+          </div>
+          <p class="micro">Batch JYFY-04 / shelf-stable calm</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card" data-category="drink" data-reveal>
+            <div class="product-media"><img src="image6.png" alt="Stacked Jiayou cold brew cans campaign poster" /></div>
+            <div class="product-body">
+              <div><p class="micro">Cold brew / 180mg</p><h3>Keep Going Cold Brew</h3><p>Clean coffee depth, low-acid profile, condensation-friendly can graphics.</p></div>
+              <div class="product-meta"><span>$5.80</span><span>Jade can</span></div>
+            </div>
+          </article>
+          <article class="product-card" data-category="mix" data-reveal>
+            <div class="product-media"><img src="image7.png" alt="Jiayou Zen Blend product poster" /></div>
+            <div class="product-body">
+              <div><p class="micro">Powder mix / soft focus</p><h3>Zen Blend</h3><p>Daily pouch for coffee, oat milk, and slow-focus mornings.</p></div>
+              <div class="product-meta"><span>$18</span><span>12 servings</span></div>
+            </div>
+          </article>
+          <article class="product-card" data-category="drink" data-reveal>
+            <div class="product-media"><img src="image2.png" alt="Jiayou product still life with cups and cold brew" /></div>
+            <div class="product-body">
+              <div><p class="micro">Cafe set / seasonal</p><h3>Daily Fuel Trio</h3><p>Hot, iced, and ready-to-drink formats for different attention spans.</p></div>
+              <div class="product-meta"><span>$16</span><span>3 modes</span></div>
+            </div>
+          </article>
+          <article class="product-card" data-category="goods" data-reveal>
+            <div class="product-media"><img src="image14.png" alt="Jiayou tote bag and coffee merchandise" /></div>
+            <div class="product-body">
+              <div><p class="micro">Merch / cotton</p><h3>Cloud Tote</h3><p>Cream canvas, jade mark, built for laptops, notebooks, and a pastry you forgot.</p></div>
+              <div class="product-meta"><span>$18</span><span>canvas</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cafe">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">04 / Cafe Atmosphere</p>
+            <h2>The third place, softened.</h2>
+          </div>
+          <p class="section-copy">Warm wood, receipt menus, rainy storefront glass, and little signs that remind you to keep going without yelling it.</p>
+        </div>
+
+        <div class="experience-grid">
+          <div class="experience-main" data-reveal>
+            <img src="image5.png" alt="Jiayou barista handing coffee across a wooden cafe counter" />
+            <div class="experience-label">
+              <p class="micro">Bar counter / handoff ritual</p>
+              <h3>Every cup gets a small receipt of encouragement.</h3>
+            </div>
+          </div>
+          <div class="experience-side" data-reveal>
+            <article class="mini-scene">
+              <img src="image12.png" alt="Jiayou retail display shelf" />
+              <div><p class="micro">Market shelf</p><h3>Abundant, but ordered.</h3></div>
+            </article>
+            <article class="mini-scene">
+              <img src="image20.png" alt="Jiayou iced drink pouring scene" />
+              <div><p class="micro">Cold bar</p><h3>Motion as energy.</h3></div>
+            </article>
+            <article class="mini-scene">
+              <img src="image8.png" alt="Jiayou focus mode desk portrait" />
+              <div><p class="micro">Study table</p><h3>Focus without the frenzy.</h3></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">05 / Campaign Gallery</p>
+            <h2>Receipts, posters, shelves, rituals.</h2>
+          </div>
+          <p class="section-copy">A visual wall made from the Jiayou image set: product stills, menu systems, social mockups, storefronts, and print artifacts.</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <figure class="gallery-item big" data-reveal><img src="image24.png" alt="Jiayou editorial brand spread" /><figcaption class="gallery-caption"><span>JYFY / 01</span><span>Spread</span></figcaption></figure>
+          <figure class="gallery-item tall" data-reveal><img src="image22.png" alt="Jiayou focus without the frenzy poster" /><figcaption class="gallery-caption"><span>JYFY / 02</span><span>Poster</span></figcaption></figure>
+          <figure class="gallery-item" data-reveal><img src="image16.png" alt="Jiayou phone story mockup" /><figcaption class="gallery-caption"><span>JYFY / 03</span><span>Social</span></figcaption></figure>
+          <figure class="gallery-item wide" data-reveal><img src="image11.png" alt="Jiayou Keep Going wall posters" /><figcaption class="gallery-caption"><span>JYFY / 04</span><span>OOH</span></figcaption></figure>
+          <figure class="gallery-item" data-reveal><img src="image3.png" alt="Jiayou embossed JY cup sleeve macro" /><figcaption class="gallery-caption"><span>JYFY / 05</span><span>Material</span></figcaption></figure>
+          <figure class="gallery-item tall" data-reveal><img src="image29.png" alt="Jiayou receipt-style menu system" /><figcaption class="gallery-caption"><span>JYFY / 06</span><span>Menu</span></figcaption></figure>
+          <figure class="gallery-item wide" data-reveal><img src="image1.png" alt="Jiayou packaging family lineup" /><figcaption class="gallery-caption"><span>JYFY / 07</span><span>Packaging</span></figcaption></figure>
+          <figure class="gallery-item" data-reveal><img src="image9.png" alt="Jiayou stickers and receipt sheet" /><figcaption class="gallery-caption"><span>JYFY / 08</span><span>System</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="club">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="section-number">06 / Daily Fuel Club</p>
+            <h2>A loyalty card for small wins.</h2>
+          </div>
+          <p class="section-copy">Stamps, rituals, and a tiny mode selector turn coffee into an object of continuity.</p>
+        </div>
+
+        <div class="club-layout">
+          <article class="loyalty" data-reveal>
+            <div>
+              <p class="micro">Daily Fuel Club / stamp card</p>
+              <h3>Ten cups. One softer week.</h3>
+              <div class="stamp-grid" id="stampGrid" aria-label="Loyalty stamps"></div>
+              <button class="button primary" id="stampButton" type="button">Add stamp</button>
+            </div>
+            <p class="micro">Reward: ceramic spiral cup after stamp 10 / receipt ID JYFY-CLUB</p>
+          </article>
+
+          <article class="ritual-builder" data-reveal>
+            <div class="builder-media"><img src="image13.png" alt="Jiayou keep going card and latte" /></div>
+            <div class="builder-controls">
+              <div class="range-row"><span>Energy</span><input id="energyRange" type="range" min="1" max="5" value="3" /><span id="energyValue">3</span></div>
+              <div class="range-row"><span>Softness</span><input id="softRange" type="range" min="1" max="5" value="4" /><span id="softValue">4</span></div>
+              <div class="ritual-result">
+                <p class="micro">Recommended ritual</p>
+                <strong id="ritualName">Soft Focus Latte + Oat Cloud</strong>
+                <p id="ritualNote">Balanced energy, rounded texture, good for a long creative block.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="faq-grid">
+          <div data-reveal>
+            <p class="section-number">07 / FAQ</p>
+            <h2>Small answers.</h2>
+            <p class="section-copy" style="margin-top:20px;">The mock shop is written as a brand-ready cafe surface: product, retail, social, menu, and waitlist all in one place.</p>
+          </div>
+          <div class="faq-list" data-reveal>
+            <article class="faq-item open">
+              <button class="faq-button" type="button">What is Jiayou For You?<span>+</span></button>
+              <div class="faq-answer"><p>A wellness coffee shop and functional beverage concept built around calm energy, editorial cafe culture, and everyday encouragement.</p></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-button" type="button">What does 加油 mean here?<span>+</span></button>
+              <div class="faq-answer"><p>It is used as a supportive “keep going” cue, handled as microcopy and brand sentiment rather than decoration.</p></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-button" type="button">What products belong in the system?<span>+</span></button>
+              <div class="faq-answer"><p>Hot coffee, cold brew cans, matcha and tea latte mixes, cafe drinks, merch, stickers, mugs, and ritual goods.</p></div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-button" type="button">Can this become a real shop site?<span>+</span></button>
+              <div class="faq-answer"><p>Yes. The page is static HTML, but the interaction patterns are structured around real ecommerce, menu, loyalty, and gallery surfaces.</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" id="waitlist">
+      <div class="wrap">
+        <div class="cta-panel" data-reveal>
+          <img src="image21.png" alt="" />
+          <div class="cta-content">
+            <div>
+              <p class="eyebrow">Launch list / JYFY-000</p>
+              <h2>Get the next soft launch receipt.</h2>
+              <p class="section-copy" style="margin-top:22px;color:rgba(255,253,248,.76);">Product drops, menu tests, visual releases, and quiet updates from the Jiayou world.</p>
+            </div>
+            <form class="waitlist" id="waitlistForm">
+              <p class="micro">Waitlist receipt</p>
+              <input name="name" type="text" placeholder="Your name" required />
+              <input name="email" type="email" placeholder="Email address" required />
+              <button class="button primary" type="submit">Join list</button>
+              <p class="micro">No noise. Only useful fuel.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#top">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="wordmark">JIAYOU<br>FOR YOU <small>加油 / Daily Fuel</small></span>
+          </a>
+          <h2 style="margin-top:26px;">Calm energy, designed for you.</h2>
+        </div>
+        <div class="footer-links">
+          <a href="#system">System</a>
+          <a href="#menu">Menu</a>
+          <a href="#products">Shop</a>
+          <a href="#gallery">Campaign</a>
+          <a href="#waitlist">Waitlist</a>
+        </div>
+      </div>
+      <div class="barcode" aria-hidden="true"></div>
+      <div class="footer-bottom">
+        <span>Case Study / JYFY / Issue 03</span>
+        <span>Receipt culture, cat spiral, daily fuel</span>
+        <span>Keep going gently</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image preview">
+    <div class="lightbox-panel" id="lightboxPanel">
+      <button class="icon-button lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <img id="lightboxImage" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Jiayou receipt printed.</div>
+
+  <script>
+    const body = document.body;
+    const progress = document.getElementById("progress");
+    const nav = document.getElementById("nav");
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const mobilePanel = document.getElementById("mobilePanel");
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    window.addEventListener("scroll", () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+      nav.classList.toggle("scrolled", window.scrollY > 16);
+    }, { passive: true });
+
+    const themes = ["day", "night", "rose"];
+    let themeIndex = 0;
+    themeToggle.addEventListener("click", () => {
+      themeIndex = (themeIndex + 1) % themes.length;
+      body.dataset.theme = themes[themeIndex] === "day" ? "" : themes[themeIndex];
+      showToast(`Atmosphere: ${themes[themeIndex]}`);
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const open = mobilePanel.classList.toggle("open");
+      menuToggle.classList.toggle("open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    mobilePanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobilePanel.classList.remove("open");
+        menuToggle.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .14 });
+    document.querySelectorAll("[data-reveal]").forEach((node) => revealObserver.observe(node));
+
+    document.querySelectorAll(".tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const key = tab.dataset.menu;
+        document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+        document.querySelectorAll(".menu-pane").forEach((pane) => pane.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(`pane-${key}`).classList.add("active");
+      });
+    });
+
+    const order = [];
+    const orderItems = document.getElementById("orderItems");
+    const orderTotal = document.getElementById("orderTotal");
+
+    function renderOrder() {
+      if (!order.length) {
+        orderItems.innerHTML = "<span>No items yet / 加油 is still free</span>";
+      } else {
+        orderItems.innerHTML = order.map((item) => `<div class="order-item"><span>${item.name}</span><span>$${item.price.toFixed(2)}</span></div>`).join("");
+      }
+      const total = order.reduce((sum, item) => sum + item.price, 0);
+      orderTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
+    document.querySelectorAll(".add").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = { name: button.dataset.name, price: Number(button.dataset.price || 0) };
+        order.push(item);
+        renderOrder();
+        showToast(`${item.name} added.`);
+      });
+    });
+
+    document.getElementById("printReceipt").addEventListener("click", () => {
+      showToast(order.length ? "Ritual receipt printed." : "Add a ritual first.");
+    });
+
+    document.querySelectorAll(".filter").forEach((filter) => {
+      filter.addEventListener("click", () => {
+        const key = filter.dataset.filter;
+        document.querySelectorAll(".filter").forEach((f) => f.classList.remove("active"));
+        filter.classList.add("active");
+        document.querySelectorAll(".product-card").forEach((card) => {
+          card.classList.toggle("hidden", key !== "all" && card.dataset.category !== key);
+        });
+      });
+    });
+
+    const stampGrid = document.getElementById("stampGrid");
+    const stampButton = document.getElementById("stampButton");
+    let stamps = 4;
+
+    function renderStamps() {
+      stampGrid.innerHTML = "";
+      for (let i = 1; i <= 10; i += 1) {
+        const stamp = document.createElement("span");
+        stamp.className = `stamp${i <= stamps ? " filled" : ""}`;
+        stamp.textContent = i <= stamps ? "JY" : i;
+        stampGrid.appendChild(stamp);
+      }
+    }
+
+    stampButton.addEventListener("click", () => {
+      stamps = stamps >= 10 ? 0 : stamps + 1;
+      renderStamps();
+      showToast(stamps === 10 ? "Ceramic spiral cup unlocked." : "Daily fuel stamp added.");
+    });
+    renderStamps();
+
+    const energyRange = document.getElementById("energyRange");
+    const softRange = document.getElementById("softRange");
+    const energyValue = document.getElementById("energyValue");
+    const softValue = document.getElementById("softValue");
+    const ritualName = document.getElementById("ritualName");
+    const ritualNote = document.getElementById("ritualNote");
+
+    function updateRitual() {
+      const energy = Number(energyRange.value);
+      const soft = Number(softRange.value);
+      energyValue.textContent = energy;
+      softValue.textContent = soft;
+      if (energy >= 4 && soft <= 2) {
+        ritualName.textContent = "Jade Cold Brew + Lucky Cat Seal";
+        ritualNote.textContent = "Crisp energy, colder finish, good for movement or errands.";
+      } else if (energy <= 2 && soft >= 4) {
+        ritualName.textContent = "Cloud Matcha + Calm Foam";
+        ritualNote.textContent = "Lower lift, soft texture, good for morning writing.";
+      } else if (energy >= 4 && soft >= 4) {
+        ritualName.textContent = "Soft Focus Latte + Oat Cloud";
+        ritualNote.textContent = "Fuller energy, rounded edges, good for long creative blocks.";
+      } else {
+        ritualName.textContent = "Rose Milk Tea + Vanilla Mist";
+        ritualNote.textContent = "Gentle sweetness, medium lift, good for an afternoon reset.";
+      }
+    }
+
+    energyRange.addEventListener("input", updateRitual);
+    softRange.addEventListener("input", updateRitual);
+
+    document.querySelectorAll(".faq-item").forEach((item) => {
+      item.querySelector(".faq-button").addEventListener("click", () => item.classList.toggle("open"));
+    });
+
+    /* ── Universal glassmorphic lightbox ─────────────────────────────────
+       Covers ALL images site-wide (static + dynamically-rendered magazine).
+       Opens on click OR on hover (300 ms dwell).
+    ──────────────────────────────────────────────────────────────────── */
+    (function () {
+      const lightbox      = document.getElementById("lightbox");
+      const lightboxPanel = document.getElementById("lightboxPanel");
+      const lightboxImg   = document.getElementById("lightboxImage");
+      const lightboxCap   = document.getElementById("lightboxCaption");
+      const MIN_PX        = 80;   // ignore tiny/icon images
+      let hoverTimer      = null;
+      let leaveTimer      = null;
+
+      /* ── tag every qualifying img as a trigger ── */
+      function tagImages() {
+        document.querySelectorAll("img").forEach((img) => {
+          if (img.classList.contains("lb-trigger")) return;
+          if (img.id === "lightboxImage") return;
+          const skip = img.closest(".lightbox, nav, .lightbox-panel");
+          if (skip) return;
+          img.classList.add("lb-trigger");
+        });
+      }
+
+      /* ── open ── */
+      function openLightbox(img) {
+        clearTimeout(leaveTimer);
+        if (!img.src || img.naturalWidth < MIN_PX) return;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || "";
+        /* caption: try alt → closest figcaption → filename */
+        const fig = img.closest("figure");
+        const cap = fig ? fig.querySelector("figcaption") : null;
+        lightboxCap.textContent =
+          (cap && cap.textContent.trim()) ||
+          img.alt ||
+          img.src.split("/").pop().replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
+        lightbox.classList.add("open");
+      }
+
+      /* ── close ── */
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+        lightboxCap.textContent = "";
+      }
+
+      /* ── event delegation: click on any img ── */
+      document.addEventListener("click", (e) => {
+        const img = e.target.closest("img.lb-trigger");
+        if (img) { e.stopPropagation(); openLightbox(img); return; }
+        /* click on the dark backdrop (not the panel) closes */
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      /* ── event delegation: hover dwell on any img ── */
+      document.addEventListener("pointerover", (e) => {
+        const img = e.target.closest("img.lb-trigger");
+        if (!img) return;
+        clearTimeout(leaveTimer);
+        hoverTimer = setTimeout(() => openLightbox(img), 320);
+      });
+      document.addEventListener("pointerout", (e) => {
+        const img = e.target.closest("img.lb-trigger");
+        if (!img) return;
+        clearTimeout(hoverTimer);
+        /* give the pointer time to reach the panel before closing */
+        leaveTimer = setTimeout(() => {
+          if (!lightboxPanel.matches(":hover")) closeLightbox();
+        }, 260);
+      });
+
+      /* keep lightbox alive while hovering the panel */
+      lightboxPanel.addEventListener("pointerenter", () => clearTimeout(leaveTimer));
+      lightboxPanel.addEventListener("pointerleave", () => {
+        leaveTimer = setTimeout(closeLightbox, 220);
+      });
+
+      /* close button / keyboard */
+      document.getElementById("lightboxClose").addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeLightbox();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+
+      /* initial tag + re-tag after magazine renders new images */
+      tagImages();
+      const magContainers = document.querySelectorAll("#magLeft, #magRight, .gallery-grid, .gallery-item");
+      if (magContainers.length) {
+        const mo = new MutationObserver(tagImages);
+        magContainers.forEach((el) => mo.observe(el, { childList: true, subtree: true }));
+      }
+    })();
+
+    document.getElementById("waitlistForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const name = formData.get("name") || "Friend";
+      showToast(`${name}, your soft launch receipt is saved.`);
+      event.currentTarget.reset();
+    });
+
+    document.querySelectorAll(".button, .icon-button, .add").forEach((button) => {
+      button.addEventListener("pointermove", (event) => {
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+        button.style.transform = `translate(${x * .08}px, ${y * .08}px)`;
+      });
+      button.addEventListener("pointerleave", () => {
+        button.style.transform = "";
+      });
+    });
+  </script>
+
+  <script>
+    /* ─── Virtual Magazine ─── */
+    (function () {
+      const spreads = [
+        {
+          left: {
+            type: "cover",
+            folio: "00",
+            kicker: "JIAYOU FOR YOU / ISSUE 01",
+            title: "Calm Energy",
+            accent: "Designed for You.",
+            body: "A virtual magazine for the JIAYOU brand identity — editorial coffee rituals, soft wellness design, and calm functional energy.",
+          },
+          right: {
+            type: "image",
+            folio: "01",
+            kicker: "OPENING IMAGE / BRAND ATMOSPHERE",
+            title: "The café as a soft reset.",
+            body: "A calm storefront, receipt graphics, jade glass, cream paper — energy that doesn't need to be loud.",
+            slot: 0,
+          },
+        },
+        {
+          left: {
+            type: "brand",
+            folio: "02",
+            kicker: "VISUAL SYSTEM / BRAND DNA",
+            title: "Symbols that make the ritual visible.",
+            body: "Fuel gauges, barcodes, jade swatches, and receipt rows build a recognisable brand world.",
+          },
+          right: {
+            type: "quote",
+            folio: "03",
+            kicker: "MANIFESTO / CALM ENERGY",
+            quote: "Not more energy. <em>Better</em> energy.",
+            body: "JIAYOU is coffee as encouragement — a soft nudge forward for creatives moving with intention.",
+          },
+        },
+        {
+          left: {
+            type: "image-grid",
+            folio: "04",
+            kicker: "CAMPAIGN SPREAD / OBJECTS & TEXTURES",
+            title: "Product shots, mockups, and case study images.",
+            body: "Import JIAYOU graphics, packaging renders, or café scenes. The magazine places them into the grid automatically.",
+            slot: 1,
+            slot2: 2,
+          },
+          right: {
+            type: "video",
+            folio: "05",
+            kicker: "MOTION INSERT / HOVER SCRUB VIDEO",
+            title: "Motion that only moves when you do.",
+            body: "Hover inside the frame. The cursor controls the video timeline directly — tactile, like scanning a contact sheet.",
+          },
+        },
+        {
+          left: {
+            type: "gallery",
+            folio: "06",
+            kicker: "GALLERY WALL / FULL ARCHIVE",
+            title: "The whole brand world, side A.",
+            body: "Every image from the JIAYOU archive — packaging, posters, café scenes, mockups, and texture studies.",
+            half: 0,
+          },
+          right: {
+            type: "gallery",
+            folio: "07",
+            kicker: "GALLERY WALL / FULL ARCHIVE",
+            title: "The whole brand world, side B.",
+            body: "Continued — receipt graphics, social mockups, jade glass, cream paper, and editorial campaign art.",
+            half: 1,
+          },
+        },
+        {
+          left: {
+            type: "closing",
+            folio: "08",
+            kicker: "CLOSING SPREAD / RITUALS OF ENCOURAGEMENT",
+            title: "Start softer. Keep going.",
+            body: "A brand system for calm focus, emotional luxury, playful rebellion, and everyday creative momentum.",
+          },
+          right: {
+            type: "blank",
+            folio: "09",
+            kicker: "JIAYOU FOR YOU / 日常燃料 / ISSUE 01",
+          },
+        },
+      ];
+
+      let currentSpread = 0;
+      let imageAssets = [];
+      let videoAsset = null;
+
+      // Auto-load every JIAYOU image from manifest.json so the magazine
+      // is fully populated without requiring the visitor to import anything.
+      fetch("manifest.json")
+        .then((r) => (r.ok ? r.json() : []))
+        .then((list) => {
+          if (Array.isArray(list) && list.length) {
+            imageAssets = list.slice();
+            render();
+          }
+        })
+        .catch(() => {});
+
+      const leftEl = document.getElementById("magLeft");
+      const rightEl = document.getElementById("magRight");
+      const prevBtn = document.getElementById("magPrev");
+      const nextBtn = document.getElementById("magNext");
+      const label = document.getElementById("magLabel");
+      const toast = document.getElementById("magToast");
+      const imageInput = document.getElementById("magImageInput");
+      const videoInput = document.getElementById("magVideoInput");
+      const resetBtn = document.getElementById("magResetBtn");
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      function mediaSlot(slot, label, isVideo) {
+        if (isVideo && videoAsset) {
+          return `<div class="mag-media mag-video-frame" style="flex:1;min-height:260px;" data-mag-video>
+            <video src="${videoAsset}" preload="metadata" muted playsinline></video>
+            <div class="mag-scrub-bar"><span></span></div>
+            <div class="mag-media-label"><span>${label}</span><span>Hover Scrub</span></div>
+          </div>`;
+        }
+        const src = imageAssets[slot % Math.max(imageAssets.length, 1)];
+        if (!isVideo && src) {
+          return `<div class="mag-media" style="flex:1;min-height:200px;">
+            <img src="${src}" alt="${label}">
+            <div class="mag-media-label"><span>${label}</span><span>Imported</span></div>
+          </div>`;
+        }
+        return `<div class="mag-media" style="flex:1;min-height:${isVideo ? 260 : 200}px;">
+          <div class="mag-placeholder">${isVideo ? "Import<br>Brand<br>Video" : "Import<br>Image"}</div>
+          <div class="mag-media-label"><span>${label}</span><span>Placeholder</span></div>
+        </div>`;
+      }
+
+      function buildPage(data) {
+        if (!data) return "";
+
+        const kicker = `<div class="mag-kicker"><span>${data.kicker}</span><span class="mag-folio">${data.folio}</span></div>`;
+
+        if (data.type === "cover") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="align-self:center;">
+              <div class="mag-hl-xl" style="line-height:.78;">${data.title}<span class="mag-accent" style="display:block;">${data.accent}</span></div>
+              <p class="mag-body" style="margin-top:14px;max-width:280px;">${data.body}</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;">
+              <div>
+                <p class="mag-caption">日常燃料 / Daily Fuel / 加油</p>
+                <div class="mag-barcode"></div>
+              </div>
+              <div class="mag-cover-seal">Seal<br>of<br>Calm</div>
+            </div>
+          </div>`;
+        }
+
+        if (data.type === "image") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+              <div class="mag-hl-lg">${data.title}</div>
+              ${mediaSlot(data.slot, "Hero / Storefront", false)}
+              <p class="mag-body">${data.body}</p>
+            </div>
+            <p class="mag-caption">JIAYOU FOR YOU · 日常燃料 · Quiet coffee world</p>
+          </div>`;
+        }
+
+        if (data.type === "brand") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+              <div class="mag-hl-lg">${data.title}</div>
+              <div class="mag-swatch-row">
+                <div class="mag-swatch" style="background:#F5F2ED;">Cream</div>
+                <div class="mag-swatch" style="background:#7EA291;">Jade</div>
+                <div class="mag-swatch" style="background:#CC7E85;">Rose</div>
+                <div class="mag-swatch" style="background:#D9B66F;">Gold</div>
+                <div class="mag-swatch" style="background:#362C2A;color:#F5F2ED;">Espresso</div>
+              </div>
+              <div style="padding:12px;border-radius:14px;background:rgba(255,255,255,.26);border:1px solid rgba(54,44,42,.08);">
+                <div class="mag-receipt-row"><span>Jade Cold Brew</span><span>$6.50</span></div>
+                <div class="mag-receipt-row"><span>Soft Focus Latte</span><span>$6.75</span></div>
+                <div class="mag-receipt-row"><span>Cloud Matcha</span><span>$7.00</span></div>
+                <div class="mag-receipt-row"><span>Encouragement</span><span>Free</span></div>
+                <div class="mag-barcode"></div>
+              </div>
+              <div class="mag-fuel"><span>E</span><div class="mag-fuel-line"></div><span>F</span></div>
+              <p class="mag-body">${data.body}</p>
+            </div>
+            <p class="mag-caption">Brand system / JYFY / Issue 01</p>
+          </div>`;
+        }
+
+        if (data.type === "quote") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="align-self:center;">
+              <div class="mag-quote">${data.quote}</div>
+              <p class="mag-body" style="margin-top:16px;">${data.body}</p>
+            </div>
+            <p class="mag-caption">加油 — one cup at a time</p>
+          </div>`;
+        }
+
+        if (data.type === "image-grid") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+              <div class="mag-hl-lg">${data.title}</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;">
+                ${mediaSlot(data.slot, "Packaging", false)}
+                ${mediaSlot(data.slot2, "Café / Social", false)}
+              </div>
+              <p class="mag-body">${data.body}</p>
+            </div>
+            <p class="mag-caption">Image placement slots update after import</p>
+          </div>`;
+        }
+
+        if (data.type === "video") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+              <div class="mag-hl-lg">${data.title}</div>
+              ${mediaSlot(0, "Campaign Film", true)}
+              <p class="mag-body">${data.body}</p>
+            </div>
+            <p class="mag-caption">Motion insert / cursor-correlated playback</p>
+          </div>`;
+        }
+
+        if (data.type === "gallery") {
+          const total = imageAssets.length;
+          const mid = Math.ceil(total / 2);
+          const slice = data.half === 0
+            ? imageAssets.slice(0, mid)
+            : imageAssets.slice(mid);
+          const tiles = slice
+            .map(
+              (src, i) => `<div class="mag-gallery-tile">
+                <img src="${src}" alt="JIAYOU archive ${i + 1}" loading="lazy" />
+              </div>`
+            )
+            .join("");
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;">
+              <div class="mag-hl-lg">${data.title}</div>
+              <div class="mag-gallery-grid">${tiles}</div>
+              <p class="mag-body">${data.body}</p>
+            </div>
+            <p class="mag-caption">${slice.length} images · embedded archive · ${data.half === 0 ? "side A" : "side B"}</p>
+          </div>`;
+        }
+
+        if (data.type === "closing") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="align-self:center;">
+              <div class="mag-hl-xl">${data.title}</div>
+              <p class="mag-body" style="margin-top:14px;max-width:280px;">${data.body}</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+              <p class="mag-caption">JIAYOU FOR YOU · 日常燃料 · RITUALS OF ENCOURAGEMENT</p>
+              <div class="mag-cover-seal">加油<br>Daily<br>Fuel</div>
+            </div>
+          </div>`;
+        }
+
+        if (data.type === "blank") {
+          return `<div class="mag-content">
+            ${kicker}
+            <div style="align-self:center;text-align:center;opacity:.18;">
+              <div style="font-size:72px;font-weight:900;letter-spacing:-.1em;line-height:.8;">JY<br>FY</div>
+            </div>
+            <p class="mag-caption" style="text-align:center;">加油 · End of Issue 01</p>
+          </div>`;
+        }
+
+        return "";
+      }
+
+      function render() {
+        const s = spreads[currentSpread];
+        leftEl.innerHTML = buildPage(s.left);
+        rightEl.innerHTML = buildPage(s.right);
+        label.textContent = `Spread ${String(currentSpread + 1).padStart(2, "0")} / ${String(spreads.length).padStart(2, "0")}`;
+        bindVideoScrubbers();
+      }
+
+      function bindVideoScrubbers() {
+        document.querySelectorAll("[data-mag-video]").forEach((frame) => {
+          if (frame.dataset.bound) return;
+          frame.dataset.bound = "1";
+          const vid = frame.querySelector("video");
+          const bar = frame.querySelector(".mag-scrub-bar span");
+          if (!vid) return;
+          vid.pause();
+          frame.addEventListener("mousemove", (e) => {
+            const r = frame.getBoundingClientRect();
+            const pct = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+            if (isFinite(vid.duration) && vid.duration > 0) {
+              vid.currentTime = pct * vid.duration;
+              bar.style.width = `${pct * 100}%`;
+            }
+          });
+          frame.addEventListener("mouseleave", () => vid.pause());
+        });
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (currentSpread > 0) { currentSpread--; render(); }
+      });
+      nextBtn.addEventListener("click", () => {
+        if (currentSpread < spreads.length - 1) { currentSpread++; render(); }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (document.getElementById("lightbox").classList.contains("open")) return;
+        if (["ArrowRight", "ArrowDown"].includes(e.key)) { e.preventDefault(); nextBtn.click(); }
+        if (["ArrowLeft",  "ArrowUp"  ].includes(e.key)) { e.preventDefault(); prevBtn.click(); }
+      });
+
+      imageInput.addEventListener("change", (e) => {
+        const files = Array.from(e.target.files).filter(f => f.type.startsWith("image/"));
+        if (!files.length) return;
+        imageAssets = files.map(f => URL.createObjectURL(f));
+        render();
+        showToast("Images placed into magazine spreads.");
+      });
+
+      videoInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file || !file.type.startsWith("video/")) return;
+        videoAsset = URL.createObjectURL(file);
+        render();
+        showToast("Video added — hover the motion page to scrub.");
+      });
+
+      resetBtn.addEventListener("click", () => {
+        imageAssets.forEach(URL.revokeObjectURL);
+        if (videoAsset) URL.revokeObjectURL(videoAsset);
+        imageAssets = [];
+        videoAsset = null;
+        currentSpread = 0;
+        render();
+        showToast("Magazine reset.");
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NODEAR — Audio Evidence / Archive — Erehwon. Dark cinematic music. EPK, sync library, and collaborator access.">
+<title>NODEAR — AUDIO EVIDENCE / EREHWON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#050505; --ink:#0B0B0B; --charcoal:#252526; --charcoal-l:#434344;
+  --archive:#F4F1EC; --paper:#EDE8DF; --red:#E1121B; --cobalt:#103B75;
+  --cyan:#8EDFFF; --amber:#D7792D; --yellow:#FFD028;
+  --ff-display:'UnifrakturMaguntia',serif;
+  --ff-head:'Barlow Condensed','Arial Narrow',sans-serif;
+  --ff-body:'Inter','Helvetica Neue',sans-serif;
+  --ff-mono:'JetBrains Mono','Courier New',monospace;
+  --ease-arch:cubic-bezier(0.16,1,0.3,1);
+  --dur-reveal:900ms; --dur-base:300ms;
+  --section:clamp(80px,10vw,160px);
+  --gutter:clamp(20px,4vw,40px);
+  --max:1440px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{
+  background:var(--void);color:var(--archive);
+  font-family:var(--ff-body);line-height:1.6;
+  overflow-x:hidden;
+}
+/* GRAIN */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+/* RAIL */
+.rail{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--gutter);height:52px;
+  background:rgba(5,5,5,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(244,241,236,.08);
+}
+.rail-mark{display:flex;align-items:center;gap:12px}
+.rail-mark img,.rail-mark svg{height:24px;width:24px;opacity:.92;flex-shrink:0}
+.rail-id{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.18em;
+  color:rgba(244,241,236,.45);text-transform:uppercase;
+}
+.status-dot{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.15em;
+  color:var(--red);
+}
+.status-dot::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--red);animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.rail-nav{display:flex;gap:clamp(16px,3vw,32px);list-style:none}
+.rail-nav a{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.15em;
+  color:rgba(244,241,236,.5);text-decoration:none;text-transform:uppercase;
+  transition:color var(--dur-base);
+}
+.rail-nav a:hover,
+.rail-nav a:focus{color:var(--archive);outline:none}
+@media(max-width:640px){.rail-nav{display:none}}
+
+/* SECTIONS */
+section{padding:var(--section) var(--gutter)}
+.section-label{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  color:rgba(244,241,236,.35);text-transform:uppercase;
+  margin-bottom:48px;display:flex;align-items:center;gap:16px;
+}
+.section-label::after{
+  content:'';flex:1;height:1px;background:rgba(244,241,236,.12);
+}
+/* TYPE */
+h1,h2,h3{font-family:var(--ff-head);font-weight:800;line-height:1.05;letter-spacing:-.01em}
+.display{font-family:var(--ff-display);line-height:1}
+.mono{font-family:var(--ff-mono)}
+.red{color:var(--red)}
+.cyan{color:var(--cyan)}
+.amber{color:var(--amber)}
+/* REVEAL ON SCROLL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease-arch),transform .8s var(--ease-arch)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ═══ HERO ═══ */
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding-top:52px;position:relative;overflow:hidden;
+}
+.hero-logo{width:clamp(80px,12vw,160px);height:auto;margin-bottom:40px;opacity:.95}
+.hero-title{
+  font-family:var(--ff-display);
+  font-size:clamp(48px,9vw,120px);
+  color:var(--archive);margin-bottom:16px;
+}
+.hero-sub{
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.22em;
+  color:rgba(244,241,236,.45);text-transform:uppercase;margin-bottom:48px;
+}
+.hero-waveform{width:min(600px,90vw);margin-bottom:48px;opacity:.2}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--archive);border:1px solid rgba(244,241,236,.3);
+  padding:14px 28px;text-decoration:none;
+  transition:border-color var(--dur-base),color var(--dur-base),background var(--dur-base);
+}
+.hero-cta:hover{border-color:var(--red);color:var(--red);background:rgba(225,18,27,.05)}
+.hero-scroll-hint{
+  position:absolute;bottom:32px;
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  color:rgba(244,241,236,.2);text-transform:uppercase;animation:drift 3s ease-in-out infinite;
+}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ═══ IDENTITY ═══ */
+#identity{background:var(--archive);color:var(--ink)}
+#identity .section-label{color:rgba(11,11,11,.4)}
+#identity .section-label::after{background:rgba(11,11,11,.12)}
+.identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+@media(max-width:768px){.identity-grid{grid-template-columns:1fr}}
+.identity-statement{
+  font-family:var(--ff-head);font-size:clamp(24px,3.5vw,42px);
+  font-weight:700;line-height:1.15;color:var(--ink);
+}
+.identity-body{
+  font-size:15px;line-height:1.7;color:rgba(11,11,11,.7);margin-top:24px;
+}
+.identity-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.tag{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;padding:6px 12px;
+  border:1px dashed rgba(11,11,11,.25);color:rgba(11,11,11,.55);
+}
+.sonic-refs{margin-top:40px}
+.sonic-refs h3{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(11,11,11,.4);margin-bottom:20px;
+}
+.ref-item{
+  display:flex;gap:16px;padding:16px 0;
+  border-bottom:1px solid rgba(11,11,11,.1);align-items:start;
+}
+.ref-num{
+  font-family:var(--ff-mono);font-size:10px;color:rgba(11,11,11,.35);
+  min-width:24px;padding-top:2px;
+}
+.ref-text{font-size:13px;color:rgba(11,11,11,.65);line-height:1.55}
+
+/* ═══ EREHWON ═══ */
+#erehwon{position:relative}
+.erehwon-head{text-align:center;max-width:680px;margin:0 auto 64px}
+.erehwon-def{
+  font-family:var(--ff-head);font-size:clamp(20px,3vw,32px);
+  font-weight:600;line-height:1.3;color:rgba(244,241,236,.75);
+  margin-bottom:32px;
+}
+.erehwon-def em{font-style:normal;color:var(--amber)}
+/* A/B Toggle */
+.ab-toggle{
+  display:inline-flex;background:rgba(244,241,236,.06);
+  border:1px solid rgba(244,241,236,.15);margin:0 auto 48px;
+}
+.ab-btn{
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  padding:12px 32px;cursor:pointer;border:none;background:transparent;
+  color:rgba(244,241,236,.45);transition:all var(--dur-base);
+}
+.ab-btn.active{background:rgba(244,241,236,.08);color:var(--archive)}
+.ab-content{display:none}
+.ab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px)}
+@media(max-width:640px){.ab-content.active{grid-template-columns:1fr}}
+.ab-panel{
+  border:1px solid rgba(244,241,236,.1);padding:clamp(24px,4vw,40px);
+  position:relative;
+}
+.ab-panel-a{border-color:rgba(244,241,236,.15)}
+.ab-panel-b{border-color:rgba(215,121,45,.2)}
+.panel-label{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:20px;display:block;
+}
+.panel-subtitle{font-family:var(--ff-mono);font-size:11px;color:rgba(244,241,236,.35);margin-bottom:16px}
+.panel-head{font-family:var(--ff-head);font-size:clamp(28px,4vw,48px);font-weight:800;margin-bottom:16px}
+.panel-body{font-size:13px;color:rgba(244,241,236,.6);line-height:1.65;margin-bottom:24px}
+.panel-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.meta-item span:first-child{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(244,241,236,.3);display:block;margin-bottom:4px;
+}
+.meta-item span:last-child{font-size:13px;color:rgba(244,241,236,.7)}
+
+/* ═══ SYNC ═══ */
+#sync{background:var(--archive);color:var(--ink)}
+#sync .section-label{color:rgba(11,11,11,.4)}
+#sync .section-label::after{background:rgba(11,11,11,.12)}
+.sync-header{margin-bottom:48px}
+.sync-header h2{
+  font-family:var(--ff-head);font-size:clamp(32px,5vw,64px);
+  font-weight:800;color:var(--ink);margin-bottom:12px;
+}
+.sync-meta-line{
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.15em;
+  color:rgba(11,11,11,.4);text-transform:uppercase;
+}
+.sync-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:rgba(11,11,11,.12)}
+.cue-card{
+  background:var(--archive);padding:32px 28px;
+  transition:background var(--dur-base);cursor:default;
+}
+.cue-card:hover{background:var(--paper)}
+.cue-num{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;
+  color:rgba(11,11,11,.3);text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.cue-type{
+  font-family:var(--ff-head);font-size:22px;font-weight:800;
+  color:var(--ink);margin-bottom:8px;letter-spacing:.02em;
+}
+.cue-bpm{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;
+  color:rgba(11,11,11,.4);text-transform:uppercase;margin-bottom:16px;
+}
+.cue-desc{font-size:13px;line-height:1.6;color:rgba(11,11,11,.65);margin-bottom:20px}
+.cue-scenes{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.05em;
+  color:rgba(11,11,11,.45);line-height:1.7;margin-bottom:16px;
+}
+.cue-status{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(11,11,11,.35);
+  border-top:1px solid rgba(11,11,11,.1);padding-top:12px;margin-top:auto;
+}
+
+/* ═══ RADIO / PLAYLISTS ═══ */
+#radio{}
+.playlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;margin-top:32px}
+.playlist-item{
+  border:1px solid rgba(244,241,236,.1);padding:24px;
+  transition:border-color var(--dur-base);
+}
+.playlist-item:hover{border-color:rgba(244,241,236,.25)}
+.pl-platform{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;
+  color:var(--cyan);text-transform:uppercase;margin-bottom:8px;display:block;
+}
+.pl-name{font-family:var(--ff-head);font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.2}
+.pl-desc{font-size:12px;color:rgba(244,241,236,.45);line-height:1.5}
+
+/* ═══ COLLABORATORS ═══ */
+#collaborators{background:var(--archive);color:var(--ink)}
+#collaborators .section-label{color:rgba(11,11,11,.4)}
+#collaborators .section-label::after{background:rgba(11,11,11,.12)}
+.collab-banner{
+  background:var(--ink);color:var(--archive);
+  padding:clamp(32px,5vw,56px) clamp(24px,4vw,48px);
+  margin-bottom:48px;
+}
+.collab-banner-label{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.25em;
+  color:rgba(244,241,236,.4);text-transform:uppercase;margin-bottom:16px;display:block;
+}
+.collab-banner p{
+  font-family:var(--ff-head);font-size:clamp(20px,3vw,32px);
+  font-weight:700;line-height:1.3;
+}
+.collab-types{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,32px);margin-bottom:48px}
+@media(max-width:640px){.collab-types{grid-template-columns:1fr}}
+.collab-type{border-top:2px solid var(--ink);padding-top:20px}
+.collab-type-num{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;
+  color:rgba(11,11,11,.35);text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.collab-type h3{font-family:var(--ff-head);font-size:28px;font-weight:800;margin-bottom:12px}
+.collab-type p{font-size:13px;color:rgba(11,11,11,.6);line-height:1.6}
+.collab-terms{
+  background:var(--paper);padding:32px;margin-bottom:40px;
+}
+.collab-terms h3{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(11,11,11,.4);margin-bottom:20px;
+}
+.term-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.term-list li{
+  font-size:13px;color:rgba(11,11,11,.65);line-height:1.55;
+  padding-left:20px;position:relative;
+}
+.term-list li::before{
+  content:'—';position:absolute;left:0;color:rgba(11,11,11,.3);
+  font-family:var(--ff-mono);
+}
+.collab-cta-wrap{text-align:center}
+.collab-seal{
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(11,11,11,.5);margin-bottom:32px;
+  font-style:italic;
+}
+
+/* ═══ ACCESS ═══ */
+#access{}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+@media(max-width:640px){.access-grid{grid-template-columns:1fr}}
+.access-block h2{
+  font-family:var(--ff-head);font-size:clamp(36px,6vw,72px);
+  font-weight:800;margin-bottom:32px;line-height:1;
+}
+.access-block p{font-size:14px;color:rgba(244,241,236,.55);line-height:1.65;margin-bottom:40px}
+.access-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.access-item{
+  display:flex;gap:20px;padding:20px 0;
+  border-bottom:1px solid rgba(244,241,236,.08);align-items:start;
+}
+.access-item-label{
+  font-family:var(--ff-mono);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(244,241,236,.3);
+  min-width:100px;padding-top:2px;
+}
+.access-item-val{font-size:14px;color:var(--archive)}
+.access-item-val a{color:var(--archive);text-decoration:none;border-bottom:1px solid rgba(244,241,236,.2)}
+.access-item-val a:hover{border-color:var(--red);color:var(--red)}
+/* CTA buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  padding:14px 28px;border:1px solid;text-decoration:none;
+  transition:all var(--dur-base);cursor:pointer;
+}
+.btn-primary{background:var(--archive);color:var(--ink);border-color:var(--archive)}
+.btn-primary:hover{background:transparent;color:var(--archive);border-color:rgba(244,241,236,.4)}
+.btn-outline{background:transparent;color:var(--archive);border-color:rgba(244,241,236,.3)}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+.btn-ink{background:var(--ink);color:var(--archive);border-color:var(--ink)}
+.btn-ink:hover{background:transparent;color:var(--ink);border-color:var(--ink)}
+/* FOOTER */
+footer{
+  padding:32px var(--gutter);
+  border-top:1px solid rgba(244,241,236,.08);
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;
+}
+.footer-id{font-family:var(--ff-mono);font-size:9px;letter-spacing:.18em;color:rgba(244,241,236,.25);text-transform:uppercase}
+/* WARNING BLOCK */
+.warning-bar{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(225,18,27,.3);padding:12px 20px;
+  color:var(--red);display:inline-block;margin-top:32px;
+}
+/* DIVIDER */
+.rule{height:1px;background:rgba(244,241,236,.08);margin:0}
+.rule-red{background:rgba(225,18,27,.25)}
+</style>
+</head>
+<body>
+
+<!-- FIXED IDENTITY RAIL -->
+<header class="rail" role="banner">
+  <div class="rail-mark">
+    <img src="nodear_brand_system/nodear_logo_white_transparent.png" alt="NODEAR" loading="eager">
+    <span class="rail-id">ND-001 / AUDIO EVIDENCE / EREHWON</span>
+  </div>
+  <nav aria-label="Archive navigation">
+    <ul class="rail-nav">
+      <li><a href="#identity">Identity</a></li>
+      <li><a href="#erehwon">Erehwon</a></li>
+      <li><a href="#sync">Sync</a></li>
+      <li><a href="#radio">Radio</a></li>
+      <li><a href="#collaborators">Collaborate</a></li>
+      <li><a href="#access">Access</a></li>
+    </ul>
+  </nav>
+  <div class="status-dot" aria-label="Case Status: Open">CASE STATUS: OPEN</div>
+</header>
+
+<!-- HERO TERMINAL -->
+<section id="hero" aria-labelledby="hero-title">
+  <img src="nodear_brand_system/nodear_logo_white_transparent.png"
+       class="hero-logo" alt="NODEAR circular mark" width="160" height="160"
+       loading="eager" fetchpriority="high">
+  <h1 id="hero-title" class="hero-title">NODEAR</h1>
+  <p class="hero-sub">AUDIO EVIDENCE · ARCHIVE · EREHWON · CASE STATUS: OPEN</p>
+  <svg class="hero-waveform" viewBox="0 0 800 48" aria-hidden="true" fill="none">
+    <polyline points="0,24 30,24 40,6 50,42 60,12 70,36 80,24 110,24 120,4 130,44 140,16 150,32 160,24 200,24 210,8 220,40 230,14 240,34 250,24 280,24 290,10 300,38 310,18 320,30 330,24 360,24 370,6 380,42 390,20 400,28 410,24 440,24 450,12 460,36 470,8 480,40 490,24 520,24 530,16 540,32 550,4 560,44 570,24 600,24 610,10 620,38 630,20 640,28 650,24 680,24 690,14 700,34 710,8 720,40 730,24 800,24"
+    stroke="#F4F1EC" stroke-width="1.5" fill="none"/>
+  </svg>
+  <a href="#identity" class="hero-cta" aria-label="Enter the archive">ENTER THE ARCHIVE ↓</a>
+  <p class="hero-scroll-hint" aria-hidden="true">SCROLL TO FILE ↓</p>
+</section>
+
+<div class="rule rule-red"></div>
+
+<!-- IDENTITY FILE -->
+<section id="identity" aria-labelledby="identity-head">
+  <p class="section-label reveal">ND-002 / IDENTITY FILE / FILED: 2026</p>
+  <div class="identity-grid">
+    <div class="reveal">
+      <h2 id="identity-head" class="identity-statement">
+        Audio evidence made monumental.
+      </h2>
+      <p class="identity-body">
+        NODEAR is a faceless producer-artist building dark cinematic music and a fully deployed visual-release world. Every track is an artifact. Every release is an object. The visual system is documented, cross-medium, and commercially deployable. The archive is open. The case is active.
+      </p>
+      <p class="identity-body">
+        The project operates inside a world called <strong>Erehwon</strong> — nowhere spelled backward. A place reached by crossing a mountain range alone, where machines are illegal, illness is criminal, and what you call reality is the thing most likely to destroy you. The archive is filed from inside that country. The crossing already happened.
+      </p>
+      <div class="identity-tags">
+        <span class="tag">Dark Cinematic</span>
+        <span class="tag">Electronic</span>
+        <span class="tag">A/B Narrative</span>
+        <span class="tag">Faceless</span>
+        <span class="tag">Sync-Ready</span>
+        <span class="tag">Archive System</span>
+        <span class="tag">Physical Artifacts</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="sonic-refs">
+        <h3>Sonic Positions — Three Points on a Map</h3>
+        <div class="ref-item">
+          <span class="ref-num">01</span>
+          <p class="ref-text">Occupies the same low-frequency darkness as peak electronic cinematic production — but without the vocal-forward structure. The architecture is the same. The inhabitant is absent.</p>
+        </div>
+        <div class="ref-item">
+          <span class="ref-num">02</span>
+          <p class="ref-text">Production density and rhythmic restraint drawn from dark electronic underground — with artifact packaging logic of an independent release world, not a major-label campaign.</p>
+        </div>
+        <div class="ref-item">
+          <span class="ref-num">03</span>
+          <p class="ref-text">Ambient/industrial tension applied to a structured A-side / B-side narrative with a defined emotional arc. Sync-ready and editorially coherent from the first listen.</p>
+        </div>
+        <div class="warning-bar">PRIVATE LISTENING LINK: ON REQUEST</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- EREHWON / A|B -->
+<section id="erehwon" aria-labelledby="erehwon-head">
+  <p class="section-label reveal">ND-003 / EREHWON / A SIDE — B SIDE</p>
+  <div class="erehwon-head reveal">
+    <p class="erehwon-def">
+      Erehwon is <em>nowhere spelled backward</em>. A country reached by crossing a mountain range at altitude, alone — where machines are illegal, illness is criminal, and what you call reality is the thing most likely to destroy you. The archive is filed from inside that country.
+    </p>
+    <div class="ab-toggle" role="group" aria-label="A Side / B Side toggle">
+      <button class="ab-btn active" id="btn-a" onclick="toggleAB('a')" aria-pressed="true">SIDE A / EGO</button>
+      <button class="ab-btn" id="btn-b" onclick="toggleAB('b')" aria-pressed="false">SIDE B / SUBCONSCIOUS</button>
+    </div>
+  </div>
+
+  <div class="ab-content active reveal" id="content-a">
+    <div class="ab-panel ab-panel-a">
+      <span class="panel-label red">SIDE A</span>
+      <span class="panel-subtitle mono">EGO / SHADOW · THE DESCENT</span>
+      <h2 class="panel-head">Dense. Building. Armored.</h2>
+      <p class="panel-body">Every surface defended. The arc moves from certainty to fracture. Side A doesn't know it's descending — it believes it is building. The certainty is the tragedy.</p>
+      <div class="panel-meta">
+        <div class="meta-item"><span>Tempo</span><span>90–110 BPM</span></div>
+        <div class="meta-item"><span>Keys</span><span>F# minor · D minor</span></div>
+        <div class="meta-item"><span>Density</span><span>Dense / Mechanical</span></div>
+        <div class="meta-item"><span>Arc</span><span>Certainty → Fracture</span></div>
+        <div class="meta-item"><span>Tracks</span><span>01–06</span></div>
+        <div class="meta-item"><span>Color Mode</span><span>Void Black dominant</span></div>
+      </div>
+    </div>
+    <div class="ab-panel" style="border-color:rgba(244,241,236,.06);background:rgba(244,241,236,.02)">
+      <span class="panel-label" style="color:rgba(244,241,236,.25)">TRANSMISSION GAP</span>
+      <span class="panel-subtitle mono">THE SPACE BETWEEN</span>
+      <h2 class="panel-head" style="font-size:clamp(20px,3vw,32px)">The archive turns the page.</h2>
+      <p class="panel-body">The ego has left. The subconscious has not yet spoken. The listener is in the gap. Ambient transition — untitled, no metadata visible. The crossing is happening now.</p>
+    </div>
+  </div>
+
+  <div class="ab-content reveal" id="content-b">
+    <div class="ab-panel" style="border-color:rgba(215,121,45,.15);background:rgba(215,121,45,.02)">
+      <span class="panel-label" style="color:var(--amber)">SIDE B</span>
+      <span class="panel-subtitle mono">SUBCONSCIOUS / VULNERABILITY · THE ASCENT</span>
+      <h2 class="panel-head">Sparse. Suspended. Spacious.</h2>
+      <p class="panel-body">The moment where the ego loses and something real enters. Side B doesn't know it's ascending — it experiences the stillness as loss. The light it moves toward is not yet recognizable as light.</p>
+      <div class="panel-meta">
+        <div class="meta-item"><span>Tempo</span><span>60–80 BPM</span></div>
+        <div class="meta-item"><span>Keys</span><span>A minor · Suspended 4th</span></div>
+        <div class="meta-item"><span>Density</span><span>Sparse / Irregular</span></div>
+        <div class="meta-item"><span>Arc</span><span>Silence → Approaching Light</span></div>
+        <div class="meta-item"><span>Tracks</span><span>07–12</span></div>
+        <div class="meta-item"><span>Color Mode</span><span>Archive White / Amber</span></div>
+      </div>
+    </div>
+    <div class="ab-panel ab-panel-b" style="border-color:rgba(215,121,45,.2)">
+      <span class="panel-label" style="color:var(--amber)">PROJECT CLOSE</span>
+      <span class="panel-subtitle mono">THE ARCHIVE REMAINS OPEN</span>
+      <h2 class="panel-head" style="font-size:clamp(20px,3vw,32px)">The case is not resolved.</h2>
+      <p class="panel-body">Erehwon closes without resolution. This is intentional. It is the phoenix story told from inside the fire — in real time, with no promise of the other side. The archive is filed on arrival.</p>
+      <span class="mono" style="font-size:10px;letter-spacing:.18em;color:rgba(244,241,236,.3);text-transform:uppercase;display:block;margin-top:20px">CASE STATUS: OPEN · ND-ERH-001</span>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SYNC CUE LIBRARY -->
+<section id="sync" aria-labelledby="sync-head">
+  <p class="section-label reveal">ND-004 / SYNC CUE LIBRARY / WAV 24-BIT 48KHZ / STEMS ON REQUEST</p>
+  <div class="sync-header reveal">
+    <h2 id="sync-head">Six Cue Types.<br>Every Placement Context.</h2>
+    <p class="sync-meta-line">Master + Sync · Stems Available · Custom Edit: Yes · Format: WAV 24-bit / 48kHz</p>
+  </div>
+  <div class="sync-grid reveal">
+    <article class="cue-card">
+      <span class="cue-num">ND-CUE-01</span>
+      <h3 class="cue-type">TENSION BED</h3>
+      <p class="cue-bpm">80–100 BPM · F# minor, D minor</p>
+      <p class="cue-desc">A low-frequency sustained atmosphere with controlled rhythmic density — the sound of something about to happen. The track does not resolve. It holds.</p>
+      <p class="cue-scenes">Interrogation rooms · Surveillance footage · Empty corridors at 3AM · High-stakes negotiation with no movement · The pause before the verdict</p>
+      <p class="cue-status">AVAILABLE · STEMS: ON REQUEST · CUSTOM EDIT: YES</p>
+    </article>
+    <article class="cue-card">
+      <span class="cue-num">ND-CUE-02</span>
+      <h3 class="cue-type">RITUAL PASSAGE</h3>
+      <p class="cue-bpm">60–80 BPM · Phrygian, Natural Minor</p>
+      <p class="cue-desc">A processional. Slow tempo, heavy with ceremony. Kick drum as heartbeat or gong. Silence between beats is compositionally load-bearing. This track witnesses. It does not accompany.</p>
+      <p class="cue-scenes">Funeral · Vigil · Coronation · A character removing something — slowly, finally · Documentary: the moment an era is declared over</p>
+      <p class="cue-status">AVAILABLE · STRIPPED STEM VERSION: YES · CUSTOM EDIT: YES</p>
+    </article>
+    <article class="cue-card">
+      <span class="cue-num">ND-CUE-03</span>
+      <h3 class="cue-type">NOCTURNAL DRIVE</h3>
+      <p class="cue-bpm">90–115 BPM · Minor with suspended 7th</p>
+      <p class="cue-desc">Forward momentum without destination. Rhythmically propulsive. Space for dialogue above it. The sonic equivalent of city lights through a rain-wet windshield at midnight.</p>
+      <p class="cue-scenes">City driving at night · Airport arrivals · Long-distance train interior · The commute after a decision is made but before it lands · Title sequences in transit</p>
+      <p class="cue-status">HIGHEST COMMERCIAL POTENTIAL · STEMS: ON REQUEST · CUSTOM TEMPO EDIT: YES</p>
+    </article>
+    <article class="cue-card">
+      <span class="cue-num">ND-CUE-04</span>
+      <h3 class="cue-type">ARCHIVE TRANSMISSION</h3>
+      <p class="cue-bpm">70–95 BPM · Unresolved, Suspended</p>
+      <p class="cue-desc">The sound of information arriving from somewhere else — distant, filtered, already part of the past by the time you hear it. Evidence retrieved, transmitted, filed.</p>
+      <p class="cue-scenes">Documentary reveal: old footage cut against present day · Flashback or memory sequence · Underground environments: bunker, archive room · Opening a box</p>
+      <p class="cue-status">AVAILABLE · CLEAN + DEGRADED VERSIONS · LO-FI TEXTURE STEM: YES</p>
+    </article>
+    <article class="cue-card">
+      <span class="cue-num">ND-CUE-05</span>
+      <h3 class="cue-type">EMERGENCE</h3>
+      <p class="cue-bpm">65–90 BPM · Major 7th, Suspended</p>
+      <p class="cue-desc">The sound of something arriving from inside the silence — a build starting at near-zero, expanding by the logic of pressure, not performance. A threshold crossing. Unearned resolution withheld.</p>
+      <p class="cue-scenes">A character steps into light after darkness · Season finale · An athlete on a podium with no crowd · Fashion film: first look in natural light</p>
+      <p class="cue-status">MOST COMMERCIALLY VERSATILE · MIXED FOR DEPLOYMENT · NO STEMS REQUIRED</p>
+    </article>
+    <article class="cue-card">
+      <span class="cue-num">ND-CUE-06</span>
+      <h3 class="cue-type">EGO COLLAPSE</h3>
+      <p class="cue-bpm">95–120 → 60–70 BPM · Tritone at collapse</p>
+      <p class="cue-desc">The sound of a load-bearing structure coming apart — not catastrophically, but inevitably. Dense and building, then a rupture element enters. The moment Side A ends.</p>
+      <p class="cue-scenes">A confession · Confrontation · The moment the lie stops working · Villain's composure fracturing · Thriller: the plan falls apart in real time</p>
+      <p class="cue-status">HIGH IMPACT · TENSION + COLLAPSE STEMS: SEPARABLE · AVAILABLE</p>
+    </article>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- RADIO & PLAYLISTS -->
+<section id="radio" aria-labelledby="radio-head">
+  <p class="section-label reveal">ND-005 / PLAYLIST & RADIO TARGETS</p>
+  <h2 id="radio-head" class="reveal" style="font-family:var(--ff-head);font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px">Editorial Placement<br>Targets</h2>
+  <p class="reveal" style="font-size:14px;color:rgba(244,241,236,.5);max-width:520px;margin-bottom:0">Six cue types map directly to these placement contexts. Contact for private listening links and stems.</p>
+  <div class="playlist-grid reveal">
+    <div class="playlist-item">
+      <span class="pl-platform">Spotify</span>
+      <p class="pl-name">Dark &amp; Stormy Electronic</p>
+      <p class="pl-desc">Primary editorial target. Cinematic production, dark electronic atmosphere.</p>
+    </div>
+    <div class="playlist-item">
+      <span class="pl-platform">Apple Music</span>
+      <p class="pl-name">Cinematic Electronic</p>
+      <p class="pl-desc">Editorial-selected cinematic and atmospheric electronic works.</p>
+    </div>
+    <div class="playlist-item">
+      <span class="pl-platform">Tidal</span>
+      <p class="pl-name">High Fidelity Editorial</p>
+      <p class="pl-desc">Premium platform editorial. High production quality, lossless environment.</p>
+    </div>
+    <div class="playlist-item">
+      <span class="pl-platform">YouTube</span>
+      <p class="pl-name">Night Drives</p>
+      <p class="pl-desc">Nocturnal Drive cue type aligns directly. High-traffic contextual placement.</p>
+    </div>
+    <div class="playlist-item">
+      <span class="pl-platform">Audiomack</span>
+      <p class="pl-name">Producers &amp; Beatmakers</p>
+      <p class="pl-desc">Producer-focused platform. Instrumental, production-forward catalog.</p>
+    </div>
+    <div class="playlist-item">
+      <span class="pl-platform">Sync / Licensing</span>
+      <p class="pl-name">Fashion Film · Trailer · Editorial</p>
+      <p class="pl-desc">Fashion film · Trailer · Title sequence · Editorial campaign · Night-drive scene · Documentary. All six cue types available.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- COLLABORATORS -->
+<section id="collaborators" aria-labelledby="collab-head">
+  <p class="section-label reveal">ND-006 / CONTRIBUTION FILE / QUARTERLY INTAKE</p>
+  <div class="collab-banner reveal" role="note">
+    <span class="collab-banner-label">CONTRIBUTION FILE — OPEN BRIEF / ND-COL-001 / FILED: 2026</span>
+    <p>This is not a job posting. This is not a creative brief for hire. This is a file opened inside the NODEAR archive. <strong>If this document has reached you, the file is already open.</strong></p>
+  </div>
+  <h2 id="collab-head" class="reveal" style="font-family:var(--ff-head);font-size:clamp(28px,4vw,52px);font-weight:800;color:var(--ink);margin-bottom:40px">Three types of contribution.<br>You are one of them.</h2>
+  <div class="collab-types reveal">
+    <div class="collab-type">
+      <span class="collab-type-num">TYPE 01</span>
+      <h3>SOUND</h3>
+      <p>You contribute an element — drums, a bass sequence, a texture, a field recording that carries weight. Not a finished track. An element the archive processes. What you make will be heard in a context you didn't design, and that context will be more than either of you could have made alone.</p>
+    </div>
+    <div class="collab-type">
+      <span class="collab-type-num">TYPE 02</span>
+      <h3>VISUAL</h3>
+      <p>You make images. Photography, design, illustration, motion. You understand the difference between a moodboard and an operating system. You can read the visual DNA codex and immediately know whether your work fits without being told.</p>
+    </div>
+    <div class="collab-type">
+      <span class="collab-type-num">TYPE 03</span>
+      <h3>OBJECT</h3>
+      <p>You make things that exist in the physical world. Packaging, print, apparel, hardware. You know what a numbered edition means — not as a marketing tactic, but as a decision about scarcity and meaning.</p>
+    </div>
+  </div>
+  <div class="collab-terms reveal">
+    <h3>The Terms</h3>
+    <ul class="term-list">
+      <li>Your contribution is filed with your name, date, and contribution type in the NODEAR archive.</li>
+      <li>Your work is credited in all public releases where it appears.</li>
+      <li>You receive a physical Archive Edition artifact from the run you contributed to — numbered, filed, yours.</li>
+      <li>You are listed as a contributor. Someone who understood the brief and added to the record. Not a vendor. Not a featured artist.</li>
+    </ul>
+  </div>
+  <div class="collab-cta-wrap reveal">
+    <p class="collab-seal">"The system elevates the contribution. The contributor becomes part of the record. The record outlasts both."</p>
+    <a href="#access" class="btn btn-ink">OPEN CONTRIBUTION FILE →</a>
+  </div>
+</section>
+
+<div class="rule rule-red"></div>
+
+<!-- ACCESS -->
+<section id="access" aria-labelledby="access-head">
+  <div class="access-grid">
+    <div class="access-block reveal">
+      <h2 id="access-head">REQUEST<br>ACCESS.</h2>
+      <p>The archive is open. The case is active. Contact for EPK download, private listening, sync inquiry, stems, or to open a contribution file.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="mailto:[EMAIL]" class="btn btn-outline">SYNC INQUIRY →</a>
+        <a href="mailto:[EMAIL]" class="btn btn-outline">CONTRIBUTION FILE →</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <ul class="access-list">
+        <li class="access-item">
+          <span class="access-item-label">EMAIL</span>
+          <span class="access-item-val"><a href="mailto:[EMAIL]">[YOUR EMAIL]</a></span>
+        </li>
+        <li class="access-item">
+          <span class="access-item-label">EPK DOWNLOAD</span>
+          <span class="access-item-val"><a href="#">[LINK ON REQUEST]</a></span>
+        </li>
+        <li class="access-item">
+          <span class="access-item-label">LISTENING</span>
+          <span class="access-item-val"><a href="#">[PRIVATE LINK ON REQUEST]</a></span>
+        </li>
+        <li class="access-item">
+          <span class="access-item-label">STEMS</span>
+          <span class="access-item-val">Request via email · WAV 24-bit / 48kHz</span>
+        </li>
+        <li class="access-item">
+          <span class="access-item-label">SYNC FORMAT</span>
+          <span class="access-item-val">Master + Sync / Master only / Custom edit available</span>
+        </li>
+        <li class="access-item">
+          <span class="access-item-label">CASE STATUS</span>
+          <span class="access-item-val red">OPEN</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <span class="footer-id">NODEAR ARCHIVE · EREHWON · ND-001 · FILED: 2026</span>
+  <span class="footer-id">CASE STATUS: OPEN · DO NOT DISTRIBUTE WITHOUT PERMISSION</span>
+  <span class="footer-id status-dot">AUDIO EVIDENCE</span>
+</footer>
+
+<script>
+/* A/B TOGGLE */
+function toggleAB(side){
+  const a=document.getElementById('content-a');
+  const b=document.getElementById('content-b');
+  const ba=document.getElementById('btn-a');
+  const bb=document.getElementById('btn-b');
+  if(side==='a'){
+    a.classList.add('active');b.classList.remove('active');
+    ba.classList.add('active');ba.setAttribute('aria-pressed','true');
+    bb.classList.remove('active');bb.setAttribute('aria-pressed','false');
+  } else {
+    b.classList.add('active');a.classList.remove('active');
+    bb.classList.add('active');bb.setAttribute('aria-pressed','true');
+    ba.classList.remove('active');ba.setAttribute('aria-pressed','false');
+  }
+}
+/* SCROLL REVEAL */
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revealObs.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+/* ACTIVE NAV LINK */
+const sections=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.rail-nav a');
+const navObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.removeAttribute('aria-current'));
+      const a=document.querySelector(`.rail-nav a[href="#${e.target.id}"]`);
+      if(a) a.setAttribute('aria-current','location');
+    }
+  });
+},{threshold:.35});
+sections.forEach(s=>navObs.observe(s));
+</script>
+</body>
+</html>

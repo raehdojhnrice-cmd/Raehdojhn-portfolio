@@ -1,0 +1,1605 @@
+[
+  {
+    "image_id": "B3-01",
+    "filename": "cb4ae901131aa8b49537e2180b3ac200.jpg",
+    "scene": "A modern Android smartphone displaying a hearing/audio personalization app screen. Two sections visible: a 'SOUND PERSONALISATION' control panel with waveform selector and intensity slider, and a 'YOUR PERSONALIZATION' bar chart showing hearing profile across pitch frequencies.",
+    "prompt": "Android smartphone UI mockup, sound personalisation app, waveform selector SOFTER RECOMMENDED RICHER, intensity slider 80%, hearing profile bar chart low to high pitch, red markers, minimal grey and white design",
+    "negative_prompt": "dark mode, colorful, photography, people",
+    "width": 390,
+    "height": 844,
+    "steps": 24,
+    "seed": -1,
+    "guidance_scale": 6.5,
+    "style": "clean minimal Android app UI, medical/audio tech",
+    "subjects": [
+      {
+        "type": "smartphone with app UI",
+        "description": "Black-framed thin-bezel Android phone (centered front punch-hole camera). Screen shows audio personalization interface in two-card layout.",
+        "position": "center frame",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Phone device frame",
+        "description": "Black rounded-edge smartphone body, thin bezels, pill-shaped status bar cutout top center.",
+        "position": "full frame",
+        "color": "#1a1a1a black"
+      },
+      {
+        "label": "Status bar",
+        "description": "10:25 time left. WiFi/signal/battery icons right.",
+        "position": "top of screen",
+        "color": "dark grey on white"
+      },
+      {
+        "label": "X close button",
+        "description": "Small X icon top right corner of screen.",
+        "position": "top right",
+        "color": "grey"
+      },
+      {
+        "label": "SOUND PERSONALISATION card",
+        "description": "White rounded card. Header: 'SOUND PERSONALISATION' in small caps + toggle switch (ON state, dark filled). Below: three waveform segment selector — SOFTER (light, thin waveform icon), RECOMMENDED (medium), RICHER (dark, selected, bold waveform). Richer is active with dark pill background.",
+        "position": "upper screen",
+        "color": "white card, black active pill"
+      },
+      {
+        "label": "INTENSITY 80% slider",
+        "description": "Horizontal progress slider: 'INTENSITY 80%' label above. Slider track partially filled — dark fill left portion, light grey right. Circular thumb handle at 80% position.",
+        "position": "below waveform selector",
+        "color": "dark fill, grey track"
+      },
+      {
+        "label": "PLAY SAMPLE SOUND button",
+        "description": "'PLAY SAMPLE SOUND' text with triangle play icon right. Full-width tap target.",
+        "position": "bottom of top card",
+        "color": "grey text, dark play icon"
+      },
+      {
+        "label": "YOUR PERSONALIZATION card",
+        "description": "White rounded card. Header: 'YOUR PERSONALIZATION'. Body copy: 'Look at how sound personalisation tailors the stereo to your unique hearing ability.' Dashed 'Optimal' line across top of chart.",
+        "position": "lower screen",
+        "color": "white card"
+      },
+      {
+        "label": "Hearing profile bar chart",
+        "description": "Paired bar chart: 13+ vertical bar pairs from 'Low pitch' (left) to 'High pitch' (right). Each pair has: a tall grey bar and a shorter red bar above it. The red bars start at the 'Optimal' dashed line level on the left and progressively dip lower toward the right, suggesting hearing loss at higher frequencies.",
+        "position": "lower card, main visual",
+        "color": "grey bars, red accent bars"
+      },
+      {
+        "label": "KEEP YOUR HEARING ID UP-TO-DATE",
+        "description": "Partially visible text at very bottom edge of screen.",
+        "position": "bottom edge",
+        "color": "dark grey"
+      }
+    ],
+    "environment": {
+      "setting": "product UI mockup on white background",
+      "time_of_day": "N/A",
+      "lighting": "flat even white",
+      "background": "#f5f5f5 near-white"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic portrait",
+      "framing": "portrait, phone centered",
+      "focal_depth": "all sharp",
+      "visual_balance": "two stacked cards",
+      "color_palette": ["#ffffff white", "#e0e0e0 light grey", "#1a1a1a black", "#cc2222 red"],
+      "typography": {
+        "primary": "small caps sans-serif (SOUND PERSONALISATION, YOUR PERSONALIZATION)",
+        "secondary": "small regular sans-serif (body copy, labels)"
+      }
+    },
+    "symbolism_and_story": "A hearing health app that visualizes personal audiological data — the dipping red bars tell a story of high-frequency hearing loss, personalized to the user's hearing profile.",
+    "metadata": {
+      "style": "minimal medical/audio tech app UI",
+      "medium": "mobile app UI mockup",
+      "inspirations": ["Nothing Phone UI", "Apple Health", "audiologist diagnostic tools"],
+      "notes": "App context: hearing aid or headphone personalization. Intensity: 80%. Mode: RICHER."
+    }
+  },
+
+  {
+    "image_id": "B3-02",
+    "filename": "b079ca25c4e0cb773d0cbefe25ce6406.jpg",
+    "scene": "A smartphone displaying an advanced EQUALISER screen with a frequency response curve editor, vertical channel faders, frequency/Q value selectors, and a red RESET button. Clean light grey and white design with red accent on the active parameter.",
+    "prompt": "smartphone equalizer UI advanced mode, frequency response curve editor with red active point, vertical fader sliders grey and red, F 460HZ Q 1.4 parameter selectors, red RESET button, minimal grey white design",
+    "negative_prompt": "dark mode, photography, colorful gradient, people",
+    "width": 390,
+    "height": 844,
+    "steps": 26,
+    "seed": -1,
+    "guidance_scale": 7.0,
+    "style": "minimal audio app EQ UI, red and grey accent",
+    "subjects": [
+      {
+        "type": "smartphone EQ app screen",
+        "description": "Black-framed smartphone. Screen: EQUALISER UI in ADVANCED mode.",
+        "position": "center",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Phone device frame",
+        "description": "Same black bezel phone as B3-01. Status bar 10:25.",
+        "position": "full frame",
+        "color": "#1a1a1a black"
+      },
+      {
+        "label": "Back arrow + three-dot menu",
+        "description": "← back arrow top left. ⋮ three-dot menu top right.",
+        "position": "top navigation",
+        "color": "dark grey"
+      },
+      {
+        "label": "EQUALISER title",
+        "description": "'EQUALISER' in large bold condensed sans-serif, slightly pixelated/bitmap style — distinctive design choice.",
+        "position": "upper section",
+        "color": "near-black on grey"
+      },
+      {
+        "label": "SIMPLE / ADVANCED toggle",
+        "description": "Pill-shaped segmented control: 'SIMPLE' (light, unselected) | 'ADVANCED' (dark filled, selected).",
+        "position": "below title",
+        "color": "black active, grey inactive"
+      },
+      {
+        "label": "Frequency response curve panel",
+        "description": "Rounded rectangle white panel. X-axis labels: 20 / 50 / 100 / 500 / 1K / 5K / 10K / 20K. Horizontal baseline. Small grey dots at each frequency band. One red dot at approx 500Hz position, elevated above baseline — active node. Faint curve arc implied.",
+        "position": "middle upper",
+        "color": "white panel, grey dots, red active node"
+      },
+      {
+        "label": "Vertical channel faders",
+        "description": "Eight vertical fader controls. Each: tall vertical rounded pill track, center zero dot, + above / - below. Seven faders have dark grey dot at center (0). One fader (approximately 500Hz) has a RED dot/thumb elevated above center, showing +5 boost. Label '+5' below that fader in red.",
+        "position": "middle section",
+        "color": "grey faders, red active fader"
+      },
+      {
+        "label": "F 460HZ parameter selector",
+        "description": "Pill-shaped selector: 'F 460HZ' — frequency value for active EQ band. Light red/pink fill.",
+        "position": "lower section left",
+        "color": "light pink/red pill"
+      },
+      {
+        "label": "Q 1.4 parameter selector",
+        "description": "Pill-shaped selector: 'Q 1.4' — bandwidth Q factor. Light grey pill with dark fill accent on left side.",
+        "position": "lower section right",
+        "color": "grey pill with accent"
+      },
+      {
+        "label": "RESET button",
+        "description": "Bold red filled square button: 'RESET' in white caps. Bottom left.",
+        "position": "bottom left",
+        "color": "#cc0000 red fill, white text"
+      },
+      {
+        "label": "Undo / Redo buttons",
+        "description": "Two circular pill outline buttons with undo (↺) and redo (↻) icons. Bottom center-right.",
+        "position": "bottom center",
+        "color": "grey outline"
+      }
+    ],
+    "environment": {
+      "setting": "UI mockup, white background",
+      "lighting": "flat",
+      "background": "#f5f5f5"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "portrait centered",
+      "focal_depth": "all sharp",
+      "visual_balance": "centered column layout",
+      "color_palette": ["#f5f5f5 light grey", "#ffffff white", "#cc0000 red", "#1a1a1a near-black"],
+      "typography": {
+        "primary": "bold condensed near-bitmap (EQUALISER)",
+        "secondary": "clean small caps sans-serif (SIMPLE, ADVANCED, RESET)"
+      }
+    },
+    "symbolism_and_story": "Advanced EQ for precision audio tuning — the single red node represents focused control over a specific frequency, with the rest of the spectrum as context.",
+    "metadata": {
+      "style": "minimal audio EQ mobile UI",
+      "medium": "mobile app mockup",
+      "inspirations": ["Nothing Phone OS aesthetic", "pro audio plugin UIs"],
+      "notes": "Active band: 460Hz, +5 boost, Q=1.4."
+    }
+  },
+
+  {
+    "image_id": "B3-03",
+    "filename": "91a5791e0d6fb18f30d197abf13f6366.jpg",
+    "scene": "A close-up product render of a physical audio hardware device (amplifier or DAC unit) by RADIAN.LAB. Dark grey/slate aluminium body, large central volume knob with glowing white indicator line, small secondary button, MONO switch buttons, ventilation slots, and ACTIVE status indicator.",
+    "prompt": "RADIAN.LAB audio hardware product render, dark slate grey aluminium unit, large round volume knob with white indicator line, black display panel above, ACTIVE green dot indicator, MONO IN OUT MIX buttons, ventilation grille slots",
+    "negative_prompt": "people, colorful, light background, illustrative",
+    "width": 540,
+    "height": 960,
+    "steps": 30,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "industrial product render, dark hardware aesthetic",
+    "subjects": [
+      {
+        "type": "audio hardware device",
+        "description": "A solid-body audio unit in dark grey/slate aluminium material. Portrait orientation, showing front panel upper portion. Matte texture with subtle metallic sheen.",
+        "position": "center and lower frame",
+        "size": "full bleed"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Black display/screen area",
+        "description": "Large black matte rectangular panel occupying upper half of frame. Pure black, no displayed content visible. Edge is clean against the grey body.",
+        "position": "upper half",
+        "color": "#000000 black"
+      },
+      {
+        "label": "Device body",
+        "description": "Dark grey (#4a4a52) slate/aluminium body. Uniform matte texture. Slightly raised panel divisions visible.",
+        "position": "lower half",
+        "color": "#4a4a52 dark grey-slate"
+      },
+      {
+        "label": "Main volume/control knob",
+        "description": "Large circular knob, dark grey, recessed into the body. Knob face has a subtle concave texture. A short white glowing indicator line at approximately 8 o'clock position. Fine tick-mark dots surrounding the knob perimeter (approximately 12 dots).",
+        "position": "center of device body",
+        "color": "dark grey knob, white indicator line"
+      },
+      {
+        "label": "ACTIVE indicator",
+        "description": "Small white dot + 'ACTIVE' label in small white monospace caps. Upper right area of device body, near display edge.",
+        "position": "upper right of device body",
+        "color": "white dot + white text"
+      },
+      {
+        "label": "Secondary small button",
+        "description": "Small circular button to the right of the main knob.",
+        "position": "right of main knob",
+        "color": "dark grey, small circle"
+      },
+      {
+        "label": "RADIAN.LAB ventilation grille",
+        "description": "Bottom left: horizontal ventilation slots (three parallel rectangular openings). 'RADIAN.LAB' brand name in small white text below the slots.",
+        "position": "bottom left",
+        "color": "dark grey slots, white text"
+      },
+      {
+        "label": "MONO section label",
+        "description": "'MONO' label in small white caps with horizontal lines extending left and right (like a header).",
+        "position": "bottom right area",
+        "color": "white text"
+      },
+      {
+        "label": "IN / OUT / MIX buttons",
+        "description": "Three rectangular rounded buttons in a row: 'IN' / 'OUT' / 'MIX'. Pill/rounded-rect shape, dark grey, with white label text.",
+        "position": "bottom right, below MONO label",
+        "color": "dark grey buttons, white labels"
+      },
+      {
+        "label": "Bottom edge/feet",
+        "description": "Thin horizontal ledge at very bottom suggesting a shelf or rubber feet strip.",
+        "position": "bottom",
+        "color": "dark grey"
+      }
+    ],
+    "environment": {
+      "setting": "product photography / 3D render",
+      "time_of_day": "N/A — artificial light",
+      "lighting": "soft directional light from upper right, slight reflective sheen on knob",
+      "background": "#000000 pure black upper half (display)"
+    },
+    "composition": {
+      "camera_angle": "straight-on, slight upward tilt",
+      "framing": "portrait, close-up front panel",
+      "focal_depth": "all sharp",
+      "visual_balance": "knob centered, asymmetric details",
+      "color_palette": ["#000000 black", "#4a4a52 slate grey", "#ffffff white (indicators)"],
+      "typography": {
+        "primary": "small caps monospace (ACTIVE, MONO, IN, OUT, MIX, RADIAN.LAB)"
+      }
+    },
+    "symbolism_and_story": "Presents high-end audio equipment as architectural object — minimal, purposeful, stripped of decoration. The single illuminated indicator line on the knob implies precision and restraint.",
+    "metadata": {
+      "style": "industrial product render",
+      "medium": "3D render or product photography",
+      "inspirations": ["Dieter Rams Braun design", "Chord Electronics", "high-end Japanese audio equipment"],
+      "notes": "Brand: RADIAN.LAB. Controls: large main knob (volume/gain), IN/OUT/MIX switching, ACTIVE status."
+    }
+  },
+
+  {
+    "image_id": "B3-04",
+    "filename": "b7e16a98edbd5e797a079b038352c4c4.jpg",
+    "scene": "A skeuomorphic audio control knob UI element centered on a light grey gradient background. The knob is rendered in brushed/radial-gradient silver/white metal with a red indicator line, surrounded by a ring of red dots as value markers. MIN and MAX labels at bottom corners.",
+    "prompt": "skeuomorphic round audio knob UI element, brushed silver radial gradient surface, red indicator line pointing right, ring of red dot markers around knob, MIN label bottom left MAX label bottom right, light grey background",
+    "negative_prompt": "flat design, photography, people, dark background",
+    "width": 800,
+    "height": 1000,
+    "steps": 28,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "skeuomorphic UI element, metallic knob design",
+    "subjects": [
+      {
+        "type": "audio knob UI element",
+        "description": "Large circular knob rendered in high-fidelity skeuomorphic style. Centered in frame against soft grey gradient background.",
+        "position": "center",
+        "size": "dominant, fills most of frame"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Background",
+        "description": "Soft light grey gradient background — slightly lighter center, darker at edges.",
+        "position": "full bleed",
+        "color": "#d0d0d0 light grey"
+      },
+      {
+        "label": "Outer knob ring",
+        "description": "Thin dark grey circular ring forming the outermost edge of the knob. Slight 3D bevel effect suggesting depth.",
+        "position": "outermost of knob",
+        "color": "#808080 medium grey"
+      },
+      {
+        "label": "Knob face surface",
+        "description": "Main circular face: brushed/radial gradient rendering in white/silver. Center slightly brighter, edges slightly darker. No texture lines — smooth polished look. Very slight concave impression.",
+        "position": "main knob face",
+        "color": "#e8e8e8 to #c0c0c0 silver gradient"
+      },
+      {
+        "label": "Red indicator line",
+        "description": "Short bold red line extending from center outward toward 3 o'clock position (approx 3/4 of the way to maximum). Clean, solid red.",
+        "position": "knob face, pointing right/3 o'clock",
+        "color": "#cc0000 red"
+      },
+      {
+        "label": "Red dot markers ring",
+        "description": "Approximately 20 red circular dots arranged in an arc from lower-left to lower-right (roughly 240 degrees). Dots represent value positions from MIN to MAX. Even spacing. Slightly smaller where further from active position.",
+        "position": "surrounding knob, arc pattern",
+        "color": "#cc0000 red"
+      },
+      {
+        "label": "Two black dots at MAX side",
+        "description": "Two black/dark dots at approximately 4 o'clock and 5 o'clock positions, suggesting a different marker type near MAX.",
+        "position": "lower right arc",
+        "color": "#333333 dark"
+      },
+      {
+        "label": "MIN label",
+        "description": "'MIN' in small dark sans-serif text, bottom left below the dot arc.",
+        "position": "bottom left",
+        "color": "#333333 dark"
+      },
+      {
+        "label": "MAX label",
+        "description": "'MAX' in small dark sans-serif text, bottom right below the dot arc.",
+        "position": "bottom right",
+        "color": "#333333 dark"
+      }
+    ],
+    "environment": {
+      "setting": "isolated UI element render",
+      "time_of_day": "N/A",
+      "lighting": "simulated soft overhead light with subtle shadow below knob",
+      "background": "#d0d0d0 soft grey"
+    },
+    "composition": {
+      "camera_angle": "straight-on, slight top-down perspective",
+      "framing": "portrait, centered subject",
+      "focal_depth": "sharp throughout",
+      "visual_balance": "perfectly centered",
+      "color_palette": ["#d0d0d0 light grey", "#e8e8e8 silver white", "#cc0000 red", "#333333 dark grey"],
+      "typography": {
+        "secondary": "small clean sans-serif (MIN, MAX)"
+      }
+    },
+    "effects": ["radial gradient on knob face", "subtle drop shadow", "bevel/emboss ring effect"],
+    "symbolism_and_story": "The indicator at 3 o'clock (75% position) suggests a high but not maximum setting. The red dot ring creates a visual representation of the knob's range — a progress indicator as aesthetic element.",
+    "metadata": {
+      "style": "skeuomorphic UI knob design",
+      "medium": "digital illustration / UI render",
+      "inspirations": ["iOS 6 era skeuomorphic design", "hardware mixer knob aesthetics", "Dieter Rams precision controls"],
+      "notes": "Knob indicator position: approximately 75% (3 o'clock). Red dots from MIN bottom-left to MAX bottom-right."
+    }
+  },
+
+  {
+    "image_id": "B3-05",
+    "filename": "d8eb8832da14201d014f1408063cc902.jpg",
+    "scene": "A dark-themed music app UI concept for a coffee shop / listening environment (Russian language UI). Four phone screens are shown: two upper and two lower. Screens feature vinyl record visuals, stacked circles for album browsing, red/yellow/dark color scheme with artist info (DJ Rich Rude Boyz, Peace Division, The Weeknd), and a playlist/now-playing view.",
+    "prompt": "dark music streaming app Russian language UI, four phone screens, vinyl record circular visuals red yellow grey stacked, Peace Division The Weeknd artist pages, red playlist tracks, dark mode minimal design",
+    "negative_prompt": "light background, colorful gradient, photography of people",
+    "width": 1200,
+    "height": 900,
+    "steps": 28,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "dark mode music streaming app, minimal circular vinyl aesthetic",
+    "subjects": [
+      {
+        "type": "four-phone app UI mockup grid",
+        "description": "Four iPhone/Android phones arranged: two side by side (top row) and two side by side (bottom row). Russian body copy flanks them. All dark background.",
+        "position": "full frame",
+        "size": "full"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Overall background",
+        "description": "Very dark grey/near-black background (#1a1a1a).",
+        "position": "full bleed",
+        "color": "#1a1a1a near-black"
+      },
+      {
+        "label": "Top-left phone — library/home screen",
+        "description": "Dark screen. Stats: '7 ДНЕЙ / В неделю' and '24 ЧАСА / Музыки'. Large red circle with vinyl-like inner rings and small album art thumbnail inside. Artist: 'DJ RICH RUDEBOYZ / PEACE DIVISION' in white caps. Bottom: 'Мои Пластинки | Артисты' tabs. Now playing: 'THE WEEKND' with play/pause controls.",
+        "position": "upper left phone",
+        "color": "dark bg, red circle, white text"
+      },
+      {
+        "label": "Top-right phone — stacked album circles",
+        "description": "Dark screen. Three overlapping large circles: top red (vinyl/album art thumbnail), middle yellow/golden circle, bottom dark grey circle. Each has an album thumbnail inside and artist/album name. 'DJ RICH RUDEBOYZ / PEACE DIVISION' on red. 'BY SOME ARTIST / THE WEEKND' on yellow. Now playing bar: THE WEEKND with transport controls.",
+        "position": "upper right phone",
+        "color": "dark bg, red circle, yellow circle, grey circle"
+      },
+      {
+        "label": "Russian body copy — right of top phones",
+        "description": "Small white Russian text: 'МУЗЫКА / Возможность слушать сеты диджеев и плейлисты, которые создают атмосферу кофейни. Ощущение уюта — где бы вы ни были'.",
+        "position": "right of top phones",
+        "color": "white on dark"
+      },
+      {
+        "label": "Bottom-left phone — playlist view",
+        "description": "Red background section at top with Surf/Coffee/Propaganda Machine illustration (black line art on red). 'DJ RICH RUDEBOYZ / PEACE DIVISION' in white. Track list: The Summer Vacation 01:34, Starboy 03:30, The Hills 04:24, Can't Feel My Face 04:01. Each with play icon.",
+        "position": "lower left phone",
+        "color": "red upper section, dark lower, white text"
+      },
+      {
+        "label": "Bottom-right phone — now playing",
+        "description": "Dark background. Top: '2:35:48 timeless.' Large album art illustration (same surf/coffee machine line art) on a red circle. Below: large dark disc/turntable graphic with white play/rewind/forward transport controls. Red bottom section.",
+        "position": "lower right phone",
+        "color": "dark bg, red accent, white controls"
+      },
+      {
+        "label": "Russian body copy — left of bottom phones",
+        "description": "Small white Russian text: 'ЧАСТЬ ИДЕНТИЧНОСТИ КОМЬЮНИТИ / Это продуманные подборки, поддерживающие настроение дня — утро, фокус, расслабление, вечерняя энергия. Музыка усиливает впечатление от взаимодействия с приложением'.",
+        "position": "left of bottom phones",
+        "color": "white on dark"
+      }
+    ],
+    "environment": {
+      "setting": "app UI design presentation",
+      "time_of_day": "N/A",
+      "lighting": "dark UI simulation",
+      "background": "#1a1a1a near-black"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "landscape composite, 2x2 phone grid",
+      "focal_depth": "all sharp",
+      "visual_balance": "symmetric four-phone grid",
+      "color_palette": ["#1a1a1a near-black", "#cc2200 red", "#ffc000 golden yellow", "#ffffff white"],
+      "typography": {
+        "primary": "bold condensed caps (PEACE DIVISION, THE WEEKND)",
+        "secondary": "small Russian sans-serif body copy"
+      }
+    },
+    "symbolism_and_story": "A music app designed for coffee shop ambiance — the circular vinyl forms create a tactile, analog warmth. Red and yellow are energetic, associated with warmth and social experience.",
+    "metadata": {
+      "style": "dark mode music streaming app UI",
+      "medium": "mobile app UI mockup",
+      "inspirations": ["Spotify dark mode", "Vinyl LP cover design", "Russian product design"],
+      "notes": "Language: Russian. Artists: DJ Rich Rudeboyz, Peace Division, The Weeknd. Concept: coffee shop/lounge music atmosphere."
+    }
+  },
+
+  {
+    "image_id": "B3-06",
+    "filename": "d0c70c6d73b89443e6950dbc0f7e0e37.jpg",
+    "scene": "A grid of six Apple Watch UI mockups showing music player states in black and white design. Screens include: clock + mini player, full player with controls, volume at 80%, dark mode player, 'skip back' state, and 'add to library' notification. Songs are by Beyoncé and Nicki Minaj.",
+    "prompt": "Apple Watch music player UI mockups six states, black and white design, clock face with ALIEN SUPERSTAR Beyoncé mini player, full playback controls skip pause forward, 80% volume display, dark mode circular progress, skip back Love On Top, add to library Feeling Myself Nicki Minaj",
+    "negative_prompt": "colorful, photography, people, dark background throughout",
+    "width": 800,
+    "height": 1200,
+    "steps": 26,
+    "seed": -1,
+    "guidance_scale": 7.0,
+    "style": "Apple Watch UI, minimal black and white player states",
+    "subjects": [
+      {
+        "type": "six Apple Watch screen mockups",
+        "description": "Six rounded-square watch face screens arranged in a 3-row, 2-column grid on a light grey background.",
+        "position": "full frame",
+        "size": "full"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Screen 1 (top left) — clock + mini player",
+        "description": "White background. '12:25' large bold digital time. 'Quinta-feira / 12 Mai' (Portuguese: Thursday 12 May). Below: rounded-rect card 'ALIEN SUPERSTAR / Beyoncé : ⋮' with |◀ ‖ ▶| transport controls. '-1:02' progress.",
+        "position": "top left",
+        "color": "white screen, black text"
+      },
+      {
+        "label": "Screen 2 (top right) — full player",
+        "description": "White background. '●● ALL ON YOUR MIND / Beyonce' small top. '12:25 Quinta-feira 12 Mai' smaller. Large circle (album art placeholder). Three transport controls centered: |◀ ‖ ▶|. 'ALIEN SUPERSTAR / Beyoncé' artist+track. '2:00 ── 2:20' progress bar. '⋮' menu bottom right.",
+        "position": "top right",
+        "color": "white, black"
+      },
+      {
+        "label": "Screen 3 (middle left) — volume",
+        "description": "Black background. Large speaker/volume icon (🔊) and '80%' in large white text. Circular progress indicator at bottom.",
+        "position": "middle left",
+        "color": "black bg, white text"
+      },
+      {
+        "label": "Screen 4 (middle right) — dark player",
+        "description": "Black background. '●● ALL ON YOUR MIND / Beyonce' small top. '12:25 Quinta-feira 12 Mai'. Large circular progress ring (light grey on dark). Three transport controls: |◀ ‖ ▶| in white. 'ALIEN SUPERSTAR / Beyoncé'. '-1:02 ── 2:20' progress.",
+        "position": "middle right",
+        "color": "black bg, white text/icons"
+      },
+      {
+        "label": "Screen 5 (bottom left) — skip back",
+        "description": "Black background. Large |◀ skip-back icon white left. Text right: 'Love On Top - / Homecoming Live / Beyoncé'. Bottom: circular dark progress ring.",
+        "position": "bottom left",
+        "color": "black bg, white"
+      },
+      {
+        "label": "Screen 6 (bottom right) — add to library",
+        "description": "Black background. '+🎵' add music icon. 'Feeling Myself (ft. Beyoncé) / Nicki Minaj, Beyoncé'. 'Tocar Agora' (Play Now) button — white pill. Bottom row: three-line icon + ⊕ + ⋮. Circular dark ring.",
+        "position": "bottom right",
+        "color": "black bg, white text, white pill button"
+      }
+    ],
+    "environment": {
+      "setting": "Apple Watch UI design showcase",
+      "time_of_day": "12:25",
+      "lighting": "flat digital",
+      "background": "#e8e8e8 light grey"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "portrait, 3x2 grid",
+      "focal_depth": "all sharp",
+      "visual_balance": "symmetric grid, alternating white/black screens",
+      "color_palette": ["#ffffff white", "#000000 black", "#e8e8e8 light grey"],
+      "typography": {
+        "primary": "SF Pro / Apple system font (clean sans-serif)",
+        "secondary": "small caps bold for song/artist names"
+      }
+    },
+    "symbolism_and_story": "A comprehensive design system for watch-based music control — each screen state is a micro-interaction moment in a listening session. The alternating black/white screens demonstrate light and dark mode parity.",
+    "metadata": {
+      "style": "Apple Watch music player UI design system",
+      "medium": "UI design mockup",
+      "inspirations": ["Apple Watch UI guidelines", "Apple Music app"],
+      "notes": "Language includes Portuguese (Quinta-feira, Tocar Agora). Songs: Alien Superstar, All On Your Mind (Beyoncé), Love On Top, Feeling Myself (Nicki Minaj)."
+    }
+  },
+
+  {
+    "image_id": "B3-07",
+    "filename": "6687d360fdd9ec8964b32cc91e23a2ef.jpg",
+    "scene": "A dark-mode equalizer UI showing five vertical band faders (400Hz, 1kHz, 2.5kHz, 6.3kHz, 16kHz) with white circular thumb handles on a +10/-10 dB range, plus a horizontal CLEAR BASS slider below. Very minimal dark grey design.",
+    "prompt": "dark mode equalizer UI, five vertical EQ band faders, white circular handles, 400 1k 2.5k 6.3k 16k frequency labels, plus10 minus10 dB range, horizontal CLEAR BASS slider at high value, dark charcoal background",
+    "negative_prompt": "colorful, light background, photography, people",
+    "width": 750,
+    "height": 1000,
+    "steps": 24,
+    "seed": -1,
+    "guidance_scale": 7.0,
+    "style": "dark minimal audio EQ interface",
+    "subjects": [
+      {
+        "type": "EQ control UI screen",
+        "description": "Dark charcoal screen with five vertical sliders and a horizontal slider below. Clean, minimal, no chrome.",
+        "position": "full frame",
+        "size": "full"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Background",
+        "description": "#2a2a2a dark charcoal background. Slight texture or grain.",
+        "position": "full bleed",
+        "color": "#2a2a2a"
+      },
+      {
+        "label": "+10 / 0 / -10 axis labels",
+        "description": "'+10' top left, '0' center left, '-10' bottom left — dB range markers in white small text.",
+        "position": "left edge",
+        "color": "white"
+      },
+      {
+        "label": "Band 1 — 400Hz fader",
+        "description": "Vertical thin track. White circle handle at 0 dB (center). Frequency label '400' below.",
+        "position": "leftmost fader",
+        "color": "grey track, white handle"
+      },
+      {
+        "label": "Band 2 — 1kHz fader",
+        "description": "White circle handle at 0 dB. Label '1k'.",
+        "position": "second fader",
+        "color": "grey track, white handle"
+      },
+      {
+        "label": "Band 3 — 2.5kHz fader",
+        "description": "White circle handle below 0, at approximately -6 dB position. Label '2.5k'.",
+        "position": "third fader (center)",
+        "color": "grey track, white handle"
+      },
+      {
+        "label": "Band 4 — 6.3kHz fader",
+        "description": "White circle handle above 0, at approximately +4 dB. Label '6.3k'.",
+        "position": "fourth fader",
+        "color": "grey track, white handle"
+      },
+      {
+        "label": "Band 5 — 16kHz fader",
+        "description": "White circle handle at near +10 dB (top). Label '16k'.",
+        "position": "rightmost fader",
+        "color": "grey track, white handle"
+      },
+      {
+        "label": "Horizontal divider",
+        "description": "Thin horizontal line separating vertical faders from CLEAR BASS section below.",
+        "position": "center horizontal",
+        "color": "#404040 mid grey"
+      },
+      {
+        "label": "CLEAR BASS section",
+        "description": "Below divider. Left: 'CLEAR BASS' label with stacked horizontal lines icon (bass graphic). Horizontal slider track full width. White circle handle positioned at approximately +7 to +8 (near right). Tick marks at -10, 0, +10.",
+        "position": "lower section",
+        "color": "grey, white handle"
+      }
+    ],
+    "environment": {
+      "setting": "dark app UI screen",
+      "lighting": "flat dark",
+      "background": "#2a2a2a"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "portrait",
+      "focal_depth": "all sharp",
+      "visual_balance": "five equal-width fader columns",
+      "color_palette": ["#2a2a2a dark charcoal", "#ffffff white (handles)", "#404040 track grey"],
+      "typography": {
+        "secondary": "small white sans-serif (frequency labels, dB markers)"
+      }
+    },
+    "symbolism_and_story": "A smiley-curve EQ setting: 2.5kHz (midrange) cut, with 16kHz (air) and bass enhanced — a classic consumer audio EQ preference. The CLEAR BASS slider at near-maximum reinforces this bass-heavy tuning.",
+    "metadata": {
+      "style": "dark minimal EQ UI",
+      "medium": "mobile app UI",
+      "inspirations": ["Sony audio apps", "professional DAW plugin UIs"],
+      "notes": "EQ curve: flat at 400Hz and 1kHz, -6 at 2.5kHz, +4 at 6.3kHz, +10 at 16kHz. CLEAR BASS near maximum."
+    }
+  },
+
+  {
+    "image_id": "B3-08",
+    "filename": "ed0f48f420b334e123c2a29aac08be08.jpg",
+    "scene": "A presentation of two iPhone 14 Pro mockups on a warm tan/beige background for 'Music OS' (Ellectronics). Left phone: 'Forest / Beast Mix' with a reel-to-reel tape icon and dot-matrix VU meter visualization. Right phone: 'Mashup' with a waveform editor and three analog-style control knobs.",
+    "prompt": "two iPhone 14 Pro mockups warm beige background, Music OS app, left phone reel to reel tape icon brown screen dot-matrix VU meter red LED dots, right phone waveform editor cream screen three black analog knobs, Forest Beast Mix and Mashup modes",
+    "negative_prompt": "dark background, people, photography, colorful gradient",
+    "width": 1200,
+    "height": 900,
+    "steps": 28,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "music app UI, analog warmth meets digital, warm beige",
+    "subjects": [
+      {
+        "type": "dual iPhone 14 Pro mockup",
+        "description": "Two blue-frame iPhone 14 Pro devices side by side on warm tan background.",
+        "position": "center frame",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Background + labels",
+        "description": "Warm tan/beige #c8b8a2 background. Top left: 'Music OS' label. Top right: 'Ellectronics'. Bottom left: 'Editor'. Bottom right: 'Music OS'.",
+        "position": "outer frame",
+        "color": "#c8b8a2 warm tan"
+      },
+      {
+        "label": "Left phone — Forest / Beast Mix screen",
+        "description": "Warm brown screen (#6a5040). Header: 'Forest' bold + 'Beast Mix' grey. Top right: dropdown chevron. Center: large reel-to-reel tape hub icon (two black spool arms radiating from center circle). Below: time stamps '00:00:10' and '00:02:00'. Lower section: large dot-matrix VU meter visualization — a grid of brown/dark dots with several red LED dots scattered in a vertical line suggesting peak activity.",
+        "position": "left phone",
+        "color": "warm brown bg, black tape icon, red LED dots"
+      },
+      {
+        "label": "Right phone — Mashup screen",
+        "description": "Cream/light beige screen (#e8e0d0). Header: 'Mashup' bold + dropdown chevron. Upper section: waveform editor — horizontal waveform visualization (grey peaks) with vertical cursor line at start. Lower section: three black circular knobs of different sizes — small (top left, light grey), large (bottom center), medium (top right). Each with white indicator line.",
+        "position": "right phone",
+        "color": "cream bg, grey waveform, black knobs"
+      }
+    ],
+    "environment": {
+      "setting": "app UI design presentation",
+      "time_of_day": "N/A",
+      "lighting": "warm flat",
+      "background": "#c8b8a2 warm tan"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic, slight perspective suggestion",
+      "framing": "landscape, two phones centered",
+      "focal_depth": "all sharp",
+      "visual_balance": "symmetric two-phone layout",
+      "color_palette": ["#c8b8a2 warm tan", "#6a5040 warm brown (left phone)", "#e8e0d0 cream (right phone)", "#cc2200 red LED dots", "#000000 black knobs"],
+      "typography": {
+        "primary": "bold sans-serif (Forest, Mashup)",
+        "secondary": "grey regular sans-serif (Beast Mix)"
+      }
+    },
+    "symbolism_and_story": "Music OS frames digital audio editing through the lens of analog warmth — the reel-to-reel icon and dot-matrix meter evoke tape machines; the cream and brown palette feels like vintage studio equipment.",
+    "metadata": {
+      "style": "warm analog-digital music app UI",
+      "medium": "mobile app UI mockup",
+      "inspirations": ["vintage tape recorder design", "Logic Pro tape delay plugin", "iOS music production app aesthetics"],
+      "notes": "App: Music OS by Ellectronics. Modes: Forest/Beast Mix (playback), Mashup (waveform editing with knobs)."
+    }
+  },
+
+  {
+    "image_id": "B3-09",
+    "filename": "5896165680d3498e50f9aaa513cbeed3.jpg",
+    "scene": "A dark-mode mobile equalizer app (Music Volume EQ) showing a 10-band EQ with a green glowing curve, a PRESET section with BASS BOOST and VIRTUALIZER knobs, and a VU meter display. The design uses bright green on near-black with glowing neon effects.",
+    "prompt": "dark mode 10-band equalizer app, green glowing EQ curve with dot handles, frequency bands 32 to 16K, green glow fill under curve, PRESET section with BASS BOOST VIRTUALIZER semi-circular knobs, VU label, dark near-black background",
+    "negative_prompt": "light background, colorful, photography, people",
+    "width": 390,
+    "height": 844,
+    "steps": 28,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "dark mode neon green audio app UI",
+    "subjects": [
+      {
+        "type": "mobile EQ app screen",
+        "description": "Dark near-black screen with bright green neon-style EQ curve interface.",
+        "position": "full frame",
+        "size": "full"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Navigation bar",
+        "description": "← back arrow / 'MUSIC VOLUME EQ' title with ⚠ yellow warning icon / floppy disk icon / speaker icon.",
+        "position": "top",
+        "color": "white/grey on near-black"
+      },
+      {
+        "label": "EQUALIZER card",
+        "description": "Dark rounded card. 'EQUALIZER' white bold header. '10 EQ' green pill toggle right (ON). Green ON toggle left.",
+        "position": "upper card",
+        "color": "dark card, green accents"
+      },
+      {
+        "label": "Frequency band labels",
+        "description": "Ten frequency labels across top: 32 / 64 / 125 / 250 / 500 / 1K / 2K / 4K / 8K / 16K in small grey text.",
+        "position": "below header, above graph",
+        "color": "grey"
+      },
+      {
+        "label": "10-band EQ curve",
+        "description": "Line graph with 10 nodes connected by a smooth curve. Nodes are bright green circles. Curve fills below with darker green glow/area. Curve shape: starts high at 32Hz, drops through 125-250, rises at 500 and 1K, dips at 4K, rises again at 8K and 16K. Vertical grid lines behind. Values below: +7 +4 +1 +2 -1 +2 +0 -3 +1 +0.",
+        "position": "main card area",
+        "color": "#22ff88 green curve and glow fill"
+      },
+      {
+        "label": "First node (32Hz)",
+        "description": "Large grey circular node at top-left, elevated slightly above the others. Has a different grey color suggesting it is a master/gain control.",
+        "position": "leftmost node",
+        "color": "grey circle"
+      },
+      {
+        "label": "PRESET card",
+        "description": "Below EQ card. 'PRESET' header. '2' in center display. Green ON toggle left. Grey OFF toggle right.",
+        "position": "lower card",
+        "color": "dark card"
+      },
+      {
+        "label": "BASS BOOST knob",
+        "description": "Semi-circular arc knob left: thin green line indicator at MIN position. 'MIN' and 'MAX' labels. 'BASS BOOST' label below.",
+        "position": "lower card left",
+        "color": "dark grey arc, green indicator"
+      },
+      {
+        "label": "VU display",
+        "description": "Center: 'VU' in large bold white on dark rounded rectangle. VU meter display indicator.",
+        "position": "lower card center",
+        "color": "white on dark"
+      },
+      {
+        "label": "VIRTUALIZER knob",
+        "description": "Semi-circular arc knob right: grey indicator at near-MIN. 'MIN' 'MAX' labels. 'VIRTUALIZER' label.",
+        "position": "lower card right",
+        "color": "dark grey arc, grey indicator"
+      }
+    ],
+    "environment": {
+      "setting": "mobile app UI",
+      "lighting": "dark with neon green glow",
+      "background": "#111111 near-black"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "portrait mobile",
+      "focal_depth": "all sharp",
+      "visual_balance": "centered column, symmetric knob placement",
+      "color_palette": ["#111111 near-black", "#22ff88 neon green", "#ffffff white", "#ffcc00 yellow (warning icon)"],
+      "typography": {
+        "primary": "bold white caps (EQUALIZER, VU, BASS BOOST, VIRTUALIZER)",
+        "secondary": "small grey sans-serif (frequency labels)"
+      }
+    },
+    "symbolism_and_story": "The glowing green curve against black evokes professional audio visualization monitors. The smiley-curve variant with bass emphasis and air boost is a popular consumer preset.",
+    "metadata": {
+      "style": "dark neon music equalizer app UI",
+      "medium": "mobile app screenshot/UI",
+      "inspirations": ["classic spectrum analyzer displays", "Sony Walkman EQ visualization", "music visualizer apps"],
+      "notes": "App: Music Volume EQ. 10 bands: 32-16KHz. Preset 2 active. Bass Boost at MIN, Virtualizer near-MIN."
+    }
+  },
+
+  {
+    "image_id": "B3-10",
+    "filename": "abc53469edc69aa232f2f50cf67292fc.jpg",
+    "scene": "A macOS PDF viewer window showing a music/art project called 'ROOM' — a rendered 3D interior scene (living room with Chesterfield sofa, Persian rug, wooden wardrobe, round table with laptop and can) overlaid with video camera recording UI (PLAY, timecode, focus brackets). Below: large pixel/dot-matrix 'ROOM' typography on a cream/dark wood panel. Song lyrics scroll across the top.",
+    "prompt": "macOS PDF viewer window, ROOM project, 3D rendered living room interior Chesterfield sofa Persian rug dark wood wardrobe round table laptop can, video recording overlay UI with PLAY timecode brackets, pixel dot-matrix ROOM text below, song lyrics at top, WED 19 APRIL 2023 RUSSIA IRKUTSK labels",
+    "negative_prompt": "flat design, photography of people, abstract, minimal",
+    "width": 1080,
+    "height": 1080,
+    "steps": 30,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "3D render inside PDF viewer, pixel typography, mixed media concept art",
+    "subjects": [
+      {
+        "type": "macOS app window",
+        "description": "macOS Preview/PDF viewer chrome: red/yellow/green traffic lights, toolbar icons, 'ROOMM2.pdf / 1 страница' tab. Document inside.",
+        "position": "outer frame",
+        "size": "full"
+      }
+    ],
+    "objects": [
+      {
+        "label": "macOS window chrome",
+        "description": "Top bar: red/yellow/green dots, sidebar toggle, navigation arrows, 'ROOMM2.pdf 1 страница' (Russian: 1 page), info, zoom, share, annotate, rotate, bookmark, search icons.",
+        "position": "topmost",
+        "color": "grey macOS toolbar"
+      },
+      {
+        "label": "Song lyrics text strip",
+        "description": "White text on dark banner at top of document: 'My room, my room, my room with me Every night you were in my room My room, my room with me I guess I can't state my feelings too soon / I don't know you And I can't put no threats in the air'. Italicized white text.",
+        "position": "top of document",
+        "color": "white on dark grey"
+      },
+      {
+        "label": "3D rendered living room",
+        "description": "Realistic 3D render: hardwood floor, grey-blue wall, red Persian/Oriental rug (geometric pattern), dark brown leather Chesterfield sofa (tufted), round wooden pedestal table center, open laptop on table, aluminium can beside laptop, wooden high-back chair right, large dark walnut wardrobe/cabinet far right. Warm interior lighting from unseen source.",
+        "position": "main document image",
+        "color": "warm browns, red rug, grey-blue walls"
+      },
+      {
+        "label": "Video recording overlay",
+        "description": "White thin-line camera UI overlaid on 3D image: corner bracket focus reticles (top-left, top-right, bottom-left, bottom-right), 'PLAY ▶' label center-left, small toggle/switch top-right, '00:00:00:69' timecode lower right, ISBN barcode top right (ISBN 978-80-87049-09-9).",
+        "position": "over 3D image",
+        "color": "white on image"
+      },
+      {
+        "label": "WED 19 APRIL 2023 / RUSSIA IRKUTSK labels",
+        "description": "Bottom corners of image: '* WED 19 / APRIL 2023' bottom left, '* RUSSIA / IRKUTSK' bottom right. Asterisk/snowflake markers. White on dark.",
+        "position": "bottom corners of image",
+        "color": "white on dark"
+      },
+      {
+        "label": "ROOM pixel typography",
+        "description": "Lower panel: large 'ROOM' text in a pixel/dot-matrix/bitmap typeface on dark wood grain or dark cream background. Letters are wide, blocky, made of square/rectangular pixel segments.",
+        "position": "bottom of document",
+        "color": "dark pixel text on cream/wood tone"
+      }
+    ],
+    "environment": {
+      "setting": "3D rendered interior within a document art project",
+      "time_of_day": "interior evening light (warm artificial)",
+      "lighting": "warm fill from left/ambient in 3D scene",
+      "background": "macOS window chrome outer"
+    },
+    "composition": {
+      "camera_angle": "slightly elevated angle looking into room corner (3D render); flat orthographic for outer window",
+      "framing": "square document in landscape mac window",
+      "focal_depth": "3D render sharp throughout",
+      "visual_balance": "image upper, pixel type lower",
+      "color_palette": ["#8b2020 red rug", "#4a3020 dark brown (furniture)", "#8090a0 grey-blue wall", "#f0e8d0 cream", "#1a1a1a black (pixel type)"],
+      "typography": {
+        "primary": "pixel/dot-matrix display font (ROOM — very wide, blocky)",
+        "secondary": "thin white UI overlay text (PLAY, timecode, labels)"
+      }
+    },
+    "symbolism_and_story": "ROOM is a multimedia project blending 3D interior visualization, music lyrics, and film/video recording aesthetics. The Chesterfield sofa, Persian rug, and laptop create a specific domestic scene — private, lived-in, emotional. The lyrics ('My room, my room with me') make the space a character.",
+    "metadata": {
+      "style": "3D render concept art, mixed media design",
+      "medium": "PDF design document / digital art project",
+      "inspirations": ["Frank Ocean album art aesthetics", "architectural visualization", "pixel/retro typography"],
+      "notes": "Project: ROOM. Date: WED 19 APRIL 2023. Location: Russia, Irkutsk. ISBN: 978-80-87049-09-9. File: ROOMM2.pdf."
+    }
+  },
+
+  {
+    "image_id": "B3-11",
+    "filename": "29c085479c7b9da9c261d14eb41d8ee7.jpg",
+    "scene": "A high-contrast black and white photograph of an iPhone 14 Pro at a slight perspective angle, displaying the sacred.computer website — a terminal/text-based interface showing a font selection dropdown menu over a grid background.",
+    "prompt": "iPhone 14 Pro angled perspective photo black and white, terminal-style website sacred.computer, font selection dropdown menu monospace fonts list Commit Mono Departure Mono Fira Code JetBrains Mono, grid paper background, grainy B&W photography",
+    "negative_prompt": "color, flat orthographic, dark background, people",
+    "width": 1080,
+    "height": 1080,
+    "steps": 28,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "B&W product photography, angled perspective, terminal UI",
+    "subjects": [
+      {
+        "type": "iPhone 14 Pro with browser",
+        "description": "Physical iPhone 14 Pro with titanium frame, dynamic island, rendered in B&W. Angled slightly from upper-left perspective. Screen shows a website with terminal/CLI aesthetic.",
+        "position": "center frame, angled",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "iPhone physical device",
+        "description": "Titanium/grey frame smartphone. Dynamic island (pill-shaped top cutout). Side buttons visible (volume up/down left, power right). B&W photo treatment — all colors desaturated. Signal/wifi/battery status bar.",
+        "position": "center, angled",
+        "color": "grey metallic, B&W"
+      },
+      {
+        "label": "Browser chrome",
+        "description": "Safari: time 1:49. 'sacred.computer' URL bar. Refresh icon. Hamburger/grid icon top left.",
+        "position": "phone top",
+        "color": "grey"
+      },
+      {
+        "label": "sacred.computer website",
+        "description": "Terminal-style website on grid-paper background. Main navigation: 'FONTS ^+T  THEME ^+G  GRID' in monospace.",
+        "position": "website top",
+        "color": "light grey grid bg"
+      },
+      {
+        "label": "FONTS dropdown menu",
+        "description": "Dropdown/modal overlay listing monospace fonts with ✦ bullet markers and [license] tags: Commit Mono V143 [OFL], Departure Mono [MIT], Fira Code [OFL], Fragment Mono [OFL], Geist Mono [OFL] [DEFAULT], Iosevka Term [OFL], JetBrains Mono [OFL], SFMono Square [FOSS], Server Mono 0.0.6 [OFL], TX-02 Berkeley Mono™. 'Press space to ▅ CLOSE' at bottom.",
+        "position": "main screen content",
+        "color": "light grey bg, dark monospace text"
+      },
+      {
+        "label": "Body text visible (partially)",
+        "description": "Right of dropdown: partially visible text about component, tools, sites with features.",
+        "position": "right of dropdown",
+        "color": "grey on grid"
+      },
+      {
+        "label": "Below dropdown links",
+        "description": "Three arrow links: '→ Hire our studio to build your applications', '→ View the SRCL source code', '→ Try our hosting provider Vercel'.",
+        "position": "below dropdown",
+        "color": "dark on grey"
+      },
+      {
+        "label": "ACTION BAR section",
+        "description": "Partially visible: '▼ ACTION BAR / The action bar is a container for... and secondary actions styled...'",
+        "position": "bottom of screen",
+        "color": "dark on grey"
+      }
+    ],
+    "environment": {
+      "setting": "studio product photography, white/light grey background",
+      "time_of_day": "N/A (studio)",
+      "lighting": "soft diffuse white light, slight shadow under device",
+      "background": "#f0f0f0 light grey"
+    },
+    "composition": {
+      "camera_angle": "slightly elevated, angled left-to-right perspective",
+      "framing": "square, phone at 15-degree angle",
+      "focal_depth": "all sharp",
+      "visual_balance": "phone dominant center-left",
+      "color_palette": ["#f0f0f0 light grey (bg)", "#808080 grey (device frame)", "#000000 black (screen text)", "#c0c0c0 silver"],
+      "effects": ["black and white desaturation", "film grain on shadows"],
+      "typography": {
+        "primary": "monospace terminal font throughout website (sacred.computer)"
+      }
+    },
+    "symbolism_and_story": "Sacred.computer presents a computing aesthetic rooted in terminal/CLI culture — the font list on screen is a manifesto of monospace fonts used by developers and designers who value precision typography. The B&W treatment gives it an archival, serious quality.",
+    "metadata": {
+      "style": "B&W product photography meets terminal UI",
+      "medium": "product photograph",
+      "inspirations": ["Apple product photography", "developer tool marketing", "Vercel/Linear brand aesthetics"],
+      "notes": "Website: sacred.computer. Default font: Geist Mono [OFL]. Related services: SRCL source code, Vercel hosting."
+    }
+  },
+
+  {
+    "image_id": "B3-12",
+    "filename": "41d6051f39cdc192ec88dd9cf2ead5ee.jpg",
+    "scene": "A minimal line-art illustration/UI diagram of a handheld audio recorder device branded 'ニコニコ' (NicoNico). The device shows a digital recording interface with waveform, timecode, R/L level meters, REC indicator, and a bottom section with a large dial and playback controls.",
+    "prompt": "minimal line art illustration handheld audio recorder device, Japanese Niconico brand, display showing waveform 78dB R L level bars Bluetooth battery timecode 00:04:34 REC dot, bottom section with large dark dial circle and stop play waveform record buttons, white background",
+    "negative_prompt": "photography, dark background, colorful, 3D render",
+    "width": 540,
+    "height": 900,
+    "steps": 24,
+    "seed": -1,
+    "guidance_scale": 6.5,
+    "style": "minimal product line art, technical illustration",
+    "subjects": [
+      {
+        "type": "handheld recorder illustration",
+        "description": "A flat line-art UI/product illustration of a rectangular handheld recorder. Rounded top and bottom edges. Two main sections: digital display (upper) and control panel (lower).",
+        "position": "center frame",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Device outer body",
+        "description": "Rounded rectangle body, white fill, thin black outline. Small perforated/notched strip at very top (like microphone grill). Thin line separating display from controls.",
+        "position": "full device",
+        "color": "white fill, black outline"
+      },
+      {
+        "label": "ニコニコ brand label",
+        "description": "'ニコニコ' Japanese katakana in small black text, top left of device. Grid/dots icon top right (menu).",
+        "position": "top bar",
+        "color": "black on white"
+      },
+      {
+        "label": "Display section",
+        "description": "Large bordered display area. Contains all readout elements.",
+        "position": "upper 60% of device",
+        "color": "white with black outline border"
+      },
+      {
+        "label": "78 dB level indicator",
+        "description": "'78 dB' in small boxed indicator top left of display.",
+        "position": "display top left",
+        "color": "black on white"
+      },
+      {
+        "label": "R / L level bars",
+        "description": "'R' and 'L' labels with horizontal progress bar indicators showing signal levels (filled to approximately 70%). Bluetooth icon and battery indicator right of R/L.",
+        "position": "display upper right",
+        "color": "black lines"
+      },
+      {
+        "label": "Small connection port illustration",
+        "description": "A small cylindrical jack/port illustration top center of display.",
+        "position": "display top center",
+        "color": "grey"
+      },
+      {
+        "label": "Waveform visualization",
+        "description": "Central waveform display: dense vertical bar waveform showing audio activity — bars of varying heights, clustered in center, sparser at edges.",
+        "position": "display center",
+        "color": "black bars on white"
+      },
+      {
+        "label": "Timecode display",
+        "description": "'H  M  S' labels above '00:04:34' in large bold digital-style numbers.",
+        "position": "display lower section",
+        "color": "black on white"
+      },
+      {
+        "label": "● REC indicator",
+        "description": "Small filled black circle + 'REC' text, lower right of display.",
+        "position": "display lower right",
+        "color": "black"
+      },
+      {
+        "label": "Scroll wheel on side",
+        "description": "Right edge of device: thin cylindrical scroll wheel/knob protruding from side.",
+        "position": "right edge mid",
+        "color": "grey"
+      },
+      {
+        "label": "Control panel section",
+        "description": "Lower 40% of device. 2x2 grid of quadrant buttons around a large central dial.",
+        "position": "lower section",
+        "color": "white, black outlines"
+      },
+      {
+        "label": "Large control dial",
+        "description": "Large dark grey filled circle, center of control panel. White filled circle inside (large accent). Suggests a jog wheel or navigation disc.",
+        "position": "control panel center",
+        "color": "dark grey outer, white inner circle"
+      },
+      {
+        "label": "Quadrant buttons",
+        "description": "Four corner areas around the dial: top-left: □ stop, top-right: ▷ play, bottom-left: ⌇⌇ waveform mode, bottom-right: ● record. Thin dividing lines creating four quadrants.",
+        "position": "around central dial",
+        "color": "black icons on white"
+      }
+    ],
+    "environment": {
+      "setting": "product illustration / UI concept",
+      "time_of_day": "N/A",
+      "lighting": "flat white",
+      "background": "#ffffff white"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic front view",
+      "framing": "portrait, device centered",
+      "focal_depth": "all sharp (illustration)",
+      "visual_balance": "symmetric, top-heavy (display dominates)",
+      "color_palette": ["#ffffff white", "#000000 black", "#808080 grey"],
+      "typography": {
+        "primary": "Japanese katakana (ニコニコ)",
+        "secondary": "bold digital numerals (00:04:34)",
+        "tertiary": "small caps labels (REC, H M S)"
+      }
+    },
+    "symbolism_and_story": "A minimalist recorder design that bridges digital functionality with the tactile feel of physical controls — the large dial echoes portable CD/MD players. NicoNico branding suggests Japanese audio culture.",
+    "metadata": {
+      "style": "minimal product line art / UI design concept",
+      "medium": "vector illustration",
+      "inspirations": ["Sony PCM-D100 recorder", "Japanese product design", "minimal hardware UI"],
+      "notes": "Brand: ニコニコ (NicoNico). Timecode: 00:04:34. Level: 78dB. Bluetooth enabled."
+    }
+  },
+
+  {
+    "image_id": "B3-13",
+    "filename": "5e6cdb20f8807c626f108ef1fb4157bd.jpg",
+    "scene": "A Neutone 'architecturemodel' audio plugin interface displayed on a white square grid background labeled 'Modular System Interface'. The plugin panel shows ABCD custom settings knobs, large wet/dry/output gain knobs, MIDI in and stereo out connections, oversampling setting, and preset controls. Accent color: green.",
+    "prompt": "Neutone architecturemodel audio plugin UI on white grid background, dark circular knobs ABCD custom settings A B C D small, three large wet dry output gain knobs, green MIDI in indicator, stereo out dropdown, oversampling x2, preset save controls, grey and white minimal design",
+    "negative_prompt": "dark background, photography, people, colorful gradients",
+    "width": 1080,
+    "height": 1080,
+    "steps": 26,
+    "seed": -1,
+    "guidance_scale": 7.0,
+    "style": "minimal audio plugin UI on grid background",
+    "subjects": [
+      {
+        "type": "audio plugin interface panel",
+        "description": "Horizontal plugin panel on white grid paper background. Two-tone grey panel with knobs and controls.",
+        "position": "center frame",
+        "size": "dominant horizontal band"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Background",
+        "description": "White graph paper / grid background with fine lines at regular intervals. 'Modular System Interface' label centered bottom.",
+        "position": "full bleed",
+        "color": "#f8f8f8 white with grey grid"
+      },
+      {
+        "label": "Navigation icons",
+        "description": "'→' back arrow top left. '⋯' three-dot menu top right.",
+        "position": "above plugin panel",
+        "color": "dark grey"
+      },
+      {
+        "label": "Plugin panel body",
+        "description": "Horizontal rounded-rect panel. Left portion lighter grey, right portion slightly darker grey dividing control zones.",
+        "position": "center",
+        "color": "#e8e8e8 light grey"
+      },
+      {
+        "label": "neutone architecturemodel branding",
+        "description": "'neutone' in light weight sans-serif bold. 'architecturemodel' right-aligned with 'architect' bold and 'uremodel' lighter weight. 'by Nao Tokui' sub-label in grey pill.",
+        "position": "panel upper left",
+        "color": "near-black on light grey"
+      },
+      {
+        "label": "MIDI in / stereo out",
+        "description": "Right of branding: '● midi in ∨ → stereo out ∨'. Green filled circle for midi in status. Dropdown arrows.",
+        "position": "panel upper right",
+        "color": "green dot, dark text"
+      },
+      {
+        "label": "custom settings label + ABCD knobs",
+        "description": "'custom settings' small text. Four equal-sized dark grey circular knobs labeled A / B / C / D. White indicator line at 12 o'clock each.",
+        "position": "panel left section",
+        "color": "dark grey knobs"
+      },
+      {
+        "label": "wet knob (large)",
+        "description": "Large dark grey circle knob. White indicator line at 12 o'clock. Grey background section behind it. 'wet' label below.",
+        "position": "panel center-left",
+        "color": "dark grey"
+      },
+      {
+        "label": "dry knob (large)",
+        "description": "Largest dark grey circle. White indicator at 12 o'clock. 'dry' label.",
+        "position": "panel center",
+        "color": "dark grey"
+      },
+      {
+        "label": "output gain knob (large)",
+        "description": "Large dark grey circle. White indicator. 'output gain' label.",
+        "position": "panel center-right",
+        "color": "dark grey"
+      },
+      {
+        "label": "Five indicator dots",
+        "description": "Vertical column of 5 dots right of output gain: three grey, two green — suggesting signal/channel status.",
+        "position": "panel right of knobs",
+        "color": "grey/green dots"
+      },
+      {
+        "label": "oversampling: x2",
+        "description": "'oversampling:  x2' in small text, lower left of panel.",
+        "position": "panel lower left",
+        "color": "dark grey"
+      },
+      {
+        "label": "preset / save",
+        "description": "'preset ∨' dropdown + 'save' text link, lower right.",
+        "position": "panel lower right",
+        "color": "dark grey"
+      }
+    ],
+    "environment": {
+      "setting": "software plugin UI presentation",
+      "lighting": "flat white",
+      "background": "white grid graph paper"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "square, plugin centered horizontally",
+      "focal_depth": "all sharp",
+      "visual_balance": "horizontal panel centered, knobs increasing in size left to right",
+      "color_palette": ["#f8f8f8 near-white", "#e8e8e8 light grey", "#2a2a2a dark grey (knobs)", "#22cc44 green (midi indicator)"],
+      "typography": {
+        "primary": "mixed weight sans-serif (neutone architecturemodel)",
+        "secondary": "small regular sans-serif (labels, controls)"
+      }
+    },
+    "symbolism_and_story": "Neutone frames AI audio processing as an architectural/modular system — the grid background suggests engineering precision, while the knob hierarchy (small custom → large wet/dry/gain) maps to a signal chain logic.",
+    "metadata": {
+      "style": "minimal audio plugin UI design",
+      "medium": "plugin UI mockup / design presentation",
+      "inspirations": ["Max/MSP module aesthetics", "Ableton Live audio units", "Japanese minimalist design"],
+      "notes": "Plugin: Neutone architecturemodel by Nao Tokui. MIDI in active (green). Oversampling: x2. Very similar to B2-19 but different model and version."
+    }
+  },
+
+  {
+    "image_id": "B3-14",
+    "filename": "374ab7caa3f7ce86a1b9b02f7814645a.jpg",
+    "scene": "A music streaming website concept 'SAVIOM / MUSIC STREAMING' showing a Tame Impala artist page. Left: a spinning vinyl record at an angle with album art thumbnail inside and '02.BORDERLINE' label. Right: artist name in large bold condensed sans-serif, genre tags, and a popular tracks list with album thumbnails.",
+    "prompt": "music streaming website Tame Impala artist page, SAVIOM platform, black vinyl record left with album thumbnail inside 02 BORDERLINE label 2:43/4:08 progress, large bold condensed TAME IMPALA text right, psychedelic pop rock disco genre tags, four popular tracks list with colorful album art thumbnails",
+    "negative_prompt": "dark mode, photography people, cluttered, colorful gradient background",
+    "width": 1440,
+    "height": 900,
+    "steps": 26,
+    "seed": -1,
+    "guidance_scale": 7.0,
+    "style": "clean music streaming website, vinyl aesthetic",
+    "subjects": [
+      {
+        "type": "music streaming artist page",
+        "description": "Website UI on light cream/off-white background. Horizontal layout: vinyl record left, artist info and track list right.",
+        "position": "center frame (inner website)",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Outer presentation background",
+        "description": "#c8c4bc warm grey outer background. 'SAVIOM / MUSIC STREAMING' top center. 'BEST TRENDS / 2016/2021' bottom center.",
+        "position": "outer frame",
+        "color": "#c8c4bc warm grey"
+      },
+      {
+        "label": "Website frame",
+        "description": "White/cream inner website. Top left: 'S/M' logo. Top right: 'ARTISTS  MIXTAPES  AWARDS' nav.",
+        "position": "inner content area",
+        "color": "#f8f4ec cream-white"
+      },
+      {
+        "label": "Vinyl record",
+        "description": "Large black vinyl record (circle), angled/tilted slightly clockwise. Concentric groove rings visible. Center: white label area with small album art thumbnail inside. Red arc/circle drawn around the edge. '02.BORDERLINE' label on the record. Progress: '2:43 / 4:08' below. Small bar chart/waveform icon on white label.",
+        "position": "left section",
+        "color": "#1a1a1a black vinyl, white label, red arc"
+      },
+      {
+        "label": "TAME IMPALA headline",
+        "description": "'TAME / IMPALA' in very large ultra-bold condensed sans-serif, black on white/cream. Two-line layout.",
+        "position": "right section, upper",
+        "color": "black"
+      },
+      {
+        "label": "Genre tags",
+        "description": "'PSYCHEDELIC POP, ROCK, DISCO, SYNTH-POTH' in small light grey caps below artist name.",
+        "position": "below TAME IMPALA",
+        "color": "grey"
+      },
+      {
+        "label": "POPULAR section header",
+        "description": "'POPULAR' in small red/terracotta bold caps with red dot bullet.",
+        "position": "above track list",
+        "color": "#cc2200 red"
+      },
+      {
+        "label": "Track list — 4 tracks",
+        "description": "Four numbered tracks: 01 THE LESS I KNOW THE BETTER / CURRENTS — 3:36 (small green album art), 02 BORDERLINE / THE SLOW RUSH — 4:08 (small warm/earth album art, red dot active), 03 FEELS LIKE WE ONLY GO BACKWARDS / LONERISM — 3:12 (small colorful album art), 04 NO CHOICE / THE SLOW RUSH — 3:41 (small warm album art). Each has album thumbnail left, track+album name, duration right.",
+        "position": "right section, lower",
+        "color": "black text, small colorful thumbnails"
+      },
+      {
+        "label": "VIEW MORE link",
+        "description": "'VIEW MORE' in small dark text, bottom right of track list.",
+        "position": "below track list",
+        "color": "dark"
+      }
+    ],
+    "environment": {
+      "setting": "website UI design presentation",
+      "lighting": "flat, warm light",
+      "background": "#c8c4bc warm grey outer / #f8f4ec cream inner"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "landscape, horizontal split: vinyl left / info right",
+      "focal_depth": "all sharp",
+      "visual_balance": "large vinyl visual weight balances dense text list",
+      "color_palette": ["#f8f4ec cream-white", "#1a1a1a black", "#cc2200 red accent", "#c8c4bc warm grey"],
+      "typography": {
+        "primary": "ultra-bold condensed sans-serif (TAME IMPALA)",
+        "secondary": "small medium sans-serif (tracks, nav)"
+      }
+    },
+    "symbolism_and_story": "The vinyl record as the central visual object positions SAVIOM as a platform that values physical/analog music culture. The red arc around the record suggests rotation — playback is happening.",
+    "metadata": {
+      "style": "music streaming website design, vinyl aesthetic",
+      "medium": "website UI concept mockup",
+      "inspirations": ["Spotify artist pages", "vinyl record shop aesthetics", "editorial magazine music layouts"],
+      "notes": "Platform: SAVIOM Music Streaming. Currently playing: Track 02 BORDERLINE at 2:43/4:08. Albums shown: Currents, The Slow Rush, Lonerism."
+    }
+  },
+
+  {
+    "image_id": "B3-15",
+    "filename": "0f1cf8801340971fd62a9bf7367811bd.jpg",
+    "scene": "An iPhone 14 Pro mockup on light grey background showing a sophisticated analog camera app UI. Top section: two analog clock/gauge dials (focus distance and aperture) with a shutter speed/timer module center. Middle: live viewfinder with mountain silhouette. Bottom: camera controls with a large white dial knob, WB/ISO selectors, and various camera mode buttons.",
+    "prompt": "iPhone 14 Pro camera app UI, analog clock gauge dials focus distance aperture, 15S timer shutter speed, viewfinder mountain silhouette at dusk blue sky, RAW+J format 4:3 30M ISO 800 F5.6 1/1600, large white control knob, WB AUTO REC button, 77MM lens label, minimal grey white design",
+    "negative_prompt": "dark mode throughout, colorful, abstract, people visible",
+    "width": 390,
+    "height": 844,
+    "steps": 28,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "analog meets digital camera app UI, mechanical gauge aesthetic",
+    "subjects": [
+      {
+        "type": "iPhone 14 Pro with camera app",
+        "description": "Silver/titanium frame iPhone 14 Pro. Dynamic island. Shows a manual camera control app with strong analog instrument design language.",
+        "position": "center frame",
+        "size": "dominant"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Phone device",
+        "description": "Silver titanium iPhone 14 Pro with dynamic island. Status bar: 9:41, signal, WiFi, battery. 'i' info icon top right.",
+        "position": "full frame",
+        "color": "silver/titanium"
+      },
+      {
+        "label": "Analog display system — upper section",
+        "description": "Large white oval/horizontal pill containing two analog clock dials and a central module. Background: white.",
+        "position": "upper third of screen",
+        "color": "white"
+      },
+      {
+        "label": "Left dial — focus distance",
+        "description": "Circular clock-face style dial. Needle pointing to approximately 3-4 position. Scale: 1, 3, 5, .7, .4m from top-left around to bottom-right. Red indicator bar visible at bottom.",
+        "position": "left of upper section",
+        "color": "white dial, black needle, red bar"
+      },
+      {
+        "label": "Center module — shutter/timer controls",
+        "description": "Central mini panel: AF icon, flower/macro icon, '15S' timer label, small circular gauge (timer/shutter speed visualization), OFF label, small icons. 'AUTO SV' below. Exposure compensation: +2 +1 ✗ -1 -2.",
+        "position": "center of upper section",
+        "color": "grey icons and text"
+      },
+      {
+        "label": "Right dial — aperture",
+        "description": "Circular clock-face style dial. 'A' badge (auto). Scale: 2.8, 4, 5.6, 8, 11, 16. Needle pointing to F5.6.",
+        "position": "right of upper section",
+        "color": "white dial, black needle"
+      },
+      {
+        "label": "ANALOG DISPLAY SYSTEM label",
+        "description": "Small text below the dual-dial section.",
+        "position": "below upper section",
+        "color": "dark grey"
+      },
+      {
+        "label": "Viewfinder",
+        "description": "Blue-grey live view frame. Mountain/hill silhouette at bottom of frame — dark shape against deep blue-grey twilight sky. Camera crosshair/AF bracket center. Focus area indicator (rounded rect). Gesture icon (hand) top right. Camera mode icon top left.",
+        "position": "middle section, full width",
+        "color": "dark blue sky, black mountain silhouette"
+      },
+      {
+        "label": "Viewfinder data overlay",
+        "description": "Bottom of viewfinder: histogram (small B&W bar chart left), 'RAW+J  4:3  30M  ISO 800', '□ 3,975  F 5.6  1/1600'.",
+        "position": "viewfinder bottom bar",
+        "color": "white text on dark"
+      },
+      {
+        "label": "Camera control row 1",
+        "description": "Below viewfinder: ⚡ flash / 'WB AUTO' pill selector / ● red REC button / ↺ rotation icon.",
+        "position": "below viewfinder",
+        "color": "grey and white, red accent"
+      },
+      {
+        "label": "Camera control row 2 — icons",
+        "description": "Second row: macro/flower, timer, aspect ratio icons with circle toggles below each.",
+        "position": "lower section left",
+        "color": "grey icons"
+      },
+      {
+        "label": "Large white control dial",
+        "description": "Large white circle dial center. Smooth surface. Small dot marker.",
+        "position": "lower section center",
+        "color": "white"
+      },
+      {
+        "label": "'A' and arrow labels beside dial",
+        "description": "Small 'ρ' / '• A' / 'T' labels beside the main dial — indicating parameter it controls.",
+        "position": "lower section right of dial",
+        "color": "grey"
+      },
+      {
+        "label": "🔒 lock icon",
+        "description": "Lock icon above 77MM label.",
+        "position": "lower right",
+        "color": "grey"
+      },
+      {
+        "label": "77MM lens label",
+        "description": "'77MM' indicating lens diameter.",
+        "position": "lower right",
+        "color": "dark"
+      },
+      {
+        "label": "∞ infinity / focus button",
+        "description": "Dark circle button with ∞ infinity symbol — likely manual focus to infinity.",
+        "position": "bottom right",
+        "color": "dark button, white symbol"
+      },
+      {
+        "label": "Film/photo thumbnail",
+        "description": "Small rounded dark pill bottom left showing a recent photo (tree silhouette, B&W).",
+        "position": "bottom left",
+        "color": "dark frame, B&W photo inside"
+      }
+    ],
+    "environment": {
+      "setting": "camera app UI mockup on light grey background",
+      "time_of_day": "dusk (within viewfinder photo)",
+      "lighting": "flat white for app frame; blue-grey twilight in viewfinder",
+      "background": "#e8e8e8 light grey"
+    },
+    "composition": {
+      "camera_angle": "flat orthographic",
+      "framing": "portrait mobile",
+      "focal_depth": "all sharp",
+      "visual_balance": "three-zone vertical: dials / viewfinder / controls",
+      "color_palette": ["#e8e8e8 light grey", "#ffffff white", "#4060a0 deep blue (viewfinder sky)", "#000000 black", "#cc0000 red (REC)"],
+      "typography": {
+        "primary": "bold system font (RAW+J, ISO, F values)",
+        "secondary": "small analog-style gauge numbers (aperture scale)"
+      }
+    },
+    "symbolism_and_story": "A manual camera app that digitally mimics the physical experience of classic film cameras — the dual clock dials for focus and aperture are direct references to Leica/Voigtländer meter designs. The 77MM filter size and ∞ focus button ground it in physical optics.",
+    "metadata": {
+      "style": "analog camera aesthetic mobile app UI",
+      "medium": "mobile app UI mockup",
+      "inspirations": ["Leica M series camera design", "Voigtländer exposure meters", "Halide camera app", "Moment camera app"],
+      "notes": "Settings: ISO 800, F5.6, 1/1600s, RAW+J, 4:3 ratio, 30MP. Timer: 15S. White balance: AUTO. Lens: 77MM."
+    }
+  },
+
+  {
+    "image_id": "B3-16",
+    "filename": "ecec94c882869ae5849d0f308cf032f6.jpg",
+    "scene": "A highly detailed skeuomorphic digital illustration of a retro cassette tape player UI concept (Sony-inspired). The device shows three stacked sections: a display screen showing 'SONY PLAYER' with heart and shuffle icons, a speaker grille with VOL+/VOL- buttons and song title display, and a PLAYER section with transport buttons, a cassette tape (Maxell UR), and a red textile/fabric section at bottom.",
+    "prompt": "skeuomorphic retro cassette player UI concept, dark charcoal grey device, top LCD screen SONY PLAYER red heart shuffle icon pixel font, speaker grille dot pattern VOL+ VOL- buttons, MY LIFE IS GETTING BETTER song title display, PLAYER transport controls play rewind fast-forward stop, maxell UR cassette tape visible, red fabric bottom MUSIC label",
+    "negative_prompt": "flat design, light background, photography of people, minimal",
+    "width": 750,
+    "height": 1334,
+    "steps": 30,
+    "seed": -1,
+    "guidance_scale": 7.5,
+    "style": "skeuomorphic retro hardware UI design, dark grey",
+    "subjects": [
+      {
+        "type": "retro cassette player digital illustration",
+        "description": "Ultra-detailed dark grey device rendered with depth, materials, and realistic component feel. Three vertical sections visible in portrait.",
+        "position": "full frame",
+        "size": "full bleed"
+      }
+    ],
+    "objects": [
+      {
+        "label": "Device body overall",
+        "description": "Dark grey #404040-#606060 brushed/matte finish. Slight texture. Rounded corners on sections. Visible screw/rivet points at edges.",
+        "position": "full device",
+        "color": "#505050 dark grey"
+      },
+      {
+        "label": "Top LCD display screen",
+        "description": "Slightly recessed dark green/grey LCD screen. Pixel/dot-matrix text: 'SONY PLAYER' in grey pixel font. Red heart ♥ icon. ⇄ shuffle icon (grey). QR code lower left corner. Horizontal thin line elements.",
+        "position": "upper section",
+        "color": "#2a3020 dark green-grey LCD, grey pixel text"
+      },
+      {
+        "label": "Speaker section",
+        "description": "Middle section. Left: perforated speaker grille — dense array of small dark round holes in a rectangular area. Right: two rounded pill buttons — 'VOL +' and 'VOL -' in white text. Small red LED indicator dot center between them.",
+        "position": "middle upper",
+        "color": "dark grey grille, rounded buttons, red LED"
+      },
+      {
+        "label": "Song title display bar",
+        "description": "Dark bar spanning full width: ♥ heart icon + 'MY LIFE IS GETTING BETTER' in white text + ♥ heart icon. Slightly recessed/inset.",
+        "position": "middle center",
+        "color": "dark grey bar, white text"
+      },
+      {
+        "label": "PLAYER label",
+        "description": "'PLAYER' in custom distressed/stamp-style typography. Grey italic characters on dark.",
+        "position": "above transport controls",
+        "color": "grey on dark"
+      },
+      {
+        "label": "Transport control buttons",
+        "description": "Three main buttons in rounded raised dark housing: ▶ PLAY (triangle), ▶▶ FAST FORWARD, □ STOP (square). Below: ◀◀ REWIND button. All dark grey raised button caps with white icons.",
+        "position": "transport area",
+        "color": "dark grey buttons, white icons"
+      },
+      {
+        "label": "Maxell UR cassette tape",
+        "description": "Physical cassette tape visible in transparent window below transport controls. Maxell brand — 'B / PRO / maxell / GREAT FOR EVERYDAY RECORDING' visible on label. Cassette body: dark plastic, clear window showing two black spools. 'UR' visible on right side. '00' on left spool marker.",
+        "position": "cassette bay",
+        "color": "dark grey/black cassette, maxell brand label"
+      },
+      {
+        "label": "Red fabric/textile section",
+        "description": "Bottom section: textured red fabric/textile material (like red carpet or canvas). 'MUSIC' in small light text at bottom. The fabric has a woven texture.",
+        "position": "bottom section",
+        "color": "#cc2020 red woven fabric"
+      }
+    ],
+    "environment": {
+      "setting": "digital illustration / UI concept",
+      "time_of_day": "N/A",
+      "lighting": "simulated soft product lighting from upper left",
+      "background": "device fills full frame, no visible external background"
+    },
+    "composition": {
+      "camera_angle": "straight-on front view",
+      "framing": "portrait, device fills frame",
+      "focal_depth": "all elements in focus",
+      "visual_balance": "three horizontal zones: screen / transport / cassette+fabric",
+      "color_palette": ["#505050 dark grey", "#2a3020 dark LCD green", "#cc2020 red", "#ffffff white (text/icons)", "#1a1a1a near-black"],
+      "effects": ["subtle specularity on buttons", "depth/emboss on grille", "fabric texture bottom"],
+      "typography": {
+        "primary": "pixel/dot-matrix LCD font (SONY PLAYER, song title)",
+        "secondary": "distressed stamp-style (PLAYER)",
+        "tertiary": "clean white caps (VOL+, VOL-)"
+      }
+    },
+    "symbolism_and_story": "A nostalgic reimagination of Sony Walkman/cassette player aesthetics as a digital UI — the cassette tape remains visible as a physical medium object within a software interface. The song 'MY LIFE IS GETTING BETTER' creates an aspirational emotional note.",
+    "metadata": {
+      "style": "skeuomorphic retro hardware UI, detailed illustration",
+      "medium": "digital illustration / UI design",
+      "inspirations": ["Sony Walkman WM-D6C", "Sony Discman aesthetics", "retro cassette player design"],
+      "notes": "Cassette: Maxell UR. Song: MY LIFE IS GETTING BETTER. Device branding: SONY PLAYER."
+    }
+  }
+]

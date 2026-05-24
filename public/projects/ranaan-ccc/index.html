@@ -1,0 +1,3586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RANAAN × CCC — Future Archives Editorial Viewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void_black: "#0A0A0A",
+            bone_cream: "#F0EBE2",
+            ash: "#555555",
+            blood: "#1A0A0A",
+            accent: "#4B1F2A",
+            gold: "#C5AD70"
+          },
+          fontFamily: {
+            bebas: ["'Bebas Neue'", "sans-serif"],
+            playfair: ["'Playfair Display'", "serif"],
+            mono: ["'Space Mono'", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --panel: #1a0a0a;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0a0a0a;
+      color: #f0ebe2;
+      font-family: "Space Mono", monospace;
+      overflow-x: hidden;
+      margin: 0;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.04;
+      background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+      mix-blend-mode: overlay;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .spread-container {
+      perspective: 2000px;
+      --spread-ratio: 1.62;
+      aspect-ratio: var(--spread-ratio);
+      height: min(78vh, calc(92vw / var(--spread-ratio)));
+      width: auto;
+      max-width: min(92vw, 1480px);
+    }
+    .spread-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 30;
+      background: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.14) 46%,
+        rgba(255, 255, 255, 0.06) 52%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: translateX(-46%) skewX(-10deg);
+      mix-blend-mode: screen;
+    }
+    .spread-container.is-flipping-forward::after {
+      animation: page-sheen-forward 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .spread-container.is-flipping-back::after {
+      animation: page-sheen-back 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .spread-container.is-flipping-forward .spread-card.active {
+      animation: page-flex-forward 560ms cubic-bezier(0.2, 0.85, 0.32, 1);
+    }
+    .spread-container.is-flipping-back .spread-card.active {
+      animation: page-flex-back 560ms cubic-bezier(0.2, 0.85, 0.32, 1);
+    }
+    @keyframes page-sheen-forward {
+      0% {
+        opacity: 0;
+        transform: translateX(-48%) skewX(-10deg);
+      }
+      30% {
+        opacity: 0.26;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(48%) skewX(-10deg);
+      }
+    }
+    @keyframes page-sheen-back {
+      0% {
+        opacity: 0;
+        transform: translateX(48%) skewX(10deg);
+      }
+      30% {
+        opacity: 0.26;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-48%) skewX(10deg);
+      }
+    }
+    @keyframes page-flex-forward {
+      0% {
+        transform: translateX(0) rotateY(-8deg) scale(0.996);
+      }
+      56% {
+        transform: translateX(0) rotateY(3deg) scale(1.002);
+      }
+      100% {
+        transform: translateX(0) rotateY(0deg) scale(1);
+      }
+    }
+    @keyframes page-flex-back {
+      0% {
+        transform: translateX(0) rotateY(8deg) scale(0.996);
+      }
+      56% {
+        transform: translateX(0) rotateY(-3deg) scale(1.002);
+      }
+      100% {
+        transform: translateX(0) rotateY(0deg) scale(1);
+      }
+    }
+    .spread-card {
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
+      transform-style: preserve-3d;
+    }
+    .spread-card.active {
+      transform: translateX(0) rotateY(0) scale(1);
+      opacity: 1;
+      z-index: 10;
+    }
+    .spread-card.before {
+      transform: translateX(-100px) rotateY(15deg) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .spread-card.after {
+      transform: translateX(100px) rotateY(-15deg) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .fit-mode .spread-container {
+      height: min(88vh, calc(98vw / var(--spread-ratio)));
+      max-width: min(98vw, 1680px);
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .media-frame {
+      width: 100%;
+      aspect-ratio: var(--media-aspect, 1);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.18));
+    }
+    .media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    @media (max-width: 767px) {
+      .media-frame {
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="relative min-h-screen bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_22%),linear-gradient(180deg,#151515_0%,#0b0b0b_52%,#070707_100%)]">
+    <header class="hidden md:flex fixed top-0 left-0 right-0 z-50 items-center justify-between border-b border-white/10 bg-black/60 px-6 py-4 backdrop-blur-2xl">
+      <div class="min-w-0">
+        <div class="text-[10px] uppercase tracking-[0.22em] text-white/55">Editorial Viewer</div>
+        <div id="project-title" class="truncate font-bebas text-3xl uppercase tracking-wider">RANAAN × CCC</div>
+        <div id="project-subtitle" class="text-[10px] uppercase tracking-[0.2em] text-white/45">Future Archives</div>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="hidden lg:flex gap-2 text-[10px] uppercase tracking-widest text-white/55">
+          <span id="stat-files">0 files</span>
+          <span>·</span>
+          <span id="stat-images">0 images</span>
+          <span>·</span>
+          <span id="stat-spreads">0 spreads</span>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="prevSpread()" class="h-9 px-4 rounded-full border border-white/15 bg-white/5 text-[10px] uppercase tracking-widest hover:bg-white/10 transition">Prev</button>
+          <button onclick="nextSpread()" class="h-9 px-4 rounded-full border border-white/15 bg-white/5 text-[10px] uppercase tracking-widest hover:bg-white/10 transition">Next</button>
+        </div>
+        <div id="spread-counter" class="text-[10px] uppercase tracking-widest text-white/55">01 / 10</div>
+      </div>
+    </header>
+
+    <main class="hidden md:flex h-screen items-center justify-center p-12 pt-24 overflow-hidden">
+      <div id="spread-viewport" class="relative spread-container transition-all duration-500">
+      </div>
+    </main>
+
+    <header class="md:hidden sticky top-0 z-50 border-b border-white/10 bg-black/80 px-4 py-3 backdrop-blur-xl">
+      <div class="flex justify-between items-center gap-2">
+        <div class="min-w-0">
+          <div class="truncate font-bebas text-2xl tracking-wider" id="project-title-mobile">RANAAN × CCC</div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-white/50">Future Archives</div>
+        </div>
+        <button onclick="toggleToc()" class="text-[10px] uppercase tracking-widest border border-white/20 px-3 py-1 rounded-full">Contents</button>
+      </div>
+    </header>
+
+    <main id="mobile-scroller" class="md:hidden p-4 space-y-12"></main>
+
+    <div id="toc-overlay" class="fixed inset-0 z-[100] hidden bg-black/95 p-8 overflow-y-auto">
+      <div class="flex justify-between items-center mb-12">
+        <div class="font-bebas text-4xl">Contents</div>
+        <button onclick="toggleToc()" class="text-4xl">&times;</button>
+      </div>
+      <div id="toc-list" class="grid gap-6"></div>
+    </div>
+
+    <div class="hidden md:block fixed bottom-6 right-6 text-[10px] uppercase tracking-[0.2em] text-white/40">
+      Use Arrows to navigate · F to Fit · T for Contents
+    </div>
+  </div>
+
+  <script>
+    const BASE_SPREADS = [
+      {
+        id: "cover",
+        thumbLabel: "Cover",
+        left: {
+          theme: "dark",
+          kicker: "RANAAN × CCC / SS25",
+          title: "Future\nArchives",
+          deck: "An editorial viewer for the RANAAN × CCC campaign.",
+          body: "This issue frames RANAAN × CCC as a fashion system and an archive in motion.",
+          footer: "Cover / SS25"
+        },
+        right: {
+          media: null,
+          mediaLabel: "Campaign Hero",
+          footer: "Final Cover"
+        }
+      },
+      {
+        id: "spread-01",
+        thumbLabel: "Entry Altar",
+        left: {
+          media: null,
+          mediaLabel: "Entry Altar",
+          footer: "Opening Plate"
+        },
+        right: {
+          theme: "light",
+          kicker: "Spread 01",
+          title: "Entry\nAltar",
+          body: "Monumental architecture behaving like a shrine rather than a store.",
+          footer: "Opening Spread"
+        }
+      },
+      {
+        id: "spread-02",
+        thumbLabel: "Conversation Pit",
+        left: {
+          theme: "dark",
+          kicker: "Spread 02",
+          title: "Controlled\nAssembly",
+          quote: "Luxury should feel discovered, not explained.",
+          footer: "Group Portrait"
+        },
+        right: {
+          media: null,
+          mediaLabel: "Conversation Pit",
+          footer: "Social Architecture"
+        }
+      },
+      {
+        id: "spread-03",
+        thumbLabel: "Vitrine Ghost",
+        left: {
+          media: null,
+          mediaLabel: "Vitrine Portrait",
+          footer: "Optics / Refraction"
+        },
+        right: {
+          theme: "light",
+          kicker: "Spread 03",
+          title: "Vitrine\nGhost",
+          body: "The face becomes display, refraction, and architecture all at once.",
+          footer: "Optical Portrait"
+        }
+      },
+      {
+        id: "spread-04",
+        thumbLabel: "Stairwell Descent",
+        left: {
+          theme: "light",
+          kicker: "Spread 04",
+          title: "Stairwell\nChoir",
+          body: "Bodies distributed across brutalist geometry like a hymn written in shadow.",
+          footer: "Descent Plate"
+        },
+        right: {
+          media: null,
+          mediaLabel: "Stairwell",
+          footer: "Brutalist Descent"
+        }
+      },
+      {
+        id: "spread-05",
+        thumbLabel: "Mirror Salon",
+        left: {
+          media: null,
+          mediaLabel: "Mirror Triptych",
+          footer: "Reflection Plate"
+        },
+        right: {
+          theme: "dark",
+          kicker: "Spread 05",
+          title: "Mirror\nSalon",
+          body: "One body becomes many planes: flash, tungsten warmth, and tailoring notes.",
+          footer: "Fitting Room Dossier"
+        }
+      },
+      {
+        id: "spread-06",
+        thumbLabel: "Runway Corridor",
+        left: {
+          theme: "light",
+          kicker: "Spread 06",
+          title: "Runway\nMotion",
+          body: "The aisle becomes a runway only because the body claims it.",
+          footer: "Forward Motion"
+        },
+        right: {
+          media: null,
+          mediaLabel: "Hero Walk",
+          footer: "Motion Hero"
+        }
+      },
+      {
+        id: "spread-07",
+        thumbLabel: "Loading Dock",
+        left: {
+          media: null,
+          mediaLabel: "Industrial Luxury",
+          footer: "Service Entrance"
+        },
+        right: {
+          theme: "dark",
+          kicker: "Spread 07",
+          title: "Loading\nDock",
+          body: "Luxury survives through weight, labor, logistics, and discipline.",
+          footer: "Industrial Realism"
+        }
+      },
+      {
+        id: "spread-08",
+        thumbLabel: "After Rain",
+        left: {
+          theme: "dark",
+          kicker: "Spread 08",
+          title: "After\nRain",
+          quote: "A fortress door opens and a silhouette slips into weather.",
+          footer: "Exterior Release"
+        },
+        right: {
+          media: null,
+          mediaLabel: "Wet Pavement",
+          footer: "Night Threshold"
+        }
+      },
+      {
+        id: "spread-09",
+        thumbLabel: "Rooftop Dawn",
+        left: {
+          media: null,
+          mediaLabel: "Rooftop Dawn",
+          footer: "Closing Choir"
+        },
+        right: {
+          theme: "light",
+          kicker: "Spread 09",
+          title: "Rooftop\nDawn",
+          body: "After the night, the issue opens upward into cool morning air.",
+          footer: "Decompression"
+        }
+      },
+      {
+        id: "spread-10",
+        thumbLabel: "Back Matter",
+        left: {
+          theme: "dark",
+          kicker: "End Matter",
+          title: "Credits\n& Notes",
+          body: "RANAAN × CCC Issue Build: Standalone HTML synced to the full RANAAN CCCC folder.",
+          footer: "Closing Spread"
+        },
+        right: {
+          media: null,
+          mediaLabel: "Back Cover",
+          footer: "Final Image"
+        }
+      }
+    ];
+
+    const PAGE_TITLES = `
+1. The Source
+2. Campaign Overview
+3. Controlled Chaos Collection
+4. RANAAN x CCC
+5. Drop 01
+6. SS25 Campaign Index
+7. The Collection Begins
+8. Enter the Archive
+9. The Retail System
+10. The Campaign World
+11. The Visual Language
+12. Brand Atmosphere
+13. The CCC Code
+14. The RANAAN Layer
+15. The Garment System
+16. Collection DNA
+17. The Editorial Framework
+18. Campaign Introduction
+19. The First Signal
+20. Launch Sequence
+21. The Opening Spread
+22. Brand Statement
+23. Project Intent
+24. Creative Direction
+25. The World of RANAAN
+26. The World of CCC
+27. Source Material
+28. Controlled Disorder
+29. The Campaign Architecture
+30. Campaign Rules
+31. Lookbook Index
+32. Editorial Lookbook
+33. Garment Study 01
+34. Garment Study 02
+35. Garment Study 03
+36. Silhouette Study
+37. Fit System
+38. Texture System
+39. Fabric Notes
+40. Material Tension
+41. Embroidery Detail
+42. CCC Stitch Archive
+43. Garment Construction
+44. Layering Logic
+45. Outerwear Study
+46. Knitwear Study
+47. Jersey Study
+48. Utility Study
+49. Trouser Study
+50. Accessory Study
+51. The Uniform Code
+52. Street Uniforms
+53. Night Uniforms
+54. Gallery Fits
+55. Concrete Fits
+56. Movement Fits
+57. The Drop Lineup
+58. Full Product Index
+59. Product Archive
+60. Product Grid
+61. Campaign Visuals
+62. Hero Image Index
+63. Editorial Image Index
+64. Cinematic Campaign Frames
+65. The Night Exterior
+66. Storefront Hero
+67. Window Display
+68. The First Look
+69. Street Cast Study
+70. Parking Structure Scene
+71. Concrete Corridor Scene
+72. Warehouse Scene
+73. Stairwell Scene
+74. Fitting Room Scene
+75. Backroom Scene
+76. After Hours Scene
+77. The Walk-In Scene
+78. The Waiting Area
+79. The Mirror Wall
+80. The Garment Rack
+81. The Checkout Ritual
+82. The Campaign Still Life
+83. Product Still Life
+84. Folded Garment Study
+85. Hanger Composition
+86. Label Close-Up
+87. Sleeve Detail
+88. Collar Detail
+89. Zipper Detail
+90. Hem Detail
+91. Editorial Spread 01
+92. Editorial Spread 02
+93. Editorial Spread 03
+94. Editorial Spread 04
+95. Editorial Spread 05
+96. Editorial Spread 06
+97. Editorial Spread 07
+98. Editorial Spread 08
+99. Editorial Spread 09
+100. Editorial Spread 10
+101. Magazine Opening
+102. Magazine Middle
+103. Magazine Closing
+104. Cover System
+105. Poster System
+106. Print System
+107. Campaign Tear Sheets
+108. Lookbook Tear Sheets
+109. Xerox Spread
+110. Halftone Spread
+111. VHS Spread
+112. Contact Sheet
+113. Proof Sheet
+114. Casting Sheet
+115. Styling Sheet
+116. Production Sheet
+117. Retail Sheet
+118. Drop Sheet
+119. Moodboard Sheet
+120. Texture Sheet
+121. Retail Concept
+122. Storefront System
+123. Store Interior
+124. Brutalist Retail Space
+125. Concrete Retail Architecture
+126. The Fortress Store
+127. The Night Store
+128. The Display Window
+129. The Product Altar
+130. The Main Rack
+131. The Garment Wall
+132. The Archive Table
+133. The Fitting Room
+134. The Checkout Counter
+135. The Receipt System
+136. Shopping Bag Mockup
+137. Hangtag Mockup
+138. Label Mockup
+139. Tissue Paper Mockup
+140. Box Mockup
+141. Dust Bag Mockup
+142. Sticker Sheet Mockup
+143. Retail Packaging
+144. Retail Graphic Kit
+145. Pop-Up Concept
+146. Pop-Up Map
+147. Launch Invitation
+148. Drop Receipt
+149. VIP Entry Card
+150. Store Signage
+151. Digital Experience
+152. Website Home
+153. Desktop Interface
+154. Retail Desktop
+155. Archive Desktop
+156. Product Window
+157. Lookbook Window
+158. Campaign Window
+159. System Folder
+160. Visual Folder
+161. Drop Folder
+162. Garment Folder
+163. Receipt Folder
+164. Image Folder
+165. CCC.exe
+166. RANAAN Archive OS
+167. Campaign Operating System
+168. Old Web Retail
+169. Tumblr Retail Index
+170. Blog Shop Layout
+171. Product Feed
+172. Editorial Feed
+173. Campaign Feed
+174. Archive Feed
+175. Drop Feed
+176. Desktop Navigation
+177. Interface Graphics
+178. Cursor States
+179. Error Windows
+180. Loading Screens
+181. Social Campaign
+182. Instagram Story System
+183. Instagram Feed System
+184. TikTok UGC System
+185. Paid Ad System
+186. Poster Ad System
+187. Carousel Ad System
+188. Story Ad System
+189. Campaign Reel Frames
+190. Vertical Video Frames
+191. Launch Countdown
+192. Drop Announcement
+193. Product Announcement
+194. Outfit Breakdown
+195. Model Card
+196. Styling Card
+197. Shop the Look
+198. Campaign Caption System
+199. Social Microtext System
+200. Digital Flyer System
+201. Brand Guidelines
+202. Visual Identity
+203. Logo Rules
+204. CCC Embroidery Rules
+205. RANAAN Wordmark Rules
+206. Lockup System
+207. Typography System
+208. Color System
+209. Texture System
+210. Grid System
+211. Layout Rules
+212. Micrographics System
+213. Microtext System
+214. Icon System
+215. Barcode System
+216. Coordinate System
+217. Registration Marks
+218. Print Marks
+219. VHS Treatment
+220. Xerox Treatment
+221. Halftone Treatment
+222. Grain Treatment
+223. Flash Treatment
+224. Shadow Treatment
+225. Material Palette
+226. Photography Rules
+227. Lighting Rules
+228. Camera Rules
+229. Retouching Rules
+230. Negative Space Rules
+231. Audience Strategy
+232. Market Positioning
+233. Cultural Positioning
+234. Consumer Profile
+235. Brand Diagnosis
+236. Campaign Rationale
+237. Why This Aesthetic
+238. The Subculture Map
+239. The Retail Audience
+240. Closing Case Study
+`
+      .trim()
+      .split("\n")
+      .map((line) => line.replace(/^\d+\.\s*/, "").trim())
+      .filter(Boolean);
+
+    const INLINE_MANIFEST = {
+      "project": {
+            "title": "RANAAN × CCC",
+            "subtitle": "Future Archives",
+            "sourceFolder": "/Users/nodear/Desktop/raehdojhn-portfolio-source-2026-05-08/RANAAN CCCC"
+      },
+      "stats": {
+            "totalFiles": 260,
+            "totalImages": 240,
+            "totalDirectionFiles": 20
+      },
+      "keywords": [
+            "brutalist",
+            "editorial",
+            "archive",
+            "retail",
+            "campaign",
+            "ranaan",
+            "ccc"
+      ],
+      "images": [
+            {
+                  "id": "img-0001",
+                  "fileName": "1776942586765-019dba07-bc80-7693-af7b-dbda67ec8f3f.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./1776942586765-019dba07-bc80-7693-af7b-dbda67ec8f3f.png",
+                  "width": 768,
+                  "height": 1360,
+                  "aspectRatio": 0.564706
+            },
+            {
+                  "id": "img-0002",
+                  "fileName": "1776942696827-019dba09-6b34-7b56-9af9-23ad5462e0d3.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./1776942696827-019dba09-6b34-7b56-9af9-23ad5462e0d3.png",
+                  "width": 1360,
+                  "height": 768,
+                  "aspectRatio": 1.770833
+            },
+            {
+                  "id": "img-0003",
+                  "fileName": "1776943013684-019dba0e-477e-7a2d-9b35-bebc94a4c7cb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./1776943013684-019dba0e-477e-7a2d-9b35-bebc94a4c7cb.png",
+                  "width": 768,
+                  "height": 1360,
+                  "aspectRatio": 0.564706
+            },
+            {
+                  "id": "img-0004",
+                  "fileName": "1776975731942-019dbc01-644c-7d7d-9268-ec17a37bbed1.jpeg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./1776975731942-019dbc01-644c-7d7d-9268-ec17a37bbed1.jpeg",
+                  "width": 1600,
+                  "height": 2848,
+                  "aspectRatio": 0.561798
+            },
+            {
+                  "id": "img-0005",
+                  "fileName": "1776976357233-019dbc0a-c2b0-7ca7-8b25-c35451069190.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./1776976357233-019dbc0a-c2b0-7ca7-8b25-c35451069190.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0006",
+                  "fileName": "a_{__id____RAN_CCC_M.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./a_%7B__id____RAN_CCC_M.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0007",
+                  "fileName": "b_{__id____RAN_CCC_M.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./b_%7B__id____RAN_CCC_M.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0008",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_19 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_19%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0009",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_20 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_20%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0010",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_21 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_21%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0011",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_22 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_22%20PM%20(1).png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0012",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_22 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_22%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0013",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_23 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_23%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0014",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_24 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_24%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0015",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_25 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_25%20PM.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0016",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_26 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_26%20PM%20(1).png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0017",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_26 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_26%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0018",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_27 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_27%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0019",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_28 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_28%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0020",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_29 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_29%20PM.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0021",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_30 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_30%20PM%20(1).png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0022",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_30 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_30%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0023",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_31 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_31%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0024",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_32 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_32%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0025",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_33 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_33%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0026",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_34 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_34%20PM%20(1).png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0027",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_34 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_34%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0028",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_35 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_35%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0029",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_36 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_36%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0030",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_37 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_37%20PM.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0031",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_38 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_38%20PM%20(1).png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0032",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_38 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_38%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0033",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_39 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_39%20PM.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0034",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_40 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_40%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0035",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_41 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_41%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0036",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_42 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_42%20PM%20(1).png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0037",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_42 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_42%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0038",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_43 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_43%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0039",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_44 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_44%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0040",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_45 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_45%20PM.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0041",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_46 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_46%20PM.png",
+                  "width": 1024,
+                  "height": 1536,
+                  "aspectRatio": 0.666667
+            },
+            {
+                  "id": "img-0042",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_47 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_47%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0043",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_49 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_49%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0044",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_50 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_50%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0045",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_51 PM (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_51%20PM%20(1).png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0046",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_51 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_51%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0047",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_53 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_53%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0048",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_54 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_54%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0049",
+                  "fileName": "ChatGPT Image Mar 3, 2026, 01_10_55 PM.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_55%20PM.png",
+                  "width": 1536,
+                  "height": 1024,
+                  "aspectRatio": 1.5
+            },
+            {
+                  "id": "img-0050",
+                  "fileName": "conversation_pit_1776994536179.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./conversation_pit_1776994536179.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0051",
+                  "fileName": "cover_hero_1776994472537.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./cover_hero_1776994472537.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0052",
+                  "fileName": "gemini-chat-image-1772586277825.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-chat-image-1772586277825.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0053",
+                  "fileName": "gemini-chat-image-1772586305009.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-chat-image-1772586305009.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0054",
+                  "fileName": "gemini-chat-image-1772586309208.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-chat-image-1772586309208.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0055",
+                  "fileName": "gemini-chat-image-1772586316975.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-chat-image-1772586316975.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0056",
+                  "fileName": "gemini-chat-image-1772586324430.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-chat-image-1772586324430.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0057",
+                  "fileName": "gemini-image-1772586512888-2.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-image-1772586512888-2.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0058",
+                  "fileName": "gemini-image-1772586514765-3.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-image-1772586514765-3.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0059",
+                  "fileName": "gemini-image-1772586516600-4.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./gemini-image-1772586516600-4.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0060",
+                  "fileName": "Gemini_Generated_Image_17gxc417gxc417gx.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_17gxc417gxc417gx.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0061",
+                  "fileName": "Gemini_Generated_Image_1lxb3t1lxb3t1lxb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_1lxb3t1lxb3t1lxb.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0062",
+                  "fileName": "Gemini_Generated_Image_1wvays1wvays1wva.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_1wvays1wvays1wva.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0063",
+                  "fileName": "Gemini_Generated_Image_20uhr420uhr420uh.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_20uhr420uhr420uh.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0064",
+                  "fileName": "Gemini_Generated_Image_2mf4ue2mf4ue2mf4.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_2mf4ue2mf4ue2mf4.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0065",
+                  "fileName": "Gemini_Generated_Image_2wja9l2wja9l2wja.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_2wja9l2wja9l2wja.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0066",
+                  "fileName": "Gemini_Generated_Image_31pjmy31pjmy31pj.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_31pjmy31pjmy31pj.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0067",
+                  "fileName": "Gemini_Generated_Image_3dmt633dmt633dmt.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_3dmt633dmt633dmt.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0068",
+                  "fileName": "Gemini_Generated_Image_3llbk53llbk53llb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_3llbk53llbk53llb.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0069",
+                  "fileName": "Gemini_Generated_Image_3ovg5r3ovg5r3ovg.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_3ovg5r3ovg5r3ovg.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0070",
+                  "fileName": "Gemini_Generated_Image_3thklf3thklf3thk.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_3thklf3thklf3thk.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0071",
+                  "fileName": "Gemini_Generated_Image_3w4qtp3w4qtp3w4q.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_3w4qtp3w4qtp3w4q.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0072",
+                  "fileName": "Gemini_Generated_Image_3xfe913xfe913xfe.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_3xfe913xfe913xfe.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0073",
+                  "fileName": "Gemini_Generated_Image_4sbgyz4sbgyz4sbg.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_4sbgyz4sbgyz4sbg.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0074",
+                  "fileName": "Gemini_Generated_Image_4uwjcu4uwjcu4uwj.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_4uwjcu4uwjcu4uwj.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0075",
+                  "fileName": "Gemini_Generated_Image_53qzx353qzx353qz.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_53qzx353qzx353qz.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0076",
+                  "fileName": "Gemini_Generated_Image_5f3ulp5f3ulp5f3u.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_5f3ulp5f3ulp5f3u.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0077",
+                  "fileName": "Gemini_Generated_Image_5o6mbx5o6mbx5o6m.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_5o6mbx5o6mbx5o6m.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0078",
+                  "fileName": "Gemini_Generated_Image_6h8z4f6h8z4f6h8z.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_6h8z4f6h8z4f6h8z.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0079",
+                  "fileName": "Gemini_Generated_Image_6uhvwe6uhvwe6uhv.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_6uhvwe6uhvwe6uhv.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0080",
+                  "fileName": "Gemini_Generated_Image_72ah0972ah0972ah.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_72ah0972ah0972ah.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0081",
+                  "fileName": "Gemini_Generated_Image_7h6z3h7h6z3h7h6z.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_7h6z3h7h6z3h7h6z.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0082",
+                  "fileName": "Gemini_Generated_Image_7l61qo7l61qo7l61.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_7l61qo7l61qo7l61.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0083",
+                  "fileName": "Gemini_Generated_Image_7wnwer7wnwer7wnw.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_7wnwer7wnwer7wnw.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0084",
+                  "fileName": "Gemini_Generated_Image_80qtpa80qtpa80qt.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_80qtpa80qtpa80qt.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0085",
+                  "fileName": "Gemini_Generated_Image_825xhm825xhm825x.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_825xhm825xhm825x.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0086",
+                  "fileName": "Gemini_Generated_Image_855kvc855kvc855k.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_855kvc855kvc855k.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0087",
+                  "fileName": "Gemini_Generated_Image_88mp8m88mp8m88mp.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_88mp8m88mp8m88mp.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0088",
+                  "fileName": "Gemini_Generated_Image_8fbbow8fbbow8fbb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_8fbbow8fbbow8fbb.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0089",
+                  "fileName": "Gemini_Generated_Image_8mjc6c8mjc6c8mjc.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_8mjc6c8mjc6c8mjc.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0090",
+                  "fileName": "Gemini_Generated_Image_8s78hw8s78hw8s78.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_8s78hw8s78hw8s78.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0091",
+                  "fileName": "Gemini_Generated_Image_8yxfz98yxfz98yxf.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_8yxfz98yxfz98yxf.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0092",
+                  "fileName": "Gemini_Generated_Image_9g905b9g905b9g90.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_9g905b9g905b9g90.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0093",
+                  "fileName": "Gemini_Generated_Image_9hem369hem369hem.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_9hem369hem369hem.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0094",
+                  "fileName": "Gemini_Generated_Image_9jbkiw9jbkiw9jbk.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_9jbkiw9jbkiw9jbk.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0095",
+                  "fileName": "Gemini_Generated_Image_9r4vax9r4vax9r4v.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_9r4vax9r4vax9r4v.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0096",
+                  "fileName": "Gemini_Generated_Image_9t4l499t4l499t4l.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_9t4l499t4l499t4l.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0097",
+                  "fileName": "Gemini_Generated_Image_9txaye9txaye9txa.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_9txaye9txaye9txa.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0098",
+                  "fileName": "Gemini_Generated_Image_a01woha01woha01w.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_a01woha01woha01w.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0099",
+                  "fileName": "Gemini_Generated_Image_abyb5vabyb5vabyb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_abyb5vabyb5vabyb.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0100",
+                  "fileName": "Gemini_Generated_Image_alpa0dalpa0dalpa.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_alpa0dalpa0dalpa.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0101",
+                  "fileName": "Gemini_Generated_Image_axv4r9axv4r9axv4.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_axv4r9axv4r9axv4.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0102",
+                  "fileName": "Gemini_Generated_Image_b1h626b1h626b1h6.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_b1h626b1h626b1h6.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0103",
+                  "fileName": "Gemini_Generated_Image_b313mzb313mzb313.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_b313mzb313mzb313.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0104",
+                  "fileName": "Gemini_Generated_Image_b66hwqb66hwqb66h.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_b66hwqb66hwqb66h.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0105",
+                  "fileName": "Gemini_Generated_Image_bf58tbbf58tbbf58.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_bf58tbbf58tbbf58.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0106",
+                  "fileName": "Gemini_Generated_Image_bo3y4vbo3y4vbo3y.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_bo3y4vbo3y4vbo3y.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0107",
+                  "fileName": "Gemini_Generated_Image_c4hbrjc4hbrjc4hb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_c4hbrjc4hbrjc4hb.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0108",
+                  "fileName": "Gemini_Generated_Image_d9tard9tard9tard.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_d9tard9tard9tard.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0109",
+                  "fileName": "Gemini_Generated_Image_dwukbodwukbodwuk.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_dwukbodwukbodwuk.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0110",
+                  "fileName": "Gemini_Generated_Image_dzenlndzenlndzen.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_dzenlndzenlndzen.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0111",
+                  "fileName": "Gemini_Generated_Image_e4sj6ke4sj6ke4sj.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_e4sj6ke4sj6ke4sj.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0112",
+                  "fileName": "Gemini_Generated_Image_ehia8iehia8iehia.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ehia8iehia8iehia.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0113",
+                  "fileName": "Gemini_Generated_Image_ei5vlqei5vlqei5v.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ei5vlqei5vlqei5v.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0114",
+                  "fileName": "Gemini_Generated_Image_eidbgkeidbgkeidb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_eidbgkeidbgkeidb.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0115",
+                  "fileName": "Gemini_Generated_Image_eug8jkeug8jkeug8.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_eug8jkeug8jkeug8.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0116",
+                  "fileName": "Gemini_Generated_Image_ewwjtpewwjtpewwj.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ewwjtpewwjtpewwj.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0117",
+                  "fileName": "Gemini_Generated_Image_ezhjkzezhjkzezhj.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ezhjkzezhjkzezhj.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0118",
+                  "fileName": "Gemini_Generated_Image_fd5gpkfd5gpkfd5g.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fd5gpkfd5gpkfd5g.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0119",
+                  "fileName": "Gemini_Generated_Image_fkjj9cfkjj9cfkjj.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fkjj9cfkjj9cfkjj.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0120",
+                  "fileName": "Gemini_Generated_Image_fna1mhfna1mhfna1.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fna1mhfna1mhfna1.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0121",
+                  "fileName": "Gemini_Generated_Image_fo28kgfo28kgfo28.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fo28kgfo28kgfo28.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0122",
+                  "fileName": "Gemini_Generated_Image_fukczgfukczgfukc.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fukczgfukczgfukc.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0123",
+                  "fileName": "Gemini_Generated_Image_fycmgpfycmgpfycm.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fycmgpfycmgpfycm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0124",
+                  "fileName": "Gemini_Generated_Image_fyhemgfyhemgfyhe.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_fyhemgfyhemgfyhe.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0125",
+                  "fileName": "Gemini_Generated_Image_ghu8s9ghu8s9ghu8.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ghu8s9ghu8s9ghu8.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0126",
+                  "fileName": "Gemini_Generated_Image_ghyfyvghyfyvghyf.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ghyfyvghyfyvghyf.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0127",
+                  "fileName": "Gemini_Generated_Image_h7ywcdh7ywcdh7yw.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_h7ywcdh7ywcdh7yw.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0128",
+                  "fileName": "Gemini_Generated_Image_hdzrkyhdzrkyhdzr.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_hdzrkyhdzrkyhdzr.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0129",
+                  "fileName": "Gemini_Generated_Image_henpd7henpd7henp.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_henpd7henpd7henp.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0130",
+                  "fileName": "Gemini_Generated_Image_hm7497hm7497hm74.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_hm7497hm7497hm74.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0131",
+                  "fileName": "Gemini_Generated_Image_ho0eueho0eueho0e.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ho0eueho0eueho0e.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0132",
+                  "fileName": "Gemini_Generated_Image_i0btnyi0btnyi0bt.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_i0btnyi0btnyi0bt.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0133",
+                  "fileName": "Gemini_Generated_Image_i85ltni85ltni85l.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_i85ltni85ltni85l.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0134",
+                  "fileName": "Gemini_Generated_Image_iu8cehiu8cehiu8c.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_iu8cehiu8cehiu8c.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0135",
+                  "fileName": "Gemini_Generated_Image_iyoi55iyoi55iyoi.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_iyoi55iyoi55iyoi.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0136",
+                  "fileName": "Gemini_Generated_Image_iz90t4iz90t4iz90.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_iz90t4iz90t4iz90.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0137",
+                  "fileName": "Gemini_Generated_Image_j3u96lj3u96lj3u9.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_j3u96lj3u96lj3u9.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0138",
+                  "fileName": "Gemini_Generated_Image_j8c93oj8c93oj8c9.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_j8c93oj8c93oj8c9.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0139",
+                  "fileName": "Gemini_Generated_Image_jd3ockjd3ockjd3o copy.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_jd3ockjd3ockjd3o%20copy.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0140",
+                  "fileName": "Gemini_Generated_Image_jfw5ehjfw5ehjfw5.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_jfw5ehjfw5ehjfw5.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0141",
+                  "fileName": "Gemini_Generated_Image_jlmb2pjlmb2pjlmb.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_jlmb2pjlmb2pjlmb.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0142",
+                  "fileName": "Gemini_Generated_Image_jqky1vjqky1vjqky.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_jqky1vjqky1vjqky.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0143",
+                  "fileName": "Gemini_Generated_Image_jzfqm7jzfqm7jzfq copy.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_jzfqm7jzfqm7jzfq%20copy.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0144",
+                  "fileName": "Gemini_Generated_Image_k9fyzuk9fyzuk9fy.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_k9fyzuk9fyzuk9fy.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0145",
+                  "fileName": "Gemini_Generated_Image_ka93k7ka93k7ka93.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ka93k7ka93k7ka93.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0146",
+                  "fileName": "Gemini_Generated_Image_kfi0dgkfi0dgkfi0.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_kfi0dgkfi0dgkfi0.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0147",
+                  "fileName": "Gemini_Generated_Image_kwkijdkwkijdkwki.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_kwkijdkwkijdkwki.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0148",
+                  "fileName": "Gemini_Generated_Image_l7fhrbl7fhrbl7fh.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_l7fhrbl7fhrbl7fh.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0149",
+                  "fileName": "Gemini_Generated_Image_lrtog4lrtog4lrto.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_lrtog4lrtog4lrto.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0150",
+                  "fileName": "Gemini_Generated_Image_lsdl9nlsdl9nlsdl.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_lsdl9nlsdl9nlsdl.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0151",
+                  "fileName": "Gemini_Generated_Image_m8vrjmm8vrjmm8vr.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_m8vrjmm8vrjmm8vr.png",
+                  "width": 1264,
+                  "height": 848,
+                  "aspectRatio": 1.490566
+            },
+            {
+                  "id": "img-0152",
+                  "fileName": "Gemini_Generated_Image_mi3z02mi3z02mi3z.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_mi3z02mi3z02mi3z.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0153",
+                  "fileName": "Gemini_Generated_Image_mlgk7umlgk7umlgk.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_mlgk7umlgk7umlgk.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0154",
+                  "fileName": "Gemini_Generated_Image_msrfaumsrfaumsrf.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_msrfaumsrfaumsrf.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0155",
+                  "fileName": "Gemini_Generated_Image_nn4wycnn4wycnn4w.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_nn4wycnn4wycnn4w.png",
+                  "width": 2816,
+                  "height": 1536,
+                  "aspectRatio": 1.833333
+            },
+            {
+                  "id": "img-0156",
+                  "fileName": "Gemini_Generated_Image_nnvxobnnvxobnnvx.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_nnvxobnnvxobnnvx.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0157",
+                  "fileName": "Gemini_Generated_Image_oazhk3oazhk3oazh.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_oazhk3oazhk3oazh.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0158",
+                  "fileName": "Gemini_Generated_Image_ociup7ociup7ociu.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ociup7ociup7ociu.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0159",
+                  "fileName": "Gemini_Generated_Image_otnwqeotnwqeotnw.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_otnwqeotnwqeotnw.png",
+                  "width": 1344,
+                  "height": 768,
+                  "aspectRatio": 1.75
+            },
+            {
+                  "id": "img-0160",
+                  "fileName": "Gemini_Generated_Image_oz8zzkoz8zzkoz8z.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_oz8zzkoz8zzkoz8z.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0161",
+                  "fileName": "Gemini_Generated_Image_pn0x0ypn0x0ypn0x.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_pn0x0ypn0x0ypn0x.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0162",
+                  "fileName": "Gemini_Generated_Image_po0mq9po0mq9po0m.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_po0mq9po0mq9po0m.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0163",
+                  "fileName": "Gemini_Generated_Image_pqv49lpqv49lpqv4.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_pqv49lpqv49lpqv4.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0164",
+                  "fileName": "Gemini_Generated_Image_qro3dsqro3dsqro3.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_qro3dsqro3dsqro3.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0165",
+                  "fileName": "Gemini_Generated_Image_qy665fqy665fqy66.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_qy665fqy665fqy66.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0166",
+                  "fileName": "Gemini_Generated_Image_r0jgu8r0jgu8r0jg.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_r0jgu8r0jgu8r0jg.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0167",
+                  "fileName": "Gemini_Generated_Image_r3nngur3nngur3nn.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_r3nngur3nngur3nn.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0168",
+                  "fileName": "Gemini_Generated_Image_r3xfk8r3xfk8r3xf.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_r3xfk8r3xfk8r3xf.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0169",
+                  "fileName": "Gemini_Generated_Image_rbhs2erbhs2erbhs.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rbhs2erbhs2erbhs.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0170",
+                  "fileName": "Gemini_Generated_Image_rj8nmerj8nmerj8n.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rj8nmerj8nmerj8n.png",
+                  "width": 2048,
+                  "height": 2048,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0171",
+                  "fileName": "Gemini_Generated_Image_rklsyurklsyurkls.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rklsyurklsyurkls.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0172",
+                  "fileName": "Gemini_Generated_Image_rkv1q5rkv1q5rkv1.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rkv1q5rkv1q5rkv1.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0173",
+                  "fileName": "Gemini_Generated_Image_rn9hl7rn9hl7rn9h.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rn9hl7rn9hl7rn9h.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0174",
+                  "fileName": "Gemini_Generated_Image_rscrktrscrktrscr.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rscrktrscrktrscr.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0175",
+                  "fileName": "Gemini_Generated_Image_rsxpjtrsxpjtrsxp.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_rsxpjtrsxpjtrsxp.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0176",
+                  "fileName": "Gemini_Generated_Image_s038jrs038jrs038.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_s038jrs038jrs038.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0177",
+                  "fileName": "Gemini_Generated_Image_s79au7s79au7s79a.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_s79au7s79au7s79a.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0178",
+                  "fileName": "Gemini_Generated_Image_smaxipsmaxipsmax (1)_processed.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_smaxipsmaxipsmax%20(1)_processed.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0179",
+                  "fileName": "Gemini_Generated_Image_sz81tqsz81tqsz81.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_sz81tqsz81tqsz81.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0180",
+                  "fileName": "Gemini_Generated_Image_tdahzstdahzstdah.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_tdahzstdahzstdah.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0181",
+                  "fileName": "Gemini_Generated_Image_tewc2ttewc2ttewc.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_tewc2ttewc2ttewc.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0182",
+                  "fileName": "Gemini_Generated_Image_tgo1bvtgo1bvtgo1.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_tgo1bvtgo1bvtgo1.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0183",
+                  "fileName": "Gemini_Generated_Image_tn7x4qtn7x4qtn7x.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_tn7x4qtn7x4qtn7x.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0184",
+                  "fileName": "Gemini_Generated_Image_tuz05ntuz05ntuz0.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_tuz05ntuz05ntuz0.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0185",
+                  "fileName": "Gemini_Generated_Image_u99acmu99acmu99a.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_u99acmu99acmu99a.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0186",
+                  "fileName": "Gemini_Generated_Image_uh0lo3uh0lo3uh0l.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uh0lo3uh0lo3uh0l.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0187",
+                  "fileName": "Gemini_Generated_Image_uk3rnzuk3rnzuk3r.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uk3rnzuk3rnzuk3r.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0188",
+                  "fileName": "Gemini_Generated_Image_uphqfwuphqfwuphq.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uphqfwuphqfwuphq.png",
+                  "width": 1856,
+                  "height": 2304,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0189",
+                  "fileName": "Gemini_Generated_Image_uxft9huxft9huxft.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uxft9huxft9huxft.png",
+                  "width": 1536,
+                  "height": 2752,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0190",
+                  "fileName": "Gemini_Generated_Image_uymzdbuymzdbuymz.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uymzdbuymzdbuymz.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0191",
+                  "fileName": "Gemini_Generated_Image_uywo7muywo7muywo_processed.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uywo7muywo7muywo_processed.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0192",
+                  "fileName": "Gemini_Generated_Image_uzc6pduzc6pduzc6.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uzc6pduzc6pduzc6.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0193",
+                  "fileName": "Gemini_Generated_Image_uzytsluzytsluzyt.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_uzytsluzytsluzyt.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0194",
+                  "fileName": "Gemini_Generated_Image_v0s5wov0s5wov0s5.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_v0s5wov0s5wov0s5.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0195",
+                  "fileName": "Gemini_Generated_Image_voo4ygvoo4ygvoo4.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_voo4ygvoo4ygvoo4.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0196",
+                  "fileName": "Gemini_Generated_Image_vr9zogvr9zogvr9z.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_vr9zogvr9zogvr9z.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0197",
+                  "fileName": "Gemini_Generated_Image_vrmc3qvrmc3qvrmc_processed.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_vrmc3qvrmc3qvrmc_processed.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0198",
+                  "fileName": "Gemini_Generated_Image_w6paubw6paubw6pa.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_w6paubw6paubw6pa.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0199",
+                  "fileName": "Gemini_Generated_Image_wlyy88wlyy88wlyy.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_wlyy88wlyy88wlyy.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0200",
+                  "fileName": "Gemini_Generated_Image_wpktmjwpktmjwpkt.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_wpktmjwpktmjwpkt.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0201",
+                  "fileName": "Gemini_Generated_Image_wrp3a5wrp3a5wrp3_processed.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_wrp3a5wrp3a5wrp3_processed.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0202",
+                  "fileName": "Gemini_Generated_Image_wy0vl9wy0vl9wy0v.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_wy0vl9wy0vl9wy0v.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0203",
+                  "fileName": "Gemini_Generated_Image_wylpl5wylpl5wylp.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_wylpl5wylpl5wylp.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0204",
+                  "fileName": "Gemini_Generated_Image_x52s4x52s4x52s4x.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_x52s4x52s4x52s4x.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0205",
+                  "fileName": "Gemini_Generated_Image_xbzkvzxbzkvzxbzk.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_xbzkvzxbzkvzxbzk.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0206",
+                  "fileName": "Gemini_Generated_Image_xezh3xxezh3xxezh.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_xezh3xxezh3xxezh.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0207",
+                  "fileName": "Gemini_Generated_Image_xhdeg4xhdeg4xhde.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_xhdeg4xhdeg4xhde.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0208",
+                  "fileName": "Gemini_Generated_Image_y25cjjy25cjjy25c.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_y25cjjy25cjjy25c.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0209",
+                  "fileName": "Gemini_Generated_Image_y59faay59faay59f.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_y59faay59faay59f.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0210",
+                  "fileName": "Gemini_Generated_Image_yamidpyamidpyami.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yamidpyamidpyami.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0211",
+                  "fileName": "Gemini_Generated_Image_ybnhxvybnhxvybnh.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ybnhxvybnhxvybnh.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0212",
+                  "fileName": "Gemini_Generated_Image_yco837yco837yco8.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yco837yco837yco8.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0213",
+                  "fileName": "Gemini_Generated_Image_ye7gs1ye7gs1ye7g.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ye7gs1ye7gs1ye7g.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0214",
+                  "fileName": "Gemini_Generated_Image_yicz25yicz25yicz.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yicz25yicz25yicz.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0215",
+                  "fileName": "Gemini_Generated_Image_yii9uoyii9uoyii9.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yii9uoyii9uoyii9.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0216",
+                  "fileName": "Gemini_Generated_Image_yjf4pbyjf4pbyjf4.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yjf4pbyjf4pbyjf4.png",
+                  "width": 928,
+                  "height": 1152,
+                  "aspectRatio": 0.805556
+            },
+            {
+                  "id": "img-0217",
+                  "fileName": "Gemini_Generated_Image_yoxtomyoxtomyoxt.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yoxtomyoxtomyoxt.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0218",
+                  "fileName": "Gemini_Generated_Image_ypvgtxypvgtxypvg.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_ypvgtxypvgtxypvg.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0219",
+                  "fileName": "Gemini_Generated_Image_yqbppyyqbppyyqbp.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yqbppyyqbppyyqbp.png",
+                  "width": 2752,
+                  "height": 1536,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0220",
+                  "fileName": "Gemini_Generated_Image_yrzillyrzillyrzi.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_yrzillyrzillyrzi.png",
+                  "width": 1376,
+                  "height": 768,
+                  "aspectRatio": 1.791667
+            },
+            {
+                  "id": "img-0221",
+                  "fileName": "Gemini_Generated_Image_z8i38xz8i38xz8i3 (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_z8i38xz8i38xz8i3%20(1).png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0222",
+                  "fileName": "Gemini_Generated_Image_zcun3tzcun3tzcun.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_zcun3tzcun3tzcun.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0223",
+                  "fileName": "Gemini_Generated_Image_zcxo8szcxo8szcxo (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_zcxo8szcxo8szcxo%20(1).png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0224",
+                  "fileName": "Gemini_Generated_Image_zgwou3zgwou3zgwo.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./Gemini_Generated_Image_zgwou3zgwou3zgwo.png",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0225",
+                  "fileName": "id-ako-ss25-img-02-description-silhouette-portra-2026-04-17T07-52-40-985Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./id-ako-ss25-img-02-description-silhouette-portra-2026-04-17T07-52-40-985Z.jpg",
+                  "width": 572,
+                  "height": 1024,
+                  "aspectRatio": 0.558594
+            },
+            {
+                  "id": "img-0226",
+                  "fileName": "id-ako-ss25-img-03-description-flat-lay-of-ako-c-2026-04-17T07-53-12-473Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./id-ako-ss25-img-03-description-flat-lay-of-ako-c-2026-04-17T07-53-12-473Z.jpg",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0227",
+                  "fileName": "id-ako-ss25-img-04-description-street-style-shot-2026-04-17T07-54-22-500Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./id-ako-ss25-img-04-description-street-style-shot-2026-04-17T07-54-22-500Z.jpg",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0228",
+                  "fileName": "id-ako-ss25-img-05-description-detail-shot-of-ak-2026-04-17T07-54-39-562Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./id-ako-ss25-img-05-description-detail-shot-of-ak-2026-04-17T07-54-39-562Z.jpg",
+                  "width": 768,
+                  "height": 1376,
+                  "aspectRatio": 0.55814
+            },
+            {
+                  "id": "img-0229",
+                  "fileName": "id-ran-ccc-mk-02-title-entry-altar-mockup-format-2026-04-23T12-10-29-086Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./id-ran-ccc-mk-02-title-entry-altar-mockup-format-2026-04-23T12-10-29-086Z.jpg",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0230",
+                  "fileName": "loading_dock_1776994639606.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./loading_dock_1776994639606.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0231",
+                  "fileName": "mai-image-2_a_{__id____RAN_CCC_M (1).png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./mai-image-2_a_%7B__id____RAN_CCC_M%20(1).png",
+                  "width": 1360,
+                  "height": 768,
+                  "aspectRatio": 1.770833
+            },
+            {
+                  "id": "img-0232",
+                  "fileName": "mai-image-2_a_{__id____RAN_CCC_M.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./mai-image-2_a_%7B__id____RAN_CCC_M.png",
+                  "width": 768,
+                  "height": 1360,
+                  "aspectRatio": 0.564706
+            },
+            {
+                  "id": "img-0233",
+                  "fileName": "mirror_salon_1776994596249.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./mirror_salon_1776994596249.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0234",
+                  "fileName": "runway_corridor_1776994615875.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./runway_corridor_1776994615875.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0235",
+                  "fileName": "scene-s01-title-ranaan-entry-altar-first-contact-2026-04-17T18-21-15-609Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./scene-s01-title-ranaan-entry-altar-first-contact-2026-04-17T18-21-15-609Z.jpg",
+                  "width": 572,
+                  "height": 1024,
+                  "aspectRatio": 0.558594
+            },
+            {
+                  "id": "img-0236",
+                  "fileName": "stairwell_descent_1776994574623.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./stairwell_descent_1776994574623.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            },
+            {
+                  "id": "img-0237",
+                  "fileName": "unknown-2026-04-23T12-22-37-814Z (1).jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./unknown-2026-04-23T12-22-37-814Z%20(1).jpg",
+                  "width": 572,
+                  "height": 1024,
+                  "aspectRatio": 0.558594
+            },
+            {
+                  "id": "img-0238",
+                  "fileName": "unknown-2026-04-23T12-22-37-933Z (1).jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./unknown-2026-04-23T12-22-37-933Z%20(1).jpg",
+                  "width": 572,
+                  "height": 1024,
+                  "aspectRatio": 0.558594
+            },
+            {
+                  "id": "img-0239",
+                  "fileName": "unknown-2026-04-23T12-22-37-943Z.jpg",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./unknown-2026-04-23T12-22-37-943Z.jpg",
+                  "width": 1024,
+                  "height": 572,
+                  "aspectRatio": 1.79021
+            },
+            {
+                  "id": "img-0240",
+                  "fileName": "vitrine_ghost_1776994554157.png",
+                  "caption": null,
+                  "chapter": "RANAAN CCCC",
+                  "src": "./vitrine_ghost_1776994554157.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "aspectRatio": 1
+            }
+      ]
+};
+
+    const ISSUE_DATA = {
+      project: {
+        title: "RANAAN × CCC — Future Archives",
+        subtitle: "Controlled Chaos Collection SS25"
+      },
+      spreads: []
+    };
+
+    let currentSpread = 0;
+    let isFitMode = false;
+    let flipFxTimer = null;
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function normalizeText(text) {
+      return String(text ?? "").toLowerCase();
+    }
+
+    function clampAspect(value, min = 0.35, max = 2.6) {
+      const n = Number(value);
+      if (!Number.isFinite(n) || n <= 0) return 1;
+      return Math.min(max, Math.max(min, n));
+    }
+
+    function inferAspectFromName(fileName) {
+      const name = normalizeText(fileName || "");
+      const direct = name.match(/(\d{1,2})\s*[x:]\s*(\d{1,2})/i);
+      if (direct) {
+        const w = Number(direct[1]);
+        const h = Number(direct[2]);
+        if (w > 0 && h > 0) return clampAspect(w / h);
+      }
+      if (/16x9|landscape|horizontal/.test(name)) return 16 / 9;
+      if (/9x16|portrait|vertical/.test(name)) return 9 / 16;
+      if (/1x1|square/.test(name)) return 1;
+      return 0.8;
+    }
+
+    function imageAspect(image) {
+      return clampAspect(image?.aspectRatio || inferAspectFromName(image?.fileName || ""));
+    }
+
+    function getPageTitle(pageNumber) {
+      return PAGE_TITLES[pageNumber - 1] || `Page ${pageNumber}`;
+    }
+
+    function buildImageSide(image, spreadIndex, sideName, pageNumber, pageTitle) {
+      if (!image) {
+        return {
+          theme: sideName === "left" ? "dark" : "light",
+          kicker: `Page ${String(pageNumber).padStart(3, "0")}`,
+          pageTitle,
+          title: "Archive\nComplete",
+          body: "All image files from the RANAAN CCCC source folder have been included in this issue.",
+          footer: "RANAAN CCCC / Full Image Set"
+        };
+      }
+
+      const dark = (spreadIndex + (sideName === "left" ? 0 : 1)) % 2 === 0;
+      return {
+        theme: dark ? "dark" : "light",
+        kicker: `Page ${String(pageNumber).padStart(3, "0")}`,
+        pageTitle,
+        media: image.src,
+        mediaLabel: pageTitle || "Editorial image",
+        mediaAspect: imageAspect(image),
+        footer: image.chapter || "RANAAN CCCC"
+      };
+    }
+
+    function buildAllImageSpreads(images) {
+      const out = [];
+      for (let i = 0; i < images.length; i += 2) {
+        const index = Math.floor(i / 2);
+        const leftPageNumber = i + 1;
+        const rightPageNumber = i + 2;
+        const leftPageTitle = getPageTitle(leftPageNumber);
+        const rightPageTitle = getPageTitle(rightPageNumber);
+        const left = images[i] || null;
+        const right = images[i + 1] || null;
+        out.push({
+          id: `spread-${String(index + 1).padStart(3, "0")}`,
+          thumbLabel: `${String(leftPageNumber).padStart(3, "0")} · ${leftPageTitle}`,
+          left: buildImageSide(left, index, "left", leftPageNumber, leftPageTitle),
+          right: buildImageSide(right, index, "right", rightPageNumber, rightPageTitle)
+        });
+      }
+      return out;
+    }
+
+    function applyAllImagesToSpreads(manifestImages) {
+      const deduped = [];
+      const seen = new Set();
+
+      for (const image of manifestImages) {
+        if (!image || !image.src) continue;
+        if (seen.has(image.id)) continue;
+        seen.add(image.id);
+        deduped.push(image);
+      }
+
+      ISSUE_DATA.spreads = buildAllImageSpreads(deduped);
+    }
+
+    function getSideAspect(side) {
+      if (side?.media) return clampAspect(side.mediaAspect || 0.8);
+      if (side?.title) return 0.72;
+      return 0.8;
+    }
+
+    function getSpreadAspect(spread) {
+      if (!spread) return 1.62;
+      const left = getSideAspect(spread.left);
+      const right = getSideAspect(spread.right);
+      return clampAspect(left + right, 0.9, 4.6);
+    }
+
+    function updateViewportAspect() {
+      const viewport = document.getElementById("spread-viewport");
+      const activeSpread = ISSUE_DATA.spreads[currentSpread];
+      if (!viewport || !activeSpread) return;
+      viewport.style.setProperty("--spread-ratio", String(getSpreadAspect(activeSpread)));
+    }
+
+    function renderMediaFrame(side, shouldLoadMedia = true) {
+      if (!side?.media) return "";
+      const aspect = clampAspect(side.mediaAspect || 0.8);
+      if (!shouldLoadMedia) {
+        return `
+          <div class="media-frame flex items-center justify-center p-3 text-[10px] uppercase tracking-[0.18em] opacity-55" style="--media-aspect:${aspect};">
+            ${escapeHtml(side.mediaLabel || "Image")}
+          </div>
+        `;
+      }
+      return `
+        <figure class="media-frame" style="--media-aspect:${aspect};">
+          <img loading="lazy" decoding="async" src="${escapeHtml(side.media)}" alt="${escapeHtml(side.mediaLabel || "Editorial image")}" />
+        </figure>
+      `;
+    }
+
+    function renderDesktop() {
+      const viewport = document.getElementById("spread-viewport");
+      viewport.innerHTML = "";
+      updateViewportAspect();
+
+      ISSUE_DATA.spreads.forEach((spread, idx) => {
+        const card = document.createElement("div");
+        const spreadState =
+          idx === currentSpread ? "active" : idx < currentSpread ? "before" : "after";
+        const shouldLoadMedia = Math.abs(idx - currentSpread) <= 2;
+
+        card.id = `spread-${idx}`;
+        card.className = `spread-card absolute inset-0 grid grid-cols-2 bg-bone_cream rounded-2xl overflow-hidden shadow-2xl ${spreadState}`;
+        card.style.gridTemplateColumns = `${getSideAspect(spread.left)}fr ${getSideAspect(spread.right)}fr`;
+
+        const leftThemeDark = spread.left.theme === "dark";
+        const rightThemeDark = spread.right.theme === "dark";
+        const leftDisplayTitle = spread.left.pageTitle || spread.left.title || "";
+        const rightDisplayTitle = spread.right.pageTitle || spread.right.title || "";
+
+        card.innerHTML = `
+          <div class="relative ${leftThemeDark ? "bg-void_black text-bone_cream" : "bg-bone_cream text-void_black"} p-10 flex flex-col justify-between border-r border-black/10">
+            <div class="flex justify-between items-center opacity-50 text-[10px] uppercase tracking-widest">
+              <span>${escapeHtml(spread.left.kicker || "")}</span>
+              <span>${(idx * 2 + 1).toString().padStart(2, "0")}</span>
+            </div>
+            <div class="flex flex-col gap-6 min-h-0">
+              ${leftDisplayTitle ? `<h2 class="font-bebas text-[clamp(1.7rem,2.4vw,3rem)] uppercase leading-[0.95]">${escapeHtml(leftDisplayTitle).replaceAll("\n", "<br>")}</h2>` : ""}
+              ${renderMediaFrame(spread.left, shouldLoadMedia)}
+              ${spread.left.deck ? `<p class="font-playfair italic text-lg opacity-80">${escapeHtml(spread.left.deck)}</p>` : ""}
+              ${spread.left.quote ? `<blockquote class="font-playfair text-2xl italic leading-tight">${escapeHtml(spread.left.quote)}</blockquote>` : ""}
+              ${spread.left.body ? `<p class="text-sm leading-relaxed opacity-70 max-w-prose">${escapeHtml(spread.left.body)}</p>` : ""}
+            </div>
+            <div class="text-[10px] uppercase tracking-widest opacity-40">${escapeHtml(spread.left.footer || "")}</div>
+          </div>
+          <div class="relative ${rightThemeDark ? "bg-void_black text-bone_cream" : "bg-bone_cream text-void_black"} p-10 flex flex-col justify-between">
+            <div class="flex justify-between items-center opacity-50 text-[10px] uppercase tracking-widest">
+              <span>${escapeHtml(spread.right.kicker || "")}</span>
+              <span>${(idx * 2 + 2).toString().padStart(2, "0")}</span>
+            </div>
+            <div class="flex flex-col gap-6 h-full justify-center min-h-0">
+              ${renderMediaFrame(spread.right, shouldLoadMedia)}
+              ${rightDisplayTitle ? `<h2 class="font-bebas text-[clamp(1.7rem,2.4vw,3rem)] uppercase leading-[0.95]">${escapeHtml(rightDisplayTitle).replaceAll("\n", "<br>")}</h2>` : ""}
+              ${spread.right.body ? `<p class="text-sm leading-relaxed opacity-70 max-w-prose">${escapeHtml(spread.right.body)}</p>` : ""}
+            </div>
+            <div class="text-[10px] uppercase tracking-widest opacity-40">${escapeHtml(spread.right.footer || "")}</div>
+          </div>
+        `;
+        viewport.appendChild(card);
+      });
+
+      document.getElementById("spread-counter").innerText = `${(currentSpread + 1)
+        .toString()
+        .padStart(2, "0")} / ${ISSUE_DATA.spreads.length.toString().padStart(2, "0")}`;
+    }
+
+    function renderMobile() {
+      const scroller = document.getElementById("mobile-scroller");
+      scroller.innerHTML = "";
+      if (window.innerWidth >= 768) return;
+
+      ISSUE_DATA.spreads.forEach((spread, idx) => {
+        const section = document.createElement("div");
+        section.className = "space-y-4";
+        section.innerHTML = `
+          <div class="flex justify-between items-center px-1 gap-2">
+            <span class="text-[10px] uppercase tracking-widest opacity-50 truncate">${escapeHtml(spread.thumbLabel)}</span>
+            <span class="text-[10px] bg-white/10 px-2 py-1 rounded-md tracking-widest">${(idx + 1).toString().padStart(2, "0")}</span>
+          </div>
+          <div class="grid gap-4">
+            ${renderMobileSide(spread.left, idx * 2 + 1)}
+            ${renderMobileSide(spread.right, idx * 2 + 2)}
+          </div>
+        `;
+        scroller.appendChild(section);
+      });
+    }
+
+    function renderMobileSide(side, page) {
+      const isDark = side.theme === "dark";
+      const aspect = clampAspect(side.mediaAspect || 0.8);
+      const displayTitle = side.pageTitle || side.title || "";
+      return `
+        <div class="${isDark ? "bg-void_black text-bone_cream" : "bg-bone_cream text-void_black"} rounded-3xl p-6 space-y-4 shadow-xl border border-white/10">
+          <div class="flex justify-between opacity-50 text-[10px] uppercase tracking-widest">
+            <span>${escapeHtml(side.kicker || "Archive")}</span>
+            <span>${page.toString().padStart(2, "0")}</span>
+          </div>
+          ${side.media ? `<figure class="media-frame" style="--media-aspect:${aspect};"><img loading="lazy" decoding="async" src="${escapeHtml(side.media)}" alt="${escapeHtml(side.mediaLabel || "Editorial image")}" /></figure>` : ""}
+          ${displayTitle ? `<h2 class="font-bebas text-4xl uppercase leading-none">${escapeHtml(displayTitle).replaceAll("\n", "<br>")}</h2>` : ""}
+          ${side.deck ? `<p class="font-playfair italic text-lg opacity-80">${escapeHtml(side.deck)}</p>` : ""}
+          ${side.body ? `<p class="text-sm leading-relaxed opacity-70">${escapeHtml(side.body)}</p>` : ""}
+          <div class="pt-4 border-t border-current opacity-20 text-[10px] uppercase tracking-widest">${escapeHtml(side.footer || "")}</div>
+        </div>
+      `;
+    }
+
+    function renderToc() {
+      const list = document.getElementById("toc-list");
+      list.innerHTML = "";
+      const totalPages = ISSUE_DATA.spreads.length * 2;
+      for (let pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
+        const spreadIndex = Math.floor((pageNumber - 1) / 2);
+        const pageTitle = getPageTitle(pageNumber);
+        const sideLabel = pageNumber % 2 === 1 ? "Left Page" : "Right Page";
+        const btn = document.createElement("button");
+        btn.className = "flex justify-between items-center text-left border-b border-white/10 pb-4 group";
+        btn.onclick = () => {
+          mobileGoTo(spreadIndex);
+          toggleToc();
+        };
+        btn.innerHTML = `
+          <div class="min-w-0">
+            <div class="text-[10px] uppercase tracking-[0.2em] opacity-40 mb-1">Page ${String(pageNumber).padStart(3, "0")} · Spread ${String(spreadIndex + 1).padStart(3, "0")} · ${sideLabel}</div>
+            <div class="font-bebas text-2xl tracking-wide group-hover:pl-4 transition-all duration-300 truncate">${escapeHtml(pageTitle)}</div>
+          </div>
+          <div class="text-2xl opacity-20">→</div>
+        `;
+        list.appendChild(btn);
+      }
+    }
+
+    function updateDesktopStats(stats) {
+      document.getElementById("stat-files").innerText = `${stats.totalFiles || 0} files`;
+      document.getElementById("stat-images").innerText = `${stats.totalImages || 0} images`;
+      document.getElementById("stat-spreads").innerText = `${ISSUE_DATA.spreads.length} spreads`;
+    }
+
+    function triggerPageFlip(direction) {
+      if (window.innerWidth < 768) return;
+      const viewport = document.getElementById("spread-viewport");
+      if (!viewport) return;
+
+      const forwardClass = "is-flipping-forward";
+      const backClass = "is-flipping-back";
+      viewport.classList.remove(forwardClass, backClass);
+      void viewport.offsetWidth;
+      viewport.classList.add(direction === "forward" ? forwardClass : backClass);
+
+      window.clearTimeout(flipFxTimer);
+      flipFxTimer = window.setTimeout(() => {
+        viewport.classList.remove(forwardClass, backClass);
+      }, 620);
+    }
+
+    function nextSpread() {
+      if (currentSpread < ISSUE_DATA.spreads.length - 1) {
+        currentSpread += 1;
+        renderDesktop();
+        triggerPageFlip("forward");
+      }
+    }
+
+    function prevSpread() {
+      if (currentSpread > 0) {
+        currentSpread -= 1;
+        renderDesktop();
+        triggerPageFlip("back");
+      }
+    }
+
+    function mobileGoTo(idx) {
+      const sections = document.getElementById("mobile-scroller").children;
+      if (!sections[idx]) return;
+      sections[idx].scrollIntoView({ behavior: "smooth" });
+    }
+
+    function toggleToc() {
+      const overlay = document.getElementById("toc-overlay");
+      overlay.classList.toggle("hidden");
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") nextSpread();
+      if (e.key === "ArrowLeft") prevSpread();
+      if (e.key.toLowerCase() === "f") {
+        isFitMode = !isFitMode;
+        document.getElementById("app").classList.toggle("fit-mode", isFitMode);
+      }
+      if (e.key.toLowerCase() === "t") {
+        toggleToc();
+      }
+    });
+
+    function isGestureNavigationEnabled() {
+      const toc = document.getElementById("toc-overlay");
+      const tocOpen = toc && !toc.classList.contains("hidden");
+      return window.innerWidth >= 768 && !tocOpen;
+    }
+
+    function touchMidpoint(touches) {
+      if (!touches || touches.length < 2) return { x: 0, y: 0 };
+      return {
+        x: (touches[0].clientX + touches[1].clientX) / 2,
+        y: (touches[0].clientY + touches[1].clientY) / 2
+      };
+    }
+
+    function installTwoFingerFlickNavigation() {
+      const stage = document.getElementById("spread-viewport");
+      if (!stage) return;
+
+      const touchState = {
+        active: false,
+        startX: 0,
+        startY: 0,
+        triggered: false
+      };
+      let lastWheelFlickAt = 0;
+
+      stage.addEventListener(
+        "wheel",
+        (event) => {
+          if (!isGestureNavigationEnabled()) return;
+          const absX = Math.abs(event.deltaX);
+          const absY = Math.abs(event.deltaY);
+          if (absX < 56 || absX < absY * 1.15) return;
+
+          const now = Date.now();
+          if (now - lastWheelFlickAt < 420) return;
+          lastWheelFlickAt = now;
+
+          event.preventDefault();
+          if (event.deltaX > 0) {
+            nextSpread();
+          } else {
+            prevSpread();
+          }
+        },
+        { passive: false }
+      );
+
+      stage.addEventListener(
+        "touchstart",
+        (event) => {
+          if (!isGestureNavigationEnabled()) return;
+          if (event.touches.length !== 2) return;
+          const mid = touchMidpoint(event.touches);
+          touchState.active = true;
+          touchState.startX = mid.x;
+          touchState.startY = mid.y;
+          touchState.triggered = false;
+        },
+        { passive: true }
+      );
+
+      stage.addEventListener(
+        "touchmove",
+        (event) => {
+          if (!touchState.active || event.touches.length !== 2 || touchState.triggered) return;
+          if (!isGestureNavigationEnabled()) return;
+
+          const mid = touchMidpoint(event.touches);
+          const dx = mid.x - touchState.startX;
+          const dy = mid.y - touchState.startY;
+          if (Math.abs(dx) < 72 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+
+          touchState.triggered = true;
+          event.preventDefault();
+          if (dx < 0) {
+            nextSpread();
+          } else {
+            prevSpread();
+          }
+        },
+        { passive: false }
+      );
+
+      const clearTouch = () => {
+        touchState.active = false;
+        touchState.triggered = false;
+      };
+      stage.addEventListener("touchend", clearTouch, { passive: true });
+      stage.addEventListener("touchcancel", clearTouch, { passive: true });
+    }
+
+    installTwoFingerFlickNavigation();
+
+    let resizeTimer = null;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        if (window.innerWidth >= 768) {
+          renderDesktop();
+        } else {
+          renderMobile();
+        }
+      }, 120);
+    });
+
+    async function loadManifestAndRender() {
+      let manifest = INLINE_MANIFEST;
+
+      if (window.location.protocol !== "file:") {
+        try {
+          const response = await fetch("./manifest.json", { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error(`Manifest request failed (${response.status})`);
+          }
+          manifest = await response.json();
+        } catch (error) {
+          console.warn("Using embedded RANAAN CCC image manifest:", error);
+        }
+      }
+
+      const images = Array.isArray(manifest.images) ? manifest.images : [];
+
+      if (manifest.project?.title) ISSUE_DATA.project.title = manifest.project.title;
+      if (manifest.project?.subtitle) ISSUE_DATA.project.subtitle = manifest.project.subtitle;
+
+      if (images.length > 0) {
+        applyAllImagesToSpreads(images);
+      } else {
+        ISSUE_DATA.spreads = JSON.parse(JSON.stringify(BASE_SPREADS));
+      }
+
+      document.getElementById("project-title").innerText = ISSUE_DATA.project.title;
+      document.getElementById("project-title-mobile").innerText = ISSUE_DATA.project.title;
+      document.getElementById("project-subtitle").innerText = ISSUE_DATA.project.subtitle || "Future Archives";
+
+      updateDesktopStats(manifest.stats || { totalFiles: images.length, totalImages: images.length });
+      renderDesktop();
+      renderMobile();
+      renderToc();
+    }
+
+    loadManifestAndRender();
+  </script>
+</body>
+</html>

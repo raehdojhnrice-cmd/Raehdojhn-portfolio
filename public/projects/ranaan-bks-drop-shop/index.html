@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RANAAN x BKS drop shop</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #f2f2ef; color: #101010; }
+    body { font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 0; }
+    body.menu-open, body.cart-open { overflow: hidden; }
+    button, a { color: inherit; font: inherit; }
+    button { border: 0; background: transparent; padding: 0; cursor: pointer; text-align: left; text-transform: inherit; }
+    input { border: 0; border-bottom: 1px solid #101010; border-radius: 0; background: transparent; color: inherit; font: inherit; outline: 0; padding: 4px 0; }
+    input::placeholder { color: #777; }
+    a { text-decoration: none; }
+    .page { min-height: 100vh; }
+    .promo { position: fixed; inset: 0 0 auto; z-index: 6; display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid #c8c8c2; background: #101010; color: #f4f4ef; }
+    .promo span { min-height: 22px; border-right: 1px solid #3b3b38; padding: 6px 8px 0; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .promo span:last-child { border-right: 0; }
+    .sidebar { position: fixed; z-index: 5; inset: 62px auto 22px 22px; display: flex; width: 140px; flex-direction: column; align-items: flex-start; gap: 18px; }
+    .wordmark { display: inline-flex; background: #101010; color: #fff; font-family: Arial Black, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 900; line-height: .92; padding: 4px 5px 6px; text-transform: uppercase; }
+    nav { display: grid; gap: 4px; line-height: 1.05; }
+    nav button, .topbar button, .footer button, .filters button, .brand-strip button, .carousel button, .mega-list button { border-bottom: 1px solid transparent; }
+    nav button:hover, .topbar button:hover, .footer button:hover, .filters button:hover, .brand-strip button:hover, .carousel button:hover, .mega-list button:hover, .active { border-bottom-color: currentColor; }
+    .shell { min-height: 100vh; padding: 48px 22px 46px 188px; }
+    .topbar { position: sticky; top: 22px; z-index: 4; display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: center; min-height: 42px; border-bottom: 1px solid #c8c8c2; background: rgba(242,242,239,.94); backdrop-filter: blur(12px); }
+    .top-logo { justify-self: center; font-family: Arial Black, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 900; line-height: 1; text-transform: uppercase; }
+    .top-actions { justify-self: end; display: flex; align-items: center; gap: 14px; }
+    .top-actions input { width: min(24vw, 220px); }
+    .stage { display: grid; grid-template-columns: minmax(160px, .42fr) minmax(0, 1.58fr); align-items: end; min-height: 48vh; gap: clamp(20px, 5vw, 72px); padding: 46px 0 24px; }
+    .copy { display: grid; align-content: end; max-width: 272px; gap: 9px; }
+    h1 { margin: 0; font-family: Arial Black, Arial, Helvetica, sans-serif; font-size: clamp(42px, 8.1vw, 124px); font-weight: 900; letter-spacing: 0; line-height: .77; text-transform: uppercase; }
+    .copy p { margin: 0; color: #4d4d4d; line-height: 1.25; }
+    .brand-strip { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px; }
+    .showcase { display: grid; gap: 8px; }
+    .rack { display: grid; grid-template-columns: repeat(8, minmax(42px, 1fr)); align-items: end; gap: clamp(12px, 2.4vw, 42px); }
+    .rack button { display: grid; min-height: 260px; align-items: end; transition: transform 160ms ease; }
+    .rack button:hover { transform: translateY(-6px); }
+    .rack img { width: 100%; max-height: 360px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1.04); }
+    .carousel { display: flex; justify-content: space-between; border-top: 1px solid #c8c8c2; padding-top: 8px; }
+    .home-links { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid #101010; margin: 6px 0 20px; }
+    .home-links button { min-height: 44px; border-right: 1px solid #101010; text-align: center; text-transform: uppercase; }
+    .home-links button:last-child { border-right: 0; }
+    .home-links button:hover { background: #101010; color: #f4f4ef; }
+    .runner { border-block: 1px solid #c6c6c1; padding: 16px 0; overflow: hidden; }
+    .runner-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(148px, 1fr); gap: 22px; overflow-x: auto; scroll-snap-type: x proximity; }
+    .runner-track button { display: grid; gap: 8px; scroll-snap-align: start; }
+    .runner-track img { width: 100%; height: 170px; object-fit: contain; mix-blend-mode: multiply; }
+    .runner-track span { display: flex; justify-content: space-between; gap: 8px; }
+    .rail { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid #c6c6c1; }
+    .rail p { margin: 0; min-height: 34px; border-right: 1px solid #c6c6c1; padding: 11px 10px 0 0; text-transform: lowercase; }
+    .rail p:last-child { border-right: 0; }
+    .collection { display: flex; align-items: end; justify-content: space-between; gap: 18px; padding: 18px 0 14px; }
+    .collection h2 { margin: 0; font-size: 14px; line-height: 1; text-transform: lowercase; }
+    .collection p { margin: 6px 0 0; color: #686868; }
+    .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(6, minmax(118px, 1fr)); gap: 28px 16px; }
+    .product { min-width: 0; }
+    .product-image { position: relative; display: grid; width: 100%; min-height: 228px; align-items: end; justify-items: center; background: #e8e8e5; outline: 1px solid transparent; transition: background 160ms ease, outline-color 160ms ease, transform 160ms ease; }
+    .product-image:hover { background: #f8f8f6; outline-color: #101010; transform: translateY(-2px); }
+    .product-image span { position: absolute; top: 7px; left: 7px; background: #101010; color: #fff; padding: 2px 4px 3px; text-transform: uppercase; }
+    .product-image img { width: 100%; height: 228px; object-fit: contain; mix-blend-mode: multiply; transition: opacity 160ms ease; }
+    .product-image img.hover { position: absolute; inset: auto 0 0; opacity: 0; }
+    .product-image:hover img.hover { opacity: 1; }
+    .product-image:hover img.hover + img.primary { opacity: 0; }
+    .product[data-brand="bks"] .product-image span, .brand-badge--bks { background: #9e1010; }
+    .meta { display: grid; gap: 3px; padding-top: 8px; }
+    .meta h3, .meta p { margin: 0; overflow-wrap: anywhere; }
+    .meta h3 { display: grid; grid-template-columns: 22px 1fr; font-size: 11px; font-weight: 700; line-height: 1.15; }
+    .meta h3 span { color: #777; font-weight: 400; }
+    .meta p { color: #696969; }
+    .meta div { display: flex; justify-content: space-between; gap: 8px; }
+    .drawer { position: fixed; inset: 0 0 0 auto; z-index: 10; display: grid; width: min(410px, 100vw); grid-template-rows: auto minmax(190px, 1fr) auto auto auto auto; gap: 16px; border-left: 1px solid #101010; background: #f5f5f2; padding: 18px; transform: translateX(100%); transition: transform 210ms ease; }
+    .drawer.open { transform: translateX(0); }
+    .drawer img { align-self: end; width: 100%; max-height: 47vh; object-fit: contain; mix-blend-mode: multiply; }
+    .drawer h2, .drawer p { margin: 0; }
+    .drawer-meta { display: grid; gap: 4px; border-top: 1px solid #101010; padding-top: 12px; }
+    .sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .subtotal { display: flex; justify-content: space-between; border-top: 1px solid #101010; padding-top: 12px; text-transform: uppercase; }
+    .sizes button, .add, .checkout { display: grid; min-height: 34px; place-items: center; border: 1px solid #101010; text-align: center; text-transform: uppercase; }
+    .sizes button:hover, .add:hover, .checkout:hover { background: #101010; color: #fff; }
+    .menu { position: fixed; inset: 0; z-index: 9; display: grid; grid-template-columns: .42fr 1fr .42fr; align-content: start; gap: 44px; background: #101010; color: #f4f4ef; padding: 22px 28px; transform: translateY(-100%); transition: transform 240ms ease; }
+    .menu.open { transform: translateY(0); }
+    .menu .close { grid-column: 1 / -1; justify-self: end; }
+    .menu h2 { margin: 0; font-family: Arial Black, Arial, Helvetica, sans-serif; font-size: clamp(52px, 10vw, 150px); line-height: .8; text-transform: uppercase; }
+    .menu p { max-width: 300px; margin: 16px 0 0; color: #c9c9c2; line-height: 1.3; }
+    .mega-list { display: grid; align-content: start; gap: 8px; }
+    .mega-list button { width: fit-content; font-size: clamp(28px, 5vw, 72px); font-weight: 700; line-height: .94; text-transform: lowercase; }
+    .menu-columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; align-content: start; }
+    .menu-columns h3, .footer h3 { margin: 0 0 10px; font-size: 11px; text-transform: uppercase; }
+    .menu-columns ul, .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .footer { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 28px; border-top: 1px solid #c6c6c1; margin-top: 40px; padding-top: 23px; color: #333; }
+    .footer-logo { font-family: Arial Black, Arial, Helvetica, sans-serif; font-size: 24px; line-height: .9; color: #101010; text-transform: uppercase; }
+    @media (max-width: 1100px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 980px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .stage { grid-template-columns: 1fr; } .copy { max-width: 430px; } .top-actions input { display: none; } }
+    @media (max-width: 760px) { .promo { grid-template-columns: repeat(2, 1fr); position: static; } .sidebar { position: static; width: auto; padding: 14px 14px 0; } nav { grid-template-columns: repeat(4, auto); gap: 7px 10px; } .shell { padding: 12px 14px 32px; } .topbar { top: 0; grid-template-columns: 1fr auto; } .top-logo { display: none; } .top-actions { gap: 10px; } .stage { min-height: auto; padding: 34px 0 28px; } .rack { grid-template-columns: repeat(4, minmax(48px, 1fr)); } .rack button { min-height: 158px; } .home-links, .rail { grid-template-columns: repeat(2, 1fr); } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; } .product-image, .product-image img { min-height: 192px; height: 192px; } .menu { grid-template-columns: 1fr; gap: 32px; overflow-y: auto; } .footer { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="promo"><span>RANAAN x BKS</span><span>Drop 06</span><span>Los Angeles</span><span>Cart ships never</span></div>
+    <aside class="sidebar">
+      <button class="wordmark" data-menu>RANAAN x BKS</button>
+      <nav><button data-filter="all" class="active">all</button><button data-filter="ranaan">ranaan</button><button data-filter="bks">bks</button><button data-filter="hats">hats</button><button data-filter="hoodies">hoodies</button><button data-filter="shirts">shirts</button><button data-filter="accessories">accessories</button><button data-filter="pants">pants</button><button data-filter="tees">tees</button><button data-filter="shorts">shorts</button><button data-filter="new">new</button></nav>
+    </aside>
+    <section class="shell">
+      <header class="topbar">
+        <button data-menu>Menu</button>
+        <button class="top-logo" data-filter="all">RANAAN x BKS</button>
+        <div class="top-actions"><input id="search" type="search" placeholder="Enter search query"><button>Account</button><button data-cart data-cart-label>Cart 00</button></div>
+      </header>
+      <section class="stage">
+        <div class="copy"><h1>RANAAN<br>SHOP</h1><p>combined garments and designs archive. 79 source-folder images staged as one direct product grid.</p><div class="brand-strip"><button data-filter="ranaan">RANAAN</button><button data-filter="bks">BKS</button></div></div>
+        <div class="showcase"><div class="rack" id="rack"><button data-pick="0"><img src="./img/ranaan-img_e8b925248960-1.jpeg" alt=""></button><button data-pick="1"><img src="./img/ranaan-ranaan-hat-blank-front-2.png" alt=""></button><button data-pick="2"><img src="./img/ranaan-ranaan-hat-blank-front-3.png" alt=""></button><button data-pick="3"><img src="./img/ranaan-ranaan-hat-blank-front.png" alt=""></button><button data-pick="40"><img src="./img/bks-back-copy.png" alt=""></button><button data-pick="41"><img src="./img/bks-back.png" alt=""></button><button data-pick="42"><img src="./img/bks-bks-japanese-hoodie-1-back.png" alt=""></button><button data-pick="43"><img src="./img/bks-bks-japanese-hoodie-2-back.png" alt=""></button></div><div class="carousel"><button data-rack-prev>Previous</button><button data-rack-next>Next</button></div></div>
+      </section>
+      <section class="home-links"><button data-filter="all">Home</button><button data-filter="new">Shop</button><button data-menu>Contact</button><button data-menu>Terms & Info</button></section>
+      <section class="runner"><div class="runner-track"><button data-pick="50"><img src="./img/bks-bks-trucker-1.png" alt=""><span><strong>BKS TRUCKER 1</strong><em>BKS</em></span></button><button data-pick="51"><img src="./img/bks-bks-trucker-2.png" alt=""><span><strong>BKS TRUCKER 2</strong><em>BKS</em></span></button><button data-pick="52"><img src="./img/bks-bks-trucker-3.png" alt=""><span><strong>BKS TRUCKER 3</strong><em>BKS</em></span></button><button data-pick="53"><img src="./img/bks-bks-trucker-4.png" alt=""><span><strong>BKS TRUCKER 4</strong><em>BKS</em></span></button><button data-pick="54"><img src="./img/bks-bks-trucker-5.png" alt=""><span><strong>BKS TRUCKER 5</strong><em>BKS</em></span></button><button data-pick="55"><img src="./img/bks-bkscrewneck.png" alt=""><span><strong>bkscrewneck</strong><em>BKS</em></span></button><button data-pick="56"><img src="./img/bks-bkscrewneckedited.png" alt=""><span><strong>bkscrewneck(edited)!</strong><em>BKS</em></span></button><button data-pick="57"><img src="./img/bks-bkscrewneckedited1.png" alt=""><span><strong>bkscrewneck(edited)1</strong><em>BKS</em></span></button></div></section>
+      <section class="rail"><p>drop 06</p><p>two archives</p><p>mock checkout</p><p>restock unknown</p></section>
+      <section class="collection"><div><h2 id="current">all</h2><p><span id="count">79</span> items</p></div><div class="filters"><button data-filter="ranaan">RANAAN</button><button data-filter="bks">BKS</button><button data-filter="hoodies">hoodies</button><button data-filter="tees">tees</button><button data-filter="all">all</button></div></section>
+      <section class="grid" id="grid"></section>
+      <footer class="footer">
+        <div><div class="footer-logo">RANAAN<br>BKS</div><p>Location: US / Change</p></div>
+        <div><h3>Customer</h3><ul><li><button>Shipping</button></li><li><button>Contact</button></li><li><button>Account</button></li></ul></div>
+        <div><h3>Information</h3><ul><li><button>Terms</button></li><li><button>Privacy</button></li><li><button>Accessibility</button></li></ul></div>
+        <div><h3>Social</h3><ul><li><button>Instagram</button></li><li><button>YouTube</button></li><li><button>Newsletter</button></li></ul></div>
+      </footer>
+    </section>
+    <section class="drawer" id="drawer"><button class="close" data-close-cart>Close</button><p>Your Cart</p><img id="drawerImage" alt=""><div class="drawer-meta"><p id="drawerBrand">Your cart is empty...</p><h2 id="drawerTitle"></h2><span id="drawerColor"></span><strong id="drawerPrice"></strong></div><div class="sizes"><button>S</button><button>M</button><button>L</button><button>XL</button></div><div class="subtotal"><span>Subtotal</span><strong id="subtotal">$0</strong></div><button class="checkout">Go To Checkout</button><button class="add" data-add-cart>add to cart</button></section>
+    <section class="menu" id="menu">
+      <button class="close" data-close-menu>Close</button>
+      <div><h2>RANAAN<br>BKS</h2><p>one storefront system for garment studies, product mocks, and retail-ready previews across both archives.</p><input id="menuSearch" type="search" placeholder="Enter search query"></div>
+      <nav class="mega-list"><button data-filter="new" data-close-menu>new</button><button data-filter="hoodies" data-close-menu>hoodies</button><button data-filter="tees" data-close-menu>tees</button><button data-filter="shirts" data-close-menu>shirts</button><button data-filter="pants" data-close-menu>pants</button><button data-filter="hats" data-close-menu>hats</button><button data-filter="accessories" data-close-menu>accessories</button></nav>
+      <div class="menu-columns">
+        <div><h3>Lookbooks</h3><ul><li><button>Drop 06</button></li><li><button>Archive</button></li><li><button>Preview</button></li></ul></div>
+        <div><h3>Locations</h3><ul><li><button>Los Angeles</button></li><li><button>New York</button></li><li><button>Online</button></li></ul></div>
+        <div><h3>Customer</h3><ul><li><button>Shipping</button></li><li><button>Contact</button></li><li><button>Account</button></li></ul></div>
+        <div><h3>Follow</h3><ul><li><button>Instagram</button></li><li><button>Newsletter</button></li><li><button>iOS App</button></li></ul></div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const products = [{"index":0,"brand":"RANAAN","brandId":"ranaan","title":"IMG E8B925248960 1","color":"all","category":"all","price":88,"status":"low stock","image":"./img/ranaan-img_e8b925248960-1.jpeg","source":"IMG_E8B925248960-1.jpeg"},{"index":1,"brand":"RANAAN","brandId":"ranaan","title":"ranaan Hat Blank Front 2","color":"hats","category":"hats","price":58,"status":"available","image":"./img/ranaan-ranaan-hat-blank-front-2.png","source":"ranaan Hat Blank Front 2.png"},{"index":2,"brand":"RANAAN","brandId":"ranaan","title":"ranaan Hat Blank Front 3","color":"hats","category":"hats","price":68,"status":"available","image":"./img/ranaan-ranaan-hat-blank-front-3.png","source":"ranaan Hat Blank Front 3.png"},{"index":3,"brand":"RANAAN","brandId":"ranaan","title":"ranaan Hat Blank Front","color":"hats","category":"hats","price":78,"status":"available","image":"./img/ranaan-ranaan-hat-blank-front.png","source":"ranaan Hat Blank Front.png"},{"index":4,"brand":"RANAAN","brandId":"ranaan","title":"ranaan hoodie concept #1","color":"hoodies","category":"hoodies","price":168,"status":"available","image":"./img/ranaan-ranaan-hoodie-concept-1-back.png","source":"ranaan hoodie concept #1 (back).png","hoverImage":"./img/ranaan-ranaan-hoodie-concept-1.png","hoverSource":"ranaan hoodie concept #1.png"},{"index":5,"brand":"RANAAN","brandId":"ranaan","title":"ranaan hoodie concept #2","color":"hoodies","category":"hoodies","price":188,"status":"available","image":"./img/ranaan-ranaan-hoodie-concept-2-back.png","source":"ranaan hoodie concept #2 (back).png","hoverImage":"./img/ranaan-ranaan-hoodie-concept-2.png","hoverSource":"ranaan hoodie concept #2.png"},{"index":6,"brand":"RANAAN","brandId":"ranaan","title":"ranaan hoodie concept #3","color":"hoodies","category":"hoodies","price":168,"status":"available","image":"./img/ranaan-ranaan-hoodie-concept-3-back.png","source":"ranaan hoodie concept #3 (back).png","hoverImage":"./img/ranaan-ranaan-hoodie-concept-3.png","hoverSource":"ranaan hoodie concept #3.png"},{"index":7,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 1 [tеIegrаm @all4designer] .pngblack","color":"shirts","category":"shirts","price":138,"status":"available","image":"./img/ranaan-rugby-shirt-1-psd-mockup-tiegrm-all4designer-recovered-recoveredpngblack.png","source":"Rugby Shirt 1 PSD Mockup [tеIegrаm - @all4designer]-Recovered-Recovered.pngblack.png"},{"index":8,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 1 [tеIegrаm @all4designer] .pnggreen","color":"shirts","category":"shirts","price":148,"status":"available","image":"./img/ranaan-rugby-shirt-1-psd-mockup-tiegrm-all4designer-recovered-recoveredpnggreen.png","source":"Rugby Shirt 1 PSD Mockup [tеIegrаm - @all4designer]-Recovered-Recovered.pnggreen.png"},{"index":9,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 1 [tеIegrаm @all4designer] .pnggrey","color":"shirts","category":"shirts","price":118,"status":"available","image":"./img/ranaan-rugby-shirt-1-psd-mockup-tiegrm-all4designer-recovered-recoveredpnggrey.png","source":"Rugby Shirt 1 PSD Mockup [tеIegrаm - @all4designer]-Recovered-Recovered.pnggrey.png"},{"index":10,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 1 [tеIegrаm @all4designer] .pngnavy","color":"shirts","category":"shirts","price":128,"status":"available","image":"./img/ranaan-rugby-shirt-1-psd-mockup-tiegrm-all4designer-recovered-recoveredpngnavy.png","source":"Rugby Shirt 1 PSD Mockup [tеIegrаm - @all4designer]-Recovered-Recovered.pngnavy.png"},{"index":11,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 1 [tеIegrаm @all4designer] .pngred","color":"shirts","category":"shirts","price":138,"status":"low stock","image":"./img/ranaan-rugby-shirt-1-psd-mockup-tiegrm-all4designer-recovered-recoveredpngred.png","source":"Rugby Shirt 1 PSD Mockup [tеIegrаm - @all4designer]-Recovered-Recovered.pngred.png"},{"index":12,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 2 [tеIegrаm @all4designer] .pngbeige","color":"shirts","category":"shirts","price":148,"status":"available","image":"./img/ranaan-rugby-shirt-2-psd-mockup-tiegrm-all4designer-recoveredpngbeige.png","source":"Rugby Shirt 2 PSD Mockup [tеIegrаm - @all4designer]-Recovered.pngbeige.png"},{"index":13,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 2 [tеIegrаm @all4designer] .pngblue","color":"shirts","category":"shirts","price":118,"status":"available","image":"./img/ranaan-rugby-shirt-2-psd-mockup-tiegrm-all4designer-recoveredpngblue.png","source":"Rugby Shirt 2 PSD Mockup [tеIegrаm - @all4designer]-Recovered.pngblue.png"},{"index":14,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 2 [tеIegrаm @all4designer] .pnggray","color":"shirts","category":"shirts","price":128,"status":"available","image":"./img/ranaan-rugby-shirt-2-psd-mockup-tiegrm-all4designer-recoveredpnggray.png","source":"Rugby Shirt 2 PSD Mockup [tеIegrаm - @all4designer]-Recovered.pnggray.png"},{"index":15,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 2 [tеIegrаm @all4designer] .pnggreen","color":"shirts","category":"shirts","price":138,"status":"available","image":"./img/ranaan-rugby-shirt-2-psd-mockup-tiegrm-all4designer-recoveredpnggreen.png","source":"Rugby Shirt 2 PSD Mockup [tеIegrаm - @all4designer]-Recovered.pnggreen.png"},{"index":16,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 2 [tеIegrаm @all4designer] .pngred","color":"shirts","category":"shirts","price":148,"status":"available","image":"./img/ranaan-rugby-shirt-2-psd-mockup-tiegrm-all4designer-recoveredpngred.png","source":"Rugby Shirt 2 PSD Mockup [tеIegrаm - @all4designer]-Recovered.pngred.png"},{"index":17,"brand":"RANAAN","brandId":"ranaan","title":"Rugby Shirt 2 [tеIegrаm @all4designer] .pngsand","color":"shirts","category":"shirts","price":118,"status":"available","image":"./img/ranaan-rugby-shirt-2-psd-mockup-tiegrm-all4designer-recoveredpngsand.png","source":"Rugby Shirt 2 PSD Mockup [tеIegrаm - @all4designer]-Recovered.pngsand.png"},{"index":18,"brand":"RANAAN","brandId":"ranaan","title":"SOCKS [tеlеgrаm @all4designer]","color":"accessories","category":"accessories","price":34,"status":"low stock","image":"./img/ranaan-socks_mockup-tlgrm-all4designer-recovered.png","source":"SOCKS_MOCKUP [tеlеgrаm - @all4designer]-Recovered.png"},{"index":19,"brand":"RANAAN","brandId":"ranaan","title":"SWEATER .pngblack","color":"pants","category":"pants","price":148,"status":"available","image":"./img/ranaan-sweater-mockuppngblack.png","source":"SWEATER MOCKUP.pngblack.png"},{"index":20,"brand":"RANAAN","brandId":"ranaan","title":"SWEATER .pngburgundy","color":"pants","category":"pants","price":158,"status":"available","image":"./img/ranaan-sweater-mockuppngburgundy.png","source":"SWEATER MOCKUP.pngburgundy.png"},{"index":21,"brand":"RANAAN","brandId":"ranaan","title":"SWEATER .pnggrey","color":"pants","category":"pants","price":128,"status":"available","image":"./img/ranaan-sweater-mockuppnggrey.png","source":"SWEATER MOCKUP.pnggrey.png"},{"index":22,"brand":"RANAAN","brandId":"ranaan","title":"SWEATER .pngskyblue","color":"pants","category":"pants","price":138,"status":"available","image":"./img/ranaan-sweater-mockuppngskyblue.png","source":"SWEATER MOCKUP.pngskyblue.png"},{"index":23,"brand":"RANAAN","brandId":"ranaan","title":"SWEATER .pngwhite","color":"pants","category":"pants","price":148,"status":"available","image":"./img/ranaan-sweater-mockuppngwhite.png","source":"SWEATER MOCKUP.pngwhite.png"},{"index":24,"brand":"RANAAN","brandId":"ranaan","title":"TROUSERS .pngblack","color":"pants","category":"pants","price":158,"status":"available","image":"./img/ranaan-trousers-mockuppngblack.png","source":"TROUSERS MOCKUP.pngblack.png"},{"index":25,"brand":"RANAAN","brandId":"ranaan","title":"TROUSERS .pngbrown","color":"pants","category":"pants","price":128,"status":"low stock","image":"./img/ranaan-trousers-mockuppngbrown.png","source":"TROUSERS MOCKUP.pngbrown.png"},{"index":26,"brand":"RANAAN","brandId":"ranaan","title":"TROUSERS .pngforest green","color":"pants","category":"pants","price":138,"status":"available","image":"./img/ranaan-trousers-mockuppngforest-green.png","source":"TROUSERS MOCKUP.pngforest green.png"},{"index":27,"brand":"RANAAN","brandId":"ranaan","title":"TROUSERS .pnggrey","color":"pants","category":"pants","price":148,"status":"available","image":"./img/ranaan-trousers-mockuppnggrey.png","source":"TROUSERS MOCKUP.pnggrey.png"},{"index":28,"brand":"RANAAN","brandId":"ranaan","title":"TROUSERS .pngnavy","color":"pants","category":"pants","price":158,"status":"available","image":"./img/ranaan-trousers-mockuppngnavy.png","source":"TROUSERS MOCKUP.pngnavy.png"},{"index":29,"brand":"RANAAN","brandId":"ranaan","title":"TROUSERS .pngolive","color":"pants","category":"pants","price":128,"status":"available","image":"./img/ranaan-trousers-mockuppngolive.png","source":"TROUSERS MOCKUP.pngolive.png"},{"index":30,"brand":"RANAAN","brandId":"ranaan","title":"VINTAGE TSHIRT .pngblack","color":"tees","category":"tees","price":68,"status":"available","image":"./img/ranaan-vintage-tshirt-mockuppngblack.png","source":"VINTAGE-TSHIRT-MOCKUP.pngblack.png"},{"index":31,"brand":"RANAAN","brandId":"ranaan","title":"VINTAGE TSHIRT .pnggrey","color":"tees","category":"tees","price":78,"status":"available","image":"./img/ranaan-vintage-tshirt-mockuppnggrey.png","source":"VINTAGE-TSHIRT-MOCKUP.pnggrey.png"},{"index":32,"brand":"RANAAN","brandId":"ranaan","title":"VINTAGE TSHIRT .pngocean ash","color":"tees","category":"tees","price":88,"status":"low stock","image":"./img/ranaan-vintage-tshirt-mockuppngocean-ash.png","source":"VINTAGE-TSHIRT-MOCKUP.pngocean ash.png"},{"index":33,"brand":"RANAAN","brandId":"ranaan","title":"VINTAGE TSHIRT .pngpink","color":"tees","category":"tees","price":58,"status":"available","image":"./img/ranaan-vintage-tshirt-mockuppngpink.png","source":"VINTAGE-TSHIRT-MOCKUP.pngpink.png"},{"index":34,"brand":"RANAAN","brandId":"ranaan","title":"VINTAGE TSHIRT .pngsand","color":"tees","category":"tees","price":68,"status":"available","image":"./img/ranaan-vintage-tshirt-mockuppngsand.png","source":"VINTAGE-TSHIRT-MOCKUP.pngsand.png"},{"index":35,"brand":"RANAAN","brandId":"ranaan","title":"ZIP HOODIE 2.pngBEIGE","color":"hoodies","category":"hoodies","price":188,"status":"available","image":"./img/ranaan-zip-hoodie-mockup-2pngbeige.png","source":"ZIP HOODIE MOCKUP 2.pngBEIGE.png"},{"index":36,"brand":"RANAAN","brandId":"ranaan","title":"ZIP HOODIE 2.pngBlack","color":"hoodies","category":"hoodies","price":198,"status":"available","image":"./img/ranaan-zip-hoodie-mockup-2pngblack.png","source":"ZIP HOODIE MOCKUP 2.pngBlack.png"},{"index":37,"brand":"RANAAN","brandId":"ranaan","title":"ZIP HOODIE 2.pngforest green","color":"hoodies","category":"hoodies","price":168,"status":"available","image":"./img/ranaan-zip-hoodie-mockup-2pngforest-green.png","source":"ZIP HOODIE MOCKUP 2.pngforest green.png"},{"index":38,"brand":"RANAAN","brandId":"ranaan","title":"ZIP HOODIE 2.pngMAROON","color":"hoodies","category":"hoodies","price":178,"status":"available","image":"./img/ranaan-zip-hoodie-mockup-2pngmaroon.png","source":"ZIP HOODIE MOCKUP 2.pngMAROON.png"},{"index":39,"brand":"RANAAN","brandId":"ranaan","title":"ZIP HOODIE 2.pngNAVY","color":"hoodies","category":"hoodies","price":188,"status":"low stock","image":"./img/ranaan-zip-hoodie-mockup-2pngnavy.png","source":"ZIP HOODIE MOCKUP 2.pngNAVY.png"},{"index":40,"brand":"BKS","brandId":"bks","title":"BACK","color":"all","category":"all","price":122,"status":"available","image":"./img/bks-back-copy.png","source":"BACK copy.png"},{"index":41,"brand":"BKS","brandId":"bks","title":"BACK","color":"all","category":"all","price":92,"status":"available","image":"./img/bks-back.png","source":"BACK.png"},{"index":42,"brand":"BKS","brandId":"bks","title":"BKS JAPANESE HOODIE #1","color":"hoodies","category":"hoodies","price":182,"status":"available","image":"./img/bks-bks-japanese-hoodie-1-back.png","source":"BKS JAPANESE HOODIE #1 (BACK) .png","hoverImage":"./img/bks-bks-japanese-hoodie-1.png","hoverSource":"BKS JAPANESE HOODIE #1.png"},{"index":43,"brand":"BKS","brandId":"bks","title":"BKS JAPANESE HOODIE #2","color":"hoodies","category":"hoodies","price":202,"status":"available","image":"./img/bks-bks-japanese-hoodie-2-back.png","source":"BKS JAPANESE HOODIE #2 (BACK) .png","hoverImage":"./img/bks-bks-japanese-hoodie-2.png","hoverSource":"BKS JAPANESE HOODIE #2.png"},{"index":44,"brand":"BKS","brandId":"bks","title":"BKS JAPANESE HOODIE #3","color":"hoodies","category":"hoodies","price":182,"status":"low stock","image":"./img/bks-bks-japanese-hoodie-3-back.png","source":"BKS JAPANESE HOODIE #3 (BACK) .png","hoverImage":"./img/bks-bks-japanese-hoodie-3.png","hoverSource":"BKS JAPANESE HOODIE #3.png"},{"index":45,"brand":"BKS","brandId":"bks","title":"BKS JAPANESE HOODIE #4","color":"hoodies","category":"hoodies","price":202,"status":"available","image":"./img/bks-bks-japanese-hoodie-4-back.png","source":"BKS JAPANESE HOODIE #4 (BACK) .png","hoverImage":"./img/bks-bks-japanese-hoodie-4.png","hoverSource":"BKS JAPANESE HOODIE #4.png"},{"index":46,"brand":"BKS","brandId":"bks","title":"BKS MECHANIC SHIRT #1","color":"shirts","category":"shirts","price":132,"status":"available","image":"./img/bks-bks-mechanic-shirt-1-back.png","source":"BKS MECHANIC SHIRT #1 (Back) .png","hoverImage":"./img/bks-bks-mechanic-shirt-1.png","hoverSource":"BKS MECHANIC SHIRT #1.png"},{"index":47,"brand":"BKS","brandId":"bks","title":"BKS MECHANIC SHIRT #2","color":"shirts","category":"shirts","price":152,"status":"available","image":"./img/bks-bks-mechanic-shirt-2-back.png","source":"BKS MECHANIC SHIRT #2 (Back) .png","hoverImage":"./img/bks-bks-mechanic-shirt-2.png","hoverSource":"BKS MECHANIC SHIRT #2.png"},{"index":48,"brand":"BKS","brandId":"bks","title":"BKS MECHANIC SHIRT #3","color":"shirts","category":"shirts","price":132,"status":"available","image":"./img/bks-bks-mechanic-shirt-3-back.png","source":"BKS MECHANIC SHIRT #3 (Back) .png","hoverImage":"./img/bks-bks-mechanic-shirt-3.png","hoverSource":"BKS MECHANIC SHIRT #3.png"},{"index":49,"brand":"BKS","brandId":"bks","title":"BKS MECHANIC SHIRT #4","color":"shirts","category":"shirts","price":152,"status":"available","image":"./img/bks-bks-mechanic-shirt-4-back.png","source":"BKS MECHANIC SHIRT #4 (Back) .png","hoverImage":"./img/bks-bks-mechanic-shirt-4.png","hoverSource":"BKS MECHANIC SHIRT #4.png"},{"index":50,"brand":"BKS","brandId":"bks","title":"BKS TRUCKER 1","color":"hats","category":"hats","price":62,"status":"available","image":"./img/bks-bks-trucker-1.png","source":"BKS TRUCKER 1.png"},{"index":51,"brand":"BKS","brandId":"bks","title":"BKS TRUCKER 2","color":"hats","category":"hats","price":72,"status":"available","image":"./img/bks-bks-trucker-2.png","source":"BKS TRUCKER 2.png"},{"index":52,"brand":"BKS","brandId":"bks","title":"BKS TRUCKER 3","color":"hats","category":"hats","price":82,"status":"low stock","image":"./img/bks-bks-trucker-3.png","source":"BKS TRUCKER 3.png"},{"index":53,"brand":"BKS","brandId":"bks","title":"BKS TRUCKER 4","color":"hats","category":"hats","price":52,"status":"available","image":"./img/bks-bks-trucker-4.png","source":"BKS TRUCKER 4.png"},{"index":54,"brand":"BKS","brandId":"bks","title":"BKS TRUCKER 5","color":"hats","category":"hats","price":62,"status":"available","image":"./img/bks-bks-trucker-5.png","source":"BKS TRUCKER 5.png"},{"index":55,"brand":"BKS","brandId":"bks","title":"bkscrewneck","color":"all","category":"all","price":112,"status":"available","image":"./img/bks-bkscrewneck.png","source":"bkscrewneck.png"},{"index":56,"brand":"BKS","brandId":"bks","title":"bkscrewneck(edited)!","color":"all","category":"all","price":122,"status":"available","image":"./img/bks-bkscrewneckedited.png","source":"bkscrewneck(edited)!.png"},{"index":57,"brand":"BKS","brandId":"bks","title":"bkscrewneck(edited)1","color":"all","category":"all","price":92,"status":"available","image":"./img/bks-bkscrewneckedited1.png","source":"bkscrewneck(edited)1.png"},{"index":58,"brand":"BKS","brandId":"bks","title":"bkscrewneck(edited)2","color":"all","category":"all","price":102,"status":"available","image":"./img/bks-bkscrewneckedited2.png","source":"bkscrewneck(edited)2.png"},{"index":59,"brand":"BKS","brandId":"bks","title":"bkscrewneck1","color":"all","category":"all","price":112,"status":"low stock","image":"./img/bks-bkscrewneck1.png","source":"bkscrewneck1.png"},{"index":60,"brand":"BKS","brandId":"bks","title":"bkscrewneck2","color":"all","category":"all","price":122,"status":"available","image":"./img/bks-bkscrewneck2.png","source":"bkscrewneck2.png"},{"index":61,"brand":"BKS","brandId":"bks","title":"bkscrewneck3","color":"all","category":"all","price":92,"status":"available","image":"./img/bks-bkscrewneck3.png","source":"bkscrewneck3.png"},{"index":62,"brand":"BKS","brandId":"bks","title":"bkscrewneck4","color":"all","category":"all","price":102,"status":"available","image":"./img/bks-bkscrewneck4.png","source":"bkscrewneck4.png"},{"index":63,"brand":"BKS","brandId":"bks","title":"bksoversizedtee (1)","color":"tees","category":"tees","price":82,"status":"available","image":"./img/bks-bksoversizedtee-1.png","source":"bksoversizedtee (1).png"},{"index":64,"brand":"BKS","brandId":"bks","title":"bksoversizedtee2","color":"tees","category":"tees","price":92,"status":"available","image":"./img/bks-bksoversizedtee2.png","source":"bksoversizedtee2.png"},{"index":65,"brand":"BKS","brandId":"bks","title":"bksoversizedtee5","color":"tees","category":"tees","price":62,"status":"available","image":"./img/bks-bksoversizedtee5.png","source":"bksoversizedtee5.png"},{"index":66,"brand":"BKS","brandId":"bks","title":"bksshorts","color":"shorts","category":"shorts","price":92,"status":"low stock","image":"./img/bks-bksshorts.png","source":"bksshorts.png"},{"index":67,"brand":"BKS","brandId":"bks","title":"bksshorts1","color":"shorts","category":"shorts","price":102,"status":"available","image":"./img/bks-bksshorts1.png","source":"bksshorts1.png"},{"index":68,"brand":"BKS","brandId":"bks","title":"bksshorts2","color":"shorts","category":"shorts","price":112,"status":"available","image":"./img/bks-bksshorts2.png","source":"bksshorts2.png"},{"index":69,"brand":"BKS","brandId":"bks","title":"bkssweatpants (1)","color":"pants","category":"pants","price":132,"status":"available","image":"./img/bks-bkssweatpants-1.png","source":"bkssweatpants (1).png"},{"index":70,"brand":"BKS","brandId":"bks","title":"bkssweatpants1 (1)","color":"pants","category":"pants","price":142,"status":"available","image":"./img/bks-bkssweatpants1-1.png","source":"bkssweatpants1 (1).png"},{"index":71,"brand":"BKS","brandId":"bks","title":"bkstshirt2","color":"tees","category":"tees","price":82,"status":"available","image":"./img/bks-bkstshirt2.png","source":"bkstshirt2.png"},{"index":72,"brand":"BKS","brandId":"bks","title":"bkstshirts","color":"tees","category":"tees","price":92,"status":"available","image":"./img/bks-bkstshirts.png","source":"bkstshirts.png"},{"index":73,"brand":"BKS","brandId":"bks","title":"brothersteeback","color":"tees","category":"tees","price":92,"status":"available","image":"./img/bks-brothersteeback.png","source":"brothersteeback.png","hoverImage":"./img/bks-brotherstee3.png","hoverSource":"brotherstee3.png"},{"index":74,"brand":"BKS","brandId":"bks","title":"brothersteeback1","color":"tees","category":"tees","price":62,"status":"available","image":"./img/bks-brothersteeback1.png","source":"brothersteeback1.png","hoverImage":"./img/bks-brotherstee2.png","hoverSource":"brotherstee2.png"},{"index":75,"brand":"BKS","brandId":"bks","title":"brothersteeback2","color":"tees","category":"tees","price":72,"status":"available","image":"./img/bks-brothersteeback2.png","source":"brothersteeback2.png","hoverImage":"./img/bks-brotherstee1.png","hoverSource":"brotherstee1.png"},{"index":76,"brand":"BKS","brandId":"bks","title":"brotherstshirt","color":"tees","category":"tees","price":82,"status":"available","image":"./img/bks-brotherstshirt.png","source":"brotherstshirt.png"},{"index":77,"brand":"BKS","brandId":"bks","title":"FRONT","color":"all","category":"all","price":122,"status":"low stock","image":"./img/bks-front-copy.png","source":"FRONT copy.png"},{"index":78,"brand":"BKS","brandId":"bks","title":"FRONT","color":"all","category":"all","price":92,"status":"available","image":"./img/bks-front.png","source":"FRONT.png"}];
+    let active = "all";
+    let query = "";
+    let cartCount = 0;
+    let subtotal = 0;
+    const grid = document.getElementById("grid");
+    const current = document.getElementById("current");
+    const count = document.getElementById("count");
+    const drawer = document.getElementById("drawer");
+    const menu = document.getElementById("menu");
+    const search = document.getElementById("search");
+    const menuSearch = document.getElementById("menuSearch");
+    const money = value => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+    function visibleProducts() {
+      const rows = active === "all" ? products : active === "new" ? products.slice(0, 24) : products.filter(product => product.category === active || product.brandId === active);
+      if (!query) return rows;
+      const term = query.toLowerCase();
+      return rows.filter(product => [product.title, product.brand, product.category, product.color].some(value => String(value).toLowerCase().includes(term)));
+    }
+    function updateCart() {
+      document.querySelectorAll("[data-cart-label]").forEach(button => button.textContent = `Cart ${String(cartCount).padStart(2, "0")}`);
+      document.getElementById("subtotal").textContent = money(subtotal);
+    }
+    function draw() {
+      const rows = visibleProducts();
+      current.textContent = active;
+      count.textContent = rows.length;
+      document.querySelectorAll("[data-filter]").forEach(button => button.classList.toggle("active", button.dataset.filter === active));
+      grid.innerHTML = rows.map((product, index) => `
+        <article class="product" data-brand="${product.brandId}">
+          <button class="product-image" data-product="${product.index}">
+            ${index < 10 ? `<span class="brand-badge brand-badge--${product.brandId}">${product.brand}</span>` : ""}
+            ${product.hoverImage ? `<img class="hover" src="${product.hoverImage}" alt="${product.title} alternate view">` : ""}
+            <img class="primary" src="${product.image}" alt="${product.title}">
+          </button>
+          <div class="meta">
+            <h3><span>${String(index + 1).padStart(2, "0")}</span>${product.title}</h3>
+            <p>${product.brand} / ${product.color}</p>
+            <div><span>${money(product.price)}</span><span>${product.status}</span></div>
+          </div>
+        </article>`).join("");
+    }
+    function openProduct(index) {
+      const product = products[index];
+      document.getElementById("drawerImage").src = product.image;
+      document.getElementById("drawerBrand").textContent = product.brand;
+      document.getElementById("drawerTitle").textContent = product.title;
+      document.getElementById("drawerColor").textContent = product.color;
+      document.getElementById("drawerPrice").textContent = money(product.price);
+      drawer.classList.add("open");
+      document.body.classList.add("cart-open");
+    }
+    document.addEventListener("click", event => {
+      const filter = event.target.closest("[data-filter]");
+      const product = event.target.closest("[data-product]");
+      const pick = event.target.closest("[data-pick]");
+      if (filter) { active = filter.dataset.filter; draw(); }
+      if (product) openProduct(Number(product.dataset.product));
+      if (pick) openProduct(Number(pick.dataset.pick));
+      if (event.target.closest("[data-cart]")) openProduct(0);
+      if (event.target.closest("[data-menu]")) { menu.classList.add("open"); document.body.classList.add("menu-open"); }
+      if (event.target.closest("[data-close-cart]")) { drawer.classList.remove("open"); document.body.classList.remove("cart-open"); }
+      if (event.target.closest("[data-close-menu]")) { menu.classList.remove("open"); document.body.classList.remove("menu-open"); }
+      if (event.target.closest("[data-add-cart]")) {
+        const price = Number(document.getElementById("drawerPrice").textContent.replace(/[^0-9]/g, "")) || 0;
+        cartCount += 1;
+        subtotal += price;
+        updateCart();
+      }
+      if (event.target.closest("[data-rack-prev]")) document.getElementById("rack").scrollBy({ left: -180, behavior: "smooth" });
+      if (event.target.closest("[data-rack-next]")) document.getElementById("rack").scrollBy({ left: 180, behavior: "smooth" });
+    });
+    search.addEventListener("input", event => { query = event.target.value.trim(); menuSearch.value = query; draw(); });
+    menuSearch.addEventListener("input", event => { query = event.target.value.trim(); search.value = query; draw(); });
+    updateCart();
+    draw();
+  </script>
+</body>
+</html>

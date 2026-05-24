@@ -1,0 +1,4007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Raehdojhn — Classically trained artist blending creativity and technology. Creative direction, brand systems, technical design, AI workflows.">
+<title>Raehdojhn — Creative Technologist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #080808;
+  --graphite: #111;
+  --cinder: #2C2926;
+  --ash: #6B6560;
+  --dust: #AFA99F;
+  --bone: #E8E4DC;
+  --ivory: #F8F6F2;
+  --red: #FF3366;
+  --red-hover: #FF668C;
+  --amber: #FF9A00;
+  --signal: #3E6B4A;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--void);
+  color: var(--bone);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background .4s var(--ease), color .4s var(--ease);
+}
+[data-theme="light"] body {
+  background: #F2F0EF;
+  color: #0A0A0A;
+}
+[data-theme="light"] {
+  --void: #F2F0EF;
+  --graphite: #F6F4D4;
+  --cinder: #EAE6BF;
+  --ash: #4A4636;
+  --dust: #1F1B12;
+  --bone: #0A0A0A;
+  --ivory: #111;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { background: none; border: none; cursor: pointer; font-family: inherit; color: inherit; }
+
+/* Grain overlay */
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.beacon-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99998;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #DC2828;
+  background: transparent;
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity .2s;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 12px rgba(220,40,40,.75), 0 0 24px rgba(220,40,40,.25);
+}
+.beacon-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99997;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity .2s;
+  background: radial-gradient(circle, rgba(220,40,40,.08) 0%, transparent 70%);
+}
+
+/* Marquee */
+.marquee {
+  position: fixed; top: 0; left: 0; right: 0; height: 32px; z-index: 1001;
+  background: rgba(3,3,3,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(232,228,220,.22); overflow: hidden;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center;
+  font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #F8F6F2;
+  text-shadow: 0 0 10px rgba(248,246,242,.32);
+}
+.marquee-left,
+.marquee-right {
+  height: 100%;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 16px;
+  white-space: nowrap;
+  background: rgba(0,0,0,.82);
+  color: #FFFFFF;
+}
+.marquee-left { border-right: 1px solid rgba(232,228,220,.18); }
+.marquee-right { border-left: 1px solid rgba(232,228,220,.18); }
+.marquee .archive-chip {
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,.62);
+  background: rgba(255,255,255,.08);
+}
+.marquee .archive-dot {
+  background: #FFFFFF;
+  box-shadow: 0 0 8px rgba(255,255,255,.42);
+}
+.marquee-status {
+  width: 5px; height: 5px; display: inline-block; background: var(--signal);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--signal) 70%, transparent);
+}
+.marquee-track {
+  min-width: 0; overflow: hidden;
+}
+.marquee-scroll {
+  display: flex; width: max-content;
+  animation: scroll 26s linear infinite;
+}
+.marquee-scroll:hover { animation-play-state: paused; }
+.marquee-scroll span {
+  white-space: nowrap;
+  padding: 0 32px;
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(255,255,255,.28), 0 0 2px rgba(255,255,255,.5);
+}
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* Nav */
+.nav {
+  position: fixed; top: 32px; left: 0; right: 0; height: 72px; z-index: 1000;
+  border-bottom: 1px solid transparent; transition: all 0.4s;
+}
+.nav.scrolled {
+  background: rgba(8,8,8,0.88); backdrop-filter: blur(16px);
+  border-bottom-color: #1E1C1A;
+}
+.nav-inner {
+  max-width: 1440px; margin: 0 auto; padding: 0 32px;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+  letter-spacing: 0.2em; transition: color 0.2s;
+}
+.nav-logo:hover { color: var(--red); }
+.nav-logo-meta {
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #1E1C1A;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-link {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; opacity: 0.6; transition: all 0.2s; position: relative;
+}
+.nav-link:hover { opacity: 1; color: var(--red); }
+.nav-link::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--red); transition: width 0.3s var(--ease);
+}
+.nav-link:hover::after { width: 100%; }
+.nav-link--active { opacity: 1; color: var(--red); }
+.nav-link--active::after { width: 100%; }
+.nav-actions { display: flex; align-items: center; gap: 14px; }
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(232,228,220,0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--dust);
+}
+.theme-toggle:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+.nav-menu-button {
+  width: 42px;
+  height: 34px;
+  border: 1px solid rgba(232,228,220,0.18);
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.nav-menu-button span {
+  width: 18px;
+  height: 1px;
+  background: var(--bone);
+  transition: width .2s, background .2s;
+}
+.nav-menu-button span:nth-child(2) { width: 12px; margin-left: 6px; }
+.nav-menu-button:hover { border-color: var(--red); }
+.nav-menu-button:hover span { background: var(--red); }
+
+/* Sandwich Menu */
+.site-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  background: rgba(8,8,8,.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  clip-path: circle(0% at calc(100% - 40px) 40px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: clip-path .6s var(--ease), visibility 0s .6s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+[data-theme="light"] .site-menu {
+  background: rgba(242,240,239,.98);
+}
+.site-menu.is-open {
+  clip-path: circle(150% at calc(100% - 40px) 40px);
+  visibility: visible;
+  pointer-events: auto;
+  transition: clip-path .6s var(--ease), visibility 0s;
+}
+.site-menu__top,
+.site-menu__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 32px;
+  border-bottom: 1px solid #1E1C1A;
+}
+.site-menu__bottom {
+  border-top: 1px solid #1E1C1A;
+  border-bottom: 0;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.site-menu__brand {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.site-menu__close {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(232,228,220,0.18);
+  position: relative;
+}
+.site-menu__close::before,
+.site-menu__close::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  top: 50%;
+  height: 1px;
+  background: var(--bone);
+}
+.site-menu__close::before { transform: rotate(45deg); }
+.site-menu__close::after { transform: rotate(-45deg); }
+.site-menu__grid {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(20px, 4vh, 36px);
+  padding: clamp(72px, 10vh, 96px) clamp(24px, 5vw, 60px) clamp(24px, 5vh, 44px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.site-menu__grid::-webkit-scrollbar {
+  display: none;
+}
+.site-menu__primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: min(980px, 100%);
+}
+.site-menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(24px, min(5.5vw, 6.2vh), 58px);
+  font-weight: 400;
+  line-height: .94;
+  letter-spacing: .04em;
+  text-align: center;
+  opacity: .45;
+  padding: clamp(4px, .85vh, 8px) 0;
+  transition: opacity .2s, color .2s, transform .2s;
+}
+.site-menu__link:hover {
+  opacity: 1;
+  color: var(--bone);
+  transform: scale(1.04);
+}
+.site-menu__link--active {
+  opacity: 1;
+  color: #8B1A1A;
+  -webkit-text-stroke: 0;
+  text-shadow: 0 0 18px rgba(139,26,26,.34), 0 0 2px rgba(139,26,26,.5);
+}
+.site-menu__link--active:hover {
+  color: #8B1A1A;
+  opacity: 1;
+  transform: scale(1.06);
+  text-shadow: 0 0 22px rgba(139,26,26,.48), 0 0 3px rgba(139,26,26,.72);
+}
+.site-menu__num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: .14em;
+  color: inherit;
+  min-width: 28px;
+  -webkit-text-stroke: inherit;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+  padding: 140px 32px 80px;
+  background:
+    radial-gradient(circle at 48% 36%, rgba(255,51,102,.035), transparent 32%),
+    linear-gradient(180deg, rgba(17,17,17,.55), var(--void) 74%);
+}
+.hero-bg-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--void) 0%, transparent 30%, transparent 70%, var(--void) 100%);
+  pointer-events: none;
+}
+.hero__structural-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero__line-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 61.8%;
+  height: 1px;
+  background: var(--bone);
+  opacity: .06;
+}
+.hero__line-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(16px, 4vw, 48px);
+  width: 1px;
+  background: var(--bone);
+  opacity: .05;
+}
+.hero-content {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 clamp(16px, 5vw, 64px);
+}
+.hero-overline {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em;
+  color: var(--amber); margin-bottom: 48px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.hero-overline .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--signal);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{ opacity:1 } 50%{ opacity:0.4 } }
+.hero h1 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(3rem, 9vw, 7.5rem); line-height: 0.9;
+  letter-spacing: -0.045em; margin-bottom: 28px;
+}
+.hero h1 em { font-style: italic; color: var(--red); }
+.hero__headline-stage {
+  display: inline-block;
+  position: relative;
+  cursor: crosshair;
+  margin-bottom: 28px;
+  user-select: none;
+}
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 15vw, 12rem);
+  line-height: .78;
+  letter-spacing: -.075em;
+  margin: 0;
+}
+.hero__headline-shadow {
+  position: absolute;
+  left: 0;
+  top: 86%;
+  width: 100%;
+  color: rgba(139,26,26,.92);
+  transform: scaleY(.88);
+  transform-origin: top center;
+  opacity: 0;
+  filter: blur(.35px);
+  text-shadow: 0 0 18px rgba(139,26,26,.55), 0 2px 6px rgba(139,26,26,.4);
+  transition: opacity .15s;
+  pointer-events: none;
+  -webkit-mask-image: var(--shadow-mask, radial-gradient(0 0 at 0 0, transparent 100%));
+  mask-image: var(--shadow-mask, radial-gradient(0 0 at 0 0, transparent 100%));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.hero__headline-stage.is-shadow-active .hero__headline-shadow { opacity: 1; }
+.hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 auto 32px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 42px;
+  border: 1px solid #1E1C1A;
+  padding: 12px 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.btn--primary { background: var(--red); border-color: var(--red); color: white; }
+.btn--secondary { color: var(--dust); }
+.btn:hover { border-color: var(--red); color: var(--red); background: rgba(255,51,102,.04); }
+.btn--primary:hover { background: var(--red-hover); color: white; }
+.hero-tagline {
+  font-size: clamp(15px, 1.2vw, 18px); color: var(--dust);
+  max-width: 560px; line-height: 1.7; margin: 0 auto 40px; font-weight: 300;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px;
+}
+.hero__badge-sep {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(175,169,159,.55);
+  margin: 0 8px;
+}
+.hero__badge-text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--dust);
+  text-transform: uppercase;
+}
+.hero__margin-index {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  margin-right: clamp(16px, 3vw, 48px);
+  transform: translateY(-50%);
+}
+.hero__margin-num {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .2em;
+  color: var(--ash);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.badge {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 5px 12px;
+  border: 1px solid #1E1C1A; color: var(--dust);
+}
+@media (min-width: 1025px) {
+  .hero__margin-index,
+  .hero__line-v { display: flex; }
+}
+
+/* Section */
+.section {
+  padding: 100px 32px; border-top: 1px solid #1E1C1A;
+}
+.section-inner { max-width: 1440px; margin: 0 auto; }
+.section-header { margin-bottom: 56px; }
+.section-overline {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em;
+  color: var(--ash); text-transform: uppercase; margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700; letter-spacing: -0.02em; line-height: 1;
+}
+.section-subtitle {
+  max-width: 620px;
+  margin-top: 12px;
+  color: var(--ash);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.archive-section-chrome { margin-bottom: 42px; }
+.archive-kicker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 12px;
+}
+.archive-chip {
+  border: 1px dashed rgba(175,169,159,.48);
+  padding: 2px 6px;
+  color: var(--dust);
+  background: rgba(17,17,17,.5);
+}
+.archive-dot {
+  width: 3px;
+  height: 3px;
+  background: var(--amber);
+  opacity: .75;
+  display: inline-block;
+}
+.archive-rule {
+  margin-top: 16px;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(175,169,159,.42) 0 12px, transparent 12px 20px);
+}
+.archive-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -24px 0 28px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.archive-meta-row__line { flex: 1; height: 1px; background: rgba(175,169,159,.35); }
+
+/* Project Grid */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: -10px 0 28px;
+}
+.filter-tab {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid #1E1C1A;
+  color: var(--dust);
+  transition: all .25s var(--ease);
+}
+.filter-tab:hover {
+  border-color: #3D3835;
+  color: var(--bone);
+}
+.filter-tab--active {
+  background: var(--bone);
+  color: var(--void);
+  border-color: var(--bone);
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+}
+.project-card.bento-card {
+  position: relative;
+  border: 1px solid rgba(232,228,220,.10);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(17,17,17,.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.project-card.bento-card:hover {
+  transform: translateY(-5px);
+  border-color: #3D3835;
+  box-shadow: 0 24px 48px rgba(0,0,0,.28);
+}
+.project-card--featured { grid-column: span 2; }
+@media (max-width: 900px) { .project-card--featured { grid-column: span 1; } }
+.bento-card__preview {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #1E1C1A;
+  background: var(--cinder);
+  position: relative;
+  flex-shrink: 0;
+}
+.bento-card__preview iframe {
+  display: block;
+  border: none;
+  pointer-events: auto;
+  transform-origin: 0 0;
+}
+.bento-card__preview--image {
+  aspect-ratio: 16 / 10;
+}
+.bento-card__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s var(--ease);
+  filter: saturate(.9) contrast(1.02);
+}
+.project-card.bento-card:hover .bento-card__preview img { transform: scale(1.04); }
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: var(--red);
+  color: white;
+}
+.bento-card__fallback-num {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 48px;
+  color: var(--ash);
+  background: linear-gradient(135deg, var(--cinder), var(--graphite));
+}
+.bento-card__info {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.bento-card__title {
+  font-size: 17px;
+  font-weight: 650;
+  margin: 0 0 5px;
+  letter-spacing: -.015em;
+  line-height: 1.25;
+}
+.bento-card__sub {
+  font-size: 13px;
+  color: var(--dust);
+  margin: 0;
+  line-height: 1.65;
+}
+.bento-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+.bento-card__tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.bento-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 5px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.bento-tag--design { color: #818cf8; border-color: rgba(129,140,248,.32); background: rgba(129,140,248,.08); }
+.bento-tag--code { color: #34d399; border-color: rgba(52,211,153,.32); background: rgba(52,211,153,.08); }
+.bento-tag--ai { color: #f472b6; border-color: rgba(244,114,182,.32); background: rgba(244,114,182,.08); }
+.bento-tag--music { color: #fb923c; border-color: rgba(251,146,60,.32); background: rgba(251,146,60,.08); }
+.bento-tag--video { color: #60a5fa; border-color: rgba(96,165,250,.32); background: rgba(96,165,250,.08); }
+.bento-card__open {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #1E1C1A;
+  color: var(--dust);
+  font-size: 16px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.project-card.bento-card:hover .bento-card__open {
+  background: var(--bone);
+  color: var(--void);
+  border-color: var(--bone);
+}
+
+/* Standalone HTML list */
+.file-list { display: grid; gap: 2px; margin-top: 40px; }
+.file-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border: 1px solid #1E1C1A;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+.file-link:hover { border-color: var(--red); background: rgba(255,51,102,0.04); }
+.file-link .arrow { color: var(--ash); transition: transform 0.2s; }
+.file-link:hover .arrow { transform: translateX(4px); color: var(--red); }
+
+/* May 7 component sections */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.service-card,
+.info-card,
+.blog-card,
+.influence-group {
+  border: 1px solid #1E1C1A;
+  background: rgba(17,17,17,.34);
+  padding: 22px;
+  transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease);
+}
+.service-card:hover,
+.info-card:hover,
+.blog-card:hover,
+.influence-group:hover {
+  border-color: #3D3835;
+  transform: translateY(-3px);
+  background: rgba(17,17,17,.54);
+}
+.service-card__number {
+  display: block;
+  color: var(--amber);
+  margin-bottom: 24px;
+}
+.service-card__title,
+.info-card h3,
+.blog-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.service-card__desc,
+.info-card p,
+.blog-card p {
+  color: var(--ash);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 24px;
+}
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 22px;
+}
+.skill-group span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.skill-group li {
+  color: var(--ash);
+  font-size: 13px;
+  padding: 4px 0;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 24px;
+}
+.contact-form {
+  display: grid;
+  gap: 12px;
+}
+.form-input {
+  width: 100%;
+  border: 1px solid #1E1C1A;
+  background: rgba(0,0,0,.26);
+  color: var(--bone);
+  padding: 13px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.form-input:focus {
+  outline: 1px solid var(--red);
+  border-color: var(--red);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.blog-strip {
+  height: 3px;
+  margin: -22px -22px 18px;
+  background: var(--red);
+}
+.influences-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.influence-group__category {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1E1C1A;
+}
+.influence-list {
+  color: var(--ash);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.influence-list b {
+  color: var(--dust);
+  font-weight: 500;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2px;
+  margin-top: 14px;
+  border: 1px solid #1E1C1A;
+  background: #1E1C1A;
+}
+.media-card {
+  background: rgba(17,17,17,.46);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 250px;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.media-card:hover {
+  background: rgba(17,17,17,.68);
+}
+.media-embed,
+.media-placeholder {
+  width: 100%;
+  border: 1px solid #1E1C1A;
+  background: rgba(0,0,0,.28);
+}
+.media-embed {
+  aspect-ratio: 16 / 9;
+}
+.media-embed--audio {
+  aspect-ratio: auto;
+  min-height: 84px;
+}
+.media-placeholder {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.media-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.05;
+}
+.media-card p {
+  color: var(--ash);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.queue-track {
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+/* ── Reactive media admin ───────────────────────────── */
+.media-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 18px 0 10px;
+}
+.media-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.media-filter-tab {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  border: 1px solid #1E1C1A;
+  color: var(--ash);
+  background: transparent;
+  cursor: pointer;
+  transition: all .2s var(--ease);
+}
+.media-filter-tab:hover { color: var(--dust); border-color: #3D3835; }
+.media-filter-tab.is-active {
+  background: var(--bone);
+  color: var(--void);
+  border-color: var(--bone);
+}
+[data-theme="light"] .media-filter-tab.is-active {
+  background: #0A0A0A;
+  color: #F2F0EF;
+  border-color: #0A0A0A;
+}
+.media-admin-toggle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border: 1px solid #3D3835;
+  color: var(--dust);
+  cursor: pointer;
+  background: transparent;
+  transition: all .2s var(--ease);
+}
+.media-admin-toggle:hover { background: rgba(255,255,255,.04); }
+.media-admin-toggle.is-active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+.media-admin-panel {
+  border: 1px solid #1E1C1A;
+  background: rgba(17,17,17,.42);
+  padding: 18px;
+  margin-bottom: 18px;
+  display: grid;
+  gap: 12px;
+}
+.media-admin-panel h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.media-admin-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 10px;
+}
+.media-admin-row--full { grid-template-columns: 1fr; }
+.media-admin-helper {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ash);
+  line-height: 1.6;
+}
+.media-admin-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.media-admin-actions .btn {
+  padding: 9px 16px;
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+.media-card .media-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  padding: 4px 8px;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.18);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s var(--ease);
+}
+.media-card { position: relative; }
+.media-card:hover .media-remove { opacity: 1; }
+.media-empty {
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px dashed #3D3835;
+}
+
+/* ── Blog tabs ───────────────────────────────────────── */
+.blog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0;
+  border-bottom: 1px solid #1E1C1A;
+  padding-bottom: 6px;
+}
+.blog-tab {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: var(--ash);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .2s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.blog-tab:hover { color: var(--dust); }
+.blog-tab.is-active {
+  color: var(--bone);
+  border-bottom-color: var(--red);
+}
+.blog-tab__count {
+  font-size: 8px;
+  color: var(--ash);
+  background: rgba(255,255,255,.04);
+  padding: 2px 6px;
+  border: 1px solid #1E1C1A;
+}
+.blog-tab.is-active .blog-tab__count {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+.blog-platform-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.blog-platform-tag svg { display: block; }
+.blog-card { display: flex; flex-direction: column; gap: 8px; cursor: pointer; }
+.blog-card .blog-link {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--red);
+  padding-top: 12px;
+}
+
+/* ── Expanded Influences ─────────────────────────────── */
+.influences-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 24px 0 40px;
+  padding: 24px;
+  border: 1px solid #1E1C1A;
+  background: rgba(17,17,17,.34);
+}
+.influences-intro p {
+  color: var(--dust);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.influences-intro h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+.influences-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.influence-group__count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--ash);
+  margin-left: 6px;
+}
+.influence-list b { color: var(--bone); font-weight: 600; }
+.influence-list .influence-name {
+  cursor: default;
+  transition: color .2s var(--ease);
+}
+.influence-list .influence-name:hover { color: var(--bone); }
+
+.influences-philosophy {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.influence-pillar {
+  border: 1px solid #1E1C1A;
+  background: rgba(17,17,17,.34);
+  padding: 22px;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.influence-pillar:hover {
+  border-color: #3D3835;
+  background: rgba(17,17,17,.54);
+}
+.influence-pillar__num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: var(--red);
+}
+.influence-pillar h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 10px 0 8px;
+  color: var(--bone);
+}
+.influence-pillar p {
+  font-size: 13px;
+  color: var(--dust);
+  line-height: 1.7;
+}
+.influences-quotes {
+  margin-top: 40px;
+  display: grid;
+  gap: 14px;
+}
+.influence-quote {
+  border-left: 2px solid var(--amber);
+  padding: 12px 0 12px 20px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--dust);
+  line-height: 1.5;
+}
+.influence-quote cite {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  font-style: normal;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+/* About */
+.about-content { max-width: 680px; }
+.about-content p { font-size: 16px; line-height: 1.8; color: var(--dust); margin-bottom: 20px; }
+.philosophy {
+  border-left: 2px solid var(--red); padding: 20px 28px; margin-bottom: 40px;
+  font-family: var(--font-display); font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  font-style: italic; font-weight: 400; line-height: 1.4;
+}
+
+/* Footer */
+.footer {
+  padding: clamp(64px, 8vw, 96px) 32px 28px;
+  border-top: 1px solid #1E1C1A;
+  background: rgba(8,8,8,.74);
+}
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 32px;
+}
+.footer-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.footer-brand span:first-child,
+.footer-heading {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.footer-brand span:last-child {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: -.02em;
+}
+.footer-copy {
+  max-width: 360px;
+  color: var(--dust);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.footer-email::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  transition: width .25s var(--ease);
+}
+.footer-email:hover::before { width: 36px; }
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+.footer-links a {
+  color: var(--dust);
+  font-size: 14px;
+}
+.footer-links a:hover { color: var(--bone); }
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.footer-status span:first-child {
+  width: 5px;
+  height: 5px;
+  background: currentColor;
+  display: inline-block;
+}
+.footer-bottom {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 20px;
+  border-top: 1px solid #1E1C1A;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.back-top {
+  margin-top: 22px;
+  border: 1px solid #1E1C1A;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ash);
+  transition: all .2s var(--ease);
+}
+.back-top:hover {
+  color: var(--bone);
+  border-color: #3D3835;
+  transform: translateY(-2px);
+}
+
+/* GP-7000 Glassmorphic Music Player */
+.gp {
+  --player-accent: var(--red);
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10000;
+  width: min(400px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  background: color-mix(in srgb, rgba(8,8,8,.55) 20%, transparent);
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  box-shadow:
+    0 8px 40px rgba(0,0,0,.5),
+    0 2px 12px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.2);
+  color: var(--bone);
+  transition: width .4s var(--ease), opacity .3s var(--ease);
+}
+.gp::-webkit-scrollbar { width: 6px; }
+.gp::-webkit-scrollbar-track { background: rgba(0,0,0,.22); }
+.gp::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--player-accent) 52%, transparent);
+}
+.gp--quiet { opacity: .92; }
+.gp.is-collapsed { width: auto; }
+.gp.is-collapsed .gp__body,
+.gp.is-collapsed .gp__swatches,
+.gp.is-collapsed .music-list,
+.gp.is-collapsed .music-tools { display: none; }
+.gp__shimmer {
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,.04) 45%, rgba(255,255,255,.08) 50%, rgba(255,255,255,.04) 55%, transparent 70%);
+  background-size: 300% 300%;
+  animation: shimmerMove 8s ease-in-out infinite;
+}
+@keyframes shimmerMove { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+.gp__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid color-mix(in srgb, var(--player-accent) 24%, transparent);
+}
+.gp__brand {
+  display: grid;
+  gap: 1px;
+}
+.gp__model {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .2em;
+  color: color-mix(in srgb, var(--player-accent) 73%, white);
+}
+.gp__maker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+.gp__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gp__rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .15em;
+  color: var(--player-accent);
+}
+.gp__rec::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--player-accent);
+  box-shadow: 0 0 6px var(--player-accent), 0 0 12px color-mix(in srgb, var(--player-accent) 42%, transparent);
+  animation: recBlink 1.2s ease-in-out infinite;
+}
+@keyframes recBlink { 0%,100%{opacity:1} 50%{opacity:.25} }
+.gp__ctrl {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--ash);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .15s, background .15s;
+}
+.gp__ctrl:hover { color: var(--bone); background: rgba(255,255,255,.06); }
+.gp__swatches {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.music-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: var(--swatch);
+  padding: 0;
+  transition: all .18s ease;
+}
+.music-swatch.is-active {
+  width: 16px;
+  height: 16px;
+  border-color: var(--swatch);
+  box-shadow: 0 0 8px var(--swatch), 0 0 16px color-mix(in srgb, var(--swatch) 38%, transparent);
+  outline: none;
+}
+.gp__lcd {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 32%, transparent);
+  border-radius: 4px;
+  background: rgba(0,0,0,.82);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,.6), inset 0 0 12px color-mix(in srgb, var(--player-accent) 8%, transparent);
+}
+.gp__lcd::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 1px, rgba(0,0,0,.18) 1px 2px);
+}
+.gp__track-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--player-accent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--player-accent) 78%, transparent);
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.gp__track-artist {
+  position: relative;
+  z-index: 1;
+  margin-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: color-mix(in srgb, var(--player-accent) 60%, transparent);
+  text-transform: uppercase;
+}
+.gp__badges {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 5px;
+  margin-top: 6px;
+}
+.gp__badges span {
+  border: 1px solid color-mix(in srgb, var(--player-accent) 32%, transparent);
+  background: color-mix(in srgb, var(--player-accent) 10%, transparent);
+  color: var(--player-accent);
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .1em;
+}
+.gp__body {
+  position: relative;
+  z-index: 1;
+}
+.gp__deck {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.gp__vinyl {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+.gp__vinyl-disc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.08);
+  background: conic-gradient(from 0deg, #0a0a0a 0deg, #181818 20deg, #0a0a0a 40deg, #181818 60deg, #0a0a0a 80deg, #181818 100deg, #0a0a0a 120deg, #181818 140deg, #0a0a0a 160deg, #181818 180deg, #0a0a0a 200deg, #181818 220deg, #0a0a0a 240deg, #181818 260deg, #0a0a0a 280deg, #181818 300deg, #0a0a0a 320deg, #181818 340deg, #0a0a0a 360deg);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.4), inset 0 0 20px rgba(0,0,0,.3);
+}
+.gp.is-playing .gp__vinyl-disc { animation: vinylSpin 2s linear infinite; }
+@keyframes vinylSpin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+.gp__vinyl-grooves {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.03);
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.015), inset 0 0 0 6px rgba(255,255,255,.01), inset 0 0 0 9px rgba(255,255,255,.015), inset 0 0 0 12px rgba(255,255,255,.01);
+}
+.gp__vinyl-label {
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--player-accent);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--player-accent), color-mix(in srgb, var(--player-accent) 62%, transparent));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.gp__tonearm {
+  position: absolute;
+  top: -1px;
+  right: 4px;
+  width: 2px;
+  height: 36px;
+  border-radius: 2px;
+  background: #5d5d5d;
+  transform-origin: top right;
+  transform: rotate(-28deg);
+  transition: transform .4s var(--ease);
+}
+.gp.is-playing .gp__tonearm { transform: rotate(-10deg); }
+.gp__meters {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+}
+.gp__vu {
+  display: grid;
+  gap: 4px;
+}
+.gp__vu-row {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  align-items: center;
+  gap: 6px;
+  color: color-mix(in srgb, var(--player-accent) 62%, transparent);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+.gp__vu-bar {
+  height: 6px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 25%, transparent);
+  border-radius: 2px;
+  background: rgba(0,0,0,.5);
+  overflow: hidden;
+}
+.gp__vu-bar span {
+  display: block;
+  height: 100%;
+  width: 24%;
+  border-radius: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--player-accent) 74%, transparent), var(--player-accent) 70%, white);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--player-accent) 55%, transparent);
+}
+.gp.is-playing .gp__vu-row:first-child .gp__vu-bar span { animation: vuLeft .56s ease-in-out infinite alternate; }
+.gp.is-playing .gp__vu-row:last-child .gp__vu-bar span { animation: vuRight .62s ease-in-out infinite alternate; }
+@keyframes vuLeft { from{width:22%} to{width:92%} }
+@keyframes vuRight { from{width:30%} to{width:76%} }
+.gp__speaker {
+  display: grid;
+  grid-template-columns: repeat(7, 4px);
+  grid-template-rows: repeat(4, 4px);
+  gap: 4px;
+  opacity: .35;
+}
+.gp__speaker span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--player-accent);
+}
+.music-eq {
+  width: 100%;
+  height: 48px;
+  display: block;
+  border-top: 1px solid color-mix(in srgb, var(--player-accent) 16%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--player-accent) 16%, transparent);
+  background: rgba(0,0,0,.4);
+}
+.gp__eq-head {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: color-mix(in srgb, var(--player-accent) 50%, transparent);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .15em;
+}
+.music-eq-panel {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 22%, transparent);
+  border-radius: 4px;
+  background: rgba(0,0,0,.52);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+.music-eq-panel__head,
+.music-eq-presets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.music-eq-panel__head {
+  margin-bottom: 8px;
+  color: var(--player-accent);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.music-eq-panel__status { color: color-mix(in srgb, var(--player-accent) 56%, transparent); }
+.music-eq-presets {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.music-eq-preset {
+  min-height: 22px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 30%, transparent);
+  border-radius: 3px;
+  padding: 0 7px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.36));
+  color: var(--player-accent);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.music-eq-preset:hover,
+.music-eq-preset.is-active {
+  border-color: var(--player-accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--player-accent) 36%, transparent);
+}
+.music-eq-controls {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 5px;
+}
+.music-eq-band {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.music-eq-band__gain,
+.music-eq-band__label {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  line-height: 1;
+  letter-spacing: .04em;
+  color: color-mix(in srgb, var(--player-accent) 72%, transparent);
+}
+.music-eq-band__label {
+  color: color-mix(in srgb, var(--player-accent) 58%, transparent);
+  text-transform: uppercase;
+}
+.music-eq-fader {
+  position: relative;
+  width: 26px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+}
+.music-eq-fader::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--player-accent) 20%, transparent);
+}
+.music-eq-fader::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  transform: translate(-50%, -50%);
+  background: color-mix(in srgb, var(--player-accent) 36%, transparent);
+}
+.music-eq-fill {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--player-accent);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--player-accent) 54%, transparent);
+}
+.music-eq-thumb {
+  position: absolute;
+  left: 50%;
+  top: var(--thumb-top, 50%);
+  width: 13px;
+  height: 5px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--player-accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--player-accent) 62%, transparent);
+  pointer-events: none;
+}
+.music-eq-fader input {
+  position: absolute;
+  inset: 0;
+  width: 26px;
+  height: 82px;
+  opacity: 0;
+  cursor: pointer;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  z-index: 2;
+}
+.music-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 28px;
+  margin: 10px 0 6px;
+  cursor: pointer;
+}
+.music-wave span {
+  flex: 1;
+  min-width: 2px;
+  height: calc(7px + var(--h) * 18px);
+  background: color-mix(in srgb, var(--player-accent) calc(var(--fill, 0) * 100%), rgba(232,228,220,.18));
+}
+.music-time-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .08em;
+  color: var(--ash);
+}
+.music-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+.music-player-icon,
+.music-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.music-player-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 22%, transparent);
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.4));
+  color: var(--bone);
+}
+.music-play {
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--player-accent);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--player-accent) 92%, white), color-mix(in srgb, var(--player-accent) 55%, transparent) 60%, color-mix(in srgb, var(--player-accent) 28%, transparent));
+  color: #000;
+  font-weight: 900;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--player-accent) 34%, transparent), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.music-range {
+  width: 74px;
+  accent-color: var(--player-accent);
+}
+.music-tools {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  margin-top: 12px;
+}
+.music-input {
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 28%, transparent);
+  border-radius: 3px;
+  background: rgba(0,0,0,.5);
+  color: var(--player-accent);
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+.music-action {
+  border: 1px solid color-mix(in srgb, var(--player-accent) 34%, transparent);
+  border-radius: 3px;
+  padding: 0 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.4));
+  color: var(--player-accent);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.music-upload {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+}
+.music-upload input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.music-list {
+  display: grid;
+  gap: 1px;
+  max-height: 120px;
+  overflow: auto;
+  margin-top: 12px;
+  padding: 8px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 15%, transparent);
+  background: rgba(0,0,0,.42);
+}
+.music-track {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-left: 2px solid transparent;
+  color: var(--dust);
+  text-align: left;
+}
+.music-track.is-active {
+  border-left-color: var(--player-accent);
+  background: color-mix(in srgb, var(--player-accent) 13%, transparent);
+  color: var(--player-accent);
+}
+.music-track-name {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+.music-track-source {
+  display: block;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .project-grid { grid-template-columns: 1fr; }
+  .project-card--featured { grid-column: span 1; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; }
+  .marquee { grid-template-columns: 1fr; }
+  .marquee-left,
+  .marquee-right { display: none; }
+  .nav-links { display: none; }
+  .nav-inner { padding: 0 20px; }
+  .hero { padding: 120px 20px 60px; }
+  .section { padding: 60px 20px; }
+  .services-grid,
+  .info-grid,
+  .contact-grid,
+  .blog-grid,
+  .influences-grid { grid-template-columns: 1fr; }
+  .site-menu__top,
+  .site-menu__bottom { padding: 18px 20px; }
+  .site-menu__grid { padding: 72px 20px 28px; justify-content: flex-start; }
+  .site-menu__link { font-size: clamp(2rem, 12vw, 4rem); gap: 12px; }
+  .site-menu__bottom { justify-content: center; text-align: center; flex-wrap: wrap; }
+  .gp { right: 14px; bottom: 14px; width: calc(100vw - 28px); }
+  .music-tools { grid-template-columns: 1fr auto; }
+  .music-upload { grid-column: span 2; justify-content: center; height: 34px; }
+}
+
+/* ── CLOCK SECTION ───────────────────────────────────────── */
+.clock-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  align-items: start;
+}
+.clock-card {
+  position: relative;
+  padding: 32px 24px 24px;
+  background: rgba(8, 8, 8, 0.55);
+  border: 1px solid #1E1C1A;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.clock-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1E1C1A;
+}
+.clock-card__num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--amber);
+}
+.clock-card__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dust);
+}
+.clock-face-wrap { width: 100%; display: flex; justify-content: center; }
+.clock-face { width: clamp(240px, 30vw, 340px); height: auto; display: block; }
+.clock-readout {
+  display: flex; flex-direction: column; gap: 10px;
+  border-top: 1px solid #1E1C1A; padding-top: 16px; margin: 0;
+}
+.clock-readout__row {
+  display: grid; grid-template-columns: 100px 1fr;
+  align-items: baseline; gap: 12px;
+}
+.clock-readout dt {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--ash);
+}
+.clock-readout dd {
+  margin: 0;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.08em; color: var(--bone);
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.clock-readout .mono { font-variant-numeric: tabular-nums; }
+.clock-readout .mono-lg { font-size: 22px; font-weight: 500; letter-spacing: 0.04em; }
+.clock-seconds { color: var(--red); margin-left: 2px; }
+.cjk-large {
+  font-family: 'DotGothic16', 'Noto Sans CJK SC', serif;
+  font-size: 22px; color: var(--red); line-height: 1;
+}
+.readout-meta {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash);
+}
+.clock-section .section-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0; }
+.clock-section .section-title .slash { color: var(--red); margin: 0 0.3em; }
+.clock-section .section-title .cjk {
+  font-family: 'DotGothic16', 'Noto Sans CJK SC', sans-serif; font-weight: 400;
+}
+@media (max-width: 768px) {
+  .clock-pair { grid-template-columns: 1fr; gap: 32px; }
+  .clock-readout__row { grid-template-columns: 84px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="beacon-glow" id="beaconGlow" aria-hidden="true"></div>
+<div class="beacon-cursor" id="beaconCursor" aria-hidden="true"></div>
+
+<aside class="gp gp--mini gp--quiet" id="musicPlayer" aria-label="GP-7000 music player">
+  <audio id="musicAudio" preload="metadata"></audio>
+  <div class="gp__shimmer" aria-hidden="true"></div>
+  <div class="gp__header">
+    <div class="gp__brand">
+      <span class="gp__model">GP-7000</span>
+      <span class="gp__maker">RAEHDOJHN</span>
+    </div>
+    <div class="gp__header-actions">
+      <span class="gp__rec">REC</span>
+      <button class="gp__ctrl" id="musicCollapse" type="button" aria-label="Collapse music player">−</button>
+    </div>
+  </div>
+  <div class="gp__swatches" id="musicSwatches" aria-label="Player accent colors"></div>
+  <div class="gp__lcd">
+    <div class="gp__track-title" id="musicTitle">No track loaded</div>
+    <div class="gp__track-artist" id="musicArtist">Add a URL or upload audio</div>
+    <div class="gp__badges"><span>FLAC</span><span>24bit</span><span>96kHz</span></div>
+  </div>
+  <div class="gp__body">
+    <div class="gp__deck">
+      <div class="gp__vinyl" aria-hidden="true">
+        <div class="gp__vinyl-disc">
+          <div class="gp__vinyl-grooves"></div>
+          <div class="gp__vinyl-label">RAE</div>
+        </div>
+        <div class="gp__tonearm"></div>
+      </div>
+      <div class="gp__meters">
+        <div class="gp__vu">
+          <div class="gp__vu-row"><span>L</span><div class="gp__vu-bar"><span></span></div></div>
+          <div class="gp__vu-row"><span>R</span><div class="gp__vu-bar"><span></span></div></div>
+        </div>
+        <div class="gp__speaker" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+    <div class="gp__eq-head"><span>EQ</span><span>24-BAND</span></div>
+    <canvas class="music-eq" id="musicEq" width="672" height="92" aria-hidden="true"></canvas>
+    <div class="music-eq-panel" aria-label="Controllable equalizer">
+      <div class="music-eq-panel__head"><span>EQ MIXER</span><span class="music-eq-panel__status" id="musicEqStatus">FLAT / ±12DB</span></div>
+      <div class="music-eq-presets" id="musicEqPresets" aria-label="Equalizer presets"></div>
+      <div class="music-eq-controls" id="musicEqControls" aria-label="Equalizer faders"></div>
+    </div>
+    <div class="music-wave" id="musicWave" aria-label="Seek playback position"></div>
+    <div class="music-time-row">
+      <span id="musicCurrent">0:00</span>
+      <span id="musicDuration">0:00</span>
+    </div>
+    <div class="music-controls">
+      <button class="music-player-icon" id="musicPrev" type="button" aria-label="Previous track">‹</button>
+      <button class="music-play" id="musicPlay" type="button" aria-label="Play or pause">▶</button>
+      <button class="music-player-icon" id="musicNext" type="button" aria-label="Next track">›</button>
+      <input class="music-range" id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+    </div>
+    <form class="music-tools" id="musicUrlForm">
+      <input class="music-input" id="musicUrl" type="url" placeholder="https://audio-file.mp3" aria-label="Audio URL">
+      <button class="music-action" type="submit">Add</button>
+      <label class="music-action music-upload">
+        Load
+        <input id="musicFile" type="file" accept="audio/*,video/mp4" multiple aria-label="Load audio files">
+      </label>
+    </form>
+    <div class="music-list" id="musicList"></div>
+  </div>
+</aside>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-left">
+    <span class="archive-chip">RAE-26-001</span>
+    <span class="archive-dot"></span>
+    <span>EDITION ALPHA</span>
+    <span class="marquee-status"></span>
+    <span>ONLINE</span>
+  </div>
+  <div class="marquee-track">
+    <div class="marquee-scroll">
+      <span>CREATIVE DIRECTION — BRAND SYSTEMS — TECHNICAL DESIGN — AI-INTEGRATED WORKFLOWS — AUDIO PRODUCTION — VISUAL DESIGN — </span>
+      <span>CREATIVE DIRECTION — BRAND SYSTEMS — TECHNICAL DESIGN — AI-INTEGRATED WORKFLOWS — AUDIO PRODUCTION — VISUAL DESIGN — </span>
+      <span>CREATIVE DIRECTION — BRAND SYSTEMS — TECHNICAL DESIGN — AI-INTEGRATED WORKFLOWS — AUDIO PRODUCTION — VISUAL DESIGN — </span>
+      <span>CREATIVE DIRECTION — BRAND SYSTEMS — TECHNICAL DESIGN — AI-INTEGRATED WORKFLOWS — AUDIO PRODUCTION — VISUAL DESIGN — </span>
+    </div>
+  </div>
+  <div class="marquee-right">
+    <span>LOS ANGELES, CA</span>
+    <span class="archive-dot"></span>
+    <span id="marqueeDate">SUN, MAY 17</span>
+    <span class="archive-dot"></span>
+    <span id="marqueeTime">00:00:00</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">RAEHDOJHN<span class="nav-logo-meta">RAE / ARCHIVE</span></a>
+    <div class="nav-actions">
+      <div class="nav-links">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="v4.html" class="nav-link">V4</a>
+        <a href="#about" class="nav-link">About</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">◐</button>
+      <button class="nav-menu-button" id="menuOpen" type="button" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<aside class="site-menu" id="siteMenu" aria-label="Portfolio menu" aria-hidden="true">
+  <div class="site-menu__top">
+    <div class="site-menu__brand">RAEHDOJHN / RESTORED BUILD</div>
+    <button class="site-menu__close" id="menuClose" type="button" aria-label="Close menu"></button>
+  </div>
+  <div class="site-menu__grid">
+    <nav class="site-menu__primary">
+      <a class="site-menu__link" href="#hero"><span class="site-menu__num">01</span><span>Home</span></a>
+      <a class="site-menu__link" href="#work"><span class="site-menu__num">02</span><span>Work</span></a>
+      <a class="site-menu__link" href="#services"><span class="site-menu__num">03</span><span>Services</span></a>
+      <a class="site-menu__link" href="#about"><span class="site-menu__num">04</span><span>About</span></a>
+      <a class="site-menu__link" href="#contact"><span class="site-menu__num">05</span><span>Contact</span></a>
+      <a class="site-menu__link" href="#media"><span class="site-menu__num">06</span><span>Media</span></a>
+      <a class="site-menu__link" href="#blog"><span class="site-menu__num">07</span><span>Blog</span></a>
+      <a class="site-menu__link" href="#influences"><span class="site-menu__num">08</span><span>Influences</span></a>
+      <a class="site-menu__link" href="v4.html"><span class="site-menu__num">09</span><span>V4</span></a>
+      <a class="site-menu__link" href="nodear.html"><span class="site-menu__num">10</span><span>Nodear*</span></a>
+    </nav>
+  </div>
+  <div class="site-menu__bottom">
+    <span>Sandwich menu restored from May 8 source behavior</span>
+    <span>Music player active</span>
+  </div>
+</aside>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg-fade" aria-hidden="true"></div>
+  <div class="hero__structural-lines" aria-hidden="true">
+    <div class="hero__line-h"></div>
+    <div class="hero__line-v"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-overline">
+      <span class="dot"></span>
+      CREATIVE TECHNOLOGIST · LOS ANGELES
+    </div>
+    <div class="hero__headline-stage" id="heroHeadlineStage" aria-label="RAEHDOJHN">
+      <h1 class="hero__headline">RAEHDOJHN</h1>
+      <h1 class="hero__headline hero__headline-shadow" id="heroHeadlineShadow" aria-hidden="true">RAEHDOJHN</h1>
+    </div>
+    <p class="hero-tagline">I build at the intersection of design, code, and culture — translating creative vision into systems that scale.</p>
+    <div class="hero__actions">
+      <a href="#work" class="btn btn--primary">VIEW WORK <span>→</span></a>
+      <a href="v4.html" class="btn btn--secondary">OPEN V4 ARCHIVE</a>
+      <a href="nodear.html" class="btn btn--secondary">NODEAR*</a>
+    </div>
+    <div class="hero-badges">
+      <span class="hero__badge-text">Creative Direction</span>
+      <span class="hero__badge-sep">/</span>
+      <span class="hero__badge-text">Brand Systems</span>
+      <span class="hero__badge-sep">/</span>
+      <span class="hero__badge-text">Technical Design</span>
+      <span class="hero__badge-sep">/</span>
+      <span class="hero__badge-text">AI-Integrated Workflows</span>
+      <span class="hero__badge-sep">/</span>
+      <span class="hero__badge-text">Audio Production</span>
+      <span class="hero__badge-sep">/</span>
+      <span class="hero__badge-text">Visual Design</span>
+    </div>
+  </div>
+  <div class="hero__margin-index" aria-hidden="true">
+    <span class="hero__margin-num">001</span>
+    <span class="hero__margin-num">PORTFOLIO</span>
+    <span class="hero__margin-num">2026</span>
+  </div>
+</section>
+
+<!-- Featured Work -->
+<section class="section" id="work">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-001</span><span class="archive-dot"></span><span>01</span><span class="archive-dot"></span><span>Selected Work</span><span class="archive-dot"></span><span>2026-05-07</span></div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Recovered brand worlds, archive shells, editorial viewers, Nodear systems, and deployable project pages.</p>
+      <div class="archive-rule"></div>
+    </div>
+    <div class="archive-meta-row"><span>ARCHIVE GRID</span><span class="archive-meta-row__line"></span><span>RESTORED BUILD</span></div>
+    <div class="filters" id="projectFilters" aria-label="Project filters"></div>
+    <div class="project-grid" id="projectGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-002</span><span class="archive-dot"></span><span>02</span><span class="archive-dot"></span><span>Capabilities</span><span class="archive-dot"></span><span>Service Model</span></div>
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">The May 7 build positioned the portfolio as a working creative system: direction, identity, code, AI, sound, and visual production.</p>
+      <div class="archive-rule"></div>
+    </div>
+    <div class="services-grid">
+      <article class="service-card"><span class="service-card__number mono-tag">01</span><h3 class="service-card__title">Creative Direction</h3><p class="service-card__desc">Visual narratives from concept through execution across campaigns, products, and digital worlds.</p></article>
+      <article class="service-card"><span class="service-card__number mono-tag">02</span><h3 class="service-card__title">Brand Systems</h3><p class="service-card__desc">Cohesive identity systems with typography, image rules, art direction, and deployable interfaces.</p></article>
+      <article class="service-card"><span class="service-card__number mono-tag">03</span><h3 class="service-card__title">Technical Design</h3><p class="service-card__desc">Production-ready interactive experiences bridging design systems, motion, and front-end build logic.</p></article>
+      <article class="service-card"><span class="service-card__number mono-tag">04</span><h3 class="service-card__title">AI Workflows</h3><p class="service-card__desc">Generative prompt systems, image continuity, and archive-driven production pipelines.</p></article>
+      <article class="service-card"><span class="service-card__number mono-tag">05</span><h3 class="service-card__title">Audio Production</h3><p class="service-card__desc">Sound, music direction, player interfaces, listening systems, and release-world design.</p></article>
+      <article class="service-card"><span class="service-card__number mono-tag">06</span><h3 class="service-card__title">Visual Design</h3><p class="service-card__desc">Editorial layouts, posters, packaging, zines, product boards, and campaign imagery.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-004</span><span class="archive-dot"></span><span>03</span><span class="archive-dot"></span><span>Persona & Process</span></div>
+      <h2 class="section-title">Raehdojhn</h2>
+      <p class="section-subtitle">Design at the edge of language.</p>
+      <div class="archive-rule"></div>
+    </div>
+    <div class="info-grid">
+      <div class="about-content">
+        <blockquote class="philosophy">"The future belongs to those who refuse to be categorized."</blockquote>
+        <p>I'm Raehdojhn — a classically trained artist from Charlotte, North Carolina, now creating from Los Angeles. My work exists at the intersection of traditional craft and emerging technology.</p>
+        <p>I work across audio, visual, code, and copy because the lane itself is obsolete.</p>
+      </div>
+      <div class="info-card">
+        <h3>Skills & Tools</h3>
+        <div class="skill-grid">
+          <div class="skill-group"><span>Design</span><ul><li>Visual Identity</li><li>Art Direction</li><li>Editorial Design</li><li>Motion Design</li></ul></div>
+          <div class="skill-group"><span>Development</span><ul><li>React / JavaScript</li><li>CSS Animation</li><li>Three.js</li><li>Design Systems</li></ul></div>
+          <div class="skill-group"><span>Tools</span><ul><li>Figma</li><li>Adobe Suite</li><li>Ableton / FL</li><li>Claude / Gemini</li></ul></div>
+          <div class="skill-group"><span>Process</span><ul><li>Research</li><li>Prototyping</li><li>Client Direction</li><li>Production</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-005</span><span class="archive-dot"></span><span>04</span><span class="archive-dot"></span><span>Contact</span></div>
+      <h2 class="section-title">Let's Talk</h2>
+      <p class="section-subtitle">Currently available for new projects, full-time opportunities, contract work, and world-building commissions.</p>
+      <div class="archive-rule"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="info-card">
+        <h3>Availability</h3>
+        <p><strong>Email:</strong> <a href="mailto:raehdojhn@gmail.com">raehdojhn@gmail.com</a></p>
+        <p><strong>Location:</strong> Los Angeles / Remote</p>
+        <p><strong>Modes:</strong> Full-time, contract, freelance, creative direction.</p>
+      </div>
+      <form class="contact-form" action="mailto:raehdojhn@gmail.com" method="post" enctype="text/plain">
+        <input class="form-input" name="name" placeholder="Your name" required>
+        <input class="form-input" name="email" type="email" placeholder="your@email.com" required>
+        <select class="form-input" name="project_type"><option>Creative Direction</option><option>Brand Systems</option><option>Technical Design</option><option>AI Workflows</option><option>Full-Time Position</option><option>Other</option></select>
+        <textarea class="form-input" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+        <button class="btn btn--primary" type="submit">SEND MESSAGE</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="media">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-M01</span><span class="archive-dot"></span><span>05</span><span class="archive-dot"></span><span>Media</span><span class="archive-dot"></span><span>Listening / Watching Log</span></div>
+      <h2 class="section-title">Media I've Consumed</h2>
+      <p class="section-subtitle">Videos, tracks, references, and annotated fragments from the working archive. Paste a YouTube, Spotify, or SoundCloud URL below and the embed will appear in the grid. Audio entries can be queued into the glass player.</p>
+      <div class="archive-rule"></div>
+    </div>
+
+    <div class="media-toolbar">
+      <div class="media-filter-tabs" id="mediaFilterTabs">
+        <button type="button" class="media-filter-tab is-active" data-filter="all">All</button>
+        <button type="button" class="media-filter-tab" data-filter="youtube">YouTube</button>
+        <button type="button" class="media-filter-tab" data-filter="spotify">Spotify</button>
+        <button type="button" class="media-filter-tab" data-filter="soundcloud">SoundCloud</button>
+        <button type="button" class="media-filter-tab" data-filter="self_hosted_audio">Local Audio</button>
+        <button type="button" class="media-filter-tab" data-filter="self_hosted_video">Local Video</button>
+      </div>
+      <button type="button" class="media-admin-toggle" id="mediaAdminToggle" aria-expanded="false">[ + Add Embed ]</button>
+    </div>
+
+    <form class="media-admin-panel" id="mediaAdminPanel" hidden>
+      <h4>EMBED A NEW ITEM</h4>
+      <p class="media-admin-helper">Paste a public link — YouTube (watch / shorts / youtu.be), Spotify (track/album/playlist/episode/show), SoundCloud (track/set), or a direct .mp3 / .mp4 URL. Type is auto-detected; override below if needed.</p>
+      <div class="media-admin-row media-admin-row--full">
+        <input class="form-input" type="url" id="mediaInputUrl" placeholder="https://www.youtube.com/watch?v=… · https://open.spotify.com/track/… · https://soundcloud.com/…" required>
+      </div>
+      <div class="media-admin-row">
+        <select class="form-input" id="mediaInputType">
+          <option value="auto">Auto-detect type</option>
+          <option value="youtube">YouTube video</option>
+          <option value="spotify">Spotify embed</option>
+          <option value="soundcloud">SoundCloud embed</option>
+          <option value="self_hosted_audio">Self-hosted audio (.mp3)</option>
+          <option value="self_hosted_video">Self-hosted video (.mp4)</option>
+        </select>
+        <input class="form-input" type="text" id="mediaInputTitle" placeholder="Title (optional — auto-filled if blank)">
+      </div>
+      <div class="media-admin-row">
+        <input class="form-input" type="text" id="mediaInputCreator" placeholder="Creator / artist (optional)">
+        <input class="form-input" type="text" id="mediaInputNote" placeholder="Note (optional)">
+      </div>
+      <div class="media-admin-actions">
+        <button class="btn btn--primary" type="submit">ADD TO GRID</button>
+        <button class="btn btn--ghost" type="button" id="mediaResetAll">Reset to defaults</button>
+      </div>
+    </form>
+
+    <div class="archive-meta-row"><span>SHELF STATUS</span><span class="archive-meta-row__line"></span><span id="mediaShelfStatus">VISIBLE 0 / TOTAL 0</span></div>
+    <div class="media-grid" id="mediaGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section" id="blog">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-006</span><span class="archive-dot"></span><span>06</span><span class="archive-dot"></span><span>Documentation</span></div>
+      <h2 class="section-title">Archive Log</h2>
+      <p class="section-subtitle">Essays on design, technology, culture, and the systems behind the work — published here and across platforms.</p>
+      <div class="archive-rule"></div>
+    </div>
+
+    <div class="blog-toolbar" id="blogTabs" role="tablist">
+      <button type="button" class="blog-tab is-active" data-platform="all" role="tab">All<span class="blog-tab__count" data-count-for="all">0</span></button>
+      <button type="button" class="blog-tab" data-platform="substack" role="tab">Substack<span class="blog-tab__count" data-count-for="substack">0</span></button>
+      <button type="button" class="blog-tab" data-platform="medium" role="tab">Medium<span class="blog-tab__count" data-count-for="medium">0</span></button>
+      <button type="button" class="blog-tab" data-platform="self_hosted" role="tab">Self-Hosted<span class="blog-tab__count" data-count-for="self_hosted">0</span></button>
+    </div>
+
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<section class="section influences-section" id="influences">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-007</span><span class="archive-dot"></span><span>07</span><span class="archive-dot"></span><span>Inspiration</span></div>
+      <h2 class="section-title">Influences</h2>
+      <p class="section-subtitle">The creative lineage informing the work — disciplines collapse, references compound. A modern renaissance is built on borrowed light.</p>
+      <div class="archive-rule"></div>
+    </div>
+
+    <div class="influences-intro">
+      <div>
+        <h4>THESIS</h4>
+        <p>Every body of work I make sits inside a wider conversation. The artists below are the chorus — designers who broke the rules, directors who weaponized atmosphere, photographers who saw beauty in the broken, and painters who refused the limits of their century. I treat their work the way a musician treats a sample library: studied, internalized, and recomposed in service of something new.</p>
+      </div>
+      <div>
+        <h4>METHOD</h4>
+        <p>This is not a list of favorites — it is a working archive. Names appear here because something in the work has been transposed into my practice: a color choice, a typographic instinct, a way of holding a frame, a refusal to flatten contradiction. The list is alphabetical only by accident. The real order is the order I discovered each of them.</p>
+      </div>
+    </div>
+
+    <div class="influences-grid">
+      <article class="influence-group">
+        <div class="influence-group__category">Photographers<span class="influence-group__count">· 30</span></div>
+        <p class="influence-list">
+          <b>Cam Hicks</b>, <span class="influence-name">Julian Klincewicz</span>, <span class="influence-name">Gunner Stahl</span>, <span class="influence-name">Steve Buck</span>, <span class="influence-name">Rayscorruptedmind</span>, <span class="influence-name">YGA Film</span>, <span class="influence-name">David Sorrenti</span>, <span class="influence-name">John Cotter</span>, <span class="influence-name">Max Durante</span>, <span class="influence-name">KMA.FR</span>, <span class="influence-name">Dill35mm</span>, <span class="influence-name">Ismael Akondo</span>, <span class="influence-name">Carson Jacobs</span>, <span class="influence-name">Tom Schwimmbeck</span>, <span class="influence-name">Petra Collins</span>, <span class="influence-name">Sam Dameshek</span>, <span class="influence-name">Lewis Virn</span>, <span class="influence-name">David Cabrera</span>, <span class="influence-name">Sagan Lockhart</span>, <span class="influence-name">Terry Richardson</span>, <span class="influence-name">Christopher Anderson</span>, <span class="influence-name">Mangomaat</span>, <span class="influence-name">Nico Ballesteros</span>, <span class="influence-name">Jack Bridgland</span>, <span class="influence-name">Dillon Dreiling</span>, <span class="influence-name">Garrett Bruce</span>, <span class="influence-name">Ian Buosi</span>, <span class="influence-name">Ciesay</span>, <span class="influence-name">Brandon Bowen</span>, <span class="influence-name">Yudo Kurita</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Designers<span class="influence-group__count">· 24</span></div>
+        <p class="influence-list">
+          <b>Rick Owens</b>, <span class="influence-name">Raf Simons</span>, <span class="influence-name">Samuel Ross</span>, <span class="influence-name">Matthew Williams</span>, <span class="influence-name">Phillip Kim</span>, <span class="influence-name">Virgil Abloh</span>, <span class="influence-name">Nigo</span>, <span class="influence-name">Martine Rose</span>, <span class="influence-name">Marc Jacobs</span>, <span class="influence-name">Vivienne Westwood</span>, <span class="influence-name">Ye</span>, <span class="influence-name">Issey Miyake</span>, <span class="influence-name">Rei Kawakubo</span>, <span class="influence-name">Demna Gvasalia</span>, <span class="influence-name">Daniel Arsham</span>, <span class="influence-name">Ralph Lauren</span>, <span class="influence-name">Henri Alexander Levy</span>, <span class="influence-name">Alexander Wang</span>, <span class="influence-name">Heron Preston</span>, <span class="influence-name">Jun Takahashi</span>, <span class="influence-name">Midnight Studios</span>, <span class="influence-name">Acne Studios</span>, <span class="influence-name">Enfants Riches Déprimés</span>, <span class="influence-name">Ava Nirui</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Painters<span class="influence-group__count">· 10</span></div>
+        <p class="influence-list">
+          <b>Jean-Michel Basquiat</b>, <span class="influence-name">Bryant Giles</span>, <span class="influence-name">Jetle Parti</span>, <span class="influence-name">T-Rex Global</span>, <span class="influence-name">George Condo</span>, <span class="influence-name">Indigou</span>, <span class="influence-name">Salvador Dalí</span>, <span class="influence-name">Leonardo da Vinci</span>, <span class="influence-name">Caravaggio</span>, <span class="influence-name">Michelangelo</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Directors<span class="influence-group__count">· 16</span></div>
+        <p class="influence-list">
+          <b>Stanley Kubrick</b>, <span class="influence-name">Alfred Hitchcock</span>, <span class="influence-name">Quentin Tarantino</span>, <span class="influence-name">Safdie Brothers</span>, <span class="influence-name">Wes Anderson</span>, <span class="influence-name">Gaspar Noé</span>, <span class="influence-name">Harmony Korine</span>, <span class="influence-name">Lone Wolf</span>, <span class="influence-name">Christopher Nolan</span>, <span class="influence-name">Alejandro Jodorowsky</span>, <span class="influence-name">Hiro Murai</span>, <span class="influence-name">Ari Aster</span>, <span class="influence-name">Grant Singer</span>, <span class="influence-name">Hype Williams</span>, <span class="influence-name">Teo Grevet</span>, <span class="influence-name">Spike Jonze</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Musicians &amp; Producers<span class="influence-group__count">· 22</span></div>
+        <p class="influence-list">
+          <b>Frank Ocean</b>, <span class="influence-name">Kendrick Lamar</span>, <span class="influence-name">Tyler, the Creator</span>, <span class="influence-name">Mac Miller</span>, <span class="influence-name">André 3000</span>, <span class="influence-name">D'Angelo</span>, <span class="influence-name">Pharrell Williams</span>, <span class="influence-name">Daft Punk</span>, <span class="influence-name">Aphex Twin</span>, <span class="influence-name">Boards of Canada</span>, <span class="influence-name">Burial</span>, <span class="influence-name">FKA twigs</span>, <span class="influence-name">Yves Tumor</span>, <span class="influence-name">Earl Sweatshirt</span>, <span class="influence-name">MF DOOM</span>, <span class="influence-name">J Dilla</span>, <span class="influence-name">Madlib</span>, <span class="influence-name">Sade</span>, <span class="influence-name">Massive Attack</span>, <span class="influence-name">Radiohead</span>, <span class="influence-name">Sampha</span>, <span class="influence-name">Nodear</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Architects &amp; Spatial<span class="influence-group__count">· 12</span></div>
+        <p class="influence-list">
+          <b>Tadao Ando</b>, <span class="influence-name">Peter Zumthor</span>, <span class="influence-name">Le Corbusier</span>, <span class="influence-name">Zaha Hadid</span>, <span class="influence-name">Mies van der Rohe</span>, <span class="influence-name">Frank Lloyd Wright</span>, <span class="influence-name">Carlo Scarpa</span>, <span class="influence-name">Kengo Kuma</span>, <span class="influence-name">Junya Ishigami</span>, <span class="influence-name">SANAA</span>, <span class="influence-name">David Adjaye</span>, <span class="influence-name">Rem Koolhaas</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Writers &amp; Thinkers<span class="influence-group__count">· 14</span></div>
+        <p class="influence-list">
+          <b>James Baldwin</b>, <span class="influence-name">Toni Morrison</span>, <span class="influence-name">Susan Sontag</span>, <span class="influence-name">Roland Barthes</span>, <span class="influence-name">John Berger</span>, <span class="influence-name">Italo Calvino</span>, <span class="influence-name">Jorge Luis Borges</span>, <span class="influence-name">Hannah Arendt</span>, <span class="influence-name">Marshall McLuhan</span>, <span class="influence-name">Bell Hooks</span>, <span class="influence-name">Maggie Nelson</span>, <span class="influence-name">Octavia Butler</span>, <span class="influence-name">Haruki Murakami</span>, <span class="influence-name">Teju Cole</span>.
+        </p>
+      </article>
+      <article class="influence-group">
+        <div class="influence-group__category">Technologists &amp; Builders<span class="influence-group__count">· 12</span></div>
+        <p class="influence-list">
+          <b>Bret Victor</b>, <span class="influence-name">Alan Kay</span>, <span class="influence-name">Dieter Rams</span>, <span class="influence-name">Steve Jobs</span>, <span class="influence-name">Jony Ive</span>, <span class="influence-name">John Maeda</span>, <span class="influence-name">Casey Reas</span>, <span class="influence-name">Joshua Davis</span>, <span class="influence-name">Refik Anadol</span>, <span class="influence-name">Ian Cheng</span>, <span class="influence-name">Memo Akten</span>, <span class="influence-name">Karst Schuhl</span>.
+        </p>
+      </article>
+    </div>
+
+    <div class="influences-philosophy">
+      <article class="influence-pillar">
+        <span class="influence-pillar__num">PILLAR / 01</span>
+        <h4>Polymathy as Default</h4>
+        <p>Every meaningful body of work in the canon collapses categories. The split between artist and technologist, designer and director, is administrative — not artistic. The list above is built on that conviction.</p>
+      </article>
+      <article class="influence-pillar">
+        <span class="influence-pillar__num">PILLAR / 02</span>
+        <h4>Reference Without Cosplay</h4>
+        <p>Influence is metabolism, not mimicry. I name these artists because something they made changed how I see — not because I am trying to copy the surface of their work. Borrow the question, not the answer.</p>
+      </article>
+      <article class="influence-pillar">
+        <span class="influence-pillar__num">PILLAR / 03</span>
+        <h4>Beauty &amp; Brutality</h4>
+        <p>The work I love sits on a knife edge between rigor and rawness. Brutalist architecture, heroin-chic photography, couture made from torn denim — the tension is the point. The grid only matters because something inside it refuses to behave.</p>
+      </article>
+      <article class="influence-pillar">
+        <span class="influence-pillar__num">PILLAR / 04</span>
+        <h4>The Long Lineage</h4>
+        <p>Da Vinci, Caravaggio, and Michelangelo are on this list with the same weight as Virgil and Tyler. The Renaissance was a network of bodies — patrons, apprentices, rivals — solving for taste in public. We are still in that conversation.</p>
+      </article>
+    </div>
+
+    <div class="influences-quotes">
+      <blockquote class="influence-quote">"Everything is a remix, but a remix is also a position. Choose what you sample carefully — it becomes your signature."<cite>— Working note, 2026</cite></blockquote>
+      <blockquote class="influence-quote">"I steal from the dead and the still-living equally. Both are generous if you ask the right question."<cite>— Working note, 2026</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="section clock-section" id="time" aria-label="Local time">
+  <div class="section-inner">
+    <div class="archive-section-chrome">
+      <div class="archive-kicker"><span class="archive-chip">RAE-26-008</span><span class="archive-dot"></span><span>08</span><span class="archive-dot"></span><span>Temporal</span></div>
+      <h2 class="section-title">Time<span class="slash">/</span><span class="cjk">時間</span></h2>
+      <p class="section-subtitle">Your local instant — measured twice: once by hand, once by tradition.</p>
+      <div class="archive-rule"></div>
+    </div>
+
+    <div class="clock-pair">
+      <!-- ORIENTAL · 十二時辰 -->
+      <div class="clock-card">
+        <header class="clock-card__head">
+          <span class="clock-card__num">01</span>
+          <span class="clock-card__label">十二時辰 · Shichen</span>
+        </header>
+        <div class="clock-face-wrap">
+          <svg viewBox="0 0 240 240" class="clock-face clock-face--oriental" role="img" aria-label="Oriental shichen clock">
+            <defs>
+              <radialGradient id="orientalGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,154,0,0.10)"/>
+                <stop offset="60%" stop-color="rgba(255,154,0,0)"/>
+              </radialGradient>
+            </defs>
+            <circle cx="120" cy="120" r="115" fill="url(#orientalGlow)"/>
+            <circle cx="120" cy="120" r="110" fill="none" stroke="#3D3835" stroke-width="1"/>
+            <circle cx="120" cy="120" r="92"  fill="none" stroke="#1E1C1A" stroke-width="1"/>
+            <circle cx="120" cy="120" r="74"  fill="none" stroke="#1E1C1A" stroke-width="0.5" stroke-dasharray="2 4"/>
+            <g id="shichenChars"></g>
+            <g id="shichenTicks"></g>
+            <g id="shichenHand" style="transform-origin:120px 120px; transition: transform 1s linear;">
+              <line x1="120" y1="120" x2="120" y2="36" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="120" cy="36" r="3" fill="var(--red)"/>
+            </g>
+            <circle cx="120" cy="120" r="14" fill="var(--void)" stroke="#565250" stroke-width="0.75"/>
+            <text x="120" y="121" text-anchor="middle" dominant-baseline="central" font-family="'DotGothic16','Noto Sans CJK SC',serif" font-size="14" fill="var(--amber)">時</text>
+          </svg>
+        </div>
+        <dl class="clock-readout">
+          <div class="clock-readout__row">
+            <dt>Shichen</dt>
+            <dd>
+              <span id="shichenChar" class="cjk-large">—</span>
+              <span id="shichenMeta" class="readout-meta">—</span>
+            </dd>
+          </div>
+          <div class="clock-readout__row">
+            <dt>Window</dt>
+            <dd class="mono" id="shichenWindow">—</dd>
+          </div>
+          <div class="clock-readout__row">
+            <dt>Quarter (刻)</dt>
+            <dd class="mono" id="shichenKe">—</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- ANALOG -->
+      <div class="clock-card">
+        <header class="clock-card__head">
+          <span class="clock-card__num">02</span>
+          <span class="clock-card__label">Analog · Mechanical</span>
+        </header>
+        <div class="clock-face-wrap">
+          <svg viewBox="0 0 240 240" class="clock-face clock-face--analog" role="img" aria-label="Analog clock">
+            <defs>
+              <radialGradient id="analogGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(232,228,220,0.05)"/>
+                <stop offset="70%" stop-color="rgba(232,228,220,0)"/>
+              </radialGradient>
+            </defs>
+            <circle cx="120" cy="120" r="115" fill="url(#analogGlow)"/>
+            <circle cx="120" cy="120" r="110" fill="none" stroke="#3D3835" stroke-width="1"/>
+            <circle cx="120" cy="120" r="100" fill="none" stroke="#1E1C1A" stroke-width="0.5"/>
+            <g id="analogTicks"></g>
+            <text x="120" y="32"  text-anchor="middle" dominant-baseline="central" font-family="'Playfair Display',Georgia,serif" font-size="18" font-style="italic" fill="var(--bone)" opacity="0.9">XII</text>
+            <text x="208" y="120" text-anchor="middle" dominant-baseline="central" font-family="'Playfair Display',Georgia,serif" font-size="18" font-style="italic" fill="var(--bone)" opacity="0.9">III</text>
+            <text x="120" y="208" text-anchor="middle" dominant-baseline="central" font-family="'Playfair Display',Georgia,serif" font-size="18" font-style="italic" fill="var(--bone)" opacity="0.9">VI</text>
+            <text x="32"  y="120" text-anchor="middle" dominant-baseline="central" font-family="'Playfair Display',Georgia,serif" font-size="18" font-style="italic" fill="var(--bone)" opacity="0.9">IX</text>
+            <g id="hourHand" style="transform-origin:120px 120px; transition: transform 0.5s var(--ease);">
+              <line x1="120" y1="132" x2="120" y2="64" stroke="var(--bone)" stroke-width="3.5" stroke-linecap="round"/>
+            </g>
+            <g id="minuteHand" style="transform-origin:120px 120px; transition: transform 0.5s var(--ease);">
+              <line x1="120" y1="138" x2="120" y2="40" stroke="var(--bone)" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            <g id="secondHand" style="transform-origin:120px 120px; transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);">
+              <line x1="120" y1="146" x2="120" y2="36" stroke="var(--red)" stroke-width="1" stroke-linecap="round"/>
+              <circle cx="120" cy="50" r="3" fill="none" stroke="var(--red)" stroke-width="1"/>
+            </g>
+            <circle cx="120" cy="120" r="5" fill="var(--bone)"/>
+            <circle cx="120" cy="120" r="2" fill="var(--red)"/>
+          </svg>
+        </div>
+        <dl class="clock-readout">
+          <div class="clock-readout__row">
+            <dt>Now</dt>
+            <dd class="mono mono-lg"><span id="clockHHMM">—</span><span class="clock-seconds" id="clockSS">—</span></dd>
+          </div>
+          <div class="clock-readout__row">
+            <dt>Date</dt>
+            <dd class="mono" id="clockDate">—</dd>
+          </div>
+          <div class="clock-readout__row">
+            <dt>Zone</dt>
+            <dd class="mono">
+              <span style="color:var(--bone)" id="clockCity">—</span>
+              <span class="readout-meta" id="clockTz">—</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var SHICHEN = [
+    { ch:'子', pinyin:'zǐ',   zodiac:'Rat',     start:23 },
+    { ch:'丑', pinyin:'chǒu', zodiac:'Ox',      start:1  },
+    { ch:'寅', pinyin:'yín',  zodiac:'Tiger',   start:3  },
+    { ch:'卯', pinyin:'mǎo',  zodiac:'Rabbit',  start:5  },
+    { ch:'辰', pinyin:'chén', zodiac:'Dragon',  start:7  },
+    { ch:'巳', pinyin:'sì',   zodiac:'Snake',   start:9  },
+    { ch:'午', pinyin:'wǔ',   zodiac:'Horse',   start:11 },
+    { ch:'未', pinyin:'wèi',  zodiac:'Goat',    start:13 },
+    { ch:'申', pinyin:'shēn', zodiac:'Monkey',  start:15 },
+    { ch:'酉', pinyin:'yǒu',  zodiac:'Rooster', start:17 },
+    { ch:'戌', pinyin:'xū',   zodiac:'Dog',     start:19 },
+    { ch:'亥', pinyin:'hài',  zodiac:'Pig',     start:21 }
+  ];
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var charsRoot = document.getElementById('shichenChars');
+  var shTicksRoot = document.getElementById('shichenTicks');
+  var anTicksRoot = document.getElementById('analogTicks');
+  if (!charsRoot || !shTicksRoot || !anTicksRoot) return;
+
+  // Build oriental dial characters
+  SHICHEN.forEach(function(s, i){
+    var a = (i * 30 - 90) * Math.PI / 180;
+    var r = 99;
+    var x = 120 + r * Math.cos(a);
+    var y = 120 + r * Math.sin(a);
+    var t = document.createElementNS(SVG_NS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('text-anchor', 'middle');
+    t.setAttribute('dominant-baseline', 'central');
+    t.setAttribute('font-family', "'DotGothic16','Noto Sans CJK SC',serif");
+    t.setAttribute('data-idx', i);
+    t.setAttribute('font-size', '15');
+    t.setAttribute('fill', 'var(--bone)');
+    t.setAttribute('opacity', '0.55');
+    t.style.transition = 'opacity 400ms ease, fill 400ms ease, font-size 400ms ease';
+    t.textContent = s.ch;
+    charsRoot.appendChild(t);
+  });
+
+  // Build minute tick marks
+  function buildTicks(root, innerMinor, innerMajor, outer, minorStroke, majorStroke, minorColor, majorColor){
+    for (var i = 0; i < 60; i++){
+      var a = (i * 6 - 90) * Math.PI / 180;
+      var inner = i % 5 === 0 ? innerMajor : innerMinor;
+      var x1 = 120 + inner * Math.cos(a);
+      var y1 = 120 + inner * Math.sin(a);
+      var x2 = 120 + outer * Math.cos(a);
+      var y2 = 120 + outer * Math.sin(a);
+      var line = document.createElementNS(SVG_NS, 'line');
+      line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+      line.setAttribute('stroke', i % 5 === 0 ? majorColor : minorColor);
+      line.setAttribute('stroke-width', i % 5 === 0 ? majorStroke : minorStroke);
+      root.appendChild(line);
+    }
+  }
+  buildTicks(shTicksRoot, 116, 113, 119, 0.5, 1, '#1E1C1A', '#565250');
+  buildTicks(anTicksRoot, 104, 96, 109, 0.5, 1.25, '#565250', 'var(--bone)');
+
+  var tz = 'UTC';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch(e){}
+  document.getElementById('clockTz').textContent = tz;
+  var parts = tz.split('/');
+  document.getElementById('clockCity').textContent = parts[parts.length - 1].replace(/_/g, ' ').toUpperCase();
+
+  function currentShichenIndex(h, m){
+    var shifted = ((h + 1) % 24) + m / 60;
+    return Math.floor(shifted / 2) % 12;
+  }
+
+  var hourHand = document.getElementById('hourHand');
+  var minHand = document.getElementById('minuteHand');
+  var secHand = document.getElementById('secondHand');
+  var shHand = document.getElementById('shichenHand');
+  var hhmm = document.getElementById('clockHHMM');
+  var ss = document.getElementById('clockSS');
+  var dateEl = document.getElementById('clockDate');
+  var shCharEl = document.getElementById('shichenChar');
+  var shMetaEl = document.getElementById('shichenMeta');
+  var shWindowEl = document.getElementById('shichenWindow');
+  var shKeEl = document.getElementById('shichenKe');
+  var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+  var lastIdx = -1;
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function tick(){
+    var now = new Date();
+    var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+    var secAngle = s * 6;
+    var minAngle = m * 6 + s * 0.1;
+    var hourAngle = (h % 12) * 30 + m * 0.5;
+    hourHand.style.transform = 'rotate(' + hourAngle + 'deg)';
+    minHand.style.transform = 'rotate(' + minAngle + 'deg)';
+    secHand.style.transform = 'rotate(' + secAngle + 'deg)';
+
+    hhmm.textContent = pad(h) + ':' + pad(m);
+    ss.textContent = ':' + pad(s);
+    dateEl.textContent = days[now.getDay()] + ' · ' + months[now.getMonth()] + ' ' + pad(now.getDate()) + ' · ' + now.getFullYear();
+
+    var idx = currentShichenIndex(h, m);
+    var sh = SHICHEN[idx];
+    var shHourFloat = (((h + 1) % 24) + m / 60 + s / 3600) / 2;
+    var shAngle = (shHourFloat * 30) % 360;
+    shHand.style.transform = 'rotate(' + shAngle + 'deg)';
+
+    if (idx !== lastIdx){
+      lastIdx = idx;
+      shCharEl.textContent = sh.ch;
+      shMetaEl.textContent = sh.pinyin + ' · ' + sh.zodiac;
+      shWindowEl.textContent = pad(sh.start) + ':00 — ' + pad((sh.start + 2) % 24) + ':00';
+      // highlight active character
+      var charNodes = charsRoot.querySelectorAll('text');
+      charNodes.forEach(function(node){
+        var active = parseInt(node.getAttribute('data-idx'), 10) === idx;
+        node.setAttribute('font-size', active ? '18' : '15');
+        node.setAttribute('fill', active ? 'var(--red)' : 'var(--bone)');
+        node.setAttribute('opacity', active ? '1' : '0.55');
+      });
+    }
+    var minsInShichen = ((((h + 1) % 2) * 60) + m) % 120;
+    var ke = Math.floor(minsInShichen / 15) + 1;
+    shKeEl.textContent = ke + ' / 8';
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span>R.R</span><span>Raehdojhn</span></div>
+        <p class="footer-copy">Artist. Technologist. Modern Renaissance. Blending creativity and technology across audio, visual, code, and copy.</p>
+        <a class="footer-email" href="mailto:raehdojhn@gmail.com">raehdojhn@gmail.com</a>
+      </div>
+      <div>
+        <p class="footer-heading">Navigation</p>
+        <div class="footer-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="#influences">Influences</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Archive</p>
+        <div class="footer-links">
+          <a href="v4.html">V4</a>
+          <a href="nodear.html">Nodear*</a>
+          <a href="#media">Media Log</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Status</p>
+        <div class="footer-status"><span></span><span>Available for work</span></div>
+        <p class="footer-copy" style="font-family:var(--font-mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;">Los Angeles / Remote</p>
+        <button class="back-top" type="button" id="backTop">Back to top</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Raehdojhn. All rights reserved.</span>
+      <span>Designed & built with intention.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Live issue bar clock from the May 7 marquee
+const marqueeDate = document.getElementById('marqueeDate');
+const marqueeTime = document.getElementById('marqueeTime');
+function updateMarqueeClock() {
+  const now = new Date();
+  const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  if (marqueeDate) marqueeDate.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+  if (marqueeTime) marqueeTime.textContent = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+updateMarqueeClock();
+setInterval(updateMarqueeClock, 1000);
+
+// Sandwich menu
+const siteMenu = document.getElementById('siteMenu');
+const menuOpen = document.getElementById('menuOpen');
+const menuClose = document.getElementById('menuClose');
+function setMenuOpen(open) {
+  siteMenu.classList.toggle('is-open', open);
+  siteMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+menuOpen.addEventListener('click', () => setMenuOpen(true));
+menuClose.addEventListener('click', () => setMenuOpen(false));
+siteMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => setMenuOpen(false));
+});
+window.addEventListener('keydown', event => {
+  if (event.key === 'Escape') setMenuOpen(false);
+});
+
+// May 7-style active section states for nav and sandwich menu
+const trackedSectionIds = ['hero', 'work', 'services', 'about', 'contact', 'media', 'blog', 'influences'];
+const trackedSectionLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"], .site-menu__link[href^="#"]'));
+function setActiveSection(sectionId) {
+  trackedSectionLinks.forEach(link => {
+    const isActive = link.getAttribute('href') === `#${sectionId}`;
+    link.classList.toggle('nav-link--active', isActive && link.classList.contains('nav-link'));
+    link.classList.toggle('site-menu__link--active', isActive && link.classList.contains('site-menu__link'));
+  });
+}
+if ('IntersectionObserver' in window) {
+  const activeSectionObserver = new IntersectionObserver(entries => {
+    const activeEntry = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (activeEntry) setActiveSection(activeEntry.target.id);
+  }, { rootMargin: '-42% 0px -48% 0px', threshold: [0.08, 0.18, 0.32] });
+  trackedSectionIds.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) activeSectionObserver.observe(section);
+  });
+}
+setActiveSection('hero');
+
+// Theme toggle
+const THEME_KEY = 'rae-static-theme';
+const themeToggle = document.getElementById('themeToggle');
+function setPortfolioTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem(THEME_KEY, theme);
+  themeToggle.textContent = theme === 'light' ? '●' : '◐';
+  themeToggle.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+}
+setPortfolioTheme(localStorage.getItem(THEME_KEY) || 'dark');
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  setPortfolioTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+// Color-shifting gradient cursor
+const beaconCursor = document.getElementById('beaconCursor');
+const beaconGlow = document.getElementById('beaconGlow');
+const cursorColors = [
+  [220, 40, 40],
+  [200, 60, 100],
+  [180, 80, 180],
+  [100, 120, 220],
+  [60, 200, 160],
+  [196, 122, 90],
+  [220, 40, 40]
+];
+const cursorPos = { x: 0, y: 0 };
+const cursorTarget = { x: 0, y: 0 };
+let cursorVisible = false;
+
+function lerpColorAt(t) {
+  const segments = cursorColors.length - 1;
+  const segment = Math.min(Math.floor(t * segments), segments - 1);
+  const localT = (t * segments) - segment;
+  const a = cursorColors[segment];
+  const b = cursorColors[segment + 1];
+  const r = Math.round(a[0] + (b[0] - a[0]) * localT);
+  const g = Math.round(a[1] + (b[1] - a[1]) * localT);
+  const bl = Math.round(a[2] + (b[2] - a[2]) * localT);
+  return `rgb(${r}, ${g}, ${bl})`;
+}
+function colorAtObject(t) {
+  const wrapped = ((t % 1) + 1) % 1;
+  const segments = cursorColors.length - 1;
+  const segment = Math.min(Math.floor(wrapped * segments), segments - 1);
+  const localT = (wrapped * segments) - segment;
+  const a = cursorColors[segment];
+  const b = cursorColors[segment + 1];
+  return {
+    r: Math.round(a[0] + (b[0] - a[0]) * localT),
+    g: Math.round(a[1] + (b[1] - a[1]) * localT),
+    b: Math.round(a[2] + (b[2] - a[2]) * localT)
+  };
+}
+function colorObjectToCss(color) {
+  return `rgb(${color.r}, ${color.g}, ${color.b})`;
+}
+function colorObjectToAlpha(color, alpha) {
+  return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
+}
+
+if (!('ontouchstart' in window)) {
+  document.body.style.cursor = 'none';
+  const cursorStyle = document.createElement('style');
+  cursorStyle.textContent = 'a, button, input, textarea, select, [role="button"] { cursor: none !important; }';
+  document.head.appendChild(cursorStyle);
+
+  document.addEventListener('mousemove', event => {
+    cursorTarget.x = event.clientX;
+    cursorTarget.y = event.clientY;
+    cursorVisible = true;
+    beaconCursor.style.opacity = '1';
+    beaconGlow.style.opacity = '1';
+  });
+  document.addEventListener('mouseleave', () => {
+    cursorVisible = false;
+    beaconCursor.style.opacity = '0';
+    beaconGlow.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cursorVisible = true;
+    beaconCursor.style.opacity = '1';
+    beaconGlow.style.opacity = '1';
+  });
+
+  function animateCursor() {
+    cursorPos.x += (cursorTarget.x - cursorPos.x) * 0.15;
+    cursorPos.y += (cursorTarget.y - cursorPos.y) * 0.15;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const scrollPct = Math.min(window.scrollY / maxScroll, 1);
+    const colorA = colorAtObject(scrollPct);
+    const colorB = colorAtObject(scrollPct + 0.18);
+    const color = colorObjectToCss(colorA);
+
+    beaconCursor.style.transform = `translate(${cursorPos.x - 10}px, ${cursorPos.y - 10}px)`;
+    beaconGlow.style.transform = `translate(${cursorPos.x - 60}px, ${cursorPos.y - 60}px)`;
+    beaconCursor.style.borderColor = color;
+    beaconCursor.style.boxShadow = `0 0 12px ${colorObjectToAlpha(colorA, .78)}, 0 0 24px ${colorObjectToAlpha(colorB, .28)}`;
+    beaconGlow.style.background = `radial-gradient(circle, ${colorObjectToAlpha(colorA, .15)} 0%, ${colorObjectToAlpha(colorB, .08)} 38%, transparent 70%)`;
+    if (!cursorVisible) {
+      beaconCursor.style.opacity = '0';
+      beaconGlow.style.opacity = '0';
+    }
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+}
+
+// Cursor-local blood-red headline shadow
+const heroHeadlineStage = document.getElementById('heroHeadlineStage');
+const heroHeadlineShadow = document.getElementById('heroHeadlineShadow');
+if (heroHeadlineStage && heroHeadlineShadow) {
+  heroHeadlineStage.addEventListener('pointermove', event => {
+    const rect = heroHeadlineStage.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const mask = `radial-gradient(42px 50px at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,.88) 42%, rgba(0,0,0,0) 74%)`;
+    heroHeadlineShadow.style.setProperty('--shadow-mask', mask);
+    heroHeadlineStage.classList.add('is-shadow-active');
+  });
+  heroHeadlineStage.addEventListener('pointerleave', () => {
+    heroHeadlineStage.classList.remove('is-shadow-active');
+  });
+}
+
+// Featured projects
+const IFRAME_NATIVE_W = 1440;
+const IFRAME_NATIVE_H = 900;
+
+const projects = [
+  {
+    title: "V4 Archive Site — Chaos Lux Desktop",
+    subtitle: "Recovered May 8 archive shell with desktop windows, project ledger, prompt flux, media log, and system portals.",
+    tags: ["design", "code", "music"],
+    link: "v4.html",
+    embedUrl: "v4.html",
+    image: null,
+    featured: true
+  },
+  {
+    title: "Nodear* — Brand Vault & EPK Portal",
+    subtitle: "Alter-ego brand system, EPK pages, visual identity boards, and Nodear archive entry point.",
+    tags: ["design", "music", "ai"],
+    link: "nodear.html",
+    embedUrl: "nodear.html",
+    image: "nodear/nodear_brand_system/nodear_logo_white_transparent.png",
+    featured: true
+  },
+  {
+    title: "AUREA — Luxury Fragrance Brand World",
+    subtitle: "Editorial identity, campaign, lookbook, and digital presence for a dark-luxury fragrance house.",
+    tags: ["design", "code", "ai"],
+    link: "public/projects/aurea/index.html",
+    embedUrl: "public/projects/aurea/index.html",
+    image: "public/projects/aurea/img01.png",
+    featured: true
+  },
+  {
+    title: "Jiayou — Calm-Energy Coffee Brand World",
+    subtitle: "Editorial coffee-shop site with shop, menu, club rituals, and a hover-scrub virtual magazine.",
+    tags: ["design", "code", "ai"],
+    link: "public/projects/jiayou/index.html",
+    embedUrl: "public/projects/jiayou/index.html",
+    image: "public/projects/jiayou/image4.png",
+    featured: true
+  },
+  {
+    title: "Future Archives — Ranaan × CCC",
+    subtitle: "Interactive flip magazine with responsive spreads, page turns, and touch gestures.",
+    tags: ["design", "code", "ai"],
+    link: "public/projects/ranaan-ccc/index.html",
+    embedUrl: "public/projects/ranaan-ccc/index.html",
+    image: "public/projects/ranaan-ccc/Gemini_Generated_Image_fukczgfukczgfukc.png",
+    featured: true
+  },
+  {
+    title: "RANAAN × BKS — Drop Shop",
+    subtitle: "Combined mock direct-release shop built from the RANAAN GARMENTS and BKS DESIGNS source folders.",
+    tags: ["design", "code"],
+    link: "public/projects/ranaan-bks-drop-shop/index.html",
+    embedUrl: "public/projects/ranaan-bks-drop-shop/index.html",
+    image: "public/projects/ranaan-bks-drop-shop/img/ranaan-ranaan-hoodie-concept-1.png",
+    featured: true
+  },
+  {
+    title: "RANAAN — Official Store",
+    subtitle: "Full e-commerce concept with product grids, size modals, cart drawer, and editorial strips.",
+    tags: ["design", "code"],
+    link: "public/projects/ranaan/index.html",
+    embedUrl: "public/projects/ranaan/index.html",
+    image: null,
+    featured: false
+  },
+  {
+    title: "BKS — Official Store",
+    subtitle: "Streetwear retail concept — Japanese craftsmanship meets American grit. Full shop experience.",
+    tags: ["design", "code"],
+    link: "public/projects/bks/index.html",
+    embedUrl: "public/projects/bks/index.html",
+    image: null,
+    featured: false
+  },
+  {
+    title: "Seoulstice — Branded Identity & System",
+    subtitle: "Soft American Apparel / Tumblr 2010s-inspired retail and brand world with Windows-style UI.",
+    tags: ["design", "code", "ai"],
+    link: "public/projects/seoulstice/index.html",
+    embedUrl: "public/projects/seoulstice/index.html",
+    image: "public/projects/seoulstice/attachments/01A9E50D-F555-4177-9D2D-902408A4A6D3.png",
+    featured: false
+  }
+];
+
+const grid = document.getElementById('projectGrid');
+const projectFilters = document.getElementById('projectFilters');
+const projectCategories = ['all', 'design', 'code', 'music', 'ai', 'video'];
+let activeProjectFilter = 'all';
+let projectResizeObserver = null;
+function normalizeProjectTitle(title) {
+  return title
+    .replace(/^(the|a|an)\s+/i, '')
+    .replace(/^[^a-z0-9]+/i, '')
+    .toLowerCase();
+}
+
+function renderProjectFilters() {
+  projectFilters.innerHTML = '';
+  projectCategories.forEach(category => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'filter-tab' + (category === activeProjectFilter ? ' filter-tab--active' : '');
+    button.textContent = category;
+    button.setAttribute('aria-pressed', category === activeProjectFilter ? 'true' : 'false');
+    button.addEventListener('click', () => {
+      activeProjectFilter = category;
+      renderProjectFilters();
+      renderProjects();
+    });
+    projectFilters.appendChild(button);
+  });
+}
+
+function renderProjects() {
+  const alphabetizedProjects = [...projects].sort((a, b) => normalizeProjectTitle(a.title).localeCompare(normalizeProjectTitle(b.title)));
+  const visibleProjects = activeProjectFilter === 'all'
+    ? alphabetizedProjects
+    : alphabetizedProjects.filter(project => project.tags.some(tag => tag.toLowerCase() === activeProjectFilter));
+  grid.innerHTML = '';
+  visibleProjects.forEach((p, i) => {
+    const card = document.createElement('a');
+    card.href = p.link;
+    card.className = 'project-card bento-card' + (p.featured ? ' project-card--featured' : '');
+
+    let previewHtml;
+    if (p.embedUrl) {
+      previewHtml = `
+        <div class="bento-card__preview" data-iframe-wrap>
+          ${p.featured ? '<span class="card-badge">Featured</span>' : ''}
+          <iframe src="${p.embedUrl}" title="${p.title}" loading="lazy"></iframe>
+        </div>`;
+    } else if (p.image) {
+      previewHtml = `
+        <div class="bento-card__preview bento-card__preview--image">
+          ${p.featured ? '<span class="card-badge">Featured</span>' : ''}
+          <img src="${p.image}" alt="${p.title}" loading="lazy">
+        </div>`;
+    } else {
+      previewHtml = `
+        <div class="bento-card__preview bento-card__preview--image">
+          <div class="bento-card__fallback-num">${String(i + 1).padStart(2, '0')}</div>
+        </div>`;
+    }
+
+    card.innerHTML = `
+      ${previewHtml}
+      <div class="bento-card__info">
+        <div class="bento-card__copy">
+          <h3 class="bento-card__title">${p.title}</h3>
+          <p class="bento-card__sub">${p.subtitle}</p>
+        </div>
+        <div class="bento-card__footer">
+          <div class="bento-card__tags">
+            ${p.tags.map(t => `<span class="bento-tag bento-tag--${t}">${t}</span>`).join('')}
+          </div>
+          <span class="bento-card__open" aria-hidden="true">↗</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  observeProjectIframes();
+  scaleIframes();
+}
+
+// Scale iframes to fit their containers
+function scaleIframes() {
+  document.querySelectorAll('[data-iframe-wrap]').forEach(wrap => {
+    const width = wrap.offsetWidth;
+    const scale = width / IFRAME_NATIVE_W;
+    const height = Math.round(IFRAME_NATIVE_H * scale);
+    wrap.style.height = height + 'px';
+    const iframe = wrap.querySelector('iframe');
+    if (iframe) {
+      iframe.style.width = IFRAME_NATIVE_W + 'px';
+      iframe.style.height = IFRAME_NATIVE_H + 'px';
+      iframe.style.transform = `scale(${scale})`;
+    }
+  });
+}
+
+function observeProjectIframes() {
+  if (projectResizeObserver) projectResizeObserver.disconnect();
+  if (typeof ResizeObserver !== 'undefined') {
+    projectResizeObserver = new ResizeObserver(scaleIframes);
+    document.querySelectorAll('[data-iframe-wrap]').forEach(el => projectResizeObserver.observe(el));
+  }
+}
+window.addEventListener('load', scaleIframes);
+window.addEventListener('resize', scaleIframes);
+renderProjectFilters();
+renderProjects();
+
+document.getElementById('backTop')?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+// Floating music player
+const MUSIC_PLAYLIST_KEY = 'rae-static-music-playlist';
+const MUSIC_COLOR_KEY = 'rae-static-music-color';
+const MUSIC_VOLUME_KEY = 'rae-static-music-volume';
+const MUSIC_EQ_KEY = 'rae-static-music-eq';
+const musicDefaults = [
+  {
+    title: 'AUREA Brand Film',
+    artist: 'Portfolio Source',
+    url: 'public/projects/aurea/brand-video.mp4',
+    source: 'local'
+  }
+];
+const musicColors = ['#FF3366', '#FF9A00', '#22D3EE', '#8B5CF6', '#10B981', '#E8E4DC'];
+const musicEqBands = [
+  { id: 'sub', label: 'SUB', freq: 60, type: 'lowshelf' },
+  { id: 'bass', label: 'BASS', freq: 200, type: 'peaking' },
+  { id: 'low', label: 'LOW', freq: 800, type: 'peaking' },
+  { id: 'mid', label: 'MID', freq: 2500, type: 'peaking' },
+  { id: 'hmid', label: 'HMID', freq: 8000, type: 'peaking' },
+  { id: 'air', label: 'AIR', freq: 16000, type: 'highshelf' }
+];
+const musicEqPresets = {
+  FLAT: [0, 0, 0, 0, 0, 0],
+  WARM: [4, 3, 1.5, 0, -1, 1],
+  CUT: [-4, -2, 0, 2, 2.5, 3],
+  AIR: [-1, 0, 1, 2, 4, 6],
+  VOX: [-3, -1, 1.5, 4, 3, 1],
+  NIGHT: [2, 1, -1, -2, -1, 2]
+};
+const musicPlayer = document.getElementById('musicPlayer');
+const musicAudio = document.getElementById('musicAudio');
+if (musicAudio) musicAudio.crossOrigin = 'anonymous';
+const musicTitle = document.getElementById('musicTitle');
+const musicArtist = document.getElementById('musicArtist');
+const musicPlay = document.getElementById('musicPlay');
+const musicPrev = document.getElementById('musicPrev');
+const musicNext = document.getElementById('musicNext');
+const musicVolume = document.getElementById('musicVolume');
+const musicUrlForm = document.getElementById('musicUrlForm');
+const musicUrl = document.getElementById('musicUrl');
+const musicFile = document.getElementById('musicFile');
+const musicList = document.getElementById('musicList');
+const musicWave = document.getElementById('musicWave');
+const musicEq = document.getElementById('musicEq');
+const musicEqControls = document.getElementById('musicEqControls');
+const musicEqPresetsEl = document.getElementById('musicEqPresets');
+const musicEqStatus = document.getElementById('musicEqStatus');
+const musicCurrent = document.getElementById('musicCurrent');
+const musicDuration = document.getElementById('musicDuration');
+const musicCollapse = document.getElementById('musicCollapse');
+const musicSwatches = document.getElementById('musicSwatches');
+const musicCtx = musicEq?.getContext('2d');
+const waveHeights = Array.from({ length: 48 }, (_, i) => {
+  const peak = Math.sin(i * 0.71) * 0.5 + Math.random() * 0.45;
+  return Math.max(0.12, Math.min(1, peak));
+});
+let musicPlaylist = [...musicDefaults];
+let musicIndex = 0;
+let musicAccent = localStorage.getItem(MUSIC_COLOR_KEY) || musicColors[0];
+let eqBars = Array.from({ length: 28 }, () => 0.08);
+let musicEqGains = [...musicEqPresets.FLAT];
+let musicAudioCtx = null;
+let musicAudioSource = null;
+let musicAudioFilters = [];
+
+try {
+  const savedTracks = JSON.parse(localStorage.getItem(MUSIC_PLAYLIST_KEY) || '[]');
+  if (Array.isArray(savedTracks)) musicPlaylist = [...musicPlaylist, ...savedTracks];
+} catch {}
+
+try {
+  const savedEq = JSON.parse(localStorage.getItem(MUSIC_EQ_KEY) || '[]');
+  if (Array.isArray(savedEq) && savedEq.length === musicEqBands.length) {
+    musicEqGains = savedEq.map(value => Math.max(-12, Math.min(12, Number(value) || 0)));
+  }
+} catch {}
+
+function formatMusicTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds <= 0) return '0:00';
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+  return `${minutes}:${secs}`;
+}
+
+function saveMusicPlaylist() {
+  const saveable = musicPlaylist.filter(track => track.source !== 'upload');
+  localStorage.setItem(MUSIC_PLAYLIST_KEY, JSON.stringify(saveable.filter(track => !musicDefaults.some(defaultTrack => defaultTrack.url === track.url))));
+}
+
+function setMusicAccent(color) {
+  musicAccent = color;
+  musicPlayer.style.setProperty('--player-accent', color);
+  localStorage.setItem(MUSIC_COLOR_KEY, color);
+  document.querySelectorAll('.music-swatch').forEach(button => {
+    button.classList.toggle('is-active', button.dataset.color === color);
+  });
+}
+
+function renderMusicSwatches() {
+  musicSwatches.innerHTML = '';
+  musicColors.forEach(color => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'music-swatch';
+    button.dataset.color = color;
+    button.style.setProperty('--swatch', color);
+    button.setAttribute('aria-label', `Set player accent ${color}`);
+    button.addEventListener('click', () => setMusicAccent(color));
+    musicSwatches.appendChild(button);
+  });
+  setMusicAccent(musicAccent);
+}
+
+function saveMusicEq() {
+  localStorage.setItem(MUSIC_EQ_KEY, JSON.stringify(musicEqGains));
+}
+
+function formatDb(value) {
+  if (value === 0) return '0';
+  return `${value > 0 ? '+' : ''}${Number(value).toFixed(value % 1 ? 1 : 0)}`;
+}
+
+function getMusicEqPresetName() {
+  const match = Object.entries(musicEqPresets).find(([, gains]) => gains.every((gain, index) => gain === musicEqGains[index]));
+  return match ? match[0] : 'CUSTOM';
+}
+
+function applyMusicEqGains() {
+  musicAudioFilters.forEach((filter, index) => {
+    const gain = musicEqGains[index] || 0;
+    if (musicAudioCtx) filter.gain.setTargetAtTime(gain, musicAudioCtx.currentTime, 0.018);
+    else filter.gain.value = gain;
+  });
+  if (musicEqStatus) musicEqStatus.textContent = `${getMusicEqPresetName()} / ±12DB`;
+  document.querySelectorAll('.music-eq-preset').forEach(button => {
+    button.classList.toggle('is-active', button.dataset.preset === getMusicEqPresetName());
+  });
+  document.querySelectorAll('.music-eq-band').forEach((band, index) => {
+    const gain = musicEqGains[index] || 0;
+    const readout = band.querySelector('.music-eq-band__gain');
+    const fill = band.querySelector('.music-eq-fill');
+    const thumb = band.querySelector('.music-eq-thumb');
+    const input = band.querySelector('input');
+    if (readout) readout.textContent = formatDb(gain);
+    if (input) input.value = String(gain);
+    if (thumb) thumb.style.setProperty('--thumb-top', `${50 - (gain / 12) * 50}%`);
+    if (fill) {
+      fill.style.top = gain > 0 ? `${50 - (gain / 12) * 50}%` : '50%';
+      fill.style.bottom = gain < 0 ? `${50 + (gain / 12) * 50}%` : '50%';
+      fill.style.opacity = Math.abs(gain) < 0.01 ? '.18' : '1';
+    }
+  });
+  saveMusicEq();
+}
+
+function setMusicEqGain(index, value) {
+  musicEqGains[index] = Math.max(-12, Math.min(12, Number(value) || 0));
+  applyMusicEqGains();
+}
+
+function setMusicEqPreset(name) {
+  const preset = musicEqPresets[name];
+  if (!preset) return;
+  musicEqGains = [...preset];
+  applyMusicEqGains();
+}
+
+function renderMusicEqControls() {
+  if (!musicEqControls || !musicEqPresetsEl) return;
+  musicEqPresetsEl.innerHTML = '';
+  Object.keys(musicEqPresets).forEach(name => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'music-eq-preset';
+    button.dataset.preset = name;
+    button.textContent = name;
+    button.addEventListener('click', () => setMusicEqPreset(name));
+    musicEqPresetsEl.appendChild(button);
+  });
+  musicEqControls.innerHTML = '';
+  musicEqBands.forEach((band, index) => {
+    const wrapper = document.createElement('label');
+    wrapper.className = 'music-eq-band';
+    wrapper.innerHTML = `
+      <span class="music-eq-band__gain">${formatDb(musicEqGains[index] || 0)}</span>
+      <span class="music-eq-fader">
+        <span class="music-eq-fill" aria-hidden="true"></span>
+        <span class="music-eq-thumb" aria-hidden="true"></span>
+        <input type="range" min="-12" max="12" step="0.5" value="${musicEqGains[index] || 0}" aria-label="${band.label} equalizer gain">
+      </span>
+      <span class="music-eq-band__label">${band.label}</span>
+    `;
+    wrapper.querySelector('input').addEventListener('input', event => setMusicEqGain(index, event.target.value));
+    musicEqControls.appendChild(wrapper);
+  });
+  applyMusicEqGains();
+}
+
+function initMusicEqGraph() {
+  if (musicAudioCtx || !musicAudio || !window.AudioContext && !window.webkitAudioContext) return;
+  try {
+    const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+    musicAudio.crossOrigin = 'anonymous';
+    musicAudioCtx = new AudioContextCtor();
+    musicAudioSource = musicAudioCtx.createMediaElementSource(musicAudio);
+    musicAudioFilters = musicEqBands.map(band => {
+      const filter = musicAudioCtx.createBiquadFilter();
+      filter.type = band.type;
+      filter.frequency.value = band.freq;
+      filter.Q.value = band.type === 'peaking' ? 1 : 0.7;
+      return filter;
+    });
+    musicAudioSource.connect(musicAudioFilters[0]);
+    musicAudioFilters.forEach((filter, index) => {
+      const next = musicAudioFilters[index + 1] || musicAudioCtx.destination;
+      filter.connect(next);
+    });
+    applyMusicEqGains();
+  } catch {
+    musicAudioCtx = null;
+    musicAudioSource = null;
+    musicAudioFilters = [];
+    if (musicEqStatus) musicEqStatus.textContent = `${getMusicEqPresetName()} / VISUAL`;
+  }
+}
+
+function resumeMusicEqGraph() {
+  initMusicEqGraph();
+  if (musicAudioCtx?.state === 'suspended') return musicAudioCtx.resume();
+  return Promise.resolve();
+}
+
+function renderMusicWave() {
+  musicWave.innerHTML = '';
+  waveHeights.forEach(height => {
+    const bar = document.createElement('span');
+    bar.style.setProperty('--h', height.toFixed(3));
+    musicWave.appendChild(bar);
+  });
+}
+
+function updateMusicWave() {
+  const duration = musicAudio.duration || 0;
+  const progress = duration ? musicAudio.currentTime / duration : 0;
+  Array.from(musicWave.children).forEach((bar, index, bars) => {
+    const fill = index / Math.max(1, bars.length - 1) <= progress ? 1 : 0;
+    bar.style.setProperty('--fill', fill);
+  });
+  musicCurrent.textContent = formatMusicTime(musicAudio.currentTime);
+  musicDuration.textContent = formatMusicTime(duration);
+}
+
+function renderMusicList() {
+  musicList.innerHTML = '';
+  musicPlaylist.forEach((track, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'music-track' + (index === musicIndex ? ' is-active' : '');
+    button.innerHTML = `
+      <span>
+        <span class="music-track-name">${track.title}</span>
+        <span class="music-track-source">${track.artist || track.source || 'audio'}</span>
+      </span>
+      <span class="project-card-arrow" style="opacity:1;transform:none;">${index === musicIndex ? '●' : '▶'}</span>
+    `;
+    button.addEventListener('click', () => loadMusicTrack(index, true));
+    musicList.appendChild(button);
+  });
+}
+
+function loadMusicTrack(index, shouldPlay = false) {
+  if (!musicPlaylist.length) return;
+  musicIndex = (index + musicPlaylist.length) % musicPlaylist.length;
+  const track = musicPlaylist[musicIndex];
+  musicAudio.src = track.url;
+  musicTitle.textContent = track.title || 'Untitled Track';
+  musicArtist.textContent = track.artist || track.source || 'Audio';
+  musicAudio.load();
+  renderMusicList();
+  updateMusicWave();
+  if (shouldPlay) {
+    playMusicAudio().catch(() => {
+      musicPlay.textContent = '▶';
+    });
+  }
+}
+
+function playMusicAudio() {
+  return resumeMusicEqGraph().then(() => musicAudio.play());
+}
+
+function toggleMusicPlayback() {
+  if (!musicAudio.src) loadMusicTrack(musicIndex, false);
+  if (musicAudio.paused) {
+    playMusicAudio().catch(() => {
+      musicArtist.textContent = 'Playback blocked until another click';
+    });
+  } else {
+    musicAudio.pause();
+  }
+}
+
+function addMusicTrack(track, shouldPlay = true) {
+  musicPlaylist.push(track);
+  musicIndex = musicPlaylist.length - 1;
+  saveMusicPlaylist();
+  renderMusicList();
+  loadMusicTrack(musicIndex, shouldPlay);
+}
+
+function bindQueueButtons(scope = document) {
+  scope.querySelectorAll('.queue-track').forEach(button => {
+    if (button.dataset.queueBound === '1') return;
+    button.dataset.queueBound = '1';
+    button.addEventListener('click', () => {
+      addMusicTrack({
+        title: button.dataset.title || 'Untitled Track',
+        artist: button.dataset.artist || button.dataset.source || 'Archive Media',
+        url: button.dataset.url,
+        source: button.dataset.source || 'archive'
+      }, true);
+      musicPlayer.classList.remove('is-collapsed');
+    });
+  });
+}
+bindQueueButtons();
+window.addEventListener('rae:queue-track', event => {
+  if (!event.detail?.url) return;
+  addMusicTrack({
+    title: event.detail.title || 'Untitled Track',
+    artist: event.detail.artist || event.detail.source || 'Archive Media',
+    url: event.detail.url,
+    source: event.detail.source || 'archive'
+  }, true);
+});
+
+musicPlay.addEventListener('click', toggleMusicPlayback);
+musicPrev.addEventListener('click', () => loadMusicTrack(musicIndex - 1, true));
+musicNext.addEventListener('click', () => loadMusicTrack(musicIndex + 1, true));
+musicCollapse.addEventListener('click', () => {
+  musicPlayer.classList.toggle('is-collapsed');
+  musicCollapse.textContent = musicPlayer.classList.contains('is-collapsed') ? '+' : '−';
+});
+musicVolume.value = localStorage.getItem(MUSIC_VOLUME_KEY) || '0.7';
+musicAudio.volume = Number(musicVolume.value);
+musicVolume.addEventListener('input', () => {
+  musicAudio.volume = Number(musicVolume.value);
+  localStorage.setItem(MUSIC_VOLUME_KEY, musicVolume.value);
+});
+musicUrlForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const url = musicUrl.value.trim();
+  if (!url) return;
+  const cleanName = decodeURIComponent(url.split('/').pop().split('?')[0] || 'Audio URL');
+  addMusicTrack({
+    title: cleanName.replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' '),
+    artist: 'External URL',
+    url,
+    source: 'url'
+  });
+  musicUrl.value = '';
+});
+musicFile.addEventListener('change', event => {
+  const files = Array.from(event.target.files || []);
+  files.forEach((file, index) => {
+    addMusicTrack({
+      title: file.name.replace(/\.[a-z0-9]+$/i, ''),
+      artist: 'Local upload',
+      url: URL.createObjectURL(file),
+      source: 'upload'
+    }, index === 0);
+  });
+  musicFile.value = '';
+});
+musicWave.addEventListener('click', event => {
+  if (!musicAudio.duration) return;
+  const rect = musicWave.getBoundingClientRect();
+  const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+  musicAudio.currentTime = ratio * musicAudio.duration;
+});
+musicAudio.addEventListener('play', () => {
+  musicPlay.textContent = 'Ⅱ';
+  musicPlayer.classList.add('is-playing');
+});
+musicAudio.addEventListener('pause', () => {
+  musicPlay.textContent = '▶';
+  musicPlayer.classList.remove('is-playing');
+});
+musicAudio.addEventListener('ended', () => loadMusicTrack(musicIndex + 1, true));
+musicAudio.addEventListener('loadedmetadata', updateMusicWave);
+musicAudio.addEventListener('timeupdate', updateMusicWave);
+
+function animateMusicEq() {
+  if (!musicEq || !musicCtx) return;
+  const W = musicEq.width;
+  const H = musicEq.height;
+  musicCtx.clearRect(0, 0, W, H);
+  musicCtx.fillStyle = 'rgba(0,0,0,0.18)';
+  musicCtx.fillRect(0, 0, W, H);
+  const gap = 5;
+  const barW = (W - gap * (eqBars.length - 1)) / eqBars.length;
+  eqBars = eqBars.map((value, index) => {
+    const bandIndex = Math.min(musicEqGains.length - 1, Math.floor(index / Math.max(1, eqBars.length) * musicEqGains.length));
+    const gain = (musicEqGains[bandIndex] || 0) / 12;
+    const idle = 0.08 + Math.sin(Date.now() * 0.0015 + index) * 0.035 + Math.max(0, gain) * 0.08;
+    const active = 0.18 + Math.random() * (index < 8 ? 0.78 : 0.55) + gain * 0.18;
+    const target = musicAudio.paused ? idle : active;
+    return Math.max(0.03, Math.min(0.98, value + (target - value) * (musicAudio.paused ? 0.05 : 0.28)));
+  });
+  eqBars.forEach((value, index) => {
+    const h = Math.max(3, value * H);
+    const x = index * (barW + gap);
+    const y = H - h;
+    const gradient = musicCtx.createLinearGradient(0, y, 0, H);
+    gradient.addColorStop(0, value > 0.78 ? '#ffffff' : musicAccent);
+    gradient.addColorStop(1, musicAccent + '33');
+    musicCtx.fillStyle = gradient;
+    musicCtx.fillRect(x, y, barW, h);
+  });
+  requestAnimationFrame(animateMusicEq);
+}
+
+renderMusicSwatches();
+renderMusicEqControls();
+renderMusicWave();
+loadMusicTrack(0, false);
+animateMusicEq();
+
+/* ════════════════════════════════════════════════════════
+   REACTIVE MEDIA · YouTube / Spotify / SoundCloud embeds
+   ════════════════════════════════════════════════════════ */
+const MEDIA_STORAGE_KEY = 'rae-media-items-v1';
+const MEDIA_TYPE_LABELS = {
+  youtube: 'YOUTUBE',
+  spotify: 'SPOTIFY',
+  soundcloud: 'SOUNDCLOUD',
+  self_hosted_audio: 'SELF HOSTED AUDIO',
+  self_hosted_video: 'SELF HOSTED VIDEO'
+};
+const DEFAULT_MEDIA_ITEMS = [
+  { id: 'm01', type: 'youtube', title: 'Reference Film Frame', creator: 'Archive Source', embed_id: 'dQw4w9WgXcQ', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', date_consumed: '2026-04-08', note: 'Lighting cadence and framing discipline.', tags: ['video','direction'] },
+  { id: 'm02', type: 'spotify', title: 'System Listening', creator: 'Nodear', embed_id: 'track/11dFghVXANMlKmJXsNCbNl', url: 'https://open.spotify.com/track/11dFghVXANMlKmJXsNCbNl', date_consumed: '2026-04-07', note: 'Track reference from the Nodear listening system.', tags: ['music','track'] },
+  { id: 'm03', type: 'soundcloud', title: 'Process Pass', creator: 'Nodear', embed_id: '', url: 'https://soundcloud.com/raehdojhn/default', date_consumed: '2026-04-06', note: 'Raw texture study.', tags: ['audio','reference'] },
+  { id: 'm04', type: 'self_hosted_audio', title: 'Local Draft', creator: 'Rae', embed_id: '', url: 'uploads/local-draft.mp3', date_consumed: '2026-04-05', note: 'Self-hosted draft slot preserved for upload or deployment assets.', tags: ['local','audio'] },
+  { id: 'm05', type: 'self_hosted_video', title: 'Material Motion', creator: 'Rae', embed_id: '', url: 'uploads/material-motion.mp4', date_consumed: '2026-04-04', note: 'Surface behavior and pacing reference slot from the archive build.', tags: ['local','video'] }
+];
+
+const mediaGrid = document.getElementById('mediaGrid');
+const mediaFilterTabs = document.getElementById('mediaFilterTabs');
+const mediaAdminToggle = document.getElementById('mediaAdminToggle');
+const mediaAdminPanel = document.getElementById('mediaAdminPanel');
+const mediaInputUrl = document.getElementById('mediaInputUrl');
+const mediaInputType = document.getElementById('mediaInputType');
+const mediaInputTitle = document.getElementById('mediaInputTitle');
+const mediaInputCreator = document.getElementById('mediaInputCreator');
+const mediaInputNote = document.getElementById('mediaInputNote');
+const mediaShelfStatus = document.getElementById('mediaShelfStatus');
+const mediaResetAll = document.getElementById('mediaResetAll');
+
+let mediaItems = loadMediaItems();
+let mediaFilter = 'all';
+
+function loadMediaItems() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(MEDIA_STORAGE_KEY));
+    if (Array.isArray(stored) && stored.length) return stored;
+  } catch (_) {}
+  return [...DEFAULT_MEDIA_ITEMS];
+}
+function saveMediaItems() {
+  localStorage.setItem(MEDIA_STORAGE_KEY, JSON.stringify(mediaItems));
+}
+
+function detectMediaType(url) {
+  if (!url) return null;
+  const u = url.trim();
+  if (/youtube\.com|youtu\.be/i.test(u)) return 'youtube';
+  if (/open\.spotify\.com|spotify:/i.test(u)) return 'spotify';
+  if (/soundcloud\.com|snd\.sc/i.test(u)) return 'soundcloud';
+  if (/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)) return 'self_hosted_video';
+  if (/\.(mp3|wav|m4a|ogg|flac)(\?|$)/i.test(u)) return 'self_hosted_audio';
+  return null;
+}
+
+function parseYouTubeId(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes('youtu.be')) return u.pathname.slice(1).split('/')[0];
+    if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/')[2];
+    if (u.pathname.startsWith('/embed/')) return u.pathname.split('/')[2];
+    return u.searchParams.get('v') || '';
+  } catch { return ''; }
+}
+
+function parseSpotifyPath(url) {
+  try {
+    if (url.startsWith('spotify:')) return url.replace('spotify:', '').replace(/:/g, '/');
+    const u = new URL(url);
+    // /track/ID or /embed/track/ID etc
+    const parts = u.pathname.split('/').filter(Boolean);
+    if (parts[0] === 'embed') parts.shift();
+    const idx = parts.findIndex(p => ['track','album','playlist','episode','show','artist'].includes(p));
+    if (idx === -1) return '';
+    const kind = parts[idx];
+    const id = (parts[idx+1] || '').split('?')[0];
+    return id ? `${kind}/${id}` : '';
+  } catch { return ''; }
+}
+
+function suggestTitleFromUrl(url) {
+  try {
+    const u = new URL(url);
+    const last = decodeURIComponent(u.pathname.split('/').filter(Boolean).pop() || u.hostname);
+    return last.replace(/[-_]+/g, ' ').replace(/\.[a-z0-9]+$/i, '').trim() || 'Untitled';
+  } catch { return 'Untitled'; }
+}
+
+function todayIso() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function escapeHtml(str = '') {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildEmbedHtml(item) {
+  const t = escapeHtml(item.title || 'Untitled');
+  if (item.type === 'youtube' && item.embed_id) {
+    return `<iframe class="media-embed" title="${t}" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(item.embed_id)}?rel=0&modestbranding=1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`;
+  }
+  if (item.type === 'spotify' && item.embed_id) {
+    return `<iframe class="media-embed media-embed--audio" title="${t}" src="https://open.spotify.com/embed/${item.embed_id}?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+  }
+  if (item.type === 'soundcloud' && item.url) {
+    return `<iframe class="media-embed media-embed--audio" title="${t}" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(item.url)}&color=%23A65D3F&auto_play=false&hide_related=true&show_comments=false&show_user=true&visual=false" loading="lazy"></iframe>`;
+  }
+  if (item.type === 'self_hosted_audio' && item.url) {
+    return `<audio class="media-embed media-embed--audio" controls preload="none"><source src="${escapeHtml(item.url)}"></audio>`;
+  }
+  if (item.type === 'self_hosted_video' && item.url) {
+    return `<video class="media-embed" controls preload="metadata"><source src="${escapeHtml(item.url)}"></video>`;
+  }
+  return `<div class="media-placeholder">${escapeHtml(item.title || 'Media')}</div>`;
+}
+
+function renderMediaGrid() {
+  if (!mediaGrid) return;
+  const visible = mediaFilter === 'all'
+    ? mediaItems
+    : mediaItems.filter(m => m.type === mediaFilter);
+  mediaShelfStatus.textContent = `VISIBLE ${visible.length} / TOTAL ${mediaItems.length}`;
+
+  if (!visible.length) {
+    mediaGrid.innerHTML = `<div class="media-empty">No entries in this category yet — paste a link above.</div>`;
+    return;
+  }
+
+  mediaGrid.innerHTML = visible.map(item => {
+    const isAudioQueueable = ['youtube','spotify','soundcloud','self_hosted_audio'].includes(item.type);
+    const typeLabel = MEDIA_TYPE_LABELS[item.type] || item.type.toUpperCase();
+    const safeId = escapeHtml(item.id);
+    const queueBtn = isAudioQueueable && item.url
+      ? `<button class="archive-chip queue-track" type="button" data-title="${escapeHtml(item.title)}" data-artist="${escapeHtml(item.creator || 'Archive Media')}" data-url="${escapeHtml(item.url)}" data-source="${escapeHtml(item.type)}">QUEUE TO PLAYER</button>`
+      : '';
+    return `
+      <article class="media-card" data-id="${safeId}">
+        <button class="media-remove" type="button" data-remove="${safeId}" aria-label="Remove">REMOVE</button>
+        <div class="archive-kicker"><span class="archive-chip">${escapeHtml(typeLabel)}</span><span class="archive-dot"></span><span>${escapeHtml(item.date_consumed || '')}</span></div>
+        ${buildEmbedHtml(item)}
+        <h3>${escapeHtml(item.title || 'Untitled')}</h3>
+        <div class="archive-meta-row" style="margin:0;"><span>CREATOR</span><span class="archive-meta-row__line"></span><span>${escapeHtml(item.creator || 'UNKNOWN')}</span></div>
+        ${item.note ? `<p>${escapeHtml(item.note)}</p>` : ''}
+        ${queueBtn}
+      </article>
+    `;
+  }).join('');
+
+  bindQueueButtons(mediaGrid);
+  mediaGrid.querySelectorAll('[data-remove]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = btn.dataset.remove;
+      mediaItems = mediaItems.filter(m => m.id !== id);
+      saveMediaItems();
+      renderMediaGrid();
+    });
+  });
+}
+
+mediaFilterTabs?.addEventListener('click', e => {
+  const btn = e.target.closest('.media-filter-tab');
+  if (!btn) return;
+  mediaFilterTabs.querySelectorAll('.media-filter-tab').forEach(b => b.classList.toggle('is-active', b === btn));
+  mediaFilter = btn.dataset.filter || 'all';
+  renderMediaGrid();
+});
+
+mediaAdminToggle?.addEventListener('click', () => {
+  const open = mediaAdminPanel.hasAttribute('hidden') ? true : false;
+  if (open) {
+    mediaAdminPanel.removeAttribute('hidden');
+    mediaAdminToggle.classList.add('is-active');
+    mediaAdminToggle.textContent = '[ × Close Admin ]';
+    mediaAdminToggle.setAttribute('aria-expanded', 'true');
+    mediaInputUrl?.focus();
+  } else {
+    mediaAdminPanel.setAttribute('hidden', '');
+    mediaAdminToggle.classList.remove('is-active');
+    mediaAdminToggle.textContent = '[ + Add Embed ]';
+    mediaAdminToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+mediaAdminPanel?.addEventListener('submit', e => {
+  e.preventDefault();
+  const url = (mediaInputUrl.value || '').trim();
+  if (!url) return;
+  let type = mediaInputType.value === 'auto' ? detectMediaType(url) : mediaInputType.value;
+  if (!type) {
+    alert('Could not detect a supported provider from that URL. Pick a type manually.');
+    return;
+  }
+  let embed_id = '';
+  if (type === 'youtube') embed_id = parseYouTubeId(url);
+  if (type === 'spotify') embed_id = parseSpotifyPath(url);
+  if (type === 'youtube' && !embed_id) {
+    alert('Could not parse a YouTube video ID from that URL.');
+    return;
+  }
+  if (type === 'spotify' && !embed_id) {
+    alert('Could not parse a Spotify ID from that URL.');
+    return;
+  }
+  const item = {
+    id: 'u_' + Date.now().toString(36),
+    type,
+    title: (mediaInputTitle.value || '').trim() || suggestTitleFromUrl(url),
+    creator: (mediaInputCreator.value || '').trim() || '',
+    embed_id,
+    url,
+    date_consumed: todayIso(),
+    note: (mediaInputNote.value || '').trim() || '',
+    tags: ['user-added']
+  };
+  mediaItems = [item, ...mediaItems];
+  saveMediaItems();
+  mediaInputUrl.value = '';
+  mediaInputTitle.value = '';
+  mediaInputCreator.value = '';
+  mediaInputNote.value = '';
+  mediaInputType.value = 'auto';
+  // Make sure filter shows the new card
+  if (mediaFilter !== 'all' && mediaFilter !== type) {
+    mediaFilter = 'all';
+    mediaFilterTabs.querySelectorAll('.media-filter-tab').forEach(b => {
+      b.classList.toggle('is-active', b.dataset.filter === 'all');
+    });
+  }
+  renderMediaGrid();
+});
+
+mediaResetAll?.addEventListener('click', () => {
+  if (!confirm('Reset the media grid to defaults? This will remove anything you added.')) return;
+  mediaItems = [...DEFAULT_MEDIA_ITEMS];
+  saveMediaItems();
+  renderMediaGrid();
+});
+
+renderMediaGrid();
+
+/* ════════════════════════════════════════════════════════
+   BLOG TABS · Substack · Medium · Self-Hosted
+   ════════════════════════════════════════════════════════ */
+const BLOG_POSTS = [
+  {
+    id: 'b01',
+    platform: 'self_hosted',
+    title: 'The Modern Renaissance',
+    excerpt: 'Why multidisciplinary creativity wins when art, engineering, music, and visual systems collapse into one practice.',
+    date: '2026-03-28',
+    tag: 'Essay',
+    strip: 'var(--red)',
+    url: '#'
+  },
+  {
+    id: 'b02',
+    platform: 'self_hosted',
+    title: 'Brutalist Design Systems',
+    excerpt: 'Color tokens, archive grids, glass surfaces, live previews, and production-ready interaction models — built from scratch.',
+    date: '2026-03-15',
+    tag: 'Technical',
+    strip: '#4E8D8C',
+    url: '#'
+  },
+  {
+    id: 'b03',
+    platform: 'self_hosted',
+    title: 'AI-Integrated Workflows',
+    excerpt: 'How generative systems accelerate creative direction without replacing human taste — a working pipeline.',
+    date: '2026-02-22',
+    tag: 'AI / Workflow',
+    strip: '#FF9A00',
+    url: '#'
+  },
+  {
+    id: 'b04',
+    platform: 'substack',
+    title: 'Notes from the Workshop · Issue 04',
+    excerpt: 'Weekly dispatch on practice, references, and the long arc of taste. Includes a reading list and a track of the week.',
+    date: '2026-04-12',
+    tag: 'Newsletter',
+    strip: '#FF6B19',
+    url: 'https://raehdojhn.substack.com/p/issue-04'
+  },
+  {
+    id: 'b05',
+    platform: 'substack',
+    title: 'On Building Brand Worlds That Outlive the Drop',
+    excerpt: 'Why most brand activations evaporate inside a season — and the system I use to keep the world alive long after the campaign ends.',
+    date: '2026-03-22',
+    tag: 'Brand',
+    strip: '#FF6B19',
+    url: 'https://raehdojhn.substack.com/p/brand-worlds'
+  },
+  {
+    id: 'b06',
+    platform: 'medium',
+    title: 'A React + CSS Custom Properties Architecture for Theming',
+    excerpt: 'Tokens, layers, and the discipline of never reaching for inline colors. A walkthrough of the system powering this portfolio.',
+    date: '2026-03-30',
+    tag: 'Engineering',
+    strip: '#1A1A1A',
+    url: 'https://medium.com/@raehdojhn/theming-architecture'
+  },
+  {
+    id: 'b07',
+    platform: 'medium',
+    title: 'The Tool Doesn’t Make the Artist',
+    excerpt: 'A short essay on AI panic, taste, and why the question has always been the same: can you see clearly, and can you decide.',
+    date: '2026-02-04',
+    tag: 'Essay',
+    strip: '#1A1A1A',
+    url: 'https://medium.com/@raehdojhn/the-tool-doesnt-make-the-artist'
+  }
+];
+
+const BLOG_PLATFORM_META = {
+  self_hosted: { label: 'SELF-HOSTED', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 8h18M8 4v14"/></svg>' },
+  medium: { label: 'MEDIUM', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>' },
+  substack: { label: 'SUBSTACK', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>' }
+};
+
+const blogGrid = document.getElementById('blogGrid');
+const blogTabs = document.getElementById('blogTabs');
+let blogFilter = 'all';
+
+function updateBlogTabCounts() {
+  if (!blogTabs) return;
+  const counts = { all: BLOG_POSTS.length, substack: 0, medium: 0, self_hosted: 0 };
+  BLOG_POSTS.forEach(p => { counts[p.platform] = (counts[p.platform] || 0) + 1; });
+  blogTabs.querySelectorAll('[data-count-for]').forEach(el => {
+    el.textContent = counts[el.dataset.countFor] ?? 0;
+  });
+}
+
+function renderBlogGrid() {
+  if (!blogGrid) return;
+  const visible = blogFilter === 'all'
+    ? BLOG_POSTS
+    : BLOG_POSTS.filter(p => p.platform === blogFilter);
+  if (!visible.length) {
+    blogGrid.innerHTML = `<div class="media-empty">No posts in this tab yet.</div>`;
+    return;
+  }
+  blogGrid.innerHTML = visible.map(post => {
+    const meta = BLOG_PLATFORM_META[post.platform] || BLOG_PLATFORM_META.self_hosted;
+    const isExternal = post.platform === 'substack' || post.platform === 'medium';
+    const linkAttrs = isExternal
+      ? `href="${escapeHtml(post.url)}" target="_blank" rel="noopener noreferrer"`
+      : `href="${escapeHtml(post.url || '#')}"`;
+    const linkLabel = isExternal ? `READ ON ${meta.label} →` : 'READ POST →';
+    const dateStr = new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return `
+      <a class="blog-card" ${linkAttrs}>
+        <div class="blog-strip" style="background:${escapeHtml(post.strip)}"></div>
+        <span class="blog-platform-tag">${meta.icon}<span>${meta.label}</span><span class="archive-dot"></span><span>${escapeHtml(dateStr)}</span></span>
+        <h3>${escapeHtml(post.title)}</h3>
+        <p>${escapeHtml(post.excerpt)}</p>
+        <span class="blog-link">${linkLabel}</span>
+      </a>
+    `;
+  }).join('');
+}
+
+blogTabs?.addEventListener('click', e => {
+  const btn = e.target.closest('.blog-tab');
+  if (!btn) return;
+  blogTabs.querySelectorAll('.blog-tab').forEach(b => b.classList.toggle('is-active', b === btn));
+  blogFilter = btn.dataset.platform || 'all';
+  renderBlogGrid();
+});
+
+updateBlogTabCounts();
+renderBlogGrid();
+</script>
+</body>
+</html>

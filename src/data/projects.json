@@ -1,0 +1,62 @@
+[
+  {
+    "title": "AUREA — Luxury Fragrance Brand World",
+    "subtitle": "Editorial identity, campaign, lookbook, and digital presence for a dark-luxury fragrance house.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["brand", "identity", "html", "editorial"],
+    "image": "/projects/aurea/img01.png",
+    "link": "/projects/aurea/index.html",
+    "embedUrl": "/projects/aurea/index.html",
+    "featured": true,
+    "createdAt": "2026-04-27T00:00:00.000Z"
+  },
+  {
+    "title": "Jiayou — Calm-Energy Coffee Brand World",
+    "subtitle": "Editorial coffee-shop site with shop, menu, club rituals, and a hover-scrub virtual magazine.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["html", "css", "javascript", "brand"],
+    "image": "/projects/jiayou/image4.png",
+    "link": "/projects/jiayou/index.html",
+    "embedUrl": "/projects/jiayou/index.html",
+    "featured": true,
+    "createdAt": "2026-04-25T00:00:00.000Z"
+  },
+  {
+    "title": "Future Archives — Ranaan × CCC",
+    "subtitle": "Interactive flip magazine with responsive spreads, page turns, and touch gestures.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["html", "css", "javascript", "editorial"],
+    "image": "/projects/ranaan-ccc/Gemini_Generated_Image_fukczgfukczgfukc.png",
+    "link": "/projects/ranaan-ccc/index.html",
+    "embedUrl": "/projects/ranaan-ccc/index.html",
+    "featured": true,
+    "createdAt": "2026-04-15T00:00:00.000Z"
+  },
+  {
+    "title": "RANAAN × BKS — Drop Shop",
+    "subtitle": "Combined mock direct-release shop built from the RANAAN GARMENTS and BKS DESIGNS source folders.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["retail", "html", "css", "javascript"],
+    "image": "/projects/ranaan-bks-drop-shop/img/ranaan-ranaan-hoodie-concept-1.png",
+    "link": "/projects/ranaan-bks-drop-shop/index.html",
+    "embedUrl": "/projects/ranaan-bks-drop-shop/index.html",
+    "featured": true,
+    "createdAt": "2026-05-06T00:00:00.000Z"
+  },
+  {
+    "title": "Seoulstice — Branded Identity & System",
+    "subtitle": "Soft American Apparel / Tumblr 2010s-inspired retail and brand world.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["brand", "identity", "html"],
+    "image": "/projects/seoulstice/attachments/01A9E50D-F555-4177-9D2D-902408A4A6D3.png",
+    "link": "/projects/seoulstice/index.html",
+    "embedUrl": "/projects/seoulstice/index.html",
+    "featured": false,
+    "createdAt": "2026-03-01T00:00:00.000Z"
+  }
+]

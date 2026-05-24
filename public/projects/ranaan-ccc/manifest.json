@@ -1,0 +1,2423 @@
+{
+  "project": {
+    "title": "RANAAN × CCC",
+    "subtitle": "Future Archives",
+    "sourceFolder": "/Users/nodear/Desktop/raehdojhn-portfolio-source-2026-05-08/RANAAN CCCC"
+  },
+  "stats": {
+    "totalFiles": 260,
+    "totalImages": 240,
+    "totalDirectionFiles": 20
+  },
+  "keywords": [
+    "brutalist",
+    "editorial",
+    "archive",
+    "retail",
+    "campaign",
+    "ranaan",
+    "ccc"
+  ],
+  "images": [
+    {
+      "id": "img-0001",
+      "fileName": "1776942586765-019dba07-bc80-7693-af7b-dbda67ec8f3f.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./1776942586765-019dba07-bc80-7693-af7b-dbda67ec8f3f.png",
+      "width": 768,
+      "height": 1360,
+      "aspectRatio": 0.564706
+    },
+    {
+      "id": "img-0002",
+      "fileName": "1776942696827-019dba09-6b34-7b56-9af9-23ad5462e0d3.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./1776942696827-019dba09-6b34-7b56-9af9-23ad5462e0d3.png",
+      "width": 1360,
+      "height": 768,
+      "aspectRatio": 1.770833
+    },
+    {
+      "id": "img-0003",
+      "fileName": "1776943013684-019dba0e-477e-7a2d-9b35-bebc94a4c7cb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./1776943013684-019dba0e-477e-7a2d-9b35-bebc94a4c7cb.png",
+      "width": 768,
+      "height": 1360,
+      "aspectRatio": 0.564706
+    },
+    {
+      "id": "img-0004",
+      "fileName": "1776975731942-019dbc01-644c-7d7d-9268-ec17a37bbed1.jpeg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./1776975731942-019dbc01-644c-7d7d-9268-ec17a37bbed1.jpeg",
+      "width": 1600,
+      "height": 2848,
+      "aspectRatio": 0.561798
+    },
+    {
+      "id": "img-0005",
+      "fileName": "1776976357233-019dbc0a-c2b0-7ca7-8b25-c35451069190.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./1776976357233-019dbc0a-c2b0-7ca7-8b25-c35451069190.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0006",
+      "fileName": "a_{__id____RAN_CCC_M.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./a_%7B__id____RAN_CCC_M.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0007",
+      "fileName": "b_{__id____RAN_CCC_M.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./b_%7B__id____RAN_CCC_M.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0008",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_19 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_19%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0009",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_20 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_20%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0010",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_21 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_21%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0011",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_22 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_22%20PM%20(1).png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0012",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_22 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_22%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0013",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_23 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_23%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0014",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_24 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_24%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0015",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_25 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_25%20PM.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0016",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_26 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_26%20PM%20(1).png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0017",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_26 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_26%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0018",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_27 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_27%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0019",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_28 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_28%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0020",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_29 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_29%20PM.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0021",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_30 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_30%20PM%20(1).png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0022",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_30 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_30%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0023",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_31 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_31%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0024",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_32 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_32%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0025",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_33 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_33%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0026",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_34 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_34%20PM%20(1).png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0027",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_34 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_34%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0028",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_35 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_35%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0029",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_36 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_36%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0030",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_37 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_37%20PM.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0031",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_38 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_38%20PM%20(1).png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0032",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_38 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_38%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0033",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_39 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_39%20PM.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0034",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_40 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_40%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0035",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_41 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_41%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0036",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_42 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_42%20PM%20(1).png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0037",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_42 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_42%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0038",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_43 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_43%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0039",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_44 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_44%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0040",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_45 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_45%20PM.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0041",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_46 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_46%20PM.png",
+      "width": 1024,
+      "height": 1536,
+      "aspectRatio": 0.666667
+    },
+    {
+      "id": "img-0042",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_47 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_47%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0043",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_49 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_49%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0044",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_50 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_50%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0045",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_51 PM (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_51%20PM%20(1).png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0046",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_51 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_51%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0047",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_53 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_53%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0048",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_54 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_54%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0049",
+      "fileName": "ChatGPT Image Mar 3, 2026, 01_10_55 PM.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./ChatGPT%20Image%20Mar%203,%202026,%2001_10_55%20PM.png",
+      "width": 1536,
+      "height": 1024,
+      "aspectRatio": 1.5
+    },
+    {
+      "id": "img-0050",
+      "fileName": "conversation_pit_1776994536179.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./conversation_pit_1776994536179.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0051",
+      "fileName": "cover_hero_1776994472537.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./cover_hero_1776994472537.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0052",
+      "fileName": "gemini-chat-image-1772586277825.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-chat-image-1772586277825.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0053",
+      "fileName": "gemini-chat-image-1772586305009.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-chat-image-1772586305009.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0054",
+      "fileName": "gemini-chat-image-1772586309208.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-chat-image-1772586309208.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0055",
+      "fileName": "gemini-chat-image-1772586316975.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-chat-image-1772586316975.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0056",
+      "fileName": "gemini-chat-image-1772586324430.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-chat-image-1772586324430.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0057",
+      "fileName": "gemini-image-1772586512888-2.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-image-1772586512888-2.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0058",
+      "fileName": "gemini-image-1772586514765-3.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-image-1772586514765-3.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0059",
+      "fileName": "gemini-image-1772586516600-4.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./gemini-image-1772586516600-4.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0060",
+      "fileName": "Gemini_Generated_Image_17gxc417gxc417gx.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_17gxc417gxc417gx.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0061",
+      "fileName": "Gemini_Generated_Image_1lxb3t1lxb3t1lxb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_1lxb3t1lxb3t1lxb.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0062",
+      "fileName": "Gemini_Generated_Image_1wvays1wvays1wva.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_1wvays1wvays1wva.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0063",
+      "fileName": "Gemini_Generated_Image_20uhr420uhr420uh.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_20uhr420uhr420uh.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0064",
+      "fileName": "Gemini_Generated_Image_2mf4ue2mf4ue2mf4.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_2mf4ue2mf4ue2mf4.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0065",
+      "fileName": "Gemini_Generated_Image_2wja9l2wja9l2wja.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_2wja9l2wja9l2wja.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0066",
+      "fileName": "Gemini_Generated_Image_31pjmy31pjmy31pj.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_31pjmy31pjmy31pj.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0067",
+      "fileName": "Gemini_Generated_Image_3dmt633dmt633dmt.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_3dmt633dmt633dmt.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0068",
+      "fileName": "Gemini_Generated_Image_3llbk53llbk53llb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_3llbk53llbk53llb.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0069",
+      "fileName": "Gemini_Generated_Image_3ovg5r3ovg5r3ovg.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_3ovg5r3ovg5r3ovg.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0070",
+      "fileName": "Gemini_Generated_Image_3thklf3thklf3thk.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_3thklf3thklf3thk.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0071",
+      "fileName": "Gemini_Generated_Image_3w4qtp3w4qtp3w4q.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_3w4qtp3w4qtp3w4q.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0072",
+      "fileName": "Gemini_Generated_Image_3xfe913xfe913xfe.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_3xfe913xfe913xfe.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0073",
+      "fileName": "Gemini_Generated_Image_4sbgyz4sbgyz4sbg.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_4sbgyz4sbgyz4sbg.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0074",
+      "fileName": "Gemini_Generated_Image_4uwjcu4uwjcu4uwj.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_4uwjcu4uwjcu4uwj.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0075",
+      "fileName": "Gemini_Generated_Image_53qzx353qzx353qz.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_53qzx353qzx353qz.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0076",
+      "fileName": "Gemini_Generated_Image_5f3ulp5f3ulp5f3u.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_5f3ulp5f3ulp5f3u.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0077",
+      "fileName": "Gemini_Generated_Image_5o6mbx5o6mbx5o6m.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_5o6mbx5o6mbx5o6m.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0078",
+      "fileName": "Gemini_Generated_Image_6h8z4f6h8z4f6h8z.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_6h8z4f6h8z4f6h8z.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0079",
+      "fileName": "Gemini_Generated_Image_6uhvwe6uhvwe6uhv.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_6uhvwe6uhvwe6uhv.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0080",
+      "fileName": "Gemini_Generated_Image_72ah0972ah0972ah.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_72ah0972ah0972ah.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0081",
+      "fileName": "Gemini_Generated_Image_7h6z3h7h6z3h7h6z.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_7h6z3h7h6z3h7h6z.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0082",
+      "fileName": "Gemini_Generated_Image_7l61qo7l61qo7l61.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_7l61qo7l61qo7l61.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0083",
+      "fileName": "Gemini_Generated_Image_7wnwer7wnwer7wnw.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_7wnwer7wnwer7wnw.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0084",
+      "fileName": "Gemini_Generated_Image_80qtpa80qtpa80qt.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_80qtpa80qtpa80qt.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0085",
+      "fileName": "Gemini_Generated_Image_825xhm825xhm825x.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_825xhm825xhm825x.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0086",
+      "fileName": "Gemini_Generated_Image_855kvc855kvc855k.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_855kvc855kvc855k.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0087",
+      "fileName": "Gemini_Generated_Image_88mp8m88mp8m88mp.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_88mp8m88mp8m88mp.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0088",
+      "fileName": "Gemini_Generated_Image_8fbbow8fbbow8fbb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_8fbbow8fbbow8fbb.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0089",
+      "fileName": "Gemini_Generated_Image_8mjc6c8mjc6c8mjc.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_8mjc6c8mjc6c8mjc.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0090",
+      "fileName": "Gemini_Generated_Image_8s78hw8s78hw8s78.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_8s78hw8s78hw8s78.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0091",
+      "fileName": "Gemini_Generated_Image_8yxfz98yxfz98yxf.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_8yxfz98yxfz98yxf.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0092",
+      "fileName": "Gemini_Generated_Image_9g905b9g905b9g90.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_9g905b9g905b9g90.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0093",
+      "fileName": "Gemini_Generated_Image_9hem369hem369hem.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_9hem369hem369hem.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0094",
+      "fileName": "Gemini_Generated_Image_9jbkiw9jbkiw9jbk.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_9jbkiw9jbkiw9jbk.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0095",
+      "fileName": "Gemini_Generated_Image_9r4vax9r4vax9r4v.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_9r4vax9r4vax9r4v.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0096",
+      "fileName": "Gemini_Generated_Image_9t4l499t4l499t4l.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_9t4l499t4l499t4l.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0097",
+      "fileName": "Gemini_Generated_Image_9txaye9txaye9txa.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_9txaye9txaye9txa.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0098",
+      "fileName": "Gemini_Generated_Image_a01woha01woha01w.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_a01woha01woha01w.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0099",
+      "fileName": "Gemini_Generated_Image_abyb5vabyb5vabyb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_abyb5vabyb5vabyb.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0100",
+      "fileName": "Gemini_Generated_Image_alpa0dalpa0dalpa.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_alpa0dalpa0dalpa.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0101",
+      "fileName": "Gemini_Generated_Image_axv4r9axv4r9axv4.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_axv4r9axv4r9axv4.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0102",
+      "fileName": "Gemini_Generated_Image_b1h626b1h626b1h6.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_b1h626b1h626b1h6.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0103",
+      "fileName": "Gemini_Generated_Image_b313mzb313mzb313.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_b313mzb313mzb313.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0104",
+      "fileName": "Gemini_Generated_Image_b66hwqb66hwqb66h.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_b66hwqb66hwqb66h.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0105",
+      "fileName": "Gemini_Generated_Image_bf58tbbf58tbbf58.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_bf58tbbf58tbbf58.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0106",
+      "fileName": "Gemini_Generated_Image_bo3y4vbo3y4vbo3y.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_bo3y4vbo3y4vbo3y.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0107",
+      "fileName": "Gemini_Generated_Image_c4hbrjc4hbrjc4hb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_c4hbrjc4hbrjc4hb.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0108",
+      "fileName": "Gemini_Generated_Image_d9tard9tard9tard.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_d9tard9tard9tard.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0109",
+      "fileName": "Gemini_Generated_Image_dwukbodwukbodwuk.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_dwukbodwukbodwuk.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0110",
+      "fileName": "Gemini_Generated_Image_dzenlndzenlndzen.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_dzenlndzenlndzen.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0111",
+      "fileName": "Gemini_Generated_Image_e4sj6ke4sj6ke4sj.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_e4sj6ke4sj6ke4sj.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0112",
+      "fileName": "Gemini_Generated_Image_ehia8iehia8iehia.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ehia8iehia8iehia.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0113",
+      "fileName": "Gemini_Generated_Image_ei5vlqei5vlqei5v.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ei5vlqei5vlqei5v.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0114",
+      "fileName": "Gemini_Generated_Image_eidbgkeidbgkeidb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_eidbgkeidbgkeidb.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0115",
+      "fileName": "Gemini_Generated_Image_eug8jkeug8jkeug8.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_eug8jkeug8jkeug8.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0116",
+      "fileName": "Gemini_Generated_Image_ewwjtpewwjtpewwj.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ewwjtpewwjtpewwj.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0117",
+      "fileName": "Gemini_Generated_Image_ezhjkzezhjkzezhj.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ezhjkzezhjkzezhj.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0118",
+      "fileName": "Gemini_Generated_Image_fd5gpkfd5gpkfd5g.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fd5gpkfd5gpkfd5g.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0119",
+      "fileName": "Gemini_Generated_Image_fkjj9cfkjj9cfkjj.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fkjj9cfkjj9cfkjj.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0120",
+      "fileName": "Gemini_Generated_Image_fna1mhfna1mhfna1.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fna1mhfna1mhfna1.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0121",
+      "fileName": "Gemini_Generated_Image_fo28kgfo28kgfo28.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fo28kgfo28kgfo28.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0122",
+      "fileName": "Gemini_Generated_Image_fukczgfukczgfukc.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fukczgfukczgfukc.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0123",
+      "fileName": "Gemini_Generated_Image_fycmgpfycmgpfycm.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fycmgpfycmgpfycm.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0124",
+      "fileName": "Gemini_Generated_Image_fyhemgfyhemgfyhe.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_fyhemgfyhemgfyhe.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0125",
+      "fileName": "Gemini_Generated_Image_ghu8s9ghu8s9ghu8.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ghu8s9ghu8s9ghu8.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0126",
+      "fileName": "Gemini_Generated_Image_ghyfyvghyfyvghyf.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ghyfyvghyfyvghyf.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0127",
+      "fileName": "Gemini_Generated_Image_h7ywcdh7ywcdh7yw.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_h7ywcdh7ywcdh7yw.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0128",
+      "fileName": "Gemini_Generated_Image_hdzrkyhdzrkyhdzr.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_hdzrkyhdzrkyhdzr.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0129",
+      "fileName": "Gemini_Generated_Image_henpd7henpd7henp.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_henpd7henpd7henp.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0130",
+      "fileName": "Gemini_Generated_Image_hm7497hm7497hm74.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_hm7497hm7497hm74.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0131",
+      "fileName": "Gemini_Generated_Image_ho0eueho0eueho0e.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ho0eueho0eueho0e.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0132",
+      "fileName": "Gemini_Generated_Image_i0btnyi0btnyi0bt.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_i0btnyi0btnyi0bt.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0133",
+      "fileName": "Gemini_Generated_Image_i85ltni85ltni85l.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_i85ltni85ltni85l.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0134",
+      "fileName": "Gemini_Generated_Image_iu8cehiu8cehiu8c.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_iu8cehiu8cehiu8c.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0135",
+      "fileName": "Gemini_Generated_Image_iyoi55iyoi55iyoi.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_iyoi55iyoi55iyoi.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0136",
+      "fileName": "Gemini_Generated_Image_iz90t4iz90t4iz90.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_iz90t4iz90t4iz90.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0137",
+      "fileName": "Gemini_Generated_Image_j3u96lj3u96lj3u9.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_j3u96lj3u96lj3u9.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0138",
+      "fileName": "Gemini_Generated_Image_j8c93oj8c93oj8c9.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_j8c93oj8c93oj8c9.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0139",
+      "fileName": "Gemini_Generated_Image_jd3ockjd3ockjd3o copy.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_jd3ockjd3ockjd3o%20copy.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0140",
+      "fileName": "Gemini_Generated_Image_jfw5ehjfw5ehjfw5.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_jfw5ehjfw5ehjfw5.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0141",
+      "fileName": "Gemini_Generated_Image_jlmb2pjlmb2pjlmb.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_jlmb2pjlmb2pjlmb.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0142",
+      "fileName": "Gemini_Generated_Image_jqky1vjqky1vjqky.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_jqky1vjqky1vjqky.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0143",
+      "fileName": "Gemini_Generated_Image_jzfqm7jzfqm7jzfq copy.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_jzfqm7jzfqm7jzfq%20copy.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0144",
+      "fileName": "Gemini_Generated_Image_k9fyzuk9fyzuk9fy.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_k9fyzuk9fyzuk9fy.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0145",
+      "fileName": "Gemini_Generated_Image_ka93k7ka93k7ka93.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ka93k7ka93k7ka93.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0146",
+      "fileName": "Gemini_Generated_Image_kfi0dgkfi0dgkfi0.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_kfi0dgkfi0dgkfi0.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0147",
+      "fileName": "Gemini_Generated_Image_kwkijdkwkijdkwki.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_kwkijdkwkijdkwki.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0148",
+      "fileName": "Gemini_Generated_Image_l7fhrbl7fhrbl7fh.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_l7fhrbl7fhrbl7fh.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0149",
+      "fileName": "Gemini_Generated_Image_lrtog4lrtog4lrto.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_lrtog4lrtog4lrto.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0150",
+      "fileName": "Gemini_Generated_Image_lsdl9nlsdl9nlsdl.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_lsdl9nlsdl9nlsdl.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0151",
+      "fileName": "Gemini_Generated_Image_m8vrjmm8vrjmm8vr.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_m8vrjmm8vrjmm8vr.png",
+      "width": 1264,
+      "height": 848,
+      "aspectRatio": 1.490566
+    },
+    {
+      "id": "img-0152",
+      "fileName": "Gemini_Generated_Image_mi3z02mi3z02mi3z.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_mi3z02mi3z02mi3z.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0153",
+      "fileName": "Gemini_Generated_Image_mlgk7umlgk7umlgk.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_mlgk7umlgk7umlgk.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0154",
+      "fileName": "Gemini_Generated_Image_msrfaumsrfaumsrf.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_msrfaumsrfaumsrf.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0155",
+      "fileName": "Gemini_Generated_Image_nn4wycnn4wycnn4w.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_nn4wycnn4wycnn4w.png",
+      "width": 2816,
+      "height": 1536,
+      "aspectRatio": 1.833333
+    },
+    {
+      "id": "img-0156",
+      "fileName": "Gemini_Generated_Image_nnvxobnnvxobnnvx.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_nnvxobnnvxobnnvx.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0157",
+      "fileName": "Gemini_Generated_Image_oazhk3oazhk3oazh.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_oazhk3oazhk3oazh.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0158",
+      "fileName": "Gemini_Generated_Image_ociup7ociup7ociu.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ociup7ociup7ociu.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0159",
+      "fileName": "Gemini_Generated_Image_otnwqeotnwqeotnw.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_otnwqeotnwqeotnw.png",
+      "width": 1344,
+      "height": 768,
+      "aspectRatio": 1.75
+    },
+    {
+      "id": "img-0160",
+      "fileName": "Gemini_Generated_Image_oz8zzkoz8zzkoz8z.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_oz8zzkoz8zzkoz8z.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0161",
+      "fileName": "Gemini_Generated_Image_pn0x0ypn0x0ypn0x.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_pn0x0ypn0x0ypn0x.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0162",
+      "fileName": "Gemini_Generated_Image_po0mq9po0mq9po0m.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_po0mq9po0mq9po0m.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0163",
+      "fileName": "Gemini_Generated_Image_pqv49lpqv49lpqv4.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_pqv49lpqv49lpqv4.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0164",
+      "fileName": "Gemini_Generated_Image_qro3dsqro3dsqro3.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_qro3dsqro3dsqro3.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0165",
+      "fileName": "Gemini_Generated_Image_qy665fqy665fqy66.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_qy665fqy665fqy66.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0166",
+      "fileName": "Gemini_Generated_Image_r0jgu8r0jgu8r0jg.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_r0jgu8r0jgu8r0jg.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0167",
+      "fileName": "Gemini_Generated_Image_r3nngur3nngur3nn.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_r3nngur3nngur3nn.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0168",
+      "fileName": "Gemini_Generated_Image_r3xfk8r3xfk8r3xf.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_r3xfk8r3xfk8r3xf.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0169",
+      "fileName": "Gemini_Generated_Image_rbhs2erbhs2erbhs.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rbhs2erbhs2erbhs.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0170",
+      "fileName": "Gemini_Generated_Image_rj8nmerj8nmerj8n.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rj8nmerj8nmerj8n.png",
+      "width": 2048,
+      "height": 2048,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0171",
+      "fileName": "Gemini_Generated_Image_rklsyurklsyurkls.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rklsyurklsyurkls.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0172",
+      "fileName": "Gemini_Generated_Image_rkv1q5rkv1q5rkv1.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rkv1q5rkv1q5rkv1.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0173",
+      "fileName": "Gemini_Generated_Image_rn9hl7rn9hl7rn9h.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rn9hl7rn9hl7rn9h.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0174",
+      "fileName": "Gemini_Generated_Image_rscrktrscrktrscr.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rscrktrscrktrscr.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0175",
+      "fileName": "Gemini_Generated_Image_rsxpjtrsxpjtrsxp.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_rsxpjtrsxpjtrsxp.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0176",
+      "fileName": "Gemini_Generated_Image_s038jrs038jrs038.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_s038jrs038jrs038.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0177",
+      "fileName": "Gemini_Generated_Image_s79au7s79au7s79a.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_s79au7s79au7s79a.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0178",
+      "fileName": "Gemini_Generated_Image_smaxipsmaxipsmax (1)_processed.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_smaxipsmaxipsmax%20(1)_processed.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0179",
+      "fileName": "Gemini_Generated_Image_sz81tqsz81tqsz81.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_sz81tqsz81tqsz81.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0180",
+      "fileName": "Gemini_Generated_Image_tdahzstdahzstdah.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_tdahzstdahzstdah.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0181",
+      "fileName": "Gemini_Generated_Image_tewc2ttewc2ttewc.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_tewc2ttewc2ttewc.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0182",
+      "fileName": "Gemini_Generated_Image_tgo1bvtgo1bvtgo1.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_tgo1bvtgo1bvtgo1.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0183",
+      "fileName": "Gemini_Generated_Image_tn7x4qtn7x4qtn7x.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_tn7x4qtn7x4qtn7x.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0184",
+      "fileName": "Gemini_Generated_Image_tuz05ntuz05ntuz0.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_tuz05ntuz05ntuz0.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0185",
+      "fileName": "Gemini_Generated_Image_u99acmu99acmu99a.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_u99acmu99acmu99a.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0186",
+      "fileName": "Gemini_Generated_Image_uh0lo3uh0lo3uh0l.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uh0lo3uh0lo3uh0l.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0187",
+      "fileName": "Gemini_Generated_Image_uk3rnzuk3rnzuk3r.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uk3rnzuk3rnzuk3r.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0188",
+      "fileName": "Gemini_Generated_Image_uphqfwuphqfwuphq.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uphqfwuphqfwuphq.png",
+      "width": 1856,
+      "height": 2304,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0189",
+      "fileName": "Gemini_Generated_Image_uxft9huxft9huxft.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uxft9huxft9huxft.png",
+      "width": 1536,
+      "height": 2752,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0190",
+      "fileName": "Gemini_Generated_Image_uymzdbuymzdbuymz.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uymzdbuymzdbuymz.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0191",
+      "fileName": "Gemini_Generated_Image_uywo7muywo7muywo_processed.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uywo7muywo7muywo_processed.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0192",
+      "fileName": "Gemini_Generated_Image_uzc6pduzc6pduzc6.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uzc6pduzc6pduzc6.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0193",
+      "fileName": "Gemini_Generated_Image_uzytsluzytsluzyt.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_uzytsluzytsluzyt.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0194",
+      "fileName": "Gemini_Generated_Image_v0s5wov0s5wov0s5.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_v0s5wov0s5wov0s5.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0195",
+      "fileName": "Gemini_Generated_Image_voo4ygvoo4ygvoo4.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_voo4ygvoo4ygvoo4.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0196",
+      "fileName": "Gemini_Generated_Image_vr9zogvr9zogvr9z.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_vr9zogvr9zogvr9z.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0197",
+      "fileName": "Gemini_Generated_Image_vrmc3qvrmc3qvrmc_processed.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_vrmc3qvrmc3qvrmc_processed.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0198",
+      "fileName": "Gemini_Generated_Image_w6paubw6paubw6pa.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_w6paubw6paubw6pa.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0199",
+      "fileName": "Gemini_Generated_Image_wlyy88wlyy88wlyy.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_wlyy88wlyy88wlyy.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0200",
+      "fileName": "Gemini_Generated_Image_wpktmjwpktmjwpkt.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_wpktmjwpktmjwpkt.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0201",
+      "fileName": "Gemini_Generated_Image_wrp3a5wrp3a5wrp3_processed.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_wrp3a5wrp3a5wrp3_processed.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0202",
+      "fileName": "Gemini_Generated_Image_wy0vl9wy0vl9wy0v.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_wy0vl9wy0vl9wy0v.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0203",
+      "fileName": "Gemini_Generated_Image_wylpl5wylpl5wylp.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_wylpl5wylpl5wylp.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0204",
+      "fileName": "Gemini_Generated_Image_x52s4x52s4x52s4x.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_x52s4x52s4x52s4x.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0205",
+      "fileName": "Gemini_Generated_Image_xbzkvzxbzkvzxbzk.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_xbzkvzxbzkvzxbzk.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0206",
+      "fileName": "Gemini_Generated_Image_xezh3xxezh3xxezh.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_xezh3xxezh3xxezh.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0207",
+      "fileName": "Gemini_Generated_Image_xhdeg4xhdeg4xhde.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_xhdeg4xhdeg4xhde.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0208",
+      "fileName": "Gemini_Generated_Image_y25cjjy25cjjy25c.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_y25cjjy25cjjy25c.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0209",
+      "fileName": "Gemini_Generated_Image_y59faay59faay59f.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_y59faay59faay59f.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0210",
+      "fileName": "Gemini_Generated_Image_yamidpyamidpyami.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yamidpyamidpyami.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0211",
+      "fileName": "Gemini_Generated_Image_ybnhxvybnhxvybnh.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ybnhxvybnhxvybnh.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0212",
+      "fileName": "Gemini_Generated_Image_yco837yco837yco8.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yco837yco837yco8.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0213",
+      "fileName": "Gemini_Generated_Image_ye7gs1ye7gs1ye7g.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ye7gs1ye7gs1ye7g.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0214",
+      "fileName": "Gemini_Generated_Image_yicz25yicz25yicz.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yicz25yicz25yicz.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0215",
+      "fileName": "Gemini_Generated_Image_yii9uoyii9uoyii9.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yii9uoyii9uoyii9.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0216",
+      "fileName": "Gemini_Generated_Image_yjf4pbyjf4pbyjf4.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yjf4pbyjf4pbyjf4.png",
+      "width": 928,
+      "height": 1152,
+      "aspectRatio": 0.805556
+    },
+    {
+      "id": "img-0217",
+      "fileName": "Gemini_Generated_Image_yoxtomyoxtomyoxt.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yoxtomyoxtomyoxt.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0218",
+      "fileName": "Gemini_Generated_Image_ypvgtxypvgtxypvg.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_ypvgtxypvgtxypvg.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0219",
+      "fileName": "Gemini_Generated_Image_yqbppyyqbppyyqbp.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yqbppyyqbppyyqbp.png",
+      "width": 2752,
+      "height": 1536,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0220",
+      "fileName": "Gemini_Generated_Image_yrzillyrzillyrzi.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_yrzillyrzillyrzi.png",
+      "width": 1376,
+      "height": 768,
+      "aspectRatio": 1.791667
+    },
+    {
+      "id": "img-0221",
+      "fileName": "Gemini_Generated_Image_z8i38xz8i38xz8i3 (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_z8i38xz8i38xz8i3%20(1).png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0222",
+      "fileName": "Gemini_Generated_Image_zcun3tzcun3tzcun.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_zcun3tzcun3tzcun.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0223",
+      "fileName": "Gemini_Generated_Image_zcxo8szcxo8szcxo (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_zcxo8szcxo8szcxo%20(1).png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0224",
+      "fileName": "Gemini_Generated_Image_zgwou3zgwou3zgwo.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./Gemini_Generated_Image_zgwou3zgwou3zgwo.png",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0225",
+      "fileName": "id-ako-ss25-img-02-description-silhouette-portra-2026-04-17T07-52-40-985Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./id-ako-ss25-img-02-description-silhouette-portra-2026-04-17T07-52-40-985Z.jpg",
+      "width": 572,
+      "height": 1024,
+      "aspectRatio": 0.558594
+    },
+    {
+      "id": "img-0226",
+      "fileName": "id-ako-ss25-img-03-description-flat-lay-of-ako-c-2026-04-17T07-53-12-473Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./id-ako-ss25-img-03-description-flat-lay-of-ako-c-2026-04-17T07-53-12-473Z.jpg",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0227",
+      "fileName": "id-ako-ss25-img-04-description-street-style-shot-2026-04-17T07-54-22-500Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./id-ako-ss25-img-04-description-street-style-shot-2026-04-17T07-54-22-500Z.jpg",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0228",
+      "fileName": "id-ako-ss25-img-05-description-detail-shot-of-ak-2026-04-17T07-54-39-562Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./id-ako-ss25-img-05-description-detail-shot-of-ak-2026-04-17T07-54-39-562Z.jpg",
+      "width": 768,
+      "height": 1376,
+      "aspectRatio": 0.55814
+    },
+    {
+      "id": "img-0229",
+      "fileName": "id-ran-ccc-mk-02-title-entry-altar-mockup-format-2026-04-23T12-10-29-086Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./id-ran-ccc-mk-02-title-entry-altar-mockup-format-2026-04-23T12-10-29-086Z.jpg",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0230",
+      "fileName": "loading_dock_1776994639606.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./loading_dock_1776994639606.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0231",
+      "fileName": "mai-image-2_a_{__id____RAN_CCC_M (1).png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./mai-image-2_a_%7B__id____RAN_CCC_M%20(1).png",
+      "width": 1360,
+      "height": 768,
+      "aspectRatio": 1.770833
+    },
+    {
+      "id": "img-0232",
+      "fileName": "mai-image-2_a_{__id____RAN_CCC_M.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./mai-image-2_a_%7B__id____RAN_CCC_M.png",
+      "width": 768,
+      "height": 1360,
+      "aspectRatio": 0.564706
+    },
+    {
+      "id": "img-0233",
+      "fileName": "mirror_salon_1776994596249.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./mirror_salon_1776994596249.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0234",
+      "fileName": "runway_corridor_1776994615875.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./runway_corridor_1776994615875.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0235",
+      "fileName": "scene-s01-title-ranaan-entry-altar-first-contact-2026-04-17T18-21-15-609Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./scene-s01-title-ranaan-entry-altar-first-contact-2026-04-17T18-21-15-609Z.jpg",
+      "width": 572,
+      "height": 1024,
+      "aspectRatio": 0.558594
+    },
+    {
+      "id": "img-0236",
+      "fileName": "stairwell_descent_1776994574623.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./stairwell_descent_1776994574623.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    },
+    {
+      "id": "img-0237",
+      "fileName": "unknown-2026-04-23T12-22-37-814Z (1).jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./unknown-2026-04-23T12-22-37-814Z%20(1).jpg",
+      "width": 572,
+      "height": 1024,
+      "aspectRatio": 0.558594
+    },
+    {
+      "id": "img-0238",
+      "fileName": "unknown-2026-04-23T12-22-37-933Z (1).jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./unknown-2026-04-23T12-22-37-933Z%20(1).jpg",
+      "width": 572,
+      "height": 1024,
+      "aspectRatio": 0.558594
+    },
+    {
+      "id": "img-0239",
+      "fileName": "unknown-2026-04-23T12-22-37-943Z.jpg",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./unknown-2026-04-23T12-22-37-943Z.jpg",
+      "width": 1024,
+      "height": 572,
+      "aspectRatio": 1.79021
+    },
+    {
+      "id": "img-0240",
+      "fileName": "vitrine_ghost_1776994554157.png",
+      "caption": null,
+      "chapter": "RANAAN CCCC",
+      "src": "./vitrine_ghost_1776994554157.png",
+      "width": 1024,
+      "height": 1024,
+      "aspectRatio": 1
+    }
+  ]
+}

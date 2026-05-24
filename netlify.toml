@@ -1,0 +1,31 @@
+[build]
+  command = "node scripts/build-static.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Pretty URLs — serve /v4 as v4.html, /nodear as nodear.html
+[[redirects]]
+  from = "/v4"
+  to = "/v4.html"
+  status = 200
+
+[[redirects]]
+  from = "/nodear"
+  to = "/nodear.html"
+  status = 200
+
+# SPA-style fallback for unknown routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
