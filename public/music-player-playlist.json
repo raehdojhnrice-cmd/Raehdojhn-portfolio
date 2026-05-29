@@ -1,0 +1,383 @@
+{
+  "replaceDefaults": true,
+  "tracks": [
+    {
+      "enabled": true,
+      "title": "Our De$tiny",
+      "artist": "Playboi Carti / A$AP Rocky",
+      "url": "public/uploads/music/01-our-destiny-playboi-carti-asap-rocky-with-intro.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Slide On Me",
+      "artist": "Frank Ocean",
+      "url": "public/uploads/music/02-slide-on-me-feat-frank-ocean.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Hands On The Wheel",
+      "artist": "ScHoolboy Q ft. A$AP Rocky",
+      "url": "public/uploads/music/03-schoolboy-q-hands-on-the-wheel-ft-asap-rocky.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Practice",
+      "artist": "Drake",
+      "url": "public/uploads/music/04-practice-drake.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Off White",
+      "artist": "Lil Keed / 10fifty",
+      "url": "public/uploads/music/05-off-white-feat-lil-keed-prod-10fifty.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Pornography (432Hz)",
+      "artist": "Travis Scott",
+      "url": "public/uploads/music/06-travis-scott-pornography-432hz.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Wagwan",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/07-wagwan.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "She Will",
+      "artist": "Lil Wayne ft. Drake",
+      "url": "public/uploads/music/08-lil-wayne-she-will-ft-drake.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Green & Purple",
+      "artist": "Playboi Carti",
+      "url": "public/uploads/music/09-green-purple-ft-playboi-carti.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "TQM Lyrics 2023",
+      "artist": "Fuerza Regida",
+      "url": "public/uploads/music/10-fuerza-regida-tqm-lyrics-2023.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Chris Paul",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/11-chris-paul.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "BACKD00R",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/12-backdoor.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "PMW (All I Really Need)",
+      "artist": "A$AP Rocky ft. ScHoolboy Q",
+      "url": "public/uploads/music/13-asap-rocky-pmw-all-i-really-need-feat-schoolboy-q.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Vice City",
+      "artist": "Jay Rock ft. Kendrick Lamar, ScHoolboy Q & Ab-Soul",
+      "url": "public/uploads/music/14-vice-city-jay-rock-kendrick-schoolboy-q-ab-soul.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "One Of Those Nights (OG)",
+      "artist": "The Weeknd",
+      "url": "public/uploads/music/15-the-weeknd-one-of-those-nights-og.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Welcome to the Land",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/16-welcome-to-the-land.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "How You Like Me Now",
+      "artist": "Yung Lean ft. Thaiboy / Yung Gud",
+      "url": "public/uploads/music/17-yung-lean-how-you-like-me-now-ft-thaiboy-prod-yung-gud.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Hollywood Love",
+      "artist": "Gunna",
+      "url": "public/uploads/music/18-gunna-hollywood-love.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Greed",
+      "artist": "Lil Yachty",
+      "url": "public/uploads/music/19-greed-feat-lil-yachty.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "houseki",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/20-houseki.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "hxh",
+      "artist": "Lucki",
+      "url": "public/uploads/music/21-hxh-lucki.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Highest in the Woods",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/22-highest-in-the-woods.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "K-POP ALT",
+      "artist": "Lancey Foux / Crash Dummy",
+      "url": "public/uploads/music/23-k-pop-lancey-foux-prod-crash-dummy-alt.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "hallucinations",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/24-hallucinations.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "red cup (vowl. x sace remix)",
+      "artist": "Gud",
+      "url": "public/uploads/music/25-gud-red-cup-vowl-x-sace-remix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "A Taste of Hope (Odd Mob Remix)",
+      "artist": "IMANU",
+      "url": "public/uploads/music/26-imanu-a-taste-of-hope-odd-mob-remix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "THINKOFU (MALIXE Remix)",
+      "artist": "IMANU",
+      "url": "public/uploads/music/27-imanu-thinkofu-malixe-remix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Kammy (like i do)",
+      "artist": "Fred again..",
+      "url": "public/uploads/music/28-fred-again-kammy-like-i-do-visualiser.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "didnt cha know edit",
+      "artist": "badu",
+      "url": "public/uploads/music/29-badu-didnt-cha-know-edit.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "RUSHING BACK (TETRA EDIT)",
+      "artist": "FLUME",
+      "url": "public/uploads/music/30-flume-rushing-back-tetra-edit.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Angels in Tibet",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/31-angels-in-tibet.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "PAPER SOLDIER",
+      "artist": "Brent Faiyaz ft. Joony",
+      "url": "public/uploads/music/32-brent-faiyaz-paper-soldier-feat-joony.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Bria's Interlude (SAVON Bootleg)",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/33-brias-interlude-savon-bootleg.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "promiscuouswater",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/34-promiscuouswater.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "IN HA MOOD (FRANCHISE CLUB MIX)",
+      "artist": "Ice Spice",
+      "url": "public/uploads/music/35-ice-spice-in-ha-mood-franchise-club-mix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "JADED CLUB EDIT",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/36-jaded-club-edit.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Chanel (Sango Remix)",
+      "artist": "Frank Ocean",
+      "url": "public/uploads/music/37-frank-ocean-chanel-sango-remix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Close To Me",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/38-close-to-me.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "CIGARETTE",
+      "artist": "Hittkidd / Don Cannon",
+      "url": "public/uploads/music/39-cigarette-prod-hittkidd-don-cannon.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "clarity j-club",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/40-clarity-j-club.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Eris Texas (Demo)",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/41-eris-texas-demo.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Dover Street Market",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/42-dover-street-market.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Foreign Fields (Yung Gud Remix)",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/43-foreign-fields-yung-gud-remix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Drop My Cell (Devil May Cry in the Club Remix)",
+      "artist": "Laces / Darcy Baylis / Lovefear / SUS1ER",
+      "url": "public/uploads/music/44-laces-darcy-baylis-lovefear-sus1er-drop-my-cell-devil-may-cry-club-remix.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Str8 Syrup",
+      "artist": "LUCKI",
+      "url": "public/uploads/music/45-lucki-str8-syrup.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "LADY GAGA",
+      "artist": "Peso Pluma / Gabito Ballesteros / Junior H",
+      "url": "public/uploads/music/46-peso-pluma-gabito-ballesteros-junior-h-lady-gaga.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "PICTURE IN MY MIND (NIKKO X WINK RMX)",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/47-picture-in-my-mind-nikko-x-wink-rmx.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "pdbmh",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/48-pdbmh.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Smooth Operator (C.I.S.C.O Tik Tok Edit)",
+      "artist": "Sade",
+      "url": "public/uploads/music/49-sade-smooth-operator-cisco-tik-tok-edit.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Sophie Riddim VIP",
+      "artist": "Archive Audio",
+      "url": "public/uploads/music/50-sophie-riddim-vip.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "I KNOW ?",
+      "artist": "Travis Scott",
+      "url": "public/uploads/music/51-travis-scott-i-know.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "VTMNTSCOAT",
+      "artist": "legend",
+      "url": "public/uploads/music/52-vtmntscoat-w-legend.mp3",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "MEMORY HIGH PROD DEMO FOR MY ALBUM",
+      "artist": "Nodear",
+      "url": "public/uploads/music/53-memory-high-prod-demo-for-my-album.wav",
+      "source": "local"
+    },
+    {
+      "enabled": true,
+      "title": "Fall In Love",
+      "artist": "Yung Gud ft. Blisse",
+      "url": "public/uploads/music/54-yung-gud-fall-in-love-ft-blisse.mp3",
+      "source": "local"
+    }
+  ]
+}

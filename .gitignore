@@ -81,3 +81,22 @@ career-materials/rendered-*/
 # OS
 Thumbs.db
 ehthumbs.db
+
+# ── Working / source-only folders NOT used by the deployed site ──
+# (kept locally; excluded from the repo to keep it deployable on Vercel)
+# The build (scripts/build-static.mjs) only ships: public, aurea, jiayou,
+# nodear, Seoulstice — everything below is raw working material.
+RANAAN CCCC/
+graphic posters/
+RAE FILES FR /
+Visual DNA (core look)/
+ako files/
+portfolio site/
+portfolio website ui /
+project section/
+projects for portfolio site/
+
+# Large working JSON exports (not referenced by the site)
+ChatGPT-Visual Prompt System.json
+editorial_master_prompt_system.json
+image_profiles_batch3.json

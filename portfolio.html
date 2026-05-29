@@ -89,6 +89,22 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   transition: opacity .2s;
   background: radial-gradient(circle, rgba(220,40,40,.08) 0%, transparent 70%);
 }
+@media (max-width: 760px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .beacon-cursor,
+  .beacon-glow {
+    display: none !important;
+  }
+  .grain {
+    opacity: 0.018;
+  }
+  .marquee-scroll,
+  .gp__shimmer,
+  .gp.is-playing .gp__vinyl-disc,
+  .gp.is-playing .gp__tonearm,
+  .gp.is-playing .gp__vu-row .gp__vu-bar span {
+    animation: none !important;
+  }
+}
 
 /* Marquee */
 .marquee {
@@ -929,11 +945,26 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   aspect-ratio: 16 / 9;
   display: grid;
   place-items: center;
+  gap: 10px;
+  padding: 18px;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--ash);
+  text-align: center;
+}
+.media-load {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid color-mix(in srgb, var(--red) 48%, transparent);
+  border-radius: 999px;
+  background: rgba(0,0,0,.34);
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 .media-card h3 {
   font-family: var(--font-display);
@@ -1401,6 +1432,9 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .gp.is-collapsed .gp__swatches,
 .gp.is-collapsed .music-list,
 .gp.is-collapsed .music-tools { display: none; }
+.music-collapse-strip {
+  display: none;
+}
 .gp__shimmer {
   position: absolute;
   inset: -1px;
@@ -1463,6 +1497,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 @keyframes recBlink { 0%,100%{opacity:1} 50%{opacity:.25} }
 .gp__ctrl {
+  min-width: 24px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -1470,6 +1505,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-mono);
+  line-height: 1;
   transition: color .15s, background .15s;
 }
 .gp__ctrl:hover { color: var(--bone); background: rgba(255,255,255,.06); }
@@ -1829,6 +1866,32 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   height: calc(7px + var(--h) * 18px);
   background: color-mix(in srgb, var(--player-accent) calc(var(--fill, 0) * 100%), rgba(232,228,220,.18));
 }
+.music-embed-shell {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 8px;
+  padding: 8px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 24%, transparent);
+  border-radius: 4px;
+  background: rgba(0,0,0,.46);
+}
+.music-embed-shell[hidden] { display: none !important; }
+.music-embed-shell iframe {
+  width: 100%;
+  height: 132px;
+  border: 0;
+  border-radius: 4px;
+  background: #050505;
+}
+.music-embed-note {
+  color: color-mix(in srgb, var(--player-accent) 55%, transparent);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.gp.is-embed-mode .music-wave { cursor: default; opacity: .55; }
+.gp.is-embed-mode .music-range { opacity: .7; }
 .music-time-row {
   display: flex;
   justify-content: space-between;
@@ -1841,11 +1904,13 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   margin-top: 14px;
+  flex-wrap: wrap;
 }
 .music-player-icon,
-.music-play {
+.music-play,
+.music-mode-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1857,6 +1922,24 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   border-radius: 6px;
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.4));
   color: var(--bone);
+}
+.music-mode-toggle {
+  min-width: 46px;
+  height: 28px;
+  border: 1px solid color-mix(in srgb, var(--player-accent) 24%, transparent);
+  border-radius: 4px;
+  background: rgba(0,0,0,.38);
+  color: color-mix(in srgb, var(--player-accent) 62%, var(--bone));
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.music-mode-toggle.is-active {
+  border-color: var(--player-accent);
+  background: color-mix(in srgb, var(--player-accent) 16%, rgba(0,0,0,.42));
+  color: var(--player-accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-accent) 28%, transparent);
 }
 .music-play {
   width: 52px;
@@ -1976,7 +2059,75 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   .site-menu__grid { padding: 72px 20px 28px; justify-content: flex-start; }
   .site-menu__link { font-size: clamp(2rem, 12vw, 4rem); gap: 12px; }
   .site-menu__bottom { justify-content: center; text-align: center; flex-wrap: wrap; }
-  .gp { right: 14px; bottom: 14px; width: calc(100vw - 28px); }
+  .gp {
+    right: 14px;
+    bottom: 14px;
+    width: calc(100vw - 28px);
+    max-height: min(78vh, calc(100dvh - 28px));
+    padding: 12px;
+    border-radius: 14px;
+  }
+  .gp.is-collapsed {
+    width: min(210px, calc(100vw - 28px));
+    max-height: 58px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .gp.is-collapsed .gp__header {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  .gp.is-collapsed .gp__brand {
+    grid-template-columns: auto auto;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .gp.is-collapsed .gp__model,
+  .gp.is-collapsed .gp__maker {
+    font-size: 8px;
+    letter-spacing: .12em;
+  }
+  .gp.is-collapsed .gp__rec { display: none; }
+  .gp__ctrl {
+    min-width: 38px;
+    width: 38px;
+    height: 34px;
+    border: 1px solid color-mix(in srgb, var(--player-accent) 26%, transparent);
+    background: rgba(0,0,0,.34);
+    color: var(--player-accent);
+  }
+  .music-collapse-strip {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 32px;
+    margin: 10px 0;
+    border: 1px solid color-mix(in srgb, var(--player-accent) 24%, transparent);
+    border-radius: 999px;
+    background: rgba(0,0,0,.38);
+    color: color-mix(in srgb, var(--player-accent) 70%, var(--bone));
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .music-collapse-strip::before,
+  .music-collapse-strip::after {
+    content: "";
+    width: 18px;
+    height: 1px;
+    margin: 0 8px;
+    background: currentColor;
+    opacity: .55;
+  }
+  .music-collapse-strip--bottom {
+    margin-bottom: 0;
+  }
   .music-tools { grid-template-columns: 1fr auto; }
   .music-upload { grid-column: span 2; justify-content: center; height: 34px; }
 }
@@ -2068,7 +2219,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 <div class="beacon-cursor" id="beaconCursor" aria-hidden="true"></div>
 
 <aside class="gp gp--mini gp--quiet" id="musicPlayer" aria-label="GP-7000 music player">
-  <audio id="musicAudio" preload="metadata"></audio>
+  <audio id="musicAudio" preload="none"></audio>
   <div class="gp__shimmer" aria-hidden="true"></div>
   <div class="gp__header">
     <div class="gp__brand">
@@ -2077,7 +2228,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     </div>
     <div class="gp__header-actions">
       <span class="gp__rec">REC</span>
-      <button class="gp__ctrl" id="musicCollapse" type="button" aria-label="Collapse music player">−</button>
+      <button class="gp__ctrl music-collapse-trigger" id="musicCollapse" type="button" aria-label="Collapse music player" aria-expanded="true">−</button>
     </div>
   </div>
   <div class="gp__swatches" id="musicSwatches" aria-label="Player accent colors"></div>
@@ -2115,19 +2266,26 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
       <div class="music-eq-presets" id="musicEqPresets" aria-label="Equalizer presets"></div>
       <div class="music-eq-controls" id="musicEqControls" aria-label="Equalizer faders"></div>
     </div>
+    <div class="music-embed-shell" id="musicEmbedShell" hidden>
+      <iframe id="musicEmbedFrame" title="Embedded SoundCloud player" allow="autoplay"></iframe>
+      <div class="music-embed-note" id="musicEmbedNote">SoundCloud embed / EQ visual mode</div>
+    </div>
     <div class="music-wave" id="musicWave" aria-label="Seek playback position"></div>
     <div class="music-time-row">
       <span id="musicCurrent">0:00</span>
       <span id="musicDuration">0:00</span>
     </div>
+    <button class="music-collapse-strip music-collapse-strip--middle music-collapse-trigger" type="button" aria-label="Collapse music player">Minimize player</button>
     <div class="music-controls">
+      <button class="music-mode-toggle" id="musicShuffle" type="button" aria-label="Toggle shuffle" aria-pressed="false">SHUF</button>
       <button class="music-player-icon" id="musicPrev" type="button" aria-label="Previous track">‹</button>
       <button class="music-play" id="musicPlay" type="button" aria-label="Play or pause">▶</button>
       <button class="music-player-icon" id="musicNext" type="button" aria-label="Next track">›</button>
+      <button class="music-mode-toggle" id="musicRepeat" type="button" aria-label="Cycle repeat mode" aria-pressed="true">RPT ALL</button>
       <input class="music-range" id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
     </div>
     <form class="music-tools" id="musicUrlForm">
-      <input class="music-input" id="musicUrl" type="url" placeholder="https://audio-file.mp3" aria-label="Audio URL">
+      <input class="music-input" id="musicUrl" type="url" placeholder="SoundCloud or audio URL" aria-label="SoundCloud or audio URL">
       <button class="music-action" type="submit">Add</button>
       <label class="music-action music-upload">
         Load
@@ -2135,6 +2293,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
       </label>
     </form>
     <div class="music-list" id="musicList"></div>
+    <button class="music-collapse-strip music-collapse-strip--bottom music-collapse-trigger" type="button" aria-label="Collapse music player">Minimize player</button>
   </div>
 </aside>
 
@@ -2197,7 +2356,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
       <a class="site-menu__link" href="#services"><span class="site-menu__num">03</span><span>Services</span></a>
       <a class="site-menu__link" href="#about"><span class="site-menu__num">04</span><span>About</span></a>
       <a class="site-menu__link" href="#contact"><span class="site-menu__num">05</span><span>Contact</span></a>
-      <a class="site-menu__link" href="#media"><span class="site-menu__num">06</span><span>Media</span></a>
+      <a class="site-menu__link" href="v4.html#app-media-log"><span class="site-menu__num">06</span><span>Media</span></a>
       <a class="site-menu__link" href="#blog"><span class="site-menu__num">07</span><span>Blog</span></a>
       <a class="site-menu__link" href="#influences"><span class="site-menu__num">08</span><span>Influences</span></a>
       <a class="site-menu__link" href="v4.html"><span class="site-menu__num">09</span><span>V4</span></a>
@@ -2338,59 +2497,6 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
         <button class="btn btn--primary" type="submit">SEND MESSAGE</button>
       </form>
     </div>
-  </div>
-</section>
-
-<section class="section" id="media">
-  <div class="section-inner">
-    <div class="archive-section-chrome">
-      <div class="archive-kicker"><span class="archive-chip">RAE-26-M01</span><span class="archive-dot"></span><span>05</span><span class="archive-dot"></span><span>Media</span><span class="archive-dot"></span><span>Listening / Watching Log</span></div>
-      <h2 class="section-title">Media I've Consumed</h2>
-      <p class="section-subtitle">Videos, tracks, references, and annotated fragments from the working archive. Paste a YouTube, Spotify, or SoundCloud URL below and the embed will appear in the grid. Audio entries can be queued into the glass player.</p>
-      <div class="archive-rule"></div>
-    </div>
-
-    <div class="media-toolbar">
-      <div class="media-filter-tabs" id="mediaFilterTabs">
-        <button type="button" class="media-filter-tab is-active" data-filter="all">All</button>
-        <button type="button" class="media-filter-tab" data-filter="youtube">YouTube</button>
-        <button type="button" class="media-filter-tab" data-filter="spotify">Spotify</button>
-        <button type="button" class="media-filter-tab" data-filter="soundcloud">SoundCloud</button>
-        <button type="button" class="media-filter-tab" data-filter="self_hosted_audio">Local Audio</button>
-        <button type="button" class="media-filter-tab" data-filter="self_hosted_video">Local Video</button>
-      </div>
-      <button type="button" class="media-admin-toggle" id="mediaAdminToggle" aria-expanded="false">[ + Add Embed ]</button>
-    </div>
-
-    <form class="media-admin-panel" id="mediaAdminPanel" hidden>
-      <h4>EMBED A NEW ITEM</h4>
-      <p class="media-admin-helper">Paste a public link — YouTube (watch / shorts / youtu.be), Spotify (track/album/playlist/episode/show), SoundCloud (track/set), or a direct .mp3 / .mp4 URL. Type is auto-detected; override below if needed.</p>
-      <div class="media-admin-row media-admin-row--full">
-        <input class="form-input" type="url" id="mediaInputUrl" placeholder="https://www.youtube.com/watch?v=… · https://open.spotify.com/track/… · https://soundcloud.com/…" required>
-      </div>
-      <div class="media-admin-row">
-        <select class="form-input" id="mediaInputType">
-          <option value="auto">Auto-detect type</option>
-          <option value="youtube">YouTube video</option>
-          <option value="spotify">Spotify embed</option>
-          <option value="soundcloud">SoundCloud embed</option>
-          <option value="self_hosted_audio">Self-hosted audio (.mp3)</option>
-          <option value="self_hosted_video">Self-hosted video (.mp4)</option>
-        </select>
-        <input class="form-input" type="text" id="mediaInputTitle" placeholder="Title (optional — auto-filled if blank)">
-      </div>
-      <div class="media-admin-row">
-        <input class="form-input" type="text" id="mediaInputCreator" placeholder="Creator / artist (optional)">
-        <input class="form-input" type="text" id="mediaInputNote" placeholder="Note (optional)">
-      </div>
-      <div class="media-admin-actions">
-        <button class="btn btn--primary" type="submit">ADD TO GRID</button>
-        <button class="btn btn--ghost" type="button" id="mediaResetAll">Reset to defaults</button>
-      </div>
-    </form>
-
-    <div class="archive-meta-row"><span>SHELF STATUS</span><span class="archive-meta-row__line"></span><span id="mediaShelfStatus">VISIBLE 0 / TOTAL 0</span></div>
-    <div class="media-grid" id="mediaGrid" aria-live="polite"></div>
   </div>
 </section>
 
@@ -2786,7 +2892,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
         <div class="footer-links">
           <a href="v4.html">V4</a>
           <a href="nodear.html">Nodear*</a>
-          <a href="#media">Media Log</a>
+          <a href="v4.html#app-media-log">Media Log</a>
         </div>
       </div>
       <div>
@@ -2804,11 +2910,27 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 </footer>
 
 <script>
+const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const coarsePointerQuery = window.matchMedia('(pointer: coarse)');
+const mobileViewportQuery = window.matchMedia('(max-width: 760px)');
+const isFinePointer = () => finePointerQuery.matches;
+const shouldReduceMotion = () => reducedMotionQuery.matches;
+const isMobileViewport = () => mobileViewportQuery.matches || coarsePointerQuery.matches;
+
 // Nav scroll effect
 const nav = document.getElementById('nav');
+let navScrollQueued = false;
+function updateNavScrolled() {
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  navScrollQueued = false;
+}
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  if (navScrollQueued) return;
+  navScrollQueued = true;
+  requestAnimationFrame(updateNavScrolled);
+}, { passive: true });
+updateNavScrolled();
 
 // Live issue bar clock from the May 7 marquee
 const marqueeDate = document.getElementById('marqueeDate');
@@ -2842,7 +2964,7 @@ window.addEventListener('keydown', event => {
 });
 
 // May 7-style active section states for nav and sandwich menu
-const trackedSectionIds = ['hero', 'work', 'services', 'about', 'contact', 'media', 'blog', 'influences'];
+const trackedSectionIds = ['hero', 'work', 'services', 'about', 'contact', 'blog', 'influences'];
 const trackedSectionLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"], .site-menu__link[href^="#"]'));
 function setActiveSection(sectionId) {
   trackedSectionLinks.forEach(link => {
@@ -2895,6 +3017,7 @@ const cursorColors = [
 const cursorPos = { x: 0, y: 0 };
 const cursorTarget = { x: 0, y: 0 };
 let cursorVisible = false;
+let cursorScrollPct = 0;
 
 function lerpColorAt(t) {
   const segments = cursorColors.length - 1;
@@ -2927,11 +3050,19 @@ function colorObjectToAlpha(color, alpha) {
   return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
 }
 
-if (!('ontouchstart' in window)) {
+function updateCursorScrollPct() {
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  cursorScrollPct = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+}
+
+if (beaconCursor && beaconGlow && isFinePointer() && !isMobileViewport() && !shouldReduceMotion()) {
   document.body.style.cursor = 'none';
   const cursorStyle = document.createElement('style');
   cursorStyle.textContent = 'a, button, input, textarea, select, [role="button"] { cursor: none !important; }';
   document.head.appendChild(cursorStyle);
+  updateCursorScrollPct();
+  window.addEventListener('scroll', updateCursorScrollPct, { passive: true });
+  window.addEventListener('resize', updateCursorScrollPct, { passive: true });
 
   document.addEventListener('mousemove', event => {
     cursorTarget.x = event.clientX;
@@ -2952,12 +3083,14 @@ if (!('ontouchstart' in window)) {
   });
 
   function animateCursor() {
+    if (document.hidden) {
+      requestAnimationFrame(animateCursor);
+      return;
+    }
     cursorPos.x += (cursorTarget.x - cursorPos.x) * 0.15;
     cursorPos.y += (cursorTarget.y - cursorPos.y) * 0.15;
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const scrollPct = Math.min(window.scrollY / maxScroll, 1);
-    const colorA = colorAtObject(scrollPct);
-    const colorB = colorAtObject(scrollPct + 0.18);
+    const colorA = colorAtObject(cursorScrollPct);
+    const colorB = colorAtObject(cursorScrollPct + 0.18);
     const color = colorObjectToCss(colorA);
 
     beaconCursor.style.transform = `translate(${cursorPos.x - 10}px, ${cursorPos.y - 10}px)`;
@@ -2972,6 +3105,9 @@ if (!('ontouchstart' in window)) {
     requestAnimationFrame(animateCursor);
   }
   animateCursor();
+} else {
+  if (beaconCursor) beaconCursor.style.display = 'none';
+  if (beaconGlow) beaconGlow.style.display = 'none';
 }
 
 // Cursor-local blood-red headline shadow
@@ -3084,6 +3220,13 @@ const projectFilters = document.getElementById('projectFilters');
 const projectCategories = ['all', 'design', 'code', 'music', 'ai', 'video'];
 let activeProjectFilter = 'all';
 let projectResizeObserver = null;
+let projectPreviewObserver = null;
+let projectIframeMode = false;
+
+function shouldUseProjectIframes() {
+  return !isMobileViewport() && isFinePointer() && !shouldReduceMotion();
+}
+
 function normalizeProjectTitle(title) {
   return title
     .replace(/^(the|a|an)\s+/i, '')
@@ -3109,6 +3252,7 @@ function renderProjectFilters() {
 }
 
 function renderProjects() {
+  projectIframeMode = shouldUseProjectIframes();
   const alphabetizedProjects = [...projects].sort((a, b) => normalizeProjectTitle(a.title).localeCompare(normalizeProjectTitle(b.title)));
   const visibleProjects = activeProjectFilter === 'all'
     ? alphabetizedProjects
@@ -3120,11 +3264,11 @@ function renderProjects() {
     card.className = 'project-card bento-card' + (p.featured ? ' project-card--featured' : '');
 
     let previewHtml;
-    if (p.embedUrl) {
+    if (p.embedUrl && projectIframeMode) {
       previewHtml = `
         <div class="bento-card__preview" data-iframe-wrap>
           ${p.featured ? '<span class="card-badge">Featured</span>' : ''}
-          <iframe src="${p.embedUrl}" title="${p.title}" loading="lazy"></iframe>
+          <iframe data-src="${p.embedUrl}" title="${p.title}" loading="lazy"></iframe>
         </div>`;
     } else if (p.image) {
       previewHtml = `
@@ -3175,15 +3319,50 @@ function scaleIframes() {
   });
 }
 
+function loadProjectIframe(iframe) {
+  if (!iframe || iframe.src || !iframe.dataset.src) return;
+  iframe.src = iframe.dataset.src;
+  iframe.removeAttribute('data-src');
+}
+
 function observeProjectIframes() {
   if (projectResizeObserver) projectResizeObserver.disconnect();
+  if (projectPreviewObserver) projectPreviewObserver.disconnect();
   if (typeof ResizeObserver !== 'undefined') {
     projectResizeObserver = new ResizeObserver(scaleIframes);
     document.querySelectorAll('[data-iframe-wrap]').forEach(el => projectResizeObserver.observe(el));
   }
+  const lazyFrames = Array.from(document.querySelectorAll('iframe[data-src]'));
+  if (!lazyFrames.length) return;
+  if ('IntersectionObserver' in window) {
+    projectPreviewObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const iframe = entry.target;
+        loadProjectIframe(iframe);
+        projectPreviewObserver.unobserve(iframe);
+      });
+    }, { rootMargin: '420px 0px', threshold: 0.01 });
+    lazyFrames.forEach(iframe => projectPreviewObserver.observe(iframe));
+  } else {
+    lazyFrames.forEach(loadProjectIframe);
+  }
 }
 window.addEventListener('load', scaleIframes);
-window.addEventListener('resize', scaleIframes);
+let projectResizeQueued = false;
+window.addEventListener('resize', () => {
+  if (projectResizeQueued) return;
+  projectResizeQueued = true;
+  requestAnimationFrame(() => {
+    const nextIframeMode = shouldUseProjectIframes();
+    projectResizeQueued = false;
+    if (nextIframeMode !== projectIframeMode) {
+      renderProjects();
+      return;
+    }
+    scaleIframes();
+  });
+}, { passive: true });
 renderProjectFilters();
 renderProjects();
 
@@ -3197,6 +3376,10 @@ const MUSIC_PLAYLIST_KEY = 'rae-static-music-playlist';
 const MUSIC_COLOR_KEY = 'rae-static-music-color';
 const MUSIC_VOLUME_KEY = 'rae-static-music-volume';
 const MUSIC_EQ_KEY = 'rae-static-music-eq';
+const MUSIC_SHUFFLE_KEY = 'rae-static-music-shuffle';
+const MUSIC_REPEAT_KEY = 'rae-static-music-repeat';
+const MUSIC_DEPLOY_PLAYLIST_URL = 'public/music-player-playlist.json';
+const MUSIC_SOUNDCLOUD_API_URL = 'https://w.soundcloud.com/player/api.js';
 const musicDefaults = [
   {
     title: 'AUREA Brand Film',
@@ -3228,6 +3411,8 @@ if (musicAudio) musicAudio.crossOrigin = 'anonymous';
 const musicTitle = document.getElementById('musicTitle');
 const musicArtist = document.getElementById('musicArtist');
 const musicPlay = document.getElementById('musicPlay');
+const musicShuffle = document.getElementById('musicShuffle');
+const musicRepeat = document.getElementById('musicRepeat');
 const musicPrev = document.getElementById('musicPrev');
 const musicNext = document.getElementById('musicNext');
 const musicVolume = document.getElementById('musicVolume');
@@ -3236,6 +3421,9 @@ const musicUrl = document.getElementById('musicUrl');
 const musicFile = document.getElementById('musicFile');
 const musicList = document.getElementById('musicList');
 const musicWave = document.getElementById('musicWave');
+const musicEmbedShell = document.getElementById('musicEmbedShell');
+const musicEmbedFrame = document.getElementById('musicEmbedFrame');
+const musicEmbedNote = document.getElementById('musicEmbedNote');
 const musicEq = document.getElementById('musicEq');
 const musicEqControls = document.getElementById('musicEqControls');
 const musicEqPresetsEl = document.getElementById('musicEqPresets');
@@ -3245,22 +3433,34 @@ const musicDuration = document.getElementById('musicDuration');
 const musicCollapse = document.getElementById('musicCollapse');
 const musicSwatches = document.getElementById('musicSwatches');
 const musicCtx = musicEq?.getContext('2d');
-const waveHeights = Array.from({ length: 48 }, (_, i) => {
-  const peak = Math.sin(i * 0.71) * 0.5 + Math.random() * 0.45;
-  return Math.max(0.12, Math.min(1, peak));
-});
+const MUSIC_WAVEFORM_BARS = 64;
+const musicWaveformCache = new Map();
 let musicPlaylist = [...musicDefaults];
 let musicIndex = 0;
 let musicAccent = localStorage.getItem(MUSIC_COLOR_KEY) || musicColors[0];
+let musicShuffleEnabled = localStorage.getItem(MUSIC_SHUFFLE_KEY) === '1';
+let musicRepeatMode = ['off', 'all', 'one'].includes(localStorage.getItem(MUSIC_REPEAT_KEY)) ? localStorage.getItem(MUSIC_REPEAT_KEY) : 'all';
 let eqBars = Array.from({ length: 28 }, () => 0.08);
 let musicEqGains = [...musicEqPresets.FLAT];
 let musicAudioCtx = null;
 let musicAudioSource = null;
 let musicAudioFilters = [];
+let musicAnalyser = null;
+let musicFrequencyData = null;
+let musicActiveMode = 'audio';
+let musicIsPlaying = false;
+let musicSoundCloudWidget = null;
+let musicSoundCloudReady = false;
+let musicSoundCloudApiPromise = null;
+let musicSoundCloudSession = 0;
+let musicWaveformCtx = null;
+let musicWaveformSession = 0;
+let musicWaveBase = seededMusicWaveform('default');
+let musicReactiveWave = [...musicWaveBase];
 
 try {
   const savedTracks = JSON.parse(localStorage.getItem(MUSIC_PLAYLIST_KEY) || '[]');
-  if (Array.isArray(savedTracks)) musicPlaylist = [...musicPlaylist, ...savedTracks];
+  if (Array.isArray(savedTracks)) musicPlaylist = [...musicPlaylist, ...savedTracks.map(normalizeMusicTrack).filter(Boolean)];
 } catch {}
 
 try {
@@ -3277,8 +3477,316 @@ function formatMusicTime(seconds) {
   return `${minutes}:${secs}`;
 }
 
+function escapeHtml(str = '') {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function isSoundCloudUrl(url = '') {
+  return /soundcloud\.com|snd\.sc/i.test(String(url));
+}
+
+function normalizeMusicSource(url = '', source = '') {
+  const normalizedSource = String(source || '').toLowerCase();
+  if (normalizedSource === 'soundcloud' || isSoundCloudUrl(url)) return 'soundcloud';
+  if (normalizedSource === 'self_hosted_audio') return 'url';
+  if (normalizedSource === 'spotify' || normalizedSource === 'youtube') return normalizedSource;
+  if (normalizedSource === 'upload') return 'upload';
+  if (normalizedSource === 'local') return 'local';
+  return normalizedSource || 'url';
+}
+
+function normalizeMusicTrack(track = {}) {
+  if (!track || !track.url) return null;
+  const url = String(track.url).trim();
+  if (!url || track.enabled === false) return null;
+  const source = normalizeMusicSource(url, track.source || track.type);
+  const title = String(track.title || suggestTitleFromUrl(url) || 'Untitled Track').trim();
+  const artist = String(track.artist || track.creator || (source === 'soundcloud' ? 'SoundCloud' : 'Audio')).trim();
+  return {
+    ...track,
+    title,
+    artist,
+    url,
+    source
+  };
+}
+
+function isSoundCloudTrack(track) {
+  return normalizeMusicSource(track?.url, track?.source) === 'soundcloud';
+}
+
+function buildSoundCloudEmbedUrl(url, autoPlay = false) {
+  const params = new URLSearchParams({
+    url,
+    color: musicAccent || '#A65D3F',
+    auto_play: autoPlay ? 'true' : 'false',
+    hide_related: 'true',
+    show_comments: 'false',
+    show_user: 'true',
+    show_reposts: 'false',
+    visual: 'false'
+  });
+  return `https://w.soundcloud.com/player/?${params.toString()}`;
+}
+
+function setMusicPlaying(isPlaying) {
+  musicIsPlaying = Boolean(isPlaying);
+  musicPlay.textContent = musicIsPlaying ? 'Ⅱ' : '▶';
+  musicPlayer.classList.toggle('is-playing', musicIsPlaying);
+}
+
+function updateMusicModeButtons() {
+  if (musicShuffle) {
+    musicShuffle.classList.toggle('is-active', musicShuffleEnabled);
+    musicShuffle.setAttribute('aria-pressed', String(musicShuffleEnabled));
+  }
+  if (musicRepeat) {
+    const label = musicRepeatMode === 'one' ? 'RPT 1' : musicRepeatMode === 'off' ? 'RPT OFF' : 'RPT ALL';
+    musicRepeat.textContent = label;
+    musicRepeat.classList.toggle('is-active', musicRepeatMode !== 'off');
+    musicRepeat.setAttribute('aria-pressed', String(musicRepeatMode !== 'off'));
+  }
+}
+
+function setMusicShuffle(enabled) {
+  musicShuffleEnabled = Boolean(enabled);
+  localStorage.setItem(MUSIC_SHUFFLE_KEY, musicShuffleEnabled ? '1' : '0');
+  updateMusicModeButtons();
+}
+
+function cycleMusicRepeat() {
+  musicRepeatMode = musicRepeatMode === 'all' ? 'one' : musicRepeatMode === 'one' ? 'off' : 'all';
+  localStorage.setItem(MUSIC_REPEAT_KEY, musicRepeatMode);
+  updateMusicModeButtons();
+}
+
+function getRandomMusicIndex() {
+  if (musicPlaylist.length < 2) return musicIndex;
+  let nextIndex = musicIndex;
+  for (let attempt = 0; attempt < 8 && nextIndex === musicIndex; attempt++) {
+    nextIndex = Math.floor(Math.random() * musicPlaylist.length);
+  }
+  return nextIndex === musicIndex ? (musicIndex + 1) % musicPlaylist.length : nextIndex;
+}
+
+function getSequentialMusicIndex(direction = 1) {
+  if (!musicPlaylist.length) return 0;
+  return (musicIndex + direction + musicPlaylist.length) % musicPlaylist.length;
+}
+
+function advanceMusicTrack(direction = 1, automatic = false) {
+  if (!musicPlaylist.length) return;
+  if (automatic && musicRepeatMode === 'off' && !musicShuffleEnabled && musicIndex >= musicPlaylist.length - 1) {
+    setMusicPlaying(false);
+    musicAudio.pause();
+    musicAudio.currentTime = 0;
+    updateMusicWave();
+    return;
+  }
+  if (automatic && musicRepeatMode === 'one') {
+    loadMusicTrack(musicIndex, true);
+    return;
+  }
+  const nextIndex = musicShuffleEnabled && direction > 0 ? getRandomMusicIndex() : getSequentialMusicIndex(direction);
+  loadMusicTrack(nextIndex, true);
+}
+
+function updateMusicWaveProgress(progress = 0) {
+  const clamped = Math.min(1, Math.max(0, Number(progress) || 0));
+  Array.from(musicWave.children).forEach((bar, index, bars) => {
+    const fill = index / Math.max(1, bars.length - 1) <= clamped ? 1 : 0;
+    bar.style.setProperty('--fill', fill);
+  });
+}
+
+function seededMusicWaveform(seedText = '', count = MUSIC_WAVEFORM_BARS) {
+  let seed = 2166136261;
+  for (let i = 0; i < seedText.length; i++) {
+    seed ^= seedText.charCodeAt(i);
+    seed = Math.imul(seed, 16777619);
+  }
+  return Array.from({ length: count }, (_, index) => {
+    seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5;
+    const rand = ((seed >>> 0) % 1000) / 1000;
+    const swell = Math.abs(Math.sin(index * 0.34 + seedText.length * 0.11));
+    const pulse = Math.abs(Math.sin(index * 0.83 + rand * 2.4));
+    return Math.max(0.08, Math.min(0.96, 0.1 + swell * 0.48 + pulse * 0.26 + rand * 0.16));
+  });
+}
+
+function renderMusicWave(heights = seededMusicWaveform('default')) {
+  if (!musicWave) return;
+  musicWaveBase = heights.map(height => Math.max(0.08, Math.min(0.98, Number(height) || 0.12)));
+  musicReactiveWave = [...musicWaveBase];
+  musicWave.innerHTML = '';
+  musicWaveBase.forEach(height => {
+    const bar = document.createElement('span');
+    bar.style.setProperty('--h', height.toFixed(3));
+    bar.style.setProperty('--fill', '0');
+    musicWave.appendChild(bar);
+  });
+}
+
+function getMusicWaveformContext() {
+  const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextCtor) return null;
+  if (!musicWaveformCtx) musicWaveformCtx = new AudioContextCtor();
+  return musicWaveformCtx;
+}
+
+function computeMusicWaveform(audioBuffer, count = MUSIC_WAVEFORM_BARS) {
+  const channelTotal = Math.min(2, audioBuffer.numberOfChannels || 1);
+  const raw = [];
+  const blockSize = Math.max(1, Math.floor(audioBuffer.length / count));
+
+  for (let bar = 0; bar < count; bar++) {
+    const start = bar * blockSize;
+    const end = bar === count - 1 ? audioBuffer.length : Math.min(audioBuffer.length, start + blockSize);
+    const step = Math.max(1, Math.floor((end - start) / 220));
+    let sum = 0;
+    let peak = 0;
+    let samples = 0;
+
+    for (let channel = 0; channel < channelTotal; channel++) {
+      const data = audioBuffer.getChannelData(channel);
+      for (let sample = start; sample < end; sample += step) {
+        const value = Math.abs(data[sample] || 0);
+        peak = Math.max(peak, value);
+        sum += value * value;
+        samples++;
+      }
+    }
+
+    const rms = samples ? Math.sqrt(sum / samples) : 0;
+    raw.push(peak * 0.62 + rms * 1.38);
+  }
+
+  const sorted = [...raw].sort((a, b) => a - b);
+  const reference = sorted[Math.max(0, Math.floor(sorted.length * 0.92))] || Math.max(...raw) || 1;
+  return raw.map(value => {
+    const normalized = Math.min(1, value / reference);
+    return Math.max(0.08, Math.min(0.98, 0.08 + Math.pow(normalized, 0.72) * 0.9));
+  });
+}
+
+async function loadMusicWaveformForTrack(track, shouldDecode = false) {
+  if (!track?.url || isSoundCloudTrack(track)) {
+    renderMusicWave(seededMusicWaveform(track?.url || 'soundcloud'));
+    updateMusicWaveProgress(0);
+    return;
+  }
+
+  const session = ++musicWaveformSession;
+  const fallback = seededMusicWaveform(track.url);
+  renderMusicWave(fallback);
+  updateMusicWaveProgress(0);
+  if (!shouldDecode || isMobileViewport()) return;
+
+  if (musicWaveformCache.has(track.url)) {
+    if (session === musicWaveformSession) {
+      renderMusicWave(musicWaveformCache.get(track.url));
+      updateMusicWave();
+    }
+    return;
+  }
+
+  try {
+    const context = getMusicWaveformContext();
+    if (!context) return;
+    const response = await fetch(track.url, { cache: 'force-cache' });
+    if (!response.ok) throw new Error('waveform fetch failed');
+    const buffer = await response.arrayBuffer();
+    const audioBuffer = await context.decodeAudioData(buffer.slice(0));
+    const waveform = computeMusicWaveform(audioBuffer);
+    musicWaveformCache.set(track.url, waveform);
+    if (session === musicWaveformSession && musicPlaylist[musicIndex]?.url === track.url) {
+      renderMusicWave(waveform);
+      updateMusicWave();
+    }
+  } catch {
+    if (session === musicWaveformSession) {
+      renderMusicWave(fallback);
+      updateMusicWave();
+    }
+  }
+}
+
+function clearSoundCloudWidget(clearFrame = false) {
+  musicSoundCloudSession += 1;
+  musicSoundCloudWidget = null;
+  musicSoundCloudReady = false;
+  if (clearFrame && musicEmbedFrame) {
+    musicEmbedFrame.removeAttribute('src');
+  }
+}
+
+function loadSoundCloudApi() {
+  if (window.SC?.Widget) return Promise.resolve(window.SC);
+  if (musicSoundCloudApiPromise) return musicSoundCloudApiPromise;
+  musicSoundCloudApiPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = MUSIC_SOUNDCLOUD_API_URL;
+    script.async = true;
+    script.onload = () => window.SC?.Widget ? resolve(window.SC) : reject(new Error('SoundCloud Widget API unavailable'));
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+  return musicSoundCloudApiPromise;
+}
+
+function syncSoundCloudVolume() {
+  if (!musicSoundCloudWidget || !musicSoundCloudReady) return;
+  const volume = Math.round(Math.max(0, Math.min(1, Number(musicVolume.value) || 0)) * 100);
+  try {
+    musicSoundCloudWidget.setVolume(volume);
+  } catch {}
+}
+
+function bindSoundCloudWidget(shouldPlay = false) {
+  if (!musicEmbedFrame?.src) return;
+  const session = musicSoundCloudSession;
+  loadSoundCloudApi().then(SC => {
+    if (session !== musicSoundCloudSession || !musicEmbedFrame?.src) return;
+    const widget = SC.Widget(musicEmbedFrame);
+    musicSoundCloudWidget = widget;
+    widget.bind(SC.Widget.Events.READY, () => {
+      if (session !== musicSoundCloudSession) return;
+      musicSoundCloudReady = true;
+      syncSoundCloudVolume();
+      widget.getDuration(duration => {
+        if (session === musicSoundCloudSession && duration) musicDuration.textContent = formatMusicTime(duration / 1000);
+      });
+      if (shouldPlay) widget.play();
+    });
+    widget.bind(SC.Widget.Events.PLAY, () => {
+      if (session === musicSoundCloudSession) setMusicPlaying(true);
+    });
+    widget.bind(SC.Widget.Events.PAUSE, () => {
+      if (session === musicSoundCloudSession) setMusicPlaying(false);
+    });
+    widget.bind(SC.Widget.Events.FINISH, () => {
+      if (session !== musicSoundCloudSession) return;
+      setMusicPlaying(false);
+      advanceMusicTrack(1, true);
+    });
+    widget.bind(SC.Widget.Events.PLAY_PROGRESS, event => {
+      if (session !== musicSoundCloudSession) return;
+      if (Number.isFinite(event?.currentPosition)) musicCurrent.textContent = formatMusicTime(event.currentPosition / 1000);
+      if (Number.isFinite(event?.relativePosition)) updateMusicWaveProgress(event.relativePosition);
+    });
+  }).catch(() => {
+    if (shouldPlay && musicActiveMode === 'soundcloud') setMusicPlaying(true);
+    if (musicEmbedNote) musicEmbedNote.textContent = 'SoundCloud embed / use embedded controls';
+  });
+}
+
 function saveMusicPlaylist() {
-  const saveable = musicPlaylist.filter(track => track.source !== 'upload');
+  const saveable = musicPlaylist.filter(track => track.source !== 'upload' && !track.deploy);
   localStorage.setItem(MUSIC_PLAYLIST_KEY, JSON.stringify(saveable.filter(track => !musicDefaults.some(defaultTrack => defaultTrack.url === track.url))));
 }
 
@@ -3398,6 +3906,10 @@ function initMusicEqGraph() {
     musicAudio.crossOrigin = 'anonymous';
     musicAudioCtx = new AudioContextCtor();
     musicAudioSource = musicAudioCtx.createMediaElementSource(musicAudio);
+    musicAnalyser = musicAudioCtx.createAnalyser();
+    musicAnalyser.fftSize = 512;
+    musicAnalyser.smoothingTimeConstant = 0.72;
+    musicFrequencyData = new Uint8Array(musicAnalyser.frequencyBinCount);
     musicAudioFilters = musicEqBands.map(band => {
       const filter = musicAudioCtx.createBiquadFilter();
       filter.type = band.type;
@@ -3407,14 +3919,17 @@ function initMusicEqGraph() {
     });
     musicAudioSource.connect(musicAudioFilters[0]);
     musicAudioFilters.forEach((filter, index) => {
-      const next = musicAudioFilters[index + 1] || musicAudioCtx.destination;
+      const next = musicAudioFilters[index + 1] || musicAnalyser;
       filter.connect(next);
     });
+    musicAnalyser.connect(musicAudioCtx.destination);
     applyMusicEqGains();
   } catch {
     musicAudioCtx = null;
     musicAudioSource = null;
     musicAudioFilters = [];
+    musicAnalyser = null;
+    musicFrequencyData = null;
     if (musicEqStatus) musicEqStatus.textContent = `${getMusicEqPresetName()} / VISUAL`;
   }
 }
@@ -3425,22 +3940,66 @@ function resumeMusicEqGraph() {
   return Promise.resolve();
 }
 
-function renderMusicWave() {
-  musicWave.innerHTML = '';
-  waveHeights.forEach(height => {
-    const bar = document.createElement('span');
-    bar.style.setProperty('--h', height.toFixed(3));
-    musicWave.appendChild(bar);
-  });
+function readMusicSpectrum() {
+  if (!musicAnalyser || !musicFrequencyData || !musicIsPlaying || musicActiveMode !== 'audio') return null;
+  musicAnalyser.getByteFrequencyData(musicFrequencyData);
+  return musicFrequencyData;
+}
+
+function sampleMusicSpectrum(spectrum, index, total) {
+  if (!spectrum || !spectrum.length) return 0;
+  const binTotal = spectrum.length;
+  const startRatio = Math.pow(index / Math.max(1, total), 1.72);
+  const endRatio = Math.pow((index + 1) / Math.max(1, total), 1.72);
+  const start = Math.min(binTotal - 1, Math.floor(startRatio * binTotal));
+  const end = Math.max(start + 1, Math.min(binTotal, Math.ceil(endRatio * binTotal)));
+  let sum = 0;
+  let peak = 0;
+  let count = 0;
+  for (let bin = start; bin < end; bin++) {
+    const value = (spectrum[bin] || 0) / 255;
+    sum += value;
+    peak = Math.max(peak, value);
+    count++;
+  }
+  const average = count ? sum / count : 0;
+  return Math.max(0, Math.min(1, Math.pow(average * 0.55 + peak * 0.62, 0.78)));
+}
+
+function sampleMusicFallbackPulse(index, total) {
+  if (!musicIsPlaying) return 0;
+  const time = performance.now() * 0.001;
+  const spread = index / Math.max(1, total - 1);
+  return 0.18 + Math.abs(Math.sin(time * 2.1 + spread * 8.4)) * 0.22;
+}
+
+function animateMusicReactiveWave() {
+  if (musicWave?.children?.length) {
+    const bars = Array.from(musicWave.children);
+    const spectrum = readMusicSpectrum();
+    bars.forEach((bar, index) => {
+      const base = musicWaveBase[index] ?? 0.12;
+      const live = spectrum ? sampleMusicSpectrum(spectrum, index, bars.length) : sampleMusicFallbackPulse(index, bars.length);
+      const target = musicIsPlaying
+        ? Math.max(base * 0.58, Math.min(1, base * 0.62 + live * 0.74))
+        : base;
+      const current = musicReactiveWave[index] ?? base;
+      const next = current + (target - current) * (musicIsPlaying ? 0.36 : 0.08);
+      musicReactiveWave[index] = next;
+      bar.style.setProperty('--h', next.toFixed(3));
+    });
+  }
+  if (musicIsPlaying && !document.hidden) {
+    requestAnimationFrame(animateMusicReactiveWave);
+  } else {
+    setTimeout(() => requestAnimationFrame(animateMusicReactiveWave), isMobileViewport() ? 650 : 300);
+  }
 }
 
 function updateMusicWave() {
   const duration = musicAudio.duration || 0;
   const progress = duration ? musicAudio.currentTime / duration : 0;
-  Array.from(musicWave.children).forEach((bar, index, bars) => {
-    const fill = index / Math.max(1, bars.length - 1) <= progress ? 1 : 0;
-    bar.style.setProperty('--fill', fill);
-  });
+  updateMusicWaveProgress(progress);
   musicCurrent.textContent = formatMusicTime(musicAudio.currentTime);
   musicDuration.textContent = formatMusicTime(duration);
 }
@@ -3451,10 +4010,11 @@ function renderMusicList() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'music-track' + (index === musicIndex ? ' is-active' : '');
+    const sourceLabel = isSoundCloudTrack(track) ? 'SOUNDCLOUD EMBED' : (track.artist || track.source || 'audio');
     button.innerHTML = `
       <span>
-        <span class="music-track-name">${track.title}</span>
-        <span class="music-track-source">${track.artist || track.source || 'audio'}</span>
+        <span class="music-track-name">${escapeHtml(track.title)}</span>
+        <span class="music-track-source">${escapeHtml(sourceLabel)}</span>
       </span>
       <span class="project-card-arrow" style="opacity:1;transform:none;">${index === musicIndex ? '●' : '▶'}</span>
     `;
@@ -3467,11 +4027,42 @@ function loadMusicTrack(index, shouldPlay = false) {
   if (!musicPlaylist.length) return;
   musicIndex = (index + musicPlaylist.length) % musicPlaylist.length;
   const track = musicPlaylist[musicIndex];
-  musicAudio.src = track.url;
+  if (isSoundCloudTrack(track)) {
+    musicActiveMode = 'soundcloud';
+    musicPlayer.classList.add('is-embed-mode');
+    musicAudio.pause();
+    musicAudio.removeAttribute('src');
+    musicAudio.load();
+    clearSoundCloudWidget();
+    if (musicEmbedShell) musicEmbedShell.hidden = false;
+    if (musicEmbedFrame) musicEmbedFrame.src = buildSoundCloudEmbedUrl(track.url, shouldPlay);
+    if (musicEmbedNote) musicEmbedNote.textContent = 'SoundCloud embed / EQ visual mode';
+    musicCurrent.textContent = '0:00';
+    musicDuration.textContent = 'SC';
+    loadMusicWaveformForTrack(track, shouldPlay);
+    if (!shouldPlay) setMusicPlaying(false);
+    bindSoundCloudWidget(shouldPlay);
+    musicTitle.textContent = track.title || 'Untitled Track';
+    musicArtist.textContent = track.artist || 'SoundCloud';
+    renderMusicList();
+    return;
+  }
+
+  musicActiveMode = 'audio';
+  musicPlayer.classList.remove('is-embed-mode');
+  clearSoundCloudWidget(true);
+  if (musicEmbedShell) musicEmbedShell.hidden = true;
   musicTitle.textContent = track.title || 'Untitled Track';
   musicArtist.textContent = track.artist || track.source || 'Audio';
-  musicAudio.load();
+  if (shouldPlay) {
+    musicAudio.src = track.url;
+    musicAudio.load();
+  } else {
+    musicAudio.pause();
+    musicAudio.removeAttribute('src');
+  }
   renderMusicList();
+  loadMusicWaveformForTrack(track, shouldPlay);
   updateMusicWave();
   if (shouldPlay) {
     playMusicAudio().catch(() => {
@@ -3481,22 +4072,58 @@ function loadMusicTrack(index, shouldPlay = false) {
 }
 
 function playMusicAudio() {
+  if (musicActiveMode === 'soundcloud') {
+    if (musicSoundCloudWidget && musicSoundCloudReady) {
+      musicSoundCloudWidget.play();
+      return Promise.resolve();
+    }
+    const track = musicPlaylist[musicIndex];
+    if (track) loadMusicTrack(musicIndex, true);
+    return Promise.resolve();
+  }
+  const track = musicPlaylist[musicIndex];
+  if (track && !isSoundCloudTrack(track)) loadMusicWaveformForTrack(track, true);
+  if (track && !musicAudio.getAttribute('src')) {
+    musicAudio.src = track.url;
+    musicAudio.load();
+  }
   return resumeMusicEqGraph().then(() => musicAudio.play());
 }
 
+function pauseMusicAudio() {
+  if (musicActiveMode === 'soundcloud') {
+    if (musicSoundCloudWidget && musicSoundCloudReady) {
+      musicSoundCloudWidget.pause();
+    }
+    setMusicPlaying(false);
+    return;
+  }
+  musicAudio.pause();
+}
+
 function toggleMusicPlayback() {
-  if (!musicAudio.src) loadMusicTrack(musicIndex, false);
+  if (!musicAudio.src && musicActiveMode !== 'soundcloud') loadMusicTrack(musicIndex, false);
+  if (musicActiveMode === 'soundcloud') {
+    if (musicIsPlaying) {
+      pauseMusicAudio();
+    } else {
+      playMusicAudio();
+    }
+    return;
+  }
   if (musicAudio.paused) {
     playMusicAudio().catch(() => {
       musicArtist.textContent = 'Playback blocked until another click';
     });
   } else {
-    musicAudio.pause();
+    pauseMusicAudio();
   }
 }
 
 function addMusicTrack(track, shouldPlay = true) {
-  musicPlaylist.push(track);
+  const normalizedTrack = normalizeMusicTrack(track);
+  if (!normalizedTrack) return;
+  musicPlaylist.push(normalizedTrack);
   musicIndex = musicPlaylist.length - 1;
   saveMusicPlaylist();
   renderMusicList();
@@ -3514,7 +4141,7 @@ function bindQueueButtons(scope = document) {
         url: button.dataset.url,
         source: button.dataset.source || 'archive'
       }, true);
-      musicPlayer.classList.remove('is-collapsed');
+      setMusicCollapsed(false);
     });
   });
 }
@@ -3529,17 +4156,67 @@ window.addEventListener('rae:queue-track', event => {
   }, true);
 });
 
+async function loadDeployMusicPlaylist() {
+  try {
+    const response = await fetch(MUSIC_DEPLOY_PLAYLIST_URL, { cache: 'no-store' });
+    if (!response.ok) return;
+    const payload = await response.json();
+    const rawTracks = Array.isArray(payload) ? payload : Array.isArray(payload?.tracks) ? payload.tracks : [];
+    const deployTracks = rawTracks
+      .map(track => normalizeMusicTrack({ ...track, deploy: true }))
+      .filter(Boolean);
+    if (!deployTracks.length) return;
+
+    const replaceDefaults = Boolean(!Array.isArray(payload) && payload?.replaceDefaults);
+    if (replaceDefaults) {
+      musicPlaylist = [];
+      musicIndex = 0;
+    }
+
+    const existingUrls = new Set(musicPlaylist.map(track => track.url));
+    deployTracks.forEach(track => {
+      if (!existingUrls.has(track.url)) {
+        musicPlaylist.push(track);
+        existingUrls.add(track.url);
+      }
+    });
+
+    if (replaceDefaults || !musicAudio.src && !musicEmbedFrame?.src) {
+      loadMusicTrack(0, false);
+    } else {
+      renderMusicList();
+    }
+  } catch {}
+}
+
+function setMusicCollapsed(collapsed) {
+  musicPlayer.classList.toggle('is-collapsed', collapsed);
+  document.querySelectorAll('.music-collapse-trigger').forEach(button => {
+    button.setAttribute('aria-expanded', String(!collapsed));
+    if (button.classList.contains('gp__ctrl')) {
+      button.textContent = collapsed ? '+' : '−';
+      button.setAttribute('aria-label', collapsed ? 'Expand music player' : 'Collapse music player');
+    } else {
+      button.textContent = collapsed ? 'Expand player' : 'Minimize player';
+      button.setAttribute('aria-label', collapsed ? 'Expand music player' : 'Collapse music player');
+    }
+  });
+}
+
+setMusicCollapsed(false);
 musicPlay.addEventListener('click', toggleMusicPlayback);
-musicPrev.addEventListener('click', () => loadMusicTrack(musicIndex - 1, true));
-musicNext.addEventListener('click', () => loadMusicTrack(musicIndex + 1, true));
-musicCollapse.addEventListener('click', () => {
-  musicPlayer.classList.toggle('is-collapsed');
-  musicCollapse.textContent = musicPlayer.classList.contains('is-collapsed') ? '+' : '−';
+musicShuffle.addEventListener('click', () => setMusicShuffle(!musicShuffleEnabled));
+musicRepeat.addEventListener('click', cycleMusicRepeat);
+musicPrev.addEventListener('click', () => advanceMusicTrack(-1, false));
+musicNext.addEventListener('click', () => advanceMusicTrack(1, false));
+document.querySelectorAll('.music-collapse-trigger').forEach(button => {
+  button.addEventListener('click', () => setMusicCollapsed(!musicPlayer.classList.contains('is-collapsed')));
 });
 musicVolume.value = localStorage.getItem(MUSIC_VOLUME_KEY) || '0.7';
 musicAudio.volume = Number(musicVolume.value);
 musicVolume.addEventListener('input', () => {
   musicAudio.volume = Number(musicVolume.value);
+  syncSoundCloudVolume();
   localStorage.setItem(MUSIC_VOLUME_KEY, musicVolume.value);
 });
 musicUrlForm.addEventListener('submit', event => {
@@ -3549,9 +4226,9 @@ musicUrlForm.addEventListener('submit', event => {
   const cleanName = decodeURIComponent(url.split('/').pop().split('?')[0] || 'Audio URL');
   addMusicTrack({
     title: cleanName.replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' '),
-    artist: 'External URL',
+    artist: isSoundCloudUrl(url) ? 'SoundCloud' : 'External URL',
     url,
-    source: 'url'
+    source: isSoundCloudUrl(url) ? 'soundcloud' : 'url'
   });
   musicUrl.value = '';
 });
@@ -3568,20 +4245,19 @@ musicFile.addEventListener('change', event => {
   musicFile.value = '';
 });
 musicWave.addEventListener('click', event => {
+  if (musicActiveMode === 'soundcloud') return;
   if (!musicAudio.duration) return;
   const rect = musicWave.getBoundingClientRect();
   const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
   musicAudio.currentTime = ratio * musicAudio.duration;
 });
 musicAudio.addEventListener('play', () => {
-  musicPlay.textContent = 'Ⅱ';
-  musicPlayer.classList.add('is-playing');
+  setMusicPlaying(true);
 });
 musicAudio.addEventListener('pause', () => {
-  musicPlay.textContent = '▶';
-  musicPlayer.classList.remove('is-playing');
+  if (musicActiveMode === 'audio') setMusicPlaying(false);
 });
-musicAudio.addEventListener('ended', () => loadMusicTrack(musicIndex + 1, true));
+musicAudio.addEventListener('ended', () => advanceMusicTrack(1, true));
 musicAudio.addEventListener('loadedmetadata', updateMusicWave);
 musicAudio.addEventListener('timeupdate', updateMusicWave);
 
@@ -3589,6 +4265,7 @@ function animateMusicEq() {
   if (!musicEq || !musicCtx) return;
   const W = musicEq.width;
   const H = musicEq.height;
+  const spectrum = readMusicSpectrum();
   musicCtx.clearRect(0, 0, W, H);
   musicCtx.fillStyle = 'rgba(0,0,0,0.18)';
   musicCtx.fillRect(0, 0, W, H);
@@ -3598,9 +4275,10 @@ function animateMusicEq() {
     const bandIndex = Math.min(musicEqGains.length - 1, Math.floor(index / Math.max(1, eqBars.length) * musicEqGains.length));
     const gain = (musicEqGains[bandIndex] || 0) / 12;
     const idle = 0.08 + Math.sin(Date.now() * 0.0015 + index) * 0.035 + Math.max(0, gain) * 0.08;
-    const active = 0.18 + Math.random() * (index < 8 ? 0.78 : 0.55) + gain * 0.18;
-    const target = musicAudio.paused ? idle : active;
-    return Math.max(0.03, Math.min(0.98, value + (target - value) * (musicAudio.paused ? 0.05 : 0.28)));
+    const reactive = spectrum ? sampleMusicSpectrum(spectrum, index, eqBars.length) : Math.random();
+    const active = 0.14 + reactive * (index < 8 ? 0.84 : 0.64) + gain * 0.18;
+    const target = musicIsPlaying ? active : idle;
+    return Math.max(0.03, Math.min(0.98, value + (target - value) * (musicIsPlaying ? 0.28 : 0.05)));
   });
   eqBars.forEach((value, index) => {
     const h = Math.max(3, value * H);
@@ -3612,261 +4290,21 @@ function animateMusicEq() {
     musicCtx.fillStyle = gradient;
     musicCtx.fillRect(x, y, barW, h);
   });
-  requestAnimationFrame(animateMusicEq);
+  if (musicIsPlaying && !document.hidden) {
+    requestAnimationFrame(animateMusicEq);
+  } else {
+    setTimeout(() => requestAnimationFrame(animateMusicEq), isMobileViewport() ? 800 : 360);
+  }
 }
 
 renderMusicSwatches();
+updateMusicModeButtons();
 renderMusicEqControls();
 renderMusicWave();
 loadMusicTrack(0, false);
+loadDeployMusicPlaylist();
 animateMusicEq();
-
-/* ════════════════════════════════════════════════════════
-   REACTIVE MEDIA · YouTube / Spotify / SoundCloud embeds
-   ════════════════════════════════════════════════════════ */
-const MEDIA_STORAGE_KEY = 'rae-media-items-v1';
-const MEDIA_TYPE_LABELS = {
-  youtube: 'YOUTUBE',
-  spotify: 'SPOTIFY',
-  soundcloud: 'SOUNDCLOUD',
-  self_hosted_audio: 'SELF HOSTED AUDIO',
-  self_hosted_video: 'SELF HOSTED VIDEO'
-};
-const DEFAULT_MEDIA_ITEMS = [
-  { id: 'm01', type: 'youtube', title: 'Reference Film Frame', creator: 'Archive Source', embed_id: 'dQw4w9WgXcQ', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', date_consumed: '2026-04-08', note: 'Lighting cadence and framing discipline.', tags: ['video','direction'] },
-  { id: 'm02', type: 'spotify', title: 'System Listening', creator: 'Nodear', embed_id: 'track/11dFghVXANMlKmJXsNCbNl', url: 'https://open.spotify.com/track/11dFghVXANMlKmJXsNCbNl', date_consumed: '2026-04-07', note: 'Track reference from the Nodear listening system.', tags: ['music','track'] },
-  { id: 'm03', type: 'soundcloud', title: 'Process Pass', creator: 'Nodear', embed_id: '', url: 'https://soundcloud.com/raehdojhn/default', date_consumed: '2026-04-06', note: 'Raw texture study.', tags: ['audio','reference'] },
-  { id: 'm04', type: 'self_hosted_audio', title: 'Local Draft', creator: 'Rae', embed_id: '', url: 'uploads/local-draft.mp3', date_consumed: '2026-04-05', note: 'Self-hosted draft slot preserved for upload or deployment assets.', tags: ['local','audio'] },
-  { id: 'm05', type: 'self_hosted_video', title: 'Material Motion', creator: 'Rae', embed_id: '', url: 'uploads/material-motion.mp4', date_consumed: '2026-04-04', note: 'Surface behavior and pacing reference slot from the archive build.', tags: ['local','video'] }
-];
-
-const mediaGrid = document.getElementById('mediaGrid');
-const mediaFilterTabs = document.getElementById('mediaFilterTabs');
-const mediaAdminToggle = document.getElementById('mediaAdminToggle');
-const mediaAdminPanel = document.getElementById('mediaAdminPanel');
-const mediaInputUrl = document.getElementById('mediaInputUrl');
-const mediaInputType = document.getElementById('mediaInputType');
-const mediaInputTitle = document.getElementById('mediaInputTitle');
-const mediaInputCreator = document.getElementById('mediaInputCreator');
-const mediaInputNote = document.getElementById('mediaInputNote');
-const mediaShelfStatus = document.getElementById('mediaShelfStatus');
-const mediaResetAll = document.getElementById('mediaResetAll');
-
-let mediaItems = loadMediaItems();
-let mediaFilter = 'all';
-
-function loadMediaItems() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(MEDIA_STORAGE_KEY));
-    if (Array.isArray(stored) && stored.length) return stored;
-  } catch (_) {}
-  return [...DEFAULT_MEDIA_ITEMS];
-}
-function saveMediaItems() {
-  localStorage.setItem(MEDIA_STORAGE_KEY, JSON.stringify(mediaItems));
-}
-
-function detectMediaType(url) {
-  if (!url) return null;
-  const u = url.trim();
-  if (/youtube\.com|youtu\.be/i.test(u)) return 'youtube';
-  if (/open\.spotify\.com|spotify:/i.test(u)) return 'spotify';
-  if (/soundcloud\.com|snd\.sc/i.test(u)) return 'soundcloud';
-  if (/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)) return 'self_hosted_video';
-  if (/\.(mp3|wav|m4a|ogg|flac)(\?|$)/i.test(u)) return 'self_hosted_audio';
-  return null;
-}
-
-function parseYouTubeId(url) {
-  try {
-    const u = new URL(url);
-    if (u.hostname.includes('youtu.be')) return u.pathname.slice(1).split('/')[0];
-    if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/')[2];
-    if (u.pathname.startsWith('/embed/')) return u.pathname.split('/')[2];
-    return u.searchParams.get('v') || '';
-  } catch { return ''; }
-}
-
-function parseSpotifyPath(url) {
-  try {
-    if (url.startsWith('spotify:')) return url.replace('spotify:', '').replace(/:/g, '/');
-    const u = new URL(url);
-    // /track/ID or /embed/track/ID etc
-    const parts = u.pathname.split('/').filter(Boolean);
-    if (parts[0] === 'embed') parts.shift();
-    const idx = parts.findIndex(p => ['track','album','playlist','episode','show','artist'].includes(p));
-    if (idx === -1) return '';
-    const kind = parts[idx];
-    const id = (parts[idx+1] || '').split('?')[0];
-    return id ? `${kind}/${id}` : '';
-  } catch { return ''; }
-}
-
-function suggestTitleFromUrl(url) {
-  try {
-    const u = new URL(url);
-    const last = decodeURIComponent(u.pathname.split('/').filter(Boolean).pop() || u.hostname);
-    return last.replace(/[-_]+/g, ' ').replace(/\.[a-z0-9]+$/i, '').trim() || 'Untitled';
-  } catch { return 'Untitled'; }
-}
-
-function todayIso() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function escapeHtml(str = '') {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-function buildEmbedHtml(item) {
-  const t = escapeHtml(item.title || 'Untitled');
-  if (item.type === 'youtube' && item.embed_id) {
-    return `<iframe class="media-embed" title="${t}" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(item.embed_id)}?rel=0&modestbranding=1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`;
-  }
-  if (item.type === 'spotify' && item.embed_id) {
-    return `<iframe class="media-embed media-embed--audio" title="${t}" src="https://open.spotify.com/embed/${item.embed_id}?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
-  }
-  if (item.type === 'soundcloud' && item.url) {
-    return `<iframe class="media-embed media-embed--audio" title="${t}" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(item.url)}&color=%23A65D3F&auto_play=false&hide_related=true&show_comments=false&show_user=true&visual=false" loading="lazy"></iframe>`;
-  }
-  if (item.type === 'self_hosted_audio' && item.url) {
-    return `<audio class="media-embed media-embed--audio" controls preload="none"><source src="${escapeHtml(item.url)}"></audio>`;
-  }
-  if (item.type === 'self_hosted_video' && item.url) {
-    return `<video class="media-embed" controls preload="metadata"><source src="${escapeHtml(item.url)}"></video>`;
-  }
-  return `<div class="media-placeholder">${escapeHtml(item.title || 'Media')}</div>`;
-}
-
-function renderMediaGrid() {
-  if (!mediaGrid) return;
-  const visible = mediaFilter === 'all'
-    ? mediaItems
-    : mediaItems.filter(m => m.type === mediaFilter);
-  mediaShelfStatus.textContent = `VISIBLE ${visible.length} / TOTAL ${mediaItems.length}`;
-
-  if (!visible.length) {
-    mediaGrid.innerHTML = `<div class="media-empty">No entries in this category yet — paste a link above.</div>`;
-    return;
-  }
-
-  mediaGrid.innerHTML = visible.map(item => {
-    const isAudioQueueable = ['youtube','spotify','soundcloud','self_hosted_audio'].includes(item.type);
-    const typeLabel = MEDIA_TYPE_LABELS[item.type] || item.type.toUpperCase();
-    const safeId = escapeHtml(item.id);
-    const queueBtn = isAudioQueueable && item.url
-      ? `<button class="archive-chip queue-track" type="button" data-title="${escapeHtml(item.title)}" data-artist="${escapeHtml(item.creator || 'Archive Media')}" data-url="${escapeHtml(item.url)}" data-source="${escapeHtml(item.type)}">QUEUE TO PLAYER</button>`
-      : '';
-    return `
-      <article class="media-card" data-id="${safeId}">
-        <button class="media-remove" type="button" data-remove="${safeId}" aria-label="Remove">REMOVE</button>
-        <div class="archive-kicker"><span class="archive-chip">${escapeHtml(typeLabel)}</span><span class="archive-dot"></span><span>${escapeHtml(item.date_consumed || '')}</span></div>
-        ${buildEmbedHtml(item)}
-        <h3>${escapeHtml(item.title || 'Untitled')}</h3>
-        <div class="archive-meta-row" style="margin:0;"><span>CREATOR</span><span class="archive-meta-row__line"></span><span>${escapeHtml(item.creator || 'UNKNOWN')}</span></div>
-        ${item.note ? `<p>${escapeHtml(item.note)}</p>` : ''}
-        ${queueBtn}
-      </article>
-    `;
-  }).join('');
-
-  bindQueueButtons(mediaGrid);
-  mediaGrid.querySelectorAll('[data-remove]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const id = btn.dataset.remove;
-      mediaItems = mediaItems.filter(m => m.id !== id);
-      saveMediaItems();
-      renderMediaGrid();
-    });
-  });
-}
-
-mediaFilterTabs?.addEventListener('click', e => {
-  const btn = e.target.closest('.media-filter-tab');
-  if (!btn) return;
-  mediaFilterTabs.querySelectorAll('.media-filter-tab').forEach(b => b.classList.toggle('is-active', b === btn));
-  mediaFilter = btn.dataset.filter || 'all';
-  renderMediaGrid();
-});
-
-mediaAdminToggle?.addEventListener('click', () => {
-  const open = mediaAdminPanel.hasAttribute('hidden') ? true : false;
-  if (open) {
-    mediaAdminPanel.removeAttribute('hidden');
-    mediaAdminToggle.classList.add('is-active');
-    mediaAdminToggle.textContent = '[ × Close Admin ]';
-    mediaAdminToggle.setAttribute('aria-expanded', 'true');
-    mediaInputUrl?.focus();
-  } else {
-    mediaAdminPanel.setAttribute('hidden', '');
-    mediaAdminToggle.classList.remove('is-active');
-    mediaAdminToggle.textContent = '[ + Add Embed ]';
-    mediaAdminToggle.setAttribute('aria-expanded', 'false');
-  }
-});
-
-mediaAdminPanel?.addEventListener('submit', e => {
-  e.preventDefault();
-  const url = (mediaInputUrl.value || '').trim();
-  if (!url) return;
-  let type = mediaInputType.value === 'auto' ? detectMediaType(url) : mediaInputType.value;
-  if (!type) {
-    alert('Could not detect a supported provider from that URL. Pick a type manually.');
-    return;
-  }
-  let embed_id = '';
-  if (type === 'youtube') embed_id = parseYouTubeId(url);
-  if (type === 'spotify') embed_id = parseSpotifyPath(url);
-  if (type === 'youtube' && !embed_id) {
-    alert('Could not parse a YouTube video ID from that URL.');
-    return;
-  }
-  if (type === 'spotify' && !embed_id) {
-    alert('Could not parse a Spotify ID from that URL.');
-    return;
-  }
-  const item = {
-    id: 'u_' + Date.now().toString(36),
-    type,
-    title: (mediaInputTitle.value || '').trim() || suggestTitleFromUrl(url),
-    creator: (mediaInputCreator.value || '').trim() || '',
-    embed_id,
-    url,
-    date_consumed: todayIso(),
-    note: (mediaInputNote.value || '').trim() || '',
-    tags: ['user-added']
-  };
-  mediaItems = [item, ...mediaItems];
-  saveMediaItems();
-  mediaInputUrl.value = '';
-  mediaInputTitle.value = '';
-  mediaInputCreator.value = '';
-  mediaInputNote.value = '';
-  mediaInputType.value = 'auto';
-  // Make sure filter shows the new card
-  if (mediaFilter !== 'all' && mediaFilter !== type) {
-    mediaFilter = 'all';
-    mediaFilterTabs.querySelectorAll('.media-filter-tab').forEach(b => {
-      b.classList.toggle('is-active', b.dataset.filter === 'all');
-    });
-  }
-  renderMediaGrid();
-});
-
-mediaResetAll?.addEventListener('click', () => {
-  if (!confirm('Reset the media grid to defaults? This will remove anything you added.')) return;
-  mediaItems = [...DEFAULT_MEDIA_ITEMS];
-  saveMediaItems();
-  renderMediaGrid();
-});
-
-renderMediaGrid();
+animateMusicReactiveWave();
 
 /* ════════════════════════════════════════════════════════
    BLOG TABS · Substack · Medium · Self-Hosted
