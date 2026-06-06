@@ -1,0 +1,16 @@
+# career-ops-plugin
+# Claude Code plugin for the CareerOps auto-apply app
+
+name: career-ops
+version: "1.0.0"
+description: |
+  AI-powered job application assistant. Helps discover jobs, score fit,
+  tailor resumes, generate cover letters, and track applications across
+  LinkedIn, Indeed, Glassdoor, and 70+ platforms.
+
+skills:
+  - skills/apply.md
+  - skills/score.md
+  - skills/cover-letter.md
+  - skills/resume-tailor.md
+  - skills/status.md
