@@ -2160,7 +2160,7 @@
             <p class="section-number">05 / Campaign Gallery</p>
             <h2>Receipts, posters, shelves, rituals.</h2>
           </div>
-          <p class="section-copy">A visual wall made from the Jiayou image set: product stills, menu systems, social mockups, storefronts, and print artifacts.</p>
+          <p class="section-copy">The full Jiayou image archive — <span id="galleryCount">84</span> plates across product stills, menu systems, social mockups, storefronts, posters, and print artifacts, sequenced as one continuous wall.</p>
         </div>
 
         <div class="gallery-grid" id="galleryGrid">
@@ -2306,6 +2306,159 @@
   <div class="toast" id="toast">Jiayou receipt printed.</div>
 
   <script>
+    /* ── Extended gallery: append every remaining brand-world plate to #galleryGrid ──
+       Runs before the reveal observer below so every new tile is picked up. */
+    (() => {
+      const grid = document.getElementById("galleryGrid");
+      if (!grid) return;
+
+      // Already placed in the curated lead wall above
+      const placed = new Set([
+        "image24.png","image22.png","image16.png","image11.png",
+        "image3.png","image29.png","image1.png","image9.png"
+      ]);
+      // De-dupe the "(1)" copies of identical UUID files
+      const skipDupes = new Set([
+        "5f045ace-9a7f-4adc-9a04-a8f73310ceb4 (1).png",
+        "aa8a78d0-79b8-4a58-936f-d97728decd73 (1).png"
+      ]);
+
+      // Every PNG in the folder + its native aspect ratio (w/h), baked in so
+      // tiles can pick the right rhythm modifier without waiting on image loads.
+      const PLATES = [
+        ["00300fc3-4133-4bc6-90f8-a6f0b93a825e.png", 1.779],
+        ["00514b9d-74a7-4b86-b57f-27784bf13b0c.png", 0.562],
+        ["07cc3184-0a13-4a55-8664-c8f50beb7282.png", 1.779],
+        ["14ff14d9-a983-4e21-a93b-59acdd875a56.png", 0.562],
+        ["1e2c86cc-0bc3-413d-83de-3132b3c754c7.png", 0.800],
+        ["2983b6f5-ca5c-4806-8d77-5b6c6e0cde8a.png", 0.800],
+        ["2a0b2d59-cb9b-4a38-8a4f-27e35722e917.png", 1.779],
+        ["31af7df5-5c0e-475f-a4be-45a173d6b355.png", 1.779],
+        ["32cdb9fb-afe7-42f0-90aa-360efee8e025.png", 0.800],
+        ["33efcb80-f3b3-4453-a43f-2caf6cd02a95.png", 1.779],
+        ["3b3142b2-3eea-488b-8cd3-f21b43943830.png", 0.562],
+        ["3e511554-99f3-4e04-99d2-93af10e755a7.png", 0.800],
+        ["3ee6680b-f1fa-4c59-836a-7e89338cf831.png", 0.800],
+        ["4037da77-89a7-4bfa-ab77-7dd44bbbd32c.png", 1.500],
+        ["48109f8c-768b-428d-b0d4-1059d4ab650f.png", 0.562],
+        ["4d3dee4f-5b24-46f7-9821-2361d66e123a.png", 1.779],
+        ["506710db-2fef-4312-b2df-36c8129066d8.png", 0.800],
+        ["519adc71-628d-4036-9ed6-0a50d776624a.png", 0.800],
+        ["521e11a2-0056-4d6a-b15e-bb689f198bbe.png", 0.800],
+        ["53633398-7210-4efa-adde-de71b86ed72b.png", 0.562],
+        ["57a66fce-2586-4db4-99d1-2c8d1490c59d.png", 0.800],
+        ["5a393bed-7a40-4d3b-83e2-243954943689.png", 0.800],
+        ["5acb3c55-ebe7-4077-b7c1-0821783c6d9e.png", 0.562],
+        ["5e3c29c3-3d70-45de-aaa5-f6ea5f6eb990.png", 1.779],
+        ["5f042b97-8906-415d-b7fb-4a0d1a506594.png", 0.562],
+        ["5f045ace-9a7f-4adc-9a04-a8f73310ceb4.png", 0.800],
+        ["64d89f37-d3c5-4974-b09e-5fdafa8f2590.png", 0.562],
+        ["68e5db27-25c2-4784-8ca2-abc05d390c6d.png", 1.500],
+        ["6908f128-8570-45c3-9c8b-d5b5cdd53a67.png", 0.562],
+        ["6ea6d2cb-d58c-480e-b756-da396a55d46c.png", 0.562],
+        ["77dabe61-d379-40f7-9688-81603785f713.png", 0.562],
+        ["85b4e084-0870-4c24-af8d-0c18c84cf23c.png", 0.800],
+        ["89aab9a8-50b6-46b2-9692-8f8fd733fcdf.png", 1.500],
+        ["8cd6bc36-bb1e-4c6c-bb6a-e7c9a3fbea45.png", 0.800],
+        ["90892ec1-9099-4953-8454-1573ad25f3f0.png", 0.562],
+        ["992f7f82-1e9a-4e0e-bf60-534fe5cc5477.png", 1.779],
+        ["9dea8616-9a3e-4b49-91d5-164f39c9fbaa.png", 0.562],
+        ["a0d11242-f30a-4f25-ae16-6630cd5224cb.png", 0.800],
+        ["a2441aa4-8e62-42e7-8945-f6584d78f606.png", 1.779],
+        ["a75c7426-886a-4081-90cb-ca57c5abf15c.png", 0.562],
+        ["aa8a78d0-79b8-4a58-936f-d97728decd73.png", 0.800],
+        ["af71fd54-d3f2-4494-a86a-44b7fcefdaa5.png", 1.779],
+        ["b2d9f8da-44b9-4c55-a9cc-fff60ffde321.png", 0.562],
+        ["bbe76808-dcb3-4780-b389-5d7a075e2302.png", 0.800],
+        ["bc241d41-08df-4e16-8c6d-2b23dbe1a2a7.png", 1.779],
+        ["bcfa34a3-3d72-4710-890e-af168b4da5b8.png", 0.800],
+        ["bea5b4d6-1d66-4fe9-bec3-1e64dd971ead.png", 1.779],
+        ["bed772c4-f323-46d9-8258-70e6fa0d2983.png", 0.562],
+        ["c575b441-4d20-48ef-8229-55d8196b7029.png", 0.562],
+        ["cc0e7561-0916-453e-885d-5c6c937817e8.png", 0.562],
+        ["d1ce65cd-ca35-4c77-ab0c-8b61d91ecd1c.png", 0.562],
+        ["d505026d-19fd-4bea-b5bb-7d8ad4fc016c.png", 1.779],
+        ["d690dbe0-a297-4591-92e8-4051ae89394b.png", 0.800],
+        ["d87d94a7-8fb8-4d49-86af-1f95d90d229c.png", 0.562],
+        ["e0b4fee9-abc8-4d82-8431-f78fc7a5ffad.png", 0.562],
+        ["e7b4d83d-7ca1-464f-856e-f43dc6fe5dff.png", 1.500],
+        ["eb32a82f-a123-4a1d-b130-bacf8c02c2e6.png", 1.250],
+        ["f0275174-8cab-4a84-a58a-4eb740ce8fa3.png", 1.415],
+        ["f0342747-4d10-4e30-b53f-55904c329ede.png", 0.562],
+        ["f5d9b707-2d94-40d2-8a45-79ae3ea45b15.png", 0.562],
+        ["image.png",   1.500],
+        ["image2.png",  0.750],
+        ["image4.png",  1.333],
+        ["image5.png",  0.800],
+        ["image6.png",  0.710],
+        ["image7.png",  0.667],
+        ["image8.png",  0.667],
+        ["image10.png", 0.667],
+        ["image12.png", 0.667],
+        ["image13.png", 0.750],
+        ["image14.png", 0.667],
+        ["image17.png", 0.750],
+        ["image18.png", 0.750],
+        ["image19.png", 1.500],
+        ["image20.png", 0.667],
+        ["image21.png", 1.500]
+      ];
+
+      // Visual-hierarchy ordering: weave landscape / square / portrait so the
+      // wall has rhythm instead of long runs of the same shape.
+      const queues = { L: [], S: [], P: [] };
+      PLATES.forEach((p) => {
+        const [file, ar] = p;
+        if (placed.has(file) || skipDupes.has(file)) return;
+        if (ar >= 1.35) queues.L.push(p);
+        else if (ar >= 0.95) queues.S.push(p);
+        else queues.P.push(p);
+      });
+      const total = { L: queues.L.length, S: queues.S.length, P: queues.P.length };
+      const at = { L: 0, S: 0, P: 0 };
+      const ordered = [];
+      let left = total.L + total.S + total.P;
+      while (left > 0) {
+        let pick = null, best = Infinity;
+        for (const k of ["L", "S", "P"]) {
+          if (at[k] >= total[k]) continue;
+          const prog = at[k] / total[k];
+          if (prog < best) { best = prog; pick = k; }
+        }
+        ordered.push(queues[pick][at[pick]++]);
+        left--;
+      }
+
+      // Rotate caption tags through the same vocabulary as the curated 8.
+      const TAGS = ["Spread","Poster","Social","OOH","Material","Menu","Packaging","System","Storefront","Wall","Mark","Editorial"];
+      const LEAD_COUNT = 8;
+      const frag = document.createDocumentFragment();
+
+      ordered.forEach(([file, ar], i) => {
+        // Accent moments — sprinkled so the grid breathes, never two in a row.
+        let mod = "";
+        if (i > 0 && i % 11 === 0 && ar >= 1.35)      mod = "wide";
+        else if (i > 0 && i % 13 === 0 && ar <= 0.65) mod = "tall";
+        else if (i > 0 && i % 23 === 0 && ar >= 0.95 && ar < 1.35) mod = "big";
+
+        const num = String(LEAD_COUNT + i + 1).padStart(2, "0");
+        const tag = TAGS[(LEAD_COUNT + i) % TAGS.length];
+        const fig = document.createElement("figure");
+        fig.className = "gallery-item" + (mod ? " " + mod : "");
+        fig.setAttribute("data-reveal", "");
+        fig.innerHTML =
+          '<img src="' + encodeURI(file) + '" alt="Jiayou brand archive plate ' + num + '" loading="lazy" decoding="async" />' +
+          '<figcaption class="gallery-caption"><span>JYFY / ' + num + '</span><span>' + tag + '</span></figcaption>';
+        frag.appendChild(fig);
+      });
+
+      grid.appendChild(frag);
+
+      // Update the section copy's plate count if a counter element is present
+      const counter = document.getElementById("galleryCount");
+      if (counter) counter.textContent = LEAD_COUNT + ordered.length;
+    })();
+
     const body = document.body;
     const progress = document.getElementById("progress");
     const nav = document.getElementById("nav");
