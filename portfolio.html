@@ -3401,6 +3401,7 @@ const MUSIC_VOLUME_KEY = 'rae-static-music-volume';
 const MUSIC_EQ_KEY = 'rae-static-music-eq';
 const MUSIC_SHUFFLE_KEY = 'rae-static-music-shuffle';
 const MUSIC_REPEAT_KEY = 'rae-static-music-repeat';
+const MUSIC_COLLAPSED_KEY = 'rae-static-music-collapsed';
 const MUSIC_DEPLOY_PLAYLIST_URL = 'public/music-player-playlist.json';
 const MUSIC_SOUNDCLOUD_API_URL = 'https://w.soundcloud.com/player/api.js';
 const musicDefaults = [
@@ -4164,7 +4165,9 @@ function bindQueueButtons(scope = document) {
         url: button.dataset.url,
         source: button.dataset.source || 'archive'
       }, true);
-      setMusicCollapsed(false);
+      // On mobile, don't force-open the player when a track is queued — respect
+      // the user's collapsed state so the player only enlarges on explicit tap.
+      if (!isMobileViewport()) setMusicCollapsed(false);
     });
   });
 }
@@ -4212,7 +4215,7 @@ async function loadDeployMusicPlaylist() {
   } catch {}
 }
 
-function setMusicCollapsed(collapsed) {
+function setMusicCollapsed(collapsed, { persist = true } = {}) {
   musicPlayer.classList.toggle('is-collapsed', collapsed);
   document.querySelectorAll('.music-collapse-trigger').forEach(button => {
     button.setAttribute('aria-expanded', String(!collapsed));
@@ -4224,9 +4227,20 @@ function setMusicCollapsed(collapsed) {
       button.setAttribute('aria-label', collapsed ? 'Expand music player' : 'Collapse music player');
     }
   });
+  if (persist) {
+    try { localStorage.setItem(MUSIC_COLLAPSED_KEY, collapsed ? '1' : '0'); } catch {}
+  }
 }
 
-setMusicCollapsed(false);
+// Initial state: respect saved preference; otherwise default to collapsed on
+// mobile (so the player appears as a small pill that can be tapped to enlarge)
+// and expanded on desktop. Don't persist this default — only persist explicit
+// user toggles via the collapse button.
+(() => {
+  const saved = (() => { try { return localStorage.getItem(MUSIC_COLLAPSED_KEY); } catch { return null; } })();
+  const startCollapsed = saved === null ? isMobileViewport() : saved === '1';
+  setMusicCollapsed(startCollapsed, { persist: false });
+})();
 musicPlay.addEventListener('click', toggleMusicPlayback);
 musicShuffle.addEventListener('click', () => setMusicShuffle(!musicShuffleEnabled));
 musicRepeat.addEventListener('click', cycleMusicRepeat);
