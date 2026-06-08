@@ -7,6 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&family=Noto+Serif+KR:wght@300;500&display=swap" rel="stylesheet">
+    <script>
+        // Apply saved theme before paint to avoid a flash of the wrong theme
+        (function () {
+            try {
+                var saved = localStorage.getItem('seoulstice-theme');
+                var t = saved || ((window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
     <style>
         :root {
             --beige: #D9C4B4;
@@ -385,6 +395,67 @@
             .system-layout { grid-template-columns: 1fr; }
             .glass-viewer { width: 95vw; height: 70vh; }
         }
+
+        /* ===== DARK MODE ===== */
+        :root { --switch: #14100d; }
+        html { transition: background 0.3s ease; }
+        body, .window-shell, .cat-card, .win-title, .taskbar, .nav-ico,
+        .start-btn, .task-tab, .clock-win, .typo-block {
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --beige: #2c2622;
+            --taupe: #b9a290;
+            --brown: #c9b6a4;
+            --grey: #9a8d80;
+            --espresso: #ECE0D2;   /* primary text + borders flip to light */
+            --burgundy: #e0605a;    /* brighter so it reads on dark */
+            --cream: #2a2420;       /* main window surface */
+            --paper: #342d27;       /* secondary surface */
+            --shadow: rgba(0, 0, 0, 0.55);
+        }
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #1b1714, #261f19 48%, #14100d);
+        }
+        [data-theme="dark"] body:before {
+            background: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            mix-blend-mode: overlay;
+        }
+        [data-theme="dark"] .desktop {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        }
+        [data-theme="dark"] .win-title {
+            background: linear-gradient(90deg, #1f1a16, #322a23);
+            color: var(--espresso);
+        }
+        [data-theme="dark"] .cat-card { background: var(--paper); }
+        [data-theme="dark"] .cat-card:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); }
+        [data-theme="dark"] .typo-block { background: var(--paper); }
+        [data-theme="dark"] .taskbar {
+            background: #1d1813;
+            border-top-color: #4a3b32;
+            box-shadow: 0 -2px 0 #000;
+        }
+        [data-theme="dark"] .clock-win { background: #14100d; border-color: #4a3b32; }
+        [data-theme="dark"] .nav-icon:hover .nav-ico { background: var(--paper); }
+        [data-theme="dark"] .task-tab:hover { background: var(--paper); }
+        [data-theme="dark"] .glass-viewer {
+            background: rgba(30, 24, 20, 0.45);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        [data-theme="dark"] .glass-titlebar {
+            background: rgba(255, 255, 255, 0.06);
+            border-bottom-color: rgba(255, 255, 255, 0.12);
+            color: var(--espresso);
+        }
+        [data-theme="dark"] .glass-close {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--espresso);
+        }
     </style>
 </head>
 <body>
@@ -412,7 +483,7 @@
                         <p style="font-size: 22px; color: var(--brown); line-height: 1.4; margin: 30px 0;">A ritual alignment system for city skin. Built around dawn light, old-web residue, and tactile renewal.</p>
                         <div style="display: flex; gap: 15px;">
                             <div style="border: 1px solid var(--espresso); padding: 12px 20px; font-family: var(--mono); font-size: 10px;">VER. 1.0.4</div>
-                            <div style="border: 1px solid var(--espresso); padding: 12px 20px; font-family: var(--mono); font-size: 10px; background: var(--espresso); color: #fff;">ACTIVATE RITUAL</div>
+                            <div style="border: 1px solid var(--espresso); padding: 12px 20px; font-family: var(--mono); font-size: 10px; background: var(--espresso); color: var(--cream);">ACTIVATE RITUAL</div>
                         </div>
                     </div>
                     <div style="border: 1px solid var(--espresso); background: url('attachments/01A9E50D-F555-4177-9D2D-902408A4A6D3.png'); background-size: cover; background-position: center;"></div>
@@ -435,7 +506,7 @@
                     <div class="catalogue-header">
                         <div>
                             <h2 style="font-family: var(--serif); font-size: 52px; margin: 0;">Portfolio Catalogue</h2>
-                            <div style="font-family: var(--mono); font-size: 10px; color: var(--brown);">TOTAL ASSETS: 102 | CLASSIFIED: BRANDED IDENTITY</div>
+                            <div style="font-family: var(--mono); font-size: 10px; color: var(--brown);">TOTAL ASSETS: 289 | CLASSIFIED: BRANDED IDENTITY</div>
                         </div>
                         <div style="font-family: var(--mono); font-size: 11px; color: var(--burgundy);">FILTER: ALL_Renders</div>
                     </div>
@@ -503,11 +574,11 @@
                         <p style="font-size: 14px; color: var(--brown); margin-top: 15px;">Daily captures of light, skin, and city residue.</p>
                     </aside>
                     <div>
-                        <div style="border: 1px solid var(--espresso); background: #fff; padding: 25px; margin-bottom: 30px;">
+                        <div style="border: 1px solid var(--espresso); background: var(--cream); padding: 25px; margin-bottom: 30px;">
                             <img src="attachments/11B3834C-7C58-46BD-9F99-965606AF6FA3.png" style="width: 100%; border: 1px solid var(--paper);">
                             <div style="margin-top: 15px; font-family: var(--mono); font-size: 9px;">POSTED: 07:30 AM / TAGS: #DAWNRITUAL #SKINCARE</div>
                         </div>
-                        <div style="border: 1px solid var(--espresso); background: #fff; padding: 25px;">
+                        <div style="border: 1px solid var(--espresso); background: var(--cream); padding: 25px;">
                             <img src="attachments/211869AB-4B08-4BD7-B177-CC6EF417EBF8.png" style="width: 100%; border: 1px solid var(--paper);">
                             <div style="margin-top: 15px; font-family: var(--mono); font-size: 9px;">POSTED: 08:15 PM / TAGS: #CITYSKIN #RENEWAL</div>
                         </div>
@@ -546,6 +617,7 @@
             <button class="task-tab" onclick="scrollToSection('shop')">shop_retail</button>
             <button class="task-tab" onclick="scrollToSection('guide')">brand_guide</button>
             <div class="clock-win" id="clock">08:30 PM</div>
+            <button class="task-tab" id="themeToggle" onclick="toggleTheme()" title="Toggle light / dark mode" style="margin-left: 8px;">☾ DARK</button>
         </div>
     </div>
 
@@ -561,7 +633,7 @@
     </div>
 
     <script>
-        const ALL_IMAGES = ["01A9E50D-F555-4177-9D2D-902408A4A6D3.png","05839fe4-2c09-4c9c-bbcc-a74528cd60dc.png","0f70be4c-ada3-4238-b1db-a792375453dd.png","0f712cc6-1b8e-4f4e-9a5c-e9b1c7a0ad2e.png","10db4c01-0ed4-4f72-85e2-b1a59154f166.png","11B3834C-7C58-46BD-9F99-965606AF6FA3.png","14ac6247-6637-48f0-80a0-baaecd4009fa.png","15112771-68fc-44f4-94a1-150b75a3591c.png","15cb22ea-77e4-484f-b3a8-6760b583f15e.png","1776942151500-019dba01-0aeb-7771-bfb8-f87041d1b066.png","17d6b8db-5366-45fb-821a-7cd8195f52e0.png","19257f00-8836-4d99-adb2-854c6bac54d0.png","211869AB-4B08-4BD7-B177-CC6EF417EBF8.png","241208CF-3066-4C27-83F9-0A61F1C7997F.png","252dc928-aa94-4d37-8b7c-a6f116814f0e.png","267de1d9-daa0-47b4-9606-b82adb77c6bb.png","2dc2c869-3e39-450d-b16b-a6890dacad93.png","311FDB57-B303-4515-9D50-FDDDE7F2E751.png","353AC02A-2CCD-4E72-85F0-7C787174ABA8.png","3c48203d-31f8-4ba7-bf07-9c67257a2051.png","3df1c4a2-25af-4a49-8e24-6ed018ea7558.png","4412D7DF-218F-4DC5-8753-22AD98367E64.png","479121bf-96c8-4f7b-9e77-5750443d6507 (1).png","52ba07ae-c035-4d2e-ba00-46532c254f23.png","55f1c7db-9dff-4740-be41-68a90e9bfa1f.png","5F67525D-2112-4CDD-8125-8E1BE2F5C457.png","64ef006d-89cf-4954-8376-d38db3b79700.png","67A29D54-F2EF-4F90-992D-4641119F847E.png","6D5D7210-7FB9-43E7-9C20-C47A88B19AB6.png","6a2b0c6b-bd64-4111-96f2-f43977d287cd.png","6e4d26d6-ef6d-44e4-8a2a-078040cde0ea.png","743A3E35-9C07-4901-9881-139A0DB17352.png","76300f7d-efe7-4b5a-8779-a4996aad1cd1.png","77621694-a2c4-4e4d-9f7f-062c038deaf2.png","78F598AF-63A4-43ED-A467-D89FAE16BC61.png","79fc2e67-95ee-4872-8dff-2923f2759e72.png","7BFB1B4E-DF1C-4664-B12F-C7BEC5528769.png","82ca1095-46c3-4a83-92fe-778d85a1d631.png","851fe2cf-6748-45ad-8607-785fd14c8ebc.png","85ea45d1-3243-4768-a0eb-044eb55a8337.png","892aab50-849f-47da-8374-27977b5f71ef.png","8dc20e88-2a66-4cb0-ada4-4c19962f9618.png","9126e030-df55-4fbf-9501-cda99e7eb6ae.png","9374d06c-a302-4631-bfc2-edc0b640b5d4.png","97e0d013-d4c5-44ba-97ee-7d7e7743a70e.png","9C24841E-C10B-4C96-A15E-D1D6B44E6E32.png","9bbc48ad-5d46-4363-9c99-7b171c2310f2.png","A1356C42-1D3C-4FAC-8204-3B5B71954A9E.png","B14F1AAB-B80E-4A03-9D02-1CAAB05386BE.png","B84A8AC5-E36A-47AA-91E7-31CB770B841F.png","CB457230-4264-462D-A96F-95F974520123.png","EDAC1187-2569-419E-A9F1-B4E0DE44613E.png","Gemini_Generated_Image_xkef4vxkef4vxkef.png","a460d743-b23c-44b7-9815-a42a8381490d.png","a8798374-aa06-4f92-ba1b-397830fdf9d3.png","ab80c261-d3cb-4742-831e-ac59840f95cd.png","acdc8bdf-05da-4001-afbd-09499ff32038.png","ae8209d5-2db2-4c0a-ae56-d52f3c34579f.png","af02c3a4-e52b-4f0b-9632-b830401f48dc.png","b12f02fe-165f-4ea0-a100-8b547104f83c.png","b48ac305-2d23-4b16-ab44-177169f2211c.png","ca37a29c-bf7f-40b7-a4a3-75fa45bdc188.png","d58479d5-3761-48f3-bf89-fe3b00a6ec40.png","e091711e-5e97-41db-8eca-7ac64d61cfa2.png","e4ac327e-338f-4078-affb-2f8a9d1032b0.png","e68cafde-6e91-477f-88e4-aa982c409289.png","f2577690-80b6-458f-a673-9b31bb17b0ac.png","f654e54c-5249-4126-bd13-41d96350f299.png","f7675b3d-7c22-4e38-aa2f-c24c3cd3d232.png","f8cb27cf-ffb7-4cb0-bb01-a6f3374e1fe7.png","muapi-5d7da5e1-4cdf-4ffe-84fe-dd2b00140288.jpg","muapi-db46d9b2-d860-4d62-901c-e65eb11c9303.jpg","unknown-2026-04-23T12-22-37-661Z (1).jpg","unknown-2026-04-23T12-22-37-661Z.jpg","unknown-2026-04-23T12-22-37-716Z (1).jpg","unknown-2026-04-23T12-22-37-716Z (2).jpg","unknown-2026-04-23T12-22-37-716Z (3).jpg","unknown-2026-04-23T12-22-37-716Z.jpg","unknown-2026-04-23T12-22-37-739Z.jpg","unknown-2026-04-23T12-22-37-761Z.jpg","unknown-2026-04-23T12-22-37-814Z.jpg","unknown-2026-04-23T12-22-37-838Z.jpg","unknown-2026-04-23T12-22-37-898Z.jpg","unknown-2026-04-23T12-22-37-918Z.jpg","unknown-2026-04-23T12-22-37-933Z.jpg","unknown-2026-04-23T12-22-37-945Z (1).jpg","unknown-2026-04-23T12-22-37-945Z.jpg","unknown-2026-04-23T12-22-37-959Z.jpg","unknown-2026-04-23T12-22-37-969Z.jpg","unknown-2026-04-23T12-22-37-972Z.jpg","unknown-2026-04-23T12-22-37-983Z.jpg","unknown-2026-04-23T12-22-38-025Z.jpg","unknown-2026-04-23T12-22-38-031Z (1).jpg","unknown-2026-04-23T12-22-38-031Z (2).jpg","unknown-2026-04-23T12-22-38-177Z.jpg","unknown-2026-04-23T12-22-38-200Z (1).jpg","unknown-2026-04-23T12-22-38-200Z (2).jpg","unknown-2026-04-23T12-22-38-221Z (1).jpg","unknown-2026-04-23T12-22-38-221Z.jpg","unknown-2026-04-23T12-22-38-256Z.jpg"];
+        const ALL_IMAGES = ["01A9E50D-F555-4177-9D2D-902408A4A6D3.png","05839fe4-2c09-4c9c-bbcc-a74528cd60dc.png","0f70be4c-ada3-4238-b1db-a792375453dd.png","0f712cc6-1b8e-4f4e-9a5c-e9b1c7a0ad2e.png","10db4c01-0ed4-4f72-85e2-b1a59154f166.png","11B3834C-7C58-46BD-9F99-965606AF6FA3.png","14ac6247-6637-48f0-80a0-baaecd4009fa.png","15112771-68fc-44f4-94a1-150b75a3591c.png","15cb22ea-77e4-484f-b3a8-6760b583f15e.png","1776942151500-019dba01-0aeb-7771-bfb8-f87041d1b066.png","17d6b8db-5366-45fb-821a-7cd8195f52e0.png","19257f00-8836-4d99-adb2-854c6bac54d0.png","211869AB-4B08-4BD7-B177-CC6EF417EBF8.png","241208CF-3066-4C27-83F9-0A61F1C7997F.png","252dc928-aa94-4d37-8b7c-a6f116814f0e.png","267de1d9-daa0-47b4-9606-b82adb77c6bb.png","2dc2c869-3e39-450d-b16b-a6890dacad93.png","311FDB57-B303-4515-9D50-FDDDE7F2E751.png","353AC02A-2CCD-4E72-85F0-7C787174ABA8.png","3c48203d-31f8-4ba7-bf07-9c67257a2051.png","3df1c4a2-25af-4a49-8e24-6ed018ea7558.png","4412D7DF-218F-4DC5-8753-22AD98367E64.png","479121bf-96c8-4f7b-9e77-5750443d6507 (1).png","52ba07ae-c035-4d2e-ba00-46532c254f23.png","55f1c7db-9dff-4740-be41-68a90e9bfa1f.png","5F67525D-2112-4CDD-8125-8E1BE2F5C457.png","64ef006d-89cf-4954-8376-d38db3b79700.png","67A29D54-F2EF-4F90-992D-4641119F847E.png","6D5D7210-7FB9-43E7-9C20-C47A88B19AB6.png","6a2b0c6b-bd64-4111-96f2-f43977d287cd.png","6e4d26d6-ef6d-44e4-8a2a-078040cde0ea.png","743A3E35-9C07-4901-9881-139A0DB17352.png","76300f7d-efe7-4b5a-8779-a4996aad1cd1.png","77621694-a2c4-4e4d-9f7f-062c038deaf2.png","78F598AF-63A4-43ED-A467-D89FAE16BC61.png","79fc2e67-95ee-4872-8dff-2923f2759e72.png","7BFB1B4E-DF1C-4664-B12F-C7BEC5528769.png","82ca1095-46c3-4a83-92fe-778d85a1d631.png","851fe2cf-6748-45ad-8607-785fd14c8ebc.png","85ea45d1-3243-4768-a0eb-044eb55a8337.png","892aab50-849f-47da-8374-27977b5f71ef.png","8dc20e88-2a66-4cb0-ada4-4c19962f9618.png","9126e030-df55-4fbf-9501-cda99e7eb6ae.png","9374d06c-a302-4631-bfc2-edc0b640b5d4.png","97e0d013-d4c5-44ba-97ee-7d7e7743a70e.png","9C24841E-C10B-4C96-A15E-D1D6B44E6E32.png","9bbc48ad-5d46-4363-9c99-7b171c2310f2.png","A1356C42-1D3C-4FAC-8204-3B5B71954A9E.png","B14F1AAB-B80E-4A03-9D02-1CAAB05386BE.png","B84A8AC5-E36A-47AA-91E7-31CB770B841F.png","CB457230-4264-462D-A96F-95F974520123.png","EDAC1187-2569-419E-A9F1-B4E0DE44613E.png","Gemini_Generated_Image_xkef4vxkef4vxkef.png","a460d743-b23c-44b7-9815-a42a8381490d.png","a8798374-aa06-4f92-ba1b-397830fdf9d3.png","ab80c261-d3cb-4742-831e-ac59840f95cd.png","acdc8bdf-05da-4001-afbd-09499ff32038.png","ae8209d5-2db2-4c0a-ae56-d52f3c34579f.png","af02c3a4-e52b-4f0b-9632-b830401f48dc.png","b12f02fe-165f-4ea0-a100-8b547104f83c.png","b48ac305-2d23-4b16-ab44-177169f2211c.png","ca37a29c-bf7f-40b7-a4a3-75fa45bdc188.png","d58479d5-3761-48f3-bf89-fe3b00a6ec40.png","e091711e-5e97-41db-8eca-7ac64d61cfa2.png","e4ac327e-338f-4078-affb-2f8a9d1032b0.png","e68cafde-6e91-477f-88e4-aa982c409289.png","f2577690-80b6-458f-a673-9b31bb17b0ac.png","f654e54c-5249-4126-bd13-41d96350f299.png","f7675b3d-7c22-4e38-aa2f-c24c3cd3d232.png","f8cb27cf-ffb7-4cb0-bb01-a6f3374e1fe7.png","muapi-5d7da5e1-4cdf-4ffe-84fe-dd2b00140288.jpg","muapi-db46d9b2-d860-4d62-901c-e65eb11c9303.jpg","unknown-2026-04-23T12-22-37-661Z (1).jpg","unknown-2026-04-23T12-22-37-661Z.jpg","unknown-2026-04-23T12-22-37-716Z (1).jpg","unknown-2026-04-23T12-22-37-716Z (2).jpg","unknown-2026-04-23T12-22-37-716Z (3).jpg","unknown-2026-04-23T12-22-37-716Z.jpg","unknown-2026-04-23T12-22-37-739Z.jpg","unknown-2026-04-23T12-22-37-761Z.jpg","unknown-2026-04-23T12-22-37-814Z.jpg","unknown-2026-04-23T12-22-37-838Z.jpg","unknown-2026-04-23T12-22-37-898Z.jpg","unknown-2026-04-23T12-22-37-918Z.jpg","unknown-2026-04-23T12-22-37-933Z.jpg","unknown-2026-04-23T12-22-37-945Z (1).jpg","unknown-2026-04-23T12-22-37-945Z.jpg","unknown-2026-04-23T12-22-37-959Z.jpg","unknown-2026-04-23T12-22-37-969Z.jpg","unknown-2026-04-23T12-22-37-972Z.jpg","unknown-2026-04-23T12-22-37-983Z.jpg","unknown-2026-04-23T12-22-38-025Z.jpg","unknown-2026-04-23T12-22-38-031Z (1).jpg","unknown-2026-04-23T12-22-38-031Z (2).jpg","unknown-2026-04-23T12-22-38-177Z.jpg","unknown-2026-04-23T12-22-38-200Z (1).jpg","unknown-2026-04-23T12-22-38-200Z (2).jpg","unknown-2026-04-23T12-22-38-221Z (1).jpg","unknown-2026-04-23T12-22-38-221Z.jpg","unknown-2026-04-23T12-22-38-256Z.jpg","Gemini_Generation_1780915396166.png","Gemini_Generation_1780915396897.png","Gemini_Generation_1780915397610.png","Gemini_Generation_1780915398162.png","Gemini_Generation_1780915398517.png","Gemini_Generation_1780915399616.png","Gemini_Generation_1780915399640.png","Gemini_Generation_1780915399968.png","Gemini_Generation_1780915400213.png","Gemini_Generation_1780915401208.png","Gemini_Generation_1780915401719.png","Gemini_Generation_1780915402758.png","Gemini_Generation_1780915404269.png","Gemini_Generation_1780915404826.png","Gemini_Generation_1780915404894.png","Gemini_Generation_1780915405719.png","Gemini_Generation_1780915405842.png","Gemini_Generation_1780915406382.png","Gemini_Generation_1780915407033.png","Gemini_Generation_1780915408060.png","Gemini_Generation_1780915408625.png","Gemini_Generation_1780915408924.png","Gemini_Generation_1780915409289.png","Gemini_Generation_1780915410171.png","Gemini_Generation_1780915411069.png","Gemini_Generation_1780915411917.png","Gemini_Generation_1780915411962.png","Gemini_Generation_1780915412659.png","Gemini_Generation_1780915412756.png","Gemini_Generation_1780915413549.png","Gemini_Generation_1780915413655.png","Gemini_Generation_1780915414969.png","Gemini_Generation_1780915415300.png","Gemini_Generation_1780915415802.png","Gemini_Generation_1780915417670.png","Gemini_Generation_1780915418198.png","Gemini_Generation_1780915418595.png","Gemini_Generation_1780915419077.png","Gemini_Generation_1780915419916.png","Gemini_Generation_1780915419934.png","Gemini_Generation_1780915420260.png","Gemini_Generation_1780915420944.png","Gemini_Generation_1780915421445.png","Gemini_Generation_1780915422073.png","Gemini_Generation_1780915422368.png","Gemini_Generation_1780915422825.png","Gemini_Generation_1780915423190.png","Gemini_Generation_1780915424463.png","Gemini_Generation_1780915425014.png","Gemini_Generation_1780915426450 (1).png","Gemini_Generation_1780915427083.png","Gemini_Generation_1780915427421.png","Gemini_Generation_1780915427501.png","Gemini_Generation_1780915428227.png","Gemini_Generation_1780915428541.png","Gemini_Generation_1780915429577.png","Gemini_Generation_1780915430098.png","Gemini_Generation_1780915430566.png","Gemini_Generation_1780915431003.png","Gemini_Generation_1780915431326.png","Gemini_Generation_1780915431680.png","Gemini_Generation_1780915434297.png","Gemini_Generation_1780915434805.png","Gemini_Generation_1780915435941.png","Gemini_Generation_1780915436297.png","Gemini_Generation_1780915436900.png","Gemini_Generation_1780915437164.png","Gemini_Generation_1780915437392.png","Gemini_Generation_1780915438331.png","Gemini_Generation_1780915439085.png","Gemini_Generation_1780915439721.png","Gemini_Generation_1780915440325.png","Gemini_Generation_1780915440471.png","Gemini_Generation_1780915440915.png","Gemini_Generation_1780915441749.png","Gemini_Generation_1780915441820.png","Gemini_Generation_1780915442337.png","Gemini_Generation_1780915444143.png","Gemini_Generation_1780915444467.png","Gemini_Generation_1780915444537.png","Gemini_Generation_1780915445562.png","Gemini_Generation_1780915446083.png","Gemini_Generation_1780915447264.png","Gemini_Generation_1780915447384.png","Gemini_Generation_1780915447726.png","Gemini_Generation_1780915448940.png","Gemini_Generation_1780915450139.png","Gemini_Generation_1780915450290.png","Gemini_Generation_1780915450590.png","Gemini_Generation_1780915450965.png","Gemini_Generation_1780915451662.png","Gemini_Generation_1780915451849.png","Gemini_Generation_1780915452082.png","Gemini_Generation_1780915452468.png","Gemini_Generation_1780915452955.png","Gemini_Generation_1780915599981.png","Gemini_Generation_1780915600033.png","Gemini_Generation_1780915600996.png","Gemini_Generation_1780915601454.png","Gemini_Generation_1780915601684.png","Gemini_Generation_1780915602507.png","Gemini_Generation_1780915603785.png","Gemini_Generation_1780915603921.png","Gemini_Generation_1780915604030.png","Gemini_Generation_1780915607379.png","Gemini_Generation_1780915607903.png","Gemini_Generation_1780915608442.png","Gemini_Generation_1780915608772.png","Gemini_Generation_1780915609011.png","Gemini_Generation_1780915609741.png","Gemini_Generation_1780915609867.png","Gemini_Generation_1780915610248.png","Gemini_Generation_1780915610920.png","Gemini_Generation_1780915611515.png","Gemini_Generation_1780915611862.png","Gemini_Generation_1780915613011.png","Gemini_Generation_1780915613322.png","Gemini_Generation_1780915614002.png","Gemini_Generation_1780915614378.png","Gemini_Generation_1780915614605.png","Gemini_Generation_1780915615532.png","Gemini_Generation_1780915615997.png","Gemini_Generation_1780915616777.png","Gemini_Generation_1780915617235.png","Gemini_Generation_1780915617665.png","Gemini_Generation_1780915618753.png","Gemini_Generation_1780915619160.png","Gemini_Generation_1780915619564.png","Gemini_Generation_1780915620175.png","Gemini_Generation_1780915620749.png","Gemini_Generation_1780915620941.png","Gemini_Generation_1780915621838.png","Gemini_Generation_1780915622557.png","Gemini_Generation_1780915623309.png","Gemini_Generation_1780915623753.png","Gemini_Generation_1780915624292.png","Gemini_Generation_1780915625143.png","Gemini_Generation_1780915625346.png","Gemini_Generation_1780915626173.png","Gemini_Generation_1780915626808.png","Gemini_Generation_1780915627286.png","Gemini_Generation_1780915628387.png","Gemini_Generation_1780915629718.png","Gemini_Generation_1780915630034.png","Gemini_Generation_1780915630404.png","Gemini_Generation_1780915631301.png","Gemini_Generation_1780915631796.png","Gemini_Generation_1780915631966.png","Gemini_Generation_1780915632739.png","Gemini_Generation_1780915633654.png","Gemini_Generation_1780915634748.png","Gemini_Generation_1780915635324.png","Gemini_Generation_1780915636259.png","Gemini_Generation_1780915636668.png","Gemini_Generation_1780915639415.png","Gemini_Generation_1780915639672.png","Gemini_Generation_1780915640789.png","Gemini_Generation_1780915641300.png","Gemini_Generation_1780915641884.png","Gemini_Generation_1780915642539.png","Gemini_Generation_1780915643087.png","Gemini_Generation_1780915643889.png","Gemini_Generation_1780915644202.png","Gemini_Generation_1780915644986.png","Gemini_Generation_1780915645130.png","Gemini_Generation_1780915645896.png","Gemini_Generation_1780915646128.png","Gemini_Generation_1780915646708.png","Gemini_Generation_1780915647118.png","Gemini_Generation_1780915648061.png","Gemini_Generation_1780915648882.png","Gemini_Generation_1780915649099.png","Gemini_Generation_1780915649802.png","Gemini_Generation_1780915650374.png","Gemini_Generation_1780915651159.png","Gemini_Generation_1780915651589.png","Gemini_Generation_1780915652354.png","Gemini_Generation_1780915652555.png","Gemini_Generation_1780915652917.png","Gemini_Generation_1780915653673.png","Gemini_Generation_1780915654506.png","Gemini_Generation_1780915654746.png","Gemini_Generation_1780915655925.png","Gemini_Generation_1780915656263.png","Gemini_Generation_1780915657127.png","Gemini_Generation_1780915657598.png","Gemini_Generation_1780915657699.png","Gemini_Generation_1780915658536.png","Gemini_Generation_1780915659110.png"];
 
         const grid = document.getElementById('fullCatalogue');
         ALL_IMAGES.forEach((img, i) => {
@@ -588,6 +660,21 @@
         }
         setInterval(updateClock, 10000);
         updateClock();
+
+        // Light / Dark theme toggle (persisted in localStorage)
+        function syncThemeButton() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const btn = document.getElementById('themeToggle');
+            if (btn) btn.textContent = isDark ? '☀ LIGHT' : '☾ DARK';
+        }
+        function toggleTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const next = isDark ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('seoulstice-theme', next); } catch (e) {}
+            syncThemeButton();
+        }
+        syncThemeButton();
 
         // Image Click Logic for Glass Viewer
         const glassViewer = document.getElementById('glassViewer');

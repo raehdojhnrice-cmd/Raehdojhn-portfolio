@@ -90,10 +90,6 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   background: radial-gradient(circle, rgba(220,40,40,.08) 0%, transparent 70%);
 }
 @media (max-width: 760px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .beacon-cursor,
-  .beacon-glow {
-    display: none !important;
-  }
   .grain {
     opacity: 0.018;
   }
@@ -3055,7 +3051,7 @@ function updateCursorScrollPct() {
   cursorScrollPct = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
 }
 
-if (beaconCursor && beaconGlow && isFinePointer() && !isMobileViewport() && !shouldReduceMotion()) {
+if (beaconCursor && beaconGlow && !('ontouchstart' in window)) {
   document.body.style.cursor = 'none';
   const cursorStyle = document.createElement('style');
   cursorStyle.textContent = 'a, button, input, textarea, select, [role="button"] { cursor: none !important; }';
@@ -3148,6 +3144,33 @@ const projects = [
     link: "nodear.html",
     embedUrl: "nodear.html",
     image: "nodear/nodear_brand_system/nodear_logo_white_transparent.png",
+    featured: true
+  },
+  {
+    title: "Beso de Dios — Luxury Cannabis Wellness World",
+    subtitle: "Sacred botanical brand world for adults 21+: curved nav, scroll-reactive ritual video, method tabs, feature-flip cards, botanical field notes, a CSS ritual clock, glass campaign player, and a compliance-aware retail experience.",
+    tags: ["design", "code", "ai", "video"],
+    link: "public/projects/beso-de-dios/index.html",
+    embedUrl: "public/projects/beso-de-dios/index.html",
+    image: "public/projects/beso-de-dios/assets/altar-landscape.jpg",
+    featured: true
+  },
+  {
+    title: "Basic Americana — American Default Store",
+    subtitle: "Mock fashion-ecommerce world: color-block retail, Y2K stickers, a scroll-driven LA world, an iOS-style reels player, light/dark mode, and a 142-image archive.",
+    tags: ["design", "code", "ai"],
+    link: "public/projects/basic-americana/index.html",
+    embedUrl: "public/projects/basic-americana/index.html",
+    image: "public/projects/basic-americana/assets/img/hero-campaign.jpg",
+    featured: true
+  },
+  {
+    title: "Random Graphic Design — Glassmorphic Gallery",
+    subtitle: "A modern, dark-themed glassmorphic exhibition displaying 93 design works, poster art, packaging mockups, and album covers inside a true masonry column layout with intersection-observed scroll-reveals and a custom lightbox.",
+    tags: ["design", "code"],
+    link: "public/projects/random-graphic-design/index.html",
+    embedUrl: "public/projects/random-graphic-design/index.html",
+    image: "public/projects/random-graphic-design/img/design-01.png",
     featured: true
   },
   {

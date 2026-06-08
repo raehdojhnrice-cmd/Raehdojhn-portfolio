@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Basic Americana product — washed cotton, heavyweight fleece, Low Rent Glamour." />
+<meta name="theme-color" content="#111111" />
+<title>Product — Basic Americana</title>
+<link rel="stylesheet" href="assets/ba.css" />
+<script>try{var t=localStorage.getItem('ba-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker">
+    <span>FREE SHIPPING OVER $120&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;WASH COLD / AIR DRY&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;RETURNS: EMOTIONAL ONLY&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+    <span>STYLE NO. BA-006&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;NO RECEIPT / NO CLOSURE&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;100% COTTON FEELINGS&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+    <span>FREE SHIPPING OVER $120&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;WASH COLD / AIR DRY&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;RETURNS: EMOTIONAL ONLY&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+    <span>STYLE NO. BA-006&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;NO RECEIPT / NO CLOSURE&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;100% COTTON FEELINGS&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand" aria-label="Basic Americana home"><span class="star" aria-hidden="true"></span><span>BASIC AMERICANA</span></a>
+    <button class="hamb" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="main" id="siteNav" aria-label="Main">
+      <ul>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="index.html#world">LA World</a></li>
+        <li><a href="index.html#stickers">Stickers</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="social.html">Social</a></li>
+        <li><a href="reels.html">Reels</a></li>
+        <li><a href="gallery.html">Archive</a></li>
+        <li><a href="brand.html">Brand</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-btn" data-cart-open aria-label="Open bag">Bag <span class="count">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap breadcrumb"><span class="mono"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="pdp-crumb">Product</span></span></div>
+
+  <section id="pdp-section" style="border-bottom:var(--line-2)">
+    <div class="wrap pdp" id="pdp">
+      <div class="pdp-gallery">
+        <div class="pdp-thumbs" id="pdp-thumbs"></div>
+        <div class="pdp-main" id="pdp-main">
+          <span class="sticker pm-sticker yellow" style="position:absolute;top:1rem;left:1rem">★ BA-006</span>
+        </div>
+      </div>
+      <div class="pdp-info">
+        <span class="tag">Drop_001 · American Default</span>
+        <h1 id="pdp-name" class="section-title" style="font-size:clamp(1.9rem,4.4vw,3.6rem)">Product</h1>
+        <div class="price" id="pdp-price">$0</div>
+        <p class="copy" id="pdp-copy"></p>
+        <p class="mono" id="pdp-sku" style="color:var(--ink-soft)"></p>
+
+        <div>
+          <p class="mono" style="margin:0 0 .4rem">Color</p>
+          <div class="swatch-row" id="pdp-swatches"></div>
+        </div>
+        <div>
+          <p class="mono" style="margin:0 0 .4rem">Size</p>
+          <div class="size-grid"><button aria-pressed="false">S</button><button aria-pressed="false">M</button><button aria-pressed="false">L</button><button aria-pressed="false">XL</button><button aria-pressed="false">XXL</button></div>
+        </div>
+
+        <button class="btn block" id="pdp-add">Add to bag</button>
+        <div class="barcode" aria-hidden="true"></div>
+
+        <div class="accordion">
+          <button class="acc-q" aria-expanded="true">Details <span>–</span></button>
+          <div class="acc-a">Washed, heavyweight cotton/fleece. Relaxed, emotionally oversized fit. Original Basic Americana graphics — no copied marks. Pre-shrunk; expect honest fading.</div>
+          <button class="acc-q" aria-expanded="false">Shipping &amp; returns <span>+</span></button>
+          <div class="acc-a">Free shipping over $120. Returns: emotional only. Ships with a motel-key hang tag and a star sticker. No closure included.</div>
+          <button class="acc-q" aria-expanded="false">Care <span>+</span></button>
+          <div class="acc-a">Wash cold, inside out. Air dry in a parking lot. Do not iron the feelings.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal"><div><span class="tag">More from the drop</span><h2 class="section-title">You might also keep</h2></div></div>
+      <div class="products cols3 reveal" id="pdp-related"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div><h2 class="small-title">Basic Americana</h2><p class="mono" style="color:rgba(244,241,234,.7);margin:.6rem 0">Low Rent Glamour for American Defaults.<br>Made somewhere / worn in LA.</p><div class="barcode"></div></div>
+    <div><strong class="mono">Shop</strong><a href="shop.html">Tees</a><a href="shop.html">Fleece</a><a href="shop.html">Accessories</a></div>
+    <div><strong class="mono">System</strong><a href="index.html#stickers">Sticker wall</a><a href="index.html#world">LA world</a><a href="index.html#packaging">Packaging</a></div>
+    <div><strong class="mono">Profile</strong><a href="#">Last login: parking lot</a><a href="#">No receipt / no closure</a><a href="#">Returns: emotional only</a></div>
+  </div>
+</footer>
+
+<script src="assets/ba.js"></script>
+</body>
+</html>

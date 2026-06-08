@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Beso de Dios — luxury cannabis wellness for body, dose, and ritual. A conceptual portfolio brand system. For the body after the world. 21+ adult use only." />
+<meta name="theme-color" content="#181512" />
+<meta property="og:title" content="Beso de Dios — For the Body After the World" />
+<meta property="og:description" content="Luxury cannabis wellness for body, dose, and ritual. A conceptual portfolio brand world." />
+<title>Beso de Dios — For the Body After the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   BESO DE DIOS — single-file brand world
+   Original HTML / CSS / JS. CSS-generated placeholders + curated
+   campaign imagery. Palette, type, and motion per brand system.
+   ============================================================ */
+:root{
+  --altar-cream:#F4EDE2;
+  --sacred-black:#181512;
+  --votive-gold:#B88A44;
+  --rosary-brown:#6B4A34;
+  --myrrh-smoke:#8A7A6A;
+  --olive-relic:#59624A;
+  --dried-rose:#B47A74;
+  --candle-wax:#FFF8E8;
+  --ink:#27211B;
+  --line:rgba(24,21,18,.14);
+  --line-soft:rgba(24,21,18,.08);
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Inter",Helvetica,Arial,sans-serif;
+  --accent:var(--votive-gold);
+  --maxw:1240px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--altar-cream);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+body.gated{overflow:hidden;height:100vh}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--votive-gold);outline-offset:3px;border-radius:2px}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:.005em;margin:0}
+.display{font-family:var(--serif);font-weight:500;letter-spacing:.01em}
+.micro{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;font-size:.66rem;color:var(--myrrh-smoke);font-weight:500}
+.eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.22em;font-size:.66rem;color:var(--votive-gold);font-weight:600}
+.lede{font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.9rem);line-height:1.32;color:var(--rosary-brown)}
+p{margin:0 0 1em}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+section{position:relative;z-index:1;padding:clamp(64px,9vw,128px) 0}
+.section-head{display:flex;flex-direction:column;gap:14px;max-width:760px;margin-bottom:clamp(32px,5vw,60px)}
+.section-num{font-family:var(--sans);font-size:.66rem;letter-spacing:.24em;color:var(--votive-gold);text-transform:uppercase}
+
+/* halo droplet motif */
+.droplet{display:inline-block;width:1em;height:1em;position:relative;vertical-align:middle}
+.droplet::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 62%,var(--votive-gold),#9a7236);clip-path:path("M8 0 C8 0 15 9 15 11.2 A7 7 0 1 1 1 11.2 C1 9 8 0 8 0Z");transform:scale(.066);transform-origin:top left}
+.halo-badge{width:46px;height:46px;border-radius:50%;border:1px solid var(--votive-gold);display:grid;place-items:center;position:relative;flex:none}
+.halo-badge::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(184,138,68,.32)}
+.halo-drop{width:14px;height:18px;background:linear-gradient(160deg,#cfa15a,#8a6630);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;box-shadow:inset 0 -2px 3px rgba(0,0,0,.25)}
+
+/* ============ scroll-reactive video background ============ */
+.scroll-video-bg{position:fixed;inset:0;z-index:-3;overflow:hidden;pointer-events:none;background:#181512}
+.scroll-video-bg video{width:100%;height:100%;object-fit:cover;object-position:center right;transform:scale(1.035);filter:saturate(.9) contrast(.96) brightness(.74) sepia(.08)}
+.scroll-video-bg::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,rgba(244,237,226,.92) 0%,rgba(244,237,226,.74) 32%,rgba(24,21,18,.16) 70%,rgba(24,21,18,.5) 100%),
+  radial-gradient(circle at 78% 40%,rgba(184,138,68,.2),transparent 38%),
+  linear-gradient(180deg,rgba(24,21,18,.16),rgba(24,21,18,.52))}
+.site-grain{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.06;mix-blend-mode:multiply;
+  background-image:repeating-radial-gradient(circle at 12% 18%,rgba(24,21,18,.4) 0 .5px,transparent .5px 3px)}
+@media (prefers-reduced-motion:reduce){
+  .scroll-video-bg video{display:none}
+  .scroll-video-bg{background-image:linear-gradient(90deg,rgba(244,237,226,.94),rgba(24,21,18,.32)),url('assets/beso-de-dios-landing-still.jpg');background-size:cover;background-position:center right}
+}
+/* the page canvas sits on cream; the video shows through hero + transition bands */
+.page{position:relative;z-index:1}
+
+/* ============ scroll progress ============ */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#caa05c,var(--votive-gold));z-index:120;transition:width .12s linear}
+
+/* ============ age gate ============ */
+.age-gate{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 30%,#221d18,#100d0b 70%);display:grid;place-items:center;padding:24px;text-align:center;color:var(--altar-cream)}
+.age-gate[hidden]{display:none}
+.age-card{max-width:440px;display:flex;flex-direction:column;align-items:center;gap:22px;animation:rise .8s var(--ease) both}
+.age-card .halo-badge{width:58px;height:58px;border-color:rgba(184,138,68,.7)}
+.age-gate h2{font-size:clamp(2.4rem,7vw,3.4rem);color:var(--candle-wax)}
+.age-gate .micro{color:rgba(244,237,226,.6)}
+.age-gate p{color:rgba(244,237,226,.78);font-family:var(--serif);font-size:1.2rem;line-height:1.5;margin:0}
+.age-actions{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap;justify-content:center}
+.age-fine{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,237,226,.5);max-width:340px;line-height:1.8}
+
+/* ============ buttons ============ */
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--sans);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  padding:15px 30px;border-radius:40px;border:1px solid transparent;transition:transform .35s var(--ease),background .35s,color .35s,box-shadow .35s;position:relative;overflow:hidden}
+.btn--gold{background:var(--sacred-black);color:var(--candle-wax);border-color:var(--sacred-black)}
+.btn--gold::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(255,248,232,.22),transparent 80%);transform:translateX(-130%)}
+.btn--gold:hover{transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(24,21,18,.6)}
+.btn--gold:hover::before{transform:translateX(130%);transition:transform .9s var(--ease)}
+.btn--ghost{background:transparent;color:var(--sacred-black);border-color:rgba(24,21,18,.45)}
+.btn--ghost:hover{background:rgba(24,21,18,.06);transform:translateY(-2px)}
+.btn--light{background:var(--candle-wax);color:var(--sacred-black);border-color:var(--candle-wax)}
+.btn--light:hover{transform:translateY(-2px);box-shadow:0 12px 28px -14px rgba(0,0,0,.5)}
+
+/* ============ curved nav ============ */
+.curved-nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:110;width:calc(100% - 32px);max-width:980px;
+  transition:transform .5s var(--ease),opacity .5s}
+.nav-rail{display:flex;align-items:center;gap:10px;background:rgba(244,237,226,.78);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid rgba(24,21,18,.1);border-radius:40px;padding:8px 10px;box-shadow:0 18px 40px -26px rgba(24,21,18,.5)}
+.nav-back-btn{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(24,21,18,.08);color:var(--sacred-black);transition:transform .3s var(--ease),background .3s,color .3s;flex-shrink:0;margin-left:2px}
+.nav-back-btn:hover{transform:translateX(-2px);background:var(--sacred-black);color:var(--candle-wax)}
+.nav-brand{display:flex;align-items:center;gap:9px;padding:4px 12px;font-family:var(--serif);font-size:1.18rem;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+.nav-brand .halo-badge{width:26px;height:26px}.nav-brand .halo-drop{width:8px;height:11px}
+.nav-tabs{position:relative;display:flex;gap:2px;margin-left:auto;flex:1;justify-content:flex-end}
+.nav-pill{position:absolute;top:0;left:0;height:100%;border-radius:30px;background:var(--sacred-black);box-shadow:0 6px 16px -8px rgba(24,21,18,.7);transition:transform .5s var(--ease),width .5s var(--ease);z-index:0}
+.nav-tab{position:relative;z-index:1;background:transparent;border:none;color:var(--ink);font-family:var(--sans);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+  padding:11px 15px;border-radius:30px;transition:color .4s,transform .3s;white-space:nowrap}
+.nav-tab:hover{transform:translateY(-1px)}
+.nav-tab[aria-current="true"]{color:var(--candle-wax)}
+.nav-tab:hover:not([aria-current="true"]){color:var(--votive-gold)}
+.nav-burger{display:none;background:transparent;border:none;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center}
+.nav-burger span{display:block;width:18px;height:1.5px;background:var(--ink);position:relative}
+.nav-burger span::before,.nav-burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink)}
+.nav-burger span::before{top:-6px}.nav-burger span::after{top:6px}
+
+/* mobile bottom dock */
+.dock{display:none}
+@media (max-width:860px){
+  .nav-tabs{display:none}
+  .nav-burger{display:flex}
+  .curved-nav{top:12px}
+  .dock{display:flex;position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:110;
+    background:rgba(24,21,18,.86);backdrop-filter:blur(12px);border:1px solid rgba(184,138,68,.25);border-radius:40px;padding:7px 9px;gap:4px;box-shadow:0 18px 40px -20px rgba(0,0,0,.6)}
+  .dock button{background:transparent;border:none;color:rgba(244,237,226,.66);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:30px;transition:.3s}
+  .dock button[aria-current="true"]{background:var(--votive-gold);color:var(--sacred-black)}
+}
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:115;background:rgba(16,13,11,.96);backdrop-filter:blur(8px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;opacity:0;pointer-events:none;transition:opacity .4s}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer a{font-family:var(--serif);font-size:2rem;color:var(--altar-cream);padding:10px}
+.drawer a:hover{color:var(--votive-gold)}
+.drawer-back-link{font-size:1.4rem !important;margin-top:20px;color:var(--votive-gold) !important;border-top:1px solid rgba(244,237,226,.15);padding-top:20px !important;width:80%;text-align:center;text-decoration:none;transition:color .3s}
+.drawer-back-link:hover{color:var(--altar-cream) !important}
+.drawer .micro{margin-top:18px;color:rgba(244,237,226,.5)}
+.drawer-close{position:absolute;top:22px;right:24px;background:transparent;border:1px solid rgba(244,237,226,.4);color:var(--altar-cream);width:42px;height:42px;border-radius:50%;font-size:1.2rem}
+
+/* ============ hero ============ */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px;padding-bottom:60px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;width:100%}
+.hero-copy{max-width:560px}
+.hero h1{font-size:clamp(3.4rem,9vw,7rem);line-height:.92;color:var(--sacred-black);letter-spacing:.005em}
+.hero .campaign{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3.2vw,2.1rem);color:var(--rosary-brown);margin-top:14px;line-height:1.2}
+.hero .sub{margin-top:22px;max-width:430px;color:var(--ink);font-size:1.02rem}
+.hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero-compliance{margin-top:26px;display:flex;align-items:center;gap:12px}
+.hero-compliance .micro{color:var(--rosary-brown)}
+.pill-21{font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.12em;border:1px solid var(--votive-gold);color:var(--rosary-brown);border-radius:20px;padding:4px 11px}
+/* hero product tableau */
+.tableau{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid rgba(24,21,18,.14);
+  box-shadow:0 50px 90px -50px rgba(24,21,18,.7);background:#1a1612}
+.tableau img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.tableau:hover img{transform:scale(1.05)}
+.tableau-tag{position:absolute;left:16px;bottom:16px;background:rgba(244,237,226,.9);backdrop-filter:blur(6px);border-radius:30px;padding:8px 14px;font-family:var(--sans);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sacred-black)}
+.scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-cue .micro{color:var(--rosary-brown)}
+.scroll-cue .line{width:1px;height:42px;background:linear-gradient(var(--rosary-brown),transparent);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(.2);transform-origin:top;opacity:.3}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.2);transform-origin:bottom;opacity:.3}}
+
+/* panels: alternate cream / stone / dark */
+.panel-cream{background:linear-gradient(180deg,rgba(244,237,226,.94),rgba(244,237,226,.99))}
+.panel-stone{background:linear-gradient(180deg,#ece2d3,#e6dac8)}
+.panel-dark{background:linear-gradient(180deg,#1c1813,#14110d);color:var(--altar-cream)}
+.panel-dark .micro{color:rgba(244,237,226,.55)}
+.panel-dark .lede{color:rgba(244,237,226,.82)}
+.panel-dark h2{color:var(--candle-wax)}
+.frost{background:rgba(244,237,226,.66);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* generic card */
+.card{background:var(--candle-wax);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .5s var(--ease),box-shadow .5s,border-color .5s}
+.card:hover{transform:translateY(-5px);box-shadow:0 30px 50px -34px rgba(24,21,18,.5);border-color:rgba(184,138,68,.45)}
+
+/* ============ brand intro / pillars ============ */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:14px}
+.pillar{padding:30px;border:1px solid var(--line);border-radius:16px;background:rgba(255,248,232,.5)}
+.pillar .num{font-family:var(--serif);font-size:2.4rem;color:var(--votive-gold);line-height:1}
+.pillar h3{font-size:1.5rem;margin:10px 0 8px}
+.pillar p{font-size:.92rem;color:var(--rosary-brown);margin:0}
+.pillar .seal{opacity:0;transform:translateY(6px);transition:.4s;margin-top:14px}
+.pillar:hover .seal{opacity:1;transform:none}
+.seal{font-family:var(--sans);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--myrrh-smoke)}
+
+/* ============ method tabs ============ */
+.tabs-rail{display:inline-flex;gap:4px;background:rgba(24,21,18,.06);border:1px solid var(--line);border-radius:40px;padding:5px}
+.tab-btn{background:transparent;border:none;padding:11px 24px;border-radius:30px;font-family:var(--sans);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--rosary-brown);transition:.4s}
+.tab-btn[aria-selected="true"]{background:var(--sacred-black);color:var(--candle-wax)}
+.method-meta{margin:24px 0 30px;color:var(--rosary-brown)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.product-card{background:var(--candle-wax);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 30px 50px -34px rgba(24,21,18,.5)}
+.product-thumb{aspect-ratio:4/3;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,#241f19,#15120e)}
+.pc-body .product-thumb{background:radial-gradient(circle at 50% 35%,#2a2018,#16110c)}
+/* CSS-generated product objects */
+.obj{position:relative;filter:drop-shadow(0 16px 20px rgba(0,0,0,.45))}
+.obj-jar{width:78px;height:92px;border-radius:8px 8px 12px 12px;background:linear-gradient(105deg,#2c2620,#16130f 60%,#0f0c09);position:relative}
+.obj-jar::before{content:"";position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:58px;height:16px;border-radius:5px;background:repeating-linear-gradient(90deg,#2a2520,#2a2520 2px,#1c1813 2px,#1c1813 4px)}
+.obj-jar::after{content:"";position:absolute;inset:14px 10px auto 10px;height:42px;border-radius:4px;background:linear-gradient(180deg,rgba(244,237,226,.92),rgba(244,237,226,.78));box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.obj-bottle{width:48px;height:104px;border-radius:8px 8px 10px 10px;background:linear-gradient(100deg,rgba(244,237,226,.55),rgba(214,228,222,.32));border:1px solid rgba(255,255,255,.35);position:relative;backdrop-filter:blur(2px)}
+.obj-bottle::before{content:"";position:absolute;left:50%;top:-16px;transform:translateX(-50%);width:18px;height:18px;border-radius:3px;background:linear-gradient(#3a322a,#221c16)}
+.obj-bottle::after{content:"";position:absolute;left:50%;top:-30px;transform:translateX(-50%);width:8px;height:16px;background:#2a2520;border-radius:3px}
+.obj-amber{width:82px;height:74px;border-radius:10px;background:linear-gradient(115deg,#7a4a1e,#a9692b 45%,#5c3514);position:relative;border:1px solid rgba(255,210,150,.2)}
+.obj-amber::before{content:"";position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:64px;height:15px;border-radius:5px;background:linear-gradient(#2c2520,#191512)}
+.obj-amber::after{content:"";position:absolute;inset:auto 12px 12px 12px;height:30px;border-radius:4px;background:linear-gradient(rgba(244,237,226,.9),rgba(244,237,226,.7))}
+.obj-box{width:96px;height:64px;border-radius:6px;background:linear-gradient(160deg,#efe6d6,#ddd0bb);position:relative;border:1px solid rgba(24,21,18,.1)}
+.obj-box::before{content:"BD";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:1.1rem;letter-spacing:.1em;color:var(--rosary-brown)}
+.obj-grinder{width:72px;height:46px;border-radius:9px;background:linear-gradient(120deg,#d9ad5e,#b88a44 50%,#8a6630);position:relative;box-shadow:inset 0 -6px 10px rgba(0,0,0,.25)}
+.obj-grinder::before{content:"";position:absolute;inset:0;border-radius:9px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 1px,transparent 1px 5px)}
+.product-thumb .micro{position:absolute;top:12px;left:12px;color:rgba(244,237,226,.6)}
+.product-info{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.product-info h4{font-size:1.42rem}
+.product-info .fmt{font-family:var(--sans);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--votive-gold)}
+.product-info .mood{color:var(--rosary-brown);font-size:.92rem}
+.product-info .ru{margin-top:auto;padding-top:12px;border-top:1px solid var(--line-soft);font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--myrrh-smoke)}
+
+/* ============ feature flipper ============ */
+.flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.flip{perspective:1400px;background:none;border:none;padding:0;text-align:left;height:340px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .8s var(--ease);transform-style:preserve-3d}
+.flip[aria-pressed="true"] .flip-inner{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.flip-front{background:linear-gradient(170deg,#1d1813,#13100c);color:var(--altar-cream)}
+.flip-front .obj{margin:auto}
+.flip-back{background:var(--candle-wax);transform:rotateY(180deg)}
+.flip-front h3{color:var(--candle-wax);font-size:1.7rem}
+.flip-front .micro{color:rgba(244,237,226,.55)}
+.flip-back h4{font-size:1.4rem;margin-bottom:10px}
+.flip-back ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.flip-back li{font-size:.86rem;color:var(--rosary-brown);display:flex;gap:9px;align-items:flex-start}
+.flip-back li b{font-family:var(--sans);font-weight:600;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--votive-gold);min-width:64px}
+.flip-hint{font-family:var(--sans);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--myrrh-smoke)}
+.flip-front .flip-hint{color:rgba(184,138,68,.8)}
+@media (prefers-reduced-motion:reduce){
+  .flip-inner{transition:opacity .3s}
+  .flip[aria-pressed="true"] .flip-inner{transform:none}
+  .flip[aria-pressed="true"] .flip-front{opacity:0;pointer-events:none}
+  .flip-back{transform:none;opacity:0;transition:opacity .3s}
+  .flip[aria-pressed="true"] .flip-back{opacity:1}
+}
+
+/* ============ botanical field notes ============ */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{background:transparent;border:1px solid rgba(244,237,226,.3);color:rgba(244,237,226,.7);font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border-radius:30px;transition:.35s}
+.chip[aria-pressed="true"]{background:var(--votive-gold);color:var(--sacred-black);border-color:var(--votive-gold)}
+.chip:hover:not([aria-pressed="true"]){border-color:var(--votive-gold);color:var(--candle-wax)}
+.botanic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.botanic{border:1px solid rgba(244,237,226,.14);border-radius:14px;padding:22px;background:rgba(244,237,226,.04);transition:transform .5s var(--ease),background .5s,opacity .4s,border-color .5s;position:relative;overflow:hidden}
+.botanic:hover{transform:translateY(-5px);background:rgba(244,237,226,.09);border-color:rgba(184,138,68,.4)}
+.botanic.hide{display:none}
+.specimen{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px;transition:transform .5s var(--ease)}
+.botanic:hover .specimen{transform:scale(1.12) rotate(-6deg)}
+.specimen span{width:20px;height:24px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%}
+.botanic h4{font-size:1.42rem;color:var(--candle-wax)}
+.botanic .scent{font-family:var(--sans);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--votive-gold);margin:6px 0 10px}
+.botanic p{font-size:.84rem;color:rgba(244,237,226,.62);margin:0}
+.botanic .assoc{margin-top:12px;font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,237,226,.45)}
+
+/* ============ ritual clock ============ */
+.clock-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.clock{width:min(320px,72vw);aspect-ratio:1;border-radius:50%;margin:0 auto;position:relative;
+  background:radial-gradient(circle at 50% 42%,#fbf3e2,#ece0cd 70%,#dcccb2);
+  border:1px solid rgba(24,21,18,.16);box-shadow:0 40px 70px -44px rgba(24,21,18,.6),inset 0 2px 8px rgba(255,255,255,.6)}
+.clock::after{content:"";position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(24,21,18,.1)}
+.tick{position:absolute;top:50%;left:50%;width:2px;height:46%;transform-origin:bottom center}
+.tick i{display:block;width:2px;height:8px;background:rgba(24,21,18,.35);margin:0 auto}
+.tick.major i{height:13px;width:2px;background:var(--rosary-brown)}
+.hand{position:absolute;left:50%;bottom:50%;transform-origin:bottom center;border-radius:4px;background:var(--sacred-black)}
+.hand.hour{width:5px;height:24%;transform:translateX(-50%) rotate(310deg)}
+.hand.minute{width:3px;height:34%;background:var(--rosary-brown);transform:translateX(-50%) rotate(120deg)}
+.hand.second{width:1.5px;height:38%;background:var(--votive-gold);transform:translateX(-50%) rotate(0deg);animation:tickrot 60s steps(60) infinite}
+@keyframes tickrot{to{transform:translateX(-50%) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hand.second{animation:none}}
+.clock-cap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--votive-gold);box-shadow:0 0 0 3px #ece0cd}
+.clock-label{position:absolute;left:50%;top:50%;font-family:var(--sans);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--myrrh-smoke);transform-origin:center}
+.time-chips{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 26px}
+.time-chip{background:rgba(24,21,18,.05);border:1px solid var(--line);color:var(--rosary-brown);font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;border-radius:30px;transition:.35s}
+.time-chip[aria-pressed="true"]{background:var(--sacred-black);color:var(--candle-wax);border-color:var(--sacred-black)}
+.ritual-card{background:var(--candle-wax);border:1px solid var(--line);border-radius:16px;padding:28px;min-height:200px}
+.ritual-card .eyebrow{margin-bottom:8px}
+.ritual-card h3{font-size:1.9rem;margin-bottom:8px}
+.ritual-card p{color:var(--rosary-brown)}
+.ritual-card .pairing{margin-top:14px;font-family:var(--sans);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--votive-gold)}
+
+/* ============ campaign player (iOS mockup) ============ */
+.player-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;align-items:center}
+@media (max-width: 860px) {
+  .player-wrap{grid-template-columns:1fr;gap:32px}
+}
+.phone-wrapper{position:relative;width:100%;max-width:300px;margin:0 auto}
+.phone-mockup{position:relative;width:100%;aspect-ratio:9/19.5;border-radius:40px;background:#000;border:12px solid #1c1813;outline:1px solid rgba(184, 138, 68, 0.35);box-shadow:0 30px 60px -15px rgba(0,0,0,0.85), inset 0 0 4px 2px rgba(255,255,255,0.1), 0 0 25px rgba(184,138,68,0.12);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.phone-mockup::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 40%, transparent 40.1%);pointer-events:none;z-index:8}
+.dynamic-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:82px;height:20px;background:#000;border-radius:20px;z-index:10;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+.camera-lens{width:5px;height:5px;background:#100f24;border-radius:50%;box-shadow:inset 0 1px 1px rgba(255,255,255,0.2)}
+.status-bar{position:absolute;top:0;left:0;width:100%;height:36px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;color:#fff;font-size:10px;font-weight:500;z-index:9;font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica, Arial, sans-serif;letter-spacing:-0.1px}
+.status-left{font-variant-numeric:tabular-nums;font-weight:600}
+.status-right{display:flex;align-items:center;gap:5px}
+.status-icon{width:12px;height:12px;fill:currentColor}
+.battery{width:16px;height:9px;border:1px solid rgba(255, 255, 255, 0.5);border-radius:2.5px;padding:0.8px;position:relative}
+.battery::after{content:'';position:absolute;top:2px;right:-2.5px;width:1.5px;height:3px;background:rgba(255, 255, 255, 0.5);border-radius:0 0.8px 0.8px 0}
+.battery-level{width:100%;height:100%;background:#fff;border-radius:0.8px}
+.phone-mockup video{width:100%;height:100%;object-fit:cover;background:#050403;transition:opacity 0.3s}
+.ios-controls{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 25%, transparent 70%, rgba(0,0,0,0.7) 100%);display:flex;flex-direction:column;justify-content:space-between;padding:36px 14px 18px;opacity:0;transition:opacity 0.3s;z-index:5}
+.phone-mockup:hover .ios-controls, .phone-mockup:focus-within .ios-controls, .ios-controls.active{opacity:1}
+.ios-top-nav{display:flex;justify-content:space-between;align-items:center;color:#fff}
+.ios-btn{background:transparent;border:none;color:rgba(255, 255, 255, 0.85);padding:6px;display:flex;align-items:center;justify-content:center;transition:color 0.2s, opacity 0.2s;cursor:pointer}
+.ios-btn:hover{color:var(--votive-gold)}
+.ios-btn svg{width:16px;height:16px}
+.ios-title-wrap{text-align:center;flex:1;padding:0 6px}
+.ios-sub-title{display:block;font-size:7px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255, 255, 255, 0.45);font-weight:600;margin-bottom:1px}
+.ios-main-title{display:block;font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;font-family:var(--sans)}
+.ios-center-controls{display:flex;justify-content:center;align-items:center;gap:18px;color:#fff}
+.ios-play-btn{width:46px;height:46px;border-radius:50%;background:rgba(255, 255, 255, 0.15);border:1px solid rgba(255, 255, 255, 0.25);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;display:grid;place-items:center;transition:transform 0.2s, background 0.2s, border-color 0.2s;cursor:pointer}
+.ios-play-btn:hover{transform:scale(1.08);background:rgba(255, 255, 255, 0.25);border-color:rgba(255, 255, 255, 0.45)}
+.ios-play-btn svg{width:18px;height:18px;fill:currentColor}
+.skip-btn{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.skip-btn svg{width:20px;height:20px}
+.skip-num{position:absolute;font-size:7px;font-weight:bold;top:50%;left:50%;transform:translate(-50%, -42%);color:#fff;font-family:var(--sans)}
+.ios-bottom-controls{display:flex;flex-direction:column;gap:10px}
+.ios-scrub-container{display:flex;align-items:center;gap:6px}
+.ios-time-text{font-size:8px;color:rgba(255, 255, 255, 0.65);font-variant-numeric:tabular-nums;font-family:var(--sans);min-width:24px}
+.ios-time-text.total{text-align:right}
+.ios-scrub-bar{flex:1;height:3px;background:rgba(255, 255, 255, 0.25);border-radius:2px;position:relative;cursor:pointer;transition:height 0.2s;padding:4px 0;background-clip:content-box}
+.ios-scrub-bar:hover{height:5px}
+.ios-scrub-fill{height:100%;width:0%;background:var(--votive-gold);border-radius:2px;position:absolute;top:4px;left:0}
+.ios-scrub-handle{width:8px;height:8px;border-radius:50%;background:#fff;position:absolute;top:50%;left:0%;transform:translate(-50%, -50%);opacity:0;transition:opacity 0.2s;box-shadow:0 1px 2px rgba(0,0,0,0.3)}
+.ios-scrub-bar:hover .ios-scrub-handle{opacity:1}
+.ios-actions-row{display:flex;align-items:center;gap:8px}
+.ios-vol-slider{flex:1;height:3px;background:rgba(255,255,255,0.2);border-radius:2px;position:relative;cursor:pointer;padding:4px 0;background-clip:content-box}
+.ios-vol-fill{height:100%;width:100%;background:#fff;border-radius:2px;position:absolute;top:4px;left:0}
+.ios-vol-handle{width:8px;height:8px;border-radius:50%;background:#fff;position:absolute;top:50%;left:100%;transform:translate(-50%, -50%);box-shadow:0 1px 2px rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s}
+.ios-vol-slider:hover .ios-vol-handle{opacity:1}
+.tracklist{display:flex;flex-direction:column;gap:8px;justify-content:center}
+.tl-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;border:1px solid rgba(244,237,226,.08);background:rgba(244,237,226,.02);transition:.35s;cursor:pointer;text-align:left;color:inherit;font-family:inherit}
+.tl-item:hover,.tl-item[aria-current="true"]{background:rgba(244,237,226,.06);border-color:rgba(184,138,68,.35);transform:translateX(4px)}
+.tl-item .n{font-family:var(--serif);font-size:1.15rem;color:var(--votive-gold);min-width:20px}
+.tl-item .t{font-family:var(--serif);font-size:1.15rem;color:var(--candle-wax)}
+.tl-item .d{font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,237,226,.45);margin-left:auto}
+
+
+/* ============ packaging showcase ============ */
+.pack-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px}
+.pack-tab{background:transparent;border:1px solid var(--line);color:var(--rosary-brown);font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;border-radius:30px;transition:.35s}
+.pack-tab[aria-selected="true"]{background:var(--sacred-black);color:var(--candle-wax);border-color:var(--sacred-black)}
+.pack-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px;align-items:center}
+.pack-visual{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:5/4;background:#16120e}
+.pack-visual img{width:100%;height:100%;object-fit:cover}
+.pack-hotspots{display:flex;flex-direction:column;gap:10px}
+.hotspot{text-align:left;background:var(--candle-wax);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:.4s;cursor:pointer}
+.hotspot:hover,.hotspot[aria-expanded="true"]{border-color:rgba(184,138,68,.5);box-shadow:0 18px 36px -28px rgba(24,21,18,.5)}
+.hotspot .h-top{display:flex;align-items:center;gap:12px}
+.hotspot .dot{width:9px;height:9px;border-radius:50%;background:var(--votive-gold);flex:none;box-shadow:0 0 0 0 rgba(184,138,68,.5)}
+.hotspot[aria-expanded="true"] .dot{animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(184,138,68,.5)}70%{box-shadow:0 0 0 8px rgba(184,138,68,0)}100%{box-shadow:0 0 0 0 rgba(184,138,68,0)}}
+.hotspot h4{font-size:1.3rem}
+.hotspot .lbl{font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--votive-gold);margin-left:auto}
+.hotspot .note{max-height:0;overflow:hidden;transition:max-height .4s var(--ease),margin .4s,opacity .4s;opacity:0;color:var(--rosary-brown);font-size:.88rem}
+.hotspot[aria-expanded="true"] .note{max-height:120px;margin-top:12px;opacity:1}
+
+/* ============ retail ============ */
+.retail-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center}
+.retail-visual{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(244,237,226,.16);aspect-ratio:16/10;box-shadow:0 50px 90px -54px #000}
+.retail-visual img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.retail-visual:hover img{transform:scale(1.05)}
+.retail-visual .loc{position:absolute;left:16px;bottom:16px;background:rgba(20,16,12,.66);backdrop-filter:blur(8px);border:1px solid rgba(184,138,68,.3);border-radius:30px;padding:9px 16px;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--candle-wax)}
+
+/* ============ science ============ */
+.sci-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}
+.badge-card{border:1px solid var(--line);border-radius:14px;padding:24px;background:rgba(255,248,232,.55);text-align:center;transition:transform .5s var(--ease),box-shadow .5s}
+.badge-card:hover{transform:translateY(-5px);box-shadow:0 26px 44px -34px rgba(24,21,18,.5)}
+.badge-card .halo-badge{margin:0 auto 14px}
+.badge-card h4{font-size:1.2rem;margin-bottom:6px}
+.badge-card p{font-size:.78rem;color:var(--rosary-brown);margin:0}
+.sci-foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:26px}
+.coa-card{display:flex;align-items:center;gap:18px}
+.qr{width:74px;height:74px;border-radius:10px;flex:none;background:
+  repeating-conic-gradient(from 0deg,#181512 0deg 90deg,#f4ede2 90deg 180deg);
+  background-size:18px 18px;border:5px solid var(--candle-wax);box-shadow:0 0 0 1px var(--line)}
+.coa-card .batch{font-family:var(--sans);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--myrrh-smoke)}
+.coa-card .batch b{display:block;font-family:var(--serif);font-size:1.4rem;letter-spacing:.02em;color:var(--sacred-black);text-transform:none}
+.disclaimer{font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--myrrh-smoke);max-width:360px}
+
+/* ============ gallery ============ */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.tile{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:#16120e}
+.tile.tall{grid-row:span 2}.tile.wide{grid-column:span 2}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .5s}
+.tile:hover img{transform:scale(1.07)}
+.tile-cap{position:absolute;inset:auto 0 0 0;padding:30px 16px 14px;background:linear-gradient(transparent,rgba(16,13,11,.85));color:var(--candle-wax);
+  transform:translateY(8px);opacity:0;transition:.4s}
+.tile:hover .tile-cap,.tile:focus-visible .tile-cap{transform:none;opacity:1}
+.tile-cap .cat{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--votive-gold)}
+.tile-cap .line{font-family:var(--serif);font-style:italic;font-size:1.05rem}
+.tile.hide{display:none}
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:180;background:rgba(12,10,8,.92);display:none;place-items:center;padding:30px}
+.lightbox.open{display:grid}
+.lightbox img{max-width:90vw;max-height:82vh;border-radius:8px;box-shadow:0 40px 80px -30px #000}
+.lightbox .lb-cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:var(--altar-cream);font-family:var(--serif);font-style:italic;font-size:1.2rem}
+.lb-close{position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(244,237,226,.4);background:transparent;color:var(--altar-cream);font-size:1.3rem}
+
+/* ============ faq ============ */
+.faq-list{max-width:840px;margin:0 auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;text-align:left;background:transparent;border:none;padding:24px 4px;display:flex;align-items:center;gap:20px;font-family:var(--serif);font-size:clamp(1.2rem,2.4vw,1.6rem);color:var(--sacred-black)}
+.faq-q .ic{margin-left:auto;flex:none;width:24px;height:24px;position:relative}
+.faq-q .ic::before,.faq-q .ic::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--votive-gold);transition:.4s}
+.faq-q .ic::before{width:16px;height:1.6px}.faq-q .ic::after{width:1.6px;height:16px}
+.faq-q[aria-expanded="true"] .ic::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.faq-a-inner{padding:0 4px 26px;color:var(--rosary-brown);max-width:680px}
+
+/* ============ final cta ============ */
+.final{text-align:center;padding:clamp(90px,14vw,180px) 0}
+.final h2{font-size:clamp(3rem,9vw,6.5rem);color:var(--candle-wax);line-height:.95}
+.final .lede{margin:20px auto 34px;max-width:560px}
+.final-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.final .micro{margin-top:28px;color:rgba(244,237,226,.5)}
+
+/* ============ footer ============ */
+.footer{background:#100d0b;color:var(--altar-cream);padding:70px 0 40px}
+.footer-top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:40px;padding-bottom:46px;border-bottom:1px solid rgba(244,237,226,.12)}
+.footer h3{font-size:2rem;color:var(--candle-wax)}
+.footer .tag{font-family:var(--sans);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--votive-gold);margin-top:10px}
+.footer .blurb{color:rgba(244,237,226,.6);font-size:.88rem;margin-top:16px;max-width:320px}
+.footer-col h5{font-family:var(--sans);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,237,226,.5);margin:0 0 16px}
+.footer-col a{display:block;color:rgba(244,237,226,.8);font-size:.92rem;padding:5px 0;transition:.3s;width:fit-content}
+.footer-col a:hover{color:var(--votive-gold)}
+.news{display:flex;gap:8px;margin-top:14px;max-width:320px}
+.news input{flex:1;background:rgba(244,237,226,.06);border:1px solid rgba(244,237,226,.2);border-radius:30px;padding:12px 18px;color:var(--altar-cream);font-family:var(--sans);font-size:.82rem}
+.news input::placeholder{color:rgba(244,237,226,.4)}
+.news button{background:var(--votive-gold);color:var(--sacred-black);border:none;border-radius:30px;padding:0 20px;font-family:var(--sans);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.news-msg{font-family:var(--sans);font-size:.7rem;letter-spacing:.06em;color:var(--olive-relic);margin-top:8px;min-height:1em}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:30px}
+.footer-bottom .micro{color:rgba(244,237,226,.45)}
+.back-top{background:transparent;border:1px solid rgba(244,237,226,.25);color:var(--altar-cream);font-family:var(--sans);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;border-radius:30px;transition:.3s}
+.back-top:hover{border-color:var(--votive-gold);color:var(--votive-gold)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ============ responsive ============ */
+@media (max-width:980px){
+  .hero-grid,.clock-layout,.player-wrap,.pack-layout,.retail-layout{grid-template-columns:1fr;gap:34px}
+  .pillars,.product-grid,.flip-grid{grid-template-columns:1fr 1fr}
+  .botanic-grid,.sci-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .tableau{max-width:420px;margin:0 auto}
+}
+@media (max-width:600px){
+  .pillars,.product-grid,.flip-grid,.botanic-grid,.sci-grid,.gallery-grid,.footer-top{grid-template-columns:1fr}
+  .tile.wide{grid-column:span 1}
+  .hero{padding-top:96px}
+  .flip{height:300px}
+}
+</style>
+</head>
+<body class="gated">
+
+<!-- ===== scroll-reactive background video ===== -->
+<div class="scroll-video-bg" aria-hidden="true">
+  <video id="ritualScrollVideo" muted playsinline preload="auto" poster="assets/beso-de-dios-landing-still.jpg">
+    <source src="assets/beso-de-dios-landing-ritual-loop.mp4" type="video/mp4" />
+  </video>
+</div>
+<div class="site-grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ===== age gate ===== -->
+<div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+  <div class="age-card">
+    <div class="halo-badge"><div class="halo-drop"></div></div>
+    <div class="micro">Beso de Dios · Ritual Botánico</div>
+    <h2 id="ageTitle">Beso de Dios</h2>
+    <p>Beso de Dios is intended for adults 21+.</p>
+    <div class="age-actions">
+      <button class="btn btn--light" id="ageYes">I am 21+</button>
+      <button class="btn btn--ghost" id="ageNo" style="color:var(--altar-cream);border-color:rgba(244,237,226,.4)">Leave</button>
+    </div>
+    <div class="age-fine">Cannabis wellness · adult use only · start low, go slow.</div>
+  </div>
+</div>
+
+<!-- ===== curved nav ===== -->
+<nav class="curved-nav" id="curvedNav" aria-label="Primary">
+  <div class="nav-rail">
+    <a href="../../../portfolio.html" class="nav-back-btn" title="Return to Main Portfolio"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></a>
+    <a href="#hero" class="nav-brand"><span class="halo-badge"><span class="halo-drop"></span></span>Beso de Dios</a>
+    <div class="nav-tabs" id="navTabs">
+      <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+      <button class="nav-tab" data-target="hero" aria-current="true">Home</button>
+      <button class="nav-tab" data-target="method">Body</button>
+      <button class="nav-tab" data-target="method">Dose</button>
+      <button class="nav-tab" data-target="ritualclock">Ritual</button>
+      <button class="nav-tab" data-target="retail">Retail</button>
+      <button class="nav-tab" data-target="botanical">Journal</button>
+      <button class="nav-tab" data-target="faq">FAQ</button>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+
+<!-- mobile drawer + dock -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+  <a href="#hero" data-close>Home</a>
+  <a href="#method" data-close>Body · Dose · Ritual</a>
+  <a href="#botanical" data-close>Field Notes</a>
+  <a href="#ritualclock" data-close>Ritual Clock</a>
+  <a href="#retail" data-close>Retail</a>
+  <a href="#gallery" data-close>Campaign</a>
+  <a href="#faq" data-close>FAQ</a>
+  <a href="../../../portfolio.html" class="drawer-back-link" data-close>Return to Portfolio</a>
+  <div class="micro">For the body after the world · 21+</div>
+</div>
+<div class="dock" id="dock" aria-label="Quick navigation">
+  <button data-target="hero" aria-current="true">Home</button>
+  <button data-target="method">Shop</button>
+  <button data-target="ritualclock">Ritual</button>
+  <button data-target="gallery">Film</button>
+  <button data-target="faq">FAQ</button>
+</div>
+
+<main class="page" id="site" aria-hidden="true">
+
+  <!-- ===== hero ===== -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow reveal">For the body after the world</div>
+          <h1 class="reveal" style="margin-top:14px">Beso de Dios</h1>
+          <div class="campaign reveal">For the body after the world.</div>
+          <p class="sub reveal">Luxury cannabis wellness for body, dose, and ritual — a sacred botanical house of body care, low-dose calm, and refined ritual objects.</p>
+          <div class="hero-cta reveal">
+            <a href="#method" class="btn btn--gold">Enter the Ritual</a>
+            <a href="#botanical" class="btn btn--ghost">Explore the System</a>
+          </div>
+          <div class="hero-compliance reveal">
+            <span class="pill-21">21+</span>
+            <span class="micro">Start low. Go slow.</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="tableau">
+            <img src="assets/altar-vertical.jpg" alt="Beso de Dios product altar — matte black flower jar, frosted tincture, amber balm, cream pre-roll box, gold grinder on warm stone" loading="lazy" />
+            <div class="tableau-tag">Body · Dose · Ritual</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span class="micro">Scroll</span><span class="line"></span></div>
+  </section>
+
+  <!-- ===== brand intro ===== -->
+  <section class="panel-cream" id="intro">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">001 — The House</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">Cannabis as sacred body ritual.</h2>
+        <p class="lede">Not a high to escape into — a return to the body. Beso de Dios is built around skincare-grade body care, low-dose calm, and lifestyle objects worth keeping. <em>Not escape. Return.</em></p>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal"><div class="num">I</div><h3>Body Care</h3><p>Balms, milks, and oils formulated as restorative ritual — tactile, warm, and made for slow hands.</p><div class="seal">BD · Ritual Botánico</div></div>
+        <div class="pillar reveal"><div class="num">II</div><h3>Low-Dose Calm</h3><p>Measured drops, pastilles, and softgels designed for controlled, adult, intentional calm.</p><div class="seal">Start low · Go slow</div></div>
+        <div class="pillar reveal"><div class="num">III</div><h3>Ritual Objects</h3><p>Matte flower jars, gold grinders, ceramic ashtrays, and sacred-black tools — refined lifestyle objects.</p><div class="seal">21+ Adult use</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== method tabs ===== -->
+  <section class="panel-stone" id="method">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">002 — The System</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">Body · Dose · Ritual</h2>
+        <p class="lede">Three families, one devotion. Browse the system by the way you want to arrive.</p>
+      </div>
+      <div class="reveal">
+        <div class="tabs-rail" role="tablist" aria-label="Product families">
+          <button class="tab-btn" role="tab" aria-selected="true" data-family="body">Body</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-family="dose">Dose</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-family="ritual">Ritual</button>
+        </div>
+        <p class="method-meta" id="methodMeta">Skincare-grade cannabis body care — warm, tactile, restorative.</p>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== feature flipper ===== -->
+  <section class="panel-cream" id="flipper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">003 — In the Hand</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">Turn an object over.</h2>
+        <p class="lede">Tap a card to read the material, the ritual step, and the responsible-use note.</p>
+      </div>
+      <div class="flip-grid" id="flipGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== botanical field notes ===== -->
+  <section class="panel-dark" id="botanical">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">004 — Field Notes</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">Botanical field notes.</h2>
+        <p class="lede">The materia botánica behind the house — pressed, noted, and sourced for cannabis wellness.</p>
+      </div>
+      <div class="filter-row reveal" id="botanicFilters" role="group" aria-label="Filter botanicals">
+        <button class="chip" aria-pressed="true" data-filter="all">All</button>
+        <button class="chip" aria-pressed="false" data-filter="flower">Flower</button>
+        <button class="chip" aria-pressed="false" data-filter="plant">Plant</button>
+        <button class="chip" aria-pressed="false" data-filter="resin">Resin</button>
+        <button class="chip" aria-pressed="false" data-filter="ritual">Ritual</button>
+      </div>
+      <div class="botanic-grid" id="botanicGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== ritual clock ===== -->
+  <section class="panel-cream" id="ritualclock">
+    <div class="wrap">
+      <div class="clock-layout">
+        <div class="reveal">
+          <div class="clock" id="clock" aria-hidden="true">
+            <div class="hand hour"></div>
+            <div class="hand minute"></div>
+            <div class="hand second"></div>
+            <div class="clock-cap"></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="section-num">005 — Ritual Clock</span>
+          <h2 style="font-size:clamp(2.2rem,5vw,3.4rem);margin:12px 0">Choose the ritual by the hour, not the hype.</h2>
+          <div class="time-chips" id="timeChips" role="group" aria-label="Ritual time">
+            <button class="time-chip" aria-pressed="true" data-time="morning">Morning</button>
+            <button class="time-chip" aria-pressed="false" data-time="afterwork">After Work</button>
+            <button class="time-chip" aria-pressed="false" data-time="afterbath">After Bath</button>
+            <button class="time-chip" aria-pressed="false" data-time="sleep">Before Sleep</button>
+          </div>
+          <div class="ritual-card" id="ritualCard"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== campaign player ===== -->
+  <section class="panel-dark" id="campaign">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">006 — Campaign Film</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">For the Body After the World.</h2>
+        <p class="lede">The campaign film, scored as ritual. Press play — no autoplay, no noise you didn't ask for.</p>
+      </div>
+      <div class="player-wrap reveal">
+        <div class="phone-wrapper">
+          <div class="phone-mockup" tabindex="0">
+            <div class="dynamic-island"><div class="camera-lens"></div></div>
+            <div class="status-bar">
+              <div class="status-left" id="phoneTime">05:00</div>
+              <div class="status-right">
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.79-1.79C9.09 19.79 10.5 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;"><path d="M2 22h20V2z"/></svg>
+                <div class="battery"><div class="battery-level"></div></div>
+              </div>
+            </div>
+            
+            <video id="campaignVideo" src="assets/campaign-retail.mp4" playsinline loop preload="metadata" poster="assets/campaign-villa-dusk.jpg">
+            </video>
+            
+            <!-- iOS Controls Overlay -->
+            <div class="ios-controls" id="iosControls">
+              <div class="ios-top-nav">
+                <button class="ios-btn" style="opacity: 0.5; cursor: default;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/></svg></button>
+                <div class="ios-title-wrap">
+                  <span class="ios-sub-title">Beso de Dios</span>
+                  <span class="ios-main-title" id="iosMainTitle">Return to the Body</span>
+                </div>
+                <button class="ios-btn" aria-label="Airplay"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22.42c-5.75 0-10.42-4.67-10.42-10.42S6.25 1.58 12 1.58s10.42 4.67 10.42 10.42S17.75 22.42 12 22.42zm0-18.84c-4.64 0-8.42 3.78-8.42 8.42s3.78 8.42 8.42 8.42 8.42-3.78 8.42-8.42-3.78-8.42-8.42-8.42z"/></svg></button>
+              </div>
+              
+              <div class="ios-center-controls">
+                <button class="ios-btn skip-btn" id="iosSkipBack" aria-label="Skip back 15 seconds">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 8c-2.65 0-5.05 1-6.9 2.6L3.7 8.7C3 8.1 2 8.6 2 9.5v8c0 .6.4 1 1 1h8c.9 0 1.4-1 .8-1.7L9.7 14.7c1.2-.7 2.6-1.1 4.1-1.1 3.9 0 7.2 2.7 8.1 6.4.2.6.7 1 1.3 1h.1c.8 0 1.4-.7 1.2-1.5-1.2-5.4-6-9.5-12-9.5z"/></svg>
+                  <span class="skip-num">15</span>
+                </button>
+                
+                <button class="ios-play-btn" id="iosPlayBtn" aria-label="Play campaign film" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="currentColor" id="iosPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                
+                <button class="ios-btn skip-btn" id="iosSkipForw" aria-label="Skip forward 15 seconds">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.4 10.6C16.5 9 14.1 8 11.5 8c-6 0-10.8 4.1-12 9.5-.2.8.4 1.5 1.2 1.5h.1c.6 0 1.1-.4 1.3-1 .9-3.7 4.2-6.4 8.1-6.4 1.5 0 2.9.4 4.1 1.1l-2.1 2.1c-.6.7-.1 1.7.8 1.7h8c.6 0 1-.4 1-1V9.5c0-.9-1-1.4-1.7-.8l-1.9 1.9z"/></svg>
+                  <span class="skip-num">15</span>
+                </button>
+              </div>
+              
+              <div class="ios-bottom-controls">
+                <div class="ios-scrub-container">
+                  <span class="ios-time-text" id="iosTimeCurrent">0:00</span>
+                  <div class="ios-scrub-bar" id="iosScrubBar">
+                    <div class="ios-scrub-fill" id="iosScrubFill"></div>
+                    <div class="ios-scrub-handle" id="iosScrubHandle"></div>
+                  </div>
+                  <span class="ios-time-text total" id="iosTimeTotal">0:00</span>
+                </div>
+                
+                <div class="ios-actions-row">
+                  <button class="ios-btn" id="iosMuteBtn" aria-label="Mute/Unmute"><svg viewBox="0 0 24 24" fill="currentColor" id="iosMuteIcon" style="width:16px;height:16px;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+                  <div class="ios-vol-slider" id="iosVolSlider" aria-label="Volume slider">
+                    <div class="ios-vol-fill" id="iosVolFill"></div>
+                    <div class="ios-vol-handle" id="iosVolHandle"></div>
+                  </div>
+                  <button class="ios-btn" id="iosFullscreenBtn" aria-label="Toggle Fullscreen"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tracklist" id="tracklist">
+          <button class="tl-item" aria-current="true" data-src="assets/campaign-retail.mp4" data-title="Return to the Body" data-poster="assets/campaign-villa-dusk.jpg"><span class="n">I</span><span class="t">Return to the Body</span><span class="d">Retail</span></button>
+          <button class="tl-item" data-src="assets/campaign-vertical.mp4" data-title="Smoke Softly" data-poster="assets/altar-vertical.jpg"><span class="n">II</span><span class="t">Smoke Softly</span><span class="d">Ritual</span></button>
+          <button class="tl-item" data-src="assets/beso-de-dios-landing-ritual-loop.mp4" data-title="A Softer Way to Arrive" data-poster="assets/altar-landscape.jpg"><span class="n">III</span><span class="t">A Softer Way to Arrive</span><span class="d">Altar</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== packaging ===== -->
+  <section class="panel-cream" id="packaging">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">007 — Packaging</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">The packaging system.</h2>
+        <p class="lede">Soft-touch cartons, frosted and amber glass, blind emboss, and Votive Gold foil — a luxury case study.</p>
+      </div>
+      <div class="reveal">
+        <div class="pack-tabs" role="tablist" aria-label="Packaging views">
+          <button class="pack-tab" role="tab" aria-selected="true" data-pack="materials">Materials</button>
+          <button class="pack-tab" role="tab" aria-selected="false" data-pack="labels">Labels</button>
+          <button class="pack-tab" role="tab" aria-selected="false" data-pack="compliance">Compliance</button>
+        </div>
+        <div class="pack-layout">
+          <div class="pack-visual"><img id="packImg" src="assets/label-system-sheet.jpg" alt="Beso de Dios label system and compliance guideline sheet" loading="lazy" /></div>
+          <div class="pack-hotspots" id="packHotspots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== retail ===== -->
+  <section class="panel-stone" id="retail">
+    <div class="wrap">
+      <div class="retail-layout">
+        <div class="reveal">
+          <span class="section-num">008 — Retail</span>
+          <h2 style="font-size:clamp(2.2rem,5vw,3.6rem);margin:12px 0">Retail as ritual, not inventory.</h2>
+          <p class="lede">A skincare apothecary meets premium dispensary gallery — warm stone counters, open shelving, and a back-wall wordmark. No bars, no neon, no clutter.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:24px">
+            <span class="pill-21">21+ Adult use</span>
+            <span class="pill-21" style="border-color:var(--rosary-brown)">Los Angeles, CA</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="retail-visual">
+            <img src="assets/retail-boutique.jpg" alt="Beso de Dios luxury cannabis wellness boutique with warm stone counter and product altar" loading="lazy" />
+            <span class="loc">Beso de Dios · Flagship Concept</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== science / compliance ===== -->
+  <section class="panel-cream" id="science">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">009 — Lab-Tested Calm</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">Nature-backed. Lab-tested.</h2>
+        <p class="lede">Clarity over claims. Every concept SKU is framed around testing, batch tracking, and responsible adult use.</p>
+      </div>
+      <div class="sci-grid">
+        <div class="badge-card reveal"><span class="halo-badge"><span class="halo-drop"></span></span><h4>COA Available</h4><p>Certificate of analysis placeholder for every batch.</p></div>
+        <div class="badge-card reveal"><span class="halo-badge"><span class="halo-drop"></span></span><h4>Batch Tracked</h4><p>Traceable batch numbers across the system.</p></div>
+        <div class="badge-card reveal"><span class="halo-badge"><span class="halo-drop"></span></span><h4>21+ Adult Use</h4><p>Designed and styled strictly for adults.</p></div>
+        <div class="badge-card reveal"><span class="halo-badge"><span class="halo-drop"></span></span><h4>Start Low, Go Slow</h4><p>Low-dose first. Measured, intentional ritual.</p></div>
+      </div>
+      <div class="sci-foot reveal">
+        <div class="coa-card">
+          <div class="qr" role="img" aria-label="COA QR code placeholder"></div>
+          <div class="batch">Batch example<b>BDD-2026-001</b>Scan for COA · placeholder</div>
+        </div>
+        <p class="disclaimer">This conceptual website does not provide medical advice. Do not drive or operate machinery after consuming cannabis products.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== campaign gallery ===== -->
+  <section class="panel-dark" id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-num">010 — Campaign</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">The campaign world.</h2>
+        <p class="lede">Product macro, body ritual, retail, and dusk-villa editorial — the visual world of Beso de Dios.</p>
+      </div>
+      <div class="filter-row reveal" id="galleryFilters" role="group" aria-label="Filter gallery">
+        <button class="chip" aria-pressed="true" data-gfilter="all">All</button>
+        <button class="chip" aria-pressed="false" data-gfilter="product">Product</button>
+        <button class="chip" aria-pressed="false" data-gfilter="ritual">Ritual</button>
+        <button class="chip" aria-pressed="false" data-gfilter="retail">Retail</button>
+        <button class="chip" aria-pressed="false" data-gfilter="brand">Brand</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== faq ===== -->
+  <section class="panel-cream" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal" style="text-align:center;align-items:center;margin-left:auto;margin-right:auto">
+        <span class="section-num">011 — Questions</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem)">Frequently asked.</h2>
+      </div>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ===== final cta ===== -->
+  <section class="panel-dark">
+    <div class="wrap final">
+      <div class="reveal" style="display:flex;justify-content:center;margin-bottom:24px"><span class="halo-badge" style="width:54px;height:54px"><span class="halo-drop"></span></span></div>
+      <h2 class="reveal">Return to the body.</h2>
+      <p class="lede reveal">The kiss before the exhale. A softer way to arrive.</p>
+      <div class="final-cta reveal">
+        <a href="#method" class="btn btn--gold" style="background:var(--votive-gold);color:var(--sacred-black);border-color:var(--votive-gold)">Shop the Ritual</a>
+        <a href="#botanical" class="btn btn--ghost" style="color:var(--altar-cream);border-color:rgba(244,237,226,.4)">Read the Journal</a>
+      </div>
+      <div class="micro reveal">Body · Dose · Ritual / 21+</div>
+    </div>
+  </section>
+
+  <!-- ===== footer ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <h3>Beso de Dios</h3>
+          <div class="tag">Body · Dose · Ritual</div>
+          <p class="blurb">A conceptual luxury cannabis wellness brand system. For the body after the world. 21+ adult use only · start low, go slow · COA available.</p>
+        </div>
+        <div class="footer-col">
+          <h5>The System</h5>
+          <a href="#method">Body Care</a>
+          <a href="#method">Low-Dose</a>
+          <a href="#method">Ritual Objects</a>
+          <a href="#botanical">Field Notes</a>
+          <a href="#science">Lab-Tested Calm</a>
+        </div>
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <form id="newsForm" novalidate>
+            <div class="news">
+              <input type="email" id="newsEmail" placeholder="your@email.com" aria-label="Email address" required />
+              <button type="submit">Join</button>
+            </div>
+            <div class="news-msg" id="newsMsg" role="status"></div>
+          </form>
+          <div style="margin-top:14px">
+            <a href="#" onclick="return false">Instagram</a>
+            <a href="#" onclick="return false">Journal</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="micro">© MMXXVI Beso de Dios — conceptual portfolio brand system · COA available · accessibility</span>
+        <button class="back-top" id="backTop">For the body after the world ↑</button>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ===== lightbox ===== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Campaign image">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <img id="lbImg" src="" alt="" />
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- age gate ---------------- */
+  var gate=document.getElementById('ageGate'), site=document.getElementById('site'), body=document.body;
+  var KEY='bdd_age_ok';
+  function enterSite(){
+    gate.setAttribute('hidden','');
+    body.classList.remove('gated');
+    site.setAttribute('aria-hidden','false');
+  }
+  try{ if(localStorage.getItem(KEY)==='1'){ enterSite(); } }catch(e){}
+  document.getElementById('ageYes').addEventListener('click',function(){
+    try{localStorage.setItem(KEY,'1');}catch(e){}
+    enterSite();
+  });
+  document.getElementById('ageNo').addEventListener('click',function(){
+    window.location.href='https://www.google.com';
+  });
+  // focus trap while gated
+  document.addEventListener('keydown',function(e){
+    if(body.classList.contains('gated') && e.key==='Tab'){
+      var f=gate.querySelectorAll('button'); if(!f.length)return;
+      var first=f[0],last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
+  if(body.classList.contains('gated')){ setTimeout(function(){document.getElementById('ageYes').focus();},150); }
+
+  /* ---------------- scroll-reactive background video ---------------- */
+  var rv=document.getElementById('ritualScrollVideo');
+  var videoReady=false,targetTime=0,rafId=null,fallbackLoop=false;
+  function clamp(v,a,b){return Math.min(Math.max(v,a),b);}
+  function scrollProgress(){
+    var d=document.documentElement;
+    var max=Math.max(1,d.scrollHeight-window.innerHeight);
+    return clamp(window.scrollY/max,0,1);
+  }
+  function startFallbackLoop(){
+    if(!rv||fallbackLoop||reduceMotion)return;
+    fallbackLoop=true;rv.loop=true;rv.muted=true;rv.play().catch(function(){});
+  }
+  function smoothScrub(){
+    if(!rv||reduceMotion||!videoReady){rafId=null;return;}
+    var cur=rv.currentTime||0, next=cur+(targetTime-cur)*0.12;
+    try{ rv.currentTime=next; }catch(err){ startFallbackLoop(); rafId=null; return; }
+    if(Math.abs(targetTime-next)>0.01){ rafId=requestAnimationFrame(smoothScrub); } else { rafId=null; }
+  }
+  function updateTarget(){
+    if(!rv||!videoReady||reduceMotion||!isFinite(rv.duration)||rv.duration<=0)return;
+    targetTime=scrollProgress()*rv.duration;
+    if(!rafId)rafId=requestAnimationFrame(smoothScrub);
+  }
+  if(rv){
+    if(reduceMotion){ rv.pause(); }
+    else{
+      rv.pause();
+      rv.addEventListener('loadedmetadata',function(){ videoReady=true; try{rv.currentTime=0;}catch(e){} updateTarget(); });
+      rv.addEventListener('error',function(){ rv.style.display='none'; });
+      if(rv.readyState>=1){ videoReady=true; updateTarget(); }
+      window.addEventListener('scroll',updateTarget,{passive:true});
+      window.addEventListener('resize',updateTarget);
+    }
+  }
+
+  /* ---------------- scroll progress bar ---------------- */
+  var bar=document.getElementById('scrollProgress');
+  window.addEventListener('scroll',function(){ bar.style.width=(scrollProgress()*100).toFixed(2)+'%'; },{passive:true});
+
+  /* ---------------- mobile drawer + dock ---------------- */
+  var drawer=document.getElementById('drawer'),burger=document.getElementById('navBurger');
+  function openDrawer(){drawer.classList.add('open');burger.setAttribute('aria-expanded','true');}
+  function closeDrawer(){drawer.classList.remove('open');burger.setAttribute('aria-expanded','false');}
+  burger.addEventListener('click',openDrawer);
+  document.getElementById('drawerClose').addEventListener('click',closeDrawer);
+  drawer.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',closeDrawer);});
+  document.querySelectorAll('#dock button').forEach(function(b){
+    b.addEventListener('click',function(){var t=document.getElementById(b.dataset.target);if(t)t.scrollIntoView({behavior:reduceMotion?'auto':'smooth'});});
+  });
+
+  /* ---------------- curved nav pill + scrollspy ---------------- */
+  var navTabs=document.getElementById('navTabs'),pill=document.getElementById('navPill');
+  var tabs=Array.prototype.slice.call(navTabs.querySelectorAll('.nav-tab'));
+  function movePill(tab){
+    pill.style.width=tab.offsetWidth+'px';
+    pill.style.transform='translateX('+tab.offsetLeft+'px)';
+  }
+  function setActive(tab){
+    tabs.forEach(function(t){t.setAttribute('aria-current','false');});
+    tab.setAttribute('aria-current','true'); movePill(tab);
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      var el=document.getElementById(t.dataset.target);
+      if(el)el.scrollIntoView({behavior:reduceMotion?'auto':'smooth'});
+      setActive(t);
+    });
+  });
+  window.addEventListener('load',function(){ var a=navTabs.querySelector('[aria-current="true"]'); if(a)movePill(a); });
+  window.addEventListener('resize',function(){ var a=navTabs.querySelector('[aria-current="true"]'); if(a)movePill(a); });
+  setTimeout(function(){var a=navTabs.querySelector('[aria-current="true"]');if(a)movePill(a);},400);
+
+  /* ---------------- reveal on scroll ---------------- */
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(r){io.observe(r);});
+  } else { reveals.forEach(function(r){r.classList.add('in');}); }
+
+  // scrollspy via IntersectionObserver
+  var spyMap={hero:0,method:1,ritualclock:3,retail:4,botanical:5,faq:6};
+  var sections=['hero','method','ritualclock','retail','botanical','faq'];
+  if('IntersectionObserver' in window){
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var idx=spyMap[en.target.id];
+          if(idx!=null && tabs[idx]) setActive(tabs[idx]);
+          document.querySelectorAll('#dock button').forEach(function(b){b.setAttribute('aria-current',b.dataset.target===en.target.id?'true':'false');});
+        }
+      });
+    },{threshold:0.4});
+    sections.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
+  }
+
+  /* ---------------- data ---------------- */
+  var FAMILIES={
+    body:{meta:"Skincare-grade cannabis body care — warm, tactile, restorative.",items:[
+      {name:"Ritual Body Balm",obj:"amber",fmt:"Amber glass · 60ml",mood:"Warm · grounding",ru:"21+ · Patch test first"},
+      {name:"Afterlight Body Milk",obj:"bottle",fmt:"Frosted bottle · 200ml",mood:"Soft · luminous",ru:"21+ · External use"},
+      {name:"Release Massage Oil",obj:"bottle",fmt:"Amber dropper · 100ml",mood:"Slow · loosening",ru:"21+ · Start low"}
+    ]},
+    dose:{meta:"Low-dose calm — measured, adult, intentional.",items:[
+      {name:"Still Ritual Drops",obj:"bottle",fmt:"Tincture · 30ml",mood:"Quiet · even",ru:"21+ · 200mg · 5mg/serving"},
+      {name:"Glow Pastilles",obj:"box",fmt:"Pastilles · 20ct",mood:"Bright · gentle",ru:"21+ · 25mg · 1.25mg/pc"},
+      {name:"Mercy Softgels",obj:"jar",fmt:"Softgels · 30ct",mood:"Deep · forgiving",ru:"21+ · Start low, go slow"}
+    ]},
+    ritual:{meta:"Refined ritual objects — sacred-black tools and warm metal.",items:[
+      {name:"Pre-Roll Ritual",obj:"box",fmt:"Cream carton · 5pk",mood:"Slow · ceremonial",ru:"21+ · Smoke softly"},
+      {name:"Flower Ritual Jar",obj:"jar",fmt:"Matte black · 3.5g",mood:"Earthy · whole",ru:"21+ · Keep sealed"},
+      {name:"Votive Gold Grinder",obj:"grinder",fmt:"Brushed metal",mood:"Tactile · weighted",ru:"21+ · Lifetime object"}
+    ]}
+  };
+  var FLIP=[
+    {fam:"Body",name:"Ritual Body Balm",obj:"amber",back:[["Material","Amber glass, ribbed cap"],["Format","60ml restorative balm"],["Ritual","Warm hands, slow circles"],["COA","BDD-2026-001 placeholder"],["Note","21+ · patch test first"]]},
+    {fam:"Dose",name:"Still Ritual Drops",obj:"bottle",back:[["Material","Frosted glass tincture"],["Format","30ml · 200mg"],["Ritual","One measured drop, wait"],["COA","BDD-2026-014 placeholder"],["Note","21+ · start low, go slow"]]},
+    {fam:"Ritual",name:"Pre-Roll Ritual",obj:"box",back:[["Material","Soft-touch cream carton"],["Format","5-pack pre-rolls"],["Ritual","Soft light, slow exhale"],["COA","BDD-2026-027 placeholder"],["Note","21+ · smoke softly"]]}
+  ];
+  var BOTANIC=[
+    {name:"Cannabis Flower",cat:"flower",color:"#59624A",scent:"Earthy · resinous · green",note:"The center of the house — muted olive and amber, trichome-bright.",assoc:"Ritual · Dose"},
+    {name:"Olive",cat:"plant",color:"#6f7a55",scent:"Green · oleic · soft",note:"Cold-pressed warmth for body care and a Mediterranean calm.",assoc:"Body"},
+    {name:"Myrrh",cat:"resin",color:"#8A7A6A",scent:"Smoky · balsamic · old",note:"A devotional resin — grounding the smoke into something sacred.",assoc:"Ritual"},
+    {name:"Frankincense",cat:"resin",color:"#b89a6a",scent:"Bright · woody · clean",note:"Lifts the blend; an incense-clear top note for the altar.",assoc:"Ritual"},
+    {name:"Lavender",cat:"plant",color:"#8b86a6",scent:"Floral · herbal · cool",note:"Quiet the system before sleep — soft, blue-hour calm.",assoc:"Before Sleep"},
+    {name:"Rose",cat:"plant",color:"#B47A74",scent:"Powdery · warm · rich",note:"Dried Rose tenderness woven through the body line.",assoc:"Body"},
+    {name:"Amber Resin",cat:"resin",color:"#a9692b",scent:"Sweet · warm · enveloping",note:"The amber glass made scent — a slow, golden hold.",assoc:"Glow"},
+    {name:"Pre-Roll Ritual",cat:"ritual",color:"#cbb78f",scent:"Toasted · herbal · soft",note:"Not a botanical but a ceremony — the slow hands of the house.",assoc:"Ritual"}
+  ];
+  var RITUALS={
+    morning:{eyebrow:"Morning · I",title:"A softer way to arrive.",text:"Begin low. A measured drop of Still Ritual Drops and warm balm on the hands before the world asks anything of you.",pairing:"Still Ritual Drops · Ritual Body Balm"},
+    afterwork:{eyebrow:"After Work · II",title:"Set the world down.",text:"Smoke softly. A single Pre-Roll Ritual, soft light, slow exhale — the kiss before the evening.",pairing:"Pre-Roll Ritual · Votive Gold Grinder"},
+    afterbath:{eyebrow:"After Bath · III",title:"Return to the body.",text:"Warm water, slow hands. Release Massage Oil and Afterlight Body Milk while the skin is still warm.",pairing:"Release Massage Oil · Afterlight Body Milk"},
+    sleep:{eyebrow:"Before Sleep · IV",title:"The last small calm.",text:"Mercy Softgels and lavender quiet. Dim the votive, let the day finish without you.",pairing:"Mercy Softgels · Glow Pastilles"}
+  };
+  var PACK={
+    materials:{img:"assets/altar-landscape.jpg",spots:[
+      {h:"Soft-Touch Carton",lbl:"Uncoated stock",note:"Cream soft-touch paperboard with blind emboss — tactile, matte, and warm to the hand."},
+      {h:"Frosted Glass",lbl:"Tincture",note:"Diffused frosted glass for the dose line — quiet, premium, and light-protective."},
+      {h:"Amber Glass",lbl:"Balm",note:"Translucent amber glass with a ribbed cap; warm refraction over the body care."},
+      {h:"Matte Sacred Black",lbl:"Flower jar",note:"Low-contrast matte black with a ribbed cap — the house's ritual object."}
+    ]},
+    labels:{img:"assets/label-system-sheet.jpg",spots:[
+      {h:"Blind Emboss",lbl:"BD seal",note:"The BD oval seal pressed without ink — felt before it is read."},
+      {h:"Votive Gold Foil",lbl:"Accent",note:"Restrained gold foil on the haloed droplet and wordmark only."},
+      {h:"Prayer-Card Insert",lbl:"Ritual strip",note:"A devotional ritual-instruction card tucked into every carton."},
+      {h:"Universal Symbols",lbl:"Compliance",note:"Clear dosage, THC %, and the required CA 21+ universal mark."}
+    ]},
+    compliance:{img:"assets/brand-identity-sheet.jpg",spots:[
+      {h:"COA QR",lbl:"Scan",note:"A QR placeholder linking to the certificate of analysis for the batch."},
+      {h:"Batch Number",lbl:"Traceable",note:"Every package carries a batch number — BDD-2026-001 as the example."},
+      {h:"Child-Resistant",lbl:"Placeholder",note:"Child-resistant closure note placeholder per adult-use requirements."},
+      {h:"21+ Adult Use",lbl:"Only",note:"Adult-use language and start-low-go-slow guidance on every face."}
+    ]}
+  };
+  var GALLERY=[
+    {src:"assets/beso-01.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"Ritual Botánico 1"},
+    {src:"assets/beso-02.png",cat:"ritual",cls:"wide",line:"The kiss before the exhale.",label:"Product Altar 2"},
+    {src:"assets/beso-03.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"The System 3"},
+    {src:"assets/beso-04.png",cat:"brand",cls:"",line:"Luxury cannabis for sacred everyday rituals.",label:"Villa Dusk 4"},
+    {src:"assets/beso-05.png",cat:"product",cls:"tall",line:"Touched by calm.",label:"Boutique 5"},
+    {src:"assets/beso-06.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Wordmark 6"},
+    {src:"assets/beso-07.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"Identity 7"},
+    {src:"assets/beso-08.png",cat:"brand",cls:"",line:"For the body after the world.",label:"Label System 8"},
+    {src:"assets/beso-09.png",cat:"product",cls:"wide",line:"A divine ritual for body, mind, and mood.",label:"Tincture Still Life 9"},
+    {src:"assets/beso-10.png",cat:"ritual",cls:"",line:"The kiss before the exhale.",label:"Balm Detail 10"},
+    {src:"assets/beso-11.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"Pastilles Packaging 11"},
+    {src:"assets/beso-12.png",cat:"brand",cls:"tall",line:"Luxury cannabis for sacred everyday rituals.",label:"Sacred Smoke 12"},
+    {src:"assets/beso-13.png",cat:"product",cls:"",line:"Touched by calm.",label:"Incense Ritual 13"},
+    {src:"assets/beso-14.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Apothecary Jar 14"},
+    {src:"assets/beso-15.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"Ritual Botánico 15"},
+    {src:"assets/beso-16.png",cat:"brand",cls:"wide",line:"For the body after the world.",label:"Product Altar 16"},
+    {src:"assets/beso-17.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"The System 17"},
+    {src:"assets/beso-18.png",cat:"ritual",cls:"",line:"The kiss before the exhale.",label:"Villa Dusk 18"},
+    {src:"assets/beso-19.png",cat:"retail",cls:"tall",line:"A softer way to arrive.",label:"Boutique 19"},
+    {src:"assets/beso-20.png",cat:"brand",cls:"",line:"Luxury cannabis for sacred everyday rituals.",label:"Wordmark 20"},
+    {src:"assets/beso-21.png",cat:"product",cls:"",line:"Touched by calm.",label:"Identity 21"},
+    {src:"assets/beso-22.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Label System 22"},
+    {src:"assets/beso-23.png",cat:"retail",cls:"wide",line:"Body, dose, and ritual.",label:"Tincture Still Life 23"},
+    {src:"assets/beso-24.png",cat:"brand",cls:"",line:"For the body after the world.",label:"Balm Detail 24"},
+    {src:"assets/beso-25.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"Pastilles Packaging 25"},
+    {src:"assets/beso-26.png",cat:"ritual",cls:"tall",line:"The kiss before the exhale.",label:"Sacred Smoke 26"},
+    {src:"assets/beso-27.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"Incense Ritual 27"},
+    {src:"assets/beso-28.png",cat:"brand",cls:"",line:"Luxury cannabis for sacred everyday rituals.",label:"Apothecary Jar 28"},
+    {src:"assets/beso-29.png",cat:"product",cls:"",line:"Touched by calm.",label:"Ritual Botánico 29"},
+    {src:"assets/beso-30.png",cat:"ritual",cls:"wide",line:"Sensual recovery, devotional luxury.",label:"Product Altar 30"},
+    {src:"assets/beso-31.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"The System 31"},
+    {src:"assets/beso-32.png",cat:"brand",cls:"",line:"For the body after the world.",label:"Villa Dusk 32"},
+    {src:"assets/beso-33.png",cat:"product",cls:"tall",line:"A divine ritual for body, mind, and mood.",label:"Boutique 33"},
+    {src:"assets/beso-34.png",cat:"ritual",cls:"",line:"The kiss before the exhale.",label:"Wordmark 34"},
+    {src:"assets/beso-35.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"Identity 35"},
+    {src:"assets/beso-36.png",cat:"brand",cls:"",line:"Luxury cannabis for sacred everyday rituals.",label:"Label System 36"},
+    {src:"assets/beso-37.png",cat:"product",cls:"wide",line:"Touched by calm.",label:"Tincture Still Life 37"},
+    {src:"assets/beso-38.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Balm Detail 38"},
+    {src:"assets/beso-39.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"Pastilles Packaging 39"},
+    {src:"assets/beso-40.png",cat:"brand",cls:"tall",line:"For the body after the world.",label:"Sacred Smoke 40"},
+    {src:"assets/beso-41.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"Incense Ritual 41"},
+    {src:"assets/beso-42.png",cat:"ritual",cls:"",line:"The kiss before the exhale.",label:"Apothecary Jar 42"},
+    {src:"assets/beso-43.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"Ritual Botánico 43"},
+    {src:"assets/beso-44.png",cat:"brand",cls:"wide",line:"Luxury cannabis for sacred everyday rituals.",label:"Product Altar 44"},
+    {src:"assets/beso-45.png",cat:"product",cls:"",line:"Touched by calm.",label:"The System 45"},
+    {src:"assets/beso-46.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Villa Dusk 46"},
+    {src:"assets/beso-47.png",cat:"retail",cls:"tall",line:"Body, dose, and ritual.",label:"Boutique 47"},
+    {src:"assets/beso-48.png",cat:"brand",cls:"",line:"For the body after the world.",label:"Wordmark 48"},
+    {src:"assets/beso-49.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"Identity 49"},
+    {src:"assets/beso-50.png",cat:"ritual",cls:"",line:"The kiss before the exhale.",label:"Label System 50"},
+    {src:"assets/beso-51.png",cat:"retail",cls:"wide",line:"A softer way to arrive.",label:"Tincture Still Life 51"},
+    {src:"assets/beso-52.png",cat:"brand",cls:"",line:"Luxury cannabis for sacred everyday rituals.",label:"Balm Detail 52"},
+    {src:"assets/beso-53.png",cat:"product",cls:"",line:"Touched by calm.",label:"Pastilles Packaging 53"},
+    {src:"assets/beso-54.png",cat:"ritual",cls:"tall",line:"Sensual recovery, devotional luxury.",label:"Sacred Smoke 54"},
+    {src:"assets/beso-55.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"Incense Ritual 55"},
+    {src:"assets/beso-56.png",cat:"brand",cls:"",line:"For the body after the world.",label:"Apothecary Jar 56"},
+    {src:"assets/beso-57.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"Ritual Botánico 57"},
+    {src:"assets/beso-58.png",cat:"ritual",cls:"wide",line:"The kiss before the exhale.",label:"Product Altar 58"},
+    {src:"assets/beso-59.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"The System 59"},
+    {src:"assets/beso-60.png",cat:"brand",cls:"",line:"Luxury cannabis for sacred everyday rituals.",label:"Villa Dusk 60"},
+    {src:"assets/beso-61.png",cat:"product",cls:"tall",line:"Touched by calm.",label:"Boutique 61"},
+    {src:"assets/beso-62.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Wordmark 62"},
+    {src:"assets/beso-63.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"Identity 63"},
+    {src:"assets/beso-64.png",cat:"brand",cls:"",line:"For the body after the world.",label:"Label System 64"},
+    {src:"assets/beso-65.png",cat:"product",cls:"wide",line:"A divine ritual for body, mind, and mood.",label:"Tincture Still Life 65"},
+    {src:"assets/beso-66.png",cat:"ritual",cls:"",line:"The kiss before the exhale.",label:"Balm Detail 66"},
+    {src:"assets/beso-67.png",cat:"retail",cls:"",line:"A softer way to arrive.",label:"Pastilles Packaging 67"},
+    {src:"assets/beso-68.png",cat:"brand",cls:"tall",line:"Luxury cannabis for sacred everyday rituals.",label:"Sacred Smoke 68"},
+    {src:"assets/beso-69.png",cat:"product",cls:"",line:"Touched by calm.",label:"Incense Ritual 69"},
+    {src:"assets/beso-70.png",cat:"ritual",cls:"",line:"Sensual recovery, devotional luxury.",label:"Apothecary Jar 70"},
+    {src:"assets/beso-71.png",cat:"retail",cls:"",line:"Body, dose, and ritual.",label:"Ritual Botánico 71"},
+    {src:"assets/beso-72.png",cat:"brand",cls:"wide",line:"For the body after the world.",label:"Product Altar 72"},
+    {src:"assets/beso-73.png",cat:"product",cls:"",line:"A divine ritual for body, mind, and mood.",label:"The System 73"}
+  ];
+  var FAQ=[
+    {q:"Who is Beso de Dios for?",a:"Adults 21 and older looking for a refined, design-led approach to cannabis wellness — body care, low-dose calm, and ritual objects. Not escape. Return."},
+    {q:"What are the product families?",a:"Three: Body (balms, milks, oils), Dose (drops, pastilles, softgels), and Ritual (pre-rolls, flower, and lifestyle tools like the Votive Gold grinder and ceramic ashtray)."},
+    {q:"How should I dose?",a:"Start low and go slow. Low-dose formats are designed for measured, intentional use. This conceptual site does not provide medical advice."},
+    {q:"Is a COA available?",a:"Yes — every concept batch carries a COA placeholder and a traceable batch number, e.g. BDD-2026-001, with a QR scan placeholder on pack."},
+    {q:"Do you make medical claims?",a:"No. Beso de Dios is a wellness and design system. It makes no medical, curative, or guaranteed-benefit claims of any kind."},
+    {q:"Is this a real store?",a:"Beso de Dios is a conceptual portfolio brand system — a complete brand world built as a case study, not a live retailer or checkout."}
+  ];
+
+  function objHTML(t){return '<div class="obj obj-'+t+'"></div>';}
+
+  /* ---------------- render method tabs ---------------- */
+  var productGrid=document.getElementById('productGrid'),methodMeta=document.getElementById('methodMeta');
+  function renderFamily(fam){
+    var f=FAMILIES[fam]; methodMeta.textContent=f.meta;
+    productGrid.style.opacity=reduceMotion?1:0;
+    productGrid.innerHTML=f.items.map(function(p){
+      return '<article class="product-card pc-'+fam+'"><div class="product-thumb"><span class="micro">'+fam+'</span>'+objHTML(p.obj)+'</div>'+
+      '<div class="product-info"><span class="fmt">'+p.fmt+'</span><h4>'+p.name+'</h4><span class="mood">'+p.mood+'</span><span class="ru">'+p.ru+'</span></div></article>';
+    }).join('');
+    if(!reduceMotion){requestAnimationFrame(function(){productGrid.style.transition='opacity .5s';productGrid.style.opacity=1;});}
+  }
+  document.querySelectorAll('.tab-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.tab-btn').forEach(function(x){x.setAttribute('aria-selected','false');});
+      b.setAttribute('aria-selected','true'); renderFamily(b.dataset.family);
+    });
+  });
+  renderFamily('body');
+
+  /* ---------------- flipper ---------------- */
+  var flipGrid=document.getElementById('flipGrid');
+  flipGrid.innerHTML=FLIP.map(function(c){
+    var li=c.back.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>';}).join('');
+    return '<button class="flip" aria-pressed="false" aria-label="'+c.name+' — flip for details">'+
+      '<div class="flip-inner">'+
+        '<div class="flip-face flip-front"><span class="micro">'+c.fam+'</span>'+objHTML(c.obj)+'<div><h3>'+c.name+'</h3><span class="flip-hint">Tap to turn over</span></div></div>'+
+        '<div class="flip-face flip-back"><div><span class="micro" style="color:var(--votive-gold)">'+c.fam+'</span><h4>'+c.name+'</h4><ul>'+li+'</ul></div><span class="flip-hint">Tap to return</span></div>'+
+      '</div></button>';
+  }).join('');
+  flipGrid.querySelectorAll('.flip').forEach(function(f){
+    f.addEventListener('click',function(){f.setAttribute('aria-pressed',f.getAttribute('aria-pressed')==='true'?'false':'true');});
+  });
+
+  /* ---------------- botanical ---------------- */
+  var botanicGrid=document.getElementById('botanicGrid');
+  botanicGrid.innerHTML=BOTANIC.map(function(b){
+    return '<article class="botanic" data-cat="'+b.cat+'">'+
+      '<div class="specimen" style="background:'+b.color+'22;border:1px solid '+b.color+'55"><span style="background:'+b.color+'"></span></div>'+
+      '<h4>'+b.name+'</h4><div class="scent">'+b.scent+'</div><p>'+b.note+'</p><div class="assoc">'+b.assoc+'</div></article>';
+  }).join('');
+  document.getElementById('botanicFilters').addEventListener('click',function(e){
+    var btn=e.target.closest('.chip'); if(!btn)return;
+    this.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');});
+    btn.setAttribute('aria-pressed','true');
+    var f=btn.dataset.filter;
+    botanicGrid.querySelectorAll('.botanic').forEach(function(card){
+      card.classList.toggle('hide',!(f==='all'||card.dataset.cat===f));
+    });
+  });
+
+  /* ---------------- ritual clock ---------------- */
+  var clock=document.getElementById('clock');
+  var labels=[['12','Before Sleep'],['3','Morning'],['6','After Bath'],['9','After Work']];
+  for(var i=0;i<12;i++){
+    var tick=document.createElement('div'); tick.className='tick'+(i%3===0?' major':'');
+    tick.style.transform='translate(-50%,-100%) rotate('+(i*30)+'deg)';
+    tick.innerHTML='<i></i>'; clock.appendChild(tick);
+  }
+  var timeChips=document.getElementById('timeChips'),ritualCard=document.getElementById('ritualCard');
+  var hourHand=clock.querySelector('.hour'),minHand=clock.querySelector('.minute');
+  var HANDPOS={morning:[300,90],afterwork:[170,30],afterbath:[60,180],sleep:[330,300]};
+  function renderRitual(t){
+    var r=RITUALS[t];
+    ritualCard.innerHTML='<div class="eyebrow">'+r.eyebrow+'</div><h3>'+r.title+'</h3><p>'+r.text+'</p><div class="pairing">'+r.pairing+'</div>';
+    var hp=HANDPOS[t];
+    if(!reduceMotion){ hourHand.style.transition='transform 1.1s var(--ease)';minHand.style.transition='transform 1.1s var(--ease)'; }
+    hourHand.style.transform='translateX(-50%) rotate('+hp[0]+'deg)';
+    minHand.style.transform='translateX(-50%) rotate('+hp[1]+'deg)';
+  }
+  timeChips.addEventListener('click',function(e){
+    var btn=e.target.closest('.time-chip'); if(!btn)return;
+    this.querySelectorAll('.time-chip').forEach(function(c){c.setAttribute('aria-pressed','false');});
+    btn.setAttribute('aria-pressed','true'); renderRitual(btn.dataset.time);
+  });
+  renderRitual('morning');
+
+  /* ---------------- campaign player (iOS Mockup) ---------------- */
+  var cv = document.getElementById('campaignVideo');
+  var iosPlayBtn = document.getElementById('iosPlayBtn');
+  var iosPlayIcon = document.getElementById('iosPlayIcon');
+  var iosTimeCurrent = document.getElementById('iosTimeCurrent');
+  var iosTimeTotal = document.getElementById('iosTimeTotal');
+  var iosScrubBar = document.getElementById('iosScrubBar');
+  var iosScrubFill = document.getElementById('iosScrubFill');
+  var iosScrubHandle = document.getElementById('iosScrubHandle');
+  var iosSkipBack = document.getElementById('iosSkipBack');
+  var iosSkipForw = document.getElementById('iosSkipForw');
+  var iosMuteBtn = document.getElementById('iosMuteBtn');
+  var iosMuteIcon = document.getElementById('iosMuteIcon');
+  var iosVolSlider = document.getElementById('iosVolSlider');
+  var iosVolFill = document.getElementById('iosVolFill');
+  var iosVolHandle = document.getElementById('iosVolHandle');
+  var iosFullscreenBtn = document.getElementById('iosFullscreenBtn');
+  var iosMainTitle = document.getElementById('iosMainTitle');
+  var phoneTime = document.getElementById('phoneTime');
+  var iosControls = document.getElementById('iosControls');
+
+  function fmt(s) {
+    if (!isFinite(s)) s = 0;
+    var m = Math.floor(s / 60), sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function setPlayState(playing) {
+    iosPlayIcon.setAttribute('d', playing ? 'M6 19h4V5H6v14zm8-14v14h4V5h-4z' : 'M8 5v14l11-7z');
+    iosPlayBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+  }
+
+  iosPlayBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (cv.paused) {
+      cv.play().then(function() {
+        setPlayState(true);
+      }).catch(function(err) {
+        console.error(err);
+      });
+    } else {
+      cv.pause();
+      setPlayState(false);
+    }
+  });
+
+  cv.addEventListener('play', function() { setPlayState(true); });
+  cv.addEventListener('pause', function() { setPlayState(false); });
+
+  cv.addEventListener('timeupdate', function() {
+    if (isScrubbing) return;
+    var ratio = cv.duration ? cv.currentTime / cv.duration : 0;
+    iosScrubFill.style.width = (ratio * 100) + '%';
+    iosScrubHandle.style.left = (ratio * 100) + '%';
+    iosTimeCurrent.textContent = fmt(cv.currentTime);
+    iosTimeTotal.textContent = fmt(cv.duration);
+  });
+
+  cv.addEventListener('loadedmetadata', function() {
+    iosTimeCurrent.textContent = '0:00';
+    iosTimeTotal.textContent = fmt(cv.duration);
+  });
+
+  var isScrubbing = false;
+  function seek(e) {
+    var rect = iosScrubBar.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var ratio = Math.max(0, Math.min(1, x / rect.width));
+    iosScrubFill.style.width = (ratio * 100) + '%';
+    iosScrubHandle.style.left = (ratio * 100) + '%';
+    iosTimeCurrent.textContent = fmt(ratio * (cv.duration || 0));
+    return ratio;
+  }
+
+  iosScrubBar.addEventListener('mousedown', function(e) {
+    isScrubbing = true;
+    var ratio = seek(e);
+    if (cv.duration) cv.currentTime = ratio * cv.duration;
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (!isScrubbing) return;
+    var ratio = seek(e);
+    if (cv.duration) cv.currentTime = ratio * cv.duration;
+  });
+
+  window.addEventListener('mouseup', function() {
+    isScrubbing = false;
+  });
+
+  iosScrubBar.addEventListener('touchstart', function(e) {
+    isScrubbing = true;
+    var touch = e.touches[0];
+    var rect = iosScrubBar.getBoundingClientRect();
+    var x = touch.clientX - rect.left;
+    var ratio = Math.max(0, Math.min(1, x / rect.width));
+    if (cv.duration) cv.currentTime = ratio * cv.duration;
+  });
+  iosScrubBar.addEventListener('touchmove', function(e) {
+    if (!isScrubbing) return;
+    var touch = e.touches[0];
+    var rect = iosScrubBar.getBoundingClientRect();
+    var x = touch.clientX - rect.left;
+    var ratio = Math.max(0, Math.min(1, x / rect.width));
+    if (cv.duration) cv.currentTime = ratio * cv.duration;
+  });
+  window.addEventListener('touchend', function() {
+    isScrubbing = false;
+  });
+
+  iosSkipBack.addEventListener('click', function(e) {
+    e.stopPropagation();
+    cv.currentTime = Math.max(0, cv.currentTime - 15);
+  });
+  iosSkipForw.addEventListener('click', function(e) {
+    e.stopPropagation();
+    cv.currentTime = Math.min(cv.duration || 0, cv.currentTime + 15);
+  });
+
+  var lastVolume = 1;
+  function updateVolumeUI(vol) {
+    iosVolFill.style.width = (vol * 100) + '%';
+    iosVolHandle.style.left = (vol * 100) + '%';
+    if (vol === 0) {
+      iosMuteIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+    } else if (vol < 0.5) {
+      iosMuteIcon.innerHTML = '<path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>';
+    } else {
+      iosMuteIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+    }
+  }
+
+  iosMuteBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (cv.volume > 0) {
+      lastVolume = cv.volume;
+      cv.volume = 0;
+      cv.muted = true;
+      updateVolumeUI(0);
+    } else {
+      cv.volume = lastVolume;
+      cv.muted = false;
+      updateVolumeUI(lastVolume);
+    }
+  });
+
+  function adjustVolume(e) {
+    var rect = iosVolSlider.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var vol = Math.max(0, Math.min(1, x / rect.width));
+    cv.volume = vol;
+    cv.muted = (vol === 0);
+    updateVolumeUI(vol);
+  }
+
+  var isAdjustingVolume = false;
+  iosVolSlider.addEventListener('mousedown', function(e) {
+    isAdjustingVolume = true;
+    adjustVolume(e);
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (isAdjustingVolume) adjustVolume(e);
+  });
+  window.addEventListener('mouseup', function() {
+    isAdjustingVolume = false;
+  });
+
+  iosFullscreenBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (cv.requestFullscreen) {
+      cv.requestFullscreen();
+    } else if (cv.webkitRequestFullscreen) {
+      cv.webkitRequestFullscreen();
+    } else if (cv.msRequestFullscreen) {
+      cv.msRequestFullscreen();
+    }
+  });
+
+  document.getElementById('tracklist').querySelectorAll('.tl-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.tl-item').forEach(function(x) { x.setAttribute('aria-current', 'false'); });
+      item.setAttribute('aria-current', 'true');
+      var wasPlaying = !cv.paused;
+      cv.src = item.dataset.src;
+      cv.poster = item.dataset.poster || '';
+      cv.load();
+      iosMainTitle.textContent = item.dataset.title;
+      if (wasPlaying) {
+        cv.play().then(function() {
+          setPlayState(true);
+        }).catch(function() {});
+      } else {
+        setPlayState(false);
+      }
+    });
+  });
+
+  function updateStatusBarClock() {
+    var d = new Date();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var timeStr = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    phoneTime.textContent = timeStr;
+  }
+  updateStatusBarClock();
+  setInterval(updateStatusBarClock, 60000);
+
+  var controlsTimeout;
+  function resetControlsTimeout() {
+    iosControls.classList.add('active');
+    clearTimeout(controlsTimeout);
+    controlsTimeout = setTimeout(function() {
+      if (!cv.paused && !isScrubbing && !isAdjustingVolume) {
+        iosControls.classList.remove('active');
+      }
+    }, 2500);
+  }
+  document.querySelector('.phone-mockup').addEventListener('mousemove', resetControlsTimeout);
+  document.querySelector('.phone-mockup').addEventListener('touchstart', resetControlsTimeout);
+  cv.addEventListener('play', resetControlsTimeout);
+  cv.addEventListener('pause', function() {
+    iosControls.classList.add('active');
+    clearTimeout(controlsTimeout);
+  });
+
+
+  /* ---------------- packaging ---------------- */
+  var packImg=document.getElementById('packImg'),packHot=document.getElementById('packHotspots');
+  function renderPack(view){
+    var p=PACK[view]; packImg.src=p.img;
+    packHot.innerHTML=p.spots.map(function(s){
+      return '<button class="hotspot" aria-expanded="false"><div class="h-top"><span class="dot"></span><h4>'+s.h+'</h4><span class="lbl">'+s.lbl+'</span></div><div class="note">'+s.note+'</div></button>';
+    }).join('');
+    packHot.querySelectorAll('.hotspot').forEach(function(h){
+      h.addEventListener('click',function(){h.setAttribute('aria-expanded',h.getAttribute('aria-expanded')==='true'?'false':'true');});
+    });
+  }
+  document.querySelectorAll('.pack-tab').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.pack-tab').forEach(function(x){x.setAttribute('aria-selected','false');});
+      b.setAttribute('aria-selected','true'); renderPack(b.dataset.pack);
+    });
+  });
+  renderPack('materials');
+
+  /* ---------------- gallery + lightbox ---------------- */
+  var galleryGrid=document.getElementById('galleryGrid');
+  galleryGrid.innerHTML=GALLERY.map(function(g){
+    return '<button class="tile '+g.cls+'" data-cat="'+g.cat+'" data-src="'+g.src+'" data-line="'+g.line+'">'+
+      '<img src="'+g.src+'" alt="Beso de Dios — '+g.label+'" loading="lazy" />'+
+      '<div class="tile-cap"><div class="cat">'+g.label+'</div><div class="line">'+g.line+'</div></div></button>';
+  }).join('');
+  document.getElementById('galleryFilters').addEventListener('click',function(e){
+    var btn=e.target.closest('.chip'); if(!btn)return;
+    this.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');});
+    btn.setAttribute('aria-pressed','true');
+    var f=btn.dataset.gfilter;
+    galleryGrid.querySelectorAll('.tile').forEach(function(t){
+      t.classList.toggle('hide',!(f==='all'||t.dataset.cat===f));
+    });
+  });
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+  galleryGrid.addEventListener('click',function(e){
+    var t=e.target.closest('.tile'); if(!t)return;
+    lbImg.src=t.dataset.src; lbImg.alt=t.dataset.line; lbCap.textContent=t.dataset.line; lb.classList.add('open');
+  });
+  function closeLb(){lb.classList.remove('open');lbImg.src='';}
+  document.getElementById('lbClose').addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
+
+  /* ---------------- faq ---------------- */
+  var faqList=document.getElementById('faqList');
+  faqList.innerHTML=FAQ.map(function(f,i){
+    return '<div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="fa'+i+'"><span>'+f.q+'</span><span class="ic" aria-hidden="true"></span></button>'+
+      '<div class="faq-a" id="fa'+i+'"><div class="faq-a-inner">'+f.a+'</div></div></div>';
+  }).join('');
+  faqList.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var open=q.getAttribute('aria-expanded')==='true';
+      var ans=document.getElementById(q.getAttribute('aria-controls'));
+      q.setAttribute('aria-expanded',open?'false':'true');
+      ans.style.maxHeight=open?'0':ans.firstElementChild.offsetHeight+'px';
+    });
+  });
+
+  /* ---------------- newsletter ---------------- */
+  document.getElementById('newsForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=document.getElementById('newsEmail'),msg=document.getElementById('newsMsg');
+    if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ msg.style.color='var(--olive-relic)'; msg.textContent='Welcome to the ritual. ✓'; email.value=''; }
+    else{ msg.style.color='var(--dried-rose)'; msg.textContent='Please enter a valid email.'; }
+  });
+
+  /* ---------------- back to top ---------------- */
+  document.getElementById('backTop').addEventListener('click',function(){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});});
+
+  /* ---------------- subtle hero parallax ---------------- */
+  if(!reduceMotion){
+    var tableau=document.querySelector('.tableau img');
+    window.addEventListener('scroll',function(){
+      var y=window.scrollY; if(y<900 && tableau)tableau.style.transform='translateY('+(y*0.04)+'px) scale(1.02)';
+    },{passive:true});
+  }
+})();
+</script>
+</body>
+</html>

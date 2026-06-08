@@ -1,5 +1,41 @@
 [
   {
+    "title": "Beso de Dios — Luxury Cannabis Wellness World",
+    "subtitle": "Sacred botanical brand world for adults 21+: curved navigation, a scroll-reactive ritual background video, Body/Dose/Ritual method tabs, feature-flip cards, botanical field notes, a CSS ritual clock, a glassmorphic campaign player, and a compliance-aware retail experience.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["brand", "wellness", "html", "css", "javascript"],
+    "image": "/projects/beso-de-dios/assets/altar-landscape.jpg",
+    "link": "/projects/beso-de-dios/index.html",
+    "embedUrl": "/projects/beso-de-dios/index.html",
+    "featured": true,
+    "createdAt": "2026-06-08T00:00:00.000Z"
+  },
+  {
+    "title": "Basic Americana — American Default Store",
+    "subtitle": "A mock fashion-ecommerce world: color-block retail, Y2K stickers, an LA scroll-world, an iOS-style reels player, and a 142-image archive.",
+    "year": 2026,
+    "categories": ["design", "code", "ai"],
+    "tools": ["brand", "ecommerce", "html", "css", "javascript"],
+    "image": "/projects/basic-americana/assets/img/hero-campaign.jpg",
+    "link": "/projects/basic-americana/index.html",
+    "embedUrl": "/projects/basic-americana/index.html",
+    "featured": true,
+    "createdAt": "2026-06-08T00:00:00.000Z"
+  },
+  {
+    "title": "Random Graphic Design — Editorial Index",
+    "subtitle": "An editorial exhibition of 93 works — poster art, packaging, album covers, and brand systems — sequenced by visual weight and laid out as a height-balanced masonry wall.",
+    "year": 2026,
+    "categories": ["design", "code"],
+    "tools": ["html", "css", "javascript", "gallery"],
+    "image": "/projects/random-graphic-design/img/design-01.png",
+    "link": "/projects/random-graphic-design/index.html",
+    "embedUrl": "/projects/random-graphic-design/index.html",
+    "featured": true,
+    "createdAt": "2026-06-08T00:00:00.000Z"
+  },
+  {
     "title": "AUREA — Luxury Fragrance Brand World",
     "subtitle": "Editorial identity, campaign, lookbook, and digital presence for a dark-luxury fragrance house.",
     "year": 2026,

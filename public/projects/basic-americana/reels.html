@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Basic Americana — Reels. An iOS-style vertical video player. Swipe up; the next reel autoplays when the current one finishes." />
+<meta name="theme-color" content="#0a0908" />
+<title>Reels — Basic Americana</title>
+<link rel="stylesheet" href="assets/ba.css" />
+<script>try{var t=localStorage.getItem('ba-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<style>body{overflow:hidden}</style>
+</head>
+<body>
+<a class="skip" href="#reelsStage">Skip to reels</a>
+
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker">
+    <span>REELS&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;@BASICAMERICANA&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;DROP_001 — AMERICAN DEFAULT&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;SWIPE UP FOR THE NEXT&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+    <span>LOW RENT GLAMOUR&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;FINAL SALE BUT EMOTIONAL&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;NO RECEIPT / NO CLOSURE&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+    <span>REELS&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;@BASICAMERICANA&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;DROP_001 — AMERICAN DEFAULT&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;SWIPE UP FOR THE NEXT&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+    <span>LOW RENT GLAMOUR&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;FINAL SALE BUT EMOTIONAL&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;NO RECEIPT / NO CLOSURE&nbsp;&nbsp;<b>★</b>&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand" aria-label="Basic Americana home"><span class="star" aria-hidden="true"></span><span>BASIC AMERICANA</span></a>
+    <button class="hamb" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="main" id="siteNav" aria-label="Main">
+      <ul>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="social.html">Social</a></li>
+        <li><a href="reels.html" aria-current="page">Reels</a></li>
+        <li><a href="brand.html">Brand</a></li>
+        <li><a href="index.html#world">LA World</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-btn" data-cart-open aria-label="Open bag">Bag <span class="count">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="reels-stage" id="reelsStage" tabindex="-1" aria-label="Reels — vertical video player">
+
+  <section class="reel" aria-label="Reel 1">
+    <div class="bg" style="background-image:url('assets/img/poster-default.jpg')"></div>
+    <div class="frame">
+      <video src="assets/video/reel-1.mp4" poster="assets/img/poster-default.jpg" muted playsinline preload="auto"></video>
+      <div class="ov">
+        <div class="prog"><i></i></div>
+        <button class="playpause" aria-label="Play or pause"><span class="ic">❚❚</span></button>
+        <div class="topbar">
+          <div class="ava" style="background-image:url('assets/img/looks/look-5.jpg')"></div>
+          <div class="h">@basicamericana<small>DROP_001 · original sound</small></div>
+          <span class="live">Reel 1 / 4</span>
+        </div>
+        <div class="rail">
+          <button data-toggle aria-label="Like">♥</button>
+          <button data-toggle aria-label="Save">☆</button>
+          <button aria-label="Share">➤</button>
+          <button class="mute" aria-label="Unmute">🔇</button>
+        </div>
+        <div class="caption">
+          <div class="t">American Default</div>
+          <div class="d">DROP_001 in motion — washed cotton, motel keys, giant stars.</div>
+          <div class="row">
+            <a class="shopbtn" href="shop.html">Shop the drop</a>
+            <span class="audio">♪ Original sound — basicamericana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reel" aria-label="Reel 2">
+    <div class="bg" style="background-image:url('assets/img/editorial-cover.jpg')"></div>
+    <div class="frame">
+      <video src="assets/video/reel-2.mp4" poster="assets/img/editorial-cover.jpg" muted playsinline preload="auto"></video>
+      <div class="ov">
+        <div class="prog"><i></i></div>
+        <button class="playpause" aria-label="Play or pause"><span class="ic">❚❚</span></button>
+        <div class="topbar">
+          <div class="ava" style="background-image:url('assets/img/looks/look-5.jpg')"></div>
+          <div class="h">@basicamericana<small>Teaser cut</small></div>
+          <span class="live">Reel 2 / 4</span>
+        </div>
+        <div class="rail">
+          <button data-toggle aria-label="Like">♥</button>
+          <button data-toggle aria-label="Save">☆</button>
+          <button aria-label="Share">➤</button>
+          <button class="mute" aria-label="Unmute">🔇</button>
+        </div>
+        <div class="caption">
+          <div class="t">Low rent glamour</div>
+          <div class="d">Final sale but emotional. Teaser for the American Default issue.</div>
+          <div class="row">
+            <a class="shopbtn" href="lookbook.html">View lookbook</a>
+            <span class="audio">♪ Original sound — basicamericana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reel" aria-label="Reel 3">
+    <div class="bg" style="background-image:url('assets/img/hero-campaign.jpg')"></div>
+    <div class="frame">
+      <video src="assets/video/reel-3.mp4" poster="assets/img/hero-campaign.jpg" muted playsinline preload="metadata"></video>
+      <div class="ov">
+        <div class="prog"><i></i></div>
+        <button class="playpause" aria-label="Play or pause"><span class="ic">❚❚</span></button>
+        <div class="topbar">
+          <div class="ava" style="background-image:url('assets/img/looks/look-5.jpg')"></div>
+          <div class="h">@basicamericana<small>Motion still</small></div>
+          <span class="live">Reel 3 / 4</span>
+        </div>
+        <div class="rail">
+          <button data-toggle aria-label="Like">♥</button>
+          <button data-toggle aria-label="Save">☆</button>
+          <button aria-label="Share">➤</button>
+          <button class="mute" aria-label="Unmute">🔇</button>
+        </div>
+        <div class="caption">
+          <div class="t">Washed in public</div>
+          <div class="d">Room 013, no vacancy, no closure. Cotton body, country heat.</div>
+          <div class="row">
+            <a class="shopbtn" href="shop.html">Shop the drop</a>
+            <span class="audio">♪ Original sound — basicamericana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reel" aria-label="Reel 4">
+    <div class="bg" style="background-image:url('assets/img/poster-pinup.jpg')"></div>
+    <div class="frame">
+      <video src="assets/video/reel-4.mp4" poster="assets/img/poster-pinup.jpg" muted playsinline preload="metadata"></video>
+      <div class="ov">
+        <div class="prog"><i></i></div>
+        <button class="playpause" aria-label="Play or pause"><span class="ic">❚❚</span></button>
+        <div class="topbar">
+          <div class="ava" style="background-image:url('assets/img/looks/look-5.jpg')"></div>
+          <div class="h">@basicamericana<small>Strip-mall reel</small></div>
+          <span class="live">Reel 4 / 4</span>
+        </div>
+        <div class="rail">
+          <button data-toggle aria-label="Like">♥</button>
+          <button data-toggle aria-label="Save">☆</button>
+          <button aria-label="Share">➤</button>
+          <button class="mute" aria-label="Unmute">🔇</button>
+        </div>
+        <div class="caption">
+          <div class="t">Cotton casino</div>
+          <div class="d">Angel vs devil, low rent glamour. End of the loop — back to the top.</div>
+          <div class="row">
+            <a class="shopbtn" href="shop.html">Shop the drop</a>
+            <span class="audio">♪ Original sound — basicamericana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="reels-cta" aria-hidden="true"><span class="up">↑</span> Swipe up · autoplays next</div>
+
+<script src="assets/ba.js"></script>
+</body>
+</html>

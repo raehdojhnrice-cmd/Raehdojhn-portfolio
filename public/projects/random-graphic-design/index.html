@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Graphic Design — a curated index of poster art, packaging, album covers, and brand systems, arranged as an editorial masonry exhibition.">
+  <title>Graphic Design — Index of Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #0B0B0D;
+      --void-soft: #111114;
+      --ivory: #F4F1EA;
+      --muted: rgba(244, 241, 234, 0.52);
+      --faint: rgba(244, 241, 234, 0.30);
+      --line: rgba(244, 241, 234, 0.12);
+      --line-soft: rgba(244, 241, 234, 0.07);
+      --red: #FF3366;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--void);
+      color: var(--ivory);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Film grain — matches the main portfolio */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0.04;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    ::selection { background: var(--red); color: #fff; }
+
+    .wrap {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 28px clamp(20px, 5vw, 64px) 120px;
+    }
+
+    /* ---- Top bar ---- */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s var(--ease), gap 0.3s var(--ease);
+    }
+    .back:hover { color: var(--ivory); gap: 14px; }
+    .back svg { width: 14px; height: 14px; }
+
+    .studio { color: var(--faint); }
+    .studio b { color: var(--ivory); font-weight: 600; }
+
+    /* ---- Masthead ---- */
+    .masthead { padding: clamp(48px, 9vw, 110px) 0 clamp(36px, 5vw, 60px); }
+
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 26px;
+    }
+
+    .title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(3.2rem, 13vw, 10rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+    .title em { font-style: italic; color: var(--muted); }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-top: clamp(32px, 5vw, 56px);
+      flex-wrap: wrap;
+    }
+
+    .lede {
+      max-width: 46ch;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .index-count {
+      font-family: var(--font-mono);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .index-count .num {
+      display: block;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ivory);
+    }
+    .index-count .lbl {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .rule { border: none; border-top: 1px solid var(--line); margin-top: clamp(28px, 4vw, 44px); }
+
+    /* ---- Masonry ---- */
+    .masonry {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(14px, 1.6vw, 26px);
+      margin-top: clamp(40px, 5vw, 64px);
+    }
+    .col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(14px, 1.6vw, 26px);
+    }
+
+    .card {
+      position: relative;
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line-soft);
+      background: var(--void-soft);
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease),
+                  border-color 0.4s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card.in { opacity: 1; transform: translateY(0); }
+    .card:hover { border-color: var(--line); }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: saturate(0.96) brightness(0.97);
+      transition: transform 0.9s var(--ease), filter 0.6s var(--ease);
+    }
+    .card:hover img { transform: scale(1.035); filter: saturate(1.05) brightness(1); }
+
+    .card .tag {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      z-index: 2;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--ivory);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .card .tag b { color: var(--red); }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(to top, rgba(8,8,10,0.72) 0%, transparent 42%);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+      pointer-events: none;
+    }
+    .card:hover::after { opacity: 1; }
+    .card:hover .tag { opacity: 1; transform: translateY(0); }
+
+    /* ---- Lightbox ---- */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(20px, 5vw, 56px);
+      background: rgba(6, 6, 8, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease);
+    }
+    .lb.active { opacity: 1; pointer-events: auto; }
+
+    .lb-stage {
+      position: relative;
+      max-width: 90vw;
+      max-height: 78vh;
+      display: flex;
+      transform: scale(0.97);
+      transition: transform 0.4s var(--ease);
+    }
+    .lb.active .lb-stage { transform: scale(1); }
+    .lb-img {
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transition: opacity 0.18s ease;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: clamp(16px, 3vw, 28px);
+      right: clamp(16px, 3vw, 28px);
+      width: 46px; height: 46px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--ivory);
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid; place-items: center;
+      transition: transform 0.4s var(--ease), background 0.3s var(--ease);
+    }
+    .lb-close:hover { transform: rotate(90deg); background: var(--red); border-color: var(--red); }
+    .lb-close svg { width: 18px; height: 18px; }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px; height: 52px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--ivory);
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid; place-items: center;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+      z-index: 5;
+    }
+    .lb-nav:hover { background: var(--red); border-color: var(--red); }
+    .lb-nav svg { width: 18px; height: 18px; }
+    .lb-nav.prev { left: clamp(10px, 3vw, 36px); }
+    .lb-nav.next { right: clamp(10px, 3vw, 36px); }
+
+    .lb-foot {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .lb-foot .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+    .lb-foot .now { color: var(--ivory); }
+
+    @media (max-width: 540px) {
+      .lb-nav { width: 42px; height: 42px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; opacity: 1; transform: none; }
+      .card img, .card:hover img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a href="/" class="back mono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Index
+      </a>
+      <span class="studio mono">Raehdojhn <b>Studio</b></span>
+    </div>
+
+    <header class="masthead">
+      <p class="kicker">( selected works )</p>
+      <h1 class="title">Graphic<br><em>Design</em></h1>
+      <div class="meta-row">
+        <p class="lede">A working archive of poster art, packaging, album covers, and brand systems — sequenced by visual weight and laid out as a balanced exhibition wall. Click any plate to inspect.</p>
+        <p class="index-count">
+          <span class="num" id="count">093</span>
+          <span class="lbl">plates on view</span>
+        </p>
+      </div>
+      <hr class="rule">
+    </header>
+
+    <div class="masonry" id="masonry"></div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+    <button class="lb-close" id="lbClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lb-nav prev" id="lbPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <div class="lb-stage">
+      <img class="lb-img" id="lbImg" src="" alt="Artwork detail">
+    </div>
+    <button class="lb-nav next" id="lbNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <div class="lb-foot">
+      <span>Graphic Design</span>
+      <span class="dot"></span>
+      <span><span class="now" id="lbNow">001</span> / 093</span>
+    </div>
+  </div>
+
+  <script>
+    /* Aspect ratios (width / height) baked from the source files,
+       so the masonry balances column heights with zero layout shift. */
+    const AR = {
+      1:0.563, 2:0.800, 3:1.777, 4:1.777, 5:0.800, 6:0.563, 7:0.563, 8:0.800, 9:0.563, 10:0.800,
+      11:0.800,12:0.800,13:0.667,14:1.777,15:0.800,16:0.800,17:0.800,18:0.800,19:0.800,20:1.000,
+      21:0.563,22:0.800,23:0.800,24:0.563,25:0.800,26:0.640,27:0.558,28:0.558,29:0.558,30:0.558,
+      31:0.558,32:0.558,33:0.558,34:1.085,35:0.558,36:0.558,37:0.558,38:0.558,39:0.558,40:0.558,
+      41:0.558,42:0.558,43:0.558,44:0.558,45:0.558,46:0.559,47:0.558,48:0.558,49:0.559,50:0.559,
+      51:0.558,52:0.559,53:0.558,54:0.558,55:0.558,56:0.558,57:0.558,58:0.558,59:0.558,60:0.558,
+      61:0.558,62:0.558,63:0.558,64:0.558,65:0.558,66:0.558,67:0.558,68:0.558,69:0.558,70:0.800,
+      71:0.558,72:0.807,73:0.806,74:0.806,75:0.559,76:0.558,77:0.800,78:0.563,79:0.563,80:0.750,
+      81:0.800,82:0.800,83:0.800,84:0.800,85:0.800,86:1.777,87:1.777,88:1.777,89:0.563,90:0.800,
+      91:0.800,92:0.806,93:0.800
+    };
+    const TOTAL = 93;
+    const ext = (n) => (n === 92 || n === 93) ? 'jpeg' : 'png';
+    const src = (n) => `img/design-${String(n).padStart(2,'0')}.${ext(n)}`;
+    const pad = (n) => String(n).padStart(3, '0');
+
+    /* --- Order by visual hierarchy ---
+       Lead with the strongest, most varied plates, then thread the
+       landscape & square formats evenly through the long run of
+       upright pieces so the wall reads with rhythm, not repetition. */
+    const LEAD = [1, 3, 25, 80, 20, 14, 10, 13];
+
+    function band(n) {
+      const a = AR[n];
+      if (a >= 1.4) return 'L';      // landscape
+      if (a >= 0.95) return 'S';     // square
+      return 'P';                    // upright
+    }
+
+    function buildOrder() {
+      const used = new Set(LEAD);
+      const q = { L: [], S: [], P: [] };
+      for (let n = 1; n <= TOTAL; n++) {
+        if (used.has(n)) continue;
+        q[band(n)].push(n);
+      }
+      // proportional interleave: always advance whichever queue is least far along
+      const total = { L: q.L.length, S: q.S.length, P: q.P.length };
+      const at = { L: 0, S: 0, P: 0 };
+      let remaining = total.L + total.S + total.P;
+      const woven = [];
+      while (remaining > 0) {
+        let pick = null, best = Infinity;
+        for (const k of ['L', 'S', 'P']) {
+          if (at[k] >= total[k]) continue;
+          const prog = at[k] / total[k];
+          if (prog < best) { best = prog; pick = k; }
+        }
+        woven.push(q[pick][at[pick]++]);
+        remaining--;
+      }
+      return [...LEAD, ...woven];
+    }
+
+    const ORDER = buildOrder();
+    document.getElementById('count').textContent = pad(TOTAL);
+
+    /* --- Build cards once, reuse across re-layouts --- */
+    const masonry = document.getElementById('masonry');
+    const cards = {};
+    ORDER.forEach((n, i) => {
+      const card = document.createElement('button');
+      card.className = 'card';
+      card.type = 'button';
+      card.setAttribute('aria-label', `Open plate ${pad(n)}`);
+      card.innerHTML =
+        `<img src="${src(n)}" alt="Graphic design plate ${pad(n)}" loading="lazy" decoding="async">
+         <span class="tag"><b>№</b> ${pad(n)}</span>`;
+      card.addEventListener('click', () => openLB(i));
+      cards[n] = card;
+    });
+
+    function columnCount() {
+      const w = window.innerWidth;
+      if (w <= 540) return 1;
+      if (w <= 820) return 2;
+      if (w <= 1180) return 3;
+      return 4;
+    }
+
+    let currentCols = -1;
+    function layout() {
+      const cols = columnCount();
+      if (cols === currentCols && masonry.children.length) return;
+      currentCols = cols;
+
+      masonry.innerHTML = '';
+      const colEls = [];
+      const heights = new Array(cols).fill(0);
+      for (let c = 0; c < cols; c++) {
+        const el = document.createElement('div');
+        el.className = 'col';
+        masonry.appendChild(el);
+        colEls.push(el);
+      }
+      // shortest-column balancing (Framer MasonryGrid algorithm)
+      ORDER.forEach((n) => {
+        let idx = 0;
+        for (let c = 1; c < cols; c++) if (heights[c] < heights[idx]) idx = c;
+        colEls[idx].appendChild(cards[n]);
+        heights[idx] += (1 / AR[n]) + 0.06; // relative height = 1/aspect, + small gutter weight
+      });
+      reveal();
+    }
+
+    /* --- Staggered scroll reveal --- */
+    let io;
+    function reveal() {
+      if (io) io.disconnect();
+      io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.transitionDelay = (Math.random() * 0.12).toFixed(2) + 's';
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.04, rootMargin: '0px 0px -8% 0px' });
+      Object.values(cards).forEach((c) => {
+        if (!c.classList.contains('in')) io.observe(c);
+      });
+    }
+
+    let rT;
+    window.addEventListener('resize', () => {
+      clearTimeout(rT);
+      rT = setTimeout(layout, 150);
+    });
+    layout();
+
+    /* --- Lightbox --- */
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbNow = document.getElementById('lbNow');
+    let pos = 0;
+
+    function openLB(i) {
+      pos = i;
+      paint();
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function paint() {
+      const n = ORDER[pos];
+      lbImg.style.opacity = 0;
+      setTimeout(() => {
+        lbImg.src = src(n);
+        lbImg.alt = `Graphic design plate ${pad(n)}`;
+        lbNow.textContent = pad(pos + 1);
+        lbImg.style.opacity = 1;
+      }, 120);
+    }
+    function closeLB() { lb.classList.remove('active'); document.body.style.overflow = ''; }
+    function step(d) { pos = (pos + d + ORDER.length) % ORDER.length; paint(); }
+
+    document.getElementById('lbClose').addEventListener('click', closeLB);
+    document.getElementById('lbNext').addEventListener('click', () => step(1));
+    document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+    lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-stage')) closeLB(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
+    });
+  </script>
+</body>
+</html>
